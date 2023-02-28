@@ -79,6 +79,7 @@ export default async function (request: Request): Promise<Response> {
       session,
       storefront,
       env,
+      sanityClient, usePreview,
       waitUntil: () => Promise.resolve(),
     });
 
