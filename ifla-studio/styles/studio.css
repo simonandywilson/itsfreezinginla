@@ -1,0 +1,26 @@
+html {
+  background-color: #111111;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+[data-ui='PaneItem'] *:not(svg) + span {
+  box-shadow: none !important;
+}
+
+[data-testid='Media'] *:not(svg) + span {
+  box-shadow: none !important;
+}
+
+/* #page-orderable-page-0 [data-ui='Box'] *:not(svg) + span {
+  box-shadow: none !important;
+} */
