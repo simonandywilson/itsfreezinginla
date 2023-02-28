@@ -1,6 +1,6 @@
 import {Fragment} from 'react';
 import {Popover, Transition} from '@headlessui/react';
-import {Link} from '@remix-run/react';
+import Link from '~/components/parts/Link';
 
 const MenuDesktop = ({title, children}) => {
   return (
@@ -20,9 +20,6 @@ const MenuDesktop = ({title, children}) => {
                 <li key={child._id}>
                   <Link
                     to={child.slug}
-                    className={
-                      'focus:outline-none focus-visible:underline hover:underline'
-                    }
                   >
                     {child.title}
                   </Link>

@@ -1,5 +1,4 @@
-import {Link} from '@remix-run/react';
-import React from 'react';
+import Link from '~/components/parts/Link';
 
 const MenuItemMobile = ({title, children}) => {
   return (
@@ -9,14 +8,7 @@ const MenuItemMobile = ({title, children}) => {
         <ul className={'ml-4'}>
           {children.map((child) => (
             <li key={child._id}>
-              <Link
-                to={child.slug}
-                className={
-                  'focus:outline-none focus-visible:underline hover:underline'
-                }
-              >
-                {child.title}
-              </Link>
+              <Link to={child.slug}>{child.title}</Link>
             </li>
           ))}
         </ul>

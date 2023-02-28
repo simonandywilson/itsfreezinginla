@@ -4,7 +4,8 @@ import {Popover, Transition} from '@headlessui/react';
 import GlobalMenuItemDesktop from './GlobalMenuItemDesktop';
 import GlobalMenuItemMobile from './GlobalMenuItemMobile';
 import GlobalTitle from './GlobalTitle';
-import { Await, Link} from '@remix-run/react';
+import {Await} from '@remix-run/react';
+import Link from '~/components/parts/Link';
 
 const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
@@ -18,7 +19,11 @@ const GlobalHeader = () => {
         <div className={'flex items-center gap-16'}>
           {/* Mobile Menu Button */}
           <div className="md:hidden">
-            <Popover.Button className={'focus:outline-none '}>
+            <Popover.Button
+              className={
+                ' focus-visible:underline focus:border-none focus:outline-none'
+              }
+            >
               {({open}) => <span>{open ? 'Close Menu' : 'Menu'}</span>}
             </Popover.Button>
           </div>

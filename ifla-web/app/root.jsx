@@ -1,4 +1,4 @@
-import {defer} from '@shopify/remix-oxygen';
+import {defer, json} from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
@@ -72,25 +72,62 @@ export async function loader({context}) {
   });
 }
 
-export async function action({ request }) {
-   await new Promise((res) => setTimeout(res, 1000));
+const badRequest = (data) => json(data, {status: 400});
+
+export async function action({ request, context, params }) {
+  await new Promise((res) => setTimeout(res, 1000));
+  const {storefront} = context;
   const formData = await request.formData();
-  console.log(formData);
-  // const email = formData.get('email');
+  const email = formData.get('email');
 
-  // const API_KEY = '...';
-  // const FORM_ID = '...';
-  // const API = 'https://api.convertkit.com/v3';
+  const CUSTOMER_CREATE_MUTATION = `#graphql
+  mutation customerCreate($input: CustomerCreateInput!) {
+    customerCreate(input: $input) {
+      customer {
+        id
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`;
 
-  // const res = await fetch(`${API}/forms/${FORM_ID}/subscribe`, {
-  //   method: 'post',
-  //   body: JSON.stringify({email, api_key: API_KEY}),
-  //   headers: {
-  //     'Content-Type': 'application/json; charset=utf-8',
-  //   },
-  // });
+  if (!email) {
+    console.log("no email");
+    return badRequest({
+      formError: 'Please provide both an email and a password.',
+    });
+  }
 
-   return formData.json();
+  try {
+    const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
+      variables: {
+        input: {email: 'user@example.com'},
+      },
+    });
+
+    if (!data?.customerCreate?.customer?.id) {
+
+      /**
+       * Something is wrong with the user's input.
+       */
+      throw new Error(data?.customerCreate?.customerUserErrors.join(', '));
+    }
+  } catch (error) {
+    if (storefront.isApiError(error)) {
+      console.log(error);
+      return badRequest({
+        formError: 'Something went wrong. Please try again later.',
+      });
+    }
+    return badRequest({
+      formError:
+        'Sorry. We could not create an account with this email. User might already exist.',
+    });
+  }
 }
 
 export default function App() {
@@ -112,7 +149,11 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <main className={'selection:bg-green-200 min-h-screen flex flex-col'}>
+        <main
+          className={
+            'selection:bg-green-200 min-h-screen flex flex-col leading-tight'
+          }
+        >
           <GlobalHeader />
           <Outlet />
           <GlobalFooter />

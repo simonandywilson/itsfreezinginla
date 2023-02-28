@@ -1,5 +1,6 @@
-import {Form, Link, useTransition, useActionData} from '@remix-run/react';
+import {Form, useActionData, useTransition} from '@remix-run/react';
 import {useEffect, useRef} from 'react';
+import Button from '~/components/parts/Button';
 
 const GlobalNewsletter = () => {
   const actionData = useActionData();
@@ -10,7 +11,9 @@ const GlobalNewsletter = () => {
     ? 'success'
     : actionData?.error
     ? 'error'
-    : 'idle';
+              : 'idle';
+    
+    console.log(actionData, transition);
 
   const inputRef = useRef(null);
   const successRef = useRef(null);
@@ -35,22 +38,25 @@ const GlobalNewsletter = () => {
   return (
     <main>
       <Form replace method="post" aria-hidden={state === 'success'}>
-        <h2>Sign up to our newsletter</h2>
+        <h2 className={'mb-[1em]'}>Sign up to our newsletter</h2>
         <fieldset>
-          <input
-            aria-label="Email address"
-            aria-describedby="error-message"
-            ref={inputRef}
-            type="email"
-            name="email"
-            placeholder="email:"
-            className={
-              'text-white bg-black rounded-none border-b-2 p-y-2 border-dashed placeholder-white focus:border-solid focus:outline-none'
-            }
-          />
-          <button type="submit" className={'bg-white text-black p-2'}>
-            {state === 'submitting' ? 'Subscribing...' : 'Go on'}
-          </button>
+          <label>email:</label>
+          <div>
+            <input
+              aria-label="Email address"
+              aria-describedby="error-message"
+              ref={inputRef}
+              type="email"
+              name="email"
+              placeholder=""
+              className={
+                'text-white bg-black rounded-none border-b-2 py-2 border-dashed placeholder-white focus:border-solid focus:outline-none'
+              }
+            />
+            <Button className={"ml-2"}>
+                {state === 'submitting' ? 'Subscribing...' : 'Go on'}
+            </Button>
+          </div>
         </fieldset>
 
         <p id="error-message">
@@ -58,11 +64,11 @@ const GlobalNewsletter = () => {
         </p>
       </Form>
 
-      <div aria-hidden={state !== 'success'}>
+      {/* <div aria-hidden={state !== 'success'}>
         <h2 ref={successRef} tabIndex={-1}>
           You're subscribed!
         </h2>
-      </div>
+      </div> */}
     </main>
   );
 };

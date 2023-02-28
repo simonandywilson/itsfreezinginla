@@ -6,8 +6,12 @@ const components = {
   //   },
 };
 
-const PortableText = ({text}) => {
-  return <SanityPortableText value={text} components={components} />;
+const PortableText = ({ text }) => {
+    return (
+      <div className={'[&>*:not(:last-child)]:mb-[1em]'}>
+        <SanityPortableText value={text} components={components} />
+      </div>
+    );
 };
 
 export default PortableText;
