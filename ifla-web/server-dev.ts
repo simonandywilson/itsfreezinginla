@@ -56,7 +56,11 @@ export default {
         useCdn: true,
       });
       const usePreview = definePreview({projectId, dataset});
-
+      const sanityProjectDetails = {
+        projectId: env.SANITY_PUBLIC_PROJECT_ID,
+        dataset: env.SANITY_PUBLIC_DATASET,
+        apiVersion: env.SANITY_PUBLIC_API_VERSION,
+      };
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.
@@ -72,6 +76,7 @@ export default {
           env,
           sanityClient,
           usePreview,
+          sanityProjectDetails,
         }),
       });
 

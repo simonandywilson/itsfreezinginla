@@ -32,9 +32,7 @@ const seo = ({data: {settings}, pathname}) => ({
 });
 
 export const handle = {
-  seo: {
-    title: 'Home',
-  },
+  seo,
 };
 
 export const links = () => {
@@ -69,12 +67,13 @@ export async function loader({context}) {
       shopifySalesChannel: ShopifySalesChannel.hydrogen,
       shopId: shop.shop.id,
     },
+    sanityProjectDetails: context.sanityProjectDetails,
   });
 }
 
 const badRequest = (data) => json(data, {status: 400});
 
-export async function action({ request, context, params }) {
+export async function action({request, context, params}) {
   await new Promise((res) => setTimeout(res, 1000));
   const {storefront} = context;
   const formData = await request.formData();
@@ -96,7 +95,7 @@ export async function action({ request, context, params }) {
 `;
 
   if (!email) {
-    console.log("no email");
+    console.log('no email');
     return badRequest({
       formError: 'Please provide both an email and a password.',
     });
@@ -110,7 +109,6 @@ export async function action({ request, context, params }) {
     });
 
     if (!data?.customerCreate?.customer?.id) {
-
       /**
        * Something is wrong with the user's input.
        */
@@ -149,15 +147,15 @@ export default function App() {
         <Links />
       </head>
       <body>
+        <GlobalHeader />
         <main
           className={
-            'selection:bg-green-200 min-h-screen flex flex-col leading-tight'
+            'selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24'
           }
         >
-          <GlobalHeader />
           <Outlet />
-          <GlobalFooter />
         </main>
+        <GlobalFooter />
         <ScrollRestoration />
         <Scripts />
       </body>

@@ -11,7 +11,7 @@ const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
   return (
     <Popover
-      className="relative bg-white z-50 text-3xl md:text-2xl"
+      className="fixed h-24 w-screen bg-white z-50 text-3xl md:text-2xl"
       as={'header'}
     >
       <div className="w-full p-4 flex items-center justify-between">

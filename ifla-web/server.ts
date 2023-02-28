@@ -5,7 +5,7 @@ import {createStorefrontClient} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
 import {getLocaleFromRequest} from '~/lib/utils';
 import {createClient} from '@sanity/client';
-import { definePreview } from '@sanity/preview-kit';
+import {definePreview} from '@sanity/preview-kit';
 
 /**
  * Export a fetch handler in module format.
@@ -17,20 +17,21 @@ export default async function (request: Request): Promise<Response> {
      * and only variables explicitly named are present inside a Vercel Edge Function.
      * See https://github.com/vercel/next.js/pull/31237/files
      */
-     const env: Env = {
-       SESSION_SECRET: '',
-       PUBLIC_STOREFRONT_API_TOKEN: '',
-       PUBLIC_STOREFRONT_API_VERSION: '',
-       PRIVATE_STOREFRONT_API_TOKEN: '',
-       PUBLIC_STORE_DOMAIN: '',
-       SANITY_PUBLIC_PROJECT_ID: '',
-       SANITY_PUBLIC_DATASET: '',
-       SANITY_PUBLIC_API_VERSION: '',
-     };
+    const env: Env = {
+      SESSION_SECRET: '',
+      PUBLIC_STOREFRONT_API_TOKEN: '',
+      PUBLIC_STOREFRONT_API_VERSION: '',
+      PRIVATE_STOREFRONT_API_TOKEN: '',
+      PUBLIC_STORE_DOMAIN: '',
+      SANITY_PUBLIC_PROJECT_ID: '',
+      SANITY_PUBLIC_DATASET: '',
+      SANITY_PUBLIC_API_VERSION: '',
+    };
     env.SESSION_SECRET = process.env.SESSION_SECRET;
     env.PUBLIC_STOREFRONT_API_TOKEN = process.env.PUBLIC_STOREFRONT_API_TOKEN;
     env.PRIVATE_STOREFRONT_API_TOKEN = process.env.PRIVATE_STOREFRONT_API_TOKEN;
-    env.PUBLIC_STOREFRONT_API_VERSION = process.env.PUBLIC_STOREFRONT_API_VERSION;
+    env.PUBLIC_STOREFRONT_API_VERSION =
+      process.env.PUBLIC_STOREFRONT_API_VERSION;
     env.PUBLIC_STORE_DOMAIN = process.env.PUBLIC_STORE_DOMAIN;
 
     env.SANITY_PUBLIC_PROJECT_ID = process.env.SANITY_PUBLIC_PROJECT_ID;
@@ -73,13 +74,21 @@ export default async function (request: Request): Promise<Response> {
     });
     const usePreview = definePreview({projectId, dataset});
 
+    const sanityProjectDetails = {
+      projectId: env.SANITY_PUBLIC_PROJECT_ID,
+      dataset: env.SANITY_PUBLIC_DATASET,
+      apiVersion: env.SANITY_PUBLIC_API_VERSION,
+    };
+
     const handleRequest = createRequestHandler(remixBuild as any, 'production');
 
     const response = await handleRequest(request, {
       session,
       storefront,
       env,
-      sanityClient, usePreview,
+      sanityClient,
+      usePreview,
+      sanityProjectDetails,
       waitUntil: () => Promise.resolve(),
     });
 

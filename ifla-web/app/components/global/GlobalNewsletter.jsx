@@ -13,8 +13,6 @@ const GlobalNewsletter = () => {
     ? 'error'
               : 'idle';
     
-    console.log(actionData, transition);
-
   const inputRef = useRef(null);
   const successRef = useRef(null);
   const mounted = useRef(false);
