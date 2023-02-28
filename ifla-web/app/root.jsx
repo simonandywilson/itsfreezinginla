@@ -1,10 +1,4 @@
-import {
-  defer,
-  type LinksFunction,
-  type MetaFunction,
-  type LoaderArgs,
-  type AppLoadContext,
-} from '@shopify/remix-oxygen';
+import {defer} from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
@@ -15,24 +9,18 @@ import {
   useLoaderData,
   useMatches,
 } from '@remix-run/react';
-import {
-  ShopifySalesChannel,
-  Seo,
-  type SeoHandleFunction,
-} from '@shopify/hydrogen';
+import {ShopifySalesChannel, Seo} from '@shopify/hydrogen';
 import {Layout} from '~/components';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
-
 import styles from './styles/app.css';
 import favicon from '../public/favicon.svg';
 
-import {DEFAULT_LOCALE, parseMenu, type EnhancedMenu} from './lib/utils';
+import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import invariant from 'tiny-invariant';
-import {Shop, Cart} from '@shopify/hydrogen/storefront-api-types';
 import {useAnalytics} from './hooks/useAnalytics';
 
-const seo: SeoHandleFunction<typeof loader> = ({data, pathname}) => ({
+const seo = ({data, pathname}) => ({
   title: data?.layout?.shop?.name,
   titleTemplate: '%s | Hydrogen Demo Store',
   description: data?.layout?.shop?.description,
@@ -44,27 +32,21 @@ export const handle = {
   seo,
 };
 
-export const links: LinksFunction = () => {
+export const links = () => {
   return [
     {rel: 'stylesheet', href: styles},
-    {
-      rel: 'preconnect',
-      href: 'https://cdn.shopify.com',
-    },
-    {
-      rel: 'preconnect',
-      href: 'https://shop.app',
-    },
-    {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {rel: 'preconnect', href: 'https://cdn.shopify.com'},
+    {rel: 'preconnect', href: 'https://shop.app'},
+    // {rel: 'icon', type: 'image/svg+xml', href: favicon},
   ];
 };
 
-export const meta: MetaFunction = () => ({
+export const meta = () => ({
   charset: 'utf-8',
   viewport: 'width=device-width,initial-scale=1',
 });
 
-export async function loader({context}: LoaderArgs) {
+export async function loader({context}) {
   const [cartId, layout] = await Promise.all([
     context.session.get('cartId'),
     getLayoutData(context),
@@ -82,7 +64,7 @@ export async function loader({context}: LoaderArgs) {
 }
 
 export default function App() {
-  const data = useLoaderData<typeof loader>();
+  const data = useLoaderData();
   const locale = data.selectedLocale ?? DEFAULT_LOCALE;
   const hasUserConsent = true;
 
@@ -97,7 +79,7 @@ export default function App() {
       </head>
       <body>
         <Layout
-          layout={data.layout as LayoutData}
+          layout={data.layout}
           key={`${locale.language}-${locale.country}`}
         >
           <Outlet />
@@ -141,7 +123,7 @@ export function CatchBoundary() {
   );
 }
 
-export function ErrorBoundary({error}: {error: Error}) {
+export function ErrorBoundary({error}) {
   const [root] = useMatches();
   const locale = root?.data?.selectedLocale ?? DEFAULT_LOCALE;
 
@@ -202,18 +184,11 @@ const LAYOUT_QUERY = `#graphql
   }
 `;
 
-export interface LayoutData {
-  headerMenu: EnhancedMenu;
-  footerMenu: EnhancedMenu;
-  shop: Shop;
-  cart?: Promise<Cart>;
-}
-
-async function getLayoutData({storefront}: AppLoadContext) {
+async function getLayoutData({storefront}) {
   const HEADER_MENU_HANDLE = 'main-menu';
   const FOOTER_MENU_HANDLE = 'footer';
 
-  const data = await storefront.query<LayoutData>(LAYOUT_QUERY, {
+  const data = await storefront.query(LAYOUT_QUERY, {
     variables: {
       headerMenuHandle: HEADER_MENU_HANDLE,
       footerMenuHandle: FOOTER_MENU_HANDLE,
@@ -358,10 +333,10 @@ const CART_QUERY = `#graphql
   }
 `;
 
-export async function getCart({storefront}: AppLoadContext, cartId: string) {
+export async function getCart({storefront}, cartId) {
   invariant(storefront, 'missing storefront client in cart query');
 
-  const {cart} = await storefront.query<{cart?: Cart}>(CART_QUERY, {
+  const {cart} = await storefront.query(CART_QUERY, {
     variables: {
       cartId,
       country: storefront.i18n.country,
