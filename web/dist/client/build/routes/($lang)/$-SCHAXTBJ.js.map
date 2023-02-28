@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../../../../app/routes/($lang)/$.tsx"],
+  "sourcesContent": ["export async function loader() {\n  throw new Response('Not found', {status: 404});\n}\n\nexport default function Component() {\n  return null;\n}\n"],
+  "mappings": ";;;AAIe,SAAR,YAA6B;AAClC,SAAO;AACT;",
+  "names": []
+}
