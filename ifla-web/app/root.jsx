@@ -32,7 +32,9 @@ const seo = ({data: {settings}, pathname}) => ({
 });
 
 export const handle = {
-  seo,
+  seo: {
+    title: 'Home',
+  },
 };
 
 export const links = () => {
