@@ -4,6 +4,8 @@ import {createRequestHandler} from '@remix-run/server-runtime';
 import {createStorefrontClient} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
 import {getLocaleFromRequest} from '~/lib/utils';
+import {createClient} from '@sanity/client';
+import { definePreview } from '@sanity/preview-kit';
 
 /**
  * Export a fetch handler in module format.
@@ -16,17 +18,24 @@ export default async function (request: Request): Promise<Response> {
      * See https://github.com/vercel/next.js/pull/31237/files
      */
      const env: Env = {
-      SESSION_SECRET: '',
-      PUBLIC_STOREFRONT_API_TOKEN: '',
-      PUBLIC_STOREFRONT_API_VERSION: '',
-      PRIVATE_STOREFRONT_API_TOKEN: '',
-      PUBLIC_STORE_DOMAIN: '',
-    };
+       SESSION_SECRET: '',
+       PUBLIC_STOREFRONT_API_TOKEN: '',
+       PUBLIC_STOREFRONT_API_VERSION: '',
+       PRIVATE_STOREFRONT_API_TOKEN: '',
+       PUBLIC_STORE_DOMAIN: '',
+       SANITY_PUBLIC_PROJECT_ID: '',
+       SANITY_PUBLIC_DATASET: '',
+       SANITY_PUBLIC_API_VERSION: '',
+     };
     env.SESSION_SECRET = process.env.SESSION_SECRET;
     env.PUBLIC_STOREFRONT_API_TOKEN = process.env.PUBLIC_STOREFRONT_API_TOKEN;
     env.PRIVATE_STOREFRONT_API_TOKEN = process.env.PRIVATE_STOREFRONT_API_TOKEN;
     env.PUBLIC_STOREFRONT_API_VERSION = process.env.PUBLIC_STOREFRONT_API_VERSION;
     env.PUBLIC_STORE_DOMAIN = process.env.PUBLIC_STORE_DOMAIN;
+
+    env.SANITY_PUBLIC_PROJECT_ID = process.env.SANITY_PUBLIC_PROJECT_ID;
+    env.SANITY_PUBLIC_DATASET = process.env.SANITY_PUBLIC_DATASET;
+    env.SANITY_PUBLIC_API_VERSION = process.env.SANITY_PUBLIC_API_VERSION;
     /**
      * Open a cache instance in the worker and a custom session instance.
      */
@@ -51,6 +60,18 @@ export default async function (request: Request): Promise<Response> {
       // storefrontId: process.env.PUBLIC_STOREFRONT_ID,
       // requestGroupId: request.headers.get('request-id'),
     });
+
+    const projectId = env.SANITY_PUBLIC_PROJECT_ID;
+    const dataset = env.SANITY_PUBLIC_DATASET;
+    const apiVersion = env.SANITY_PUBLIC_API_VERSION;
+
+    const sanityClient = createClient({
+      projectId,
+      dataset,
+      apiVersion,
+      useCdn: true,
+    });
+    const usePreview = definePreview({projectId, dataset});
 
     const handleRequest = createRequestHandler(remixBuild as any, 'production');
 
