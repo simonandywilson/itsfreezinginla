@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import {missingClass, formatText} from '~/lib/utils';
+import {formatText, missingClass} from '~/lib/utils';
 
 export function Text({
   as: Component = 'span',
@@ -23,8 +23,8 @@ export function Text({
 }) {
   const colors: Record<string, string> = {
     default: 'inherit',
-    primary: 'text-primary/90',
-    subtle: 'text-primary/50',
+    primary: '',
+    subtle: '',
     notice: 'text-notice',
     contrast: 'text-contrast/90',
   };

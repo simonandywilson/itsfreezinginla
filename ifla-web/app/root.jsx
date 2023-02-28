@@ -15,17 +15,20 @@ import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
 import favicon from '../public/favicon.svg';
-
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import invariant from 'tiny-invariant';
+import groq from 'groq';
 import {useAnalytics} from './hooks/useAnalytics';
 
-const seo = ({data, pathname}) => ({
-  title: data?.layout?.shop?.name,
-  titleTemplate: '%s | Hydrogen Demo Store',
-  description: data?.layout?.shop?.description,
-  handle: '@shopify',
-  url: `https://hydrogen.shop${pathname}`,
+import GlobalHeader from './components/global/GlobalHeader';
+import GlobalFooter from './components/global/GlobalFooter';
+
+const seo = ({data: {settings}, pathname}) => ({
+  title: settings.seoTitle,
+  titleTemplate: `%s | ${settings.shortTitle}`,
+  description: settings.seoDescription,
+  handle: settings.seoTwitter,
+  url: `${settings.seoDomain}${pathname}`,
 });
 
 export const handle = {
@@ -47,43 +50,71 @@ export const meta = () => ({
 });
 
 export async function loader({context}) {
-  const [cartId, layout] = await Promise.all([
+  const [cartId, shop, settings, menu, footer] = await Promise.all([
     context.session.get('cartId'),
-    getLayoutData(context),
+    getShopData(context),
+    getSettingsData(context),
+    getMenuData(context),
+    getFooterData(context),
   ]);
 
   return defer({
-    layout,
-    selectedLocale: context.storefront.i18n,
+    settings,
+    menu,
+    footer,
     cart: cartId ? getCart(context, cartId) : undefined,
     analytics: {
       shopifySalesChannel: ShopifySalesChannel.hydrogen,
-      shopId: layout.shop.id,
+      shopId: shop.shop.id,
     },
   });
 }
 
+export async function action({ request }) {
+   await new Promise((res) => setTimeout(res, 1000));
+  const formData = await request.formData();
+  console.log(formData);
+  // const email = formData.get('email');
+
+  // const API_KEY = '...';
+  // const FORM_ID = '...';
+  // const API = 'https://api.convertkit.com/v3';
+
+  // const res = await fetch(`${API}/forms/${FORM_ID}/subscribe`, {
+  //   method: 'post',
+  //   body: JSON.stringify({email, api_key: API_KEY}),
+  //   headers: {
+  //     'Content-Type': 'application/json; charset=utf-8',
+  //   },
+  // });
+
+   return formData.json();
+}
+
 export default function App() {
-  const data = useLoaderData();
-  const locale = data.selectedLocale ?? DEFAULT_LOCALE;
+  const locale = {
+    label: 'United Kingdom (GBP £)',
+    language: 'EN',
+    country: 'GB',
+    currency: 'GBP',
+  };
   const hasUserConsent = true;
 
   useAnalytics(hasUserConsent, locale);
 
   return (
-    <html lang={locale.language}>
+    <html lang="en">
       <head>
         <Seo />
         <Meta />
         <Links />
       </head>
       <body>
-        <Layout
-          layout={data.layout}
-          key={`${locale.language}-${locale.country}`}
-        >
+        <main className={'selection:bg-green-200 min-h-screen flex flex-col'}>
+          <GlobalHeader />
           <Outlet />
-        </Layout>
+          <GlobalFooter />
+        </main>
         <ScrollRestoration />
         <Scripts />
       </body>
@@ -144,79 +175,53 @@ export function ErrorBoundary({error}) {
   );
 }
 
-const LAYOUT_QUERY = `#graphql
-  query layoutMenus(
-    $language: LanguageCode
-    $headerMenuHandle: String!
-    $footerMenuHandle: String!
-  ) @inContext(language: $language) {
+async function getShopData({storefront}) {
+  const query = `#graphql
+  {
     shop {
       id
-      name
-      description
-    }
-    headerMenu: menu(handle: $headerMenuHandle) {
-      id
-      items {
-        ...MenuItem
-        items {
-          ...MenuItem
-        }
-      }
-    }
-    footerMenu: menu(handle: $footerMenuHandle) {
-      id
-      items {
-        ...MenuItem
-        items {
-          ...MenuItem
-        }
-      }
     }
   }
-  fragment MenuItem on MenuItem {
-    id
-    resourceId
-    tags
-    title
-    type
-    url
-  }
+  `;
+  const shop = await storefront.query(query);
+  invariant(shop, 'No data returned from Shopify API');
+  return shop;
+}
+
+async function getSettingsData({sanityClient}) {
+  const query = groq`*[_type == "settings"][0]`;
+  const settings = await sanityClient.fetch(query);
+
+  return settings;
+}
+
+async function getMenuData({sanityClient}) {
+  const query = groq`*[_type == 'section'] | order(orderRank asc) {
+		_id,
+		name,
+		"children": *[_type == "page" && !(_id in path('drafts.**')) && references(^._id)] | order(orderRank asc) {
+			_id,
+    		title,
+    		"slug":slug.fullUrl
+		}
+	}	
 `;
+  const menu = await sanityClient.fetch(query);
+  return menu;
+}
 
-async function getLayoutData({storefront}) {
-  const HEADER_MENU_HANDLE = 'main-menu';
-  const FOOTER_MENU_HANDLE = 'footer';
-
-  const data = await storefront.query(LAYOUT_QUERY, {
-    variables: {
-      headerMenuHandle: HEADER_MENU_HANDLE,
-      footerMenuHandle: FOOTER_MENU_HANDLE,
-      language: storefront.i18n.language,
-    },
-  });
-
-  invariant(data, 'No data returned from Shopify API');
-
-  /*
-    Modify specific links/routes (optional)
-    @see: https://shopify.dev/api/storefront/unstable/enums/MenuItemType
-    e.g here we map:
-      - /blogs/news -> /news
-      - /blog/news/blog-post -> /news/blog-post
-      - /collections/all -> /products
-  */
-  const customPrefixes = {BLOG: '', CATALOG: 'products'};
-
-  const headerMenu = data?.headerMenu
-    ? parseMenu(data.headerMenu, customPrefixes)
-    : undefined;
-
-  const footerMenu = data?.footerMenu
-    ? parseMenu(data.footerMenu, customPrefixes)
-    : undefined;
-
-  return {shop: data.shop, headerMenu, footerMenu};
+async function getFooterData({sanityClient}) {
+  const query = groq`*[_type == "settings"][0] {
+  footerLinks[] -> {
+    _id,
+    title,
+    "slug": slug.fullUrl
+  },
+  footerText
+}
+`;
+  const menu = await sanityClient.fetch(query);
+  return menu;
 }
 
 const CART_QUERY = `#graphql

@@ -19,20 +19,20 @@ export function AccountDetails({customer}: {customer: Customer}) {
               Edit
             </Link>
           </div>
-          <div className="mt-4 text-sm text-primary/50">Name</div>
+          <div className="mt-4 text-sm ">Name</div>
           <p className="mt-1">
             {firstName || lastName
               ? (firstName ? firstName + ' ' : '') + lastName
               : 'Add name'}{' '}
           </p>
 
-          <div className="mt-4 text-sm text-primary/50">Contact</div>
+          <div className="mt-4 text-sm ">Contact</div>
           <p className="mt-1">{phone ?? 'Add mobile'}</p>
 
-          <div className="mt-4 text-sm text-primary/50">Email address</div>
+          <div className="mt-4 text-sm">Email address</div>
           <p className="mt-1">{email}</p>
 
-          <div className="mt-4 text-sm text-primary/50">Password</div>
+          <div className="mt-4 text-sm">Password</div>
           <p className="mt-1">**************</p>
         </div>
       </div>

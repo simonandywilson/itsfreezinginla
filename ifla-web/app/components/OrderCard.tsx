@@ -1,6 +1,6 @@
 import {flattenConnection} from '@shopify/hydrogen';
 import type {Order} from '@shopify/hydrogen/storefront-api-types';
-import {Heading, Text, Link} from '~/components';
+import {Heading, Link, Text} from '~/components';
 import {statusMessage} from '~/lib/utils';
 
 export function OrderCard({order}: {order: Order}) {
@@ -55,7 +55,7 @@ export function OrderCard({order}: {order: Order}) {
                 className={`px-3 py-1 text-xs font-medium rounded-full ${
                   order.fulfillmentStatus === 'FULFILLED'
                     ? 'bg-green-100 text-green-800'
-                    : 'bg-primary/5 text-primary/50'
+                    : 'bg-primary/5 '
                 }`}
               >
                 <Text size="fine">

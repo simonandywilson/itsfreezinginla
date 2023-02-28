@@ -4,6 +4,8 @@ import {createRequestHandler, getBuyerIp} from '@shopify/remix-oxygen';
 import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
 import {getLocaleFromRequest} from '~/lib/utils';
+import {createClient} from '@sanity/client';
+import {definePreview} from '@sanity/preview-kit';
 
 /**
  * Export a fetch handler in module format.
@@ -44,6 +46,17 @@ export default {
         requestGroupId: request.headers.get('request-id'),
       });
 
+      const projectId = env.SANITY_PUBLIC_PROJECT_ID;
+      const dataset = env.SANITY_PUBLIC_DATASET;
+      const apiVersion = env.SANITY_PUBLIC_API_VERSION;
+      const sanityClient = createClient({
+        projectId,
+        dataset,
+        apiVersion,
+        useCdn: true,
+      });
+      const usePreview = definePreview({projectId, dataset});
+
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.
@@ -51,7 +64,15 @@ export default {
       const handleRequest = createRequestHandler({
         build: remixBuild,
         mode: process.env.NODE_ENV,
-        getLoadContext: () => ({cache, session, waitUntil, storefront, env}),
+        getLoadContext: () => ({
+          cache,
+          session,
+          waitUntil,
+          storefront,
+          env,
+          sanityClient,
+          usePreview,
+        }),
       });
 
       const response = await handleRequest(request);

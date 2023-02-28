@@ -1,24 +1,24 @@
-import clsx from 'clsx';
-import {useRef} from 'react';
-import {useScroll} from 'react-use';
+import {useFetcher} from '@remix-run/react';
 import {flattenConnection, Image, Money} from '@shopify/hydrogen';
-import {
-  Button,
-  Heading,
-  IconRemove,
-  Text,
-  Link,
-  FeaturedProducts,
-} from '~/components';
-import {getInputStyleClasses} from '~/lib/utils';
 import type {
   Cart as CartType,
   CartCost,
   CartLine,
   CartLineUpdateInput,
 } from '@shopify/hydrogen/storefront-api-types';
-import {useFetcher} from '@remix-run/react';
+import clsx from 'clsx';
+import {useRef} from 'react';
+import {useScroll} from 'react-use';
+import {
+  Button,
+  FeaturedProducts,
+  Heading,
+  IconRemove,
+  Link,
+  Text,
+} from '~/components';
 import {CartAction} from '~/lib/type';
+import {getInputStyleClasses} from '~/lib/utils';
 
 type Layouts = 'page' | 'drawer';
 
@@ -316,7 +316,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
           <button
             name="decrease-quantity"
             aria-label="Decrease quantity"
-            className="w-10 h-10 transition text-primary/50 hover:text-primary disabled:text-primary/10"
+            className="w-10 h-10 transition  hover:text-primary"
             value={prevQuantity}
             disabled={quantity <= 1}
           >
@@ -330,7 +330,7 @@ function CartLineQuantityAdjust({line}: {line: CartLine}) {
 
         <UpdateCartButton lines={[{id: lineId, quantity: nextQuantity}]}>
           <button
-            className="w-10 h-10 transition text-primary/50 hover:text-primary"
+            className="w-10 h-10 transition  hover:text-primary"
             name="increase-quantity"
             value={nextQuantity}
             aria-label="Increase quantity"
