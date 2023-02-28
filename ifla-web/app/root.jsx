@@ -150,7 +150,7 @@ export default function App() {
         <GlobalHeader />
         <main
           className={
-            'selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24'
+            'selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24 text-lg'
           }
         >
           <Outlet />

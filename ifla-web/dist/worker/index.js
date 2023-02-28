@@ -1574,14 +1574,14 @@ function matchRoutes(routes2, locationArg, basename) {
 function flattenRoutes(routes2, branches, parentsMeta, parentPath) {
   branches === void 0 && (branches = []), parentsMeta === void 0 && (parentsMeta = []), parentPath === void 0 && (parentPath = "");
   let flattenRoute = (route, index, relativePath) => {
-    let meta12 = {
+    let meta13 = {
       relativePath: relativePath === void 0 ? route.path || "" : relativePath,
       caseSensitive: route.caseSensitive === !0,
       childrenIndex: index,
       route
     };
-    meta12.relativePath.startsWith("/") && (invariant(meta12.relativePath.startsWith(parentPath), 'Absolute route path "' + meta12.relativePath + '" nested under path ' + ('"' + parentPath + '" is not valid. An absolute child route path ') + "must start with the combined path of all its parent routes."), meta12.relativePath = meta12.relativePath.slice(parentPath.length));
-    let path2 = joinPaths([parentPath, meta12.relativePath]), routesMeta = parentsMeta.concat(meta12);
+    meta13.relativePath.startsWith("/") && (invariant(meta13.relativePath.startsWith(parentPath), 'Absolute route path "' + meta13.relativePath + '" nested under path ' + ('"' + parentPath + '" is not valid. An absolute child route path ') + "must start with the combined path of all its parent routes."), meta13.relativePath = meta13.relativePath.slice(parentPath.length));
+    let path2 = joinPaths([parentPath, meta13.relativePath]), routesMeta = parentsMeta.concat(meta13);
     route.children && route.children.length > 0 && (invariant(
       route.index !== !0,
       "Index routes must not have child routes. Please remove " + ('all child routes from route path "' + path2 + '".')
@@ -1611,7 +1611,7 @@ function explodeOptionalSegments(path2) {
   return result.push(...restExploded.map((subpath) => subpath === "" ? required : [required, subpath].join("/"))), isOptional && result.push(...restExploded), result.map((exploded) => path2.startsWith("/") && exploded === "" ? "/" : exploded);
 }
 function rankRouteBranches(branches) {
-  branches.sort((a10, b5) => a10.score !== b5.score ? b5.score - a10.score : compareIndexes(a10.routesMeta.map((meta12) => meta12.childrenIndex), b5.routesMeta.map((meta12) => meta12.childrenIndex)));
+  branches.sort((a10, b5) => a10.score !== b5.score ? b5.score - a10.score : compareIndexes(a10.routesMeta.map((meta13) => meta13.childrenIndex), b5.routesMeta.map((meta13) => meta13.childrenIndex)));
 }
 function computeScore(path2, index) {
   let segments = path2.split("/"), initialScore = segments.length;
@@ -1625,15 +1625,15 @@ function matchRouteBranch(branch, pathname) {
     routesMeta
   } = branch, matchedParams = {}, matchedPathname = "/", matches = [];
   for (let i10 = 0; i10 < routesMeta.length; ++i10) {
-    let meta12 = routesMeta[i10], end = i10 === routesMeta.length - 1, remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/", match2 = matchPath({
-      path: meta12.relativePath,
-      caseSensitive: meta12.caseSensitive,
+    let meta13 = routesMeta[i10], end = i10 === routesMeta.length - 1, remainingPathname = matchedPathname === "/" ? pathname : pathname.slice(matchedPathname.length) || "/", match2 = matchPath({
+      path: meta13.relativePath,
+      caseSensitive: meta13.caseSensitive,
       end
     }, remainingPathname);
     if (!match2)
       return null;
     Object.assign(matchedParams, match2.params);
-    let route = meta12.route;
+    let route = meta13.route;
     matches.push({
       params: matchedParams,
       pathname: joinPaths([matchedPathname, match2.pathname]),
@@ -4574,7 +4574,7 @@ var require_server = __commonJS({
   "node_modules/react-router-dom/server.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: !0 });
-    var React16 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports));
+    var React19 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports));
     function _interopNamespace(e6) {
       if (e6 && e6.__esModule)
         return e6;
@@ -4591,7 +4591,7 @@ var require_server = __commonJS({
         }
       }), n4.default = e6, Object.freeze(n4);
     }
-    var React__namespace = /* @__PURE__ */ _interopNamespace(React16);
+    var React__namespace = /* @__PURE__ */ _interopNamespace(React19);
     function StaticRouter({
       basename,
       children,
@@ -4787,7 +4787,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React16 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React19 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -6184,7 +6184,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React16.Children.forEach(children, function(child) {
+        return React19.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -8248,7 +8248,7 @@ var require_react_dom_server_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React16 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React19 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -9660,7 +9660,7 @@ var require_react_dom_server_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React16.Children.forEach(children, function(child) {
+        return React19.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -11702,14 +11702,14 @@ var require_react_jsx_dev_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React16 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React19 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -12103,7 +12103,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV67(type, config2, maybeKey, source, self2) {
+      function jsxDEV71(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
@@ -12248,7 +12248,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV67(type, props, key, source, self2);
+          var element = jsxDEV71(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -12504,14 +12504,14 @@ var require_react_jsx_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React16 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React19 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -12905,7 +12905,7 @@ var require_react_jsx_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV67(type, config2, maybeKey, source, self2) {
+      function jsxDEV71(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
@@ -13050,7 +13050,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV67(type, props, key, source, self2);
+          var element = jsxDEV71(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -14086,7 +14086,7 @@ var require_react_dom_development = __commonJS({
     (function() {
       "use strict";
       typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-      var React16 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React16.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+      var React19 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React19.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
       function setSuppressWarning(newSuppressWarning) {
         suppressWarning = newSuppressWarning;
       }
@@ -14114,7 +14114,7 @@ var require_react_dom_development = __commonJS({
           argsWithFormat.unshift("Warning: " + format), Function.prototype.apply.call(console[level], console, argsWithFormat);
         }
       }
-      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment33 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
+      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment34 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
       function registerTwoPhaseEvent(registrationName, dependencies) {
         registerDirectEvent(registrationName, dependencies), registerDirectEvent(registrationName + "Capture", dependencies);
       }
@@ -14885,7 +14885,7 @@ Error generating stack: ` + x6.message + `
             return "DehydratedFragment";
           case ForwardRef:
             return getWrappedName$1(type, type.render, "ForwardRef");
-          case Fragment33:
+          case Fragment34:
             return "Fragment";
           case HostComponent:
             return type;
@@ -15126,7 +15126,7 @@ Error generating stack: ` + x6.message + `
       }
       var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
       function validateProps(element, props) {
-        props.value == null && (typeof props.children == "object" && props.children !== null ? React16.Children.forEach(props.children, function(child) {
+        props.value == null && (typeof props.children == "object" && props.children !== null ? React19.Children.forEach(props.children, function(child) {
           child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
       }
@@ -20540,7 +20540,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
             callback !== null && (effect.callback = null, callCallback(callback, instance));
           }
       }
-      var fakeInternalInstance = {}, emptyRefsObject = new React16.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
+      var fakeInternalInstance = {}, emptyRefsObject = new React19.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
       {
         didWarnAboutStateAssignmentForComponent = /* @__PURE__ */ new Set(), didWarnAboutUninitializedState = /* @__PURE__ */ new Set(), didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = /* @__PURE__ */ new Set(), didWarnAboutLegacyLifecyclesAndDerivedState = /* @__PURE__ */ new Set(), didWarnAboutDirectlyAssigningPropsToState = /* @__PURE__ */ new Set(), didWarnAboutUndefinedDerivedState = /* @__PURE__ */ new Set(), didWarnAboutContextTypeAndContextTypes = /* @__PURE__ */ new Set(), didWarnAboutInvalidateContextType = /* @__PURE__ */ new Set();
         var didWarnOnInvalidCallback = /* @__PURE__ */ new Set();
@@ -20914,7 +20914,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
           }
         }
         function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-          if (current2 === null || current2.tag !== Fragment33) {
+          if (current2 === null || current2.tag !== Fragment34) {
             var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
             return created.return = returnFiber, created;
           } else {
@@ -21141,7 +21141,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
             if (child.key === key) {
               var elementType = element.type;
               if (elementType === REACT_FRAGMENT_TYPE) {
-                if (child.tag === Fragment33) {
+                if (child.tag === Fragment34) {
                   deleteRemainingChildren(returnFiber, child.sibling);
                   var existing = useFiber(child, element.props.children);
                   return existing.return = returnFiber, existing._debugSource = element._source, existing._debugOwner = element._owner, existing;
@@ -21303,7 +21303,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
         }
         return null;
       }
-      var NoFlags$1 = 0, HasEffect = 1, Insertion = 2, Layout3 = 4, Passive$1 = 8, workInProgressSources = [];
+      var NoFlags$1 = 0, HasEffect = 1, Insertion = 2, Layout4 = 4, Passive$1 = 8, workInProgressSources = [];
       function resetWorkInProgressVersions() {
         for (var i10 = 0; i10 < workInProgressSources.length; i10++) {
           var mutableSource = workInProgressSources[i10];
@@ -21710,10 +21710,10 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
       }
       function mountLayoutEffect(create, deps) {
         var fiberFlags = Update;
-        return fiberFlags |= LayoutStatic, (currentlyRenderingFiber$1.mode & StrictEffectsMode) !== NoMode && (fiberFlags |= MountLayoutDev), mountEffectImpl(fiberFlags, Layout3, create, deps);
+        return fiberFlags |= LayoutStatic, (currentlyRenderingFiber$1.mode & StrictEffectsMode) !== NoMode && (fiberFlags |= MountLayoutDev), mountEffectImpl(fiberFlags, Layout4, create, deps);
       }
       function updateLayoutEffect(create, deps) {
-        return updateEffectImpl(Update, Layout3, create, deps);
+        return updateEffectImpl(Update, Layout4, create, deps);
       }
       function imperativeHandleEffect(create, ref) {
         if (typeof ref == "function") {
@@ -21733,12 +21733,12 @@ Incoming: %s`, currentHookNameInDev, "[" + prevDeps.join(", ") + "]", "[" + next
       function mountImperativeHandle(ref, create, deps) {
         typeof create != "function" && error("Expected useImperativeHandle() second argument to be a function that creates a handle. Instead received: %s.", create !== null ? typeof create : "null");
         var effectDeps = deps != null ? deps.concat([ref]) : null, fiberFlags = Update;
-        return fiberFlags |= LayoutStatic, (currentlyRenderingFiber$1.mode & StrictEffectsMode) !== NoMode && (fiberFlags |= MountLayoutDev), mountEffectImpl(fiberFlags, Layout3, imperativeHandleEffect.bind(null, create, ref), effectDeps);
+        return fiberFlags |= LayoutStatic, (currentlyRenderingFiber$1.mode & StrictEffectsMode) !== NoMode && (fiberFlags |= MountLayoutDev), mountEffectImpl(fiberFlags, Layout4, imperativeHandleEffect.bind(null, create, ref), effectDeps);
       }
       function updateImperativeHandle(ref, create, deps) {
         typeof create != "function" && error("Expected useImperativeHandle() second argument to be a function that creates a handle. Instead received: %s.", create !== null ? typeof create : "null");
         var effectDeps = deps != null ? deps.concat([ref]) : null;
-        return updateEffectImpl(Update, Layout3, imperativeHandleEffect.bind(null, create, ref), effectDeps);
+        return updateEffectImpl(Update, Layout4, imperativeHandleEffect.bind(null, create, ref), effectDeps);
       }
       function mountDebugValue(value, formatterFn) {
       }
@@ -23662,7 +23662,7 @@ Check the render method of \`` + ownerName + "`.");
             var type = workInProgress2.type, _unresolvedProps2 = workInProgress2.pendingProps, _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
             return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
           }
-          case Fragment33:
+          case Fragment34:
             return updateFragment(current2, workInProgress2, renderLanes2);
           case Mode:
             return updateMode(current2, workInProgress2, renderLanes2);
@@ -23813,7 +23813,7 @@ Check the render method of \`` + ownerName + "`.");
           case SimpleMemoComponent:
           case FunctionComponent:
           case ForwardRef:
-          case Fragment33:
+          case Fragment34:
           case Mode:
           case Profiler:
           case ContextConsumer:
@@ -24071,7 +24071,7 @@ Check the render method of \`` + ownerName + "`.");
       };
       function safelyCallCommitHookLayoutEffectListMount(current2, nearestMountedAncestor) {
         try {
-          commitHookEffectListMount(Layout3, current2);
+          commitHookEffectListMount(Layout4, current2);
         } catch (error2) {
           captureCommitPhaseError(current2, nearestMountedAncestor, error2);
         }
@@ -24201,7 +24201,7 @@ Check the render method of \`` + ownerName + "`.");
           do {
             if ((effect.tag & flags2) === flags2) {
               var destroy = effect.destroy;
-              effect.destroy = void 0, destroy !== void 0 && ((flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectUnmountStarted(finishedWork) : (flags2 & Layout3) !== NoFlags$1 && markComponentLayoutEffectUnmountStarted(finishedWork), (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!0), safelyCallDestroy(finishedWork, nearestMountedAncestor, destroy), (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!1), (flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectUnmountStopped() : (flags2 & Layout3) !== NoFlags$1 && markComponentLayoutEffectUnmountStopped());
+              effect.destroy = void 0, destroy !== void 0 && ((flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectUnmountStarted(finishedWork) : (flags2 & Layout4) !== NoFlags$1 && markComponentLayoutEffectUnmountStarted(finishedWork), (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!0), safelyCallDestroy(finishedWork, nearestMountedAncestor, destroy), (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!1), (flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectUnmountStopped() : (flags2 & Layout4) !== NoFlags$1 && markComponentLayoutEffectUnmountStopped());
             }
             effect = effect.next;
           } while (effect !== firstEffect);
@@ -24213,14 +24213,14 @@ Check the render method of \`` + ownerName + "`.");
           var firstEffect = lastEffect.next, effect = firstEffect;
           do {
             if ((effect.tag & flags2) === flags2) {
-              (flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectMountStarted(finishedWork) : (flags2 & Layout3) !== NoFlags$1 && markComponentLayoutEffectMountStarted(finishedWork);
+              (flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectMountStarted(finishedWork) : (flags2 & Layout4) !== NoFlags$1 && markComponentLayoutEffectMountStarted(finishedWork);
               var create = effect.create;
-              (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!0), effect.destroy = create(), (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!1), (flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectMountStopped() : (flags2 & Layout3) !== NoFlags$1 && markComponentLayoutEffectMountStopped();
+              (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!0), effect.destroy = create(), (flags2 & Insertion) !== NoFlags$1 && setIsRunningInsertionEffect(!1), (flags2 & Passive$1) !== NoFlags$1 ? markComponentPassiveEffectMountStopped() : (flags2 & Layout4) !== NoFlags$1 && markComponentLayoutEffectMountStopped();
               {
                 var destroy = effect.destroy;
                 if (destroy !== void 0 && typeof destroy != "function") {
                   var hookName = void 0;
-                  (effect.tag & Layout3) !== NoFlags ? hookName = "useLayoutEffect" : (effect.tag & Insertion) !== NoFlags ? hookName = "useInsertionEffect" : hookName = "useEffect";
+                  (effect.tag & Layout4) !== NoFlags ? hookName = "useLayoutEffect" : (effect.tag & Insertion) !== NoFlags ? hookName = "useInsertionEffect" : hookName = "useEffect";
                   var addendum = void 0;
                   destroy === null ? addendum = " You returned null. If your effect does not require clean up, return undefined (or nothing)." : typeof destroy.then == "function" ? addendum = `
 
@@ -24277,12 +24277,12 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
               if (!offscreenSubtreeWasHidden)
                 if (finishedWork.mode & ProfileMode)
                   try {
-                    startLayoutEffectTimer(), commitHookEffectListMount(Layout3 | HasEffect, finishedWork);
+                    startLayoutEffectTimer(), commitHookEffectListMount(Layout4 | HasEffect, finishedWork);
                   } finally {
                     recordLayoutEffectDuration(finishedWork);
                   }
                 else
-                  commitHookEffectListMount(Layout3 | HasEffect, finishedWork);
+                  commitHookEffectListMount(Layout4 | HasEffect, finishedWork);
               break;
             }
             case ClassComponent: {
@@ -24628,7 +24628,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
                   var firstEffect = lastEffect.next, effect = firstEffect;
                   do {
                     var _effect = effect, destroy = _effect.destroy, tag = _effect.tag;
-                    destroy !== void 0 && ((tag & Insertion) !== NoFlags$1 ? safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy) : (tag & Layout3) !== NoFlags$1 && (markComponentLayoutEffectUnmountStarted(deletedFiber), deletedFiber.mode & ProfileMode ? (startLayoutEffectTimer(), safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy), recordLayoutEffectDuration(deletedFiber)) : safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy), markComponentLayoutEffectUnmountStopped())), effect = effect.next;
+                    destroy !== void 0 && ((tag & Insertion) !== NoFlags$1 ? safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy) : (tag & Layout4) !== NoFlags$1 && (markComponentLayoutEffectUnmountStarted(deletedFiber), deletedFiber.mode & ProfileMode ? (startLayoutEffectTimer(), safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy), recordLayoutEffectDuration(deletedFiber)) : safelyCallDestroy(deletedFiber, nearestMountedAncestor, destroy), markComponentLayoutEffectUnmountStopped())), effect = effect.next;
                   } while (effect !== firstEffect);
                 }
               }
@@ -24732,14 +24732,14 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
               }
               if (finishedWork.mode & ProfileMode) {
                 try {
-                  startLayoutEffectTimer(), commitHookEffectListUnmount(Layout3 | HasEffect, finishedWork, finishedWork.return);
+                  startLayoutEffectTimer(), commitHookEffectListUnmount(Layout4 | HasEffect, finishedWork, finishedWork.return);
                 } catch (error2) {
                   captureCommitPhaseError(finishedWork, finishedWork.return, error2);
                 }
                 recordLayoutEffectDuration(finishedWork);
               } else
                 try {
-                  commitHookEffectListUnmount(Layout3 | HasEffect, finishedWork, finishedWork.return);
+                  commitHookEffectListUnmount(Layout4 | HasEffect, finishedWork, finishedWork.return);
                 } catch (error2) {
                   captureCommitPhaseError(finishedWork, finishedWork.return, error2);
                 }
@@ -24929,12 +24929,12 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
             case SimpleMemoComponent: {
               if (fiber.mode & ProfileMode)
                 try {
-                  startLayoutEffectTimer(), commitHookEffectListUnmount(Layout3, fiber, fiber.return);
+                  startLayoutEffectTimer(), commitHookEffectListUnmount(Layout4, fiber, fiber.return);
                 } finally {
                   recordLayoutEffectDuration(fiber);
                 }
               else
-                commitHookEffectListUnmount(Layout3, fiber, fiber.return);
+                commitHookEffectListUnmount(Layout4, fiber, fiber.return);
               break;
             }
             case ClassComponent: {
@@ -25151,7 +25151,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           case ForwardRef:
           case SimpleMemoComponent: {
             try {
-              commitHookEffectListMount(Layout3 | HasEffect, fiber);
+              commitHookEffectListMount(Layout4 | HasEffect, fiber);
             } catch (error2) {
               captureCommitPhaseError(fiber, fiber.return, error2);
             }
@@ -25188,7 +25188,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           case ForwardRef:
           case SimpleMemoComponent: {
             try {
-              commitHookEffectListUnmount(Layout3 | HasEffect, fiber, fiber.return);
+              commitHookEffectListUnmount(Layout4 | HasEffect, fiber, fiber.return);
             } catch (error2) {
               captureCommitPhaseError(fiber, fiber.return, error2);
             }
@@ -26330,7 +26330,7 @@ Check the render method of \`` + ownerName + "`.");
         return fiber._debugSource = element._source, fiber._debugOwner = element._owner, fiber;
       }
       function createFiberFromFragment(elements, mode, lanes, key) {
-        var fiber = createFiber(Fragment33, elements, key, mode);
+        var fiber = createFiber(Fragment34, elements, key, mode);
         return fiber.lanes = lanes, fiber;
       }
       function createFiberFromProfiler(pendingProps, mode, lanes, key) {
@@ -32467,7 +32467,7 @@ function V1Meta() {
   } = useRemixContext(), {
     matches,
     loaderData
-  } = useDataRouterStateContext(), location2 = useLocation(), meta12 = {}, parentsData = {};
+  } = useDataRouterStateContext(), location2 = useLocation(), meta13 = {}, parentsData = {};
   for (let match2 of matches) {
     let routeId = match2.route.id, data = loaderData[routeId], params = match2.params, routeModule = routeModules[routeId];
     if (routeModule.meta) {
@@ -32482,11 +32482,11 @@ function V1Meta() {
         throw new Error(
           "The route at " + match2.route.path + " returns an array. This is only supported with the `v2_meta` future flag in the Remix config. Either set the flag to `true` or update the route's meta function to return an object.\n\nTo reference the v1 meta function API, see https://remix.run/route/meta"
         );
-      Object.assign(meta12, routeMeta);
+      Object.assign(meta13, routeMeta);
     }
     parentsData[routeId] = data;
   }
-  return /* @__PURE__ */ React3.createElement(React3.Fragment, null, Object.entries(meta12).map(([name, value]) => {
+  return /* @__PURE__ */ React3.createElement(React3.Fragment, null, Object.entries(meta13).map(([name, value]) => {
     if (!value)
       return null;
     if (["charset", "charSet"].includes(name))
@@ -32518,7 +32518,7 @@ function V2Meta() {
   } = useRemixContext(), {
     matches,
     loaderData
-  } = useDataRouterStateContext(), location2 = useLocation(), meta12 = [], leafMeta = null, parentsData = {}, matchesWithMeta = matches.map((match2) => ({
+  } = useDataRouterStateContext(), location2 = useLocation(), meta13 = [], leafMeta = null, parentsData = {}, matchesWithMeta = matches.map((match2) => ({
     ...match2,
     meta: []
   })), index = -1;
@@ -32535,9 +32535,9 @@ function V2Meta() {
       throw new Error("The `v2_meta` API is enabled in the Remix config, but the route at " + match2.route.path + ` returns an invalid value. In v2, all route meta functions must return an array of meta objects.
 
 To reference the v1 meta function API, see https://remix.run/route/meta`);
-    matchesWithMeta[index].meta = routeMeta, meta12 = routeMeta, parentsData[routeId] = data, leafMeta = meta12;
+    matchesWithMeta[index].meta = routeMeta, meta13 = routeMeta, parentsData[routeId] = data, leafMeta = meta13;
   }
-  return /* @__PURE__ */ React3.createElement(React3.Fragment, null, meta12.flat().map((metaProps) => metaProps ? "title" in metaProps ? /* @__PURE__ */ React3.createElement("title", {
+  return /* @__PURE__ */ React3.createElement(React3.Fragment, null, meta13.flat().map((metaProps) => metaProps ? "title" in metaProps ? /* @__PURE__ */ React3.createElement("title", {
     key: "title"
   }, String(metaProps.title)) : "charSet" in metaProps || "charset" in metaProps ? /* @__PURE__ */ React3.createElement("meta", {
     key: "charset",
@@ -33785,12 +33785,12 @@ async function callRouteActionRR({
 }
 async function callRouteLoaderRR({
   loadContext,
-  loader: loader27,
+  loader: loader26,
   params,
   request,
   routeId
 }) {
-  let result = await loader27({
+  let result = await loader26({
     request: stripDataParam(stripIndexParam(request)),
     context: loadContext,
     params
@@ -34890,7 +34890,7 @@ function Image({
   width,
   height,
   loading,
-  loader: loader27 = shopifyImageLoader,
+  loader: loader26 = shopifyImageLoader,
   loaderOptions,
   widths,
   decoding = "async",
@@ -34908,7 +34908,7 @@ function Image({
       height
     }
   }), finalSrc = data.url;
-  if (loader27 && (finalSrc = loader27({
+  if (loader26 && (finalSrc = loader26({
     ...loaderOptions,
     src: data.url,
     width: imgElementWidth,
@@ -34923,7 +34923,7 @@ function Image({
     src: data.url,
     width: maxWidth,
     height: imgElementHeight,
-    loader: loader27
+    loader: loader26
   });
   return /* @__PURE__ */ (0, import_jsx_runtime3.jsx)(
     "img",
@@ -34946,7 +34946,7 @@ function internalImageSrcSet({
   crop,
   scale,
   widths,
-  loader: loader27,
+  loader: loader26,
   height
 }) {
   let hasCustomWidths = widths && Array.isArray(widths);
@@ -34958,7 +34958,7 @@ function internalImageSrcSet({
   width && height && (aspectRatio = Number(height) / Number(width));
   let setSizes = hasCustomWidths ? widths : IMG_SRC_SET_SIZES;
   !hasCustomWidths && width && width < IMG_SRC_SET_SIZES[IMG_SRC_SET_SIZES.length - 1] && (setSizes = IMG_SRC_SET_SIZES.filter((size) => size <= width));
-  let srcGenerator = loader27 || addImageSizeParametersToUrl;
+  let srcGenerator = loader26 || addImageSizeParametersToUrl;
   return setSizes.map(
     (size) => `${srcGenerator({
       src,
@@ -38317,7 +38317,7 @@ function useCartFetchers(actionName) {
 var import_jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime());
 function Layout({
   children,
-  layout
+  layout: layout2
 }) {
   return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(import_jsx_dev_runtime2.Fragment, { children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)("div", { className: "flex flex-col min-h-screen", children: [
@@ -38333,8 +38333,8 @@ function Layout({
       /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
         Header,
         {
-          title: (layout == null ? void 0 : layout.shop.name) ?? "Hydrogen",
-          menu: layout == null ? void 0 : layout.headerMenu
+          title: (layout2 == null ? void 0 : layout2.shop.name) ?? "Hydrogen",
+          menu: layout2 == null ? void 0 : layout2.headerMenu
         },
         void 0,
         !1,
@@ -38355,7 +38355,7 @@ function Layout({
       lineNumber: 40,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Footer, { menu: layout == null ? void 0 : layout.footerMenu }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Footer, { menu: layout2 == null ? void 0 : layout2.footerMenu }, void 0, !1, {
       fileName: "app/components/Layout.tsx",
       lineNumber: 54,
       columnNumber: 7
@@ -40417,19 +40417,19 @@ function getCountryUrlPath({
 var import_react65 = __toESM(require_react());
 var import_jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime());
 function Cart({
-  layout,
+  layout: layout2,
   onClose,
   cart
 }) {
   var _a2, _b;
   let linesCount = Boolean(((_b = (_a2 = cart == null ? void 0 : cart.lines) == null ? void 0 : _a2.edges) == null ? void 0 : _b.length) || 0);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(import_jsx_dev_runtime13.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartEmpty, { hidden: linesCount, onClose, layout }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartEmpty, { hidden: linesCount, onClose, layout: layout2 }, void 0, !1, {
       fileName: "app/components/Cart.tsx",
       lineNumber: 38,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartDetails, { cart, layout }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartDetails, { cart, layout: layout2 }, void 0, !1, {
       fileName: "app/components/Cart.tsx",
       lineNumber: 39,
       columnNumber: 7
@@ -40441,7 +40441,7 @@ function Cart({
   }, this);
 }
 function CartDetails({
-  layout,
+  layout: layout2,
   cart
 }) {
   var _a2, _b;
@@ -40449,13 +40449,13 @@ function CartDetails({
   return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: {
     drawer: "grid grid-cols-1 h-screen-no-nav grid-rows-[1fr_auto]",
     page: "w-full pb-12 grid md:grid-cols-2 md:items-start gap-8 md:gap-8 lg:gap-12"
-  }[layout], children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartLines, { lines: cart == null ? void 0 : cart.lines, layout }, void 0, !1, {
+  }[layout2], children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartLines, { lines: cart == null ? void 0 : cart.lines, layout: layout2 }, void 0, !1, {
       fileName: "app/components/Cart.tsx",
       lineNumber: 61,
       columnNumber: 7
     }, this),
-    !isZeroCost && /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartSummary, { cost: cart.cost, layout, children: [
+    !isZeroCost && /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartSummary, { cost: cart.cost, layout: layout2, children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(CartDiscounts, { discountCodes: cart.discountCodes }, void 0, !1, {
         fileName: "app/components/Cart.tsx",
         lineNumber: 64,
@@ -40609,12 +40609,12 @@ function UpdateDiscountForm({ children }) {
   }, this);
 }
 function CartLines({
-  layout = "drawer",
+  layout: layout2 = "drawer",
   lines: cartLines
 }) {
   let currentLines = cartLines ? flattenConnection(cartLines) : [], scrollRef = (0, import_react65.useRef)(null), { y: y4 } = useScroll_default(scrollRef), className = clsx_m_default([
     y4 > 0 ? "border-t" : "",
-    layout === "page" ? "flex-grow md:translate-y-4" : "px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12"
+    layout2 === "page" ? "flex-grow md:translate-y-4" : "px-6 pb-6 sm-max:pt-2 overflow-auto transition md:px-12"
   ]);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
     "section",
@@ -40659,14 +40659,14 @@ function CartCheckoutActions({ checkoutUrl }) {
 }
 function CartSummary({
   cost,
-  layout,
+  layout: layout2,
   children = null
 }) {
   var _a2;
   return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("section", { "aria-labelledby": "summary-heading", className: {
     drawer: "grid gap-4 p-6 border-t md:px-12",
     page: "sticky top-nav grid gap-6 p-4 md:px-6 md:translate-y-4 bg-primary/5 rounded w-full"
-  }[layout], children: [
+  }[layout2], children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h2", { id: "summary-heading", className: "sr-only", children: "Order summary" }, void 0, !1, {
       fileName: "app/components/Cart.tsx",
       lineNumber: 205,
@@ -40984,7 +40984,7 @@ function CartLinePrice({
 }
 function CartEmpty({
   hidden: hidden2 = !1,
-  layout = "drawer",
+  layout: layout2 = "drawer",
   onClose
 }) {
   let scrollRef = (0, import_react65.useRef)(null), { y: y4 } = useScroll_default(scrollRef), container = {
@@ -40997,7 +40997,7 @@ function CartEmpty({
       "pb-12 w-full md:items-start gap-4 md:gap-8 lg:gap-12"
     ])
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { ref: scrollRef, className: container[layout], hidden: hidden2, children: [
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { ref: scrollRef, className: container[layout2], hidden: hidden2, children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("section", { className: "grid gap-6", children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Text, { format: !0, children: "Looks like you haven\u2019t added anything yet, let\u2019s get you started!" }, void 0, !1, {
         fileName: "app/components/Cart.tsx",
@@ -41023,7 +41023,7 @@ function CartEmpty({
       {
         count: 4,
         heading: "Shop Best Sellers",
-        layout,
+        layout: layout2,
         onClose,
         sortKey: "BEST_SELLING"
       },
@@ -42253,7 +42253,7 @@ function Grid({
   flow = "row",
   gap = "default",
   items = 4,
-  layout = "default",
+  layout: layout2 = "default",
   ...props
 }) {
   let layouts = {
@@ -42267,7 +42267,7 @@ function Grid({
   }, styles = clsx_m_default({
     row: "grid-flow-row",
     col: "grid-flow-col"
-  }[flow], gaps[gap], layouts[layout], className);
+  }[flow], gaps[gap], layouts[layout2], className);
   return /* @__PURE__ */ (0, import_jsx_dev_runtime23.jsxDEV)(Component4, { ...props, className: styles }, void 0, !1, {
     fileName: "app/components/Grid.tsx",
     lineNumber: 43,
@@ -42281,7 +42281,7 @@ var import_jsx_dev_runtime24 = __toESM(require_jsx_dev_runtime());
 function FeaturedProducts({
   count: count2 = 4,
   heading = "Shop Best Sellers",
-  layout = "drawer",
+  layout: layout2 = "drawer",
   onClose,
   query: query2,
   reverse,
@@ -42304,7 +42304,7 @@ function FeaturedProducts({
       {
         className: clsx_m_default([
           "grid grid-cols-2 gap-x-6 gap-y-8",
-          layout === "page" ? "md:grid-cols-4 sm:grid-col-4" : ""
+          layout2 === "page" ? "md:grid-cols-4 sm:grid-col-4" : ""
         ]),
         children: /* @__PURE__ */ (0, import_jsx_dev_runtime24.jsxDEV)(
           FeatureProductsContent,
@@ -42520,11 +42520,6 @@ function AddToCartButton({
     /* @__PURE__ */ (0, import_jsx_dev_runtime25.jsxDEV)("input", { type: "hidden", name: "cartAction", value: "ADD_TO_CART" /* ADD_TO_CART */ }, void 0, !1, {
       fileName: "app/components/AddToCartButton.tsx",
       lineNumber: 29,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime25.jsxDEV)("input", { type: "hidden", name: "countryCode", value: selectedLocale.country }, void 0, !1, {
-      fileName: "app/components/AddToCartButton.tsx",
-      lineNumber: 30,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime25.jsxDEV)("input", { type: "hidden", name: "lines", value: JSON.stringify(lines) }, void 0, !1, {
@@ -43133,7 +43128,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-ZINJNFHO.css";
+var app_default = "/build/_assets/app-RT3TMDOK.css";
 
 // node_modules/tiny-invariant/dist/esm/tiny-invariant.js
 var isProduction = !1, prefix = "Invariant failed";
@@ -44423,7 +44418,7 @@ function App() {
       /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
         "main",
         {
-          className: "selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24",
+          className: "selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24 text-lg",
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Outlet, {}, void 0, !1, {
             fileName: "app/root.jsx",
             lineNumber: 156,
@@ -46340,16 +46335,3777 @@ async function loader8({ params }) {
   return redirect3(params != null && params.lang ? `${params.lang}/products` : "/products");
 }
 
-// app/routes/discounts.$code.tsx
-var discounts_code_exports = {};
-__export(discounts_code_exports, {
+// app/routes/policies/index.tsx
+var policies_exports = {};
+__export(policies_exports, {
+  default: () => Policies2,
+  handle: () => handle6,
   loader: () => loader9
 });
+var import_jsx_dev_runtime45 = __toESM(require_jsx_dev_runtime()), handle6 = {
+  seo: {
+    title: "Policies"
+  }
+};
+async function loader9({ context: { storefront } }) {
+  let data = await storefront.query(POLICIES_QUERY);
+  invariant4(data, "No data returned from Shopify API");
+  let policies = Object.values(data.shop || {});
+  if (policies.length === 0)
+    throw new Response("Not found", { status: 404 });
+  return json3(
+    {
+      policies
+    },
+    {
+      headers: {}
+    }
+  );
+}
+function Policies2() {
+  let { policies } = useLoaderData2();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(PageHeader, { heading: "Policies" }, void 0, !1, {
+      fileName: "app/routes/policies/index.tsx",
+      lineNumber: 43,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Section, { padding: "x", className: "mb-24", children: policies.map((policy) => policy && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Heading, { className: "font-normal text-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Link3, { to: `/policies/${policy.handle}`, children: policy.title }, void 0, !1, {
+      fileName: "app/routes/policies/index.tsx",
+      lineNumber: 49,
+      columnNumber: 17
+    }, this) }, policy.id, !1, {
+      fileName: "app/routes/policies/index.tsx",
+      lineNumber: 48,
+      columnNumber: 15
+    }, this)) }, void 0, !1, {
+      fileName: "app/routes/policies/index.tsx",
+      lineNumber: 44,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/policies/index.tsx",
+    lineNumber: 42,
+    columnNumber: 5
+  }, this);
+}
+var POLICIES_QUERY = `#graphql
+  fragment Policy on ShopPolicy {
+    id
+    title
+    handle
+  }
 
-// app/routes/cart.tsx
-var cart_exports = {};
-__export(cart_exports, {
+  query PoliciesQuery {
+    shop {
+      privacyPolicy {
+        ...Policy
+      }
+      shippingPolicy {
+        ...Policy
+      }
+      termsOfService {
+        ...Policy
+      }
+      refundPolicy {
+        ...Policy
+      }
+      subscriptionPolicy {
+        id
+        title
+        handle
+      }
+    }
+  }
+`;
+
+// app/routes/products/index.tsx
+var products_exports = {};
+__export(products_exports, {
+  default: () => AllProducts,
+  handle: () => handle7,
+  loader: () => loader10
+});
+var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), PAGE_BY = 8;
+async function loader10({ request, context: { storefront } }) {
+  let variables = getPaginationVariables(request, PAGE_BY), data = await storefront.query(ALL_PRODUCTS_QUERY, {
+    variables: {
+      ...variables,
+      country: storefront.i18n.country,
+      language: storefront.i18n.language
+    }
+  });
+  return invariant4(data, "No data returned from Shopify API"), data.products;
+}
+var handle7 = {
+  seo: {
+    title: "Products"
+  }
+};
+function AllProducts() {
+  let products = useLoaderData2();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(PageHeader, { heading: "All Products", variant: "allCollections" }, void 0, !1, {
+      fileName: "app/routes/products/index.tsx",
+      lineNumber: 47,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Pagination, { connection: products, children: ({
+      endCursor,
+      hasNextPage,
+      hasPreviousPage,
+      nextPageUrl,
+      nodes,
+      prevPageUrl,
+      startCursor,
+      nextLinkRef,
+      isLoading
+    }) => {
+      let itemsMarkup = nodes.map((product, i10) => /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+        ProductCard,
+        {
+          product,
+          loading: getImageLoadingPriority(i10)
+        },
+        product.id,
+        !1,
+        {
+          fileName: "app/routes/products/index.tsx",
+          lineNumber: 62,
+          columnNumber: 15
+        },
+        this
+      ));
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
+        hasPreviousPage && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+          Button,
+          {
+            to: prevPageUrl,
+            variant: "secondary",
+            prefetch: "intent",
+            width: "full",
+            disabled: !isLoading,
+            state: {
+              pageInfo: {
+                endCursor,
+                hasNextPage,
+                startCursor
+              },
+              nodes
+            },
+            children: isLoading ? "Loading..." : "Previous"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/products/index.tsx",
+            lineNumber: 73,
+            columnNumber: 21
+          },
+          this
+        ) }, void 0, !1, {
+          fileName: "app/routes/products/index.tsx",
+          lineNumber: 72,
+          columnNumber: 19
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
+          fileName: "app/routes/products/index.tsx",
+          lineNumber: 92,
+          columnNumber: 17
+        }, this),
+        hasNextPage && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+          Button,
+          {
+            ref: nextLinkRef,
+            to: nextPageUrl,
+            variant: "secondary",
+            prefetch: "intent",
+            width: "full",
+            disabled: !isLoading,
+            state: {
+              pageInfo: {
+                endCursor,
+                hasPreviousPage,
+                startCursor
+              },
+              nodes
+            },
+            children: isLoading ? "Loading..." : "Next"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/products/index.tsx",
+            lineNumber: 95,
+            columnNumber: 21
+          },
+          this
+        ) }, void 0, !1, {
+          fileName: "app/routes/products/index.tsx",
+          lineNumber: 94,
+          columnNumber: 19
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/products/index.tsx",
+        lineNumber: 70,
+        columnNumber: 15
+      }, this);
+    } }, void 0, !1, {
+      fileName: "app/routes/products/index.tsx",
+      lineNumber: 49,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/products/index.tsx",
+      lineNumber: 48,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/products/index.tsx",
+    lineNumber: 46,
+    columnNumber: 5
+  }, this);
+}
+var ALL_PRODUCTS_QUERY = `#graphql
+  ${PRODUCT_CARD_FRAGMENT}
+  query AllProducts(
+    $country: CountryCode
+    $language: LanguageCode
+    $first: Int
+    $last: Int
+    $startCursor: String
+    $endCursor: String
+  ) @inContext(country: $country, language: $language) {
+    products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
+      nodes {
+        ...ProductCard
+      }
+      pageInfo {
+        hasPreviousPage
+        hasNextPage
+        startCursor
+        endCursor
+      }
+    }
+  }
+`;
+
+// app/routes/[sitemap.xml].tsx
+var sitemap_xml_exports = {};
+__export(sitemap_xml_exports, {
+  loader: () => loader11
+});
+var MAX_URLS = 250;
+async function loader11({ request, context: { storefront } }) {
+  let data = await storefront.query(SITEMAP_QUERY, {
+    variables: {
+      urlLimits: MAX_URLS,
+      language: storefront.i18n.language
+    }
+  });
+  return invariant4(data, "Sitemap data is missing"), new Response(
+    shopSitemap({ data, baseUrl: new URL(request.url).origin }),
+    {
+      headers: {
+        "content-type": "application/xml",
+        "cache-control": `max-age=${60 * 60 * 24}`
+      }
+    }
+  );
+}
+function shopSitemap({
+  data,
+  baseUrl
+}) {
+  let productsData = flattenConnection(data.products).filter((product) => product.onlineStoreUrl).map((product) => {
+    var _a2;
+    let finalObject = {
+      url: `${baseUrl}/products/${product.handle}`,
+      lastMod: product.updatedAt,
+      changeFreq: "daily"
+    };
+    return (_a2 = product.featuredImage) != null && _a2.url && (finalObject.image = {
+      url: product.featuredImage.url
+    }, product.title && (finalObject.image.title = product.title), product.featuredImage.altText && (finalObject.image.caption = product.featuredImage.altText)), finalObject;
+  }), collectionsData = flattenConnection(data.collections).filter((collection) => collection.onlineStoreUrl).map((collection) => ({
+    url: `${baseUrl}/collections/${collection.handle}`,
+    lastMod: collection.updatedAt,
+    changeFreq: "daily"
+  })), pagesData = flattenConnection(data.pages).filter((page) => page.onlineStoreUrl).map((page) => ({
+    url: `${baseUrl}/pages/${page.handle}`,
+    lastMod: page.updatedAt,
+    changeFreq: "weekly"
+  }));
+  return `
+    <urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+    >
+      ${[...productsData, ...collectionsData, ...pagesData].map((url) => renderUrlTag(url)).join("")}
+    </urlset>`;
+}
+function renderUrlTag({
+  url,
+  lastMod,
+  changeFreq,
+  image
+}) {
+  return `
+    <url>
+      <loc>${url}</loc>
+      <lastmod>${lastMod}</lastmod>
+      <changefreq>${changeFreq}</changefreq>
+      ${image ? `
+        <image:image>
+          <image:loc>${image.url}</image:loc>
+          <image:title>${image.title ?? ""}</image:title>
+          <image:caption>${image.caption ?? ""}</image:caption>
+        </image:image>` : ""}
+
+    </url>
+  `;
+}
+var SITEMAP_QUERY = `#graphql
+  query sitemaps($urlLimits: Int, $language: LanguageCode)
+  @inContext(language: $language) {
+    products(
+      first: $urlLimits
+      query: "published_status:'online_store:visible'"
+    ) {
+      nodes {
+        updatedAt
+        handle
+        onlineStoreUrl
+        title
+        featuredImage {
+          url
+          altText
+        }
+      }
+    }
+    collections(
+      first: $urlLimits
+      query: "published_status:'online_store:visible'"
+    ) {
+      nodes {
+        updatedAt
+        handle
+        onlineStoreUrl
+      }
+    }
+    pages(first: $urlLimits, query: "published_status:'published'") {
+      nodes {
+        updatedAt
+        handle
+        onlineStoreUrl
+      }
+    }
+  }
+`;
+
+// app/routes/api/countries.tsx
+var countries_exports = {};
+__export(countries_exports, {
+  default: () => CountriesApiRoute,
+  loader: () => loader12
+});
+async function loader12({ context: { storefront } }) {
+  return json3(
+    {
+      ...countries
+    },
+    {
+      headers: {
+        "cache-control": storefront.generateCacheControlHeader(
+          storefront.CacheLong()
+        )
+      }
+    }
+  );
+}
+function CountriesApiRoute() {
+  return null;
+}
+
+// app/routes/[robots.txt].tsx
+var robots_txt_exports = {};
+__export(robots_txt_exports, {
+  loader: () => loader13
+});
+var loader13 = ({ request }) => {
+  let url = new URL(request.url);
+  return new Response(robotsTxtData({ url: url.origin }), {
+    status: 200,
+    headers: {
+      "content-type": "text/plain",
+      "cache-control": `max-age=${60 * 60 * 24}`
+    }
+  });
+};
+function robotsTxtData({ url }) {
+  let sitemapUrl = url ? `${url}/sitemap.xml` : void 0;
+  return `
+User-agent: *
+Disallow: /admin
+Disallow: /cart
+Disallow: /orders
+Disallow: /checkouts/
+Disallow: /checkout
+Disallow: /carts
+Disallow: /account
+${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ""}
+
+# Google adsbot ignores robots.txt unless specifically named!
+User-agent: adsbot-google
+Disallow: /checkouts/
+Disallow: /checkout
+Disallow: /carts
+Disallow: /orders
+
+User-agent: Pinterest
+Crawl-delay: 1
+`.trim();
+}
+
+// app/routes/api/products.tsx
+var products_exports2 = {};
+__export(products_exports2, {
+  default: () => ProductsApiRoute,
+  loader: () => loader14
+});
+async function loader14({ request, context: { storefront } }) {
+  let url = new URL(request.url), searchParams = new URLSearchParams(url.search), sortKey = searchParams.get("sortKey") ?? "BEST_SELLING", query2 = searchParams.get("query") ?? "", reverse = !1;
+  try {
+    searchParams.get("reverse") === "true" && (reverse = !0);
+  } catch {
+  }
+  let count2 = 4;
+  try {
+    let _count = searchParams.get("count");
+    typeof _count == "string" && (count2 = parseInt(_count));
+  } catch {
+  }
+  let { products } = await storefront.query(PRODUCTS_QUERY, {
+    variables: {
+      count: count2,
+      query: query2,
+      reverse,
+      sortKey,
+      country: storefront.i18n.country,
+      language: storefront.i18n.language
+    },
+    cache: storefront.CacheLong()
+  });
+  return invariant4(products, "No data returned from top products query"), json3({
+    products: flattenConnection(products)
+  });
+}
+var PRODUCTS_QUERY = `#graphql
+  ${PRODUCT_CARD_FRAGMENT}
+  query (
+    $query: String
+    $count: Int
+    $reverse: Boolean
+    $country: CountryCode
+    $language: LanguageCode
+    $sortKey: ProductSortKeys
+  ) @inContext(country: $country, language: $language) {
+    products(first: $count, sortKey: $sortKey, reverse: $reverse, query: $query) {
+      nodes {
+        ...ProductCard
+      }
+    }
+  }
+`;
+function ProductsApiRoute() {
+  return null;
+}
+
+// app/routes/indexOLD.tsx
+var indexOLD_exports = {};
+__export(indexOLD_exports, {
+  FEATURED_COLLECTIONS_QUERY: () => FEATURED_COLLECTIONS_QUERY,
+  HOMEPAGE_FEATURED_PRODUCTS_QUERY: () => HOMEPAGE_FEATURED_PRODUCTS_QUERY,
+  default: () => Homepage,
+  loader: () => loader15
+});
+async function loader15({ params, context: context2 }) {
+  let { language, country } = context2.storefront.i18n;
+  if (params.lang && params.lang.toLowerCase() !== `${language}-${country}`.toLowerCase())
+    throw new Response(null, { status: 404 });
+  let { shop, hero } = await context2.storefront.query(HOMEPAGE_SEO_QUERY, {
+    variables: { handle: "freestyle" }
+  });
+  return defer3({
+    shop,
+    primaryHero: hero,
+    featuredProducts: context2.storefront.query(HOMEPAGE_FEATURED_PRODUCTS_QUERY, {
+      variables: {
+        country,
+        language
+      }
+    }),
+    secondaryHero: context2.storefront.query(
+      COLLECTION_HERO_QUERY,
+      {
+        variables: {
+          handle: "backcountry",
+          country,
+          language
+        }
+      }
+    ),
+    featuredCollections: context2.storefront.query(FEATURED_COLLECTIONS_QUERY, {
+      variables: {
+        country,
+        language
+      }
+    }),
+    tertiaryHero: context2.storefront.query(
+      COLLECTION_HERO_QUERY,
+      {
+        variables: {
+          handle: "winter-2022",
+          country,
+          language
+        }
+      }
+    ),
+    analytics: {
+      pageType: AnalyticsPageType.home
+    }
+  });
+}
+function Homepage() {
+  let {
+    primaryHero,
+    secondaryHero,
+    tertiaryHero,
+    featuredCollections,
+    featuredProducts
+  } = useLoaderData2(), skeletons = getHeroPlaceholder([{}, {}, {}]);
+  return null;
+}
+var COLLECTION_CONTENT_FRAGMENT = `#graphql
+  ${MEDIA_FRAGMENT}
+  fragment CollectionContent on Collection {
+    id
+    handle
+    title
+    descriptionHtml
+    heading: metafield(namespace: "hero", key: "title") {
+      value
+    }
+    byline: metafield(namespace: "hero", key: "byline") {
+      value
+    }
+    cta: metafield(namespace: "hero", key: "cta") {
+      value
+    }
+    spread: metafield(namespace: "hero", key: "spread") {
+      reference {
+        ...Media
+      }
+    }
+    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {
+      reference {
+        ...Media
+      }
+    }
+  }
+`, HOMEPAGE_SEO_QUERY = `#graphql
+  ${COLLECTION_CONTENT_FRAGMENT}
+  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    hero: collection(handle: $handle) {
+      ...CollectionContent
+    }
+    shop {
+      name
+      description
+    }
+  }
+`, COLLECTION_HERO_QUERY = `#graphql
+  ${COLLECTION_CONTENT_FRAGMENT}
+  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    hero: collection(handle: $handle) {
+      ...CollectionContent
+    }
+  }
+`, HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
+  ${PRODUCT_CARD_FRAGMENT}
+  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    products(first: 8) {
+      nodes {
+        ...ProductCard
+      }
+    }
+  }
+`, FEATURED_COLLECTIONS_QUERY = `#graphql
+  query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
+  @inContext(country: $country, language: $language) {
+    collections(
+      first: 4,
+      sortKey: UPDATED_AT
+    ) {
+      nodes {
+        id
+        title
+        handle
+        image {
+          altText
+          width
+          height
+          url
+        }
+      }
+    }
+  }
+`;
+
+// app/routes/account.tsx
+var account_exports = {};
+__export(account_exports, {
+  default: () => Authenticated,
+  getCustomer: () => getCustomer,
+  loader: () => loader17
+});
+var import_react106 = __toESM(require_react());
+
+// app/routes/account/__private/logout.ts
+var logout_exports = {};
+__export(logout_exports, {
   action: () => action2,
+  doLogout: () => doLogout,
+  loader: () => loader16
+});
+async function doLogout(context2) {
+  let { session } = context2;
+  return session.unset("customerAccessToken"), redirect3(`${context2.storefront.i18n.pathPrefix}/account/login`, {
+    headers: {
+      "Set-Cookie": await session.commit()
+    }
+  });
+}
+async function loader16({ context: context2 }) {
+  return redirect3(context2.storefront.i18n.pathPrefix);
+}
+var action2 = async ({ context: context2 }) => doLogout(context2);
+
+// app/routes/account.tsx
+var import_jsx_dev_runtime47 = __toESM(require_jsx_dev_runtime());
+async function loader17({ request, context: context2, params }) {
+  let { pathname } = new URL(request.url), lang = params.lang, customerAccessToken = await context2.session.get("customerAccessToken"), isAuthenticated = Boolean(customerAccessToken), loginPath = lang ? `/${lang}/account/login` : "/account/login";
+  if (!isAuthenticated)
+    return /\/account\/login$/.test(pathname) ? json3({ isAuthenticated }) : redirect3(loginPath);
+  let customer = await getCustomer(context2, customerAccessToken), heading = customer ? customer.firstName ? `Welcome, ${customer.firstName}.` : "Welcome to your account." : "Account Details", orders = flattenConnection(customer.orders);
+  return defer3({
+    isAuthenticated,
+    customer,
+    heading,
+    orders,
+    addresses: flattenConnection(customer.addresses),
+    featuredData: getFeaturedData(context2.storefront)
+  });
+}
+function Authenticated() {
+  let data = useLoaderData2(), outlet = useOutlet(), renderOutletInModal = useMatches2().some((match2) => {
+    var _a2;
+    return (_a2 = match2 == null ? void 0 : match2.handle) == null ? void 0 : _a2.renderInModal;
+  });
+  return data.isAuthenticated ? outlet ? renderOutletInModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Modal, { cancelLink: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 99,
+      columnNumber: 13
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 98,
+      columnNumber: 11
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Account, { ...data }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 101,
+      columnNumber: 11
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 97,
+    columnNumber: 9
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 105,
+    columnNumber: 14
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Account, { ...data }, void 0, !1, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 109,
+    columnNumber: 10
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, {}, void 0, !1, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 90,
+    columnNumber: 12
+  }, this);
+}
+function Account({
+  customer,
+  orders,
+  heading,
+  addresses,
+  featuredData
+}) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("button", { type: "submit", className: "", children: "Sign out" }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 131,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 130,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 129,
+      columnNumber: 7
+    }, this),
+    orders && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 136,
+      columnNumber: 18
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 137,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+      AccountAddressBook,
+      {
+        addresses,
+        customer
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/account.tsx",
+        lineNumber: 138,
+        columnNumber: 7
+      },
+      this
+    ),
+    !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_react106.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+      Await2,
+      {
+        resolve: featuredData,
+        errorElement: "There was a problem loading featured products.",
+        children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+            FeaturedCollections,
+            {
+              title: "Popular Collections",
+              collections: data.featuredCollections
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account.tsx",
+              lineNumber: 150,
+              columnNumber: 17
+            },
+            this
+          ),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(ProductSwimlane, { products: data.featuredProducts }, void 0, !1, {
+            fileName: "app/routes/account.tsx",
+            lineNumber: 154,
+            columnNumber: 17
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/routes/account.tsx",
+          lineNumber: 149,
+          columnNumber: 15
+        }, this)
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/account.tsx",
+        lineNumber: 144,
+        columnNumber: 11
+      },
+      this
+    ) }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 143,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 128,
+    columnNumber: 5
+  }, this);
+}
+function AccountOrderHistory({ orders }) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 168,
+      columnNumber: 9
+    }, this),
+    orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Orders, { orders }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 169,
+      columnNumber: 27
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(EmptyOrders, {}, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 169,
+      columnNumber: 56
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 167,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 166,
+    columnNumber: 5
+  }, this);
+}
+function EmptyOrders() {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 178,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+      Button,
+      {
+        className: "w-full mt-2 text-sm",
+        variant: "secondary",
+        to: usePrefixPathWithLocale("/"),
+        children: "Start Shopping"
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/routes/account.tsx",
+        lineNumber: 182,
+        columnNumber: 9
+      },
+      this
+    ) }, void 0, !1, {
+      fileName: "app/routes/account.tsx",
+      lineNumber: 181,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 177,
+    columnNumber: 5
+  }, this);
+}
+function Orders({ orders }) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order2) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(OrderCard, { order: order2 }, order2.id, !1, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 198,
+    columnNumber: 9
+  }, this)) }, void 0, !1, {
+    fileName: "app/routes/account.tsx",
+    lineNumber: 196,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_QUERY = `#graphql
+  query CustomerDetails(
+    $customerAccessToken: String!
+    $country: CountryCode
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
+    customer(customerAccessToken: $customerAccessToken) {
+      firstName
+      lastName
+      phone
+      email
+      defaultAddress {
+        id
+        formatted
+        firstName
+        lastName
+        company
+        address1
+        address2
+        country
+        province
+        city
+        zip
+        phone
+      }
+      addresses(first: 6) {
+        edges {
+          node {
+            id
+            formatted
+            firstName
+            lastName
+            company
+            address1
+            address2
+            country
+            province
+            city
+            zip
+            phone
+          }
+        }
+      }
+      orders(first: 250, sortKey: PROCESSED_AT, reverse: true) {
+        edges {
+          node {
+            id
+            orderNumber
+            processedAt
+            financialStatus
+            fulfillmentStatus
+            currentTotalPrice {
+              amount
+              currencyCode
+            }
+            lineItems(first: 2) {
+              edges {
+                node {
+                  variant {
+                    image {
+                      url
+                      altText
+                      height
+                      width
+                    }
+                  }
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+async function getCustomer(context2, customerAccessToken) {
+  let { storefront } = context2, data = await storefront.query(CUSTOMER_QUERY, {
+    variables: {
+      customerAccessToken,
+      country: context2.storefront.i18n.country,
+      language: context2.storefront.i18n.language
+    }
+  });
+  if (!data || !data.customer)
+    throw await doLogout(context2);
+  return data.customer;
+}
+
+// app/routes/account/__public/activate.$id.$activationToken.tsx
+var activate_id_activationToken_exports = {};
+__export(activate_id_activationToken_exports, {
+  action: () => action3,
+  default: () => Activate,
+  handle: () => handle8,
+  meta: () => meta4
+});
+var import_react108 = __toESM(require_react());
+var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), badRequest2 = (data) => json3(data, { status: 400 }), handle8 = {
+  isPublic: !0
+}, action3 = async ({
+  request,
+  context: context2,
+  params: { lang, id, activationToken }
+}) => {
+  var _a2, _b;
+  if (!id || !activationToken || typeof id != "string" || typeof activationToken != "string")
+    return badRequest2({
+      formError: "Wrong token. The link you followed might be wrong."
+    });
+  let formData = await request.formData(), password = formData.get("password"), passwordConfirm = formData.get("passwordConfirm");
+  if (!password || !passwordConfirm || typeof password != "string" || typeof passwordConfirm != "string" || password !== passwordConfirm)
+    return badRequest2({
+      formError: "Please provide matching passwords"
+    });
+  let { session, storefront } = context2;
+  try {
+    let data = await storefront.mutate(CUSTOMER_ACTIVATE_MUTATION, {
+      variables: {
+        id: `gid://shopify/Customer/${id}`,
+        input: {
+          password,
+          activationToken
+        }
+      }
+    }), { accessToken } = ((_a2 = data == null ? void 0 : data.customerActivate) == null ? void 0 : _a2.customerAccessToken) ?? {};
+    if (!accessToken)
+      throw new Error((_b = data == null ? void 0 : data.customerActivate) == null ? void 0 : _b.customerUserErrors.join(", "));
+    return session.set("customerAccessToken", accessToken), redirect3(lang ? `${lang}/account` : "/account", {
+      headers: {
+        "Set-Cookie": await session.commit()
+      }
+    });
+  } catch (error) {
+    return storefront.isApiError(error) ? badRequest2({
+      formError: "Something went wrong. Please try again later."
+    }) : badRequest2({
+      formError: "Sorry. We could not activate your account."
+    });
+  }
+}, meta4 = () => ({
+  title: "Activate Account"
+});
+function Activate() {
+  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react108.useState)(
+    null
+  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react108.useState)(null), passwordInput = (0, import_react108.useRef)(null), passwordConfirmInput = (0, import_react108.useRef)(null), validatePasswordConfirm = () => {
+    var _a2;
+    !passwordConfirmInput.current || (passwordConfirmInput.current.value.length && passwordConfirmInput.current.value !== ((_a2 = passwordInput.current) == null ? void 0 : _a2.value) ? setNativePasswordConfirmError("The two passwords entered did not match.") : passwordConfirmInput.current.validity.valid || !passwordConfirmInput.current.value.length ? setNativePasswordConfirmError(null) : setNativePasswordConfirmError(
+      passwordConfirmInput.current.validity.valueMissing ? "Please re-enter the password" : "Passwords must be at least 8 characters"
+    ));
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("h1", { className: "text-4xl", children: "Activate Account." }, void 0, !1, {
+      fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+      lineNumber: 146,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "mt-4", children: "Create your password to activate your account." }, void 0, !1, {
+      fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+      lineNumber: 147,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+      Form,
+      {
+        method: "post",
+        noValidate: !0,
+        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
+        children: [
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+            lineNumber: 156,
+            columnNumber: 15
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+            lineNumber: 155,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+              "input",
+              {
+                ref: passwordInput,
+                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
+                id: "password",
+                name: "password",
+                type: "password",
+                autoComplete: "current-password",
+                placeholder: "Password",
+                "aria-label": "Password",
+                minLength: 8,
+                required: !0,
+                autoFocus: !0,
+                onBlur: (event) => {
+                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
+                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+                lineNumber: 160,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              " ",
+              nativePasswordError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+              lineNumber: 190,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+            lineNumber: 159,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+              "input",
+              {
+                ref: passwordConfirmInput,
+                className: `mb-1 ${getInputStyleClasses(
+                  nativePasswordConfirmError
+                )}`,
+                id: "passwordConfirm",
+                name: "passwordConfirm",
+                type: "password",
+                autoComplete: "current-password",
+                placeholder: "Re-enter password",
+                "aria-label": "Re-enter password",
+                minLength: 8,
+                required: !0,
+                autoFocus: !0,
+                onBlur: validatePasswordConfirm
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+                lineNumber: 197,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              " ",
+              nativePasswordConfirmError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+              lineNumber: 215,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+            lineNumber: 196,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+            "button",
+            {
+              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
+              type: "submit",
+              children: "Save"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+              lineNumber: 222,
+              columnNumber: 13
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+            lineNumber: 221,
+            columnNumber: 11
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+        lineNumber: 149,
+        columnNumber: 9
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+    lineNumber: 145,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
+    lineNumber: 144,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_ACTIVATE_MUTATION = `#graphql
+  mutation customerActivate($id: ID!, $input: CustomerActivateInput!) {
+    customerActivate(id: $id, input: $input) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`;
+
+// app/routes/account/__public/reset.$id.$resetToken.tsx
+var reset_id_resetToken_exports = {};
+__export(reset_id_resetToken_exports, {
+  action: () => action4,
+  default: () => Reset,
+  meta: () => meta5
+});
+var import_react110 = __toESM(require_react());
+var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), action4 = async ({
+  request,
+  context: context2,
+  params: { lang, id, resetToken }
+}) => {
+  var _a2, _b;
+  if (!id || !resetToken || typeof id != "string" || typeof resetToken != "string")
+    return badRequest3({
+      formError: "Wrong token. Please try to reset your password again."
+    });
+  let formData = await request.formData(), password = formData.get("password"), passwordConfirm = formData.get("passwordConfirm");
+  if (!password || !passwordConfirm || typeof password != "string" || typeof passwordConfirm != "string" || password !== passwordConfirm)
+    return badRequest3({
+      formError: "Please provide matching passwords"
+    });
+  let { session, storefront } = context2;
+  try {
+    let data = await storefront.mutate(
+      CUSTOMER_RESET_MUTATION,
+      {
+        variables: {
+          id: `gid://shopify/Customer/${id}`,
+          input: {
+            password,
+            resetToken
+          }
+        }
+      }
+    ), { accessToken } = ((_a2 = data == null ? void 0 : data.customerReset) == null ? void 0 : _a2.customerAccessToken) ?? {};
+    if (!accessToken)
+      throw new Error((_b = data == null ? void 0 : data.customerReset) == null ? void 0 : _b.customerUserErrors.join(", "));
+    return session.set("customerAccessToken", accessToken), redirect3(lang ? `${lang}/account` : "/account", {
+      headers: {
+        "Set-Cookie": await session.commit()
+      }
+    });
+  } catch (error) {
+    return storefront.isApiError(error) ? badRequest3({
+      formError: "Something went wrong. Please try again later."
+    }) : badRequest3({
+      formError: "Sorry. We could not update your password."
+    });
+  }
+}, meta5 = () => ({
+  title: "Reset Password"
+});
+function Reset() {
+  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react110.useState)(
+    null
+  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react110.useState)(null), passwordInput = (0, import_react110.useRef)(null), passwordConfirmInput = (0, import_react110.useRef)(null), validatePasswordConfirm = () => {
+    var _a2;
+    !passwordConfirmInput.current || (passwordConfirmInput.current.value.length && passwordConfirmInput.current.value !== ((_a2 = passwordInput.current) == null ? void 0 : _a2.value) ? setNativePasswordConfirmError("The two passwords entered did not match.") : passwordConfirmInput.current.validity.valid || !passwordConfirmInput.current.value.length ? setNativePasswordConfirmError(null) : setNativePasswordConfirmError(
+      passwordConfirmInput.current.validity.valueMissing ? "Please re-enter the password" : "Passwords must be at least 8 characters"
+    ));
+  };
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("h1", { className: "text-4xl", children: "Reset Password." }, void 0, !1, {
+      fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+      lineNumber: 143,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "mt-4", children: "Enter a new password for your account." }, void 0, !1, {
+      fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+      lineNumber: 144,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+      Form,
+      {
+        method: "post",
+        noValidate: !0,
+        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
+        children: [
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+            lineNumber: 153,
+            columnNumber: 15
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+            lineNumber: 152,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+              "input",
+              {
+                ref: passwordInput,
+                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
+                id: "password",
+                name: "password",
+                type: "password",
+                autoComplete: "current-password",
+                placeholder: "Password",
+                "aria-label": "Password",
+                minLength: 8,
+                required: !0,
+                autoFocus: !0,
+                onBlur: (event) => {
+                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
+                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+                lineNumber: 157,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              " ",
+              nativePasswordError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+              lineNumber: 187,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+            lineNumber: 156,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+              "input",
+              {
+                ref: passwordConfirmInput,
+                className: `mb-1 ${getInputStyleClasses(
+                  nativePasswordConfirmError
+                )}`,
+                id: "passwordConfirm",
+                name: "passwordConfirm",
+                type: "password",
+                autoComplete: "current-password",
+                placeholder: "Re-enter password",
+                "aria-label": "Re-enter password",
+                minLength: 8,
+                required: !0,
+                autoFocus: !0,
+                onBlur: validatePasswordConfirm
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+                lineNumber: 194,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              " ",
+              nativePasswordConfirmError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+              lineNumber: 212,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+            lineNumber: 193,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+            "button",
+            {
+              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
+              type: "submit",
+              children: "Save"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+              lineNumber: 219,
+              columnNumber: 13
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+            lineNumber: 218,
+            columnNumber: 11
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+        lineNumber: 146,
+        columnNumber: 9
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+    lineNumber: 142,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
+    lineNumber: 141,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_RESET_MUTATION = `#graphql
+  mutation customerReset($id: ID!, $input: CustomerResetInput!) {
+    customerReset(id: $id, input: $input) {
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`;
+
+// app/routes/account/__private/address/$id.tsx
+var id_exports = {};
+__export(id_exports, {
+  action: () => action5,
+  default: () => EditAddress,
+  handle: () => handle9
+});
+var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime()), badRequest4 = (data) => json3(data, { status: 400 }), handle9 = {
+  renderInModal: !0
+}, action5 = async ({ request, context: context2, params }) => {
+  var _a2, _b;
+  let { storefront, session } = context2, formData = await request.formData(), customerAccessToken = await session.get("customerAccessToken");
+  invariant4(customerAccessToken, "You must be logged in to edit your account.");
+  let addressId = formData.get("addressId");
+  if (invariant4(typeof addressId == "string", "You must provide an address id."), request.method === "DELETE")
+    try {
+      let data = await storefront.mutate(DELETE_ADDRESS_MUTATION, {
+        variables: { customerAccessToken, id: addressId }
+      });
+      return assertApiErrors(data.customerAddressDelete), redirect3(params.lang ? `${params.lang}/account` : "/account");
+    } catch (error) {
+      return badRequest4({ formError: error.message });
+    }
+  let address = {}, keys = [
+    "lastName",
+    "firstName",
+    "address1",
+    "address2",
+    "city",
+    "province",
+    "country",
+    "zip",
+    "phone",
+    "company"
+  ];
+  for (let key of keys) {
+    let value = formData.get(key);
+    typeof value == "string" && (address[key] = value);
+  }
+  let defaultAddress = formData.get("defaultAddress");
+  if (addressId === "add")
+    try {
+      let data = await storefront.mutate(CREATE_ADDRESS_MUTATION, {
+        variables: { customerAccessToken, address }
+      });
+      assertApiErrors(data.customerAddressCreate);
+      let newId = (_b = (_a2 = data.customerAddressCreate) == null ? void 0 : _a2.customerAddress) == null ? void 0 : _b.id;
+      if (invariant4(newId, "Expected customer address to be created"), defaultAddress) {
+        let data2 = await storefront.mutate(UPDATE_DEFAULT_ADDRESS_MUTATION, {
+          variables: { customerAccessToken, addressId: newId }
+        });
+        assertApiErrors(data2.customerDefaultAddressUpdate);
+      }
+      return redirect3(params.lang ? `${params.lang}/account` : "/account");
+    } catch (error) {
+      return badRequest4({ formError: error.message });
+    }
+  else
+    try {
+      let data = await storefront.mutate(UPDATE_ADDRESS_MUTATION, {
+        variables: {
+          address,
+          customerAccessToken,
+          id: decodeURIComponent(addressId)
+        }
+      });
+      if (assertApiErrors(data.customerAddressUpdate), defaultAddress) {
+        let data2 = await storefront.mutate(UPDATE_DEFAULT_ADDRESS_MUTATION, {
+          variables: {
+            customerAccessToken,
+            addressId: decodeURIComponent(addressId)
+          }
+        });
+        assertApiErrors(data2.customerDefaultAddressUpdate);
+      }
+      return redirect3(params.lang ? `${params.lang}/account` : "/account");
+    } catch (error) {
+      return badRequest4({ formError: error.message });
+    }
+};
+function EditAddress() {
+  let { id: addressId } = useParams(), isNewAddress = addressId === "add", actionData = useActionData2(), transition = useTransition(), { customer } = useOutletContext(), addresses = flattenConnection(customer.addresses), defaultAddress = customer.defaultAddress, normalizedAddress = decodeURIComponent(addressId ?? "").split("?")[0], address = addresses.find(
+    (address2) => address2.id.startsWith(normalizedAddress)
+  );
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(import_jsx_dev_runtime50.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: isNewAddress ? "Add address" : "Edit address" }, void 0, !1, {
+      fileName: "app/routes/account/__private/address/$id.tsx",
+      lineNumber: 165,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Form, { method: "post", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          type: "hidden",
+          name: "addressId",
+          value: (address == null ? void 0 : address.id) ?? addressId
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 170,
+          columnNumber: 11
+        },
+        this
+      ),
+      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 177,
+        columnNumber: 15
+      }, this) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 176,
+        columnNumber: 13
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "firstName",
+          name: "firstName",
+          required: !0,
+          type: "text",
+          autoComplete: "given-name",
+          placeholder: "First name",
+          "aria-label": "First name",
+          defaultValue: (address == null ? void 0 : address.firstName) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 181,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 180,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "lastName",
+          name: "lastName",
+          required: !0,
+          type: "text",
+          autoComplete: "family-name",
+          placeholder: "Last name",
+          "aria-label": "Last name",
+          defaultValue: (address == null ? void 0 : address.lastName) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 194,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 193,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "company",
+          name: "company",
+          type: "text",
+          autoComplete: "organization",
+          placeholder: "Company",
+          "aria-label": "Company",
+          defaultValue: (address == null ? void 0 : address.company) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 207,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 206,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "address1",
+          name: "address1",
+          type: "text",
+          autoComplete: "address-line1",
+          placeholder: "Address line 1*",
+          required: !0,
+          "aria-label": "Address line 1",
+          defaultValue: (address == null ? void 0 : address.address1) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 219,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 218,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "address2",
+          name: "address2",
+          type: "text",
+          autoComplete: "address-line2",
+          placeholder: "Address line 2",
+          "aria-label": "Address line 2",
+          defaultValue: (address == null ? void 0 : address.address2) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 232,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 231,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "city",
+          name: "city",
+          type: "text",
+          required: !0,
+          autoComplete: "address-level2",
+          placeholder: "City",
+          "aria-label": "City",
+          defaultValue: (address == null ? void 0 : address.city) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 244,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 243,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "province",
+          name: "province",
+          type: "text",
+          autoComplete: "address-level1",
+          placeholder: "State / Province",
+          required: !0,
+          "aria-label": "State",
+          defaultValue: (address == null ? void 0 : address.province) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 257,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 256,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "zip",
+          name: "zip",
+          type: "text",
+          autoComplete: "postal-code",
+          placeholder: "Zip / Postal Code",
+          required: !0,
+          "aria-label": "Zip",
+          defaultValue: (address == null ? void 0 : address.zip) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 270,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 269,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "country",
+          name: "country",
+          type: "text",
+          autoComplete: "country-name",
+          placeholder: "Country",
+          required: !0,
+          "aria-label": "Country",
+          defaultValue: (address == null ? void 0 : address.country) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 283,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 282,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "phone",
+          name: "phone",
+          type: "tel",
+          autoComplete: "tel",
+          placeholder: "Phone",
+          "aria-label": "Phone",
+          defaultValue: (address == null ? void 0 : address.phone) ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 296,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 295,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "input",
+          {
+            type: "checkbox",
+            name: "defaultAddress",
+            id: "defaultAddress",
+            defaultChecked: (defaultAddress == null ? void 0 : defaultAddress.id) === (address == null ? void 0 : address.id),
+            className: "border-gray-500 rounded-sm cursor-pointer border-1"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/account/__private/address/$id.tsx",
+            lineNumber: 308,
+            columnNumber: 13
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+          "label",
+          {
+            className: "inline-block ml-2 text-sm cursor-pointer",
+            htmlFor: "defaultAddress",
+            children: "Set as default address"
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/account/__private/address/$id.tsx",
+            lineNumber: 315,
+            columnNumber: 13
+          },
+          this
+        )
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 307,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        Button,
+        {
+          className: "w-full rounded focus:shadow-outline",
+          type: "submit",
+          variant: "primary",
+          disabled: transition.state !== "idle",
+          children: transition.state !== "idle" ? "Saving" : "Save"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 323,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 322,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        Button,
+        {
+          to: "..",
+          className: "w-full mt-2 rounded focus:shadow-outline",
+          variant: "secondary",
+          children: "Cancel"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/address/$id.tsx",
+          lineNumber: 333,
+          columnNumber: 13
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/address/$id.tsx",
+        lineNumber: 332,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/account/__private/address/$id.tsx",
+      lineNumber: 169,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account/__private/address/$id.tsx",
+      lineNumber: 168,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__private/address/$id.tsx",
+    lineNumber: 164,
+    columnNumber: 5
+  }, this);
+}
+var UPDATE_ADDRESS_MUTATION = `#graphql
+  mutation customerAddressUpdate(
+    $address: MailingAddressInput!
+    $customerAccessToken: String!
+    $id: ID!
+  ) {
+    customerAddressUpdate(
+      address: $address
+      customerAccessToken: $customerAccessToken
+      id: $id
+    ) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`, DELETE_ADDRESS_MUTATION = `#graphql
+  mutation customerAddressDelete($customerAccessToken: String!, $id: ID!) {
+    customerAddressDelete(customerAccessToken: $customerAccessToken, id: $id) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+      deletedCustomerAddressId
+    }
+  }
+`, UPDATE_DEFAULT_ADDRESS_MUTATION = `#graphql
+  mutation customerDefaultAddressUpdate(
+    $addressId: ID!
+    $customerAccessToken: String!
+  ) {
+    customerDefaultAddressUpdate(
+      addressId: $addressId
+      customerAccessToken: $customerAccessToken
+    ) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`, CREATE_ADDRESS_MUTATION = `#graphql
+  mutation customerAddressCreate(
+    $address: MailingAddressInput!
+    $customerAccessToken: String!
+  ) {
+    customerAddressCreate(
+      address: $address
+      customerAccessToken: $customerAccessToken
+    ) {
+      customerAddress {
+        id
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`;
+
+// app/routes/account/__private/orders.$id.tsx
+var orders_id_exports = {};
+__export(orders_id_exports, {
+  default: () => OrderRoute,
+  loader: () => loader18,
+  meta: () => meta6
+});
+var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), meta6 = ({ data }) => {
+  var _a2;
+  return {
+    title: `Order ${(_a2 = data == null ? void 0 : data.order) == null ? void 0 : _a2.name}`
+  };
+};
+async function loader18({ request, context: context2, params }) {
+  var _a2;
+  if (!params.id)
+    return redirect3(params != null && params.lang ? `${params.lang}/account` : "/account");
+  let orderToken = new URL(request.url).searchParams.get("key");
+  if (invariant4(orderToken, "Order token is required"), !await context2.session.get("customerAccessToken"))
+    return redirect3(
+      params.lang ? `${params.lang}/account/login` : "/account/login"
+    );
+  let orderId = `gid://shopify/Order/${params.id}?key=${orderToken}`, data = await context2.storefront.query(
+    CUSTOMER_ORDER_QUERY,
+    { variables: { orderId } }
+  ), order2 = data == null ? void 0 : data.node;
+  if (!order2)
+    throw new Response("Order not found", { status: 404 });
+  let lineItems = flattenConnection(order2.lineItems), firstDiscount = (_a2 = flattenConnection(
+    order2.discountApplications
+  )[0]) == null ? void 0 : _a2.value, discountValue = (firstDiscount == null ? void 0 : firstDiscount.__typename) === "MoneyV2" && firstDiscount, discountPercentage = (firstDiscount == null ? void 0 : firstDiscount.__typename) === "PricingPercentageValue" && (firstDiscount == null ? void 0 : firstDiscount.percentage);
+  return json3({
+    order: order2,
+    lineItems,
+    discountValue,
+    discountPercentage
+  });
+}
+function OrderRoute() {
+  var _a2;
+  let { order: order2, lineItems, discountValue, discountPercentage } = useLoaderData2();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(PageHeader, { heading: "Order detail", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Link3, { to: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { color: "subtle", children: "Return to Account Overview" }, void 0, !1, {
+      fileName: "app/routes/account/__private/orders.$id.tsx",
+      lineNumber: 84,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account/__private/orders.$id.tsx",
+      lineNumber: 83,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account/__private/orders.$id.tsx",
+      lineNumber: 82,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { as: "h3", size: "lead", children: [
+        "Order No. ",
+        order2.name
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/orders.$id.tsx",
+        lineNumber: 89,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { className: "mt-2", as: "p", children: [
+        "Placed on ",
+        new Date(order2.processedAt).toDateString()
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/orders.$id.tsx",
+        lineNumber: 92,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("table", { className: "min-w-full my-8 divide-y divide-gray-300 md:col-span-3", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { className: "align-baseline ", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              "th",
+              {
+                scope: "col",
+                className: "pb-4 pl-0 pr-3 font-semibold text-left",
+                children: "Product"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 99,
+                columnNumber: 19
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              "th",
+              {
+                scope: "col",
+                className: "hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell",
+                children: "Price"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 105,
+                columnNumber: 19
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              "th",
+              {
+                scope: "col",
+                className: "hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell",
+                children: "Quantity"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 111,
+                columnNumber: 19
+              },
+              this
+            ),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              "th",
+              {
+                scope: "col",
+                className: "px-4 pb-4 font-semibold text-right",
+                children: "Total"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 117,
+                columnNumber: 19
+              },
+              this
+            )
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 98,
+            columnNumber: 17
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 97,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: lineItems.map((lineItem) => {
+            var _a3;
+            return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex gap-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                  Link3,
+                  {
+                    to: `/products/${lineItem.variant.product.handle}`,
+                    children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                      Image,
+                      {
+                        data: {
+                          url: lineItem.variant.image.src
+                        },
+                        width: lineItem.variant.image.width,
+                        height: lineItem.variant.image.height,
+                        alt: lineItem.variant.image.altText,
+                        loaderOptions: {
+                          scale: 2,
+                          crop: "center"
+                        }
+                      },
+                      void 0,
+                      !1,
+                      {
+                        fileName: "app/routes/account/__private/orders.$id.tsx",
+                        lineNumber: 136,
+                        columnNumber: 31
+                      },
+                      this
+                    ) }, void 0, !1, {
+                      fileName: "app/routes/account/__private/orders.$id.tsx",
+                      lineNumber: 135,
+                      columnNumber: 29
+                    }, this)
+                  },
+                  void 0,
+                  !1,
+                  {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 131,
+                    columnNumber: 25
+                  },
+                  this
+                ),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex-col justify-center hidden lg:flex", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { as: "p", children: lineItem.title }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 152,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", className: "mt-1", as: "p", children: lineItem.variant.title }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 153,
+                    columnNumber: 27
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 151,
+                  columnNumber: 25
+                }, this),
+                /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dl", { className: "grid", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dt", { className: "sr-only", children: "Product" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 158,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dd", { className: "truncate lg:hidden", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { size: "copy", format: !0, as: "h3", children: lineItem.title }, void 0, !1, {
+                      fileName: "app/routes/account/__private/orders.$id.tsx",
+                      lineNumber: 160,
+                      columnNumber: 29
+                    }, this),
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", className: "mt-1", children: lineItem.variant.title }, void 0, !1, {
+                      fileName: "app/routes/account/__private/orders.$id.tsx",
+                      lineNumber: 163,
+                      columnNumber: 29
+                    }, this)
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 159,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dt", { className: "sr-only", children: "Price" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 167,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 170,
+                    columnNumber: 31
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 169,
+                    columnNumber: 29
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 168,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dt", { className: "sr-only", children: "Quantity" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 173,
+                    columnNumber: 27
+                  }, this),
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { className: "mt-1", size: "fine", children: [
+                    "Qty: ",
+                    lineItem.quantity
+                  ] }, void 0, !0, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 175,
+                    columnNumber: 29
+                  }, this) }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 174,
+                    columnNumber: 27
+                  }, this)
+                ] }, void 0, !0, {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 157,
+                  columnNumber: 25
+                }, this)
+              ] }, void 0, !0, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 130,
+                columnNumber: 23
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 129,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 183,
+                columnNumber: 23
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 182,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: lineItem.quantity }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 185,
+                columnNumber: 21
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: lineItem.discountedTotalPrice }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 190,
+                columnNumber: 25
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 189,
+                columnNumber: 23
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 188,
+                columnNumber: 21
+              }, this)
+            ] }, lineItem.variant.id, !0, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 128,
+              columnNumber: 19
+            }, this);
+          }) }, void 0, !1, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 125,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tfoot", { children: [
+            (discountValue && discountValue.amount || discountPercentage) && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  colSpan: 3,
+                  className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 205,
+                    columnNumber: 23
+                  }, this)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 200,
+                  columnNumber: 21
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  className: "pt-6 pr-3 font-normal text-left sm:hidden",
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 211,
+                    columnNumber: 23
+                  }, this)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 207,
+                  columnNumber: 21
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3", children: discountPercentage ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("span", { className: "text-sm", children: [
+                "-",
+                discountPercentage,
+                "% OFF"
+              ] }, void 0, !0, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 215,
+                columnNumber: 25
+              }, this) : discountValue && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: discountValue }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 219,
+                columnNumber: 42
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 213,
+                columnNumber: 21
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 199,
+              columnNumber: 19
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  colSpan: 3,
+                  className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 230,
+                    columnNumber: 21
+                  }, this)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 225,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  className: "pt-6 pr-3 font-normal text-left sm:hidden",
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 236,
+                    columnNumber: 21
+                  }, this)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 232,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: order2.subtotalPriceV2 }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 239,
+                columnNumber: 21
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 238,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 224,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  colSpan: 3,
+                  className: "hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
+                  children: "Tax"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 243,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  className: "pt-4 pr-3 font-normal text-left sm:hidden",
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Tax" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 254,
+                    columnNumber: 21
+                  }, this)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 250,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: order2.totalTaxV2 }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 257,
+                columnNumber: 21
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 256,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 242,
+              columnNumber: 17
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  colSpan: 3,
+                  className: "hidden pt-4 pl-6 pr-3 font-semibold text-right sm:table-cell md:pl-0",
+                  children: "Total"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 261,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                "th",
+                {
+                  scope: "row",
+                  className: "pt-4 pr-3 font-semibold text-left sm:hidden",
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Total" }, void 0, !1, {
+                    fileName: "app/routes/account/__private/orders.$id.tsx",
+                    lineNumber: 272,
+                    columnNumber: 21
+                  }, this)
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/routes/account/__private/orders.$id.tsx",
+                  lineNumber: 268,
+                  columnNumber: 19
+                },
+                this
+              ),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 font-semibold text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: order2.totalPriceV2 }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 275,
+                columnNumber: 21
+              }, this) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 274,
+                columnNumber: 19
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 260,
+              columnNumber: 17
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 196,
+            columnNumber: 15
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/routes/account/__private/orders.$id.tsx",
+          lineNumber: 96,
+          columnNumber: 13
+        }, this),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "sticky border-none top-nav md:my-8", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { size: "copy", className: "font-semibold", as: "h3", children: "Shipping Address" }, void 0, !1, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 281,
+            columnNumber: 15
+          }, this),
+          order2 != null && order2.shippingAddress ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("ul", { className: "mt-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: [
+              order2.shippingAddress.firstName && order2.shippingAddress.firstName + " ",
+              order2.shippingAddress.lastName
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 287,
+              columnNumber: 21
+            }, this) }, void 0, !1, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 286,
+              columnNumber: 19
+            }, this),
+            (_a2 = order2 == null ? void 0 : order2.shippingAddress) != null && _a2.formatted ? order2.shippingAddress.formatted.map((line) => /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: line }, void 0, !1, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 296,
+              columnNumber: 25
+            }, this) }, line, !1, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 295,
+              columnNumber: 23
+            }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 300,
+              columnNumber: 21
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 285,
+            columnNumber: 17
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("p", { className: "mt-3", children: "No shipping address defined" }, void 0, !1, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 304,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { size: "copy", className: "mt-8 font-semibold", as: "h3", children: "Status" }, void 0, !1, {
+            fileName: "app/routes/account/__private/orders.$id.tsx",
+            lineNumber: 306,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            "div",
+            {
+              className: clsx_m_default(
+                "mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto",
+                order2.fulfillmentStatus === "FULFILLED" ? "bg-green-100 text-green-800" : "bg-primary/20 "
+              ),
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", children: statusMessage(order2.fulfillmentStatus) }, void 0, !1, {
+                fileName: "app/routes/account/__private/orders.$id.tsx",
+                lineNumber: 317,
+                columnNumber: 17
+              }, this)
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account/__private/orders.$id.tsx",
+              lineNumber: 309,
+              columnNumber: 15
+            },
+            this
+          )
+        ] }, void 0, !0, {
+          fileName: "app/routes/account/__private/orders.$id.tsx",
+          lineNumber: 280,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/orders.$id.tsx",
+        lineNumber: 95,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/account/__private/orders.$id.tsx",
+      lineNumber: 88,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/account/__private/orders.$id.tsx",
+      lineNumber: 87,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__private/orders.$id.tsx",
+    lineNumber: 81,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_ORDER_QUERY = `#graphql
+  fragment Money on MoneyV2 {
+    amount
+    currencyCode
+  }
+  fragment AddressFull on MailingAddress {
+    address1
+    address2
+    city
+    company
+    country
+    countryCodeV2
+    firstName
+    formatted
+    id
+    lastName
+    name
+    phone
+    province
+    provinceCode
+    zip
+  }
+  fragment DiscountApplication on DiscountApplication {
+    value {
+      ... on MoneyV2 {
+        amount
+        currencyCode
+      }
+      ... on PricingPercentageValue {
+        percentage
+      }
+    }
+  }
+  fragment Image on Image {
+    altText
+    height
+    src: url(transform: {crop: CENTER, maxHeight: 96, maxWidth: 96, scale: 2})
+    id
+    width
+  }
+  fragment ProductVariant on ProductVariant {
+    id
+    image {
+      ...Image
+    }
+    price {
+      ...Money
+    }
+    product {
+      handle
+    }
+    sku
+    title
+  }
+  fragment LineItemFull on OrderLineItem {
+    title
+    quantity
+    discountAllocations {
+      allocatedAmount {
+        ...Money
+      }
+      discountApplication {
+        ...DiscountApplication
+      }
+    }
+    originalTotalPrice {
+      ...Money
+    }
+    discountedTotalPrice {
+      ...Money
+    }
+    variant {
+      ...ProductVariant
+    }
+  }
+
+  query CustomerOrder(
+    $country: CountryCode
+    $language: LanguageCode
+    $orderId: ID!
+  ) @inContext(country: $country, language: $language) {
+    node(id: $orderId) {
+      ... on Order {
+        id
+        name
+        orderNumber
+        processedAt
+        fulfillmentStatus
+        totalTaxV2 {
+          ...Money
+        }
+        totalPriceV2 {
+          ...Money
+        }
+        subtotalPriceV2 {
+          ...Money
+        }
+        shippingAddress {
+          ...AddressFull
+        }
+        discountApplications(first: 100) {
+          nodes {
+            ...DiscountApplication
+          }
+        }
+        lineItems(first: 100) {
+          nodes {
+            ...LineItemFull
+          }
+        }
+      }
+    }
+  }
+`;
+
+// app/routes/account/__public/register.tsx
+var register_exports = {};
+__export(register_exports, {
+  action: () => action7,
+  default: () => Register,
+  loader: () => loader20,
+  meta: () => meta8
+});
+var import_react116 = __toESM(require_react());
+
+// app/routes/account/__public/login.tsx
+var login_exports = {};
+__export(login_exports, {
+  action: () => action6,
+  default: () => Login,
+  doLogin: () => doLogin,
+  handle: () => handle10,
+  loader: () => loader19,
+  meta: () => meta7
+});
+var import_react114 = __toESM(require_react());
+var import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime()), handle10 = {
+  isPublic: !0
+};
+async function loader19({ context: context2, params }) {
+  return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : json3({ shopName: "Hydrogen" });
+}
+var badRequest5 = (data) => json3(data, { status: 400 }), action6 = async ({ request, context: context2, params }) => {
+  let formData = await request.formData(), email = formData.get("email"), password = formData.get("password");
+  if (!email || !password || typeof email != "string" || typeof password != "string")
+    return badRequest5({
+      formError: "Please provide both an email and a password."
+    });
+  let { session, storefront } = context2;
+  try {
+    let customerAccessToken = await doLogin(context2, { email, password });
+    return session.set("customerAccessToken", customerAccessToken), redirect3(params.lang ? `/${params.lang}/account` : "/account", {
+      headers: {
+        "Set-Cookie": await session.commit()
+      }
+    });
+  } catch (error) {
+    return storefront.isApiError(error) ? badRequest5({
+      formError: "Something went wrong. Please try again later."
+    }) : badRequest5({
+      formError: "Sorry. We did not recognize either your email or password. Please try to sign in again or create a new account."
+    });
+  }
+}, meta7 = () => ({
+  title: "Login"
+});
+function Login() {
+  let { shopName } = useLoaderData2(), actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react114.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react114.useState)(
+    null
+  );
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("h1", { className: "text-4xl", children: "Sign in." }, void 0, !1, {
+      fileName: "app/routes/account/__public/login.tsx",
+      lineNumber: 99,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+      Form,
+      {
+        method: "post",
+        noValidate: !0,
+        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
+        children: [
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+            fileName: "app/routes/account/__public/login.tsx",
+            lineNumber: 108,
+            columnNumber: 15
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/login.tsx",
+            lineNumber: 107,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+              "input",
+              {
+                className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
+                id: "email",
+                name: "email",
+                type: "email",
+                autoComplete: "email",
+                required: !0,
+                placeholder: "Email address",
+                "aria-label": "Email address",
+                autoFocus: !0,
+                onBlur: (event) => {
+                  setNativeEmailError(
+                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/login.tsx",
+                lineNumber: 112,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              nativeEmailError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/login.tsx",
+              lineNumber: 133,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/login.tsx",
+            lineNumber: 111,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+              "input",
+              {
+                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
+                id: "password",
+                name: "password",
+                type: "password",
+                autoComplete: "current-password",
+                placeholder: "Password",
+                "aria-label": "Password",
+                minLength: 8,
+                required: !0,
+                autoFocus: !0,
+                onBlur: (event) => {
+                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
+                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/login.tsx",
+                lineNumber: 138,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              " ",
+              nativePasswordError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/login.tsx",
+              lineNumber: 166,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/login.tsx",
+            lineNumber: 137,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+            "button",
+            {
+              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
+              type: "submit",
+              children: "Sign in"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account/__public/login.tsx",
+              lineNumber: 173,
+              columnNumber: 13
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/routes/account/__public/login.tsx",
+            lineNumber: 172,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex justify-between items-center mt-8 border-t border-gray-300", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+              "New to ",
+              shopName,
+              "? \xA0",
+              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Link3, { className: "inline underline", to: "/account/register", children: "Create an account" }, void 0, !1, {
+                fileName: "app/routes/account/__public/login.tsx",
+                lineNumber: 183,
+                columnNumber: 15
+              }, this)
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/login.tsx",
+              lineNumber: 181,
+              columnNumber: 13
+            }, this),
+            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+              Link3,
+              {
+                className: "mt-6 inline-block align-baseline text-sm ",
+                to: "/account/recover",
+                children: "Forgot password"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/login.tsx",
+                lineNumber: 187,
+                columnNumber: 13
+              },
+              this
+            )
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/login.tsx",
+            lineNumber: 180,
+            columnNumber: 11
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/routes/account/__public/login.tsx",
+        lineNumber: 101,
+        columnNumber: 9
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__public/login.tsx",
+    lineNumber: 98,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account/__public/login.tsx",
+    lineNumber: 97,
+    columnNumber: 5
+  }, this);
+}
+var LOGIN_MUTATION = `#graphql
+  mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
+    customerAccessTokenCreate(input: $input) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+      customerAccessToken {
+        accessToken
+        expiresAt
+      }
+    }
+  }
+`;
+async function doLogin({ storefront }, {
+  email,
+  password
+}) {
+  var _a2, _b, _c;
+  let data = await storefront.mutate(LOGIN_MUTATION, {
+    variables: {
+      input: {
+        email,
+        password
+      }
+    }
+  });
+  if ((_b = (_a2 = data == null ? void 0 : data.customerAccessTokenCreate) == null ? void 0 : _a2.customerAccessToken) != null && _b.accessToken)
+    return data.customerAccessTokenCreate.customerAccessToken.accessToken;
+  throw new Error(
+    (_c = data == null ? void 0 : data.customerAccessTokenCreate) == null ? void 0 : _c.customerUserErrors.join(", ")
+  );
+}
+
+// app/routes/account/__public/register.tsx
+var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime());
+async function loader20({ context: context2, params }) {
+  return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
+}
+var badRequest6 = (data) => json3(data, { status: 400 }), action7 = async ({ request, context: context2, params }) => {
+  var _a2, _b, _c;
+  let { session, storefront } = context2, formData = await request.formData(), email = formData.get("email"), password = formData.get("password");
+  if (!email || !password || typeof email != "string" || typeof password != "string")
+    return badRequest6({
+      formError: "Please provide both an email and a password."
+    });
+  try {
+    let data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
+      variables: {
+        input: { email, password }
+      }
+    });
+    if (!((_b = (_a2 = data == null ? void 0 : data.customerCreate) == null ? void 0 : _a2.customer) != null && _b.id))
+      throw new Error((_c = data == null ? void 0 : data.customerCreate) == null ? void 0 : _c.customerUserErrors.join(", "));
+    let customerAccessToken = await doLogin(context2, { email, password });
+    return session.set("customerAccessToken", customerAccessToken), redirect3(params.lang ? `${params.lang}/account` : "/account", {
+      headers: {
+        "Set-Cookie": await session.commit()
+      }
+    });
+  } catch (error) {
+    return storefront.isApiError(error) ? badRequest6({
+      formError: "Something went wrong. Please try again later."
+    }) : badRequest6({
+      formError: "Sorry. We could not create an account with this email. User might already exist, try to login instead."
+    });
+  }
+}, meta8 = () => ({
+  title: "Register"
+});
+function Register() {
+  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react116.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react116.useState)(
+    null
+  );
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("h1", { className: "text-4xl", children: "Create an Account." }, void 0, !1, {
+      fileName: "app/routes/account/__public/register.tsx",
+      lineNumber: 107,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+      Form,
+      {
+        method: "post",
+        noValidate: !0,
+        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
+        children: [
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 116,
+            columnNumber: 15
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 115,
+            columnNumber: 13
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+              "input",
+              {
+                className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
+                id: "email",
+                name: "email",
+                type: "email",
+                autoComplete: "email",
+                required: !0,
+                placeholder: "Email address",
+                "aria-label": "Email address",
+                autoFocus: !0,
+                onBlur: (event) => {
+                  setNativeEmailError(
+                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/register.tsx",
+                lineNumber: 120,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              nativeEmailError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/register.tsx",
+              lineNumber: 141,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 119,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+              "input",
+              {
+                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
+                id: "password",
+                name: "password",
+                type: "password",
+                autoComplete: "current-password",
+                placeholder: "Password",
+                "aria-label": "Password",
+                minLength: 8,
+                required: !0,
+                autoFocus: !0,
+                onBlur: (event) => {
+                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
+                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/register.tsx",
+                lineNumber: 145,
+                columnNumber: 13
+              },
+              this
+            ),
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              " ",
+              nativePasswordError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/register.tsx",
+              lineNumber: 173,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 144,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+            "button",
+            {
+              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
+              type: "submit",
+              children: "Create Account"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account/__public/register.tsx",
+              lineNumber: 180,
+              columnNumber: 13
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 179,
+            columnNumber: 11
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+            "Already have an account? \xA0",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Sign in" }, void 0, !1, {
+              fileName: "app/routes/account/__public/register.tsx",
+              lineNumber: 190,
+              columnNumber: 15
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 188,
+            columnNumber: 13
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/register.tsx",
+            lineNumber: 187,
+            columnNumber: 11
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/routes/account/__public/register.tsx",
+        lineNumber: 109,
+        columnNumber: 9
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__public/register.tsx",
+    lineNumber: 106,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account/__public/register.tsx",
+    lineNumber: 105,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_CREATE_MUTATION = `#graphql
+  mutation customerCreate($input: CustomerCreateInput!) {
+    customerCreate(input: $input) {
+      customer {
+        id
+      }
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`;
+
+// app/routes/account/__public/recover.tsx
+var recover_exports = {};
+__export(recover_exports, {
+  action: () => action8,
+  default: () => Recover,
+  loader: () => loader21,
+  meta: () => meta9
+});
+var import_react118 = __toESM(require_react());
+var import_jsx_dev_runtime54 = __toESM(require_jsx_dev_runtime());
+async function loader21({ context: context2, params }) {
+  return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
+}
+var badRequest7 = (data) => json3(data, { status: 400 }), action8 = async ({ request, context: context2 }) => {
+  let email = (await request.formData()).get("email");
+  if (!email || typeof email != "string")
+    return badRequest7({
+      formError: "Please provide an email."
+    });
+  try {
+    return await context2.storefront.mutate(CUSTOMER_RECOVER_MUTATION, {
+      variables: { email }
+    }), json3({ resetRequested: !0 });
+  } catch {
+    return badRequest7({
+      formError: "Something went wrong. Please try again later."
+    });
+  }
+}, meta9 = () => ({
+  title: "Recover Password"
+});
+function Recover() {
+  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react118.useState)(null), isSubmitted = actionData == null ? void 0 : actionData.resetRequested;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-md w-full", children: isSubmitted ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h1", { className: "text-4xl", children: "Request Sent." }, void 0, !1, {
+      fileName: "app/routes/account/__public/recover.tsx",
+      lineNumber: 72,
+      columnNumber: 13
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "mt-4", children: "If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes." }, void 0, !1, {
+      fileName: "app/routes/account/__public/recover.tsx",
+      lineNumber: 73,
+      columnNumber: 13
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__public/recover.tsx",
+    lineNumber: 71,
+    columnNumber: 11
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h1", { className: "text-4xl", children: "Forgot Password." }, void 0, !1, {
+      fileName: "app/routes/account/__public/recover.tsx",
+      lineNumber: 81,
+      columnNumber: 13
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "mt-4", children: "Enter the email address associated with your account to receive a link to reset your password." }, void 0, !1, {
+      fileName: "app/routes/account/__public/recover.tsx",
+      lineNumber: 82,
+      columnNumber: 13
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+      Form,
+      {
+        method: "post",
+        noValidate: !0,
+        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
+        children: [
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+            fileName: "app/routes/account/__public/recover.tsx",
+            lineNumber: 94,
+            columnNumber: 19
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/recover.tsx",
+            lineNumber: 93,
+            columnNumber: 17
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+              "input",
+              {
+                className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
+                id: "email",
+                name: "email",
+                type: "email",
+                autoComplete: "email",
+                required: !0,
+                placeholder: "Email address",
+                "aria-label": "Email address",
+                autoFocus: !0,
+                onBlur: (event) => {
+                  setNativeEmailError(
+                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
+                  );
+                }
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/routes/account/__public/recover.tsx",
+                lineNumber: 100,
+                columnNumber: 17
+              },
+              this
+            ),
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+              nativeEmailError,
+              " \xA0"
+            ] }, void 0, !0, {
+              fileName: "app/routes/account/__public/recover.tsx",
+              lineNumber: 121,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/recover.tsx",
+            lineNumber: 99,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+            "button",
+            {
+              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
+              type: "submit",
+              children: "Request Reset Link"
+            },
+            void 0,
+            !1,
+            {
+              fileName: "app/routes/account/__public/recover.tsx",
+              lineNumber: 127,
+              columnNumber: 17
+            },
+            this
+          ) }, void 0, !1, {
+            fileName: "app/routes/account/__public/recover.tsx",
+            lineNumber: 126,
+            columnNumber: 15
+          }, this),
+          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+            "Return to \xA0",
+            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Login" }, void 0, !1, {
+              fileName: "app/routes/account/__public/recover.tsx",
+              lineNumber: 137,
+              columnNumber: 19
+            }, this)
+          ] }, void 0, !0, {
+            fileName: "app/routes/account/__public/recover.tsx",
+            lineNumber: 135,
+            columnNumber: 17
+          }, this) }, void 0, !1, {
+            fileName: "app/routes/account/__public/recover.tsx",
+            lineNumber: 134,
+            columnNumber: 15
+          }, this)
+        ]
+      },
+      void 0,
+      !0,
+      {
+        fileName: "app/routes/account/__public/recover.tsx",
+        lineNumber: 87,
+        columnNumber: 13
+      },
+      this
+    )
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__public/recover.tsx",
+    lineNumber: 80,
+    columnNumber: 11
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account/__public/recover.tsx",
+    lineNumber: 69,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/account/__public/recover.tsx",
+    lineNumber: 68,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_RECOVER_MUTATION = `#graphql
+  mutation customerRecover($email: String!) {
+    customerRecover(email: $email) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+`;
+
+// app/routes/account/__private/edit.tsx
+var edit_exports = {};
+__export(edit_exports, {
+  action: () => action9,
+  default: () => AccountDetailsEdit,
+  handle: () => handle11
+});
+var import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime()), badRequest8 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
+  if (!formData.has(key))
+    return !1;
+  let value = formData.get(key);
+  return typeof value == "string" && value.length > 0;
+}, handle11 = {
+  renderInModal: !0
+}, action9 = async ({ request, context: context2, params }) => {
+  let formData = await request.formData(), customerAccessToken = await context2.session.get("customerAccessToken");
+  if (invariant4(
+    customerAccessToken,
+    "You must be logged in to update your account details."
+  ), await getCustomer(context2, customerAccessToken), formDataHas(formData, "newPassword") && !formDataHas(formData, "currentPassword"))
+    return badRequest8({
+      fieldErrors: {
+        currentPassword: "Please enter your current password before entering a new password."
+      }
+    });
+  if (formData.has("newPassword") && formData.get("newPassword") !== formData.get("newPassword2"))
+    return badRequest8({
+      fieldErrors: {
+        newPassword2: "New passwords must match."
+      }
+    });
+  try {
+    let customer = {};
+    formDataHas(formData, "firstName") && (customer.firstName = formData.get("firstName")), formDataHas(formData, "lastName") && (customer.lastName = formData.get("lastName")), formDataHas(formData, "email") && (customer.email = formData.get("email")), formDataHas(formData, "phone") && (customer.phone = formData.get("phone")), formDataHas(formData, "newPassword") && (customer.password = formData.get("newPassword"));
+    let data = await context2.storefront.mutate(CUSTOMER_UPDATE_MUTATION, {
+      variables: {
+        customerAccessToken,
+        customer
+      }
+    });
+    return assertApiErrors(data.customerUpdate), redirect3(params != null && params.lang ? `${params.lang}/account` : "/account");
+  } catch (error) {
+    return badRequest8({ formError: error.message });
+  }
+};
+function AccountDetailsEdit() {
+  var _a2, _b, _c, _d, _e4, _f, _g, _h, _i;
+  let actionData = useActionData2(), { customer } = useOutletContext(), transition = useTransition();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(import_jsx_dev_runtime55.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: "Update your profile" }, void 0, !1, {
+      fileName: "app/routes/account/__private/edit.tsx",
+      lineNumber: 135,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Form, { method: "post", children: [
+      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 141,
+        columnNumber: 13
+      }, this) }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 140,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "firstName",
+          name: "firstName",
+          type: "text",
+          autoComplete: "given-name",
+          placeholder: "First name",
+          "aria-label": "First name",
+          defaultValue: customer.firstName ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 145,
+          columnNumber: 11
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 144,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "lastName",
+          name: "lastName",
+          type: "text",
+          autoComplete: "family-name",
+          placeholder: "Last name",
+          "aria-label": "Last name",
+          defaultValue: customer.lastName ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 157,
+          columnNumber: 11
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 156,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        "input",
+        {
+          className: getInputStyleClasses(),
+          id: "phone",
+          name: "phone",
+          type: "tel",
+          autoComplete: "tel",
+          placeholder: "Mobile",
+          "aria-label": "Mobile",
+          defaultValue: customer.phone ?? ""
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 169,
+          columnNumber: 11
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 168,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+          "input",
+          {
+            className: getInputStyleClasses((_a2 = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _a2.email),
+            id: "email",
+            name: "email",
+            type: "email",
+            autoComplete: "email",
+            required: !0,
+            placeholder: "Email address",
+            "aria-label": "Email address",
+            defaultValue: customer.email ?? ""
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/routes/account/__private/edit.tsx",
+            lineNumber: 181,
+            columnNumber: 11
+          },
+          this
+        ),
+        ((_b = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _b.email) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+          actionData.fieldErrors.email,
+          " \xA0"
+        ] }, void 0, !0, {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 193,
+          columnNumber: 13
+        }, this)
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 180,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { className: "mb-6 mt-6", as: "h3", size: "lead", children: "Change your password" }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 198,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        Password,
+        {
+          name: "currentPassword",
+          label: "Current password",
+          passwordError: (_c = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _c.currentPassword
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 201,
+          columnNumber: 9
+        },
+        this
+      ),
+      ((_d = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _d.currentPassword) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
+        actionData.fieldErrors.currentPassword,
+        " \xA0"
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 207,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        Password,
+        {
+          name: "newPassword",
+          label: "New password",
+          passwordError: (_e4 = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _e4.newPassword
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 211,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        Password,
+        {
+          name: "newPassword2",
+          label: "Re-enter new password",
+          passwordError: (_f = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _f.newPassword2
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 216,
+          columnNumber: 9
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        Text,
+        {
+          size: "fine",
+          color: "subtle",
+          className: clsx_m_default(
+            "mt-1",
+            ((_g = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _g.newPassword) && "text-red-500"
+          ),
+          children: "Passwords must be at least 8 characters."
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 221,
+          columnNumber: 9
+        },
+        this
+      ),
+      (_h = actionData == null ? void 0 : actionData.fieldErrors) != null && _h.newPassword2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("br", {}, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 231,
+        columnNumber: 50
+      }, this) : null,
+      ((_i = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _i.newPassword2) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
+        actionData.fieldErrors.newPassword2,
+        " \xA0"
+      ] }, void 0, !0, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 233,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+        Button,
+        {
+          className: "text-sm mb-2",
+          variant: "primary",
+          width: "full",
+          type: "submit",
+          disabled: transition.state !== "idle",
+          children: transition.state !== "idle" ? "Saving" : "Save"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/routes/account/__private/edit.tsx",
+          lineNumber: 238,
+          columnNumber: 11
+        },
+        this
+      ) }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 237,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Button, { to: "..", className: "text-sm", variant: "secondary", width: "full", children: "Cancel" }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 249,
+        columnNumber: 11
+      }, this) }, void 0, !1, {
+        fileName: "app/routes/account/__private/edit.tsx",
+        lineNumber: 248,
+        columnNumber: 9
+      }, this)
+    ] }, void 0, !0, {
+      fileName: "app/routes/account/__private/edit.tsx",
+      lineNumber: 138,
+      columnNumber: 7
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/routes/account/__private/edit.tsx",
+    lineNumber: 134,
+    columnNumber: 5
+  }, this);
+}
+function Password({
+  name,
+  passwordError,
+  label
+}) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+    "input",
+    {
+      className: getInputStyleClasses(passwordError),
+      id: name,
+      name,
+      type: "password",
+      autoComplete: name === "currentPassword" ? "current-password" : void 0,
+      placeholder: label,
+      "aria-label": label,
+      minLength: 8
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/routes/account/__private/edit.tsx",
+      lineNumber: 269,
+      columnNumber: 7
+    },
+    this
+  ) }, void 0, !1, {
+    fileName: "app/routes/account/__private/edit.tsx",
+    lineNumber: 268,
+    columnNumber: 5
+  }, this);
+}
+var CUSTOMER_UPDATE_MUTATION = `#graphql
+  mutation customerUpdate($customerAccessToken: String!, $customer: CustomerUpdateInput!) {
+    customerUpdate(customerAccessToken: $customerAccessToken, customer: $customer) {
+      customerUserErrors {
+        code
+        field
+        message
+      }
+    }
+  }
+  `;
+
+// app/routes/cartOld.tsx
+var cartOld_exports = {};
+__export(cartOld_exports, {
+  action: () => action10,
   cartAdd: () => cartAdd,
   cartCreate: () => cartCreate,
   cartDiscountCodesUpdate: () => cartDiscountCodesUpdate,
@@ -46358,9 +50114,9 @@ __export(cart_exports, {
   cartUpdateBuyerIdentity: () => cartUpdateBuyerIdentity,
   default: () => CartRoute
 });
-var import_react103 = __toESM(require_react());
-var import_jsx_dev_runtime45 = __toESM(require_jsx_dev_runtime());
-async function action2({ request, context: context2 }) {
+var import_react121 = __toESM(require_react());
+var import_jsx_dev_runtime56 = __toESM(require_jsx_dev_runtime());
+async function action10({ request, context: context2 }) {
   let { session, storefront } = context2, headers = new Headers(), [formData, storedCartId, customerAccessToken] = await Promise.all([
     request.formData(),
     session.get("cartId"),
@@ -46447,24 +50203,24 @@ async function action2({ request, context: context2 }) {
 function CartRoute() {
   var _a2;
   let [root] = useMatches2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_react103.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(CartLoading, {}, void 0, !1, {
-    fileName: "app/routes/cart.tsx",
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react121.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(CartLoading, {}, void 0, !1, {
+    fileName: "app/routes/cartOld.tsx",
     lineNumber: 181,
     columnNumber: 27
-  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Await2, { resolve: (_a2 = root.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
-    fileName: "app/routes/cart.tsx",
+  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: (_a2 = root.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
+    fileName: "app/routes/cartOld.tsx",
     lineNumber: 183,
     columnNumber: 22
   }, this) }, void 0, !1, {
-    fileName: "app/routes/cart.tsx",
+    fileName: "app/routes/cartOld.tsx",
     lineNumber: 182,
     columnNumber: 9
   }, this) }, void 0, !1, {
-    fileName: "app/routes/cart.tsx",
+    fileName: "app/routes/cartOld.tsx",
     lineNumber: 181,
     columnNumber: 7
   }, this) }, void 0, !1, {
-    fileName: "app/routes/cart.tsx",
+    fileName: "app/routes/cartOld.tsx",
     lineNumber: 180,
     columnNumber: 5
   }, this);
@@ -46674,3801 +50430,12 @@ async function cartDiscountCodesUpdate({
   ), cartDiscountCodesUpdate2;
 }
 
-// app/routes/discounts.$code.tsx
-async function loader9({ request, context: context2, params }) {
-  let { storefront } = context2, session = context2.session, { code } = params, url = new URL(request.url), searchParams = new URLSearchParams(url.search), redirectUrl = searchParams.get("redirect") || searchParams.get("return_to") || "/", headers = new Headers();
-  if (!code)
-    return redirect3(redirectUrl);
-  let cartId = await session.get("cartId");
-  if (!cartId) {
-    let { cart, errors: graphqlCartErrors } = await cartCreate({
-      input: {},
-      storefront
-    });
-    if (graphqlCartErrors != null && graphqlCartErrors.length)
-      return redirect3(redirectUrl);
-    cartId = cart.id, session.set("cartId", cartId), headers.set("Set-Cookie", await session.commit());
-  }
-  return await cartDiscountCodesUpdate({
-    cartId,
-    discountCodes: [code],
-    storefront
-  }), redirect3(redirectUrl, { headers });
-}
-
-// app/routes/policies/index.tsx
-var policies_exports = {};
-__export(policies_exports, {
-  default: () => Policies2,
-  handle: () => handle6,
-  loader: () => loader10
-});
-var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), handle6 = {
-  seo: {
-    title: "Policies"
-  }
-};
-async function loader10({ context: { storefront } }) {
-  let data = await storefront.query(POLICIES_QUERY);
-  invariant4(data, "No data returned from Shopify API");
-  let policies = Object.values(data.shop || {});
-  if (policies.length === 0)
-    throw new Response("Not found", { status: 404 });
-  return json3(
-    {
-      policies
-    },
-    {
-      headers: {}
-    }
-  );
-}
-function Policies2() {
-  let { policies } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(PageHeader, { heading: "Policies" }, void 0, !1, {
-      fileName: "app/routes/policies/index.tsx",
-      lineNumber: 43,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Section, { padding: "x", className: "mb-24", children: policies.map((policy) => policy && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Heading, { className: "font-normal text-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Link3, { to: `/policies/${policy.handle}`, children: policy.title }, void 0, !1, {
-      fileName: "app/routes/policies/index.tsx",
-      lineNumber: 49,
-      columnNumber: 17
-    }, this) }, policy.id, !1, {
-      fileName: "app/routes/policies/index.tsx",
-      lineNumber: 48,
-      columnNumber: 15
-    }, this)) }, void 0, !1, {
-      fileName: "app/routes/policies/index.tsx",
-      lineNumber: 44,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/policies/index.tsx",
-    lineNumber: 42,
-    columnNumber: 5
-  }, this);
-}
-var POLICIES_QUERY = `#graphql
-  fragment Policy on ShopPolicy {
-    id
-    title
-    handle
-  }
-
-  query PoliciesQuery {
-    shop {
-      privacyPolicy {
-        ...Policy
-      }
-      shippingPolicy {
-        ...Policy
-      }
-      termsOfService {
-        ...Policy
-      }
-      refundPolicy {
-        ...Policy
-      }
-      subscriptionPolicy {
-        id
-        title
-        handle
-      }
-    }
-  }
-`;
-
-// app/routes/products/index.tsx
-var products_exports = {};
-__export(products_exports, {
-  default: () => AllProducts,
-  handle: () => handle7,
-  loader: () => loader11
-});
-var import_jsx_dev_runtime47 = __toESM(require_jsx_dev_runtime()), PAGE_BY = 8;
-async function loader11({ request, context: { storefront } }) {
-  let variables = getPaginationVariables(request, PAGE_BY), data = await storefront.query(ALL_PRODUCTS_QUERY, {
-    variables: {
-      ...variables,
-      country: storefront.i18n.country,
-      language: storefront.i18n.language
-    }
-  });
-  return invariant4(data, "No data returned from Shopify API"), data.products;
-}
-var handle7 = {
-  seo: {
-    title: "Products"
-  }
-};
-function AllProducts() {
-  let products = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(PageHeader, { heading: "All Products", variant: "allCollections" }, void 0, !1, {
-      fileName: "app/routes/products/index.tsx",
-      lineNumber: 47,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Pagination, { connection: products, children: ({
-      endCursor,
-      hasNextPage,
-      hasPreviousPage,
-      nextPageUrl,
-      nodes,
-      prevPageUrl,
-      startCursor,
-      nextLinkRef,
-      isLoading
-    }) => {
-      let itemsMarkup = nodes.map((product, i10) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
-        ProductCard,
-        {
-          product,
-          loading: getImageLoadingPriority(i10)
-        },
-        product.id,
-        !1,
-        {
-          fileName: "app/routes/products/index.tsx",
-          lineNumber: 62,
-          columnNumber: 15
-        },
-        this
-      ));
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-        hasPreviousPage && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
-          Button,
-          {
-            to: prevPageUrl,
-            variant: "secondary",
-            prefetch: "intent",
-            width: "full",
-            disabled: !isLoading,
-            state: {
-              pageInfo: {
-                endCursor,
-                hasNextPage,
-                startCursor
-              },
-              nodes
-            },
-            children: isLoading ? "Loading..." : "Previous"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/products/index.tsx",
-            lineNumber: 73,
-            columnNumber: 21
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/routes/products/index.tsx",
-          lineNumber: 72,
-          columnNumber: 19
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
-          fileName: "app/routes/products/index.tsx",
-          lineNumber: 92,
-          columnNumber: 17
-        }, this),
-        hasNextPage && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
-          Button,
-          {
-            ref: nextLinkRef,
-            to: nextPageUrl,
-            variant: "secondary",
-            prefetch: "intent",
-            width: "full",
-            disabled: !isLoading,
-            state: {
-              pageInfo: {
-                endCursor,
-                hasPreviousPage,
-                startCursor
-              },
-              nodes
-            },
-            children: isLoading ? "Loading..." : "Next"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/products/index.tsx",
-            lineNumber: 95,
-            columnNumber: 21
-          },
-          this
-        ) }, void 0, !1, {
-          fileName: "app/routes/products/index.tsx",
-          lineNumber: 94,
-          columnNumber: 19
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/products/index.tsx",
-        lineNumber: 70,
-        columnNumber: 15
-      }, this);
-    } }, void 0, !1, {
-      fileName: "app/routes/products/index.tsx",
-      lineNumber: 49,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/products/index.tsx",
-      lineNumber: 48,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/products/index.tsx",
-    lineNumber: 46,
-    columnNumber: 5
-  }, this);
-}
-var ALL_PRODUCTS_QUERY = `#graphql
-  ${PRODUCT_CARD_FRAGMENT}
-  query AllProducts(
-    $country: CountryCode
-    $language: LanguageCode
-    $first: Int
-    $last: Int
-    $startCursor: String
-    $endCursor: String
-  ) @inContext(country: $country, language: $language) {
-    products(first: $first, last: $last, before: $startCursor, after: $endCursor) {
-      nodes {
-        ...ProductCard
-      }
-      pageInfo {
-        hasPreviousPage
-        hasNextPage
-        startCursor
-        endCursor
-      }
-    }
-  }
-`;
-
-// app/routes/[sitemap.xml].tsx
-var sitemap_xml_exports = {};
-__export(sitemap_xml_exports, {
-  loader: () => loader12
-});
-var MAX_URLS = 250;
-async function loader12({ request, context: { storefront } }) {
-  let data = await storefront.query(SITEMAP_QUERY, {
-    variables: {
-      urlLimits: MAX_URLS,
-      language: storefront.i18n.language
-    }
-  });
-  return invariant4(data, "Sitemap data is missing"), new Response(
-    shopSitemap({ data, baseUrl: new URL(request.url).origin }),
-    {
-      headers: {
-        "content-type": "application/xml",
-        "cache-control": `max-age=${60 * 60 * 24}`
-      }
-    }
-  );
-}
-function shopSitemap({
-  data,
-  baseUrl
-}) {
-  let productsData = flattenConnection(data.products).filter((product) => product.onlineStoreUrl).map((product) => {
-    var _a2;
-    let finalObject = {
-      url: `${baseUrl}/products/${product.handle}`,
-      lastMod: product.updatedAt,
-      changeFreq: "daily"
-    };
-    return (_a2 = product.featuredImage) != null && _a2.url && (finalObject.image = {
-      url: product.featuredImage.url
-    }, product.title && (finalObject.image.title = product.title), product.featuredImage.altText && (finalObject.image.caption = product.featuredImage.altText)), finalObject;
-  }), collectionsData = flattenConnection(data.collections).filter((collection) => collection.onlineStoreUrl).map((collection) => ({
-    url: `${baseUrl}/collections/${collection.handle}`,
-    lastMod: collection.updatedAt,
-    changeFreq: "daily"
-  })), pagesData = flattenConnection(data.pages).filter((page) => page.onlineStoreUrl).map((page) => ({
-    url: `${baseUrl}/pages/${page.handle}`,
-    lastMod: page.updatedAt,
-    changeFreq: "weekly"
-  }));
-  return `
-    <urlset
-      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-      xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-    >
-      ${[...productsData, ...collectionsData, ...pagesData].map((url) => renderUrlTag(url)).join("")}
-    </urlset>`;
-}
-function renderUrlTag({
-  url,
-  lastMod,
-  changeFreq,
-  image
-}) {
-  return `
-    <url>
-      <loc>${url}</loc>
-      <lastmod>${lastMod}</lastmod>
-      <changefreq>${changeFreq}</changefreq>
-      ${image ? `
-        <image:image>
-          <image:loc>${image.url}</image:loc>
-          <image:title>${image.title ?? ""}</image:title>
-          <image:caption>${image.caption ?? ""}</image:caption>
-        </image:image>` : ""}
-
-    </url>
-  `;
-}
-var SITEMAP_QUERY = `#graphql
-  query sitemaps($urlLimits: Int, $language: LanguageCode)
-  @inContext(language: $language) {
-    products(
-      first: $urlLimits
-      query: "published_status:'online_store:visible'"
-    ) {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-        title
-        featuredImage {
-          url
-          altText
-        }
-      }
-    }
-    collections(
-      first: $urlLimits
-      query: "published_status:'online_store:visible'"
-    ) {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-      }
-    }
-    pages(first: $urlLimits, query: "published_status:'published'") {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-      }
-    }
-  }
-`;
-
-// app/routes/api/countries.tsx
-var countries_exports = {};
-__export(countries_exports, {
-  default: () => CountriesApiRoute,
-  loader: () => loader13
-});
-async function loader13({ context: { storefront } }) {
-  return json3(
-    {
-      ...countries
-    },
-    {
-      headers: {
-        "cache-control": storefront.generateCacheControlHeader(
-          storefront.CacheLong()
-        )
-      }
-    }
-  );
-}
-function CountriesApiRoute() {
-  return null;
-}
-
-// app/routes/[robots.txt].tsx
-var robots_txt_exports = {};
-__export(robots_txt_exports, {
-  loader: () => loader14
-});
-var loader14 = ({ request }) => {
-  let url = new URL(request.url);
-  return new Response(robotsTxtData({ url: url.origin }), {
-    status: 200,
-    headers: {
-      "content-type": "text/plain",
-      "cache-control": `max-age=${60 * 60 * 24}`
-    }
-  });
-};
-function robotsTxtData({ url }) {
-  let sitemapUrl = url ? `${url}/sitemap.xml` : void 0;
-  return `
-User-agent: *
-Disallow: /admin
-Disallow: /cart
-Disallow: /orders
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /account
-${sitemapUrl ? `Sitemap: ${sitemapUrl}` : ""}
-
-# Google adsbot ignores robots.txt unless specifically named!
-User-agent: adsbot-google
-Disallow: /checkouts/
-Disallow: /checkout
-Disallow: /carts
-Disallow: /orders
-
-User-agent: Pinterest
-Crawl-delay: 1
-`.trim();
-}
-
-// app/routes/api/products.tsx
-var products_exports2 = {};
-__export(products_exports2, {
-  default: () => ProductsApiRoute,
-  loader: () => loader15
-});
-async function loader15({ request, context: { storefront } }) {
-  let url = new URL(request.url), searchParams = new URLSearchParams(url.search), sortKey = searchParams.get("sortKey") ?? "BEST_SELLING", query2 = searchParams.get("query") ?? "", reverse = !1;
-  try {
-    searchParams.get("reverse") === "true" && (reverse = !0);
-  } catch {
-  }
-  let count2 = 4;
-  try {
-    let _count = searchParams.get("count");
-    typeof _count == "string" && (count2 = parseInt(_count));
-  } catch {
-  }
-  let { products } = await storefront.query(PRODUCTS_QUERY, {
-    variables: {
-      count: count2,
-      query: query2,
-      reverse,
-      sortKey,
-      country: storefront.i18n.country,
-      language: storefront.i18n.language
-    },
-    cache: storefront.CacheLong()
-  });
-  return invariant4(products, "No data returned from top products query"), json3({
-    products: flattenConnection(products)
-  });
-}
-var PRODUCTS_QUERY = `#graphql
-  ${PRODUCT_CARD_FRAGMENT}
-  query (
-    $query: String
-    $count: Int
-    $reverse: Boolean
-    $country: CountryCode
-    $language: LanguageCode
-    $sortKey: ProductSortKeys
-  ) @inContext(country: $country, language: $language) {
-    products(first: $count, sortKey: $sortKey, reverse: $reverse, query: $query) {
-      nodes {
-        ...ProductCard
-      }
-    }
-  }
-`;
-function ProductsApiRoute() {
-  return null;
-}
-
-// app/routes/indexOLD.tsx
-var indexOLD_exports = {};
-__export(indexOLD_exports, {
-  FEATURED_COLLECTIONS_QUERY: () => FEATURED_COLLECTIONS_QUERY,
-  HOMEPAGE_FEATURED_PRODUCTS_QUERY: () => HOMEPAGE_FEATURED_PRODUCTS_QUERY,
-  default: () => Homepage,
-  loader: () => loader16
-});
-async function loader16({ params, context: context2 }) {
-  let { language, country } = context2.storefront.i18n;
-  if (params.lang && params.lang.toLowerCase() !== `${language}-${country}`.toLowerCase())
-    throw new Response(null, { status: 404 });
-  let { shop, hero } = await context2.storefront.query(HOMEPAGE_SEO_QUERY, {
-    variables: { handle: "freestyle" }
-  });
-  return defer3({
-    shop,
-    primaryHero: hero,
-    featuredProducts: context2.storefront.query(HOMEPAGE_FEATURED_PRODUCTS_QUERY, {
-      variables: {
-        country,
-        language
-      }
-    }),
-    secondaryHero: context2.storefront.query(
-      COLLECTION_HERO_QUERY,
-      {
-        variables: {
-          handle: "backcountry",
-          country,
-          language
-        }
-      }
-    ),
-    featuredCollections: context2.storefront.query(FEATURED_COLLECTIONS_QUERY, {
-      variables: {
-        country,
-        language
-      }
-    }),
-    tertiaryHero: context2.storefront.query(
-      COLLECTION_HERO_QUERY,
-      {
-        variables: {
-          handle: "winter-2022",
-          country,
-          language
-        }
-      }
-    ),
-    analytics: {
-      pageType: AnalyticsPageType.home
-    }
-  });
-}
-function Homepage() {
-  let {
-    primaryHero,
-    secondaryHero,
-    tertiaryHero,
-    featuredCollections,
-    featuredProducts
-  } = useLoaderData2(), skeletons = getHeroPlaceholder([{}, {}, {}]);
-  return null;
-}
-var COLLECTION_CONTENT_FRAGMENT = `#graphql
-  ${MEDIA_FRAGMENT}
-  fragment CollectionContent on Collection {
-    id
-    handle
-    title
-    descriptionHtml
-    heading: metafield(namespace: "hero", key: "title") {
-      value
-    }
-    byline: metafield(namespace: "hero", key: "byline") {
-      value
-    }
-    cta: metafield(namespace: "hero", key: "cta") {
-      value
-    }
-    spread: metafield(namespace: "hero", key: "spread") {
-      reference {
-        ...Media
-      }
-    }
-    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {
-      reference {
-        ...Media
-      }
-    }
-  }
-`, HOMEPAGE_SEO_QUERY = `#graphql
-  ${COLLECTION_CONTENT_FRAGMENT}
-  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
-      ...CollectionContent
-    }
-    shop {
-      name
-      description
-    }
-  }
-`, COLLECTION_HERO_QUERY = `#graphql
-  ${COLLECTION_CONTENT_FRAGMENT}
-  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
-      ...CollectionContent
-    }
-  }
-`, HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
-  ${PRODUCT_CARD_FRAGMENT}
-  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    products(first: 8) {
-      nodes {
-        ...ProductCard
-      }
-    }
-  }
-`, FEATURED_COLLECTIONS_QUERY = `#graphql
-  query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    collections(
-      first: 4,
-      sortKey: UPDATED_AT
-    ) {
-      nodes {
-        id
-        title
-        handle
-        image {
-          altText
-          width
-          height
-          url
-        }
-      }
-    }
-  }
-`;
-
-// app/routes/account.tsx
-var account_exports = {};
-__export(account_exports, {
-  default: () => Authenticated,
-  getCustomer: () => getCustomer,
-  loader: () => loader18
-});
-var import_react108 = __toESM(require_react());
-
-// app/routes/account/__private/logout.ts
-var logout_exports = {};
-__export(logout_exports, {
-  action: () => action3,
-  doLogout: () => doLogout,
-  loader: () => loader17
-});
-async function doLogout(context2) {
-  let { session } = context2;
-  return session.unset("customerAccessToken"), redirect3(`${context2.storefront.i18n.pathPrefix}/account/login`, {
-    headers: {
-      "Set-Cookie": await session.commit()
-    }
-  });
-}
-async function loader17({ context: context2 }) {
-  return redirect3(context2.storefront.i18n.pathPrefix);
-}
-var action3 = async ({ context: context2 }) => doLogout(context2);
-
-// app/routes/account.tsx
-var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime());
-async function loader18({ request, context: context2, params }) {
-  let { pathname } = new URL(request.url), lang = params.lang, customerAccessToken = await context2.session.get("customerAccessToken"), isAuthenticated = Boolean(customerAccessToken), loginPath = lang ? `/${lang}/account/login` : "/account/login";
-  if (!isAuthenticated)
-    return /\/account\/login$/.test(pathname) ? json3({ isAuthenticated }) : redirect3(loginPath);
-  let customer = await getCustomer(context2, customerAccessToken), heading = customer ? customer.firstName ? `Welcome, ${customer.firstName}.` : "Welcome to your account." : "Account Details", orders = flattenConnection(customer.orders);
-  return defer3({
-    isAuthenticated,
-    customer,
-    heading,
-    orders,
-    addresses: flattenConnection(customer.addresses),
-    featuredData: getFeaturedData(context2.storefront)
-  });
-}
-function Authenticated() {
-  let data = useLoaderData2(), outlet = useOutlet(), renderOutletInModal = useMatches2().some((match2) => {
-    var _a2;
-    return (_a2 = match2 == null ? void 0 : match2.handle) == null ? void 0 : _a2.renderInModal;
-  });
-  return data.isAuthenticated ? outlet ? renderOutletInModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(import_jsx_dev_runtime48.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Modal, { cancelLink: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 99,
-      columnNumber: 13
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 98,
-      columnNumber: 11
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Account, { ...data }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 101,
-      columnNumber: 11
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 97,
-    columnNumber: 9
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 105,
-    columnNumber: 14
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Account, { ...data }, void 0, !1, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 109,
-    columnNumber: 10
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Outlet, {}, void 0, !1, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 90,
-    columnNumber: 12
-  }, this);
-}
-function Account({
-  customer,
-  orders,
-  heading,
-  addresses,
-  featuredData
-}) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(import_jsx_dev_runtime48.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("button", { type: "submit", className: "", children: "Sign out" }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 131,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 130,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 129,
-      columnNumber: 7
-    }, this),
-    orders && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 136,
-      columnNumber: 18
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 137,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
-      AccountAddressBook,
-      {
-        addresses,
-        customer
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/account.tsx",
-        lineNumber: 138,
-        columnNumber: 7
-      },
-      this
-    ),
-    !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(import_react108.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
-      Await2,
-      {
-        resolve: featuredData,
-        errorElement: "There was a problem loading featured products.",
-        children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(import_jsx_dev_runtime48.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
-            FeaturedCollections,
-            {
-              title: "Popular Collections",
-              collections: data.featuredCollections
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account.tsx",
-              lineNumber: 150,
-              columnNumber: 17
-            },
-            this
-          ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(ProductSwimlane, { products: data.featuredProducts }, void 0, !1, {
-            fileName: "app/routes/account.tsx",
-            lineNumber: 154,
-            columnNumber: 17
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/account.tsx",
-          lineNumber: 149,
-          columnNumber: 15
-        }, this)
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/account.tsx",
-        lineNumber: 144,
-        columnNumber: 11
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 143,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 128,
-    columnNumber: 5
-  }, this);
-}
-function AccountOrderHistory({ orders }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 168,
-      columnNumber: 9
-    }, this),
-    orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Orders, { orders }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 169,
-      columnNumber: 27
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(EmptyOrders, {}, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 169,
-      columnNumber: 56
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 167,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 166,
-    columnNumber: 5
-  }, this);
-}
-function EmptyOrders() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 178,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
-      Button,
-      {
-        className: "w-full mt-2 text-sm",
-        variant: "secondary",
-        to: usePrefixPathWithLocale("/"),
-        children: "Start Shopping"
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/routes/account.tsx",
-        lineNumber: 182,
-        columnNumber: 9
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/routes/account.tsx",
-      lineNumber: 181,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 177,
-    columnNumber: 5
-  }, this);
-}
-function Orders({ orders }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order2) => /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(OrderCard, { order: order2 }, order2.id, !1, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 198,
-    columnNumber: 9
-  }, this)) }, void 0, !1, {
-    fileName: "app/routes/account.tsx",
-    lineNumber: 196,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_QUERY = `#graphql
-  query CustomerDetails(
-    $customerAccessToken: String!
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
-    customer(customerAccessToken: $customerAccessToken) {
-      firstName
-      lastName
-      phone
-      email
-      defaultAddress {
-        id
-        formatted
-        firstName
-        lastName
-        company
-        address1
-        address2
-        country
-        province
-        city
-        zip
-        phone
-      }
-      addresses(first: 6) {
-        edges {
-          node {
-            id
-            formatted
-            firstName
-            lastName
-            company
-            address1
-            address2
-            country
-            province
-            city
-            zip
-            phone
-          }
-        }
-      }
-      orders(first: 250, sortKey: PROCESSED_AT, reverse: true) {
-        edges {
-          node {
-            id
-            orderNumber
-            processedAt
-            financialStatus
-            fulfillmentStatus
-            currentTotalPrice {
-              amount
-              currencyCode
-            }
-            lineItems(first: 2) {
-              edges {
-                node {
-                  variant {
-                    image {
-                      url
-                      altText
-                      height
-                      width
-                    }
-                  }
-                  title
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`;
-async function getCustomer(context2, customerAccessToken) {
-  let { storefront } = context2, data = await storefront.query(CUSTOMER_QUERY, {
-    variables: {
-      customerAccessToken,
-      country: context2.storefront.i18n.country,
-      language: context2.storefront.i18n.language
-    }
-  });
-  if (!data || !data.customer)
-    throw await doLogout(context2);
-  return data.customer;
-}
-
-// app/routes/account/__public/activate.$id.$activationToken.tsx
-var activate_id_activationToken_exports = {};
-__export(activate_id_activationToken_exports, {
-  action: () => action4,
-  default: () => Activate,
-  handle: () => handle8,
-  meta: () => meta4
-});
-var import_react110 = __toESM(require_react());
-var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), badRequest2 = (data) => json3(data, { status: 400 }), handle8 = {
-  isPublic: !0
-}, action4 = async ({
-  request,
-  context: context2,
-  params: { lang, id, activationToken }
-}) => {
-  var _a2, _b;
-  if (!id || !activationToken || typeof id != "string" || typeof activationToken != "string")
-    return badRequest2({
-      formError: "Wrong token. The link you followed might be wrong."
-    });
-  let formData = await request.formData(), password = formData.get("password"), passwordConfirm = formData.get("passwordConfirm");
-  if (!password || !passwordConfirm || typeof password != "string" || typeof passwordConfirm != "string" || password !== passwordConfirm)
-    return badRequest2({
-      formError: "Please provide matching passwords"
-    });
-  let { session, storefront } = context2;
-  try {
-    let data = await storefront.mutate(CUSTOMER_ACTIVATE_MUTATION, {
-      variables: {
-        id: `gid://shopify/Customer/${id}`,
-        input: {
-          password,
-          activationToken
-        }
-      }
-    }), { accessToken } = ((_a2 = data == null ? void 0 : data.customerActivate) == null ? void 0 : _a2.customerAccessToken) ?? {};
-    if (!accessToken)
-      throw new Error((_b = data == null ? void 0 : data.customerActivate) == null ? void 0 : _b.customerUserErrors.join(", "));
-    return session.set("customerAccessToken", accessToken), redirect3(lang ? `${lang}/account` : "/account", {
-      headers: {
-        "Set-Cookie": await session.commit()
-      }
-    });
-  } catch (error) {
-    return storefront.isApiError(error) ? badRequest2({
-      formError: "Something went wrong. Please try again later."
-    }) : badRequest2({
-      formError: "Sorry. We could not activate your account."
-    });
-  }
-}, meta4 = () => ({
-  title: "Activate Account"
-});
-function Activate() {
-  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react110.useState)(
-    null
-  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react110.useState)(null), passwordInput = (0, import_react110.useRef)(null), passwordConfirmInput = (0, import_react110.useRef)(null), validatePasswordConfirm = () => {
-    var _a2;
-    !passwordConfirmInput.current || (passwordConfirmInput.current.value.length && passwordConfirmInput.current.value !== ((_a2 = passwordInput.current) == null ? void 0 : _a2.value) ? setNativePasswordConfirmError("The two passwords entered did not match.") : passwordConfirmInput.current.validity.valid || !passwordConfirmInput.current.value.length ? setNativePasswordConfirmError(null) : setNativePasswordConfirmError(
-      passwordConfirmInput.current.validity.valueMissing ? "Please re-enter the password" : "Passwords must be at least 8 characters"
-    ));
-  };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("h1", { className: "text-4xl", children: "Activate Account." }, void 0, !1, {
-      fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-      lineNumber: 146,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "mt-4", children: "Create your password to activate your account." }, void 0, !1, {
-      fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-      lineNumber: 147,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
-      Form,
-      {
-        method: "post",
-        noValidate: !0,
-        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
-        children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
-            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-            lineNumber: 156,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-            lineNumber: 155,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
-              "input",
-              {
-                ref: passwordInput,
-                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
-                id: "password",
-                name: "password",
-                type: "password",
-                autoComplete: "current-password",
-                placeholder: "Password",
-                "aria-label": "Password",
-                minLength: 8,
-                required: !0,
-                autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-                lineNumber: 160,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              " ",
-              nativePasswordError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-              lineNumber: 190,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-            lineNumber: 159,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
-              "input",
-              {
-                ref: passwordConfirmInput,
-                className: `mb-1 ${getInputStyleClasses(
-                  nativePasswordConfirmError
-                )}`,
-                id: "passwordConfirm",
-                name: "passwordConfirm",
-                type: "password",
-                autoComplete: "current-password",
-                placeholder: "Re-enter password",
-                "aria-label": "Re-enter password",
-                minLength: 8,
-                required: !0,
-                autoFocus: !0,
-                onBlur: validatePasswordConfirm
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-                lineNumber: 197,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              " ",
-              nativePasswordConfirmError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-              lineNumber: 215,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-            lineNumber: 196,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
-            "button",
-            {
-              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
-              type: "submit",
-              children: "Save"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-              lineNumber: 222,
-              columnNumber: 13
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-            lineNumber: 221,
-            columnNumber: 11
-          }, this)
-        ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-        lineNumber: 149,
-        columnNumber: 9
-      },
-      this
-    )
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-    lineNumber: 145,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
-    lineNumber: 144,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_ACTIVATE_MUTATION = `#graphql
-  mutation customerActivate($id: ID!, $input: CustomerActivateInput!) {
-    customerActivate(id: $id, input: $input) {
-      customerAccessToken {
-        accessToken
-        expiresAt
-      }
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`;
-
-// app/routes/account/__public/reset.$id.$resetToken.tsx
-var reset_id_resetToken_exports = {};
-__export(reset_id_resetToken_exports, {
-  action: () => action5,
-  default: () => Reset,
-  meta: () => meta5
-});
-var import_react112 = __toESM(require_react());
-var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), action5 = async ({
-  request,
-  context: context2,
-  params: { lang, id, resetToken }
-}) => {
-  var _a2, _b;
-  if (!id || !resetToken || typeof id != "string" || typeof resetToken != "string")
-    return badRequest3({
-      formError: "Wrong token. Please try to reset your password again."
-    });
-  let formData = await request.formData(), password = formData.get("password"), passwordConfirm = formData.get("passwordConfirm");
-  if (!password || !passwordConfirm || typeof password != "string" || typeof passwordConfirm != "string" || password !== passwordConfirm)
-    return badRequest3({
-      formError: "Please provide matching passwords"
-    });
-  let { session, storefront } = context2;
-  try {
-    let data = await storefront.mutate(
-      CUSTOMER_RESET_MUTATION,
-      {
-        variables: {
-          id: `gid://shopify/Customer/${id}`,
-          input: {
-            password,
-            resetToken
-          }
-        }
-      }
-    ), { accessToken } = ((_a2 = data == null ? void 0 : data.customerReset) == null ? void 0 : _a2.customerAccessToken) ?? {};
-    if (!accessToken)
-      throw new Error((_b = data == null ? void 0 : data.customerReset) == null ? void 0 : _b.customerUserErrors.join(", "));
-    return session.set("customerAccessToken", accessToken), redirect3(lang ? `${lang}/account` : "/account", {
-      headers: {
-        "Set-Cookie": await session.commit()
-      }
-    });
-  } catch (error) {
-    return storefront.isApiError(error) ? badRequest3({
-      formError: "Something went wrong. Please try again later."
-    }) : badRequest3({
-      formError: "Sorry. We could not update your password."
-    });
-  }
-}, meta5 = () => ({
-  title: "Reset Password"
-});
-function Reset() {
-  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react112.useState)(
-    null
-  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react112.useState)(null), passwordInput = (0, import_react112.useRef)(null), passwordConfirmInput = (0, import_react112.useRef)(null), validatePasswordConfirm = () => {
-    var _a2;
-    !passwordConfirmInput.current || (passwordConfirmInput.current.value.length && passwordConfirmInput.current.value !== ((_a2 = passwordInput.current) == null ? void 0 : _a2.value) ? setNativePasswordConfirmError("The two passwords entered did not match.") : passwordConfirmInput.current.validity.valid || !passwordConfirmInput.current.value.length ? setNativePasswordConfirmError(null) : setNativePasswordConfirmError(
-      passwordConfirmInput.current.validity.valueMissing ? "Please re-enter the password" : "Passwords must be at least 8 characters"
-    ));
-  };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("h1", { className: "text-4xl", children: "Reset Password." }, void 0, !1, {
-      fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-      lineNumber: 143,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "mt-4", children: "Enter a new password for your account." }, void 0, !1, {
-      fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-      lineNumber: 144,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
-      Form,
-      {
-        method: "post",
-        noValidate: !0,
-        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
-        children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
-            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-            lineNumber: 153,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-            lineNumber: 152,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
-              "input",
-              {
-                ref: passwordInput,
-                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
-                id: "password",
-                name: "password",
-                type: "password",
-                autoComplete: "current-password",
-                placeholder: "Password",
-                "aria-label": "Password",
-                minLength: 8,
-                required: !0,
-                autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-                lineNumber: 157,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              " ",
-              nativePasswordError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-              lineNumber: 187,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-            lineNumber: 156,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
-              "input",
-              {
-                ref: passwordConfirmInput,
-                className: `mb-1 ${getInputStyleClasses(
-                  nativePasswordConfirmError
-                )}`,
-                id: "passwordConfirm",
-                name: "passwordConfirm",
-                type: "password",
-                autoComplete: "current-password",
-                placeholder: "Re-enter password",
-                "aria-label": "Re-enter password",
-                minLength: 8,
-                required: !0,
-                autoFocus: !0,
-                onBlur: validatePasswordConfirm
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-                lineNumber: 194,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              " ",
-              nativePasswordConfirmError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-              lineNumber: 212,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-            lineNumber: 193,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
-            "button",
-            {
-              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
-              type: "submit",
-              children: "Save"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-              lineNumber: 219,
-              columnNumber: 13
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-            lineNumber: 218,
-            columnNumber: 11
-          }, this)
-        ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-        lineNumber: 146,
-        columnNumber: 9
-      },
-      this
-    )
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-    lineNumber: 142,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
-    lineNumber: 141,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_RESET_MUTATION = `#graphql
-  mutation customerReset($id: ID!, $input: CustomerResetInput!) {
-    customerReset(id: $id, input: $input) {
-      customerAccessToken {
-        accessToken
-        expiresAt
-      }
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`;
-
-// app/routes/account/__private/address/$id.tsx
-var id_exports = {};
-__export(id_exports, {
-  action: () => action6,
-  default: () => EditAddress,
-  handle: () => handle9
-});
-var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), badRequest4 = (data) => json3(data, { status: 400 }), handle9 = {
-  renderInModal: !0
-}, action6 = async ({ request, context: context2, params }) => {
-  var _a2, _b;
-  let { storefront, session } = context2, formData = await request.formData(), customerAccessToken = await session.get("customerAccessToken");
-  invariant4(customerAccessToken, "You must be logged in to edit your account.");
-  let addressId = formData.get("addressId");
-  if (invariant4(typeof addressId == "string", "You must provide an address id."), request.method === "DELETE")
-    try {
-      let data = await storefront.mutate(DELETE_ADDRESS_MUTATION, {
-        variables: { customerAccessToken, id: addressId }
-      });
-      return assertApiErrors(data.customerAddressDelete), redirect3(params.lang ? `${params.lang}/account` : "/account");
-    } catch (error) {
-      return badRequest4({ formError: error.message });
-    }
-  let address = {}, keys = [
-    "lastName",
-    "firstName",
-    "address1",
-    "address2",
-    "city",
-    "province",
-    "country",
-    "zip",
-    "phone",
-    "company"
-  ];
-  for (let key of keys) {
-    let value = formData.get(key);
-    typeof value == "string" && (address[key] = value);
-  }
-  let defaultAddress = formData.get("defaultAddress");
-  if (addressId === "add")
-    try {
-      let data = await storefront.mutate(CREATE_ADDRESS_MUTATION, {
-        variables: { customerAccessToken, address }
-      });
-      assertApiErrors(data.customerAddressCreate);
-      let newId = (_b = (_a2 = data.customerAddressCreate) == null ? void 0 : _a2.customerAddress) == null ? void 0 : _b.id;
-      if (invariant4(newId, "Expected customer address to be created"), defaultAddress) {
-        let data2 = await storefront.mutate(UPDATE_DEFAULT_ADDRESS_MUTATION, {
-          variables: { customerAccessToken, addressId: newId }
-        });
-        assertApiErrors(data2.customerDefaultAddressUpdate);
-      }
-      return redirect3(params.lang ? `${params.lang}/account` : "/account");
-    } catch (error) {
-      return badRequest4({ formError: error.message });
-    }
-  else
-    try {
-      let data = await storefront.mutate(UPDATE_ADDRESS_MUTATION, {
-        variables: {
-          address,
-          customerAccessToken,
-          id: decodeURIComponent(addressId)
-        }
-      });
-      if (assertApiErrors(data.customerAddressUpdate), defaultAddress) {
-        let data2 = await storefront.mutate(UPDATE_DEFAULT_ADDRESS_MUTATION, {
-          variables: {
-            customerAccessToken,
-            addressId: decodeURIComponent(addressId)
-          }
-        });
-        assertApiErrors(data2.customerDefaultAddressUpdate);
-      }
-      return redirect3(params.lang ? `${params.lang}/account` : "/account");
-    } catch (error) {
-      return badRequest4({ formError: error.message });
-    }
-};
-function EditAddress() {
-  let { id: addressId } = useParams(), isNewAddress = addressId === "add", actionData = useActionData2(), transition = useTransition(), { customer } = useOutletContext(), addresses = flattenConnection(customer.addresses), defaultAddress = customer.defaultAddress, normalizedAddress = decodeURIComponent(addressId ?? "").split("?")[0], address = addresses.find(
-    (address2) => address2.id.startsWith(normalizedAddress)
-  );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: isNewAddress ? "Add address" : "Edit address" }, void 0, !1, {
-      fileName: "app/routes/account/__private/address/$id.tsx",
-      lineNumber: 165,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Form, { method: "post", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          type: "hidden",
-          name: "addressId",
-          value: (address == null ? void 0 : address.id) ?? addressId
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 170,
-          columnNumber: 11
-        },
-        this
-      ),
-      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 177,
-        columnNumber: 15
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 176,
-        columnNumber: 13
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "firstName",
-          name: "firstName",
-          required: !0,
-          type: "text",
-          autoComplete: "given-name",
-          placeholder: "First name",
-          "aria-label": "First name",
-          defaultValue: (address == null ? void 0 : address.firstName) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 181,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 180,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "lastName",
-          name: "lastName",
-          required: !0,
-          type: "text",
-          autoComplete: "family-name",
-          placeholder: "Last name",
-          "aria-label": "Last name",
-          defaultValue: (address == null ? void 0 : address.lastName) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 194,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 193,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "company",
-          name: "company",
-          type: "text",
-          autoComplete: "organization",
-          placeholder: "Company",
-          "aria-label": "Company",
-          defaultValue: (address == null ? void 0 : address.company) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 207,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 206,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "address1",
-          name: "address1",
-          type: "text",
-          autoComplete: "address-line1",
-          placeholder: "Address line 1*",
-          required: !0,
-          "aria-label": "Address line 1",
-          defaultValue: (address == null ? void 0 : address.address1) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 219,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 218,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "address2",
-          name: "address2",
-          type: "text",
-          autoComplete: "address-line2",
-          placeholder: "Address line 2",
-          "aria-label": "Address line 2",
-          defaultValue: (address == null ? void 0 : address.address2) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 232,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 231,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "city",
-          name: "city",
-          type: "text",
-          required: !0,
-          autoComplete: "address-level2",
-          placeholder: "City",
-          "aria-label": "City",
-          defaultValue: (address == null ? void 0 : address.city) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 244,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 243,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "province",
-          name: "province",
-          type: "text",
-          autoComplete: "address-level1",
-          placeholder: "State / Province",
-          required: !0,
-          "aria-label": "State",
-          defaultValue: (address == null ? void 0 : address.province) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 257,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 256,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "zip",
-          name: "zip",
-          type: "text",
-          autoComplete: "postal-code",
-          placeholder: "Zip / Postal Code",
-          required: !0,
-          "aria-label": "Zip",
-          defaultValue: (address == null ? void 0 : address.zip) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 270,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 269,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "country",
-          name: "country",
-          type: "text",
-          autoComplete: "country-name",
-          placeholder: "Country",
-          required: !0,
-          "aria-label": "Country",
-          defaultValue: (address == null ? void 0 : address.country) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 283,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 282,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "phone",
-          name: "phone",
-          type: "tel",
-          autoComplete: "tel",
-          placeholder: "Phone",
-          "aria-label": "Phone",
-          defaultValue: (address == null ? void 0 : address.phone) ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 296,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 295,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-          "input",
-          {
-            type: "checkbox",
-            name: "defaultAddress",
-            id: "defaultAddress",
-            defaultChecked: (defaultAddress == null ? void 0 : defaultAddress.id) === (address == null ? void 0 : address.id),
-            className: "border-gray-500 rounded-sm cursor-pointer border-1"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/account/__private/address/$id.tsx",
-            lineNumber: 308,
-            columnNumber: 13
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-          "label",
-          {
-            className: "inline-block ml-2 text-sm cursor-pointer",
-            htmlFor: "defaultAddress",
-            children: "Set as default address"
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/account/__private/address/$id.tsx",
-            lineNumber: 315,
-            columnNumber: 13
-          },
-          this
-        )
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 307,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        Button,
-        {
-          className: "w-full rounded focus:shadow-outline",
-          type: "submit",
-          variant: "primary",
-          disabled: transition.state !== "idle",
-          children: transition.state !== "idle" ? "Saving" : "Save"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 323,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 322,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
-        Button,
-        {
-          to: "..",
-          className: "w-full mt-2 rounded focus:shadow-outline",
-          variant: "secondary",
-          children: "Cancel"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/address/$id.tsx",
-          lineNumber: 333,
-          columnNumber: 13
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/address/$id.tsx",
-        lineNumber: 332,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/account/__private/address/$id.tsx",
-      lineNumber: 169,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account/__private/address/$id.tsx",
-      lineNumber: 168,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__private/address/$id.tsx",
-    lineNumber: 164,
-    columnNumber: 5
-  }, this);
-}
-var UPDATE_ADDRESS_MUTATION = `#graphql
-  mutation customerAddressUpdate(
-    $address: MailingAddressInput!
-    $customerAccessToken: String!
-    $id: ID!
-  ) {
-    customerAddressUpdate(
-      address: $address
-      customerAccessToken: $customerAccessToken
-      id: $id
-    ) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`, DELETE_ADDRESS_MUTATION = `#graphql
-  mutation customerAddressDelete($customerAccessToken: String!, $id: ID!) {
-    customerAddressDelete(customerAccessToken: $customerAccessToken, id: $id) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-      deletedCustomerAddressId
-    }
-  }
-`, UPDATE_DEFAULT_ADDRESS_MUTATION = `#graphql
-  mutation customerDefaultAddressUpdate(
-    $addressId: ID!
-    $customerAccessToken: String!
-  ) {
-    customerDefaultAddressUpdate(
-      addressId: $addressId
-      customerAccessToken: $customerAccessToken
-    ) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`, CREATE_ADDRESS_MUTATION = `#graphql
-  mutation customerAddressCreate(
-    $address: MailingAddressInput!
-    $customerAccessToken: String!
-  ) {
-    customerAddressCreate(
-      address: $address
-      customerAccessToken: $customerAccessToken
-    ) {
-      customerAddress {
-        id
-      }
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`;
-
-// app/routes/account/__private/orders.$id.tsx
-var orders_id_exports = {};
-__export(orders_id_exports, {
-  default: () => OrderRoute,
-  loader: () => loader19,
-  meta: () => meta6
-});
-var import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime()), meta6 = ({ data }) => {
-  var _a2;
-  return {
-    title: `Order ${(_a2 = data == null ? void 0 : data.order) == null ? void 0 : _a2.name}`
-  };
-};
-async function loader19({ request, context: context2, params }) {
-  var _a2;
-  if (!params.id)
-    return redirect3(params != null && params.lang ? `${params.lang}/account` : "/account");
-  let orderToken = new URL(request.url).searchParams.get("key");
-  if (invariant4(orderToken, "Order token is required"), !await context2.session.get("customerAccessToken"))
-    return redirect3(
-      params.lang ? `${params.lang}/account/login` : "/account/login"
-    );
-  let orderId = `gid://shopify/Order/${params.id}?key=${orderToken}`, data = await context2.storefront.query(
-    CUSTOMER_ORDER_QUERY,
-    { variables: { orderId } }
-  ), order2 = data == null ? void 0 : data.node;
-  if (!order2)
-    throw new Response("Order not found", { status: 404 });
-  let lineItems = flattenConnection(order2.lineItems), firstDiscount = (_a2 = flattenConnection(
-    order2.discountApplications
-  )[0]) == null ? void 0 : _a2.value, discountValue = (firstDiscount == null ? void 0 : firstDiscount.__typename) === "MoneyV2" && firstDiscount, discountPercentage = (firstDiscount == null ? void 0 : firstDiscount.__typename) === "PricingPercentageValue" && (firstDiscount == null ? void 0 : firstDiscount.percentage);
-  return json3({
-    order: order2,
-    lineItems,
-    discountValue,
-    discountPercentage
-  });
-}
-function OrderRoute() {
-  var _a2;
-  let { order: order2, lineItems, discountValue, discountPercentage } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(PageHeader, { heading: "Order detail", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Link3, { to: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { color: "subtle", children: "Return to Account Overview" }, void 0, !1, {
-      fileName: "app/routes/account/__private/orders.$id.tsx",
-      lineNumber: 84,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account/__private/orders.$id.tsx",
-      lineNumber: 83,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account/__private/orders.$id.tsx",
-      lineNumber: 82,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { as: "h3", size: "lead", children: [
-        "Order No. ",
-        order2.name
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/orders.$id.tsx",
-        lineNumber: 89,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { className: "mt-2", as: "p", children: [
-        "Placed on ",
-        new Date(order2.processedAt).toDateString()
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/orders.$id.tsx",
-        lineNumber: 92,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("table", { className: "min-w-full my-8 divide-y divide-gray-300 md:col-span-3", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { className: "align-baseline ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-              "th",
-              {
-                scope: "col",
-                className: "pb-4 pl-0 pr-3 font-semibold text-left",
-                children: "Product"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 99,
-                columnNumber: 19
-              },
-              this
-            ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-              "th",
-              {
-                scope: "col",
-                className: "hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell",
-                children: "Price"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 105,
-                columnNumber: 19
-              },
-              this
-            ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-              "th",
-              {
-                scope: "col",
-                className: "hidden px-4 pb-4 font-semibold text-right sm:table-cell md:table-cell",
-                children: "Quantity"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 111,
-                columnNumber: 19
-              },
-              this
-            ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-              "th",
-              {
-                scope: "col",
-                className: "px-4 pb-4 font-semibold text-right",
-                children: "Total"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 117,
-                columnNumber: 19
-              },
-              this
-            )
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 98,
-            columnNumber: 17
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 97,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: lineItems.map((lineItem) => {
-            var _a3;
-            return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex gap-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                  Link3,
-                  {
-                    to: `/products/${lineItem.variant.product.handle}`,
-                    children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                      Image,
-                      {
-                        data: {
-                          url: lineItem.variant.image.src
-                        },
-                        width: lineItem.variant.image.width,
-                        height: lineItem.variant.image.height,
-                        alt: lineItem.variant.image.altText,
-                        loaderOptions: {
-                          scale: 2,
-                          crop: "center"
-                        }
-                      },
-                      void 0,
-                      !1,
-                      {
-                        fileName: "app/routes/account/__private/orders.$id.tsx",
-                        lineNumber: 136,
-                        columnNumber: 31
-                      },
-                      this
-                    ) }, void 0, !1, {
-                      fileName: "app/routes/account/__private/orders.$id.tsx",
-                      lineNumber: 135,
-                      columnNumber: 29
-                    }, this)
-                  },
-                  void 0,
-                  !1,
-                  {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 131,
-                    columnNumber: 25
-                  },
-                  this
-                ),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex-col justify-center hidden lg:flex", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { as: "p", children: lineItem.title }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 152,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { size: "fine", className: "mt-1", as: "p", children: lineItem.variant.title }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 153,
-                    columnNumber: 27
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 151,
-                  columnNumber: 25
-                }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dl", { className: "grid", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dt", { className: "sr-only", children: "Product" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 158,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dd", { className: "truncate lg:hidden", children: [
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Heading, { size: "copy", format: !0, as: "h3", children: lineItem.title }, void 0, !1, {
-                      fileName: "app/routes/account/__private/orders.$id.tsx",
-                      lineNumber: 160,
-                      columnNumber: 29
-                    }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { size: "fine", className: "mt-1", children: lineItem.variant.title }, void 0, !1, {
-                      fileName: "app/routes/account/__private/orders.$id.tsx",
-                      lineNumber: 163,
-                      columnNumber: 29
-                    }, this)
-                  ] }, void 0, !0, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 159,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dt", { className: "sr-only", children: "Price" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 167,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { size: "fine", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 170,
-                    columnNumber: 31
-                  }, this) }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 169,
-                    columnNumber: 29
-                  }, this) }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 168,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dt", { className: "sr-only", children: "Quantity" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 173,
-                    columnNumber: 27
-                  }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { className: "mt-1", size: "fine", children: [
-                    "Qty: ",
-                    lineItem.quantity
-                  ] }, void 0, !0, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 175,
-                    columnNumber: 29
-                  }, this) }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 174,
-                    columnNumber: 27
-                  }, this)
-                ] }, void 0, !0, {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 157,
-                  columnNumber: 25
-                }, this)
-              ] }, void 0, !0, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 130,
-                columnNumber: 23
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 129,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 183,
-                columnNumber: 23
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 182,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: lineItem.quantity }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 185,
-                columnNumber: 21
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: lineItem.discountedTotalPrice }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 190,
-                columnNumber: 25
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 189,
-                columnNumber: 23
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 188,
-                columnNumber: 21
-              }, this)
-            ] }, lineItem.variant.id, !0, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 128,
-              columnNumber: 19
-            }, this);
-          }) }, void 0, !1, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 125,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tfoot", { children: [
-            (discountValue && discountValue.amount || discountPercentage) && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  colSpan: 3,
-                  className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 205,
-                    columnNumber: 23
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 200,
-                  columnNumber: 21
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  className: "pt-6 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 211,
-                    columnNumber: 23
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 207,
-                  columnNumber: 21
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3", children: discountPercentage ? /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("span", { className: "text-sm", children: [
-                "-",
-                discountPercentage,
-                "% OFF"
-              ] }, void 0, !0, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 215,
-                columnNumber: 25
-              }, this) : discountValue && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: discountValue }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 219,
-                columnNumber: 42
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 213,
-                columnNumber: 21
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 199,
-              columnNumber: 19
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  colSpan: 3,
-                  className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 230,
-                    columnNumber: 21
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 225,
-                  columnNumber: 19
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  className: "pt-6 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 236,
-                    columnNumber: 21
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 232,
-                  columnNumber: 19
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: order2.subtotalPriceV2 }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 239,
-                columnNumber: 21
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 238,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 224,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  colSpan: 3,
-                  className: "hidden pt-4 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: "Tax"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 243,
-                  columnNumber: 19
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  className: "pt-4 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: "Tax" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 254,
-                    columnNumber: 21
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 250,
-                  columnNumber: 19
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: order2.totalTaxV2 }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 257,
-                columnNumber: 21
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 256,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 242,
-              columnNumber: 17
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  colSpan: 3,
-                  className: "hidden pt-4 pl-6 pr-3 font-semibold text-right sm:table-cell md:pl-0",
-                  children: "Total"
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 261,
-                  columnNumber: 19
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-                "th",
-                {
-                  scope: "row",
-                  className: "pt-4 pr-3 font-semibold text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: "Total" }, void 0, !1, {
-                    fileName: "app/routes/account/__private/orders.$id.tsx",
-                    lineNumber: 272,
-                    columnNumber: 21
-                  }, this)
-                },
-                void 0,
-                !1,
-                {
-                  fileName: "app/routes/account/__private/orders.$id.tsx",
-                  lineNumber: 268,
-                  columnNumber: 19
-                },
-                this
-              ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 font-semibold text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Money, { data: order2.totalPriceV2 }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 275,
-                columnNumber: 21
-              }, this) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 274,
-                columnNumber: 19
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 260,
-              columnNumber: 17
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 196,
-            columnNumber: 15
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/routes/account/__private/orders.$id.tsx",
-          lineNumber: 96,
-          columnNumber: 13
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "sticky border-none top-nav md:my-8", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Heading, { size: "copy", className: "font-semibold", as: "h3", children: "Shipping Address" }, void 0, !1, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 281,
-            columnNumber: 15
-          }, this),
-          order2 != null && order2.shippingAddress ? /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("ul", { className: "mt-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: [
-              order2.shippingAddress.firstName && order2.shippingAddress.firstName + " ",
-              order2.shippingAddress.lastName
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 287,
-              columnNumber: 21
-            }, this) }, void 0, !1, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 286,
-              columnNumber: 19
-            }, this),
-            (_a2 = order2 == null ? void 0 : order2.shippingAddress) != null && _a2.formatted ? order2.shippingAddress.formatted.map((line) => /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { children: line }, void 0, !1, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 296,
-              columnNumber: 25
-            }, this) }, line, !1, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 295,
-              columnNumber: 23
-            }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(import_jsx_dev_runtime52.Fragment, {}, void 0, !1, {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 300,
-              columnNumber: 21
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 285,
-            columnNumber: 17
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "mt-3", children: "No shipping address defined" }, void 0, !1, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 304,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Heading, { size: "copy", className: "mt-8 font-semibold", as: "h3", children: "Status" }, void 0, !1, {
-            fileName: "app/routes/account/__private/orders.$id.tsx",
-            lineNumber: 306,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
-            "div",
-            {
-              className: clsx_m_default(
-                "mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto",
-                order2.fulfillmentStatus === "FULFILLED" ? "bg-green-100 text-green-800" : "bg-primary/20 "
-              ),
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Text, { size: "fine", children: statusMessage(order2.fulfillmentStatus) }, void 0, !1, {
-                fileName: "app/routes/account/__private/orders.$id.tsx",
-                lineNumber: 317,
-                columnNumber: 17
-              }, this)
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account/__private/orders.$id.tsx",
-              lineNumber: 309,
-              columnNumber: 15
-            },
-            this
-          )
-        ] }, void 0, !0, {
-          fileName: "app/routes/account/__private/orders.$id.tsx",
-          lineNumber: 280,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/orders.$id.tsx",
-        lineNumber: 95,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/account/__private/orders.$id.tsx",
-      lineNumber: 88,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
-      fileName: "app/routes/account/__private/orders.$id.tsx",
-      lineNumber: 87,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__private/orders.$id.tsx",
-    lineNumber: 81,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_ORDER_QUERY = `#graphql
-  fragment Money on MoneyV2 {
-    amount
-    currencyCode
-  }
-  fragment AddressFull on MailingAddress {
-    address1
-    address2
-    city
-    company
-    country
-    countryCodeV2
-    firstName
-    formatted
-    id
-    lastName
-    name
-    phone
-    province
-    provinceCode
-    zip
-  }
-  fragment DiscountApplication on DiscountApplication {
-    value {
-      ... on MoneyV2 {
-        amount
-        currencyCode
-      }
-      ... on PricingPercentageValue {
-        percentage
-      }
-    }
-  }
-  fragment Image on Image {
-    altText
-    height
-    src: url(transform: {crop: CENTER, maxHeight: 96, maxWidth: 96, scale: 2})
-    id
-    width
-  }
-  fragment ProductVariant on ProductVariant {
-    id
-    image {
-      ...Image
-    }
-    price {
-      ...Money
-    }
-    product {
-      handle
-    }
-    sku
-    title
-  }
-  fragment LineItemFull on OrderLineItem {
-    title
-    quantity
-    discountAllocations {
-      allocatedAmount {
-        ...Money
-      }
-      discountApplication {
-        ...DiscountApplication
-      }
-    }
-    originalTotalPrice {
-      ...Money
-    }
-    discountedTotalPrice {
-      ...Money
-    }
-    variant {
-      ...ProductVariant
-    }
-  }
-
-  query CustomerOrder(
-    $country: CountryCode
-    $language: LanguageCode
-    $orderId: ID!
-  ) @inContext(country: $country, language: $language) {
-    node(id: $orderId) {
-      ... on Order {
-        id
-        name
-        orderNumber
-        processedAt
-        fulfillmentStatus
-        totalTaxV2 {
-          ...Money
-        }
-        totalPriceV2 {
-          ...Money
-        }
-        subtotalPriceV2 {
-          ...Money
-        }
-        shippingAddress {
-          ...AddressFull
-        }
-        discountApplications(first: 100) {
-          nodes {
-            ...DiscountApplication
-          }
-        }
-        lineItems(first: 100) {
-          nodes {
-            ...LineItemFull
-          }
-        }
-      }
-    }
-  }
-`;
-
-// app/routes/account/__public/register.tsx
-var register_exports = {};
-__export(register_exports, {
-  action: () => action8,
-  default: () => Register,
-  loader: () => loader21,
-  meta: () => meta8
-});
-var import_react118 = __toESM(require_react());
-
-// app/routes/account/__public/login.tsx
-var login_exports = {};
-__export(login_exports, {
-  action: () => action7,
-  default: () => Login,
-  doLogin: () => doLogin,
-  handle: () => handle10,
-  loader: () => loader20,
-  meta: () => meta7
-});
-var import_react116 = __toESM(require_react());
-var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime()), handle10 = {
-  isPublic: !0
-};
-async function loader20({ context: context2, params }) {
-  return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : json3({ shopName: "Hydrogen" });
-}
-var badRequest5 = (data) => json3(data, { status: 400 }), action7 = async ({ request, context: context2, params }) => {
-  let formData = await request.formData(), email = formData.get("email"), password = formData.get("password");
-  if (!email || !password || typeof email != "string" || typeof password != "string")
-    return badRequest5({
-      formError: "Please provide both an email and a password."
-    });
-  let { session, storefront } = context2;
-  try {
-    let customerAccessToken = await doLogin(context2, { email, password });
-    return session.set("customerAccessToken", customerAccessToken), redirect3(params.lang ? `/${params.lang}/account` : "/account", {
-      headers: {
-        "Set-Cookie": await session.commit()
-      }
-    });
-  } catch (error) {
-    return storefront.isApiError(error) ? badRequest5({
-      formError: "Something went wrong. Please try again later."
-    }) : badRequest5({
-      formError: "Sorry. We did not recognize either your email or password. Please try to sign in again or create a new account."
-    });
-  }
-}, meta7 = () => ({
-  title: "Login"
-});
-function Login() {
-  let { shopName } = useLoaderData2(), actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react116.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react116.useState)(
-    null
-  );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("h1", { className: "text-4xl", children: "Sign in." }, void 0, !1, {
-      fileName: "app/routes/account/__public/login.tsx",
-      lineNumber: 99,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
-      Form,
-      {
-        method: "post",
-        noValidate: !0,
-        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
-        children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
-            fileName: "app/routes/account/__public/login.tsx",
-            lineNumber: 108,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/login.tsx",
-            lineNumber: 107,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
-              "input",
-              {
-                className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
-                id: "email",
-                name: "email",
-                type: "email",
-                autoComplete: "email",
-                required: !0,
-                placeholder: "Email address",
-                "aria-label": "Email address",
-                autoFocus: !0,
-                onBlur: (event) => {
-                  setNativeEmailError(
-                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/login.tsx",
-                lineNumber: 112,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              nativeEmailError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/login.tsx",
-              lineNumber: 133,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/login.tsx",
-            lineNumber: 111,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
-              "input",
-              {
-                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
-                id: "password",
-                name: "password",
-                type: "password",
-                autoComplete: "current-password",
-                placeholder: "Password",
-                "aria-label": "Password",
-                minLength: 8,
-                required: !0,
-                autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/login.tsx",
-                lineNumber: 138,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              " ",
-              nativePasswordError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/login.tsx",
-              lineNumber: 166,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/login.tsx",
-            lineNumber: 137,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
-            "button",
-            {
-              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
-              type: "submit",
-              children: "Sign in"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account/__public/login.tsx",
-              lineNumber: 173,
-              columnNumber: 13
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/routes/account/__public/login.tsx",
-            lineNumber: 172,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex justify-between items-center mt-8 border-t border-gray-300", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
-              "New to ",
-              shopName,
-              "? \xA0",
-              /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Link3, { className: "inline underline", to: "/account/register", children: "Create an account" }, void 0, !1, {
-                fileName: "app/routes/account/__public/login.tsx",
-                lineNumber: 183,
-                columnNumber: 15
-              }, this)
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/login.tsx",
-              lineNumber: 181,
-              columnNumber: 13
-            }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
-              Link3,
-              {
-                className: "mt-6 inline-block align-baseline text-sm ",
-                to: "/account/recover",
-                children: "Forgot password"
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/login.tsx",
-                lineNumber: 187,
-                columnNumber: 13
-              },
-              this
-            )
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/login.tsx",
-            lineNumber: 180,
-            columnNumber: 11
-          }, this)
-        ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/routes/account/__public/login.tsx",
-        lineNumber: 101,
-        columnNumber: 9
-      },
-      this
-    )
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__public/login.tsx",
-    lineNumber: 98,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account/__public/login.tsx",
-    lineNumber: 97,
-    columnNumber: 5
-  }, this);
-}
-var LOGIN_MUTATION = `#graphql
-  mutation customerAccessTokenCreate($input: CustomerAccessTokenCreateInput!) {
-    customerAccessTokenCreate(input: $input) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-      customerAccessToken {
-        accessToken
-        expiresAt
-      }
-    }
-  }
-`;
-async function doLogin({ storefront }, {
-  email,
-  password
-}) {
-  var _a2, _b, _c;
-  let data = await storefront.mutate(LOGIN_MUTATION, {
-    variables: {
-      input: {
-        email,
-        password
-      }
-    }
-  });
-  if ((_b = (_a2 = data == null ? void 0 : data.customerAccessTokenCreate) == null ? void 0 : _a2.customerAccessToken) != null && _b.accessToken)
-    return data.customerAccessTokenCreate.customerAccessToken.accessToken;
-  throw new Error(
-    (_c = data == null ? void 0 : data.customerAccessTokenCreate) == null ? void 0 : _c.customerUserErrors.join(", ")
-  );
-}
-
-// app/routes/account/__public/register.tsx
-var import_jsx_dev_runtime54 = __toESM(require_jsx_dev_runtime());
-async function loader21({ context: context2, params }) {
-  return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
-}
-var badRequest6 = (data) => json3(data, { status: 400 }), action8 = async ({ request, context: context2, params }) => {
-  var _a2, _b, _c;
-  let { session, storefront } = context2, formData = await request.formData(), email = formData.get("email"), password = formData.get("password");
-  if (!email || !password || typeof email != "string" || typeof password != "string")
-    return badRequest6({
-      formError: "Please provide both an email and a password."
-    });
-  try {
-    let data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
-      variables: {
-        input: { email, password }
-      }
-    });
-    if (!((_b = (_a2 = data == null ? void 0 : data.customerCreate) == null ? void 0 : _a2.customer) != null && _b.id))
-      throw new Error((_c = data == null ? void 0 : data.customerCreate) == null ? void 0 : _c.customerUserErrors.join(", "));
-    let customerAccessToken = await doLogin(context2, { email, password });
-    return session.set("customerAccessToken", customerAccessToken), redirect3(params.lang ? `${params.lang}/account` : "/account", {
-      headers: {
-        "Set-Cookie": await session.commit()
-      }
-    });
-  } catch (error) {
-    return storefront.isApiError(error) ? badRequest6({
-      formError: "Something went wrong. Please try again later."
-    }) : badRequest6({
-      formError: "Sorry. We could not create an account with this email. User might already exist, try to login instead."
-    });
-  }
-}, meta8 = () => ({
-  title: "Register"
-});
-function Register() {
-  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react118.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react118.useState)(
-    null
-  );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h1", { className: "text-4xl", children: "Create an Account." }, void 0, !1, {
-      fileName: "app/routes/account/__public/register.tsx",
-      lineNumber: 107,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
-      Form,
-      {
-        method: "post",
-        noValidate: !0,
-        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
-        children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 116,
-            columnNumber: 15
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 115,
-            columnNumber: 13
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
-              "input",
-              {
-                className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
-                id: "email",
-                name: "email",
-                type: "email",
-                autoComplete: "email",
-                required: !0,
-                placeholder: "Email address",
-                "aria-label": "Email address",
-                autoFocus: !0,
-                onBlur: (event) => {
-                  setNativeEmailError(
-                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/register.tsx",
-                lineNumber: 120,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              nativeEmailError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/register.tsx",
-              lineNumber: 141,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 119,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
-              "input",
-              {
-                className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
-                id: "password",
-                name: "password",
-                type: "password",
-                autoComplete: "current-password",
-                placeholder: "Password",
-                "aria-label": "Password",
-                minLength: 8,
-                required: !0,
-                autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/register.tsx",
-                lineNumber: 145,
-                columnNumber: 13
-              },
-              this
-            ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              " ",
-              nativePasswordError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/register.tsx",
-              lineNumber: 173,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 144,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
-            "button",
-            {
-              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
-              type: "submit",
-              children: "Create Account"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account/__public/register.tsx",
-              lineNumber: 180,
-              columnNumber: 13
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 179,
-            columnNumber: 11
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
-            "Already have an account? \xA0",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Sign in" }, void 0, !1, {
-              fileName: "app/routes/account/__public/register.tsx",
-              lineNumber: 190,
-              columnNumber: 15
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 188,
-            columnNumber: 13
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/register.tsx",
-            lineNumber: 187,
-            columnNumber: 11
-          }, this)
-        ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/routes/account/__public/register.tsx",
-        lineNumber: 109,
-        columnNumber: 9
-      },
-      this
-    )
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__public/register.tsx",
-    lineNumber: 106,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account/__public/register.tsx",
-    lineNumber: 105,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_CREATE_MUTATION = `#graphql
-  mutation customerCreate($input: CustomerCreateInput!) {
-    customerCreate(input: $input) {
-      customer {
-        id
-      }
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`;
-
-// app/routes/account/__public/recover.tsx
-var recover_exports = {};
-__export(recover_exports, {
-  action: () => action9,
-  default: () => Recover,
-  loader: () => loader22,
-  meta: () => meta9
-});
-var import_react120 = __toESM(require_react());
-var import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime());
-async function loader22({ context: context2, params }) {
-  return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
-}
-var badRequest7 = (data) => json3(data, { status: 400 }), action9 = async ({ request, context: context2 }) => {
-  let email = (await request.formData()).get("email");
-  if (!email || typeof email != "string")
-    return badRequest7({
-      formError: "Please provide an email."
-    });
-  try {
-    return await context2.storefront.mutate(CUSTOMER_RECOVER_MUTATION, {
-      variables: { email }
-    }), json3({ resetRequested: !0 });
-  } catch {
-    return badRequest7({
-      formError: "Something went wrong. Please try again later."
-    });
-  }
-}, meta9 = () => ({
-  title: "Recover Password"
-});
-function Recover() {
-  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react120.useState)(null), isSubmitted = actionData == null ? void 0 : actionData.resetRequested;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "max-w-md w-full", children: isSubmitted ? /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(import_jsx_dev_runtime55.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("h1", { className: "text-4xl", children: "Request Sent." }, void 0, !1, {
-      fileName: "app/routes/account/__public/recover.tsx",
-      lineNumber: 72,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "mt-4", children: "If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes." }, void 0, !1, {
-      fileName: "app/routes/account/__public/recover.tsx",
-      lineNumber: 73,
-      columnNumber: 13
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__public/recover.tsx",
-    lineNumber: 71,
-    columnNumber: 11
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(import_jsx_dev_runtime55.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("h1", { className: "text-4xl", children: "Forgot Password." }, void 0, !1, {
-      fileName: "app/routes/account/__public/recover.tsx",
-      lineNumber: 81,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "mt-4", children: "Enter the email address associated with your account to receive a link to reset your password." }, void 0, !1, {
-      fileName: "app/routes/account/__public/recover.tsx",
-      lineNumber: 82,
-      columnNumber: 13
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
-      Form,
-      {
-        method: "post",
-        noValidate: !0,
-        className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
-        children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
-            fileName: "app/routes/account/__public/recover.tsx",
-            lineNumber: 94,
-            columnNumber: 19
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/recover.tsx",
-            lineNumber: 93,
-            columnNumber: 17
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
-              "input",
-              {
-                className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
-                id: "email",
-                name: "email",
-                type: "email",
-                autoComplete: "email",
-                required: !0,
-                placeholder: "Email address",
-                "aria-label": "Email address",
-                autoFocus: !0,
-                onBlur: (event) => {
-                  setNativeEmailError(
-                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
-                  );
-                }
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/routes/account/__public/recover.tsx",
-                lineNumber: 100,
-                columnNumber: 17
-              },
-              this
-            ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-              nativeEmailError,
-              " \xA0"
-            ] }, void 0, !0, {
-              fileName: "app/routes/account/__public/recover.tsx",
-              lineNumber: 121,
-              columnNumber: 19
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/recover.tsx",
-            lineNumber: 99,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
-            "button",
-            {
-              className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
-              type: "submit",
-              children: "Request Reset Link"
-            },
-            void 0,
-            !1,
-            {
-              fileName: "app/routes/account/__public/recover.tsx",
-              lineNumber: 127,
-              columnNumber: 17
-            },
-            this
-          ) }, void 0, !1, {
-            fileName: "app/routes/account/__public/recover.tsx",
-            lineNumber: 126,
-            columnNumber: 15
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
-            "Return to \xA0",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Login" }, void 0, !1, {
-              fileName: "app/routes/account/__public/recover.tsx",
-              lineNumber: 137,
-              columnNumber: 19
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/routes/account/__public/recover.tsx",
-            lineNumber: 135,
-            columnNumber: 17
-          }, this) }, void 0, !1, {
-            fileName: "app/routes/account/__public/recover.tsx",
-            lineNumber: 134,
-            columnNumber: 15
-          }, this)
-        ]
-      },
-      void 0,
-      !0,
-      {
-        fileName: "app/routes/account/__public/recover.tsx",
-        lineNumber: 87,
-        columnNumber: 13
-      },
-      this
-    )
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__public/recover.tsx",
-    lineNumber: 80,
-    columnNumber: 11
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account/__public/recover.tsx",
-    lineNumber: 69,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/account/__public/recover.tsx",
-    lineNumber: 68,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_RECOVER_MUTATION = `#graphql
-  mutation customerRecover($email: String!) {
-    customerRecover(email: $email) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`;
-
-// app/routes/account/__private/edit.tsx
-var edit_exports = {};
-__export(edit_exports, {
-  action: () => action10,
-  default: () => AccountDetailsEdit,
-  handle: () => handle11
-});
-var import_jsx_dev_runtime56 = __toESM(require_jsx_dev_runtime()), badRequest8 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
-  if (!formData.has(key))
-    return !1;
-  let value = formData.get(key);
-  return typeof value == "string" && value.length > 0;
-}, handle11 = {
-  renderInModal: !0
-}, action10 = async ({ request, context: context2, params }) => {
-  let formData = await request.formData(), customerAccessToken = await context2.session.get("customerAccessToken");
-  if (invariant4(
-    customerAccessToken,
-    "You must be logged in to update your account details."
-  ), await getCustomer(context2, customerAccessToken), formDataHas(formData, "newPassword") && !formDataHas(formData, "currentPassword"))
-    return badRequest8({
-      fieldErrors: {
-        currentPassword: "Please enter your current password before entering a new password."
-      }
-    });
-  if (formData.has("newPassword") && formData.get("newPassword") !== formData.get("newPassword2"))
-    return badRequest8({
-      fieldErrors: {
-        newPassword2: "New passwords must match."
-      }
-    });
-  try {
-    let customer = {};
-    formDataHas(formData, "firstName") && (customer.firstName = formData.get("firstName")), formDataHas(formData, "lastName") && (customer.lastName = formData.get("lastName")), formDataHas(formData, "email") && (customer.email = formData.get("email")), formDataHas(formData, "phone") && (customer.phone = formData.get("phone")), formDataHas(formData, "newPassword") && (customer.password = formData.get("newPassword"));
-    let data = await context2.storefront.mutate(CUSTOMER_UPDATE_MUTATION, {
-      variables: {
-        customerAccessToken,
-        customer
-      }
-    });
-    return assertApiErrors(data.customerUpdate), redirect3(params != null && params.lang ? `${params.lang}/account` : "/account");
-  } catch (error) {
-    return badRequest8({ formError: error.message });
-  }
-};
-function AccountDetailsEdit() {
-  var _a2, _b, _c, _d, _e4, _f, _g, _h, _i;
-  let actionData = useActionData2(), { customer } = useOutletContext(), transition = useTransition();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_jsx_dev_runtime56.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: "Update your profile" }, void 0, !1, {
-      fileName: "app/routes/account/__private/edit.tsx",
-      lineNumber: 135,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Form, { method: "post", children: [
-      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 141,
-        columnNumber: 13
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 140,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "firstName",
-          name: "firstName",
-          type: "text",
-          autoComplete: "given-name",
-          placeholder: "First name",
-          "aria-label": "First name",
-          defaultValue: customer.firstName ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 145,
-          columnNumber: 11
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 144,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "lastName",
-          name: "lastName",
-          type: "text",
-          autoComplete: "family-name",
-          placeholder: "Last name",
-          "aria-label": "Last name",
-          defaultValue: customer.lastName ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 157,
-          columnNumber: 11
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 156,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        "input",
-        {
-          className: getInputStyleClasses(),
-          id: "phone",
-          name: "phone",
-          type: "tel",
-          autoComplete: "tel",
-          placeholder: "Mobile",
-          "aria-label": "Mobile",
-          defaultValue: customer.phone ?? ""
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 169,
-          columnNumber: 11
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 168,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-3", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-          "input",
-          {
-            className: getInputStyleClasses((_a2 = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _a2.email),
-            id: "email",
-            name: "email",
-            type: "email",
-            autoComplete: "email",
-            required: !0,
-            placeholder: "Email address",
-            "aria-label": "Email address",
-            defaultValue: customer.email ?? ""
-          },
-          void 0,
-          !1,
-          {
-            fileName: "app/routes/account/__private/edit.tsx",
-            lineNumber: 181,
-            columnNumber: 11
-          },
-          this
-        ),
-        ((_b = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _b.email) && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
-          actionData.fieldErrors.email,
-          " \xA0"
-        ] }, void 0, !0, {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 193,
-          columnNumber: 13
-        }, this)
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 180,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Text, { className: "mb-6 mt-6", as: "h3", size: "lead", children: "Change your password" }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 198,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        Password,
-        {
-          name: "currentPassword",
-          label: "Current password",
-          passwordError: (_c = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _c.currentPassword
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 201,
-          columnNumber: 9
-        },
-        this
-      ),
-      ((_d = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _d.currentPassword) && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
-        actionData.fieldErrors.currentPassword,
-        " \xA0"
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 207,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        Password,
-        {
-          name: "newPassword",
-          label: "New password",
-          passwordError: (_e4 = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _e4.newPassword
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 211,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        Password,
-        {
-          name: "newPassword2",
-          label: "Re-enter new password",
-          passwordError: (_f = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _f.newPassword2
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 216,
-          columnNumber: 9
-        },
-        this
-      ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        Text,
-        {
-          size: "fine",
-          color: "subtle",
-          className: clsx_m_default(
-            "mt-1",
-            ((_g = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _g.newPassword) && "text-red-500"
-          ),
-          children: "Passwords must be at least 8 characters."
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 221,
-          columnNumber: 9
-        },
-        this
-      ),
-      (_h = actionData == null ? void 0 : actionData.fieldErrors) != null && _h.newPassword2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("br", {}, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 231,
-        columnNumber: 50
-      }, this) : null,
-      ((_i = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _i.newPassword2) && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
-        actionData.fieldErrors.newPassword2,
-        " \xA0"
-      ] }, void 0, !0, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 233,
-        columnNumber: 11
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-        Button,
-        {
-          className: "text-sm mb-2",
-          variant: "primary",
-          width: "full",
-          type: "submit",
-          disabled: transition.state !== "idle",
-          children: transition.state !== "idle" ? "Saving" : "Save"
-        },
-        void 0,
-        !1,
-        {
-          fileName: "app/routes/account/__private/edit.tsx",
-          lineNumber: 238,
-          columnNumber: 11
-        },
-        this
-      ) }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 237,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Button, { to: "..", className: "text-sm", variant: "secondary", width: "full", children: "Cancel" }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 249,
-        columnNumber: 11
-      }, this) }, void 0, !1, {
-        fileName: "app/routes/account/__private/edit.tsx",
-        lineNumber: 248,
-        columnNumber: 9
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/account/__private/edit.tsx",
-      lineNumber: 138,
-      columnNumber: 7
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/routes/account/__private/edit.tsx",
-    lineNumber: 134,
-    columnNumber: 5
-  }, this);
-}
-function Password({
-  name,
-  passwordError,
-  label
-}) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(
-    "input",
-    {
-      className: getInputStyleClasses(passwordError),
-      id: name,
-      name,
-      type: "password",
-      autoComplete: name === "currentPassword" ? "current-password" : void 0,
-      placeholder: label,
-      "aria-label": label,
-      minLength: 8
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/routes/account/__private/edit.tsx",
-      lineNumber: 269,
-      columnNumber: 7
-    },
-    this
-  ) }, void 0, !1, {
-    fileName: "app/routes/account/__private/edit.tsx",
-    lineNumber: 268,
-    columnNumber: 5
-  }, this);
-}
-var CUSTOMER_UPDATE_MUTATION = `#graphql
-  mutation customerUpdate($customerAccessToken: String!, $customer: CustomerUpdateInput!) {
-    customerUpdate(customerAccessToken: $customerAccessToken, customer: $customer) {
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-  `;
-
 // app/routes/search.tsx
 var search_exports = {};
 __export(search_exports, {
   default: () => search_default,
   getNoResultRecommendations: () => getNoResultRecommendations,
-  loader: () => loader23
+  loader: () => loader22
 });
 var import_react123 = __toESM(require_react());
 var import_jsx_dev_runtime57 = __toESM(require_jsx_dev_runtime());
@@ -50610,7 +50577,7 @@ function search_default() {
     columnNumber: 5
   }, this);
 }
-async function loader23({ request, context: { storefront } }) {
+async function loader22({ request, context: { storefront } }) {
   var _a2;
   let searchParams = new URL(request.url).searchParams, cursor = searchParams.get("cursor"), searchTerm = searchParams.get("q"), data = await storefront.query(SEARCH_QUERY, {
     variables: {
@@ -50702,7 +50669,7 @@ var routes_exports = {};
 __export(routes_exports, {
   default: () => Index,
   handle: () => handle12,
-  loader: () => loader24,
+  loader: () => loader23,
   meta: () => meta10
 });
 init_groq_esm();
@@ -50735,7 +50702,7 @@ var import_react126 = __toESM(require_react());
 var import_react125 = __toESM(require_react()), import_jsx_dev_runtime59 = __toESM(require_jsx_dev_runtime()), Topic = () => /* @__PURE__ */ (0, import_jsx_dev_runtime59.jsxDEV)(
   "span",
   {
-    className: "float inline-block h-[1em] aspect-[3/2] border-black border-2 mr-2"
+    className: "float inline-block h-[1em] aspect-[3/2] border-black border-2 mr-4"
   },
   void 0,
   !1,
@@ -51115,7 +51082,7 @@ var import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime()), handle12 = {
   charset: "utf-8",
   viewport: "width=device-width,initial-scale=1"
 });
-async function loader24({ context: context2 }) {
+async function loader23({ context: context2 }) {
   let [homepage] = await Promise.all([getHomepageData(context2)]);
   return json3({
     homepage
@@ -51210,13 +51177,196 @@ async function getHomepageData({ sanityClient }) {
   return await sanityClient.fetch(query2);
 }
 
+// app/routes/cart.jsx
+var cart_exports = {};
+__export(cart_exports, {
+  default: () => CartPage,
+  handle: () => handle13,
+  meta: () => meta11
+});
+var import_react134 = __toESM(require_react());
+
+// app/components/loaders/CartLoader.jsx
+var import_react131 = __toESM(require_react());
+
+// app/components/parts/Spinner.jsx
+var import_react130 = __toESM(require_react()), import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime()), points = 5, radius = 10, Spinner = () => /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "relative w-8 h-8 animate-spin", children: Array(points).fill().map((v6, index) => {
+  let x6 = radius * Math.cos(2 * Math.PI * index / points), y4 = radius * Math.sin(2 * Math.PI * index / points);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+    "span",
+    {
+      className: "absolute w-1 h-1 rounded-full bg-black left-[calc(50%-2px)] top-[calc(50%-2px)]",
+      style: { transform: `translate(${x6}px, ${y4}px)` }
+    },
+    index,
+    !1,
+    {
+      fileName: "app/components/parts/Spinner.jsx",
+      lineNumber: 15,
+      columnNumber: 15
+    },
+    this
+  );
+}) }, void 0, !1, {
+  fileName: "app/components/parts/Spinner.jsx",
+  lineNumber: 8,
+  columnNumber: 7
+}, this), Spinner_default = Spinner;
+
+// app/components/loaders/CartLoader.jsx
+var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), CartLoader = () => /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "w-full h-[calc(100vh-6rem)] flex justify-center items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "flex items-center justify-center gap-1", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("h2", { className: "mb-[1px] text-2xl", children: "Loading Cart" }, void 0, !1, {
+    fileName: "app/components/loaders/CartLoader.jsx",
+    lineNumber: 8,
+    columnNumber: 9
+  }, this),
+  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Spinner_default, {}, void 0, !1, {
+    fileName: "app/components/loaders/CartLoader.jsx",
+    lineNumber: 9,
+    columnNumber: 9
+  }, this)
+] }, void 0, !0, {
+  fileName: "app/components/loaders/CartLoader.jsx",
+  lineNumber: 7,
+  columnNumber: 7
+}, this) }, void 0, !1, {
+  fileName: "app/components/loaders/CartLoader.jsx",
+  lineNumber: 6,
+  columnNumber: 5
+}, this), CartLoader_default = CartLoader;
+
+// app/components/parts/Layout.jsx
+var import_react132 = __toESM(require_react());
+
+// node_modules/class-variance-authority/dist/index.esm.js
+var falsyToString = (value) => typeof value == "boolean" ? "".concat(value) : value === 0 ? "0" : value, cx = function() {
+  for (var _len = arguments.length, classes = new Array(_len), _key = 0; _key < _len; _key++)
+    classes[_key] = arguments[_key];
+  return classes.flat(1 / 0).filter(Boolean).join(" ");
+}, cva = (base, config2) => (props) => {
+  var ref;
+  if ((config2 == null ? void 0 : config2.variants) == null)
+    return cx(base, props == null ? void 0 : props.class, props == null ? void 0 : props.className);
+  let { variants, defaultVariants } = config2, getVariantClassNames = Object.keys(variants).map((variant) => {
+    let variantProp = props == null ? void 0 : props[variant], defaultVariantProp = defaultVariants == null ? void 0 : defaultVariants[variant];
+    if (variantProp === null)
+      return null;
+    let variantKey = falsyToString(variantProp) || falsyToString(defaultVariantProp);
+    return variants[variant][variantKey];
+  }), propsWithoutUndefined = props && Object.entries(props).reduce((acc, param) => {
+    let [key, value] = param;
+    return value === void 0 || (acc[key] = value), acc;
+  }, {}), getCompoundVariantClassNames = config2 == null || (ref = config2.compoundVariants) === null || ref === void 0 ? void 0 : ref.reduce((acc, param1) => {
+    let { class: cvClass, className: cvClassName, ...compoundVariantOptions } = param1;
+    return Object.entries(compoundVariantOptions).every((param) => {
+      let [key, value] = param;
+      return Array.isArray(value) ? value.includes({
+        ...defaultVariants,
+        ...propsWithoutUndefined
+      }[key]) : {
+        ...defaultVariants,
+        ...propsWithoutUndefined
+      }[key] === value;
+    }) ? [
+      ...acc,
+      cvClass,
+      cvClassName
+    ] : acc;
+  }, []);
+  return cx(base, getVariantClassNames, getCompoundVariantClassNames, props == null ? void 0 : props.class, props == null ? void 0 : props.className);
+};
+
+// app/components/parts/Layout.jsx
+var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), layout = cva("layout", {
+  variants: {
+    intent: {
+      page: ["p-4"],
+      centre: ["flex", "justify-center", "items-center", "h-[calc(100vh-6rem)]"]
+    }
+  },
+  defaultVariants: {
+    intent: "page"
+  }
+}), Layout2 = ({ className, intent, children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: layout({ intent, className }), ...props, children }, void 0, !1, {
+  fileName: "app/components/parts/Layout.jsx",
+  lineNumber: 22,
+  columnNumber: 3
+}, this);
+
+// app/routes/cart.jsx
+var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), handle13 = {
+  seo: {
+    title: "Cart"
+  }
+}, meta11 = () => ({
+  charset: "utf-8",
+  viewport: "width=device-width,initial-scale=1"
+});
+function CartPage() {
+  let { cart } = useRouteData("root");
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_react134.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(CartLoader_default, {}, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 30,
+    columnNumber: 27
+  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Cart2, { cart: cart2 }, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 31,
+    columnNumber: 42
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 31,
+    columnNumber: 9
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 30,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 29,
+    columnNumber: 5
+  }, this);
+}
+var Cart2 = ({ cart }) => {
+  var _a2, _b;
+  let cartHasItems = Boolean(((_b = (_a2 = cart == null ? void 0 : cart.lines) == null ? void 0 : _a2.edges) == null ? void 0 : _b.length) || 0);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, { children: cartHasItems ? /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(CartDetails2, {}, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 40,
+    columnNumber: 28
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(EmptyCart, {}, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 40,
+    columnNumber: 46
+  }, this) }, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 40,
+    columnNumber: 10
+  }, this);
+}, CartDetails2 = () => /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Layout2, { intent: "page", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("h2", { children: "Basket contents" }, void 0, !1, {
+  fileName: "app/routes/cart.jsx",
+  lineNumber: 46,
+  columnNumber: 7
+}, this) }, void 0, !1, {
+  fileName: "app/routes/cart.jsx",
+  lineNumber: 45,
+  columnNumber: 5
+}, this), EmptyCart = () => /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Layout2, { intent: "centre", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("h2", { className: "text-2xl", children: "Cart is Empty" }, void 0, !1, {
+  fileName: "app/routes/cart.jsx",
+  lineNumber: 54,
+  columnNumber: 7
+}, this) }, void 0, !1, {
+  fileName: "app/routes/cart.jsx",
+  lineNumber: 53,
+  columnNumber: 5
+}, this);
+
 // app/routes/$.tsx
 var __exports = {};
 __export(__exports, {
   default: () => Component3,
-  loader: () => loader25
+  loader: () => loader24
 });
-async function loader25() {
+async function loader24() {
   throw new Response("Not found", { status: 404 });
 }
 function Component3() {
@@ -51226,16 +51376,16 @@ function Component3() {
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/routes/graphiql.jsx
 var graphiql_exports = {};
 __export(graphiql_exports, {
-  loader: () => loader26
+  loader: () => loader25
 });
-var loader26 = it;
+var loader25 = it;
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx
 var virtual_root_exports = {};
 __export(virtual_root_exports, {
   default: () => App2,
   links: () => links2,
-  meta: () => meta11
+  meta: () => meta12
 });
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/assets/styles.css
@@ -51245,9 +51395,9 @@ var styles_default = "/build/_assets/styles-O7MQZLJO.css";
 var favicon_default = "/build/_assets/favicon-5FIZBM2K.svg";
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/Layout.jsx
-var import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime(), 1);
-function Layout2(props) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "hydrogen-virtual-route", children: props.children }, void 0, !1, {
+var import_jsx_dev_runtime69 = __toESM(require_jsx_dev_runtime(), 1);
+function Layout3(props) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "hydrogen-virtual-route", children: props.children }, void 0, !1, {
     fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/Layout.jsx",
     lineNumber: 2,
     columnNumber: 10
@@ -51255,22 +51405,22 @@ function Layout2(props) {
 }
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx
-var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime(), 1), links2 = () => [
+var import_jsx_dev_runtime70 = __toESM(require_jsx_dev_runtime(), 1), links2 = () => [
   { rel: "stylesheet", href: styles_default },
   { rel: "icon", type: "image/svg+xml", href: favicon_default }
-], meta11 = () => ({
+], meta12 = () => ({
   charset: "utf-8",
   viewport: "width=device-width,initial-scale=1"
 });
 function App2() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Meta, {}, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 24,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 25,
         columnNumber: 7
@@ -51280,8 +51430,8 @@ function App2() {
       lineNumber: 23,
       columnNumber: 5
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Layout2, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Outlet, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Layout3, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Outlet, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 28,
         columnNumber: 15
@@ -51290,12 +51440,12 @@ function App2() {
         lineNumber: 28,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 29,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 30,
         columnNumber: 7
@@ -51313,7 +51463,7 @@ function App2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "d23b8d48", entry: { module: "/build/entry.client-DFB7YC4A.js", imports: ["/build/_shared/chunk-OMZJUDSO.js", "/build/_shared/chunk-Y6AO6HV5.js", "/build/_shared/chunk-HAK4ZCPU.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-53HKUEFQ.js", imports: ["/build/_shared/chunk-RU4WZMU4.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-HY3PDZ7J.js", imports: ["/build/_shared/chunk-WLPOEJTB.js", "/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/address/$id": { id: "routes/account/__private/address/$id", parentId: "routes/account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/address/$id-XBHYZME7.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/edit": { id: "routes/account/__private/edit", parentId: "routes/account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/edit-2HSDAXQ3.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/logout": { id: "routes/account/__private/logout", parentId: "routes/account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/logout-4Z5SN57J.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/orders.$id": { id: "routes/account/__private/orders.$id", parentId: "routes/account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/orders.$id-6ABWHPCR.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/activate.$id.$activationToken": { id: "routes/account/__public/activate.$id.$activationToken", parentId: "routes/account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/activate.$id.$activationToken-OZ4DBGLK.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/login": { id: "routes/account/__public/login", parentId: "routes/account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/login-5S2AYZO7.js", imports: ["/build/_shared/chunk-6XCNRRK2.js", "/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/recover": { id: "routes/account/__public/recover", parentId: "routes/account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/recover-IUN4XTTJ.js", imports: ["/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/register": { id: "routes/account/__public/register", parentId: "routes/account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/register-XAZRYR6C.js", imports: ["/build/_shared/chunk-6XCNRRK2.js", "/build/_shared/chunk-ERZCNWIS.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/reset.$id.$resetToken": { id: "routes/account/__public/reset.$id.$resetToken", parentId: "routes/account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/reset.$id.$resetToken-ZYVMF3XG.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-CLTXHJMK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/products": { id: "routes/api/products", parentId: "root", path: "api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/api/products-NF3TO7HH.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-6IV4P7AV.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/$collectionHandle": { id: "routes/collections/$collectionHandle", parentId: "root", path: "collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/$collectionHandle-GHJPKM3M.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/all": { id: "routes/collections/all", parentId: "root", path: "collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/all-REPDOH3U.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/index": { id: "routes/collections/index", parentId: "root", path: "collections", index: !0, caseSensitive: void 0, module: "/build/routes/collections/index-VGN7K44N.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/discounts.$code": { id: "routes/discounts.$code", parentId: "root", path: "discounts/:code", index: void 0, caseSensitive: void 0, module: "/build/routes/discounts.$code-TDMQHBDL.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/featured-products": { id: "routes/featured-products", parentId: "root", path: "featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/featured-products-WN2C6U27.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-XBDP54GI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/indexOLD": { id: "routes/indexOLD", parentId: "root", path: "indexOLD", index: void 0, caseSensitive: void 0, module: "/build/routes/indexOLD-NL6O37X4.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pages/$pageHandle": { id: "routes/pages/$pageHandle", parentId: "root", path: "pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/pages/$pageHandle-6TTWMC5B.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/$policyHandle": { id: "routes/policies/$policyHandle", parentId: "root", path: "policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/policies/$policyHandle-ROQITLG4.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/index": { id: "routes/policies/index", parentId: "root", path: "policies", index: !0, caseSensitive: void 0, module: "/build/routes/policies/index-3NWG6N22.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/$productHandle": { id: "routes/products/$productHandle", parentId: "root", path: "products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/products/$productHandle-LYYBYROT.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/index": { id: "routes/products/index", parentId: "root", path: "products", index: !0, caseSensitive: void 0, module: "/build/routes/products/index-XP6NJEKB.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/search": { id: "routes/search", parentId: "root", path: "search", index: void 0, caseSensitive: void 0, module: "/build/routes/search-J4K3XAUM.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-5TAHGJ6X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-D23B8D48.js" };
+var assets_manifest_default = { version: "8526c578", entry: { module: "/build/entry.client-DFB7YC4A.js", imports: ["/build/_shared/chunk-OMZJUDSO.js", "/build/_shared/chunk-Y6AO6HV5.js", "/build/_shared/chunk-HAK4ZCPU.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-426OWR6D.js", imports: ["/build/_shared/chunk-Y5LQP4XA.js", "/build/_shared/chunk-2E5VCZ7B.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-3YH2C4UC.js", imports: ["/build/_shared/chunk-OP7JDA5L.js", "/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/address/$id": { id: "routes/account/__private/address/$id", parentId: "routes/account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/address/$id-P7VRKDEK.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/edit": { id: "routes/account/__private/edit", parentId: "routes/account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/edit-BVLBA23G.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/logout": { id: "routes/account/__private/logout", parentId: "routes/account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/logout-4Z5SN57J.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/orders.$id": { id: "routes/account/__private/orders.$id", parentId: "routes/account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/orders.$id-JXJDGBDE.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/activate.$id.$activationToken": { id: "routes/account/__public/activate.$id.$activationToken", parentId: "routes/account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/activate.$id.$activationToken-OZ4DBGLK.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/login": { id: "routes/account/__public/login", parentId: "routes/account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/login-YTGGBKFF.js", imports: ["/build/_shared/chunk-JJRTWINS.js", "/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/recover": { id: "routes/account/__public/recover", parentId: "routes/account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/recover-6HP5JFHV.js", imports: ["/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/register": { id: "routes/account/__public/register", parentId: "routes/account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/register-HT53O6HI.js", imports: ["/build/_shared/chunk-JJRTWINS.js", "/build/_shared/chunk-TP2PXVG6.js", "/build/_shared/chunk-6Z256F6I.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/reset.$id.$resetToken": { id: "routes/account/__public/reset.$id.$resetToken", parentId: "routes/account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/reset.$id.$resetToken-ZYVMF3XG.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-CLTXHJMK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/products": { id: "routes/api/products", parentId: "root", path: "api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/api/products-NF3TO7HH.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-JVXEVDEL.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cartOld": { id: "routes/cartOld", parentId: "root", path: "cartOld", index: void 0, caseSensitive: void 0, module: "/build/routes/cartOld-W3ZKOHYV.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/$collectionHandle": { id: "routes/collections/$collectionHandle", parentId: "root", path: "collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/$collectionHandle-W54PD532.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/all": { id: "routes/collections/all", parentId: "root", path: "collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/all-REPDOH3U.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/index": { id: "routes/collections/index", parentId: "root", path: "collections", index: !0, caseSensitive: void 0, module: "/build/routes/collections/index-BB5QNZOC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/featured-products": { id: "routes/featured-products", parentId: "root", path: "featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/featured-products-WN2C6U27.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-HQEDLUVE.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/indexOLD": { id: "routes/indexOLD", parentId: "root", path: "indexOLD", index: void 0, caseSensitive: void 0, module: "/build/routes/indexOLD-NL6O37X4.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pages/$pageHandle": { id: "routes/pages/$pageHandle", parentId: "root", path: "pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/pages/$pageHandle-TILH7PV2.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/$policyHandle": { id: "routes/policies/$policyHandle", parentId: "root", path: "policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/policies/$policyHandle-33UHKRRJ.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/index": { id: "routes/policies/index", parentId: "root", path: "policies", index: !0, caseSensitive: void 0, module: "/build/routes/policies/index-GK6MFENW.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/$productHandle": { id: "routes/products/$productHandle", parentId: "root", path: "products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/products/$productHandle-XILJ3JUK.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/index": { id: "routes/products/index", parentId: "root", path: "products", index: !0, caseSensitive: void 0, module: "/build/routes/products/index-ZK7SMKL6.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/search": { id: "routes/search", parentId: "root", path: "search", index: void 0, caseSensitive: void 0, module: "/build/routes/search-HIDRVVT6.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-5TAHGJ6X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-8526C578.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -51380,14 +51530,6 @@ var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: 
     index: void 0,
     caseSensitive: void 0,
     module: all_exports
-  },
-  "routes/discounts.$code": {
-    id: "routes/discounts.$code",
-    parentId: "root",
-    path: "discounts/:code",
-    index: void 0,
-    caseSensitive: void 0,
-    module: discounts_code_exports
   },
   "routes/policies/index": {
     id: "routes/policies/index",
@@ -51524,6 +51666,14 @@ var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: 
     index: void 0,
     caseSensitive: void 0,
     module: login_exports
+  },
+  "routes/cartOld": {
+    id: "routes/cartOld",
+    parentId: "root",
+    path: "cartOld",
+    index: void 0,
+    caseSensitive: void 0,
+    module: cartOld_exports
   },
   "routes/search": {
     id: "routes/search",
@@ -52192,9 +52342,9 @@ var timeoutProvider = {
     var delegate = timeoutProvider.delegate;
     return delegate != null && delegate.setTimeout ? delegate.setTimeout.apply(delegate, __spreadArray([handler, timeout], __read(args))) : setTimeout.apply(void 0, __spreadArray([handler, timeout], __read(args)));
   },
-  clearTimeout: function(handle13) {
+  clearTimeout: function(handle14) {
     var delegate = timeoutProvider.delegate;
-    return ((delegate == null ? void 0 : delegate.clearTimeout) || clearTimeout)(handle13);
+    return ((delegate == null ? void 0 : delegate.clearTimeout) || clearTimeout)(handle14);
   },
   delegate: void 0
 };
@@ -53115,8 +53265,8 @@ _httpRequest2$4 = /* @__PURE__ */ new WeakMap();
 function _upload(client, httpRequest2, assetType, body) {
   let opts = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : {};
   validateAssetType(assetType);
-  let meta12 = opts.extract || void 0;
-  meta12 && !meta12.length && (meta12 = ["none"]);
+  let meta13 = opts.extract || void 0;
+  meta13 && !meta13.length && (meta13 = ["none"]);
   let dataset2 = hasDataset(client.config()), assetEndpoint = assetType === "image" ? "images" : "files", options = optionsFromFile(opts, body), {
     tag,
     label,
@@ -53130,7 +53280,7 @@ function _upload(client, httpRequest2, assetType, body) {
     title,
     description,
     filename,
-    meta: meta12,
+    meta: meta13,
     creditLine
   };
   return source && (query2.sourceId = source.id, query2.sourceName = source.name, query2.sourceUrl = source.url), _requestObservable(client, httpRequest2, {
@@ -53542,7 +53692,7 @@ _httpRequest2 = /* @__PURE__ */ new WeakMap();
 var httpRequest = defineHttpRequest(envMiddleware), requester = httpRequest.defaultRequester, createClient = (config2) => new SanityClient(httpRequest, config2);
 
 // node_modules/@sanity/preview-kit/dist/index.js
-var import_react131 = __toESM(require_react(), 1);
+var import_react136 = __toESM(require_react(), 1);
 
 // node_modules/suspend-react/dist/index.js
 var globalCache = [];
@@ -53607,8 +53757,8 @@ var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1), _checkAuth = async 
   return EventSourcePolyfill;
 };
 function useParams2(params) {
-  let stringifiedParams = (0, import_react131.useMemo)(() => JSON.stringify(params || {}), [params]);
-  return (0, import_react131.useMemo)(() => JSON.parse(stringifiedParams), [stringifiedParams]);
+  let stringifiedParams = (0, import_react136.useMemo)(() => JSON.stringify(params || {}), [params]);
+  return (0, import_react136.useMemo)(() => JSON.parse(stringifiedParams), [stringifiedParams]);
 }
 var _definePreview = (_ref) => {
   let {
@@ -53634,7 +53784,7 @@ var _definePreview = (_ref) => {
       throw new Error("Calling usePreview outside a browser environment isn't supported. Ensure the component using the hook is only rendering on the client. For example by wrapping it in PreviewSuspense.");
     if (!token && token !== null)
       throw new Error("No `token` given to usePreview hook, if this is intentional then set it to `null`");
-    let [serverSnapshot] = (0, import_react131.useState)(() => _serverSnapshot), params = useParams2(_params);
+    let [serverSnapshot] = (0, import_react136.useState)(() => _serverSnapshot), params = useParams2(_params);
     store || (onPublicAccessOnly && (checkAuth(projectId2, token) || onPublicAccessOnly()), store = importGroqStore()({
       projectId: projectId2,
       dataset: dataset2,
@@ -53646,7 +53796,7 @@ var _definePreview = (_ref) => {
       listen: !0,
       overlayDrafts
     }));
-    let initial = serverSnapshot ?? preload(store, query2, params), syncStore = (0, import_react131.useMemo)(() => {
+    let initial = serverSnapshot ?? preload(store, query2, params), syncStore = (0, import_react136.useMemo)(() => {
       let snapshot = initial;
       return {
         getServerSnapshot: serverSnapshot === void 0 ? void 0 : () => serverSnapshot,
@@ -53661,12 +53811,12 @@ var _definePreview = (_ref) => {
         }
       };
     }, [initial, params, query2, serverSnapshot]);
-    return (0, import_react131.useEffect)(() => {
+    return (0, import_react136.useEffect)(() => {
       let callback = () => {
         store.close();
       };
       return window.addEventListener("beforeunload", callback), () => window.removeEventListener("beforeunload", callback);
-    }, []), (0, import_react131.useSyncExternalStore)(syncStore.subscribe, syncStore.getSnapshot, syncStore.getServerSnapshot);
+    }, []), (0, import_react136.useSyncExternalStore)(syncStore.subscribe, syncStore.getSnapshot, syncStore.getServerSnapshot);
   };
 }, _preloadQuery = (store, query2, params) => store.query(query2, params), definePreview = (config2) => _definePreview({
   ...config2,
