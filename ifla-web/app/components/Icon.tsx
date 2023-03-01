@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cx } from 'class-variance-authority';
 
 type IconProps = JSX.IntrinsicElements['svg'] & {
   direction?: 'up' | 'right' | 'down' | 'left';
@@ -18,7 +18,7 @@ function Icon({
       {...props}
       fill={fill}
       stroke={stroke}
-      className={clsx('w-5 h-5', className)}
+      className={cx('w-5 h-5', className)}
     >
       {children}
     </svg>

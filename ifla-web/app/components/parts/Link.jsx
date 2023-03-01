@@ -1,12 +1,11 @@
 import {Link as RemixLink} from '@remix-run/react';
-import clsx from 'clsx';
-import React from 'react';
+import { cx } from 'class-variance-authority';
 
 const Link = ({children, to, className}) => {
   return (
     <RemixLink
       to={to}
-      className={clsx(
+      className={cx(
         'focus-visible:underline focus:border-none focus:outline-none',
         className,
       )}

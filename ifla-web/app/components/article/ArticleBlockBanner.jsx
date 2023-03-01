@@ -1,6 +1,6 @@
 import React from "react";
-import clsx from "clsx";
 import Topic from "../parts/Topic";
+import { cx } from "class-variance-authority";
 
 const ArticleBlockBanner = ({ article }) => {
 	const { headline, intro, colour, author, media } = article;
@@ -10,7 +10,7 @@ const ArticleBlockBanner = ({ article }) => {
 			style={{ background: colour ? colour : "#e3e8ef" }}
 		>
 			<div
-				className={clsx(
+				className={cx(
 					"grid grid-rows-2 grid-cols-1 gap-4",
 					"lg:grid-cols-3 lg:grid-rows-1"
 				)}
@@ -18,7 +18,7 @@ const ArticleBlockBanner = ({ article }) => {
 				<div>
 					<h3 className={"text-6xl"}><Topic/>{headline ? headline : "Untitled article"}</h3>
 				</div>
-				<h4 className={clsx("text-3xl columns-1 col-span-2 gap-4 ", "md:columns-2")}>
+				<h4 className={cx("text-3xl columns-1 col-span-2 gap-4 ", "md:columns-2")}>
 					{intro ? intro : "Intro text"}
 				</h4>
 			</div>

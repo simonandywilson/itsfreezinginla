@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import {
   flattenConnection,
   Image,
@@ -11,6 +10,7 @@ import {Text, Link, AddToCartButton} from '~/components';
 import {isDiscounted, isNewArrival} from '~/lib/utils';
 import {getProductPlaceholder} from '~/lib/placeholders';
 import type {MoneyV2, Product} from '@shopify/hydrogen/storefront-api-types';
+import { cx } from 'class-variance-authority';
 
 export function ProductCard({
   product,
@@ -64,7 +64,7 @@ export function ProductCard({
         to={`/products/${product.handle}`}
         prefetch="intent"
       >
-        <div className={clsx('grid gap-4', className)}>
+        <div className={cx('grid gap-4', className)}>
           <div className="card-image aspect-[4/5] bg-primary/5">
             {image && (
               <Image
@@ -145,7 +145,7 @@ function CompareAtPrice({
   const {currencyNarrowSymbol, withoutTrailingZerosAndCurrency} =
     useMoney(data);
 
-  const styles = clsx('strike', className);
+  const styles = cx('strike', className);
 
   return (
     <span className={styles}>

@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import {useEffect, useId, useMemo} from 'react';
 import {useFetcher} from '@remix-run/react';
 import {Heading, ProductCard, Skeleton, Text} from '~/components';
@@ -6,6 +5,7 @@ import type {
   Product,
   ProductSortKeys,
 } from '@shopify/hydrogen/storefront-api-types';
+import { cx } from 'class-variance-authority';
 
 interface FeaturedProductsProps {
   count: number;
@@ -56,7 +56,7 @@ export function FeaturedProducts({
         {heading}
       </Heading>
       <div
-        className={clsx([
+        className={cx([
           `grid grid-cols-2 gap-x-6 gap-y-8`,
           layout === 'page' ? 'md:grid-cols-4 sm:grid-col-4' : '',
         ])}

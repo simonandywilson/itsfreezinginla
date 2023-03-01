@@ -1,8 +1,8 @@
 import React from "react";
 import urlBuilder from "@sanity/image-url";
 import { getImageDimensions } from "@sanity/asset-utils";
-import clsx from "clsx";
 import { useRouteData } from "remix-utils";
+import { cx } from "class-variance-authority";
 
 
 
@@ -13,7 +13,7 @@ export default function SanityImage(props) {
 
 	return (
     <img
-      className={clsx('not-prose h-auto w-full', className)}
+      className={cx('not-prose h-auto w-full', className)}
       src={urlBuilder(sanityProjectDetails)
         .image(value)
         .width(isInline ? 100 : 800)

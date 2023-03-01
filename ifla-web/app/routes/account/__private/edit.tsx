@@ -10,7 +10,7 @@ import type {
   CustomerUpdatePayload,
 } from '@shopify/hydrogen/storefront-api-types';
 import {json, redirect, type ActionFunction} from '@shopify/remix-oxygen';
-import clsx from 'clsx';
+import { cx } from 'class-variance-authority';
 import invariant from 'tiny-invariant';
 import {Button, Text} from '~/components';
 import {assertApiErrors, getInputStyleClasses} from '~/lib/utils';
@@ -221,7 +221,7 @@ export default function AccountDetailsEdit() {
         <Text
           size="fine"
           color="subtle"
-          className={clsx(
+          className={cx(
             'mt-1',
             actionData?.fieldErrors?.newPassword && 'text-red-500',
           )}

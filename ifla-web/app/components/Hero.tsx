@@ -1,4 +1,3 @@
-import clsx from 'clsx';
 import type {SerializeFrom} from '@shopify/remix-oxygen';
 import {MediaFile} from '@shopify/hydrogen';
 import type {
@@ -8,6 +7,7 @@ import type {
 } from '@shopify/hydrogen/storefront-api-types';
 import {Heading, Text, Link} from '~/components';
 import type {CollectionHero} from '~/routes/($lang)/index';
+import { cx } from 'class-variance-authority';
 
 /**
  * Hero component that renders metafields attached to collection resources
@@ -26,7 +26,7 @@ export function Hero({
   return (
     <Link to={`/collections/${handle}`}>
       <section
-        className={clsx(
+        className={cx(
           'relative justify-end flex flex-col w-full',
           top && '-mt-nav',
           height === 'full'

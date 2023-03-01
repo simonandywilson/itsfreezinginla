@@ -6,7 +6,7 @@ import type {
   CartLine,
   CartLineUpdateInput,
 } from '@shopify/hydrogen/storefront-api-types';
-import clsx from 'clsx';
+import { cx } from 'class-variance-authority';
 import {useRef} from 'react';
 import {useScroll} from 'react-use';
 import {
@@ -104,7 +104,7 @@ function CartDiscounts({
       {/* No discounts, show an input to apply a discount */}
       <UpdateDiscountForm>
         <div
-          className={clsx(
+          className={cx(
             codes ? 'hidden' : 'flex',
             'items-center gap-4 justify-between text-copy',
           )}
@@ -149,7 +149,7 @@ function CartLines({
   const scrollRef = useRef(null);
   const {y} = useScroll(scrollRef);
 
-  const className = clsx([
+  const className = cx([
     y > 0 ? 'border-t' : '',
     layout === 'page'
       ? 'flex-grow md:translate-y-4'
@@ -397,11 +397,11 @@ export function CartEmpty({
   const {y} = useScroll(scrollRef);
 
   const container = {
-    drawer: clsx([
+    drawer: cx([
       'content-start gap-4 px-6 pb-8 transition overflow-y-scroll md:gap-12 md:px-12 h-screen-no-nav md:pb-12',
       y > 0 ? 'border-t' : '',
     ]),
-    page: clsx([
+    page: cx([
       hidden ? '' : 'grid',
       `pb-12 w-full md:items-start gap-4 md:gap-8 lg:gap-12`,
     ]),

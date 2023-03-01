@@ -11,7 +11,7 @@ import {
   type LoaderArgs,
   type MetaFunction,
 } from '@shopify/remix-oxygen';
-import clsx from 'clsx';
+import { cx } from 'class-variance-authority';
 import invariant from 'tiny-invariant';
 import {Heading, Link, PageHeader, Text} from '~/components';
 import {statusMessage} from '~/lib/utils';
@@ -307,7 +307,7 @@ export default function OrderRoute() {
                 Status
               </Heading>
               <div
-                className={clsx(
+                className={cx(
                   `mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto`,
                   order.fulfillmentStatus === 'FULFILLED'
                     ? 'bg-green-100 text-green-800'

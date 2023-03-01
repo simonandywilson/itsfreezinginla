@@ -1,4 +1,4 @@
-import clsx from 'clsx';
+import { cx } from 'class-variance-authority';
 
 import {formatText, missingClass} from '~/lib/utils';
 
@@ -41,7 +41,7 @@ export function Text({
     wide: 'max-w-prose-wide',
   };
 
-  const styles = clsx(
+  const styles = cx(
     missingClass(className, 'max-w-') && widths[width],
     missingClass(className, 'whitespace-') && 'whitespace-pre-wrap',
     missingClass(className, 'text-') && colors[color],
@@ -84,7 +84,7 @@ export function Heading({
     wide: 'max-w-prose-wide',
   };
 
-  const styles = clsx(
+  const styles = cx(
     missingClass(className, 'whitespace-') && 'whitespace-pre-wrap',
     missingClass(className, 'max-w-') && widths[width],
     missingClass(className, 'font-') && sizes[size],
@@ -136,7 +136,7 @@ export function Section({
     grid: 'grid',
   };
 
-  const styles = clsx(
+  const styles = cx(
     'w-full gap-4 md:gap-8',
     displays[display],
     missingClass(className, '\\mp[xy]?-') && paddings[padding],
@@ -177,7 +177,7 @@ export function PageHeader({
       'flex justify-between items-baseline gap-8 p-6 md:p-8 lg:p-12',
   };
 
-  const styles = clsx(variants[variant], className);
+  const styles = cx(variants[variant], className);
 
   return (
     <header {...props} className={styles}>

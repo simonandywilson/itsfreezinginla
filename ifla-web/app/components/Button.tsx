@@ -1,8 +1,7 @@
 import {forwardRef} from 'react';
 import {Link} from '@remix-run/react';
-import clsx from 'clsx';
-
 import {missingClass} from '~/lib/utils';
+import { cx } from 'class-variance-authority';
 
 export const Button = forwardRef(
   (
@@ -37,7 +36,7 @@ export const Button = forwardRef(
       full: 'w-full',
     };
 
-    const styles = clsx(
+    const styles = cx(
       missingClass(className, 'bg-') && variants[variant],
       missingClass(className, 'w-') && widths[width],
       className,
