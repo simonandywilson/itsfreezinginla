@@ -60,10 +60,6 @@ export const AltTextDemo = (props) => {
 					<TabPanel aria-labelledby="info-tab" hidden={id !== "info"} id="info-panel">
 						<Card borderTop={true} padding={4} radius={0} marginTop={2}>
 							<Stack space={3}>
-								<Inline>
-									<Badge tone="primary">What is Alternative Text?</Badge>
-								</Inline>
-
 								<Text size={1} weight={"semibold"}>
 									Alternative Text (Alt Text) describes the appearance or function
 									of an image on a page. Alt Text is read aloud by screen readers

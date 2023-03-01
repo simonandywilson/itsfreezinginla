@@ -1,12 +1,13 @@
 import {json} from '@shopify/remix-oxygen';
 import groq from 'groq';
-import { useLoaderData } from 'react-router';
+import {useLoaderData} from 'react-router';
 
 import Hero from '../components/home/Hero';
 import Link from '../components/parts/Link';
 import ArticleBlockBanner from '../components/article/ArticleBlockBanner';
 import ArticleBlock from '../components/article/ArticleBlock';
 import Banner from '../components/parts/Banner';
+import { Layout } from '../components/parts/Layout';
 
 export const handle = {
   seo: {
@@ -42,7 +43,7 @@ export default function Index() {
               ? homepage.featuredBanner
               : 'Featured articles'}
           </Banner>
-          <ul className={'w-full grid-layout'}>
+          <Layout intent={'grid'} tag={"ul"}>
             <li className={'col-span-full w-full'}>
               <Link to={homepage.featured[0].slug}>
                 <ArticleBlockBanner article={homepage.featured[0]} />
@@ -60,7 +61,7 @@ export default function Index() {
                 </li>
               );
             })}
-          </ul>
+          </Layout>
         </>
       ) : (
         <Banner>No featured articles</Banner>
@@ -80,10 +81,16 @@ async function getHomepageData({sanityClient}) {
 			intro,
 			"colour":colour->colourLight,
 			author-> {name},
+            topic -> {
+              topic,
+              image {
+                asset-> {_id}
+              }
+            },
 			media[],
 			image {
           		alt,
-            	asset->
+            	asset->{_id}
           	}
 		}}`;
   const homepage = await sanityClient.fetch(query);

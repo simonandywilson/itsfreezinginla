@@ -1,6 +1,6 @@
 import Link from '~/components/parts/Link';
 import {useRouteData} from 'remix-utils';
-import PortableText from '../parts/PortableText';
+import {PortableText} from '../parts/PortableText';
 import GlobalNewsletter from './GlobalNewsletter';
 
 const GlobalFooter = () => {

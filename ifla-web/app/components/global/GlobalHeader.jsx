@@ -6,6 +6,7 @@ import GlobalMenuItemMobile from './GlobalMenuItemMobile';
 import GlobalTitle from './GlobalTitle';
 import {Await} from '@remix-run/react';
 import Link from '~/components/parts/Link';
+import {BasketIcon} from '../icons/Icons';
 
 const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
@@ -14,7 +15,7 @@ const GlobalHeader = () => {
       className="fixed h-24 w-screen bg-white z-50 text-3xl md:text-2xl"
       as={'header'}
     >
-      <div className="w-full p-4 flex items-center justify-between">
+      <div className="relative w-full p-4 flex items-center justify-between">
         <GlobalTitle />
         <div className={'flex items-center gap-16'}>
           {/* Mobile Menu Button */}
@@ -67,7 +68,8 @@ const CartButton = () => {
   const {cart} = useRouteData(`root`);
   return (
     <Link to={'/cart'} aria-label="Go to cart">
-      <div className="w-20 h-14 bg-gray-200">
+      <div className={'h-14'}>
+        <BasketIcon />
         <Suspense fallback={<CartButtonBadge count={0} />}>
           <Await resolve={cart}>
             {(cart) => <CartButtonBadge count={cart?.totalQuantity || 0} />}

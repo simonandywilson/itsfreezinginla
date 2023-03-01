@@ -5,7 +5,16 @@ const layout = cva('layout', {
   variants: {
     intent: {
       page: ['p-4'],
-      centre: ['flex', 'justify-center', 'items-center', 'h-[calc(100vh-6rem)]'],
+      module: ['px-4'],
+      prose: ['max-w-prose mx-auto px-4'],
+      grid: ['grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'],
+      article: ['flex flex-col gap-4'],
+      centre: [
+        'flex',
+        'justify-center',
+        'items-center',
+        'h-[calc(100vh-6rem)]',
+      ],
     },
     // size: {
     //   small: ['text-sm', 'py-1', 'px-2'],
@@ -18,11 +27,11 @@ const layout = cva('layout', {
   },
 });
 
-
-
-
-export const Layout = ({className, intent, children, ...props}) => (
-  <div className={layout({intent, className})} {...props}>
-    {children}
-  </div>
-);
+export const Layout = ({tag, className, intent, children}) => {
+  const ElementTag = `${tag || 'div'}`;
+  return (
+    <ElementTag className={layout({intent, className})}>
+      {children}
+    </ElementTag>
+  );
+};

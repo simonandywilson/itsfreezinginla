@@ -9,7 +9,7 @@ export default defineArrayMember({
 	fields: [
 		defineField({
 			name: "text",
-			type: "defaultBlock",
+			type: "columnsBlock",
 		}),
 	],
 	preview: {

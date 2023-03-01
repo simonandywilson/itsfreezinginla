@@ -6,12 +6,11 @@ import { cx } from "class-variance-authority";
 
 
 
-export default function SanityImage(props) {
-	const {sanityProjectDetails} = useRouteData(`root`);
-	const { value, isInline, className } = props;
-	const { width, height } = getImageDimensions(value);
+export default function SanityImage({value, isInline, className, alt}) {
+  const {sanityProjectDetails} = useRouteData(`root`);
+  const {width, height} = getImageDimensions(value);
 
-	return (
+  return (
     <img
       className={cx('not-prose h-auto w-full', className)}
       src={urlBuilder(sanityProjectDetails)
@@ -20,7 +19,7 @@ export default function SanityImage(props) {
         .fit('max')
         .auto('format')
         .url()}
-      alt={value.alt || ''}
+      alt={alt || value.alt || ''}
       loading="lazy"
       style={{
         // Display alongside text if image appears inside a block text span

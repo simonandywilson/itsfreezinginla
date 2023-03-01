@@ -312,7 +312,7 @@ var require_react_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function createElement8(type, config2, children) {
+      function createElement9(type, config2, children) {
         var propName, props = {}, key = null, ref = null, self2 = null, source = null;
         if (config2 != null) {
           hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2)), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), self2 = config2.__self === void 0 ? null : config2.__self, source = config2.__source === void 0 ? null : config2.__source;
@@ -377,8 +377,8 @@ var require_react_development = __commonJS({
         return "$" + escapedString;
       }
       var didWarnAboutMaps = !1, userProvidedKeyEscapeRegex = /\/+/g;
-      function escapeUserProvidedKey(text) {
-        return text.replace(userProvidedKeyEscapeRegex, "$&/");
+      function escapeUserProvidedKey(text2) {
+        return text2.replace(userProvidedKeyEscapeRegex, "$&/");
       }
       function getElementKey(element, index) {
         return typeof element == "object" && element !== null && element.key != null ? (checkKeyStringCoercion(element.key), escape("" + element.key)) : index.toString(36);
@@ -463,7 +463,7 @@ var require_react_development = __commonJS({
           throw new Error("React.Children.only expected to receive a single React element child.");
         return children;
       }
-      function createContext4(defaultValue) {
+      function createContext5(defaultValue) {
         var context2 = {
           $$typeof: REACT_CONTEXT_TYPE,
           _currentValue: defaultValue,
@@ -605,7 +605,7 @@ Your code should look like:
         }
         return lazyType;
       }
-      function forwardRef4(render) {
+      function forwardRef6(render) {
         render != null && render.$$typeof === REACT_MEMO_TYPE ? error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).") : typeof render != "function" ? error("forwardRef requires a render function but was given %s.", render === null ? "null" : typeof render) : render.length !== 0 && render.length !== 2 && error("forwardRef render functions accept exactly two parameters: props and ref. %s", render.length === 1 ? "Did you forget to use the ref parameter?" : "Any additional parameter will be undefined."), render != null && (render.defaultProps != null || render.propTypes != null) && error("forwardRef render functions do not support propTypes or defaultProps. Did you accidentally pass a React component?");
         var elementType = {
           $$typeof: REACT_FORWARD_REF_TYPE,
@@ -661,7 +661,7 @@ Your code should look like:
 3. You might have more than one copy of React in the same app
 See https://reactjs.org/link/invalid-hook-call for tips about how to debug and fix this problem.`), dispatcher;
       }
-      function useContext6(Context) {
+      function useContext7(Context) {
         var dispatcher = resolveDispatcher();
         if (Context._context !== void 0) {
           var realContext = Context._context;
@@ -669,7 +669,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         }
         return dispatcher.useContext(Context);
       }
-      function useState19(initialState) {
+      function useState22(initialState) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useState(initialState);
       }
@@ -677,11 +677,11 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useReducer(reducer, initialArg, init);
       }
-      function useRef13(initialValue) {
+      function useRef16(initialValue) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useRef(initialValue);
       }
-      function useEffect23(create, deps) {
+      function useEffect25(create, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useEffect(create, deps);
       }
@@ -689,7 +689,7 @@ See https://reactjs.org/link/invalid-hook-call for tips about how to debug and f
         var dispatcher = resolveDispatcher();
         return dispatcher.useInsertionEffect(create, deps);
       }
-      function useLayoutEffect4(create, deps) {
+      function useLayoutEffect5(create, deps) {
         var dispatcher = resolveDispatcher();
         return dispatcher.useLayoutEffect(create, deps);
       }
@@ -1057,7 +1057,7 @@ Check the top-level render call using <` + parentName + ">.");
           var typeString;
           type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.createElement: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
         }
-        var element = createElement8.apply(this, arguments);
+        var element = createElement9.apply(this, arguments);
         if (element == null)
           return element;
         if (validType)
@@ -1208,7 +1208,7 @@ Check the top-level render call using <` + parentName + ">.");
         toArray,
         only: onlyChild
       };
-      exports.Children = Children2, exports.Component = Component4, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext4, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef4, exports.isValidElement = isValidElement2, exports.lazy = lazy, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback6, exports.useContext = useContext6, exports.useDebugValue = useDebugValue2, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect23, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect4, exports.useMemo = useMemo14, exports.useReducer = useReducer2, exports.useRef = useRef13, exports.useState = useState19, exports.useSyncExternalStore = useSyncExternalStore3, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
+      exports.Children = Children2, exports.Component = Component4, exports.Fragment = REACT_FRAGMENT_TYPE, exports.Profiler = REACT_PROFILER_TYPE, exports.PureComponent = PureComponent, exports.StrictMode = REACT_STRICT_MODE_TYPE, exports.Suspense = REACT_SUSPENSE_TYPE, exports.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED = ReactSharedInternals, exports.cloneElement = cloneElement$1, exports.createContext = createContext5, exports.createElement = createElement$1, exports.createFactory = createFactory, exports.createRef = createRef, exports.forwardRef = forwardRef6, exports.isValidElement = isValidElement2, exports.lazy = lazy, exports.memo = memo, exports.startTransition = startTransition, exports.unstable_act = act, exports.useCallback = useCallback6, exports.useContext = useContext7, exports.useDebugValue = useDebugValue2, exports.useDeferredValue = useDeferredValue, exports.useEffect = useEffect25, exports.useId = useId2, exports.useImperativeHandle = useImperativeHandle, exports.useInsertionEffect = useInsertionEffect, exports.useLayoutEffect = useLayoutEffect5, exports.useMemo = useMemo14, exports.useReducer = useReducer2, exports.useRef = useRef16, exports.useState = useState22, exports.useSyncExternalStore = useSyncExternalStore3, exports.useTransition = useTransition2, exports.version = ReactVersion, typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStop(new Error());
     })();
   }
 });
@@ -3521,7 +3521,7 @@ function _renderMatches(matches, parentMatches, dataRouterState) {
     errorIndex >= 0 || invariant(!1, "Could not find a matching route for the current errors: " + errors), renderedMatches = renderedMatches.slice(0, Math.min(renderedMatches.length, errorIndex + 1));
   }
   return renderedMatches.reduceRight((outlet, match2, index) => {
-    let error = match2.route.id ? errors == null ? void 0 : errors[match2.route.id] : null, errorElement = dataRouterState ? match2.route.errorElement || /* @__PURE__ */ React.createElement(DefaultErrorElement, null) : null, matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1)), getChildren = () => /* @__PURE__ */ React.createElement(RenderedRoute, {
+    let error = match2.route.id ? errors == null ? void 0 : errors[match2.route.id] : null, errorElement = dataRouterState ? match2.route.errorElement || /* @__PURE__ */ React.createElement(DefaultErrorElement, null) : null, matches2 = parentMatches.concat(renderedMatches.slice(0, index + 1)), getChildren2 = () => /* @__PURE__ */ React.createElement(RenderedRoute, {
       match: match2,
       routeContext: {
         outlet,
@@ -3532,12 +3532,12 @@ function _renderMatches(matches, parentMatches, dataRouterState) {
       location: dataRouterState.location,
       component: errorElement,
       error,
-      children: getChildren(),
+      children: getChildren2(),
       routeContext: {
         outlet: null,
         matches: matches2
       }
-    }) : getChildren();
+    }) : getChildren2();
   }, null);
 }
 function getDataRouterConsoleError(hookName) {
@@ -4067,11 +4067,11 @@ function isFormElement(object) {
 function isInputElement(object) {
   return isHtmlElement(object) && object.tagName.toLowerCase() === "input";
 }
-function isModifiedEvent(event) {
-  return !!(event.metaKey || event.altKey || event.ctrlKey || event.shiftKey);
+function isModifiedEvent(event2) {
+  return !!(event2.metaKey || event2.altKey || event2.ctrlKey || event2.shiftKey);
 }
-function shouldProcessLinkClick(event, target) {
-  return event.button === 0 && (!target || target === "_self") && !isModifiedEvent(event);
+function shouldProcessLinkClick(event2, target) {
+  return event2.button === 0 && (!target || target === "_self") && !isModifiedEvent(event2);
 }
 function createSearchParams(init) {
   return init === void 0 && (init = ""), new URLSearchParams(typeof init == "string" || Array.isArray(init) || init instanceof URLSearchParams ? init : Object.keys(init).reduce((memo, key) => {
@@ -4254,9 +4254,9 @@ function useLinkClickHandler(to, _temp) {
   } = _temp === void 0 ? {} : _temp, navigate = useNavigate(), location2 = useLocation(), path2 = useResolvedPath(to, {
     relative
   });
-  return React2.useCallback((event) => {
-    if (shouldProcessLinkClick(event, target)) {
-      event.preventDefault();
+  return React2.useCallback((event2) => {
+    if (shouldProcessLinkClick(event2, target)) {
+      event2.preventDefault();
       let replace = replaceProp !== void 0 ? replaceProp : createPath(location2) === createPath(path2);
       navigate(to, {
         replace,
@@ -4451,7 +4451,7 @@ var React2, defaultMethod, defaultEncType, _excluded, _excluded2, _excluded3, is
     HistoryRouter.displayName = "unstable_HistoryRouter";
     isBrowser2 = typeof window < "u" && typeof window.document < "u" && typeof window.document.createElement < "u", Link = /* @__PURE__ */ React2.forwardRef(function(_ref4, ref) {
       let {
-        onClick,
+        onClick: onClick2,
         relative,
         reloadDocument,
         replace,
@@ -4473,12 +4473,12 @@ var React2, defaultMethod, defaultEncType, _excluded, _excluded2, _excluded3, is
         preventScrollReset,
         relative
       });
-      function handleClick(event) {
-        onClick && onClick(event), event.defaultPrevented || internalOnClick(event);
+      function handleClick(event2) {
+        onClick2 && onClick2(event2), event2.defaultPrevented || internalOnClick(event2);
       }
       return /* @__PURE__ */ React2.createElement("a", _extends3({}, rest, {
         href: isAbsolute ? location2 : href,
-        onClick: isExternal || reloadDocument ? onClick : handleClick,
+        onClick: isExternal || reloadDocument ? onClick2 : handleClick,
         ref,
         target
       }));
@@ -4542,12 +4542,12 @@ var React2, defaultMethod, defaultEncType, _excluded, _excluded2, _excluded3, is
         ref: forwardedRef,
         method: formMethod,
         action: formAction,
-        onSubmit: reloadDocument ? onSubmit : (event) => {
-          if (onSubmit && onSubmit(event), event.defaultPrevented)
+        onSubmit: reloadDocument ? onSubmit : (event2) => {
+          if (onSubmit && onSubmit(event2), event2.defaultPrevented)
             return;
-          event.preventDefault();
-          let submitter = event.nativeEvent.submitter, submitMethod = (submitter == null ? void 0 : submitter.getAttribute("formmethod")) || method;
-          submit(submitter || event.currentTarget, {
+          event2.preventDefault();
+          let submitter = event2.nativeEvent.submitter, submitMethod = (submitter == null ? void 0 : submitter.getAttribute("formmethod")) || method;
+          submit(submitter || event2.currentTarget, {
             method: submitMethod,
             replace,
             relative,
@@ -4574,7 +4574,7 @@ var require_server = __commonJS({
   "node_modules/react-router-dom/server.js"(exports) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: !0 });
-    var React17 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports));
+    var React30 = require_react(), router = (init_router(), __toCommonJS(router_exports)), reactRouterDom = (init_dist2(), __toCommonJS(dist_exports));
     function _interopNamespace(e6) {
       if (e6 && e6.__esModule)
         return e6;
@@ -4591,7 +4591,7 @@ var require_server = __commonJS({
         }
       }), n4.default = e6, Object.freeze(n4);
     }
-    var React__namespace = /* @__PURE__ */ _interopNamespace(React17);
+    var React__namespace = /* @__PURE__ */ _interopNamespace(React30);
     function StaticRouter({
       basename,
       children,
@@ -4787,7 +4787,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React17 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React30 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React30.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -5964,8 +5964,8 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
         }
         return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
       }
-      function escapeTextForBrowser(text) {
-        return typeof text == "boolean" || typeof text == "number" ? "" + text : escapeHtml3(text);
+      function escapeTextForBrowser(text2) {
+        return typeof text2 == "boolean" || typeof text2 == "number" ? "" + text2 : escapeHtml3(text2);
       }
       var uppercasePattern = /([A-Z])/g, msPattern$1 = /^ms-/;
       function hyphenateStyleName(name) {
@@ -6046,12 +6046,12 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
         var idPrefix = responseState.idPrefix, id = ":" + idPrefix + "R" + treeId;
         return localId > 0 && (id += "H" + localId.toString(32)), id + ":";
       }
-      function encodeHTMLTextNode(text) {
-        return escapeTextForBrowser(text);
+      function encodeHTMLTextNode(text2) {
+        return escapeTextForBrowser(text2);
       }
       var textSeparator = "<!-- -->";
-      function pushTextInstance(target, text, responseState, textEmbedded) {
-        return text === "" ? textEmbedded : (textEmbedded && target.push(textSeparator), target.push(encodeHTMLTextNode(text)), !0);
+      function pushTextInstance(target, text2, responseState, textEmbedded) {
+        return text2 === "" ? textEmbedded : (textEmbedded && target.push(textSeparator), target.push(encodeHTMLTextNode(text2)), !0);
       }
       function pushSegmentFinale(target, responseState, lastPushedText, textEmbedded) {
         lastPushedText && textEmbedded && target.push(textSeparator);
@@ -6184,7 +6184,7 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React17.Children.forEach(children, function(child) {
+        return React30.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -6661,8 +6661,8 @@ var require_react_dom_server_legacy_browser_development = __commonJS({
           selectedValue: null
         };
       }
-      function pushTextInstance$1(target, text, responseState, textEmbedded) {
-        return responseState.generateStaticMarkup ? (target.push(escapeTextForBrowser(text)), !1) : pushTextInstance(target, text, responseState, textEmbedded);
+      function pushTextInstance$1(target, text2, responseState, textEmbedded) {
+        return responseState.generateStaticMarkup ? (target.push(escapeTextForBrowser(text2)), !1) : pushTextInstance(target, text2, responseState, textEmbedded);
       }
       function pushSegmentFinale$1(target, responseState, lastPushedText, textEmbedded) {
         if (!responseState.generateStaticMarkup)
@@ -7319,13 +7319,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function readContext$1(context2) {
         return isInHookUserCodeInDev && error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo()."), readContext(context2);
       }
-      function useContext6(context2) {
+      function useContext7(context2) {
         return currentHookNameInDev = "useContext", resolveCurrentlyRenderingComponent(), readContext(context2);
       }
       function basicStateReducer(state, action11) {
         return typeof action11 == "function" ? action11(state) : action11;
       }
-      function useState19(initialState) {
+      function useState22(initialState) {
         return currentHookNameInDev = "useState", useReducer2(
           basicStateReducer,
           initialState
@@ -7373,7 +7373,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var nextValue = nextCreate();
         return isInHookUserCodeInDev = !1, workInProgressHook.memoizedState = [nextValue, nextDeps], nextValue;
       }
-      function useRef13(initialValue) {
+      function useRef16(initialValue) {
         currentlyRenderingComponent = resolveCurrentlyRenderingComponent(), workInProgressHook = createWorkInProgressHook();
         var previousRef = workInProgressHook.memoizedState;
         if (previousRef === null) {
@@ -7384,7 +7384,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         } else
           return previousRef;
       }
-      function useLayoutEffect4(create, inputs) {
+      function useLayoutEffect5(create, inputs) {
         currentHookNameInDev = "useLayoutEffect", error("useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.");
       }
       function dispatchAction(componentIdentity, queue, action11) {
@@ -7440,13 +7440,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       }
       var Dispatcher = {
         readContext: readContext$1,
-        useContext: useContext6,
+        useContext: useContext7,
         useMemo: useMemo14,
         useReducer: useReducer2,
-        useRef: useRef13,
-        useState: useState19,
+        useRef: useRef16,
+        useState: useState22,
         useInsertionEffect: noop4,
-        useLayoutEffect: useLayoutEffect4,
+        useLayoutEffect: useLayoutEffect5,
         useCallback: useCallback6,
         useImperativeHandle: noop4,
         useEffect: noop4,
@@ -8248,7 +8248,7 @@ var require_react_dom_server_browser_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React17 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var React30 = require_react(), ReactVersion = "18.2.0", ReactSharedInternals = React30.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function warn(format) {
         {
           for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++)
@@ -9436,8 +9436,8 @@ var require_react_dom_server_browser_development = __commonJS({
         }
         return lastIndex !== index ? html + str.substring(lastIndex, index) : html;
       }
-      function escapeTextForBrowser(text) {
-        return typeof text == "boolean" || typeof text == "number" ? "" + text : escapeHtml3(text);
+      function escapeTextForBrowser(text2) {
+        return typeof text2 == "boolean" || typeof text2 == "number" ? "" + text2 : escapeHtml3(text2);
       }
       var uppercasePattern = /([A-Z])/g, msPattern$1 = /^ms-/;
       function hyphenateStyleName(name) {
@@ -9522,12 +9522,12 @@ var require_react_dom_server_browser_development = __commonJS({
         var idPrefix = responseState.idPrefix, id = ":" + idPrefix + "R" + treeId;
         return localId > 0 && (id += "H" + localId.toString(32)), id + ":";
       }
-      function encodeHTMLTextNode(text) {
-        return escapeTextForBrowser(text);
+      function encodeHTMLTextNode(text2) {
+        return escapeTextForBrowser(text2);
       }
       var textSeparator = stringToPrecomputedChunk("<!-- -->");
-      function pushTextInstance(target, text, responseState, textEmbedded) {
-        return text === "" ? textEmbedded : (textEmbedded && target.push(textSeparator), target.push(stringToChunk(encodeHTMLTextNode(text))), !0);
+      function pushTextInstance(target, text2, responseState, textEmbedded) {
+        return text2 === "" ? textEmbedded : (textEmbedded && target.push(textSeparator), target.push(stringToChunk(encodeHTMLTextNode(text2))), !0);
       }
       function pushSegmentFinale(target, responseState, lastPushedText, textEmbedded) {
         lastPushedText && textEmbedded && target.push(textSeparator);
@@ -9660,7 +9660,7 @@ var require_react_dom_server_browser_development = __commonJS({
       }
       function flattenOptionChildren(children) {
         var content = "";
-        return React17.Children.forEach(children, function(child) {
+        return React30.Children.forEach(children, function(child) {
           child != null && (content += child, !didWarnInvalidOptionChildren && typeof child != "string" && typeof child != "number" && (didWarnInvalidOptionChildren = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }), content;
       }
@@ -10754,13 +10754,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       function readContext$1(context2) {
         return isInHookUserCodeInDev && error("Context can only be read while React is rendering. In classes, you can read it in the render method or getDerivedStateFromProps. In function components, you can read it directly in the function body, but not inside Hooks like useReducer() or useMemo()."), readContext(context2);
       }
-      function useContext6(context2) {
+      function useContext7(context2) {
         return currentHookNameInDev = "useContext", resolveCurrentlyRenderingComponent(), readContext(context2);
       }
       function basicStateReducer(state, action11) {
         return typeof action11 == "function" ? action11(state) : action11;
       }
-      function useState19(initialState) {
+      function useState22(initialState) {
         return currentHookNameInDev = "useState", useReducer2(
           basicStateReducer,
           initialState
@@ -10808,7 +10808,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         var nextValue = nextCreate();
         return isInHookUserCodeInDev = !1, workInProgressHook.memoizedState = [nextValue, nextDeps], nextValue;
       }
-      function useRef13(initialValue) {
+      function useRef16(initialValue) {
         currentlyRenderingComponent = resolveCurrentlyRenderingComponent(), workInProgressHook = createWorkInProgressHook();
         var previousRef = workInProgressHook.memoizedState;
         if (previousRef === null) {
@@ -10819,7 +10819,7 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
         } else
           return previousRef;
       }
-      function useLayoutEffect4(create, inputs) {
+      function useLayoutEffect5(create, inputs) {
         currentHookNameInDev = "useLayoutEffect", error("useLayoutEffect does nothing on the server, because its effect cannot be encoded into the server renderer's output format. This will lead to a mismatch between the initial, non-hydrated UI and the intended UI. To avoid this, useLayoutEffect should only be used in components that render exclusively on the client. See https://reactjs.org/link/uselayouteffect-ssr for common fixes.");
       }
       function dispatchAction(componentIdentity, queue, action11) {
@@ -10875,13 +10875,13 @@ Incoming: %s`, currentHookNameInDev, "[" + nextDeps.join(", ") + "]", "[" + prev
       }
       var Dispatcher = {
         readContext: readContext$1,
-        useContext: useContext6,
+        useContext: useContext7,
         useMemo: useMemo14,
         useReducer: useReducer2,
-        useRef: useRef13,
-        useState: useState19,
+        useRef: useRef16,
+        useState: useState22,
         useInsertionEffect: noop4,
-        useLayoutEffect: useLayoutEffect4,
+        useLayoutEffect: useLayoutEffect5,
         useCallback: useCallback6,
         useImperativeHandle: noop4,
         useEffect: noop4,
@@ -11702,14 +11702,14 @@ var require_react_jsx_dev_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React17 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React30 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React30.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -12103,7 +12103,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV71(type, config2, maybeKey, source, self2) {
+      function jsxDEV82(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
@@ -12248,7 +12248,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV71(type, props, key, source, self2);
+          var element = jsxDEV82(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -12504,14 +12504,14 @@ var require_react_jsx_runtime_development = __commonJS({
     "use strict";
     (function() {
       "use strict";
-      var React17 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
+      var React30 = require_react(), REACT_ELEMENT_TYPE = Symbol.for("react.element"), REACT_PORTAL_TYPE = Symbol.for("react.portal"), REACT_FRAGMENT_TYPE = Symbol.for("react.fragment"), REACT_STRICT_MODE_TYPE = Symbol.for("react.strict_mode"), REACT_PROFILER_TYPE = Symbol.for("react.profiler"), REACT_PROVIDER_TYPE = Symbol.for("react.provider"), REACT_CONTEXT_TYPE = Symbol.for("react.context"), REACT_FORWARD_REF_TYPE = Symbol.for("react.forward_ref"), REACT_SUSPENSE_TYPE = Symbol.for("react.suspense"), REACT_SUSPENSE_LIST_TYPE = Symbol.for("react.suspense_list"), REACT_MEMO_TYPE = Symbol.for("react.memo"), REACT_LAZY_TYPE = Symbol.for("react.lazy"), REACT_OFFSCREEN_TYPE = Symbol.for("react.offscreen"), MAYBE_ITERATOR_SYMBOL = Symbol.iterator, FAUX_ITERATOR_SYMBOL = "@@iterator";
       function getIteratorFn(maybeIterable) {
         if (maybeIterable === null || typeof maybeIterable != "object")
           return null;
         var maybeIterator = MAYBE_ITERATOR_SYMBOL && maybeIterable[MAYBE_ITERATOR_SYMBOL] || maybeIterable[FAUX_ITERATOR_SYMBOL];
         return typeof maybeIterator == "function" ? maybeIterator : null;
       }
-      var ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
+      var ReactSharedInternals = React30.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED;
       function error(format) {
         {
           for (var _len2 = arguments.length, args = new Array(_len2 > 1 ? _len2 - 1 : 0), _key2 = 1; _key2 < _len2; _key2++)
@@ -12905,7 +12905,7 @@ var require_react_jsx_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV71(type, config2, maybeKey, source, self2) {
+      function jsxDEV82(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
@@ -13050,7 +13050,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV71(type, props, key, source, self2);
+          var element = jsxDEV82(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -13112,11 +13112,11 @@ var require_textr = __commonJS({
         return exec.apply(null, arguments);
       }
       return api.exec = exec, api.use = use, api.mws = mws, api;
-      function exec(text, options) {
+      function exec(text2, options) {
         options = clone(defaults2, options);
         for (var l12 = mws.length, i10 = 0; i10 < l12; i10++)
-          text = mws[i10].apply(text, [text, options]) || text;
-        return text;
+          text2 = mws[i10].apply(text2, [text2, options]) || text2;
+        return text2;
       }
       function use() {
         return [].push.apply(mws, arguments), api;
@@ -13215,8 +13215,8 @@ var require_index_es52 = __commonJS({
     function typographicQuotes() {
       var input = arguments.length <= 0 || arguments[0] === void 0 ? "" : arguments[0], _ref = arguments.length <= 1 || arguments[1] === void 0 ? {} : arguments[1], _ref$locale = _ref.locale, locale = _ref$locale === void 0 ? "en-us" : _ref$locale, separator = "", localeQuotes = _typographicQuotesL10nDb2.default[locale], pattern = /(^|\s)(?:"(.*?)"|'(.*?)')(\s|$|\.|,|\?|!)/gim, handleQuotes = function(quotes, cb) {
         return function(match2) {
-          var before = arguments.length <= 1 || arguments[1] === void 0 ? "" : arguments[1], part1 = arguments.length <= 2 || arguments[2] === void 0 ? "" : arguments[2], part2 = arguments.length <= 3 || arguments[3] === void 0 ? "" : arguments[3], after = arguments.length <= 4 || arguments[4] === void 0 ? "" : arguments[4], text = part1 + part2;
-          return cb && (text = text.replace(pattern, cb)), locale === "fr" && (separator = "\xA0"), "" + before + quotes[0] + separator + text + separator + quotes[1] + after;
+          var before = arguments.length <= 1 || arguments[1] === void 0 ? "" : arguments[1], part1 = arguments.length <= 2 || arguments[2] === void 0 ? "" : arguments[2], part2 = arguments.length <= 3 || arguments[3] === void 0 ? "" : arguments[3], after = arguments.length <= 4 || arguments[4] === void 0 ? "" : arguments[4], text2 = part1 + part2;
+          return cb && (text2 = text2.replace(pattern, cb)), locale === "fr" && (separator = "\xA0"), "" + before + quotes[0] + separator + text2 + separator + quotes[1] + after;
         };
       };
       return input.replace(pattern, handleQuotes(localeQuotes.slice(0, 2), handleQuotes(localeQuotes.slice(2, 4))));
@@ -13971,26 +13971,26 @@ var require_scheduler_development = __commonJS({
           typeof delay == "number" && delay > 0 ? startTime2 = currentTime + delay : startTime2 = currentTime;
         } else
           startTime2 = currentTime;
-        var timeout;
+        var timeout2;
         switch (priorityLevel) {
           case ImmediatePriority:
-            timeout = IMMEDIATE_PRIORITY_TIMEOUT;
+            timeout2 = IMMEDIATE_PRIORITY_TIMEOUT;
             break;
           case UserBlockingPriority:
-            timeout = USER_BLOCKING_PRIORITY_TIMEOUT;
+            timeout2 = USER_BLOCKING_PRIORITY_TIMEOUT;
             break;
           case IdlePriority:
-            timeout = IDLE_PRIORITY_TIMEOUT;
+            timeout2 = IDLE_PRIORITY_TIMEOUT;
             break;
           case LowPriority:
-            timeout = LOW_PRIORITY_TIMEOUT;
+            timeout2 = LOW_PRIORITY_TIMEOUT;
             break;
           case NormalPriority:
           default:
-            timeout = NORMAL_PRIORITY_TIMEOUT;
+            timeout2 = NORMAL_PRIORITY_TIMEOUT;
             break;
         }
-        var expirationTime = startTime2 + timeout, newTask = {
+        var expirationTime = startTime2 + timeout2, newTask = {
           id: taskIdCounter++,
           callback,
           priorityLevel,
@@ -14086,7 +14086,7 @@ var require_react_dom_development = __commonJS({
     (function() {
       "use strict";
       typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u" && typeof __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart == "function" && __REACT_DEVTOOLS_GLOBAL_HOOK__.registerInternalModuleStart(new Error());
-      var React17 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React17.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
+      var React30 = require_react(), Scheduler = require_scheduler(), ReactSharedInternals = React30.__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED, suppressWarning = !1;
       function setSuppressWarning(newSuppressWarning) {
         suppressWarning = newSuppressWarning;
       }
@@ -15126,7 +15126,7 @@ Error generating stack: ` + x6.message + `
       }
       var didWarnSelectedSetOnOption = !1, didWarnInvalidChild = !1, didWarnInvalidInnerHTML = !1;
       function validateProps(element, props) {
-        props.value == null && (typeof props.children == "object" && props.children !== null ? React17.Children.forEach(props.children, function(child) {
+        props.value == null && (typeof props.children == "object" && props.children !== null ? React30.Children.forEach(props.children, function(child) {
           child != null && (typeof child == "string" || typeof child == "number" || didWarnInvalidChild || (didWarnInvalidChild = !0, error("Cannot infer the option value of complex children. Pass a `value` prop or use a plain string as children to <option>.")));
         }) : props.dangerouslySetInnerHTML != null && (didWarnInvalidInnerHTML || (didWarnInvalidInnerHTML = !0, error("Pass a `value` prop if you set dangerouslyInnerHTML so React knows which value should be selected.")))), props.selected != null && !didWarnSelectedSetOnOption && (error("Use the `defaultValue` or `value` props on <select> instead of setting `selected` on <option>."), didWarnSelectedSetOnOption = !0);
       }
@@ -15287,15 +15287,15 @@ Check the render method of \`` + ownerName + "`." : "";
           return;
         }
         node.innerHTML = html;
-      }), ELEMENT_NODE = 1, TEXT_NODE = 3, COMMENT_NODE = 8, DOCUMENT_NODE = 9, DOCUMENT_FRAGMENT_NODE = 11, setTextContent = function(node, text) {
-        if (text) {
+      }), ELEMENT_NODE = 1, TEXT_NODE = 3, COMMENT_NODE = 8, DOCUMENT_NODE = 9, DOCUMENT_FRAGMENT_NODE = 11, setTextContent = function(node, text2) {
+        if (text2) {
           var firstChild = node.firstChild;
           if (firstChild && firstChild === node.lastChild && firstChild.nodeType === TEXT_NODE) {
-            firstChild.nodeValue = text;
+            firstChild.nodeValue = text2;
             return;
           }
         }
-        node.textContent = text;
+        node.textContent = text2;
       }, shorthandToLonghand = {
         animation: ["animationDelay", "animationDirection", "animationDuration", "animationFillMode", "animationIterationCount", "animationName", "animationPlayState", "animationTimingFunction"],
         background: ["backgroundAttachment", "backgroundClip", "backgroundColor", "backgroundImage", "backgroundOrigin", "backgroundPositionX", "backgroundPositionY", "backgroundRepeat", "backgroundSize"],
@@ -16173,14 +16173,14 @@ Check the render method of \`` + ownerName + "`." : "";
         isCustomComponent(type, props) || warnUnknownProperties(type, props, eventRegistry);
       }
       var IS_EVENT_HANDLE_NON_MANAGED_NODE = 1, IS_NON_DELEGATED = 1 << 1, IS_CAPTURE_PHASE = 1 << 2, SHOULD_NOT_PROCESS_POLYFILL_EVENT_PLUGINS = IS_EVENT_HANDLE_NON_MANAGED_NODE | IS_NON_DELEGATED | IS_CAPTURE_PHASE, currentReplayingEvent = null;
-      function setReplayingEvent(event) {
-        currentReplayingEvent !== null && error("Expected currently replaying event to be null. This error is likely caused by a bug in React. Please file an issue."), currentReplayingEvent = event;
+      function setReplayingEvent(event2) {
+        currentReplayingEvent !== null && error("Expected currently replaying event to be null. This error is likely caused by a bug in React. Please file an issue."), currentReplayingEvent = event2;
       }
       function resetReplayingEvent() {
         currentReplayingEvent === null && error("Expected currently replaying event to not be null. This error is likely caused by a bug in React. Please file an issue."), currentReplayingEvent = null;
       }
-      function isReplayingEvent(event) {
-        return event === currentReplayingEvent;
+      function isReplayingEvent(event2) {
+        return event2 === currentReplayingEvent;
       }
       function getEventTarget(nativeEvent) {
         var target = nativeEvent.target || nativeEvent.srcElement || window;
@@ -16307,8 +16307,8 @@ Check the render method of \`` + ownerName + "`." : "";
             didCall = !0, restoreAfterDispatch(), func.apply(context2, funcArgs), didError = !1;
           }
           var error2, didSetError = !1, isCrossOriginError = !1;
-          function handleWindowError(event) {
-            if (error2 = event.error, didSetError = !0, error2 === null && event.colno === 0 && event.lineno === 0 && (isCrossOriginError = !0), event.defaultPrevented && error2 != null && typeof error2 == "object")
+          function handleWindowError(event2) {
+            if (error2 = event2.error, didSetError = !0, error2 === null && event2.colno === 0 && event2.lineno === 0 && (isCrossOriginError = !0), event2.defaultPrevented && error2 != null && typeof error2 == "object")
               try {
                 error2._suppressLogging = !0;
               } catch {
@@ -16505,7 +16505,7 @@ Check the render method of \`` + ownerName + "`." : "";
         }
         return null;
       }
-      var scheduleCallback = Scheduler.unstable_scheduleCallback, cancelCallback = Scheduler.unstable_cancelCallback, shouldYield = Scheduler.unstable_shouldYield, requestPaint = Scheduler.unstable_requestPaint, now2 = Scheduler.unstable_now, getCurrentPriorityLevel = Scheduler.unstable_getCurrentPriorityLevel, ImmediatePriority = Scheduler.unstable_ImmediatePriority, UserBlockingPriority = Scheduler.unstable_UserBlockingPriority, NormalPriority = Scheduler.unstable_NormalPriority, LowPriority = Scheduler.unstable_LowPriority, IdlePriority = Scheduler.unstable_IdlePriority, unstable_yieldValue = Scheduler.unstable_yieldValue, unstable_setDisableYieldValue = Scheduler.unstable_setDisableYieldValue, rendererID = null, injectedHook = null, injectedProfilingHooks = null, hasLoggedError = !1, isDevToolsPresent = typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u";
+      var scheduleCallback = Scheduler.unstable_scheduleCallback, cancelCallback = Scheduler.unstable_cancelCallback, shouldYield = Scheduler.unstable_shouldYield, requestPaint = Scheduler.unstable_requestPaint, now3 = Scheduler.unstable_now, getCurrentPriorityLevel = Scheduler.unstable_getCurrentPriorityLevel, ImmediatePriority = Scheduler.unstable_ImmediatePriority, UserBlockingPriority = Scheduler.unstable_UserBlockingPriority, NormalPriority = Scheduler.unstable_NormalPriority, LowPriority = Scheduler.unstable_LowPriority, IdlePriority = Scheduler.unstable_IdlePriority, unstable_yieldValue = Scheduler.unstable_yieldValue, unstable_setDisableYieldValue = Scheduler.unstable_setDisableYieldValue, rendererID = null, injectedHook = null, injectedProfilingHooks = null, hasLoggedError = !1, isDevToolsPresent = typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ < "u";
       function injectInternals(internals) {
         if (typeof __REACT_DEVTOOLS_GLOBAL_HOOK__ > "u")
           return !1;
@@ -17507,12 +17507,12 @@ Check the render method of \`` + ownerName + "`." : "";
         return assign(SyntheticBaseEvent.prototype, {
           preventDefault: function() {
             this.defaultPrevented = !0;
-            var event = this.nativeEvent;
-            !event || (event.preventDefault ? event.preventDefault() : typeof event.returnValue != "unknown" && (event.returnValue = !1), this.isDefaultPrevented = functionThatReturnsTrue);
+            var event2 = this.nativeEvent;
+            !event2 || (event2.preventDefault ? event2.preventDefault() : typeof event2.returnValue != "unknown" && (event2.returnValue = !1), this.isDefaultPrevented = functionThatReturnsTrue);
           },
           stopPropagation: function() {
-            var event = this.nativeEvent;
-            !event || (event.stopPropagation ? event.stopPropagation() : typeof event.cancelBubble != "unknown" && (event.cancelBubble = !0), this.isPropagationStopped = functionThatReturnsTrue);
+            var event2 = this.nativeEvent;
+            !event2 || (event2.stopPropagation ? event2.stopPropagation() : typeof event2.cancelBubble != "unknown" && (event2.cancelBubble = !0), this.isPropagationStopped = functionThatReturnsTrue);
           },
           persist: function() {
           },
@@ -17523,8 +17523,8 @@ Check the render method of \`` + ownerName + "`." : "";
         eventPhase: 0,
         bubbles: 0,
         cancelable: 0,
-        timeStamp: function(event) {
-          return event.timeStamp || Date.now();
+        timeStamp: function(event2) {
+          return event2.timeStamp || Date.now();
         },
         defaultPrevented: 0,
         isTrusted: 0
@@ -17532,8 +17532,8 @@ Check the render method of \`` + ownerName + "`." : "";
         view: 0,
         detail: 0
       }), SyntheticUIEvent = createSyntheticEvent(UIEventInterface), lastMovementX, lastMovementY, lastMouseEvent;
-      function updateMouseMovementPolyfillState(event) {
-        event !== lastMouseEvent && (lastMouseEvent && event.type === "mousemove" ? (lastMovementX = event.screenX - lastMouseEvent.screenX, lastMovementY = event.screenY - lastMouseEvent.screenY) : (lastMovementX = 0, lastMovementY = 0), lastMouseEvent = event);
+      function updateMouseMovementPolyfillState(event2) {
+        event2 !== lastMouseEvent && (lastMouseEvent && event2.type === "mousemove" ? (lastMovementX = event2.screenX - lastMouseEvent.screenX, lastMovementY = event2.screenY - lastMouseEvent.screenY) : (lastMovementX = 0, lastMovementY = 0), lastMouseEvent = event2);
       }
       var MouseEventInterface = assign({}, UIEventInterface, {
         screenX: 0,
@@ -17549,14 +17549,14 @@ Check the render method of \`` + ownerName + "`." : "";
         getModifierState: getEventModifierState,
         button: 0,
         buttons: 0,
-        relatedTarget: function(event) {
-          return event.relatedTarget === void 0 ? event.fromElement === event.srcElement ? event.toElement : event.fromElement : event.relatedTarget;
+        relatedTarget: function(event2) {
+          return event2.relatedTarget === void 0 ? event2.fromElement === event2.srcElement ? event2.toElement : event2.fromElement : event2.relatedTarget;
         },
-        movementX: function(event) {
-          return "movementX" in event ? event.movementX : (updateMouseMovementPolyfillState(event), lastMovementX);
+        movementX: function(event2) {
+          return "movementX" in event2 ? event2.movementX : (updateMouseMovementPolyfillState(event2), lastMovementX);
         },
-        movementY: function(event) {
-          return "movementY" in event ? event.movementY : lastMovementY;
+        movementY: function(event2) {
+          return "movementY" in event2 ? event2.movementY : lastMovementY;
         }
       }), SyntheticMouseEvent = createSyntheticEvent(MouseEventInterface), DragEventInterface = assign({}, MouseEventInterface, {
         dataTransfer: 0
@@ -17567,8 +17567,8 @@ Check the render method of \`` + ownerName + "`." : "";
         elapsedTime: 0,
         pseudoElement: 0
       }), SyntheticAnimationEvent = createSyntheticEvent(AnimationEventInterface), ClipboardEventInterface = assign({}, EventInterface, {
-        clipboardData: function(event) {
-          return "clipboardData" in event ? event.clipboardData : window.clipboardData;
+        clipboardData: function(event2) {
+          return "clipboardData" in event2 ? event2.clipboardData : window.clipboardData;
         }
       }), SyntheticClipboardEvent = createSyntheticEvent(ClipboardEventInterface), CompositionEventInterface = assign({}, EventInterface, {
         data: 0
@@ -17662,14 +17662,14 @@ Check the render method of \`` + ownerName + "`." : "";
         repeat: 0,
         locale: 0,
         getModifierState: getEventModifierState,
-        charCode: function(event) {
-          return event.type === "keypress" ? getEventCharCode(event) : 0;
+        charCode: function(event2) {
+          return event2.type === "keypress" ? getEventCharCode(event2) : 0;
         },
-        keyCode: function(event) {
-          return event.type === "keydown" || event.type === "keyup" ? event.keyCode : 0;
+        keyCode: function(event2) {
+          return event2.type === "keydown" || event2.type === "keyup" ? event2.keyCode : 0;
         },
-        which: function(event) {
-          return event.type === "keypress" ? getEventCharCode(event) : event.type === "keydown" || event.type === "keyup" ? event.keyCode : 0;
+        which: function(event2) {
+          return event2.type === "keypress" ? getEventCharCode(event2) : event2.type === "keydown" || event2.type === "keyup" ? event2.keyCode : 0;
         }
       }), SyntheticKeyboardEvent = createSyntheticEvent(KeyboardEventInterface), PointerEventInterface = assign({}, MouseEventInterface, {
         pointerId: 0,
@@ -17696,11 +17696,11 @@ Check the render method of \`` + ownerName + "`." : "";
         elapsedTime: 0,
         pseudoElement: 0
       }), SyntheticTransitionEvent = createSyntheticEvent(TransitionEventInterface), WheelEventInterface = assign({}, MouseEventInterface, {
-        deltaX: function(event) {
-          return "deltaX" in event ? event.deltaX : "wheelDeltaX" in event ? -event.wheelDeltaX : 0;
+        deltaX: function(event2) {
+          return "deltaX" in event2 ? event2.deltaX : "wheelDeltaX" in event2 ? -event2.wheelDeltaX : 0;
         },
-        deltaY: function(event) {
-          return "deltaY" in event ? event.deltaY : "wheelDeltaY" in event ? -event.wheelDeltaY : "wheelDelta" in event ? -event.wheelDelta : 0;
+        deltaY: function(event2) {
+          return "deltaY" in event2 ? event2.deltaY : "wheelDeltaY" in event2 ? -event2.wheelDeltaY : "wheelDelta" in event2 ? -event2.wheelDelta : 0;
         },
         deltaZ: 0,
         deltaMode: 0
@@ -17756,15 +17756,15 @@ Check the render method of \`` + ownerName + "`." : "";
         useFallbackCompositionData && !isUsingKoreanIME(nativeEvent) && (!isComposing && eventType === "onCompositionStart" ? isComposing = initialize(nativeEventTarget) : eventType === "onCompositionEnd" && isComposing && (fallbackData = getData()));
         var listeners = accumulateTwoPhaseListeners(targetInst, eventType);
         if (listeners.length > 0) {
-          var event = new SyntheticCompositionEvent(eventType, domEventName, null, nativeEvent, nativeEventTarget);
+          var event2 = new SyntheticCompositionEvent(eventType, domEventName, null, nativeEvent, nativeEventTarget);
           if (dispatchQueue.push({
-            event,
+            event: event2,
             listeners
           }), fallbackData)
-            event.data = fallbackData;
+            event2.data = fallbackData;
           else {
             var customData = getDataFromCustomEvent(nativeEvent);
-            customData !== null && (event.data = customData);
+            customData !== null && (event2.data = customData);
           }
         }
       }
@@ -17813,11 +17813,11 @@ Check the render method of \`` + ownerName + "`." : "";
           return null;
         var listeners = accumulateTwoPhaseListeners(targetInst, "onBeforeInput");
         if (listeners.length > 0) {
-          var event = new SyntheticInputEvent("onBeforeInput", "beforeinput", null, nativeEvent, nativeEventTarget);
+          var event2 = new SyntheticInputEvent("onBeforeInput", "beforeinput", null, nativeEvent, nativeEventTarget);
           dispatchQueue.push({
-            event,
+            event: event2,
             listeners
-          }), event.data = chars;
+          }), event2.data = chars;
         }
       }
       function extractEvents(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget, eventSystemFlags, targetContainer) {
@@ -17861,9 +17861,9 @@ Check the render method of \`` + ownerName + "`." : "";
         enqueueStateRestore(target);
         var listeners = accumulateTwoPhaseListeners(inst, "onChange");
         if (listeners.length > 0) {
-          var event = new SyntheticEvent2("onChange", "change", null, nativeEvent, target);
+          var event2 = new SyntheticEvent2("onChange", "change", null, nativeEvent, target);
           dispatchQueue.push({
-            event,
+            event: event2,
             listeners
           });
         }
@@ -18166,11 +18166,11 @@ Check the render method of \`` + ownerName + "`." : "";
             lastSelection = currentSelection;
             var listeners = accumulateTwoPhaseListeners(activeElementInst$1, "onSelect");
             if (listeners.length > 0) {
-              var event = new SyntheticEvent2("onSelect", "select", null, nativeEvent, nativeEventTarget);
+              var event2 = new SyntheticEvent2("onSelect", "select", null, nativeEvent, nativeEventTarget);
               dispatchQueue.push({
-                event,
+                event: event2,
                 listeners
-              }), event.target = activeElement$1;
+              }), event2.target = activeElement$1;
             }
           }
         }
@@ -18334,31 +18334,31 @@ Check the render method of \`` + ownerName + "`." : "";
         shouldProcessPolyfillPlugins && (extractEvents$2(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget), extractEvents$1(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget), extractEvents$3(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget), extractEvents(dispatchQueue, domEventName, targetInst, nativeEvent, nativeEventTarget));
       }
       var mediaEventTypes = ["abort", "canplay", "canplaythrough", "durationchange", "emptied", "encrypted", "ended", "error", "loadeddata", "loadedmetadata", "loadstart", "pause", "play", "playing", "progress", "ratechange", "resize", "seeked", "seeking", "stalled", "suspend", "timeupdate", "volumechange", "waiting"], nonDelegatedEvents = new Set(["cancel", "close", "invalid", "load", "scroll", "toggle"].concat(mediaEventTypes));
-      function executeDispatch(event, listener, currentTarget) {
-        var type = event.type || "unknown-event";
-        event.currentTarget = currentTarget, invokeGuardedCallbackAndCatchFirstError(type, listener, void 0, event), event.currentTarget = null;
+      function executeDispatch(event2, listener, currentTarget) {
+        var type = event2.type || "unknown-event";
+        event2.currentTarget = currentTarget, invokeGuardedCallbackAndCatchFirstError(type, listener, void 0, event2), event2.currentTarget = null;
       }
-      function processDispatchQueueItemsInOrder(event, dispatchListeners, inCapturePhase) {
+      function processDispatchQueueItemsInOrder(event2, dispatchListeners, inCapturePhase) {
         var previousInstance;
         if (inCapturePhase)
           for (var i10 = dispatchListeners.length - 1; i10 >= 0; i10--) {
             var _dispatchListeners$i = dispatchListeners[i10], instance = _dispatchListeners$i.instance, currentTarget = _dispatchListeners$i.currentTarget, listener = _dispatchListeners$i.listener;
-            if (instance !== previousInstance && event.isPropagationStopped())
+            if (instance !== previousInstance && event2.isPropagationStopped())
               return;
-            executeDispatch(event, listener, currentTarget), previousInstance = instance;
+            executeDispatch(event2, listener, currentTarget), previousInstance = instance;
           }
         else
           for (var _i = 0; _i < dispatchListeners.length; _i++) {
             var _dispatchListeners$_i = dispatchListeners[_i], _instance = _dispatchListeners$_i.instance, _currentTarget = _dispatchListeners$_i.currentTarget, _listener = _dispatchListeners$_i.listener;
-            if (_instance !== previousInstance && event.isPropagationStopped())
+            if (_instance !== previousInstance && event2.isPropagationStopped())
               return;
-            executeDispatch(event, _listener, _currentTarget), previousInstance = _instance;
+            executeDispatch(event2, _listener, _currentTarget), previousInstance = _instance;
           }
       }
       function processDispatchQueue(dispatchQueue, eventSystemFlags) {
         for (var inCapturePhase = (eventSystemFlags & IS_CAPTURE_PHASE) !== 0, i10 = 0; i10 < dispatchQueue.length; i10++) {
-          var _dispatchQueue$i = dispatchQueue[i10], event = _dispatchQueue$i.event, listeners = _dispatchQueue$i.listeners;
-          processDispatchQueueItemsInOrder(event, listeners, inCapturePhase);
+          var _dispatchQueue$i = dispatchQueue[i10], event2 = _dispatchQueue$i.event, listeners = _dispatchQueue$i.listeners;
+          processDispatchQueueItemsInOrder(event2, listeners, inCapturePhase);
         }
         rethrowCaughtError();
       }
@@ -18497,8 +18497,8 @@ Check the render method of \`` + ownerName + "`." : "";
         }
         return null;
       }
-      function accumulateEnterLeaveListenersForEvent(dispatchQueue, event, target, common, inCapturePhase) {
-        for (var registrationName = event._reactName, listeners = [], instance = target; instance !== null && instance !== common; ) {
+      function accumulateEnterLeaveListenersForEvent(dispatchQueue, event2, target, common, inCapturePhase) {
+        for (var registrationName = event2._reactName, listeners = [], instance = target; instance !== null && instance !== common; ) {
           var _instance4 = instance, alternate = _instance4.alternate, stateNode = _instance4.stateNode, tag = _instance4.tag;
           if (alternate !== null && alternate === common)
             break;
@@ -18515,7 +18515,7 @@ Check the render method of \`` + ownerName + "`." : "";
           instance = instance.return;
         }
         listeners.length !== 0 && dispatchQueue.push({
-          event,
+          event: event2,
           listeners
         });
       }
@@ -18599,7 +18599,7 @@ Check the render method of \`` + ownerName + "`." : "";
           propKey === STYLE ? setValueForStyles(domElement, propValue) : propKey === DANGEROUSLY_SET_INNER_HTML ? setInnerHTML(domElement, propValue) : propKey === CHILDREN ? setTextContent(domElement, propValue) : setValueForProperty(domElement, propKey, propValue, isCustomComponentTag);
         }
       }
-      function createElement8(type, props, rootContainerElement, parentNamespace) {
+      function createElement9(type, props, rootContainerElement, parentNamespace) {
         var isCustomComponentTag, ownerDocument = getOwnerDocumentFromRootContainer(rootContainerElement), domElement, namespaceURI = parentNamespace;
         if (namespaceURI === HTML_NAMESPACE && (namespaceURI = getIntrinsicNamespace(type)), namespaceURI === HTML_NAMESPACE) {
           if (isCustomComponentTag = isCustomComponent(type, props), !isCustomComponentTag && type !== type.toLowerCase() && error("<%s /> is using incorrect casing. Use PascalCase for React components, or lowercase for HTML elements.", type), type === "script") {
@@ -18619,8 +18619,8 @@ Check the render method of \`` + ownerName + "`." : "";
           domElement = ownerDocument.createElementNS(namespaceURI, type);
         return namespaceURI === HTML_NAMESPACE && !isCustomComponentTag && Object.prototype.toString.call(domElement) === "[object HTMLUnknownElement]" && !hasOwnProperty.call(warnedUnknownTags, type) && (warnedUnknownTags[type] = !0, error("The tag <%s> is unrecognized in this browser. If you meant to render a React component, start its name with an uppercase letter.", type)), domElement;
       }
-      function createTextNode(text, rootContainerElement) {
-        return getOwnerDocumentFromRootContainer(rootContainerElement).createTextNode(text);
+      function createTextNode(text2, rootContainerElement) {
+        return getOwnerDocumentFromRootContainer(rootContainerElement).createTextNode(text2);
       }
       function setInitialProperties(domElement, tag, rawProps, rootContainerElement) {
         var isCustomComponentTag = isCustomComponent(tag, rawProps);
@@ -18871,8 +18871,8 @@ Check the render method of \`` + ownerName + "`." : "";
         }
         return updatePayload;
       }
-      function diffHydratedText(textNode, text, isConcurrentMode) {
-        var isDifferent = textNode.nodeValue !== text;
+      function diffHydratedText(textNode, text2, isConcurrentMode) {
+        var isDifferent = textNode.nodeValue !== text2;
         return isDifferent;
       }
       function warnForDeletedHydratableElement(parentNode, child) {
@@ -18896,11 +18896,11 @@ Check the render method of \`` + ownerName + "`." : "";
           didWarnInvalidHydration = !0, error("Expected server HTML to contain a matching <%s> in <%s>.", tag, parentNode.nodeName.toLowerCase());
         }
       }
-      function warnForInsertedHydratedText(parentNode, text) {
+      function warnForInsertedHydratedText(parentNode, text2) {
         {
-          if (text === "" || didWarnInvalidHydration)
+          if (text2 === "" || didWarnInvalidHydration)
             return;
-          didWarnInvalidHydration = !0, error('Expected server HTML to contain a matching text node for "%s" in <%s>.', text, parentNode.nodeName.toLowerCase());
+          didWarnInvalidHydration = !0, error('Expected server HTML to contain a matching text node for "%s" in <%s>.', text2, parentNode.nodeName.toLowerCase());
         }
       }
       function restoreControlledState$3(domElement, tag, props) {
@@ -19132,7 +19132,7 @@ Check the render method of \`` + ownerName + "`." : "";
           }
           parentNamespace = hostContextDev.namespace;
         }
-        var domElement = createElement8(type, props, rootContainerInstance, parentNamespace);
+        var domElement = createElement9(type, props, rootContainerInstance, parentNamespace);
         return precacheFiberNode(internalInstanceHandle, domElement), updateFiberProps(domElement, props), domElement;
       }
       function appendInitialChild(parentInstance, child) {
@@ -19164,12 +19164,12 @@ Check the render method of \`` + ownerName + "`." : "";
       function shouldSetTextContent(type, props) {
         return type === "textarea" || type === "noscript" || typeof props.children == "string" || typeof props.children == "number" || typeof props.dangerouslySetInnerHTML == "object" && props.dangerouslySetInnerHTML !== null && props.dangerouslySetInnerHTML.__html != null;
       }
-      function createTextInstance(text, rootContainerInstance, hostContext, internalInstanceHandle) {
+      function createTextInstance(text2, rootContainerInstance, hostContext, internalInstanceHandle) {
         {
           var hostContextDev = hostContext;
-          validateDOMNesting(null, text, hostContextDev.ancestorInfo);
+          validateDOMNesting(null, text2, hostContextDev.ancestorInfo);
         }
-        var textNode = createTextNode(text, rootContainerInstance);
+        var textNode = createTextNode(text2, rootContainerInstance);
         return precacheFiberNode(internalInstanceHandle, textNode), textNode;
       }
       function getCurrentEventPriority() {
@@ -19263,8 +19263,8 @@ Check the render method of \`` + ownerName + "`." : "";
         var styleProp = props[STYLE$1], display = styleProp != null && styleProp.hasOwnProperty("display") ? styleProp.display : null;
         instance.style.display = dangerousStyleValue("display", display);
       }
-      function unhideTextInstance(textInstance, text) {
-        textInstance.nodeValue = text;
+      function unhideTextInstance(textInstance, text2) {
+        textInstance.nodeValue = text2;
       }
       function clearContainer(container) {
         container.nodeType === ELEMENT_NODE ? container.textContent = "" : container.nodeType === DOCUMENT_NODE && container.documentElement && container.removeChild(container.documentElement);
@@ -19272,8 +19272,8 @@ Check the render method of \`` + ownerName + "`." : "";
       function canHydrateInstance(instance, type, props) {
         return instance.nodeType !== ELEMENT_NODE || type.toLowerCase() !== instance.nodeName.toLowerCase() ? null : instance;
       }
-      function canHydrateTextInstance(instance, text) {
-        return text === "" || instance.nodeType !== TEXT_NODE ? null : instance;
+      function canHydrateTextInstance(instance, text2) {
+        return text2 === "" || instance.nodeType !== TEXT_NODE ? null : instance;
       }
       function canHydrateSuspenseInstance(instance) {
         return instance.nodeType !== COMMENT_NODE ? null : instance;
@@ -19332,10 +19332,10 @@ Check the render method of \`` + ownerName + "`." : "";
         var isConcurrentMode = (internalInstanceHandle.mode & ConcurrentMode) !== NoMode;
         return diffHydratedProperties(instance, type, props, parentNamespace, rootContainerInstance, isConcurrentMode, shouldWarnDev);
       }
-      function hydrateTextInstance(textInstance, text, internalInstanceHandle, shouldWarnDev) {
+      function hydrateTextInstance(textInstance, text2, internalInstanceHandle, shouldWarnDev) {
         precacheFiberNode(internalInstanceHandle, textInstance);
         var isConcurrentMode = (internalInstanceHandle.mode & ConcurrentMode) !== NoMode;
-        return diffHydratedText(textInstance, text);
+        return diffHydratedText(textInstance, text2);
       }
       function hydrateSuspenseInstance(suspenseInstance, internalInstanceHandle) {
         precacheFiberNode(internalInstanceHandle, suspenseInstance);
@@ -19379,14 +19379,14 @@ Check the render method of \`` + ownerName + "`." : "";
       function shouldDeleteUnhydratedTailInstances(parentType) {
         return parentType !== "head" && parentType !== "body";
       }
-      function didNotMatchHydratedContainerTextInstance(parentContainer, textInstance, text, isConcurrentMode) {
+      function didNotMatchHydratedContainerTextInstance(parentContainer, textInstance, text2, isConcurrentMode) {
         var shouldWarnDev = !0;
-        checkForUnmatchedText(textInstance.nodeValue, text, isConcurrentMode, shouldWarnDev);
+        checkForUnmatchedText(textInstance.nodeValue, text2, isConcurrentMode, shouldWarnDev);
       }
-      function didNotMatchHydratedTextInstance(parentType, parentProps, parentInstance, textInstance, text, isConcurrentMode) {
+      function didNotMatchHydratedTextInstance(parentType, parentProps, parentInstance, textInstance, text2, isConcurrentMode) {
         if (parentProps[SUPPRESS_HYDRATION_WARNING$1] !== !0) {
           var shouldWarnDev = !0;
-          checkForUnmatchedText(textInstance.nodeValue, text, isConcurrentMode, shouldWarnDev);
+          checkForUnmatchedText(textInstance.nodeValue, text2, isConcurrentMode, shouldWarnDev);
         }
       }
       function didNotHydrateInstanceWithinContainer(parentContainer, instance) {
@@ -19404,8 +19404,8 @@ Check the render method of \`` + ownerName + "`." : "";
       function didNotFindHydratableInstanceWithinContainer(parentContainer, type, props) {
         warnForInsertedHydratedElement(parentContainer, type);
       }
-      function didNotFindHydratableTextInstanceWithinContainer(parentContainer, text) {
-        warnForInsertedHydratedText(parentContainer, text);
+      function didNotFindHydratableTextInstanceWithinContainer(parentContainer, text2) {
+        warnForInsertedHydratedText(parentContainer, text2);
       }
       function didNotFindHydratableInstanceWithinSuspenseInstance(parentInstance, type, props) {
         {
@@ -19413,17 +19413,17 @@ Check the render method of \`` + ownerName + "`." : "";
           parentNode !== null && warnForInsertedHydratedElement(parentNode, type);
         }
       }
-      function didNotFindHydratableTextInstanceWithinSuspenseInstance(parentInstance, text) {
+      function didNotFindHydratableTextInstanceWithinSuspenseInstance(parentInstance, text2) {
         {
           var parentNode = parentInstance.parentNode;
-          parentNode !== null && warnForInsertedHydratedText(parentNode, text);
+          parentNode !== null && warnForInsertedHydratedText(parentNode, text2);
         }
       }
       function didNotFindHydratableInstance(parentType, parentProps, parentInstance, type, props, isConcurrentMode) {
         (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== !0) && warnForInsertedHydratedElement(parentInstance, type);
       }
-      function didNotFindHydratableTextInstance(parentType, parentProps, parentInstance, text, isConcurrentMode) {
-        (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== !0) && warnForInsertedHydratedText(parentInstance, text);
+      function didNotFindHydratableTextInstance(parentType, parentProps, parentInstance, text2, isConcurrentMode) {
+        (isConcurrentMode || parentProps[SUPPRESS_HYDRATION_WARNING$1] !== !0) && warnForInsertedHydratedText(parentInstance, text2);
       }
       function errorHydratingContainer(parentContainer) {
         error("An error occurred during hydration. The server HTML was replaced with client content in <%s>.", parentContainer.nodeName.toLowerCase());
@@ -19794,8 +19794,8 @@ Check the render method of \`` + ownerName + "`." : "";
                   didNotFindHydratableInstanceWithinContainer(parentContainer, type);
                   break;
                 case HostText:
-                  var text = fiber.pendingProps;
-                  didNotFindHydratableTextInstanceWithinContainer(parentContainer, text);
+                  var text2 = fiber.pendingProps;
+                  didNotFindHydratableTextInstanceWithinContainer(parentContainer, text2);
                   break;
               }
               break;
@@ -19859,7 +19859,7 @@ Check the render method of \`` + ownerName + "`." : "";
             return instance !== null ? (fiber.stateNode = instance, hydrationParentFiber = fiber, nextHydratableInstance = getFirstHydratableChild(instance), !0) : !1;
           }
           case HostText: {
-            var text = fiber.pendingProps, textInstance = canHydrateTextInstance(nextInstance, text);
+            var text2 = fiber.pendingProps, textInstance = canHydrateTextInstance(nextInstance, text2);
             return textInstance !== null ? (fiber.stateNode = textInstance, hydrationParentFiber = fiber, nextHydratableInstance = null, !0) : !1;
           }
           case SuspenseComponent: {
@@ -20540,7 +20540,7 @@ Learn more about this warning here: https://reactjs.org/link/legacy-context`, so
             callback !== null && (effect.callback = null, callCallback(callback, instance));
           }
       }
-      var fakeInternalInstance = {}, emptyRefsObject = new React17.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
+      var fakeInternalInstance = {}, emptyRefsObject = new React30.Component().refs, didWarnAboutStateAssignmentForComponent, didWarnAboutUninitializedState, didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate, didWarnAboutLegacyLifecyclesAndDerivedState, didWarnAboutUndefinedDerivedState, warnOnUndefinedDerivedState, warnOnInvalidCallback, didWarnAboutDirectlyAssigningPropsToState, didWarnAboutContextTypeAndContextTypes, didWarnAboutInvalidateContextType;
       {
         didWarnAboutStateAssignmentForComponent = /* @__PURE__ */ new Set(), didWarnAboutUninitializedState = /* @__PURE__ */ new Set(), didWarnAboutGetSnapshotBeforeUpdateWithoutDidUpdate = /* @__PURE__ */ new Set(), didWarnAboutLegacyLifecyclesAndDerivedState = /* @__PURE__ */ new Set(), didWarnAboutDirectlyAssigningPropsToState = /* @__PURE__ */ new Set(), didWarnAboutUndefinedDerivedState = /* @__PURE__ */ new Set(), didWarnAboutContextTypeAndContextTypes = /* @__PURE__ */ new Set(), didWarnAboutInvalidateContextType = /* @__PURE__ */ new Set();
         var didWarnOnInvalidCallback = /* @__PURE__ */ new Set();
@@ -23926,7 +23926,7 @@ Check the render method of \`` + ownerName + "`.");
                     }
                     row = row.sibling;
                   }
-                renderState.tail !== null && now2() > getRenderTargetTime() && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
+                renderState.tail !== null && now3() > getRenderTargetTime() && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
               }
             else {
               if (!didSuspendAlready) {
@@ -23937,7 +23937,7 @@ Check the render method of \`` + ownerName + "`.");
                   if (_newThenables !== null && (workInProgress2.updateQueue = _newThenables, workInProgress2.flags |= Update), cutOffTailIfNeeded(renderState, !0), renderState.tail === null && renderState.tailMode === "hidden" && !renderedTail.alternate && !getIsHydrating())
                     return bubbleProperties(workInProgress2), null;
                 } else
-                  now2() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
+                  now3() * 2 - renderState.renderingStartTime > getRenderTargetTime() && renderLanes2 !== OffscreenLane && (workInProgress2.flags |= DidCapture, didSuspendAlready = !0, cutOffTailIfNeeded(renderState, !1), workInProgress2.lanes = SomeRetryLane);
               }
               if (renderState.isBackwards)
                 renderedTail.sibling = workInProgress2.child, workInProgress2.child = renderedTail;
@@ -23948,7 +23948,7 @@ Check the render method of \`` + ownerName + "`.");
             }
             if (renderState.tail !== null) {
               var next = renderState.tail;
-              renderState.rendering = next, renderState.tail = next.sibling, renderState.renderingStartTime = now2(), next.sibling = null;
+              renderState.rendering = next, renderState.tail = next.sibling, renderState.renderingStartTime = now3(), next.sibling = null;
               var suspenseContext = suspenseStackCursor.current;
               return didSuspendAlready ? suspenseContext = setShallowSuspenseContext(suspenseContext, ForceSuspenseFallback) : suspenseContext = setDefaultShallowSuspenseContext(suspenseContext), pushSuspenseContext(workInProgress2, suspenseContext), next;
             }
@@ -25239,7 +25239,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
       }
       var ceil = Math.ceil, ReactCurrentDispatcher$2 = ReactSharedInternals.ReactCurrentDispatcher, ReactCurrentOwner$2 = ReactSharedInternals.ReactCurrentOwner, ReactCurrentBatchConfig$3 = ReactSharedInternals.ReactCurrentBatchConfig, ReactCurrentActQueue$1 = ReactSharedInternals.ReactCurrentActQueue, NoContext = 0, BatchedContext = 1, RenderContext = 2, CommitContext = 4, RootInProgress = 0, RootFatalErrored = 1, RootErrored = 2, RootSuspended = 3, RootSuspendedWithDelay = 4, RootCompleted = 5, RootDidNotComplete = 6, executionContext = NoContext, workInProgressRoot = null, workInProgress = null, workInProgressRootRenderLanes = NoLanes, subtreeRenderLanes = NoLanes, subtreeRenderLanesCursor = createCursor(NoLanes), workInProgressRootExitStatus = RootInProgress, workInProgressRootFatalError = null, workInProgressRootIncludedLanes = NoLanes, workInProgressRootSkippedLanes = NoLanes, workInProgressRootInterleavedUpdatedLanes = NoLanes, workInProgressRootPingedLanes = NoLanes, workInProgressRootConcurrentErrors = null, workInProgressRootRecoverableErrors = null, globalMostRecentFallbackTime = 0, FALLBACK_THROTTLE_MS = 500, workInProgressRootRenderTargetTime = 1 / 0, RENDER_TIMEOUT_MS = 500, workInProgressTransitions = null;
       function resetRenderTimer() {
-        workInProgressRootRenderTargetTime = now2() + RENDER_TIMEOUT_MS;
+        workInProgressRootRenderTargetTime = now3() + RENDER_TIMEOUT_MS;
       }
       function getRenderTargetTime() {
         return workInProgressRootRenderTargetTime;
@@ -25249,7 +25249,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         return workInProgressRoot;
       }
       function requestEventTime() {
-        return (executionContext & (RenderContext | CommitContext)) !== NoContext ? now2() : (currentEventTime !== NoTimestamp || (currentEventTime = now2()), currentEventTime);
+        return (executionContext & (RenderContext | CommitContext)) !== NoContext ? now3() : (currentEventTime !== NoTimestamp || (currentEventTime = now3()), currentEventTime);
       }
       function requestUpdateLane(fiber) {
         var mode = fiber.mode;
@@ -25344,7 +25344,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           }
           if (exitStatus === RootFatalErrored) {
             var fatalError = workInProgressRootFatalError;
-            throw prepareFreshStack(root2, NoLanes), markRootSuspended$1(root2, lanes), ensureRootIsScheduled(root2, now2()), fatalError;
+            throw prepareFreshStack(root2, NoLanes), markRootSuspended$1(root2, lanes), ensureRootIsScheduled(root2, now3()), fatalError;
           }
           if (exitStatus === RootDidNotComplete)
             markRootSuspended$1(root2, lanes);
@@ -25357,13 +25357,13 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
               }
               if (exitStatus === RootFatalErrored) {
                 var _fatalError = workInProgressRootFatalError;
-                throw prepareFreshStack(root2, NoLanes), markRootSuspended$1(root2, lanes), ensureRootIsScheduled(root2, now2()), _fatalError;
+                throw prepareFreshStack(root2, NoLanes), markRootSuspended$1(root2, lanes), ensureRootIsScheduled(root2, now3()), _fatalError;
               }
             }
             root2.finishedWork = finishedWork, root2.finishedLanes = lanes, finishConcurrentRender(root2, exitStatus, lanes);
           }
         }
-        return ensureRootIsScheduled(root2, now2()), root2.callbackNode === originalCallbackNode ? performConcurrentWorkOnRoot.bind(null, root2) : null;
+        return ensureRootIsScheduled(root2, now3()), root2.callbackNode === originalCallbackNode ? performConcurrentWorkOnRoot.bind(null, root2) : null;
       }
       function recoverFromConcurrentError(root2, errorRetryLanes) {
         var errorsFromFirstAttempt = workInProgressRootConcurrentErrors;
@@ -25392,7 +25392,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
           }
           case RootSuspended: {
             if (markRootSuspended$1(root2, lanes), includesOnlyRetries(lanes) && !shouldForceFlushFallbacksInDEV()) {
-              var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now2();
+              var msUntilTimeout = globalMostRecentFallbackTime + FALLBACK_THROTTLE_MS - now3();
               if (msUntilTimeout > 10) {
                 var nextLanes = getNextLanes(root2, NoLanes);
                 if (nextLanes !== NoLanes)
@@ -25414,7 +25414,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
             if (markRootSuspended$1(root2, lanes), includesOnlyTransitions(lanes))
               break;
             if (!shouldForceFlushFallbacksInDEV()) {
-              var mostRecentEventTime = getMostRecentEventTime(root2, lanes), eventTimeMs = mostRecentEventTime, timeElapsedMs = now2() - eventTimeMs, _msUntilTimeout = jnd(timeElapsedMs) - timeElapsedMs;
+              var mostRecentEventTime = getMostRecentEventTime(root2, lanes), eventTimeMs = mostRecentEventTime, timeElapsedMs = now3() - eventTimeMs, _msUntilTimeout = jnd(timeElapsedMs) - timeElapsedMs;
               if (_msUntilTimeout > 10) {
                 root2.timeoutHandle = scheduleTimeout(commitRoot.bind(null, root2, workInProgressRootRecoverableErrors, workInProgressTransitions), _msUntilTimeout);
                 break;
@@ -25474,7 +25474,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         flushPassiveEffects();
         var lanes = getNextLanes(root2, NoLanes);
         if (!includesSomeLane(lanes, SyncLane))
-          return ensureRootIsScheduled(root2, now2()), null;
+          return ensureRootIsScheduled(root2, now3()), null;
         var exitStatus = renderRootSync(root2, lanes);
         if (root2.tag !== LegacyRoot && exitStatus === RootErrored) {
           var errorRetryLanes = getLanesToRetrySynchronouslyOnError(root2);
@@ -25482,15 +25482,15 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         }
         if (exitStatus === RootFatalErrored) {
           var fatalError = workInProgressRootFatalError;
-          throw prepareFreshStack(root2, NoLanes), markRootSuspended$1(root2, lanes), ensureRootIsScheduled(root2, now2()), fatalError;
+          throw prepareFreshStack(root2, NoLanes), markRootSuspended$1(root2, lanes), ensureRootIsScheduled(root2, now3()), fatalError;
         }
         if (exitStatus === RootDidNotComplete)
           throw new Error("Root did not complete. This is a bug in React.");
         var finishedWork = root2.current.alternate;
-        return root2.finishedWork = finishedWork, root2.finishedLanes = lanes, commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions), ensureRootIsScheduled(root2, now2()), null;
+        return root2.finishedWork = finishedWork, root2.finishedLanes = lanes, commitRoot(root2, workInProgressRootRecoverableErrors, workInProgressTransitions), ensureRootIsScheduled(root2, now3()), null;
       }
       function flushRoot(root2, lanes) {
-        lanes !== NoLanes && (markRootEntangled(root2, mergeLanes(lanes, SyncLane)), ensureRootIsScheduled(root2, now2()), (executionContext & (RenderContext | CommitContext)) === NoContext && (resetRenderTimer(), flushSyncCallbacks()));
+        lanes !== NoLanes && (markRootEntangled(root2, mergeLanes(lanes, SyncLane)), ensureRootIsScheduled(root2, now3()), (executionContext & (RenderContext | CommitContext)) === NoContext && (resetRenderTimer(), flushSyncCallbacks()));
       }
       function batchedUpdates$1(fn, a10) {
         var prevExecutionContext = executionContext;
@@ -25571,7 +25571,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         ReactCurrentDispatcher$2.current = prevDispatcher;
       }
       function markCommitTimeOfFallback() {
-        globalMostRecentFallbackTime = now2();
+        globalMostRecentFallbackTime = now3();
       }
       function markSkippedUpdateLanes(lane) {
         workInProgressRootSkippedLanes = mergeLanes(lane, workInProgressRootSkippedLanes);
@@ -25725,7 +25725,7 @@ Learn more about data fetching with Hooks: https://reactjs.org/link/hooks-data-f
         } else
           root2.current = finishedWork, recordCommitTime();
         var rootDidHavePassiveEffects = rootDoesHavePassiveEffects;
-        if (rootDoesHavePassiveEffects ? (rootDoesHavePassiveEffects = !1, rootWithPendingPassiveEffects = root2, pendingPassiveEffectsLanes = lanes) : (nestedPassiveUpdateCount = 0, rootWithPassiveNestedUpdates = null), remainingLanes = root2.pendingLanes, remainingLanes === NoLanes && (legacyErrorBoundariesThatAlreadyFailed = null), rootDidHavePassiveEffects || commitDoubleInvokeEffectsInDEV(root2.current, !1), onCommitRoot(finishedWork.stateNode, renderPriorityLevel), isDevToolsPresent && root2.memoizedUpdaters.clear(), onCommitRoot$1(), ensureRootIsScheduled(root2, now2()), recoverableErrors !== null)
+        if (rootDoesHavePassiveEffects ? (rootDoesHavePassiveEffects = !1, rootWithPendingPassiveEffects = root2, pendingPassiveEffectsLanes = lanes) : (nestedPassiveUpdateCount = 0, rootWithPassiveNestedUpdates = null), remainingLanes = root2.pendingLanes, remainingLanes === NoLanes && (legacyErrorBoundariesThatAlreadyFailed = null), rootDidHavePassiveEffects || commitDoubleInvokeEffectsInDEV(root2.current, !1), onCommitRoot(finishedWork.stateNode, renderPriorityLevel), isDevToolsPresent && root2.memoizedUpdaters.clear(), onCommitRoot$1(), ensureRootIsScheduled(root2, now3()), recoverableErrors !== null)
           for (var onRecoverableError = root2.onRecoverableError, i10 = 0; i10 < recoverableErrors.length; i10++) {
             var recoverableError = recoverableErrors[i10], componentStack = recoverableError.stack, digest = recoverableError.digest;
             onRecoverableError(recoverableError.value, {
@@ -25826,7 +25826,7 @@ Error message:
         var pingCache = root2.pingCache;
         pingCache !== null && pingCache.delete(wakeable);
         var eventTime = requestEventTime();
-        markRootPinged(root2, pingedLanes), warnIfSuspenseResolutionNotWrappedWithActDEV(root2), workInProgressRoot === root2 && isSubsetOfLanes(workInProgressRootRenderLanes, pingedLanes) && (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now2() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS ? prepareFreshStack(root2, NoLanes) : workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes)), ensureRootIsScheduled(root2, eventTime);
+        markRootPinged(root2, pingedLanes), warnIfSuspenseResolutionNotWrappedWithActDEV(root2), workInProgressRoot === root2 && isSubsetOfLanes(workInProgressRootRenderLanes, pingedLanes) && (workInProgressRootExitStatus === RootSuspendedWithDelay || workInProgressRootExitStatus === RootSuspended && includesOnlyRetries(workInProgressRootRenderLanes) && now3() - globalMostRecentFallbackTime < FALLBACK_THROTTLE_MS ? prepareFreshStack(root2, NoLanes) : workInProgressRootPingedLanes = mergeLanes(workInProgressRootPingedLanes, pingedLanes)), ensureRootIsScheduled(root2, eventTime);
       }
       function retryTimedOutBoundary(boundaryFiber, retryLane) {
         retryLane === NoLane && (retryLane = requestRetryLane(boundaryFiber));
@@ -26974,15 +26974,15 @@ var require_image_url_umd = __commonJS({
     (function(global2, factory) {
       typeof exports == "object" && typeof module < "u" ? module.exports = factory() : typeof define == "function" && define.amd ? define(factory) : (global2 = global2 || self, global2.SanityImageUrlBuilder = factory());
     })(exports, function() {
-      function _extends5() {
-        return _extends5 = Object.assign || function(target) {
+      function _extends7() {
+        return _extends7 = Object.assign || function(target) {
           for (var i10 = 1; i10 < arguments.length; i10++) {
             var source = arguments[i10];
             for (var key in source)
               Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
           }
           return target;
-        }, _extends5.apply(this, arguments);
+        }, _extends7.apply(this, arguments);
       }
       function _unsupportedIterableToArray2(o10, minLen) {
         if (!!o10) {
@@ -27078,7 +27078,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             }
           };
         else if (typeof source.asset == "object")
-          image = _extends5({}, source);
+          image = _extends7({}, source);
         else
           return null;
         var img = source;
@@ -27094,7 +27094,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       function applyDefaults(image) {
         if (image.crop && image.hotspot)
           return image;
-        var result = _extends5({}, image);
+        var result = _extends7({}, image);
         return result.crop || (result.crop = {
           left: 0,
           top: 0,
@@ -27109,7 +27109,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
       var SPEC_NAME_TO_URL_NAME_MAPPINGS = [["width", "w"], ["height", "h"], ["format", "fm"], ["download", "dl"], ["blur", "blur"], ["sharpen", "sharp"], ["invert", "invert"], ["orientation", "or"], ["minHeight", "min-h"], ["maxHeight", "max-h"], ["minWidth", "min-w"], ["maxWidth", "max-w"], ["quality", "q"], ["fit", "fit"], ["crop", "crop"], ["saturation", "sat"], ["auto", "auto"], ["dpr", "dpr"], ["pad", "pad"]];
       function urlForImage(options) {
-        var spec = _extends5({}, options || {}), source = spec.source;
+        var spec = _extends7({}, options || {}), source = spec.source;
         delete spec.source;
         var image = parseSource(source);
         if (!image)
@@ -27125,10 +27125,10 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
           right: hotSpotCenterX + hotSpotHorizontalRadius,
           bottom: hotSpotCenterY + hotSpotVerticalRadius
         };
-        return spec.rect || spec.focalPoint || spec.ignoreImageParams || spec.crop || (spec = _extends5({}, spec, fit({
+        return spec.rect || spec.focalPoint || spec.ignoreImageParams || spec.crop || (spec = _extends7({}, spec, fit({
           crop,
           hotspot
-        }, spec))), specToImageUrl(_extends5({}, spec, {
+        }, spec))), specToImageUrl(_extends7({}, spec, {
           asset
         }));
       }
@@ -27214,7 +27214,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
       }
       var ImageUrlBuilder = /* @__PURE__ */ function() {
         function ImageUrlBuilder2(parent, options) {
-          this.options = void 0, this.options = parent ? _extends5({}, parent.options || {}, options || {}) : _extends5({}, options || {});
+          this.options = void 0, this.options = parent ? _extends7({}, parent.options || {}, options || {}) : _extends7({}, options || {});
         }
         var _proto = ImageUrlBuilder2.prototype;
         return _proto.withOptions = function(options) {
@@ -27226,7 +27226,7 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
               var specKey = rewriteSpecName(key);
               newOptions[specKey] = options[key];
             }
-          return new ImageUrlBuilder2(this, _extends5({
+          return new ImageUrlBuilder2(this, _extends7({
             baseUrl
           }, newOptions));
         }, _proto.image = function(source) {
@@ -27508,7 +27508,7 @@ var require_common = __commonJS({
             return match2;
           }), createDebug.formatArgs.call(self2, args), (self2.log || createDebug.log).apply(self2, args);
         }
-        return debug.namespace = namespace, debug.useColors = createDebug.useColors(), debug.color = createDebug.selectColor(namespace), debug.extend = extend, debug.destroy = createDebug.destroy, Object.defineProperty(debug, "enabled", {
+        return debug.namespace = namespace, debug.useColors = createDebug.useColors(), debug.color = createDebug.selectColor(namespace), debug.extend = extend4, debug.destroy = createDebug.destroy, Object.defineProperty(debug, "enabled", {
           enumerable: !0,
           configurable: !1,
           get: () => enableOverride !== null ? enableOverride : (namespacesCache !== createDebug.namespaces && (namespacesCache = createDebug.namespaces, enabledCache = createDebug.enabled(namespace)), enabledCache),
@@ -27517,7 +27517,7 @@ var require_common = __commonJS({
           }
         }), typeof createDebug.init == "function" && createDebug.init(debug), debug;
       }
-      function extend(namespace, delimiter) {
+      function extend4(namespace, delimiter) {
         let newDebug = createDebug(this.namespace + (typeof delimiter > "u" ? ":" : delimiter) + namespace);
         return newDebug.log = this.log, newDebug;
       }
@@ -27706,7 +27706,7 @@ var require_eventsource = __commonJS({
     (function(global2) {
       "use strict";
       var setTimeout2 = global2.setTimeout, clearTimeout2 = global2.clearTimeout, XMLHttpRequest2 = global2.XMLHttpRequest, XDomainRequest = global2.XDomainRequest, ActiveXObject = global2.ActiveXObject, NativeEventSource = global2.EventSource, document2 = global2.document, Promise2 = global2.Promise, fetch2 = global2.fetch, Response2 = global2.Response, TextDecoder2 = global2.TextDecoder, TextEncoder2 = global2.TextEncoder, AbortController2 = global2.AbortController;
-      if (typeof window < "u" && typeof document2 < "u" && !("readyState" in document2) && document2.body == null && (document2.readyState = "loading", window.addEventListener("load", function(event) {
+      if (typeof window < "u" && typeof document2 < "u" && !("readyState" in document2) && document2.body == null && (document2.readyState = "loading", window.addEventListener("load", function(event2) {
         document2.readyState = "complete";
       }, !1)), XMLHttpRequest2 == null && ActiveXObject != null && (XMLHttpRequest2 = function() {
         return new ActiveXObject("Microsoft.XMLHTTP");
@@ -27786,9 +27786,9 @@ var require_eventsource = __commonJS({
       }
       XHRWrapper.prototype.open = function(method, url) {
         this._abort(!0);
-        var that = this, xhr = this._xhr, state = 1, timeout = 0;
+        var that = this, xhr = this._xhr, state = 1, timeout2 = 0;
         this._abort = function(silent) {
-          that._sendTimeout !== 0 && (clearTimeout2(that._sendTimeout), that._sendTimeout = 0), (state === 1 || state === 2 || state === 3) && (state = 4, xhr.onload = k2, xhr.onerror = k2, xhr.onabort = k2, xhr.onprogress = k2, xhr.onreadystatechange = k2, xhr.abort(), timeout !== 0 && (clearTimeout2(timeout), timeout = 0), silent || (that.readyState = 4, that.onabort(null), that.onreadystatechange())), state = 0;
+          that._sendTimeout !== 0 && (clearTimeout2(that._sendTimeout), that._sendTimeout = 0), (state === 1 || state === 2 || state === 3) && (state = 4, xhr.onload = k2, xhr.onerror = k2, xhr.onabort = k2, xhr.onprogress = k2, xhr.onreadystatechange = k2, xhr.abort(), timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), silent || (that.readyState = 4, that.onabort(null), that.onreadystatechange())), state = 0;
         };
         var onStart = function() {
           if (state === 1) {
@@ -27813,36 +27813,36 @@ var require_eventsource = __commonJS({
             }
             that.readyState = 3, that.responseText = responseText, that.onprogress();
           }
-        }, onFinish = function(type, event) {
-          if ((event == null || event.preventDefault == null) && (event = {
+        }, onFinish = function(type, event2) {
+          if ((event2 == null || event2.preventDefault == null) && (event2 = {
             preventDefault: k2
           }), onProgress(), state === 1 || state === 2 || state === 3) {
-            if (state = 4, timeout !== 0 && (clearTimeout2(timeout), timeout = 0), that.readyState = 4, type === "load")
-              that.onload(event);
+            if (state = 4, timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), that.readyState = 4, type === "load")
+              that.onload(event2);
             else if (type === "error")
-              that.onerror(event);
+              that.onerror(event2);
             else if (type === "abort")
-              that.onabort(event);
+              that.onabort(event2);
             else
               throw new TypeError();
             that.onreadystatechange();
           }
-        }, onReadyStateChange = function(event) {
-          xhr != null && (xhr.readyState === 4 ? (!("onload" in xhr) || !("onerror" in xhr) || !("onabort" in xhr)) && onFinish(xhr.responseText === "" ? "error" : "load", event) : xhr.readyState === 3 ? "onprogress" in xhr || onProgress() : xhr.readyState === 2 && onStart());
+        }, onReadyStateChange = function(event2) {
+          xhr != null && (xhr.readyState === 4 ? (!("onload" in xhr) || !("onerror" in xhr) || !("onabort" in xhr)) && onFinish(xhr.responseText === "" ? "error" : "load", event2) : xhr.readyState === 3 ? "onprogress" in xhr || onProgress() : xhr.readyState === 2 && onStart());
         }, onTimeout = function() {
-          timeout = setTimeout2(function() {
+          timeout2 = setTimeout2(function() {
             onTimeout();
           }, 500), xhr.readyState === 3 && onProgress();
         };
-        "onload" in xhr && (xhr.onload = function(event) {
-          onFinish("load", event);
-        }), "onerror" in xhr && (xhr.onerror = function(event) {
-          onFinish("error", event);
-        }), "onabort" in xhr && (xhr.onabort = function(event) {
-          onFinish("abort", event);
-        }), "onprogress" in xhr && (xhr.onprogress = onProgress), "onreadystatechange" in xhr && (xhr.onreadystatechange = function(event) {
-          onReadyStateChange(event);
-        }), ("contentType" in xhr || !("ontimeout" in XMLHttpRequest2.prototype)) && (url += (url.indexOf("?") === -1 ? "?" : "&") + "padding=true"), xhr.open(method, url, !0), "readyState" in xhr && (timeout = setTimeout2(function() {
+        "onload" in xhr && (xhr.onload = function(event2) {
+          onFinish("load", event2);
+        }), "onerror" in xhr && (xhr.onerror = function(event2) {
+          onFinish("error", event2);
+        }), "onabort" in xhr && (xhr.onabort = function(event2) {
+          onFinish("abort", event2);
+        }), "onprogress" in xhr && (xhr.onprogress = onProgress), "onreadystatechange" in xhr && (xhr.onreadystatechange = function(event2) {
+          onReadyStateChange(event2);
+        }), ("contentType" in xhr || !("ontimeout" in XMLHttpRequest2.prototype)) && (url += (url.indexOf("?") === -1 ? "?" : "&") + "padding=true"), xhr.open(method, url, !0), "readyState" in xhr && (timeout2 = setTimeout2(function() {
           onTimeout();
         }, 0));
       }, XHRWrapper.prototype.abort = function() {
@@ -27894,8 +27894,8 @@ var require_eventsource = __commonJS({
         xhr.onprogress = function() {
           var responseText = xhr.responseText, chunk = responseText.slice(offset);
           offset += chunk.length, onProgressCallback(chunk);
-        }, xhr.onerror = function(event) {
-          event.preventDefault(), onFinishCallback(new Error("NetworkError"));
+        }, xhr.onerror = function(event2) {
+          event2.preventDefault(), onFinishCallback(new Error("NetworkError"));
         }, xhr.onload = function() {
           onFinishCallback(null);
         }, xhr.onabort = function() {
@@ -27960,14 +27960,14 @@ var require_eventsource = __commonJS({
           throw e6;
         }, 0);
       }
-      EventTarget.prototype.dispatchEvent = function(event) {
-        event.target = this;
-        var typeListeners = this._listeners[event.type];
+      EventTarget.prototype.dispatchEvent = function(event2) {
+        event2.target = this;
+        var typeListeners = this._listeners[event2.type];
         if (typeListeners != null)
           for (var length2 = typeListeners.length, i10 = 0; i10 < length2; i10 += 1) {
             var listener = typeListeners[i10];
             try {
-              typeof listener.handleEvent == "function" ? listener.handleEvent(event) : listener.call(this, event);
+              typeof listener.handleEvent == "function" ? listener.handleEvent(event2) : listener.call(this, event2);
             } catch (e6) {
               throwError(e6);
             }
@@ -28008,9 +28008,9 @@ var require_eventsource = __commonJS({
         return n4 !== n4 && (n4 = def), clampDuration(n4);
       }, clampDuration = function(n4) {
         return Math.min(Math.max(n4, MINIMUM_DURATION), MAXIMUM_DURATION);
-      }, fire = function(that, f12, event) {
+      }, fire = function(that, f12, event2) {
         try {
-          typeof f12 == "function" && f12.call(that, event);
+          typeof f12 == "function" && f12.call(that, event2);
         } catch (e6) {
           throwError(e6);
         }
@@ -28024,25 +28024,25 @@ var require_eventsource = __commonJS({
       var isFetchSupported = fetch2 != null && Response2 != null && "body" in Response2.prototype;
       function start(es, url, options) {
         url = String(url);
-        var withCredentials = Boolean(options.withCredentials), lastEventIdQueryParameterName = options.lastEventIdQueryParameterName || "lastEventId", initialRetry = clampDuration(1e3), heartbeatTimeout = parseDuration(options.heartbeatTimeout, 45e3), lastEventId = "", retry2 = initialRetry, wasActivity = !1, textLength = 0, headers = options.headers || {}, TransportOption = options.Transport, xhr = isFetchSupported && TransportOption == null ? void 0 : new XHRWrapper(TransportOption != null ? new TransportOption() : getBestXHRTransport()), transport = TransportOption != null && typeof TransportOption != "string" ? new TransportOption() : xhr == null ? new FetchTransport() : new XHRTransport(), abortController = void 0, timeout = 0, currentState = WAITING, dataBuffer = "", lastEventIdBuffer = "", eventTypeBuffer = "", textBuffer = "", state = FIELD_START, fieldStart = 0, valueStart = 0, onStart = function(status, statusText, contentType, headers2) {
+        var withCredentials = Boolean(options.withCredentials), lastEventIdQueryParameterName = options.lastEventIdQueryParameterName || "lastEventId", initialRetry = clampDuration(1e3), heartbeatTimeout = parseDuration(options.heartbeatTimeout, 45e3), lastEventId = "", retry2 = initialRetry, wasActivity = !1, textLength = 0, headers = options.headers || {}, TransportOption = options.Transport, xhr = isFetchSupported && TransportOption == null ? void 0 : new XHRWrapper(TransportOption != null ? new TransportOption() : getBestXHRTransport()), transport = TransportOption != null && typeof TransportOption != "string" ? new TransportOption() : xhr == null ? new FetchTransport() : new XHRTransport(), abortController = void 0, timeout2 = 0, currentState = WAITING, dataBuffer = "", lastEventIdBuffer = "", eventTypeBuffer = "", textBuffer = "", state = FIELD_START, fieldStart = 0, valueStart = 0, onStart = function(status, statusText, contentType, headers2) {
           if (currentState === CONNECTING)
             if (status === 200 && contentType != null && contentTypeRegExp.test(contentType)) {
               currentState = OPEN, wasActivity = Date.now(), retry2 = initialRetry, es.readyState = OPEN;
-              var event = new ConnectionEvent("open", {
+              var event2 = new ConnectionEvent("open", {
                 status,
                 statusText,
                 headers: headers2
               });
-              es.dispatchEvent(event), fire(es, es.onopen, event);
+              es.dispatchEvent(event2), fire(es, es.onopen, event2);
             } else {
               var message = "";
               status !== 200 ? (statusText && (statusText = statusText.replace(/\s+/g, " ")), message = "EventSource's response has a status " + status + " " + statusText + " that is not 200. Aborting the connection.") : message = "EventSource's response has a Content-Type specifying an unsupported type: " + (contentType == null ? "-" : contentType.replace(/\s+/g, " ")) + ". Aborting the connection.", close();
-              var event = new ConnectionEvent("error", {
+              var event2 = new ConnectionEvent("error", {
                 status,
                 statusText,
                 headers: headers2
               });
-              es.dispatchEvent(event), fire(es, es.onerror, event), console.error(message);
+              es.dispatchEvent(event2), fire(es, es.onerror, event2), console.error(message);
             }
         }, onProgress = function(textChunk) {
           if (currentState === OPEN) {
@@ -28064,18 +28064,18 @@ var require_eventsource = __commonJS({
                   state === FIELD && (valueStart = position + 1);
                   var field = chunk.slice(fieldStart, valueStart - 1), value = chunk.slice(valueStart + (valueStart < position && chunk.charCodeAt(valueStart) === " ".charCodeAt(0) ? 1 : 0), position);
                   field === "data" ? (dataBuffer += `
-`, dataBuffer += value) : field === "id" ? lastEventIdBuffer = value : field === "event" ? eventTypeBuffer = value : field === "retry" ? (initialRetry = parseDuration(value, initialRetry), retry2 = initialRetry) : field === "heartbeatTimeout" && (heartbeatTimeout = parseDuration(value, heartbeatTimeout), timeout !== 0 && (clearTimeout2(timeout), timeout = setTimeout2(function() {
+`, dataBuffer += value) : field === "id" ? lastEventIdBuffer = value : field === "event" ? eventTypeBuffer = value : field === "retry" ? (initialRetry = parseDuration(value, initialRetry), retry2 = initialRetry) : field === "heartbeatTimeout" && (heartbeatTimeout = parseDuration(value, heartbeatTimeout), timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = setTimeout2(function() {
                     onTimeout();
                   }, heartbeatTimeout)));
                 }
                 if (state === FIELD_START) {
                   if (dataBuffer !== "") {
                     lastEventId = lastEventIdBuffer, eventTypeBuffer === "" && (eventTypeBuffer = "message");
-                    var event = new MessageEvent(eventTypeBuffer, {
+                    var event2 = new MessageEvent(eventTypeBuffer, {
                       data: dataBuffer.slice(1),
                       lastEventId: lastEventIdBuffer
                     });
-                    if (es.dispatchEvent(event), eventTypeBuffer === "open" ? fire(es, es.onopen, event) : eventTypeBuffer === "message" ? fire(es, es.onmessage, event) : eventTypeBuffer === "error" && fire(es, es.onerror, event), currentState === CLOSED)
+                    if (es.dispatchEvent(event2), eventTypeBuffer === "open" ? fire(es, es.onopen, event2) : eventTypeBuffer === "message" ? fire(es, es.onmessage, event2) : eventTypeBuffer === "error" && fire(es, es.onerror, event2), currentState === CLOSED)
                       return;
                   }
                   dataBuffer = "", eventTypeBuffer = "";
@@ -28087,27 +28087,27 @@ var require_eventsource = __commonJS({
           }
         }, onFinish = function(error) {
           if (currentState === OPEN || currentState === CONNECTING) {
-            currentState = WAITING, timeout !== 0 && (clearTimeout2(timeout), timeout = 0), timeout = setTimeout2(function() {
+            currentState = WAITING, timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), timeout2 = setTimeout2(function() {
               onTimeout();
             }, retry2), retry2 = clampDuration(Math.min(initialRetry * 16, retry2 * 2)), es.readyState = CONNECTING;
-            var event = new ErrorEvent("error", { error });
-            es.dispatchEvent(event), fire(es, es.onerror, event), error != null && console.error(error);
+            var event2 = new ErrorEvent("error", { error });
+            es.dispatchEvent(event2), fire(es, es.onerror, event2), error != null && console.error(error);
           }
         }, close = function() {
-          currentState = CLOSED, abortController != null && (abortController.abort(), abortController = void 0), timeout !== 0 && (clearTimeout2(timeout), timeout = 0), es.readyState = CLOSED;
+          currentState = CLOSED, abortController != null && (abortController.abort(), abortController = void 0), timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), es.readyState = CLOSED;
         }, onTimeout = function() {
-          if (timeout = 0, currentState !== WAITING) {
+          if (timeout2 = 0, currentState !== WAITING) {
             if (!wasActivity && abortController != null)
               onFinish(new Error("No activity within " + heartbeatTimeout + " milliseconds. " + (currentState === CONNECTING ? "No response received." : textLength + " chars received.") + " Reconnecting.")), abortController != null && (abortController.abort(), abortController = void 0);
             else {
               var nextHeartbeat = Math.max((wasActivity || Date.now()) + heartbeatTimeout - Date.now(), 1);
-              wasActivity = !1, timeout = setTimeout2(function() {
+              wasActivity = !1, timeout2 = setTimeout2(function() {
                 onTimeout();
               }, nextHeartbeat);
             }
             return;
           }
-          wasActivity = !1, textLength = 0, timeout = setTimeout2(function() {
+          wasActivity = !1, textLength = 0, timeout2 = setTimeout2(function() {
             onTimeout();
           }, heartbeatTimeout), currentState = CONNECTING, dataBuffer = "", eventTypeBuffer = "", lastEventIdBuffer = lastEventId, textBuffer = "", fieldStart = 0, valueStart = 0, state = FIELD_START;
           var requestURL = url;
@@ -28282,14 +28282,14 @@ function isEqual(a10, b5) {
 function matchText(tokens, patterns) {
   return tokens.length === 0 || patterns.length === 0 ? !1 : patterns.every((pattern) => pattern(tokens));
 }
-function matchTokenize(text) {
-  return text.replace(EDGE_CHARS, "").match(CHARS) || [];
+function matchTokenize(text2) {
+  return text2.replace(EDGE_CHARS, "").match(CHARS) || [];
 }
-function matchAnalyzePattern(text) {
-  return matchPatternRegex(text).map((re4) => (tokens) => tokens.some((token) => re4.test(token)));
+function matchAnalyzePattern(text2) {
+  return matchPatternRegex(text2).map((re4) => (tokens) => tokens.some((token) => re4.test(token)));
 }
-function matchPatternRegex(text) {
-  return (text.replace(EDGE_CHARS, "").match(CHARS_WITH_WILDCARD) || []).map((term) => new RegExp("^".concat(term.slice(0, MAX_TERM_LENGTH).replace(/\*/g, ".*"), "$"), "i"));
+function matchPatternRegex(text2) {
+  return (text2.replace(EDGE_CHARS, "").match(CHARS_WITH_WILDCARD) || []).map((term) => new RegExp("^".concat(term.slice(0, MAX_TERM_LENGTH).replace(/\*/g, ".*"), "$"), "i"));
 }
 async function gatherText(value, cb) {
   if (value.type === "string")
@@ -28403,8 +28403,8 @@ async function arrayText(value) {
   let result = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : [];
   for await (let block of value)
     if (block.type === "object") {
-      let text = blockText(block.data);
-      text !== null && result.push(text);
+      let text2 = blockText(block.data);
+      text2 !== null && result.push(text2);
     } else
       block.isArray() && await arrayText(block, result);
   return result;
@@ -28443,8 +28443,8 @@ async function evaluateScore(node, scope, execute) {
   }
 }
 async function evaluateMatchScore(left, right, scope, execute) {
-  let text = await execute(left, scope), pattern = await execute(right, scope), tokens = [], terms = [];
-  if (await gatherText(text, (part) => {
+  let text2 = await execute(left, scope), pattern = await execute(right, scope), tokens = [], terms = [];
+  if (await gatherText(text2, (part) => {
     tokens = tokens.concat(matchTokenize(part));
   }), !await gatherText(pattern, (part) => {
     terms = terms.concat(matchPatternRegex(part));
@@ -30136,8 +30136,8 @@ var Path, StreamValue, RFC3339_REGEX, StaticValue, NULL_VALUE, TRUE_VALUE, FALSE
     array.unique.arity = 1;
     pt = {};
     pt.text = async function(args, scope, execute) {
-      let value = await execute(args[0], scope), text = await portableTextContent(value);
-      return text === null ? NULL_VALUE : fromString(text);
+      let value = await execute(args[0], scope), text2 = await portableTextContent(value);
+      return text2 === null ? NULL_VALUE : fromString(text2);
     };
     pt.text.arity = 1;
     sanity = {};
@@ -31337,7 +31337,7 @@ function groqStore$1(config2, envImplementations) {
       params
     })).get();
   }
-  async function getDocument(documentId) {
+  async function getDocument2(documentId) {
     return await loadDataset(), query2(groq(_templateObject || (_templateObject = _taggedTemplateLiteral(["*[_id == $id][0]"]))), {
       id: documentId
     });
@@ -31377,7 +31377,7 @@ function groqStore$1(config2, envImplementations) {
   }
   return {
     query: query2,
-    getDocument,
+    getDocument: getDocument2,
     getDocuments: getDocuments3,
     subscribe,
     close
@@ -31508,7 +31508,7 @@ var require_eventsource2 = __commonJS({
     (function(global2) {
       "use strict";
       var setTimeout2 = global2.setTimeout, clearTimeout2 = global2.clearTimeout, XMLHttpRequest2 = global2.XMLHttpRequest, XDomainRequest = global2.XDomainRequest, ActiveXObject = global2.ActiveXObject, NativeEventSource = global2.EventSource, document2 = global2.document, Promise2 = global2.Promise, fetch2 = global2.fetch, Response2 = global2.Response, TextDecoder2 = global2.TextDecoder, TextEncoder2 = global2.TextEncoder, AbortController2 = global2.AbortController;
-      if (typeof window < "u" && typeof document2 < "u" && !("readyState" in document2) && document2.body == null && (document2.readyState = "loading", window.addEventListener("load", function(event) {
+      if (typeof window < "u" && typeof document2 < "u" && !("readyState" in document2) && document2.body == null && (document2.readyState = "loading", window.addEventListener("load", function(event2) {
         document2.readyState = "complete";
       }, !1)), XMLHttpRequest2 == null && ActiveXObject != null && (XMLHttpRequest2 = function() {
         return new ActiveXObject("Microsoft.XMLHTTP");
@@ -31588,9 +31588,9 @@ var require_eventsource2 = __commonJS({
       }
       XHRWrapper.prototype.open = function(method, url) {
         this._abort(!0);
-        var that = this, xhr = this._xhr, state = 1, timeout = 0;
+        var that = this, xhr = this._xhr, state = 1, timeout2 = 0;
         this._abort = function(silent) {
-          that._sendTimeout !== 0 && (clearTimeout2(that._sendTimeout), that._sendTimeout = 0), (state === 1 || state === 2 || state === 3) && (state = 4, xhr.onload = k2, xhr.onerror = k2, xhr.onabort = k2, xhr.onprogress = k2, xhr.onreadystatechange = k2, xhr.abort(), timeout !== 0 && (clearTimeout2(timeout), timeout = 0), silent || (that.readyState = 4, that.onabort(null), that.onreadystatechange())), state = 0;
+          that._sendTimeout !== 0 && (clearTimeout2(that._sendTimeout), that._sendTimeout = 0), (state === 1 || state === 2 || state === 3) && (state = 4, xhr.onload = k2, xhr.onerror = k2, xhr.onabort = k2, xhr.onprogress = k2, xhr.onreadystatechange = k2, xhr.abort(), timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), silent || (that.readyState = 4, that.onabort(null), that.onreadystatechange())), state = 0;
         };
         var onStart = function() {
           if (state === 1) {
@@ -31615,36 +31615,36 @@ var require_eventsource2 = __commonJS({
             }
             that.readyState = 3, that.responseText = responseText, that.onprogress();
           }
-        }, onFinish = function(type, event) {
-          if ((event == null || event.preventDefault == null) && (event = {
+        }, onFinish = function(type, event2) {
+          if ((event2 == null || event2.preventDefault == null) && (event2 = {
             preventDefault: k2
           }), onProgress(), state === 1 || state === 2 || state === 3) {
-            if (state = 4, timeout !== 0 && (clearTimeout2(timeout), timeout = 0), that.readyState = 4, type === "load")
-              that.onload(event);
+            if (state = 4, timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), that.readyState = 4, type === "load")
+              that.onload(event2);
             else if (type === "error")
-              that.onerror(event);
+              that.onerror(event2);
             else if (type === "abort")
-              that.onabort(event);
+              that.onabort(event2);
             else
               throw new TypeError();
             that.onreadystatechange();
           }
-        }, onReadyStateChange = function(event) {
-          xhr != null && (xhr.readyState === 4 ? (!("onload" in xhr) || !("onerror" in xhr) || !("onabort" in xhr)) && onFinish(xhr.responseText === "" ? "error" : "load", event) : xhr.readyState === 3 ? "onprogress" in xhr || onProgress() : xhr.readyState === 2 && onStart());
+        }, onReadyStateChange = function(event2) {
+          xhr != null && (xhr.readyState === 4 ? (!("onload" in xhr) || !("onerror" in xhr) || !("onabort" in xhr)) && onFinish(xhr.responseText === "" ? "error" : "load", event2) : xhr.readyState === 3 ? "onprogress" in xhr || onProgress() : xhr.readyState === 2 && onStart());
         }, onTimeout = function() {
-          timeout = setTimeout2(function() {
+          timeout2 = setTimeout2(function() {
             onTimeout();
           }, 500), xhr.readyState === 3 && onProgress();
         };
-        "onload" in xhr && (xhr.onload = function(event) {
-          onFinish("load", event);
-        }), "onerror" in xhr && (xhr.onerror = function(event) {
-          onFinish("error", event);
-        }), "onabort" in xhr && (xhr.onabort = function(event) {
-          onFinish("abort", event);
-        }), "onprogress" in xhr && (xhr.onprogress = onProgress), "onreadystatechange" in xhr && (xhr.onreadystatechange = function(event) {
-          onReadyStateChange(event);
-        }), ("contentType" in xhr || !("ontimeout" in XMLHttpRequest2.prototype)) && (url += (url.indexOf("?") === -1 ? "?" : "&") + "padding=true"), xhr.open(method, url, !0), "readyState" in xhr && (timeout = setTimeout2(function() {
+        "onload" in xhr && (xhr.onload = function(event2) {
+          onFinish("load", event2);
+        }), "onerror" in xhr && (xhr.onerror = function(event2) {
+          onFinish("error", event2);
+        }), "onabort" in xhr && (xhr.onabort = function(event2) {
+          onFinish("abort", event2);
+        }), "onprogress" in xhr && (xhr.onprogress = onProgress), "onreadystatechange" in xhr && (xhr.onreadystatechange = function(event2) {
+          onReadyStateChange(event2);
+        }), ("contentType" in xhr || !("ontimeout" in XMLHttpRequest2.prototype)) && (url += (url.indexOf("?") === -1 ? "?" : "&") + "padding=true"), xhr.open(method, url, !0), "readyState" in xhr && (timeout2 = setTimeout2(function() {
           onTimeout();
         }, 0));
       }, XHRWrapper.prototype.abort = function() {
@@ -31696,8 +31696,8 @@ var require_eventsource2 = __commonJS({
         xhr.onprogress = function() {
           var responseText = xhr.responseText, chunk = responseText.slice(offset);
           offset += chunk.length, onProgressCallback(chunk);
-        }, xhr.onerror = function(event) {
-          event.preventDefault(), onFinishCallback(new Error("NetworkError"));
+        }, xhr.onerror = function(event2) {
+          event2.preventDefault(), onFinishCallback(new Error("NetworkError"));
         }, xhr.onload = function() {
           onFinishCallback(null);
         }, xhr.onabort = function() {
@@ -31762,14 +31762,14 @@ var require_eventsource2 = __commonJS({
           throw e6;
         }, 0);
       }
-      EventTarget.prototype.dispatchEvent = function(event) {
-        event.target = this;
-        var typeListeners = this._listeners[event.type];
+      EventTarget.prototype.dispatchEvent = function(event2) {
+        event2.target = this;
+        var typeListeners = this._listeners[event2.type];
         if (typeListeners != null)
           for (var length2 = typeListeners.length, i10 = 0; i10 < length2; i10 += 1) {
             var listener = typeListeners[i10];
             try {
-              typeof listener.handleEvent == "function" ? listener.handleEvent(event) : listener.call(this, event);
+              typeof listener.handleEvent == "function" ? listener.handleEvent(event2) : listener.call(this, event2);
             } catch (e6) {
               throwError(e6);
             }
@@ -31810,9 +31810,9 @@ var require_eventsource2 = __commonJS({
         return n4 !== n4 && (n4 = def), clampDuration(n4);
       }, clampDuration = function(n4) {
         return Math.min(Math.max(n4, MINIMUM_DURATION), MAXIMUM_DURATION);
-      }, fire = function(that, f12, event) {
+      }, fire = function(that, f12, event2) {
         try {
-          typeof f12 == "function" && f12.call(that, event);
+          typeof f12 == "function" && f12.call(that, event2);
         } catch (e6) {
           throwError(e6);
         }
@@ -31826,25 +31826,25 @@ var require_eventsource2 = __commonJS({
       var isFetchSupported = fetch2 != null && Response2 != null && "body" in Response2.prototype;
       function start(es, url, options) {
         url = String(url);
-        var withCredentials = Boolean(options.withCredentials), lastEventIdQueryParameterName = options.lastEventIdQueryParameterName || "lastEventId", initialRetry = clampDuration(1e3), heartbeatTimeout = parseDuration(options.heartbeatTimeout, 45e3), lastEventId = "", retry2 = initialRetry, wasActivity = !1, textLength = 0, headers = options.headers || {}, TransportOption = options.Transport, xhr = isFetchSupported && TransportOption == null ? void 0 : new XHRWrapper(TransportOption != null ? new TransportOption() : getBestXHRTransport()), transport = TransportOption != null && typeof TransportOption != "string" ? new TransportOption() : xhr == null ? new FetchTransport() : new XHRTransport(), abortController = void 0, timeout = 0, currentState = WAITING, dataBuffer = "", lastEventIdBuffer = "", eventTypeBuffer = "", textBuffer = "", state = FIELD_START, fieldStart = 0, valueStart = 0, onStart = function(status, statusText, contentType, headers2) {
+        var withCredentials = Boolean(options.withCredentials), lastEventIdQueryParameterName = options.lastEventIdQueryParameterName || "lastEventId", initialRetry = clampDuration(1e3), heartbeatTimeout = parseDuration(options.heartbeatTimeout, 45e3), lastEventId = "", retry2 = initialRetry, wasActivity = !1, textLength = 0, headers = options.headers || {}, TransportOption = options.Transport, xhr = isFetchSupported && TransportOption == null ? void 0 : new XHRWrapper(TransportOption != null ? new TransportOption() : getBestXHRTransport()), transport = TransportOption != null && typeof TransportOption != "string" ? new TransportOption() : xhr == null ? new FetchTransport() : new XHRTransport(), abortController = void 0, timeout2 = 0, currentState = WAITING, dataBuffer = "", lastEventIdBuffer = "", eventTypeBuffer = "", textBuffer = "", state = FIELD_START, fieldStart = 0, valueStart = 0, onStart = function(status, statusText, contentType, headers2) {
           if (currentState === CONNECTING)
             if (status === 200 && contentType != null && contentTypeRegExp.test(contentType)) {
               currentState = OPEN, wasActivity = Date.now(), retry2 = initialRetry, es.readyState = OPEN;
-              var event = new ConnectionEvent("open", {
+              var event2 = new ConnectionEvent("open", {
                 status,
                 statusText,
                 headers: headers2
               });
-              es.dispatchEvent(event), fire(es, es.onopen, event);
+              es.dispatchEvent(event2), fire(es, es.onopen, event2);
             } else {
               var message = "";
               status !== 200 ? (statusText && (statusText = statusText.replace(/\s+/g, " ")), message = "EventSource's response has a status " + status + " " + statusText + " that is not 200. Aborting the connection.") : message = "EventSource's response has a Content-Type specifying an unsupported type: " + (contentType == null ? "-" : contentType.replace(/\s+/g, " ")) + ". Aborting the connection.", close();
-              var event = new ConnectionEvent("error", {
+              var event2 = new ConnectionEvent("error", {
                 status,
                 statusText,
                 headers: headers2
               });
-              es.dispatchEvent(event), fire(es, es.onerror, event), console.error(message);
+              es.dispatchEvent(event2), fire(es, es.onerror, event2), console.error(message);
             }
         }, onProgress = function(textChunk) {
           if (currentState === OPEN) {
@@ -31866,18 +31866,18 @@ var require_eventsource2 = __commonJS({
                   state === FIELD && (valueStart = position + 1);
                   var field = chunk.slice(fieldStart, valueStart - 1), value = chunk.slice(valueStart + (valueStart < position && chunk.charCodeAt(valueStart) === " ".charCodeAt(0) ? 1 : 0), position);
                   field === "data" ? (dataBuffer += `
-`, dataBuffer += value) : field === "id" ? lastEventIdBuffer = value : field === "event" ? eventTypeBuffer = value : field === "retry" ? (initialRetry = parseDuration(value, initialRetry), retry2 = initialRetry) : field === "heartbeatTimeout" && (heartbeatTimeout = parseDuration(value, heartbeatTimeout), timeout !== 0 && (clearTimeout2(timeout), timeout = setTimeout2(function() {
+`, dataBuffer += value) : field === "id" ? lastEventIdBuffer = value : field === "event" ? eventTypeBuffer = value : field === "retry" ? (initialRetry = parseDuration(value, initialRetry), retry2 = initialRetry) : field === "heartbeatTimeout" && (heartbeatTimeout = parseDuration(value, heartbeatTimeout), timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = setTimeout2(function() {
                     onTimeout();
                   }, heartbeatTimeout)));
                 }
                 if (state === FIELD_START) {
                   if (dataBuffer !== "") {
                     lastEventId = lastEventIdBuffer, eventTypeBuffer === "" && (eventTypeBuffer = "message");
-                    var event = new MessageEvent(eventTypeBuffer, {
+                    var event2 = new MessageEvent(eventTypeBuffer, {
                       data: dataBuffer.slice(1),
                       lastEventId: lastEventIdBuffer
                     });
-                    if (es.dispatchEvent(event), eventTypeBuffer === "open" ? fire(es, es.onopen, event) : eventTypeBuffer === "message" ? fire(es, es.onmessage, event) : eventTypeBuffer === "error" && fire(es, es.onerror, event), currentState === CLOSED)
+                    if (es.dispatchEvent(event2), eventTypeBuffer === "open" ? fire(es, es.onopen, event2) : eventTypeBuffer === "message" ? fire(es, es.onmessage, event2) : eventTypeBuffer === "error" && fire(es, es.onerror, event2), currentState === CLOSED)
                       return;
                   }
                   dataBuffer = "", eventTypeBuffer = "";
@@ -31889,27 +31889,27 @@ var require_eventsource2 = __commonJS({
           }
         }, onFinish = function(error) {
           if (currentState === OPEN || currentState === CONNECTING) {
-            currentState = WAITING, timeout !== 0 && (clearTimeout2(timeout), timeout = 0), timeout = setTimeout2(function() {
+            currentState = WAITING, timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), timeout2 = setTimeout2(function() {
               onTimeout();
             }, retry2), retry2 = clampDuration(Math.min(initialRetry * 16, retry2 * 2)), es.readyState = CONNECTING;
-            var event = new ErrorEvent("error", { error });
-            es.dispatchEvent(event), fire(es, es.onerror, event), error != null && console.error(error);
+            var event2 = new ErrorEvent("error", { error });
+            es.dispatchEvent(event2), fire(es, es.onerror, event2), error != null && console.error(error);
           }
         }, close = function() {
-          currentState = CLOSED, abortController != null && (abortController.abort(), abortController = void 0), timeout !== 0 && (clearTimeout2(timeout), timeout = 0), es.readyState = CLOSED;
+          currentState = CLOSED, abortController != null && (abortController.abort(), abortController = void 0), timeout2 !== 0 && (clearTimeout2(timeout2), timeout2 = 0), es.readyState = CLOSED;
         }, onTimeout = function() {
-          if (timeout = 0, currentState !== WAITING) {
+          if (timeout2 = 0, currentState !== WAITING) {
             if (!wasActivity && abortController != null)
               onFinish(new Error("No activity within " + heartbeatTimeout + " milliseconds. " + (currentState === CONNECTING ? "No response received." : textLength + " chars received.") + " Reconnecting.")), abortController != null && (abortController.abort(), abortController = void 0);
             else {
               var nextHeartbeat = Math.max((wasActivity || Date.now()) + heartbeatTimeout - Date.now(), 1);
-              wasActivity = !1, timeout = setTimeout2(function() {
+              wasActivity = !1, timeout2 = setTimeout2(function() {
                 onTimeout();
               }, nextHeartbeat);
             }
             return;
           }
-          wasActivity = !1, textLength = 0, timeout = setTimeout2(function() {
+          wasActivity = !1, textLength = 0, timeout2 = setTimeout2(function() {
             onTimeout();
           }, heartbeatTimeout), currentState = CONNECTING, dataBuffer = "", eventTypeBuffer = "", lastEventIdBuffer = lastEventId, textBuffer = "", fieldStart = 0, valueStart = 0, state = FIELD_START;
           var requestURL = url;
@@ -32334,7 +32334,7 @@ function usePrefetchBehavior(prefetch, theirElementProps) {
     onBlur,
     onMouseEnter,
     onMouseLeave,
-    onTouchStart
+    onTouchStart: onTouchStart2
   } = theirElementProps;
   React3.useEffect(() => {
     prefetch === "render" && setShouldPrefetch(!0);
@@ -32358,7 +32358,7 @@ function usePrefetchBehavior(prefetch, theirElementProps) {
     onBlur: composeEventHandlers(onBlur, cancelIntent),
     onMouseEnter: composeEventHandlers(onMouseEnter, setIntent),
     onMouseLeave: composeEventHandlers(onMouseLeave, cancelIntent),
-    onTouchStart: composeEventHandlers(onTouchStart, setIntent)
+    onTouchStart: composeEventHandlers(onTouchStart2, setIntent)
   }];
 }
 var NavLink2 = /* @__PURE__ */ React3.forwardRef(({
@@ -32390,8 +32390,8 @@ var Link2 = /* @__PURE__ */ React3.forwardRef(({
 });
 Link2.displayName = "Link";
 function composeEventHandlers(theirHandler, ourHandler) {
-  return (event) => {
-    theirHandler && theirHandler(event), event.defaultPrevented || ourHandler(event);
+  return (event2) => {
+    theirHandler && theirHandler(event2), event2.defaultPrevented || ourHandler(event2);
   };
 }
 function Links() {
@@ -32400,8 +32400,8 @@ function Links() {
     routeModules
   } = useRemixContext(), {
     matches
-  } = useDataRouterStateContext(), links3 = React3.useMemo(() => getLinksForMatches(matches, routeModules, manifest), [matches, routeModules, manifest]);
-  return /* @__PURE__ */ React3.createElement(React3.Fragment, null, links3.map((link2) => {
+  } = useDataRouterStateContext(), links4 = React3.useMemo(() => getLinksForMatches(matches, routeModules, manifest), [matches, routeModules, manifest]);
+  return /* @__PURE__ */ React3.createElement(React3.Fragment, null, links4.map((link2) => {
     if (isPageLinkDescriptor(link2))
       return /* @__PURE__ */ React3.createElement(PrefetchPageLinks, _extends4({
         key: link2.page
@@ -32431,8 +32431,8 @@ function usePrefetchedStylesheets(matches) {
   } = useRemixContext(), [styleLinks, setStyleLinks] = React3.useState([]);
   return React3.useEffect(() => {
     let interrupted = !1;
-    return getStylesheetPrefetchLinks(matches, manifest, routeModules).then((links3) => {
-      interrupted || setStyleLinks(links3);
+    return getStylesheetPrefetchLinks(matches, manifest, routeModules).then((links4) => {
+      interrupted || setStyleLinks(links4);
     }), () => {
       interrupted = !0;
     };
@@ -34605,27 +34605,27 @@ function formatProductPayload(products) {
 }
 
 // node_modules/@shopify/hydrogen-react/dist/browser-prod/analytics.mjs
-function sendShopifyAnalytics(event, shopDomain) {
-  let { eventName, payload } = event;
+function sendShopifyAnalytics(event2, shopDomain) {
+  let { eventName, payload } = event2;
   if (!payload.hasUserConsent)
     return Promise.resolve();
-  let events = [];
+  let events2 = [];
   if (eventName === AnalyticsEventName.PAGE_VIEW) {
     let pageViewPayload = payload;
-    events = events.concat(
+    events2 = events2.concat(
       pageView(pageViewPayload),
       pageView2(pageViewPayload)
     );
   } else
-    eventName === AnalyticsEventName.ADD_TO_CART && (events = events.concat(
+    eventName === AnalyticsEventName.ADD_TO_CART && (events2 = events2.concat(
       addToCart(payload)
     ));
-  return events.length ? sendToShopify(events, shopDomain) : Promise.resolve();
+  return events2.length ? sendToShopify(events2, shopDomain) : Promise.resolve();
 }
 var ERROR_MESSAGE = "sendShopifyAnalytics request is unsuccessful";
-function sendToShopify(events, shopDomain) {
+function sendToShopify(events2, shopDomain) {
   let eventsToBeSent = {
-    events,
+    events: events2,
     metadata: {
       event_sent_at_ms: Date.now()
     }
@@ -36003,9 +36003,9 @@ function formatText(input) {
       "\xA0$1"
     );
 }
-function getExcerpt(text) {
-  let match2 = /<p.*>(.*?)<\/p>/.exec(text);
-  return match2 != null && match2.length ? match2[0] : text;
+function getExcerpt(text2) {
+  let match2 = /<p.*>(.*?)<\/p>/.exec(text2);
+  return match2 != null && match2.length ? match2[0] : text2;
 }
 function isNewArrival(date, daysOld = 30) {
   return new Date(date).valueOf() > new Date().setDate(new Date().getDate() - daysOld).valueOf();
@@ -36139,14 +36139,14 @@ var import_react10 = __toESM(require_react());
 var import_react9 = __toESM(require_react());
 function useTimeoutFn(fn, ms) {
   ms === void 0 && (ms = 0);
-  var ready = (0, import_react9.useRef)(!1), timeout = (0, import_react9.useRef)(), callback = (0, import_react9.useRef)(fn), isReady = (0, import_react9.useCallback)(function() {
+  var ready = (0, import_react9.useRef)(!1), timeout2 = (0, import_react9.useRef)(), callback = (0, import_react9.useRef)(fn), isReady = (0, import_react9.useCallback)(function() {
     return ready.current;
   }, []), set = (0, import_react9.useCallback)(function() {
-    ready.current = !1, timeout.current && clearTimeout(timeout.current), timeout.current = setTimeout(function() {
+    ready.current = !1, timeout2.current && clearTimeout(timeout2.current), timeout2.current = setTimeout(function() {
       ready.current = !0, callback.current();
     }, ms);
   }, [ms]), clear = (0, import_react9.useCallback)(function() {
-    ready.current = null, timeout.current && clearTimeout(timeout.current);
+    ready.current = null, timeout2.current && clearTimeout(timeout2.current);
   }, []);
   return (0, import_react9.useEffect)(function() {
     callback.current = fn;
@@ -39692,25 +39692,6 @@ var PLACEHOLDERS = {
     }
   }
 };
-function getHeroPlaceholder(heros) {
-  return heros != null && heros.length ? heros.map((hero, index) => {
-    var _a2;
-    if ((_a2 = hero == null ? void 0 : hero.heading) != null && _a2.value)
-      return hero;
-    let placeholder = PLACEHOLDERS.HEROS[index], byLine = (hero == null ? void 0 : hero.byLine) || (hero == null ? void 0 : hero.descriptionHtml) ? { value: hero.descriptionHtml } : placeholder.byline;
-    return {
-      heading: (hero == null ? void 0 : hero.heading) || (hero == null ? void 0 : hero.title) ? { value: hero.title } : placeholder.heading,
-      byLine,
-      cta: (hero == null ? void 0 : hero.cta) || placeholder.cta,
-      handle: (hero == null ? void 0 : hero.handle) || placeholder.handle,
-      id: (hero == null ? void 0 : hero.id) || index,
-      spread: (hero == null ? void 0 : hero.spread) || placeholder.spread,
-      spreadSecondary: (hero == null ? void 0 : hero.spreadSecondary) || placeholder.spreadSecondary,
-      height: (placeholder == null ? void 0 : placeholder.height) || void 0,
-      top: (placeholder == null ? void 0 : placeholder.top) || void 0
-    };
-  }) : [];
-}
 function getProductPlaceholder() {
   return PLACEHOLDERS.PRODUCT;
 }
@@ -39722,7 +39703,7 @@ function ProductCard({
   label,
   className,
   loading,
-  onClick,
+  onClick: onClick2,
   quickAdd
 }) {
   var _a2, _b;
@@ -39747,7 +39728,7 @@ function ProductCard({
     /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
       Link3,
       {
-        onClick,
+        onClick: onClick2,
         to: `/products/${product.handle}`,
         prefetch: "intent",
         children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: cx("grid gap-4", className), children: [
@@ -42093,8 +42074,8 @@ function PriceRangeFilter({ max, min }) {
           type: "text",
           defaultValue: min,
           placeholder: "$",
-          onChange: (event) => {
-            let newMinPrice = event.target.value;
+          onChange: (event2) => {
+            let newMinPrice = event2.target.value;
             setMinPrice(newMinPrice);
           }
         },
@@ -42126,8 +42107,8 @@ function PriceRangeFilter({ max, min }) {
           type: "number",
           defaultValue: max,
           placeholder: "$",
-          onChange: (event) => {
-            let newMaxPrice = event.target.value;
+          onChange: (event2) => {
+            let newMaxPrice = event2.target.value;
             setMaxPrice(newMaxPrice);
           }
         },
@@ -42357,7 +42338,7 @@ function FeaturedProducts({
 }
 function FeatureProductsContent({
   count: count2 = 4,
-  onClick,
+  onClick: onClick2,
   products
 }) {
   let id = (0, import_react72.useId)();
@@ -42369,7 +42350,7 @@ function FeatureProductsContent({
     ProductCard,
     {
       product,
-      onClick,
+      onClick: onClick2,
       quickAdd: !0
     },
     product.id,
@@ -43145,7 +43126,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-RT3TMDOK.css";
+var app_default = "/build/_assets/app-UNJSSLOW.css";
 
 // node_modules/tiny-invariant/dist/esm/tiny-invariant.js
 var isProduction = !1, prefix = "Invariant failed";
@@ -43202,8 +43183,8 @@ function useAnalytics(hasUserConsent, locale) {
 }
 function useDataFromMatches(dataKey) {
   let matches = useMatches2(), data = {};
-  return matches.forEach((event) => {
-    let eventData = event == null ? void 0 : event.data;
+  return matches.forEach((event2) => {
+    let eventData = event2 == null ? void 0 : event2.data;
     eventData && eventData[dataKey] && Object.assign(data, eventData[dataKey]);
   }), data;
 }
@@ -43372,29 +43353,340 @@ var import_jsx_dev_runtime33 = __toESM(require_jsx_dev_runtime()), GlobalTitle =
   }, this);
 }, GlobalTitle_default = GlobalTitle;
 
+// app/components/icons/Icons.jsx
+var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), BasketIcon = () => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+  "svg",
+  {
+    id: "a",
+    xmlns: "http://www.w3.org/2000/svg",
+    width: "80.11",
+    height: "59.56",
+    viewBox: "0 0 80.11 59.56",
+    className: "h-full",
+    children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "40.14",
+          y1: "12.95",
+          x2: "40.14",
+          y2: "58.91",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 11,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "polygon",
+        {
+          points: ".86 12.88 9.75 58.85 70.75 58.85 79.26 12.88 .86 12.88",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 21,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "25.47",
+          y1: "12.95",
+          x2: "25.47",
+          y2: "58.91",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 28,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "8.08",
+          y1: "50.31",
+          x2: "72.43",
+          y2: "50.31",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 38,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "54.81",
+          y1: "12.95",
+          x2: "54.81",
+          y2: "58.91",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 48,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "5.75",
+          y1: "37.46",
+          x2: "74.8",
+          y2: "37.46",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 58,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "3.51",
+          y1: "24.61",
+          x2: "77.34",
+          y2: "24.61",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 68,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "polyline",
+        {
+          points: "54.85 12.79 54.85 .71 25.46 .71 25.46 12.79",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 78,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "18.14",
+          y1: "12.95",
+          x2: "18.14",
+          y2: "58.91",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 85,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "10.81",
+          y1: "12.7",
+          x2: "10.81",
+          y2: "58.66",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 95,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "32.81",
+          y1: "12.7",
+          x2: "32.81",
+          y2: "58.66",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 105,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "47.48",
+          y1: "12.7",
+          x2: "47.48",
+          y2: "58.66",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 115,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "62.14",
+          y1: "12.7",
+          x2: "62.14",
+          y2: "58.66",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 125,
+          columnNumber: 7
+        },
+        this
+      ),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        "line",
+        {
+          x1: "69.48",
+          y1: "12.7",
+          x2: "69.48",
+          y2: "58.66",
+          fill: "none",
+          stroke: "#000000",
+          "stroke-miterlimit": "10",
+          "stroke-width": "1.42"
+        },
+        void 0,
+        !1,
+        {
+          fileName: "app/components/icons/Icons.jsx",
+          lineNumber: 135,
+          columnNumber: 7
+        },
+        this
+      )
+    ]
+  },
+  void 0,
+  !0,
+  {
+    fileName: "app/components/icons/Icons.jsx",
+    lineNumber: 3,
+    columnNumber: 5
+  },
+  this
+);
+
 // app/components/global/GlobalHeader.jsx
-var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader = () => {
+var import_jsx_dev_runtime35 = __toESM(require_jsx_dev_runtime()), GlobalHeader = () => {
   let { menu } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
     Rt,
     {
       className: "fixed h-24 w-screen bg-white z-50 text-3xl md:text-2xl",
       as: "header",
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-full p-4 flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(GlobalTitle_default, {}, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "relative w-full p-4 flex items-center justify-between", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(GlobalTitle_default, {}, void 0, !1, {
             fileName: "app/components/global/GlobalHeader.jsx",
-            lineNumber: 18,
+            lineNumber: 19,
             columnNumber: 9
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "flex items-center gap-16", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "md:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "flex items-center gap-16", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "md:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
               Rt.Button,
               {
                 className: " focus-visible:underline focus:border-none focus:outline-none",
-                children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("span", { children: open ? "Close Menu" : "Menu" }, void 0, !1, {
+                children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("span", { children: open ? "Close Menu" : "Menu" }, void 0, !1, {
                   fileName: "app/components/global/GlobalHeader.jsx",
-                  lineNumber: 27,
+                  lineNumber: 28,
                   columnNumber: 28
                 }, this)
               },
@@ -43402,16 +43694,16 @@ var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader 
               !1,
               {
                 fileName: "app/components/global/GlobalHeader.jsx",
-                lineNumber: 22,
+                lineNumber: 23,
                 columnNumber: 13
               },
               this
             ) }, void 0, !1, {
               fileName: "app/components/global/GlobalHeader.jsx",
-              lineNumber: 21,
+              lineNumber: 22,
               columnNumber: 11
             }, this),
-            menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+            menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
               GlobalMenuItemDesktop_default,
               {
                 title: section.name,
@@ -43421,32 +43713,32 @@ var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader 
               !1,
               {
                 fileName: "app/components/global/GlobalHeader.jsx",
-                lineNumber: 33,
+                lineNumber: 34,
                 columnNumber: 15
               },
               this
             )),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(CartButton, {}, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(CartButton, {}, void 0, !1, {
               fileName: "app/components/global/GlobalHeader.jsx",
-              lineNumber: 40,
+              lineNumber: 41,
               columnNumber: 11
             }, this)
           ] }, void 0, !0, {
             fileName: "app/components/global/GlobalHeader.jsx",
-            lineNumber: 19,
+            lineNumber: 20,
             columnNumber: 9
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/global/GlobalHeader.jsx",
-          lineNumber: 17,
+          lineNumber: 18,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Ye2, { as: import_react85.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(Ye2, { as: import_react85.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
           Rt.Panel,
           {
             focus: !0,
             className: "absolute inset-0 top-20 h-[calc(100vh-5rem)] bg-white p-4 md:hidden",
-            children: menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+            children: menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
               GlobalMenuItemMobile_default,
               {
                 title: section.name,
@@ -43456,7 +43748,7 @@ var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader 
               !1,
               {
                 fileName: "app/components/global/GlobalHeader.jsx",
-                lineNumber: 51,
+                lineNumber: 52,
                 columnNumber: 15
               },
               this
@@ -43466,13 +43758,13 @@ var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader 
           !1,
           {
             fileName: "app/components/global/GlobalHeader.jsx",
-            lineNumber: 45,
+            lineNumber: 46,
             columnNumber: 9
           },
           this
         ) }, void 0, !1, {
           fileName: "app/components/global/GlobalHeader.jsx",
-          lineNumber: 44,
+          lineNumber: 45,
           columnNumber: 7
         }, this)
       ]
@@ -43481,45 +43773,52 @@ var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader 
     !0,
     {
       fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 13,
+      lineNumber: 14,
       columnNumber: 5
     },
     this
   );
 }, GlobalHeader_default = GlobalHeader, CartButton = () => {
   let { cart } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Link_default, { to: "/cart", "aria-label": "Go to cart", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("div", { className: "w-20 h-14 bg-gray-200", children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(import_react85.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(CartButtonBadge, { count: 0 }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(Link_default, { to: "/cart", "aria-label": "Go to cart", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "h-14", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(BasketIcon, {}, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 72,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(import_react85.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(CartButtonBadge, { count: 0 }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 73,
+      columnNumber: 29
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(CartButtonBadge, { count: (cart2 == null ? void 0 : cart2.totalQuantity) || 0 }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 75,
+      columnNumber: 24
+    }, this) }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 74,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 73,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
     fileName: "app/components/global/GlobalHeader.jsx",
     lineNumber: 71,
-    columnNumber: 29
-  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(CartButtonBadge, { count: (cart2 == null ? void 0 : cart2.totalQuantity) || 0 }, void 0, !1, {
-    fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 73,
-    columnNumber: 24
-  }, this) }, void 0, !1, {
-    fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 72,
-    columnNumber: 11
-  }, this) }, void 0, !1, {
-    fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 71,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 70,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 69,
+    lineNumber: 70,
     columnNumber: 5
   }, this);
-}, CartButtonBadge = ({ count: count2 }) => /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)(
+}, CartButtonBadge = ({ count: count2 }) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(
   "div",
   {
     className: "absolute w-6 h-6 bottom-0 right-0 -translate-x-1/2 -translate-y-1/2 aspect-square bg-black text-white text-sm rounded-full flex justify-center items-center",
-    children: /* @__PURE__ */ (0, import_jsx_dev_runtime34.jsxDEV)("span", { className: "leading-none", children: count2 || 0 }, void 0, !1, {
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("span", { className: "leading-none", children: count2 || 0 }, void 0, !1, {
       fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 88,
+      lineNumber: 90,
       columnNumber: 7
     }, this)
   },
@@ -43527,7 +43826,7 @@ var import_jsx_dev_runtime34 = __toESM(require_jsx_dev_runtime()), GlobalHeader 
   !1,
   {
     fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 83,
+    lineNumber: 85,
     columnNumber: 5
   },
   this
@@ -43662,9 +43961,9 @@ function buildMarksTree(block) {
         for (let line = lines.length; line-- > 1; )
           lines.splice(line, 0, `
 `);
-        currentNode.children = currentNode.children.concat(lines.map((text) => ({
+        currentNode.children = currentNode.children.concat(lines.map((text2) => ({
           _type: "@text",
-          text
+          text: text2
         })));
       } else
         currentNode.children = currentNode.children.concat(span);
@@ -43749,11 +44048,25 @@ function findListMatching(rootNode, matching) {
   let node = rootNode.children[rootNode.children.length - 1];
   return node && !isPortableTextSpan(node) ? findListMatching(node, matching) : void 0;
 }
+var leadingSpace = /^\s/, trailingSpace = /^\s/;
+function toPlainText(block) {
+  let blocks = Array.isArray(block) ? block : [block], text2 = "";
+  return blocks.forEach((current, index) => {
+    if (!isPortableTextBlock(current))
+      return;
+    let pad = !1;
+    current.children.forEach((span) => {
+      isPortableTextSpan(span) ? (text2 += pad && text2 && !trailingSpace.test(text2) && !leadingSpace.test(span.text) ? " " : "", text2 += span.text, pad = !1) : pad = !0;
+    }), index !== blocks.length - 1 && (text2 += `
+
+`);
+  }), text2;
+}
 function spanToPlainText(span) {
-  let text = "";
+  let text2 = "";
   return span.children.forEach((current) => {
-    isPortableTextToolkitTextNode(current) ? text += current.text : isPortableTextToolkitSpan(current) && (text += spanToPlainText(current));
-  }), text;
+    isPortableTextToolkitTextNode(current) ? text2 += current.text : isPortableTextToolkitSpan(current) && (text2 += spanToPlainText(current));
+  }), text2;
 }
 var LIST_NEST_MODE_HTML = "html";
 
@@ -44170,22 +44483,100 @@ function serializeBlock(options) {
 function noop() {
 }
 
+// app/components/parts/Text.jsx
+var import_react89 = __toESM(require_react());
+var import_jsx_dev_runtime36 = __toESM(require_jsx_dev_runtime()), text = cva("", {
+  variants: {
+    size: {
+      "9xl": ["text-9xl"],
+      "8xl": ["text-8xl"],
+      "7xl": ["text-7xl"],
+      "6xl": ["text-6xl"],
+      "5xl": ["text-5xl"],
+      "4xl": ["text-4xl"],
+      "3xl": ["text-3xl"],
+      "2xl": ["text-2xl"],
+      xl: ["text-xl"],
+      lg: ["text-lg"],
+      base: ["text-base"],
+      sm: ["text-sm"],
+      xs: ["text-xs"]
+    },
+    intent: {
+      body: ["font-serif text-base leading-snug"],
+      blockquote: ["text-6xl"]
+    },
+    leading: {}
+  }
+}), Text2 = ({ tag, size, intent, className, children, colour }) => {
+  let ElementTag = `${tag || "p"}`;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+    ElementTag,
+    {
+      className: text({ size, intent, className }),
+      style: { color: colour || "#000000" },
+      children
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/components/parts/Text.jsx",
+      lineNumber: 41,
+      columnNumber: 5
+    },
+    this
+  );
+};
+
 // app/components/parts/PortableText.jsx
-var import_jsx_dev_runtime35 = __toESM(require_jsx_dev_runtime()), components = {}, PortableText2 = ({ text }) => /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)("div", { className: "[&>*:not(:last-child)]:mb-[1em]", children: /* @__PURE__ */ (0, import_jsx_dev_runtime35.jsxDEV)(PortableText, { value: text, components }, void 0, !1, {
-  fileName: "app/components/parts/PortableText.jsx",
-  lineNumber: 12,
-  columnNumber: 9
-}, this) }, void 0, !1, {
-  fileName: "app/components/parts/PortableText.jsx",
-  lineNumber: 11,
-  columnNumber: 7
-}, this), PortableText_default = PortableText2;
+var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), components = {
+  block: {
+    normal: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Text2, { tag: "p", intent: "body", children }, void 0, !1, {
+      fileName: "app/components/parts/PortableText.jsx",
+      lineNumber: 7,
+      columnNumber: 7
+    }, this),
+    h2: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Text2, { tag: "h3", children }, void 0, !1, {
+      fileName: "app/components/parts/PortableText.jsx",
+      lineNumber: 11,
+      columnNumber: 25
+    }, this),
+    h5: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Text2, { tag: "h4", children }, void 0, !1, {
+      fileName: "app/components/parts/PortableText.jsx",
+      lineNumber: 12,
+      columnNumber: 25
+    }, this),
+    blockquote: ({ children, value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Text2, { tag: "blockquote", intent: "blockquote", colour: value.colour, children }, void 0, !1, {
+      fileName: "app/components/parts/PortableText.jsx",
+      lineNumber: 14,
+      columnNumber: 7
+    }, this)
+  }
+}, PortableText2 = ({ text: text2 }) => /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+  "div",
+  {
+    className: "[&>*:not(:last-child):not(p)]:mb-[1em] [&>p:not(:first-of-type)]:indent-5",
+    children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(PortableText, { value: text2, components }, void 0, !1, {
+      fileName: "app/components/parts/PortableText.jsx",
+      lineNumber: 28,
+      columnNumber: 7
+    }, this)
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/parts/PortableText.jsx",
+    lineNumber: 23,
+    columnNumber: 5
+  },
+  this
+);
 
 // app/components/global/GlobalNewsletter.jsx
-var import_react91 = __toESM(require_react());
+var import_react92 = __toESM(require_react());
 
 // app/components/parts/Button.jsx
-var import_jsx_dev_runtime36 = __toESM(require_jsx_dev_runtime()), Button2 = ({ type, className, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime36.jsxDEV)(
+var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), Button2 = ({ type, className, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(
   "button",
   {
     type: type || "submit",
@@ -44206,25 +44597,25 @@ var import_jsx_dev_runtime36 = __toESM(require_jsx_dev_runtime()), Button2 = ({ 
 ), Button_default = Button2;
 
 // app/components/global/GlobalNewsletter.jsx
-var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), GlobalNewsletter = () => {
-  let actionData = useActionData2(), state = useTransition().submission ? "submitting" : actionData != null && actionData.subscription ? "success" : actionData != null && actionData.error ? "error" : "idle", inputRef = (0, import_react91.useRef)(null), successRef = (0, import_react91.useRef)(null), mounted = (0, import_react91.useRef)(!1);
-  return (0, import_react91.useEffect)(() => {
+var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), GlobalNewsletter = () => {
+  let actionData = useActionData2(), state = useTransition().submission ? "submitting" : actionData != null && actionData.subscription ? "success" : actionData != null && actionData.error ? "error" : "idle", inputRef = (0, import_react92.useRef)(null), successRef = (0, import_react92.useRef)(null), mounted = (0, import_react92.useRef)(!1);
+  return (0, import_react92.useEffect)(() => {
     var _a2, _b, _c;
     state === "error" && ((_a2 = inputRef.current) == null || _a2.focus()), state === "idle" && mounted.current && ((_b = inputRef.current) == null || _b.select()), state === "success" && ((_c = successRef.current) == null || _c.focus()), mounted.current = !0;
-  }, [state]), /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("main", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Form, { replace: !0, method: "post", "aria-hidden": state === "success", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("h2", { className: "mb-[1em]", children: "Sign up to our newsletter" }, void 0, !1, {
+  }, [state]), /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("main", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Form, { replace: !0, method: "post", "aria-hidden": state === "success", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("h2", { className: "mb-[1em]", children: "Sign up to our newsletter" }, void 0, !1, {
       fileName: "app/components/global/GlobalNewsletter.jsx",
       lineNumber: 39,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("fieldset", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("label", { children: "email:" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("fieldset", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("label", { children: "email:" }, void 0, !1, {
         fileName: "app/components/global/GlobalNewsletter.jsx",
         lineNumber: 41,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("div", { children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("div", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
           "input",
           {
             "aria-label": "Email address",
@@ -44244,7 +44635,7 @@ var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), GlobalNewslet
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(Button_default, { className: "ml-2", children: state === "submitting" ? "Subscribing..." : "Go on" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Button_default, { className: "ml-2", children: state === "submitting" ? "Subscribing..." : "Go on" }, void 0, !1, {
           fileName: "app/components/global/GlobalNewsletter.jsx",
           lineNumber: 54,
           columnNumber: 13
@@ -44259,7 +44650,7 @@ var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), GlobalNewslet
       lineNumber: 40,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)("p", { id: "error-message", children: state === "error" ? actionData.message : /* @__PURE__ */ (0, import_jsx_dev_runtime37.jsxDEV)(import_jsx_dev_runtime37.Fragment, { children: "\xA0" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("p", { id: "error-message", children: state === "error" ? actionData.message : /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(import_jsx_dev_runtime39.Fragment, { children: "\xA0" }, void 0, !1, {
       fileName: "app/components/global/GlobalNewsletter.jsx",
       lineNumber: 61,
       columnNumber: 53
@@ -44280,10 +44671,10 @@ var import_jsx_dev_runtime37 = __toESM(require_jsx_dev_runtime()), GlobalNewslet
 }, GlobalNewsletter_default = GlobalNewsletter;
 
 // app/components/global/GlobalFooter.jsx
-var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), GlobalFooter = () => {
+var import_jsx_dev_runtime40 = __toESM(require_jsx_dev_runtime()), GlobalFooter = () => {
   let { footer } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("footer", { className: "bg-black p-4 mt-auto text-white flex justify-between gap-4 flex-col sm:flex-row", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex-1 flex flex-col min-w-[10rem]", children: footer.footerLinks.map((link2) => /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(Link_default, { to: link2.slug, children: link2.title }, link2._id, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("footer", { className: "bg-black p-4 mt-auto text-white flex justify-between gap-4 flex-col sm:flex-row", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex-1 flex flex-col min-w-[10rem]", children: footer.footerLinks.map((link2) => /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Link_default, { to: link2.slug, children: link2.title }, link2._id, !1, {
       fileName: "app/components/global/GlobalFooter.jsx",
       lineNumber: 13,
       columnNumber: 13
@@ -44292,8 +44683,8 @@ var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
       lineNumber: 10,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex gap-4 justify-between flex-col md:flex-row", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex-1 order-last md:order-first", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(PortableText_default, { text: footer.footerText }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex gap-4 justify-between flex-col md:flex-row", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex-1 order-last md:order-first", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(PortableText2, { text: footer.footerText }, void 0, !1, {
         fileName: "app/components/global/GlobalFooter.jsx",
         lineNumber: 21,
         columnNumber: 11
@@ -44302,7 +44693,7 @@ var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
         lineNumber: 20,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)("div", { className: "flex-1 order-first md:order-last", children: /* @__PURE__ */ (0, import_jsx_dev_runtime38.jsxDEV)(GlobalNewsletter_default, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex-1 order-first md:order-last", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(GlobalNewsletter_default, {}, void 0, !1, {
         fileName: "app/components/global/GlobalFooter.jsx",
         lineNumber: 24,
         columnNumber: 11
@@ -44324,7 +44715,7 @@ var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
 }, GlobalFooter_default = GlobalFooter;
 
 // app/root.jsx
-var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), seo = ({ data: { settings }, pathname }) => ({
+var import_jsx_dev_runtime41 = __toESM(require_jsx_dev_runtime()), seo = ({ data: { settings }, pathname }) => ({
   title: settings.seoTitle,
   titleTemplate: `%s | ${settings.shortTitle}`,
   description: settings.seoDescription,
@@ -44404,19 +44795,19 @@ function App() {
     language: "EN",
     country: "GB",
     currency: "GBP"
-  }), /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(It, {}, void 0, !1, {
+  }), /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(It, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 145,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Meta, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 146,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 147,
         columnNumber: 9
@@ -44426,17 +44817,17 @@ function App() {
       lineNumber: 144,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(GlobalHeader_default, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(GlobalHeader_default, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 150,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
         "main",
         {
           className: "selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24 text-lg",
-          children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Outlet, {}, void 0, !1, {
+          children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Outlet, {}, void 0, !1, {
             fileName: "app/root.jsx",
             lineNumber: 156,
             columnNumber: 11
@@ -44451,17 +44842,17 @@ function App() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(GlobalFooter_default, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(GlobalFooter_default, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 158,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 159,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 160,
         columnNumber: 9
@@ -44480,19 +44871,19 @@ function App() {
 function CatchBoundary() {
   var _a2, _b, _c;
   let [root] = useMatches2(), caught = useCatch(), isNotFound = caught.status === 404, locale = ((_a2 = root.data) == null ? void 0 : _a2.selectedLocale) ?? DEFAULT_LOCALE;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("html", { lang: locale.language, children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("title", { children: isNotFound ? "Not found" : "Error" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("html", { lang: locale.language, children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("title", { children: isNotFound ? "Not found" : "Error" }, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 175,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Meta, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 176,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 177,
         columnNumber: 9
@@ -44502,16 +44893,16 @@ function CatchBoundary() {
       lineNumber: 174,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
         Layout,
         {
           layout: (_b = root == null ? void 0 : root.data) == null ? void 0 : _b.layout,
-          children: isNotFound ? /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(NotFound, { type: (_c = caught.data) == null ? void 0 : _c.pageType }, void 0, !1, {
+          children: isNotFound ? /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(NotFound, { type: (_c = caught.data) == null ? void 0 : _c.pageType }, void 0, !1, {
             fileName: "app/root.jsx",
             lineNumber: 185,
             columnNumber: 13
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
             GenericError,
             {
               error: { message: `${caught.status} ${caught.data}` }
@@ -44535,7 +44926,7 @@ function CatchBoundary() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 192,
         columnNumber: 9
@@ -44554,19 +44945,19 @@ function CatchBoundary() {
 function ErrorBoundary({ error }) {
   var _a2, _b;
   let [root] = useMatches2(), locale = ((_a2 = root == null ? void 0 : root.data) == null ? void 0 : _a2.selectedLocale) ?? DEFAULT_LOCALE;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("html", { lang: locale.language, children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("title", { children: "Error" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("html", { lang: locale.language, children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("title", { children: "Error" }, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 205,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Meta, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 206,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 207,
         columnNumber: 9
@@ -44576,8 +44967,8 @@ function ErrorBoundary({ error }) {
       lineNumber: 204,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Layout, { layout: (_b = root == null ? void 0 : root.data) == null ? void 0 : _b.layout, children: /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(GenericError, { error }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Layout, { layout: (_b = root == null ? void 0 : root.data) == null ? void 0 : _b.layout, children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(GenericError, { error }, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 211,
         columnNumber: 11
@@ -44586,7 +44977,7 @@ function ErrorBoundary({ error }) {
         lineNumber: 210,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 213,
         columnNumber: 9
@@ -44849,7 +45240,7 @@ var MEDIA_FRAGMENT = `#graphql
 `;
 
 // app/routes/collections/$collectionHandle.tsx
-var import_jsx_dev_runtime40 = __toESM(require_jsx_dev_runtime()), seo2 = ({ data }) => {
+var import_jsx_dev_runtime42 = __toESM(require_jsx_dev_runtime()), seo2 = ({ data }) => {
   var _a2, _b, _c, _d, _e4, _f, _g, _h, _i, _j, _k, _l;
   return {
     title: (_b = (_a2 = data == null ? void 0 : data.collection) == null ? void 0 : _a2.seo) == null ? void 0 : _b.title,
@@ -44927,8 +45318,8 @@ async function loader2({ params, request, context: context2 }) {
 }
 function Collection() {
   let { collection, collections, appliedFilters } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(import_jsx_dev_runtime40.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(PageHeader, { heading: collection.title, children: (collection == null ? void 0 : collection.description) && /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { className: "flex items-baseline justify-between w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Text, { format: !0, width: "narrow", as: "p", className: "inline-block", children: collection.description }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(import_jsx_dev_runtime42.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(PageHeader, { heading: collection.title, children: (collection == null ? void 0 : collection.description) && /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "flex items-baseline justify-between w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Text, { format: !0, width: "narrow", as: "p", className: "inline-block", children: collection.description }, void 0, !1, {
       fileName: "app/routes/collections/$collectionHandle.tsx",
       lineNumber: 167,
       columnNumber: 15
@@ -44945,13 +45336,13 @@ function Collection() {
       lineNumber: 163,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
       SortFilter,
       {
         filters: collection.products.filters,
         appliedFilters,
         collections,
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(
+        children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
           ProductGrid,
           {
             collection,
@@ -45095,8 +45486,8 @@ __export(productHandle_exports, {
   handle: () => handle3,
   loader: () => loader3
 });
-var import_react96 = __toESM(require_react());
-var import_jsx_dev_runtime41 = __toESM(require_jsx_dev_runtime()), seo3 = ({ data }) => {
+var import_react97 = __toESM(require_react());
+var import_jsx_dev_runtime43 = __toESM(require_jsx_dev_runtime()), seo3 = ({ data }) => {
   var _a2, _b, _c, _d, _e4, _f, _g, _h;
   let media = flattenConnection(data.product.media).find(
     (media2) => media2.mediaContentType === "IMAGE"
@@ -45154,9 +45545,9 @@ async function loader3({ params, request, context: context2 }) {
 }
 function Product() {
   let { product, shop, recommended } = useLoaderData2(), { media, title, vendor, descriptionHtml } = product, { shippingPolicy, refundPolicy } = shop;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Section, { padding: "x", className: "px-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Section, { padding: "x", className: "px-0", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "grid items-start md:gap-6 lg:gap-20 md:grid-cols-2 lg:grid-cols-3", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
         ProductGallery,
         {
           media: media.nodes,
@@ -45171,14 +45562,14 @@ function Product() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("section", { className: "flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "grid gap-2", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Heading, { as: "h1", className: "whitespace-normal", children: title }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "sticky md:-mb-nav md:top-nav md:-translate-y-nav md:h-screen md:pt-nav hiddenScroll md:overflow-y-scroll", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("section", { className: "flex flex-col w-full max-w-xl gap-8 p-6 md:mx-auto md:max-w-sm md:px-0", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "grid gap-2", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Heading, { as: "h1", className: "whitespace-normal", children: title }, void 0, !1, {
             fileName: "app/routes/products/$productHandle.tsx",
             lineNumber: 140,
             columnNumber: 17
           }, this),
-          vendor && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Text, { className: "opacity-50 font-medium", children: vendor }, void 0, !1, {
+          vendor && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Text, { className: "opacity-50 font-medium", children: vendor }, void 0, !1, {
             fileName: "app/routes/products/$productHandle.tsx",
             lineNumber: 144,
             columnNumber: 19
@@ -45188,13 +45579,13 @@ function Product() {
           lineNumber: 139,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ProductForm, {}, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(ProductForm, {}, void 0, !1, {
           fileName: "app/routes/products/$productHandle.tsx",
           lineNumber: 147,
           columnNumber: 15
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "grid gap-4 py-4", children: [
-          descriptionHtml && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "grid gap-4 py-4", children: [
+          descriptionHtml && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             ProductDetail,
             {
               title: "Product Details",
@@ -45209,7 +45600,7 @@ function Product() {
             },
             this
           ),
-          (shippingPolicy == null ? void 0 : shippingPolicy.body) && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          (shippingPolicy == null ? void 0 : shippingPolicy.body) && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             ProductDetail,
             {
               title: "Shipping",
@@ -45225,7 +45616,7 @@ function Product() {
             },
             this
           ),
-          (refundPolicy == null ? void 0 : refundPolicy.body) && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          (refundPolicy == null ? void 0 : refundPolicy.body) && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             ProductDetail,
             {
               title: "Returns",
@@ -45264,16 +45655,16 @@ function Product() {
       lineNumber: 131,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_react96.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Skeleton, { className: "h-32" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_react97.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Skeleton, { className: "h-32" }, void 0, !1, {
       fileName: "app/routes/products/$productHandle.tsx",
       lineNumber: 174,
       columnNumber: 27
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
       Await2,
       {
         errorElement: "There was a problem loading related products",
         resolve: recommended,
-        children: (products) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ProductSwimlane, { title: "Related Products", products }, void 0, !1, {
+        children: (products) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(ProductSwimlane, { title: "Related Products", products }, void 0, !1, {
           fileName: "app/routes/products/$productHandle.tsx",
           lineNumber: 180,
           columnNumber: 13
@@ -45300,7 +45691,7 @@ function Product() {
 }
 function ProductForm() {
   var _a2, _b, _c, _d;
-  let { product, analytics } = useLoaderData2(), [currentSearchParams] = useSearchParams(), transition = useTransition(), searchParams = (0, import_react96.useMemo)(() => transition.location ? new URLSearchParams(transition.location.search) : currentSearchParams, [currentSearchParams, transition]), firstVariant = product.variants.nodes[0], searchParamsWithDefaults = (0, import_react96.useMemo)(() => {
+  let { product, analytics } = useLoaderData2(), [currentSearchParams] = useSearchParams(), transition = useTransition(), searchParams = (0, import_react97.useMemo)(() => transition.location ? new URLSearchParams(transition.location.search) : currentSearchParams, [currentSearchParams, transition]), firstVariant = product.variants.nodes[0], searchParamsWithDefaults = (0, import_react97.useMemo)(() => {
     let clonedParams = new URLSearchParams(searchParams);
     for (let { name, value } of firstVariant.selectedOptions)
       searchParams.has(name) || clonedParams.set(name, value);
@@ -45309,8 +45700,8 @@ function ProductForm() {
     ...analytics.products[0],
     quantity: 1
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "grid gap-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "grid gap-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "grid gap-10", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "grid gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
       ProductOptions,
       {
         options: product.options,
@@ -45325,8 +45716,8 @@ function ProductForm() {
       },
       this
     ),
-    selectedVariant && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "grid items-stretch gap-4", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+    selectedVariant && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "grid items-stretch gap-4", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
         AddToCartButton,
         {
           lines: [
@@ -45341,29 +45732,29 @@ function ProductForm() {
             products: [productAnalytics],
             totalValue: parseFloat(productAnalytics.price)
           },
-          children: isOutOfStock ? /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Text, { children: "Sold out" }, void 0, !1, {
+          children: isOutOfStock ? /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Text, { children: "Sold out" }, void 0, !1, {
             fileName: "app/routes/products/$productHandle.tsx",
             lineNumber: 267,
             columnNumber: 17
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             Text,
             {
               as: "span",
               className: "flex items-center justify-center gap-2",
               children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("span", { children: "Add to Bag" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("span", { children: "Add to Bag" }, void 0, !1, {
                   fileName: "app/routes/products/$productHandle.tsx",
                   lineNumber: 273,
                   columnNumber: 19
                 }, this),
                 " ",
-                /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("span", { children: "\xB7" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("span", { children: "\xB7" }, void 0, !1, {
                   fileName: "app/routes/products/$productHandle.tsx",
                   lineNumber: 273,
                   columnNumber: 43
                 }, this),
                 " ",
-                /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+                /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
                   Money,
                   {
                     withoutTrailingZeros: !0,
@@ -45379,7 +45770,7 @@ function ProductForm() {
                   },
                   this
                 ),
-                isOnSale && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+                isOnSale && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
                   Money,
                   {
                     withoutTrailingZeros: !0,
@@ -45417,7 +45808,7 @@ function ProductForm() {
         },
         this
       ),
-      !isOutOfStock && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ShopPayButton, { variantIds: [selectedVariant == null ? void 0 : selectedVariant.id] }, void 0, !1, {
+      !isOutOfStock && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(ShopPayButton, { variantIds: [selectedVariant == null ? void 0 : selectedVariant.id] }, void 0, !1, {
         fileName: "app/routes/products/$productHandle.tsx",
         lineNumber: 291,
         columnNumber: 15
@@ -45441,19 +45832,19 @@ function ProductOptions({
   options,
   searchParamsWithDefaults
 }) {
-  let closeRef = (0, import_react96.useRef)(null);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: options.filter((option) => option.values.length > 1).map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+  let closeRef = (0, import_react97.useRef)(null);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: options.filter((option) => option.values.length > 1).map((option) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
     "div",
     {
       className: "flex flex-col flex-wrap mb-4 gap-y-2 last:mb-0",
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Heading, { as: "legend", size: "lead", className: "min-w-[4rem]", children: option.name }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Heading, { as: "legend", size: "lead", className: "min-w-[4rem]", children: option.name }, void 0, !1, {
           fileName: "app/routes/products/$productHandle.tsx",
           lineNumber: 317,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex flex-wrap items-baseline gap-4", children: option.values.length > 7 ? /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "relative w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Mt, { children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex flex-wrap items-baseline gap-4", children: option.values.length > 7 ? /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "relative w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Mt, { children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             Mt.Button,
             {
               ref: closeRef,
@@ -45462,12 +45853,12 @@ function ProductOptions({
                 open ? "rounded-b md:rounded-t md:rounded-b-none" : "rounded"
               ),
               children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("span", { children: searchParamsWithDefaults.get(option.name) }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("span", { children: searchParamsWithDefaults.get(option.name) }, void 0, !1, {
                   fileName: "app/routes/products/$productHandle.tsx",
                   lineNumber: 343,
                   columnNumber: 27
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(IconCaret, { direction: open ? "up" : "down" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(IconCaret, { direction: open ? "up" : "down" }, void 0, !1, {
                   fileName: "app/routes/products/$productHandle.tsx",
                   lineNumber: 346,
                   columnNumber: 27
@@ -45483,18 +45874,18 @@ function ProductOptions({
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             Mt.Options,
             {
               className: cx(
                 "border-primary bg-contrast absolute bottom-12 z-30 grid h-48 w-full overflow-y-scroll rounded-t border px-2 py-2 transition-[max-height] duration-150 sm:bottom-auto md:rounded-b md:rounded-t-none md:border-t-0 md:border-b",
                 open ? "max-h-48" : "max-h-0"
               ),
-              children: option.values.map((value) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+              children: option.values.map((value) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
                 Mt.Option,
                 {
                   value,
-                  children: ({ active }) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+                  children: ({ active }) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
                     ProductOptionLink,
                     {
                       optionName: option.name,
@@ -45509,7 +45900,7 @@ function ProductOptions({
                       },
                       children: [
                         value,
-                        searchParamsWithDefaults.get(option.name) === value && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("span", { className: "ml-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(IconCheck, {}, void 0, !1, {
+                        searchParamsWithDefaults.get(option.name) === value && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("span", { className: "ml-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(IconCheck, {}, void 0, !1, {
                           fileName: "app/routes/products/$productHandle.tsx",
                           lineNumber: 377,
                           columnNumber: 39
@@ -45561,9 +45952,9 @@ function ProductOptions({
           fileName: "app/routes/products/$productHandle.tsx",
           lineNumber: 330,
           columnNumber: 17
-        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: option.values.map((value) => {
+        }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: option.values.map((value) => {
           let checked = searchParamsWithDefaults.get(option.name) === value, id = `option-${option.name}-${value}`;
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
             ProductOptionLink,
             {
               optionName: option.name,
@@ -45620,7 +46011,7 @@ function ProductOptionLink({
   ...props
 }) {
   let { pathname } = useLocation(), path2 = /\/[a-zA-Z]{2}-[a-zA-Z]{2}\//g.test(pathname) ? `/${pathname.split("/").slice(2).join("/")}` : pathname, clonedSearchParams = new URLSearchParams(searchParams);
-  return clonedSearchParams.set(optionName, optionValue), /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+  return clonedSearchParams.set(optionName, optionValue), /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
     Link3,
     {
       ...props,
@@ -45645,14 +46036,14 @@ function ProductDetail({
   content,
   learnMore
 }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ke2, { as: "div", className: "grid w-full gap-2", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(import_jsx_dev_runtime41.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ke2.Button, { className: "text-left", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "flex justify-between", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(Text, { size: "lead", as: "h4", children: title }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(ke2, { as: "div", className: "grid w-full gap-2", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(ke2.Button, { className: "text-left", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex justify-between", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Text, { size: "lead", as: "h4", children: title }, void 0, !1, {
         fileName: "app/routes/products/$productHandle.tsx",
         lineNumber: 470,
         columnNumber: 15
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
         IconClose,
         {
           className: cx(
@@ -45678,8 +46069,8 @@ function ProductDetail({
       lineNumber: 468,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(ke2.Panel, { className: "pb-4 pt-2 grid gap-2", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(ke2.Panel, { className: "pb-4 pt-2 grid gap-2", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
         "div",
         {
           className: "prose dark:prose-invert",
@@ -45694,7 +46085,7 @@ function ProductDetail({
         },
         this
       ),
-      learnMore && /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime41.jsxDEV)(
+      learnMore && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
         Link3,
         {
           className: "pb-px border-b border-primary/30 ",
@@ -45849,7 +46240,7 @@ __export(policyHandle_exports, {
   loader: () => loader4,
   meta: () => meta2
 });
-var import_jsx_dev_runtime42 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime44 = __toESM(require_jsx_dev_runtime());
 async function loader4({ request, params, context: context2 }) {
   var _a2;
   invariant4(params.policyHandle, "Missing policy handle");
@@ -45885,19 +46276,19 @@ var meta2 = ({ data }) => {
 };
 function Policies() {
   let { policy } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(import_jsx_dev_runtime42.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(import_jsx_dev_runtime44.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
     Section,
     {
       padding: "all",
       display: "flex",
       className: "flex-col items-baseline w-full gap-8 md:flex-row",
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
           PageHeader,
           {
             heading: policy.title,
             className: "grid items-start flex-grow gap-4 md:sticky top-36 md:w-5/12",
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
               Button,
               {
                 className: "justify-self-start",
@@ -45924,7 +46315,7 @@ function Policies() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("div", { className: "flex-grow w-full md:w-7/12", children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)("div", { className: "flex-grow w-full md:w-7/12", children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
           "div",
           {
             dangerouslySetInnerHTML: { __html: policy.body },
@@ -46000,7 +46391,7 @@ __export(collections_exports, {
   loader: () => loader5,
   meta: () => meta3
 });
-var import_jsx_dev_runtime43 = __toESM(require_jsx_dev_runtime()), PAGINATION_SIZE2 = 8, handle4 = {
+var import_jsx_dev_runtime45 = __toESM(require_jsx_dev_runtime()), PAGINATION_SIZE2 = 8, handle4 = {
   seo: {
     title: "All Collections"
   }
@@ -46018,13 +46409,13 @@ var import_jsx_dev_runtime43 = __toESM(require_jsx_dev_runtime()), PAGINATION_SI
 });
 function Collections() {
   let { collections } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(PageHeader, { heading: "Collections" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(PageHeader, { heading: "Collections" }, void 0, !1, {
       fileName: "app/routes/collections/index.tsx",
       lineNumber: 53,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Pagination, { connection: collections, children: ({
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Pagination, { connection: collections, children: ({
       endCursor,
       hasNextPage,
       hasPreviousPage,
@@ -46034,8 +46425,8 @@ function Collections() {
       startCursor,
       nextLinkRef,
       isLoading
-    }) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(import_jsx_dev_runtime43.Fragment, { children: [
-      hasPreviousPage && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+    }) => /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
+      hasPreviousPage && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
         Button,
         {
           to: prevPageUrl,
@@ -46066,12 +46457,12 @@ function Collections() {
         lineNumber: 69,
         columnNumber: 17
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
         Grid,
         {
           items: nodes.length === 3 ? 3 : 2,
           "data-test": "collection-grid",
-          children: nodes.map((collection, i10) => /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+          children: nodes.map((collection, i10) => /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
             CollectionCard,
             {
               collection,
@@ -46096,7 +46487,7 @@ function Collections() {
         },
         this
       ),
-      hasNextPage && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+      hasNextPage && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
         Button,
         {
           ref: nextLinkRef,
@@ -46151,8 +46542,8 @@ function CollectionCard({
   collection,
   loading
 }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Link3, { to: `/collections/${collection.handle}`, className: "grid gap-4", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)("div", { className: "card-image bg-primary/5 aspect-[3/2]", children: (collection == null ? void 0 : collection.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Link3, { to: `/collections/${collection.handle}`, className: "grid gap-4", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)("div", { className: "card-image bg-primary/5 aspect-[3/2]", children: (collection == null ? void 0 : collection.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(
       "img",
       {
         alt: collection.title,
@@ -46175,7 +46566,7 @@ function CollectionCard({
       lineNumber: 140,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime43.jsxDEV)(Heading, { as: "h3", size: "copy", children: collection.title }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Heading, { as: "h3", size: "copy", children: collection.title }, void 0, !1, {
       fileName: "app/routes/collections/index.tsx",
       lineNumber: 152,
       columnNumber: 7
@@ -46276,7 +46667,7 @@ __export(pageHandle_exports, {
   handle: () => handle5,
   loader: () => loader7
 });
-var import_jsx_dev_runtime44 = __toESM(require_jsx_dev_runtime()), seo4 = ({ data }) => {
+var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), seo4 = ({ data }) => {
   var _a2, _b, _c, _d;
   return {
     title: (_b = (_a2 = data == null ? void 0 : data.page) == null ? void 0 : _a2.seo) == null ? void 0 : _b.title,
@@ -46304,7 +46695,7 @@ async function loader7({ request, params, context: context2 }) {
 }
 function Page() {
   let { page } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(import_jsx_dev_runtime44.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(PageHeader, { heading: page.title, children: /* @__PURE__ */ (0, import_jsx_dev_runtime44.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(PageHeader, { heading: page.title, children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
     "div",
     {
       dangerouslySetInnerHTML: { __html: page.body },
@@ -46352,19 +46743,3363 @@ async function loader8({ params }) {
   return redirect3(params != null && params.lang ? `${params.lang}/products` : "/products");
 }
 
+// app/routes/articles/$slug.jsx
+var slug_exports = {};
+__export(slug_exports, {
+  default: () => Article,
+  handle: () => handle6,
+  links: () => links2,
+  loader: () => loader9
+});
+init_groq_esm();
+var import_react121 = __toESM(require_react());
+
+// app/components/article/ArticleBlockBanner.jsx
+var import_react104 = __toESM(require_react());
+
+// app/components/parts/Topic.jsx
+var import_react102 = __toESM(require_react());
+
+// app/components/parts/SanityImage.jsx
+var import_react101 = __toESM(require_react()), import_image_url = __toESM(require_image_url_umd());
+
+// node_modules/@sanity/asset-utils/dist/asset-utils.esm.js
+function _inheritsLoose(subClass, superClass) {
+  subClass.prototype = Object.create(superClass.prototype), subClass.prototype.constructor = subClass, _setPrototypeOf(subClass, superClass);
+}
+function _getPrototypeOf(o10) {
+  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o11) {
+    return o11.__proto__ || Object.getPrototypeOf(o11);
+  }, _getPrototypeOf(o10);
+}
+function _setPrototypeOf(o10, p8) {
+  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o11, p9) {
+    return o11.__proto__ = p9, o11;
+  }, _setPrototypeOf(o10, p8);
+}
+function _isNativeReflectConstruct() {
+  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
+    return !1;
+  if (typeof Proxy == "function")
+    return !0;
+  try {
+    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+    })), !0;
+  } catch {
+    return !1;
+  }
+}
+function _construct(Parent, args, Class) {
+  return _isNativeReflectConstruct() ? _construct = Reflect.construct.bind() : _construct = function(Parent2, args2, Class2) {
+    var a10 = [null];
+    a10.push.apply(a10, args2);
+    var Constructor = Function.bind.apply(Parent2, a10), instance = new Constructor();
+    return Class2 && _setPrototypeOf(instance, Class2.prototype), instance;
+  }, _construct.apply(null, arguments);
+}
+function _isNativeFunction(fn) {
+  return Function.toString.call(fn).indexOf("[native code]") !== -1;
+}
+function _wrapNativeSuper(Class) {
+  var _cache = typeof Map == "function" ? /* @__PURE__ */ new Map() : void 0;
+  return _wrapNativeSuper = function(Class2) {
+    if (Class2 === null || !_isNativeFunction(Class2))
+      return Class2;
+    if (typeof Class2 != "function")
+      throw new TypeError("Super expression must either be null or a function");
+    if (typeof _cache < "u") {
+      if (_cache.has(Class2))
+        return _cache.get(Class2);
+      _cache.set(Class2, Wrapper);
+    }
+    function Wrapper() {
+      return _construct(Class2, arguments, _getPrototypeOf(this).constructor);
+    }
+    return Wrapper.prototype = Object.create(Class2.prototype, {
+      constructor: {
+        value: Wrapper,
+        enumerable: !1,
+        writable: !0,
+        configurable: !0
+      }
+    }), _setPrototypeOf(Wrapper, Class2);
+  }, _wrapNativeSuper(Class);
+}
+var UnresolvableError = /* @__PURE__ */ function(_Error) {
+  _inheritsLoose(UnresolvableError2, _Error);
+  function UnresolvableError2(inputSource, message) {
+    var _this;
+    return message === void 0 && (message = "Failed to resolve asset ID from source"), _this = _Error.call(this, message) || this, _this.unresolvable = !0, _this.input = inputSource, _this;
+  }
+  return UnresolvableError2;
+}(/* @__PURE__ */ _wrapNativeSuper(Error));
+var cdnUrl = "https://cdn.sanity.io", fileAssetFilenamePattern = /^([a-zA-Z0-9_]{24,40}|[a-f0-9]{40})+\.[a-z0-9]+$/;
+var imageAssetFilenamePattern = /^([a-zA-Z0-9_]{24,40}|[a-f0-9]{40})-\d+x\d+\.[a-z0-9]+$/;
+var pathPattern = /^(images|files)\/([a-z0-9]+)\/([a-z0-9][-\w]*)\//, idPattern = /^(?:image-(?:[a-zA-Z0-9_]{24,40}|[a-f0-9]{40})+-\d+x\d+-[a-z0-9]+|file-(?:[a-zA-Z0-9_]{24,40}|[a-f0-9]{40})+-[a-z0-9]+)$/;
+function isReference(ref) {
+  return isObject(ref) && typeof ref._ref == "string";
+}
+function isAssetIdStub(stub) {
+  return isObject(stub) && typeof stub._id == "string";
+}
+function isAssetPathStub(stub) {
+  return isObject(stub) && typeof stub.path == "string";
+}
+function isAssetUrlStub(stub) {
+  return isObject(stub) && typeof stub.url == "string";
+}
+function isAssetObjectStub(stub) {
+  var item = stub;
+  return isObject(item) && item.asset && typeof item.asset == "object";
+}
+function isObject(obj) {
+  return obj !== null && !Array.isArray(obj) && typeof obj == "object";
+}
+function getUrlPath(url) {
+  if (pathPattern.test(url))
+    return url;
+  if (!url.startsWith(cdnUrl + "/"))
+    throw new UnresolvableError('Failed to resolve path from URL "' + url + '"');
+  var qsPos = url.indexOf("?"), toIndex = qsPos === -1 ? void 0 : qsPos;
+  return url.slice(cdnUrl.length + 1, toIndex);
+}
+var exampleImageId = "image-027401f31c3ac1e6d78c5d539ccd1beff72b9b11-2000x3000-jpg";
+function parseImageAssetId(documentId) {
+  var _documentId$split2 = documentId.split("-"), assetId = _documentId$split2[1], dimensionString = _documentId$split2[2], extension = _documentId$split2[3], _split$map = (dimensionString || "").split("x").map(Number), width = _split$map[0], height = _split$map[1];
+  if (!assetId || !dimensionString || !extension || !(width > 0) || !(height > 0))
+    throw new Error("Malformed asset ID '" + documentId + `'. Expected an id like "` + exampleImageId + '".');
+  return {
+    type: "image",
+    assetId,
+    width,
+    height,
+    extension
+  };
+}
+function getImageDimensions(src) {
+  var imageId = getAssetDocumentId(src), _parseImageAssetId = parseImageAssetId(imageId), width = _parseImageAssetId.width, height = _parseImageAssetId.height, aspectRatio = width / height;
+  return {
+    width,
+    height,
+    aspectRatio
+  };
+}
+function getAssetDocumentId(src) {
+  var source = isAssetObjectStub(src) ? src.asset : src, id = "";
+  typeof source == "string" ? id = getIdFromString(source) : isReference(source) ? id = source._ref : isAssetIdStub(source) ? id = source._id : isAssetPathStub(source) ? id = idFromUrl(cdnUrl + "/" + source.path) : isAssetUrlStub(source) && (id = idFromUrl(source.url));
+  var hasId = id && idPattern.test(id);
+  if (!hasId)
+    throw new UnresolvableError(src);
+  return id;
+}
+function getIdFromString(str) {
+  if (idPattern.test(str))
+    return str;
+  if (str.indexOf(cdnUrl + "/images") === 0 || str.indexOf(cdnUrl + "/files") === 0)
+    return idFromUrl(str);
+  if (pathPattern.test(str))
+    return idFromUrl(cdnUrl + "/" + str);
+  if (isFileAssetFilename(str))
+    return idFromUrl(cdnUrl + "/files/a/b/" + str);
+  if (isImageAssetFilename(str))
+    return idFromUrl(cdnUrl + "/images/a/b/" + str);
+  throw new UnresolvableError(str);
+}
+function idFromUrl(url) {
+  var path2 = getUrlPath(url), _path$split = path2.split("/"), type = _path$split[0], fileName = _path$split[3], prefix2 = type.replace(/s$/, "");
+  return prefix2 + "-" + fileName.replace(/\./g, "-");
+}
+function isImageAssetFilename(filename) {
+  return imageAssetFilenamePattern.test(filename);
+}
+function isFileAssetFilename(filename) {
+  return fileAssetFilenamePattern.test(filename);
+}
+
+// app/components/parts/SanityImage.jsx
+var import_jsx_dev_runtime47 = __toESM(require_jsx_dev_runtime());
+function SanityImage({ value, isInline, className, alt }) {
+  let { sanityProjectDetails } = useRouteData("root"), { width, height } = getImageDimensions(value);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    "img",
+    {
+      className: cx("not-prose h-auto w-full", className),
+      src: (0, import_image_url.default)(sanityProjectDetails).image(value).width(isInline ? 100 : 800).fit("max").auto("format").url(),
+      alt: alt || value.alt || "",
+      loading: "lazy",
+      style: {
+        display: isInline ? "inline-block" : "block",
+        aspectRatio: width / height
+      }
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/components/parts/SanityImage.jsx",
+      lineNumber: 14,
+      columnNumber: 5
+    },
+    this
+  );
+}
+
+// app/components/parts/Topic.jsx
+var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), Topic = ({ topic }) => /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("span", { className: "float inline-block h-[1em] mr-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+  SanityImage,
+  {
+    value: topic.image,
+    alt: `Topic: ${topic.topic}`,
+    className: "h-full"
+  },
+  void 0,
+  !1,
+  {
+    fileName: "app/components/parts/Topic.jsx",
+    lineNumber: 7,
+    columnNumber: 7
+  },
+  this
+) }, void 0, !1, {
+  fileName: "app/components/parts/Topic.jsx",
+  lineNumber: 6,
+  columnNumber: 5
+}, this), Topic_default = Topic;
+
+// app/components/parts/PortableTextPlain.jsx
+var PortableTextPlain = ({ text: text2 }) => toPlainText(text2);
+
+// app/components/article/ArticleBlockBanner.jsx
+var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), ArticleBlockBanner = ({ article }) => {
+  let { headline, intro, colour, author, media, topic } = article;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    "article",
+    {
+      className: "w-full aspect-video p-6 flex flex-col justify-between gap-4",
+      style: { background: colour || "#e3e8ef" },
+      children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+          "div",
+          {
+            className: cx(
+              "grid grid-rows-2 grid-cols-1 gap-4",
+              "lg:grid-cols-3 lg:grid-rows-1"
+            ),
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("h2", { className: "text-6xl", children: [
+                topic && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(Topic_default, { topic }, void 0, !1, {
+                  fileName: "app/components/article/ArticleBlockBanner.jsx",
+                  lineNumber: 21,
+                  columnNumber: 23
+                }, this),
+                headline || "Untitled article"
+              ] }, void 0, !0, {
+                fileName: "app/components/article/ArticleBlockBanner.jsx",
+                lineNumber: 20,
+                columnNumber: 11
+              }, this) }, void 0, !1, {
+                fileName: "app/components/article/ArticleBlockBanner.jsx",
+                lineNumber: 19,
+                columnNumber: 9
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+                "h3",
+                {
+                  className: cx("text-3xl columns-1 col-span-2 gap-4 ", "md:columns-2"),
+                  children: intro ? /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(PortableTextPlain, { text: intro }, void 0, !1, {
+                    fileName: "app/components/article/ArticleBlockBanner.jsx",
+                    lineNumber: 28,
+                    columnNumber: 20
+                  }, this) : "Intro text"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/article/ArticleBlockBanner.jsx",
+                  lineNumber: 25,
+                  columnNumber: 9
+                },
+                this
+              )
+            ]
+          },
+          void 0,
+          !0,
+          {
+            fileName: "app/components/article/ArticleBlockBanner.jsx",
+            lineNumber: 13,
+            columnNumber: 7
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex justify-between", children: [
+          author.name && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("address", { className: "not-italic", children: [
+            "By ",
+            author.name
+          ] }, void 0, !0, {
+            fileName: "app/components/article/ArticleBlockBanner.jsx",
+            lineNumber: 33,
+            columnNumber: 11
+          }, this),
+          media.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { children: [
+            "(",
+            media.join(", "),
+            ")"
+          ] }, void 0, !0, {
+            fileName: "app/components/article/ArticleBlockBanner.jsx",
+            lineNumber: 35,
+            columnNumber: 30
+          }, this)
+        ] }, void 0, !0, {
+          fileName: "app/components/article/ArticleBlockBanner.jsx",
+          lineNumber: 31,
+          columnNumber: 7
+        }, this)
+      ]
+    },
+    void 0,
+    !0,
+    {
+      fileName: "app/components/article/ArticleBlockBanner.jsx",
+      lineNumber: 9,
+      columnNumber: 5
+    },
+    this
+  );
+}, ArticleBlockBanner_default = ArticleBlockBanner;
+
+// app/components/modules/CarouselModule.jsx
+var import_react112 = __toESM(require_react());
+
+// node_modules/swiper/react/swiper.js
+var import_react109 = __toESM(require_react(), 1);
+
+// node_modules/ssr-window/ssr-window.esm.js
+function isObject2(obj) {
+  return obj !== null && typeof obj == "object" && "constructor" in obj && obj.constructor === Object;
+}
+function extend(target = {}, src = {}) {
+  Object.keys(src).forEach((key) => {
+    typeof target[key] > "u" ? target[key] = src[key] : isObject2(src[key]) && isObject2(target[key]) && Object.keys(src[key]).length > 0 && extend(target[key], src[key]);
+  });
+}
+var ssrDocument = {
+  body: {},
+  addEventListener() {
+  },
+  removeEventListener() {
+  },
+  activeElement: {
+    blur() {
+    },
+    nodeName: ""
+  },
+  querySelector() {
+    return null;
+  },
+  querySelectorAll() {
+    return [];
+  },
+  getElementById() {
+    return null;
+  },
+  createEvent() {
+    return {
+      initEvent() {
+      }
+    };
+  },
+  createElement() {
+    return {
+      children: [],
+      childNodes: [],
+      style: {},
+      setAttribute() {
+      },
+      getElementsByTagName() {
+        return [];
+      }
+    };
+  },
+  createElementNS() {
+    return {};
+  },
+  importNode() {
+    return null;
+  },
+  location: {
+    hash: "",
+    host: "",
+    hostname: "",
+    href: "",
+    origin: "",
+    pathname: "",
+    protocol: "",
+    search: ""
+  }
+};
+function getDocument() {
+  let doc = typeof document < "u" ? document : {};
+  return extend(doc, ssrDocument), doc;
+}
+var ssrWindow = {
+  document: ssrDocument,
+  navigator: {
+    userAgent: ""
+  },
+  location: {
+    hash: "",
+    host: "",
+    hostname: "",
+    href: "",
+    origin: "",
+    pathname: "",
+    protocol: "",
+    search: ""
+  },
+  history: {
+    replaceState() {
+    },
+    pushState() {
+    },
+    go() {
+    },
+    back() {
+    }
+  },
+  CustomEvent: function() {
+    return this;
+  },
+  addEventListener() {
+  },
+  removeEventListener() {
+  },
+  getComputedStyle() {
+    return {
+      getPropertyValue() {
+        return "";
+      }
+    };
+  },
+  Image() {
+  },
+  Date() {
+  },
+  screen: {},
+  setTimeout() {
+  },
+  clearTimeout() {
+  },
+  matchMedia() {
+    return {};
+  },
+  requestAnimationFrame(callback) {
+    return typeof setTimeout > "u" ? (callback(), null) : setTimeout(callback, 0);
+  },
+  cancelAnimationFrame(id) {
+    typeof setTimeout > "u" || clearTimeout(id);
+  }
+};
+function getWindow() {
+  let win = typeof window < "u" ? window : {};
+  return extend(win, ssrWindow), win;
+}
+
+// node_modules/swiper/shared/utils.js
+function deleteProps(obj) {
+  let object = obj;
+  Object.keys(object).forEach((key) => {
+    try {
+      object[key] = null;
+    } catch {
+    }
+    try {
+      delete object[key];
+    } catch {
+    }
+  });
+}
+function nextTick(callback, delay = 0) {
+  return setTimeout(callback, delay);
+}
+function now() {
+  return Date.now();
+}
+function getComputedStyle2(el) {
+  let window2 = getWindow(), style;
+  return window2.getComputedStyle && (style = window2.getComputedStyle(el, null)), !style && el.currentStyle && (style = el.currentStyle), style || (style = el.style), style;
+}
+function getTranslate(el, axis = "x") {
+  let window2 = getWindow(), matrix, curTransform, transformMatrix, curStyle = getComputedStyle2(el, null);
+  return window2.WebKitCSSMatrix ? (curTransform = curStyle.transform || curStyle.webkitTransform, curTransform.split(",").length > 6 && (curTransform = curTransform.split(", ").map((a10) => a10.replace(",", ".")).join(", ")), transformMatrix = new window2.WebKitCSSMatrix(curTransform === "none" ? "" : curTransform)) : (transformMatrix = curStyle.MozTransform || curStyle.OTransform || curStyle.MsTransform || curStyle.msTransform || curStyle.transform || curStyle.getPropertyValue("transform").replace("translate(", "matrix(1, 0, 0, 1,"), matrix = transformMatrix.toString().split(",")), axis === "x" && (window2.WebKitCSSMatrix ? curTransform = transformMatrix.m41 : matrix.length === 16 ? curTransform = parseFloat(matrix[12]) : curTransform = parseFloat(matrix[4])), axis === "y" && (window2.WebKitCSSMatrix ? curTransform = transformMatrix.m42 : matrix.length === 16 ? curTransform = parseFloat(matrix[13]) : curTransform = parseFloat(matrix[5])), curTransform || 0;
+}
+function isObject3(o10) {
+  return typeof o10 == "object" && o10 !== null && o10.constructor && Object.prototype.toString.call(o10).slice(8, -1) === "Object";
+}
+function isNode(node) {
+  return typeof window < "u" && typeof window.HTMLElement < "u" ? node instanceof HTMLElement : node && (node.nodeType === 1 || node.nodeType === 11);
+}
+function extend2(...args) {
+  let to = Object(args[0]), noExtend = ["__proto__", "constructor", "prototype"];
+  for (let i10 = 1; i10 < args.length; i10 += 1) {
+    let nextSource = args[i10];
+    if (nextSource != null && !isNode(nextSource)) {
+      let keysArray = Object.keys(Object(nextSource)).filter((key) => noExtend.indexOf(key) < 0);
+      for (let nextIndex = 0, len = keysArray.length; nextIndex < len; nextIndex += 1) {
+        let nextKey = keysArray[nextIndex], desc = Object.getOwnPropertyDescriptor(nextSource, nextKey);
+        desc !== void 0 && desc.enumerable && (isObject3(to[nextKey]) && isObject3(nextSource[nextKey]) ? nextSource[nextKey].__swiper__ ? to[nextKey] = nextSource[nextKey] : extend2(to[nextKey], nextSource[nextKey]) : !isObject3(to[nextKey]) && isObject3(nextSource[nextKey]) ? (to[nextKey] = {}, nextSource[nextKey].__swiper__ ? to[nextKey] = nextSource[nextKey] : extend2(to[nextKey], nextSource[nextKey])) : to[nextKey] = nextSource[nextKey]);
+      }
+    }
+  }
+  return to;
+}
+function setCSSProperty(el, varName, varValue) {
+  el.style.setProperty(varName, varValue);
+}
+function animateCSSModeScroll({
+  swiper,
+  targetPosition,
+  side
+}) {
+  let window2 = getWindow(), startPosition = -swiper.translate, startTime = null, time, duration = swiper.params.speed;
+  swiper.wrapperEl.style.scrollSnapType = "none", window2.cancelAnimationFrame(swiper.cssModeFrameID);
+  let dir = targetPosition > startPosition ? "next" : "prev", isOutOfBound = (current, target) => dir === "next" && current >= target || dir === "prev" && current <= target, animate = () => {
+    time = new Date().getTime(), startTime === null && (startTime = time);
+    let progress2 = Math.max(Math.min((time - startTime) / duration, 1), 0), easeProgress = 0.5 - Math.cos(progress2 * Math.PI) / 2, currentPosition = startPosition + easeProgress * (targetPosition - startPosition);
+    if (isOutOfBound(currentPosition, targetPosition) && (currentPosition = targetPosition), swiper.wrapperEl.scrollTo({
+      [side]: currentPosition
+    }), isOutOfBound(currentPosition, targetPosition)) {
+      swiper.wrapperEl.style.overflow = "hidden", swiper.wrapperEl.style.scrollSnapType = "", setTimeout(() => {
+        swiper.wrapperEl.style.overflow = "", swiper.wrapperEl.scrollTo({
+          [side]: currentPosition
+        });
+      }), window2.cancelAnimationFrame(swiper.cssModeFrameID);
+      return;
+    }
+    swiper.cssModeFrameID = window2.requestAnimationFrame(animate);
+  };
+  animate();
+}
+function elementChildren(element, selector = "") {
+  return [...element.children].filter((el) => el.matches(selector));
+}
+function createElement8(tag, classes = []) {
+  let el = document.createElement(tag);
+  return el.classList.add(...Array.isArray(classes) ? classes : [classes]), el;
+}
+function elementPrevAll(el, selector) {
+  let prevEls = [];
+  for (; el.previousElementSibling; ) {
+    let prev = el.previousElementSibling;
+    selector ? prev.matches(selector) && prevEls.push(prev) : prevEls.push(prev), el = prev;
+  }
+  return prevEls;
+}
+function elementNextAll(el, selector) {
+  let nextEls = [];
+  for (; el.nextElementSibling; ) {
+    let next = el.nextElementSibling;
+    selector ? next.matches(selector) && nextEls.push(next) : nextEls.push(next), el = next;
+  }
+  return nextEls;
+}
+function elementStyle(el, prop) {
+  return getWindow().getComputedStyle(el, null).getPropertyValue(prop);
+}
+function elementIndex(el) {
+  let child = el, i10;
+  if (child) {
+    for (i10 = 0; (child = child.previousSibling) !== null; )
+      child.nodeType === 1 && (i10 += 1);
+    return i10;
+  }
+}
+function elementParents(el, selector) {
+  let parents = [], parent = el.parentElement;
+  for (; parent; )
+    selector ? parent.matches(selector) && parents.push(parent) : parents.push(parent), parent = parent.parentElement;
+  return parents;
+}
+function elementOuterSize(el, size, includeMargins) {
+  let window2 = getWindow();
+  return includeMargins ? el[size === "width" ? "offsetWidth" : "offsetHeight"] + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size === "width" ? "margin-right" : "margin-top")) + parseFloat(window2.getComputedStyle(el, null).getPropertyValue(size === "width" ? "margin-left" : "margin-bottom")) : el.offsetWidth;
+}
+
+// node_modules/swiper/shared/get-support.js
+var support;
+function calcSupport() {
+  let window2 = getWindow(), document2 = getDocument();
+  return {
+    smoothScroll: document2.documentElement && "scrollBehavior" in document2.documentElement.style,
+    touch: !!("ontouchstart" in window2 || window2.DocumentTouch && document2 instanceof window2.DocumentTouch)
+  };
+}
+function getSupport() {
+  return support || (support = calcSupport()), support;
+}
+
+// node_modules/swiper/shared/get-device.js
+var deviceCached;
+function calcDevice({
+  userAgent
+} = {}) {
+  let support2 = getSupport(), window2 = getWindow(), platform = window2.navigator.platform, ua = userAgent || window2.navigator.userAgent, device = {
+    ios: !1,
+    android: !1
+  }, screenWidth = window2.screen.width, screenHeight = window2.screen.height, android = ua.match(/(Android);?[\s\/]+([\d.]+)?/), ipad = ua.match(/(iPad).*OS\s([\d_]+)/), ipod = ua.match(/(iPod)(.*OS\s([\d_]+))?/), iphone = !ipad && ua.match(/(iPhone\sOS|iOS)\s([\d_]+)/), windows = platform === "Win32", macos = platform === "MacIntel", iPadScreens = ["1024x1366", "1366x1024", "834x1194", "1194x834", "834x1112", "1112x834", "768x1024", "1024x768", "820x1180", "1180x820", "810x1080", "1080x810"];
+  return !ipad && macos && support2.touch && iPadScreens.indexOf(`${screenWidth}x${screenHeight}`) >= 0 && (ipad = ua.match(/(Version)\/([\d.]+)/), ipad || (ipad = [0, 1, "13_0_0"]), macos = !1), android && !windows && (device.os = "android", device.android = !0), (ipad || iphone || ipod) && (device.os = "ios", device.ios = !0), device;
+}
+function getDevice(overrides = {}) {
+  return deviceCached || (deviceCached = calcDevice(overrides)), deviceCached;
+}
+
+// node_modules/swiper/shared/get-browser.js
+var browser;
+function calcBrowser() {
+  let window2 = getWindow(), needPerspectiveFix = !1;
+  function isSafari() {
+    let ua = window2.navigator.userAgent.toLowerCase();
+    return ua.indexOf("safari") >= 0 && ua.indexOf("chrome") < 0 && ua.indexOf("android") < 0;
+  }
+  if (isSafari()) {
+    let ua = String(window2.navigator.userAgent);
+    if (ua.includes("Version/")) {
+      let [major, minor] = ua.split("Version/")[1].split(" ")[0].split(".").map((num) => Number(num));
+      needPerspectiveFix = major < 16 || major === 16 && minor < 2;
+    }
+  }
+  return {
+    isSafari: needPerspectiveFix || isSafari(),
+    needPerspectiveFix,
+    isWebView: /(iPhone|iPod|iPad).*AppleWebKit(?!.*Safari)/i.test(window2.navigator.userAgent)
+  };
+}
+function getBrowser() {
+  return browser || (browser = calcBrowser()), browser;
+}
+
+// node_modules/swiper/core/modules/resize/resize.js
+function Resize({
+  swiper,
+  on: on2,
+  emit
+}) {
+  let window2 = getWindow(), observer = null, animationFrame = null, resizeHandler = () => {
+    !swiper || swiper.destroyed || !swiper.initialized || (emit("beforeResize"), emit("resize"));
+  }, createObserver2 = () => {
+    !swiper || swiper.destroyed || !swiper.initialized || (observer = new ResizeObserver((entries) => {
+      animationFrame = window2.requestAnimationFrame(() => {
+        let {
+          width,
+          height
+        } = swiper, newWidth = width, newHeight = height;
+        entries.forEach(({
+          contentBoxSize,
+          contentRect,
+          target
+        }) => {
+          target && target !== swiper.el || (newWidth = contentRect ? contentRect.width : (contentBoxSize[0] || contentBoxSize).inlineSize, newHeight = contentRect ? contentRect.height : (contentBoxSize[0] || contentBoxSize).blockSize);
+        }), (newWidth !== width || newHeight !== height) && resizeHandler();
+      });
+    }), observer.observe(swiper.el));
+  }, removeObserver = () => {
+    animationFrame && window2.cancelAnimationFrame(animationFrame), observer && observer.unobserve && swiper.el && (observer.unobserve(swiper.el), observer = null);
+  }, orientationChangeHandler = () => {
+    !swiper || swiper.destroyed || !swiper.initialized || emit("orientationchange");
+  };
+  on2("init", () => {
+    if (swiper.params.resizeObserver && typeof window2.ResizeObserver < "u") {
+      createObserver2();
+      return;
+    }
+    window2.addEventListener("resize", resizeHandler), window2.addEventListener("orientationchange", orientationChangeHandler);
+  }), on2("destroy", () => {
+    removeObserver(), window2.removeEventListener("resize", resizeHandler), window2.removeEventListener("orientationchange", orientationChangeHandler);
+  });
+}
+
+// node_modules/swiper/core/modules/observer/observer.js
+function Observer({
+  swiper,
+  extendParams,
+  on: on2,
+  emit
+}) {
+  let observers = [], window2 = getWindow(), attach = (target, options = {}) => {
+    let ObserverFunc = window2.MutationObserver || window2.WebkitMutationObserver, observer = new ObserverFunc((mutations) => {
+      if (swiper.__preventObserver__)
+        return;
+      if (mutations.length === 1) {
+        emit("observerUpdate", mutations[0]);
+        return;
+      }
+      let observerUpdate = function() {
+        emit("observerUpdate", mutations[0]);
+      };
+      window2.requestAnimationFrame ? window2.requestAnimationFrame(observerUpdate) : window2.setTimeout(observerUpdate, 0);
+    });
+    observer.observe(target, {
+      attributes: typeof options.attributes > "u" ? !0 : options.attributes,
+      childList: typeof options.childList > "u" ? !0 : options.childList,
+      characterData: typeof options.characterData > "u" ? !0 : options.characterData
+    }), observers.push(observer);
+  }, init = () => {
+    if (!!swiper.params.observer) {
+      if (swiper.params.observeParents) {
+        let containerParents = elementParents(swiper.el);
+        for (let i10 = 0; i10 < containerParents.length; i10 += 1)
+          attach(containerParents[i10]);
+      }
+      attach(swiper.el, {
+        childList: swiper.params.observeSlideChildren
+      }), attach(swiper.wrapperEl, {
+        attributes: !1
+      });
+    }
+  }, destroy = () => {
+    observers.forEach((observer) => {
+      observer.disconnect();
+    }), observers.splice(0, observers.length);
+  };
+  extendParams({
+    observer: !1,
+    observeParents: !1,
+    observeSlideChildren: !1
+  }), on2("init", init), on2("destroy", destroy);
+}
+
+// node_modules/swiper/core/events-emitter.js
+var events_emitter_default = {
+  on(events2, handler, priority) {
+    let self2 = this;
+    if (!self2.eventsListeners || self2.destroyed || typeof handler != "function")
+      return self2;
+    let method = priority ? "unshift" : "push";
+    return events2.split(" ").forEach((event2) => {
+      self2.eventsListeners[event2] || (self2.eventsListeners[event2] = []), self2.eventsListeners[event2][method](handler);
+    }), self2;
+  },
+  once(events2, handler, priority) {
+    let self2 = this;
+    if (!self2.eventsListeners || self2.destroyed || typeof handler != "function")
+      return self2;
+    function onceHandler(...args) {
+      self2.off(events2, onceHandler), onceHandler.__emitterProxy && delete onceHandler.__emitterProxy, handler.apply(self2, args);
+    }
+    return onceHandler.__emitterProxy = handler, self2.on(events2, onceHandler, priority);
+  },
+  onAny(handler, priority) {
+    let self2 = this;
+    if (!self2.eventsListeners || self2.destroyed || typeof handler != "function")
+      return self2;
+    let method = priority ? "unshift" : "push";
+    return self2.eventsAnyListeners.indexOf(handler) < 0 && self2.eventsAnyListeners[method](handler), self2;
+  },
+  offAny(handler) {
+    let self2 = this;
+    if (!self2.eventsListeners || self2.destroyed || !self2.eventsAnyListeners)
+      return self2;
+    let index = self2.eventsAnyListeners.indexOf(handler);
+    return index >= 0 && self2.eventsAnyListeners.splice(index, 1), self2;
+  },
+  off(events2, handler) {
+    let self2 = this;
+    return !self2.eventsListeners || self2.destroyed || !self2.eventsListeners || events2.split(" ").forEach((event2) => {
+      typeof handler > "u" ? self2.eventsListeners[event2] = [] : self2.eventsListeners[event2] && self2.eventsListeners[event2].forEach((eventHandler, index) => {
+        (eventHandler === handler || eventHandler.__emitterProxy && eventHandler.__emitterProxy === handler) && self2.eventsListeners[event2].splice(index, 1);
+      });
+    }), self2;
+  },
+  emit(...args) {
+    let self2 = this;
+    if (!self2.eventsListeners || self2.destroyed || !self2.eventsListeners)
+      return self2;
+    let events2, data, context2;
+    return typeof args[0] == "string" || Array.isArray(args[0]) ? (events2 = args[0], data = args.slice(1, args.length), context2 = self2) : (events2 = args[0].events, data = args[0].data, context2 = args[0].context || self2), data.unshift(context2), (Array.isArray(events2) ? events2 : events2.split(" ")).forEach((event2) => {
+      self2.eventsAnyListeners && self2.eventsAnyListeners.length && self2.eventsAnyListeners.forEach((eventHandler) => {
+        eventHandler.apply(context2, [event2, ...data]);
+      }), self2.eventsListeners && self2.eventsListeners[event2] && self2.eventsListeners[event2].forEach((eventHandler) => {
+        eventHandler.apply(context2, data);
+      });
+    }), self2;
+  }
+};
+
+// node_modules/swiper/core/update/updateSize.js
+function updateSize() {
+  let swiper = this, width, height, el = swiper.el;
+  typeof swiper.params.width < "u" && swiper.params.width !== null ? width = swiper.params.width : width = el.clientWidth, typeof swiper.params.height < "u" && swiper.params.height !== null ? height = swiper.params.height : height = el.clientHeight, !(width === 0 && swiper.isHorizontal() || height === 0 && swiper.isVertical()) && (width = width - parseInt(elementStyle(el, "padding-left") || 0, 10) - parseInt(elementStyle(el, "padding-right") || 0, 10), height = height - parseInt(elementStyle(el, "padding-top") || 0, 10) - parseInt(elementStyle(el, "padding-bottom") || 0, 10), Number.isNaN(width) && (width = 0), Number.isNaN(height) && (height = 0), Object.assign(swiper, {
+    width,
+    height,
+    size: swiper.isHorizontal() ? width : height
+  }));
+}
+
+// node_modules/swiper/core/update/updateSlides.js
+function updateSlides() {
+  let swiper = this;
+  function getDirectionLabel(property) {
+    return swiper.isHorizontal() ? property : {
+      width: "height",
+      "margin-top": "margin-left",
+      "margin-bottom ": "margin-right",
+      "margin-left": "margin-top",
+      "margin-right": "margin-bottom",
+      "padding-left": "padding-top",
+      "padding-right": "padding-bottom",
+      marginRight: "marginBottom"
+    }[property];
+  }
+  function getDirectionPropertyValue(node, label) {
+    return parseFloat(node.getPropertyValue(getDirectionLabel(label)) || 0);
+  }
+  let params = swiper.params, {
+    wrapperEl,
+    slidesEl,
+    size: swiperSize,
+    rtlTranslate: rtl,
+    wrongRTL
+  } = swiper, isVirtual = swiper.virtual && params.virtual.enabled, previousSlidesLength = isVirtual ? swiper.virtual.slides.length : swiper.slides.length, slides = elementChildren(slidesEl, `.${swiper.params.slideClass}, swiper-slide`), slidesLength = isVirtual ? swiper.virtual.slides.length : slides.length, snapGrid = [], slidesGrid = [], slidesSizesGrid = [], offsetBefore = params.slidesOffsetBefore;
+  typeof offsetBefore == "function" && (offsetBefore = params.slidesOffsetBefore.call(swiper));
+  let offsetAfter = params.slidesOffsetAfter;
+  typeof offsetAfter == "function" && (offsetAfter = params.slidesOffsetAfter.call(swiper));
+  let previousSnapGridLength = swiper.snapGrid.length, previousSlidesGridLength = swiper.slidesGrid.length, spaceBetween = params.spaceBetween, slidePosition = -offsetBefore, prevSlideSize = 0, index = 0;
+  if (typeof swiperSize > "u")
+    return;
+  typeof spaceBetween == "string" && spaceBetween.indexOf("%") >= 0 && (spaceBetween = parseFloat(spaceBetween.replace("%", "")) / 100 * swiperSize), swiper.virtualSize = -spaceBetween, slides.forEach((slideEl) => {
+    rtl ? slideEl.style.marginLeft = "" : slideEl.style.marginRight = "", slideEl.style.marginBottom = "", slideEl.style.marginTop = "";
+  }), params.centeredSlides && params.cssMode && (setCSSProperty(wrapperEl, "--swiper-centered-offset-before", ""), setCSSProperty(wrapperEl, "--swiper-centered-offset-after", ""));
+  let gridEnabled = params.grid && params.grid.rows > 1 && swiper.grid;
+  gridEnabled && swiper.grid.initSlides(slidesLength);
+  let slideSize, shouldResetSlideSize = params.slidesPerView === "auto" && params.breakpoints && Object.keys(params.breakpoints).filter((key) => typeof params.breakpoints[key].slidesPerView < "u").length > 0;
+  for (let i10 = 0; i10 < slidesLength; i10 += 1) {
+    slideSize = 0;
+    let slide;
+    if (slides[i10] && (slide = slides[i10]), gridEnabled && swiper.grid.updateSlide(i10, slide, slidesLength, getDirectionLabel), !(slides[i10] && elementStyle(slide, "display") === "none")) {
+      if (params.slidesPerView === "auto") {
+        shouldResetSlideSize && (slides[i10].style[getDirectionLabel("width")] = "");
+        let slideStyles = getComputedStyle(slide), currentTransform = slide.style.transform, currentWebKitTransform = slide.style.webkitTransform;
+        if (currentTransform && (slide.style.transform = "none"), currentWebKitTransform && (slide.style.webkitTransform = "none"), params.roundLengths)
+          slideSize = swiper.isHorizontal() ? elementOuterSize(slide, "width", !0) : elementOuterSize(slide, "height", !0);
+        else {
+          let width = getDirectionPropertyValue(slideStyles, "width"), paddingLeft = getDirectionPropertyValue(slideStyles, "padding-left"), paddingRight = getDirectionPropertyValue(slideStyles, "padding-right"), marginLeft = getDirectionPropertyValue(slideStyles, "margin-left"), marginRight = getDirectionPropertyValue(slideStyles, "margin-right"), boxSizing = slideStyles.getPropertyValue("box-sizing");
+          if (boxSizing && boxSizing === "border-box")
+            slideSize = width + marginLeft + marginRight;
+          else {
+            let {
+              clientWidth,
+              offsetWidth
+            } = slide;
+            slideSize = width + paddingLeft + paddingRight + marginLeft + marginRight + (offsetWidth - clientWidth);
+          }
+        }
+        currentTransform && (slide.style.transform = currentTransform), currentWebKitTransform && (slide.style.webkitTransform = currentWebKitTransform), params.roundLengths && (slideSize = Math.floor(slideSize));
+      } else
+        slideSize = (swiperSize - (params.slidesPerView - 1) * spaceBetween) / params.slidesPerView, params.roundLengths && (slideSize = Math.floor(slideSize)), slides[i10] && (slides[i10].style[getDirectionLabel("width")] = `${slideSize}px`);
+      slides[i10] && (slides[i10].swiperSlideSize = slideSize), slidesSizesGrid.push(slideSize), params.centeredSlides ? (slidePosition = slidePosition + slideSize / 2 + prevSlideSize / 2 + spaceBetween, prevSlideSize === 0 && i10 !== 0 && (slidePosition = slidePosition - swiperSize / 2 - spaceBetween), i10 === 0 && (slidePosition = slidePosition - swiperSize / 2 - spaceBetween), Math.abs(slidePosition) < 1 / 1e3 && (slidePosition = 0), params.roundLengths && (slidePosition = Math.floor(slidePosition)), index % params.slidesPerGroup === 0 && snapGrid.push(slidePosition), slidesGrid.push(slidePosition)) : (params.roundLengths && (slidePosition = Math.floor(slidePosition)), (index - Math.min(swiper.params.slidesPerGroupSkip, index)) % swiper.params.slidesPerGroup === 0 && snapGrid.push(slidePosition), slidesGrid.push(slidePosition), slidePosition = slidePosition + slideSize + spaceBetween), swiper.virtualSize += slideSize + spaceBetween, prevSlideSize = slideSize, index += 1;
+    }
+  }
+  if (swiper.virtualSize = Math.max(swiper.virtualSize, swiperSize) + offsetAfter, rtl && wrongRTL && (params.effect === "slide" || params.effect === "coverflow") && (wrapperEl.style.width = `${swiper.virtualSize + params.spaceBetween}px`), params.setWrapperSize && (wrapperEl.style[getDirectionLabel("width")] = `${swiper.virtualSize + params.spaceBetween}px`), gridEnabled && swiper.grid.updateWrapperSize(slideSize, snapGrid, getDirectionLabel), !params.centeredSlides) {
+    let newSlidesGrid = [];
+    for (let i10 = 0; i10 < snapGrid.length; i10 += 1) {
+      let slidesGridItem = snapGrid[i10];
+      params.roundLengths && (slidesGridItem = Math.floor(slidesGridItem)), snapGrid[i10] <= swiper.virtualSize - swiperSize && newSlidesGrid.push(slidesGridItem);
+    }
+    snapGrid = newSlidesGrid, Math.floor(swiper.virtualSize - swiperSize) - Math.floor(snapGrid[snapGrid.length - 1]) > 1 && snapGrid.push(swiper.virtualSize - swiperSize);
+  }
+  if (isVirtual && params.loop) {
+    let size = slidesSizesGrid[0] + spaceBetween;
+    if (params.slidesPerGroup > 1) {
+      let groups = Math.ceil((swiper.virtual.slidesBefore + swiper.virtual.slidesAfter) / params.slidesPerGroup), groupSize = size * params.slidesPerGroup;
+      for (let i10 = 0; i10 < groups; i10 += 1)
+        snapGrid.push(snapGrid[snapGrid.length - 1] + groupSize);
+    }
+    for (let i10 = 0; i10 < swiper.virtual.slidesBefore + swiper.virtual.slidesAfter; i10 += 1)
+      params.slidesPerGroup === 1 && snapGrid.push(snapGrid[snapGrid.length - 1] + size), slidesGrid.push(slidesGrid[slidesGrid.length - 1] + size), swiper.virtualSize += size;
+  }
+  if (snapGrid.length === 0 && (snapGrid = [0]), params.spaceBetween !== 0) {
+    let key = swiper.isHorizontal() && rtl ? "marginLeft" : getDirectionLabel("marginRight");
+    slides.filter((_4, slideIndex) => !params.cssMode || params.loop ? !0 : slideIndex !== slides.length - 1).forEach((slideEl) => {
+      slideEl.style[key] = `${spaceBetween}px`;
+    });
+  }
+  if (params.centeredSlides && params.centeredSlidesBounds) {
+    let allSlidesSize = 0;
+    slidesSizesGrid.forEach((slideSizeValue) => {
+      allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
+    }), allSlidesSize -= params.spaceBetween;
+    let maxSnap = allSlidesSize - swiperSize;
+    snapGrid = snapGrid.map((snap) => snap < 0 ? -offsetBefore : snap > maxSnap ? maxSnap + offsetAfter : snap);
+  }
+  if (params.centerInsufficientSlides) {
+    let allSlidesSize = 0;
+    if (slidesSizesGrid.forEach((slideSizeValue) => {
+      allSlidesSize += slideSizeValue + (params.spaceBetween ? params.spaceBetween : 0);
+    }), allSlidesSize -= params.spaceBetween, allSlidesSize < swiperSize) {
+      let allSlidesOffset = (swiperSize - allSlidesSize) / 2;
+      snapGrid.forEach((snap, snapIndex) => {
+        snapGrid[snapIndex] = snap - allSlidesOffset;
+      }), slidesGrid.forEach((snap, snapIndex) => {
+        slidesGrid[snapIndex] = snap + allSlidesOffset;
+      });
+    }
+  }
+  if (Object.assign(swiper, {
+    slides,
+    snapGrid,
+    slidesGrid,
+    slidesSizesGrid
+  }), params.centeredSlides && params.cssMode && !params.centeredSlidesBounds) {
+    setCSSProperty(wrapperEl, "--swiper-centered-offset-before", `${-snapGrid[0]}px`), setCSSProperty(wrapperEl, "--swiper-centered-offset-after", `${swiper.size / 2 - slidesSizesGrid[slidesSizesGrid.length - 1] / 2}px`);
+    let addToSnapGrid = -swiper.snapGrid[0], addToSlidesGrid = -swiper.slidesGrid[0];
+    swiper.snapGrid = swiper.snapGrid.map((v6) => v6 + addToSnapGrid), swiper.slidesGrid = swiper.slidesGrid.map((v6) => v6 + addToSlidesGrid);
+  }
+  if (slidesLength !== previousSlidesLength && swiper.emit("slidesLengthChange"), snapGrid.length !== previousSnapGridLength && (swiper.params.watchOverflow && swiper.checkOverflow(), swiper.emit("snapGridLengthChange")), slidesGrid.length !== previousSlidesGridLength && swiper.emit("slidesGridLengthChange"), params.watchSlidesProgress && swiper.updateSlidesOffset(), !isVirtual && !params.cssMode && (params.effect === "slide" || params.effect === "fade")) {
+    let backFaceHiddenClass = `${params.containerModifierClass}backface-hidden`, hasClassBackfaceClassAdded = swiper.el.classList.contains(backFaceHiddenClass);
+    slidesLength <= params.maxBackfaceHiddenSlides ? hasClassBackfaceClassAdded || swiper.el.classList.add(backFaceHiddenClass) : hasClassBackfaceClassAdded && swiper.el.classList.remove(backFaceHiddenClass);
+  }
+}
+
+// node_modules/swiper/core/update/updateAutoHeight.js
+function updateAutoHeight(speed) {
+  let swiper = this, activeSlides = [], isVirtual = swiper.virtual && swiper.params.virtual.enabled, newHeight = 0, i10;
+  typeof speed == "number" ? swiper.setTransition(speed) : speed === !0 && swiper.setTransition(swiper.params.speed);
+  let getSlideByIndex = (index) => isVirtual ? swiper.slides.filter((el) => parseInt(el.getAttribute("data-swiper-slide-index"), 10) === index)[0] : swiper.slides[index];
+  if (swiper.params.slidesPerView !== "auto" && swiper.params.slidesPerView > 1)
+    if (swiper.params.centeredSlides)
+      (swiper.visibleSlides || []).forEach((slide) => {
+        activeSlides.push(slide);
+      });
+    else
+      for (i10 = 0; i10 < Math.ceil(swiper.params.slidesPerView); i10 += 1) {
+        let index = swiper.activeIndex + i10;
+        if (index > swiper.slides.length && !isVirtual)
+          break;
+        activeSlides.push(getSlideByIndex(index));
+      }
+  else
+    activeSlides.push(getSlideByIndex(swiper.activeIndex));
+  for (i10 = 0; i10 < activeSlides.length; i10 += 1)
+    if (typeof activeSlides[i10] < "u") {
+      let height = activeSlides[i10].offsetHeight;
+      newHeight = height > newHeight ? height : newHeight;
+    }
+  (newHeight || newHeight === 0) && (swiper.wrapperEl.style.height = `${newHeight}px`);
+}
+
+// node_modules/swiper/core/update/updateSlidesOffset.js
+function updateSlidesOffset() {
+  let swiper = this, slides = swiper.slides, minusOffset = swiper.isElement ? swiper.isHorizontal() ? swiper.wrapperEl.offsetLeft : swiper.wrapperEl.offsetTop : 0;
+  for (let i10 = 0; i10 < slides.length; i10 += 1)
+    slides[i10].swiperSlideOffset = (swiper.isHorizontal() ? slides[i10].offsetLeft : slides[i10].offsetTop) - minusOffset;
+}
+
+// node_modules/swiper/core/update/updateSlidesProgress.js
+function updateSlidesProgress(translate = this && this.translate || 0) {
+  let swiper = this, params = swiper.params, {
+    slides,
+    rtlTranslate: rtl,
+    snapGrid
+  } = swiper;
+  if (slides.length === 0)
+    return;
+  typeof slides[0].swiperSlideOffset > "u" && swiper.updateSlidesOffset();
+  let offsetCenter = -translate;
+  rtl && (offsetCenter = translate), slides.forEach((slideEl) => {
+    slideEl.classList.remove(params.slideVisibleClass);
+  }), swiper.visibleSlidesIndexes = [], swiper.visibleSlides = [];
+  for (let i10 = 0; i10 < slides.length; i10 += 1) {
+    let slide = slides[i10], slideOffset = slide.swiperSlideOffset;
+    params.cssMode && params.centeredSlides && (slideOffset -= slides[0].swiperSlideOffset);
+    let slideProgress = (offsetCenter + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide.swiperSlideSize + params.spaceBetween), originalSlideProgress = (offsetCenter - snapGrid[0] + (params.centeredSlides ? swiper.minTranslate() : 0) - slideOffset) / (slide.swiperSlideSize + params.spaceBetween), slideBefore = -(offsetCenter - slideOffset), slideAfter = slideBefore + swiper.slidesSizesGrid[i10];
+    (slideBefore >= 0 && slideBefore < swiper.size - 1 || slideAfter > 1 && slideAfter <= swiper.size || slideBefore <= 0 && slideAfter >= swiper.size) && (swiper.visibleSlides.push(slide), swiper.visibleSlidesIndexes.push(i10), slides[i10].classList.add(params.slideVisibleClass)), slide.progress = rtl ? -slideProgress : slideProgress, slide.originalProgress = rtl ? -originalSlideProgress : originalSlideProgress;
+  }
+}
+
+// node_modules/swiper/core/update/updateProgress.js
+function updateProgress(translate) {
+  let swiper = this;
+  if (typeof translate > "u") {
+    let multiplier = swiper.rtlTranslate ? -1 : 1;
+    translate = swiper && swiper.translate && swiper.translate * multiplier || 0;
+  }
+  let params = swiper.params, translatesDiff = swiper.maxTranslate() - swiper.minTranslate(), {
+    progress: progress2,
+    isBeginning,
+    isEnd,
+    progressLoop
+  } = swiper, wasBeginning = isBeginning, wasEnd = isEnd;
+  if (translatesDiff === 0)
+    progress2 = 0, isBeginning = !0, isEnd = !0;
+  else {
+    progress2 = (translate - swiper.minTranslate()) / translatesDiff;
+    let isBeginningRounded = Math.abs(translate - swiper.minTranslate()) < 1, isEndRounded = Math.abs(translate - swiper.maxTranslate()) < 1;
+    isBeginning = isBeginningRounded || progress2 <= 0, isEnd = isEndRounded || progress2 >= 1, isBeginningRounded && (progress2 = 0), isEndRounded && (progress2 = 1);
+  }
+  if (params.loop) {
+    let firstSlideIndex = swiper.getSlideIndex(swiper.slides.filter((el) => el.getAttribute("data-swiper-slide-index") === "0")[0]), lastSlideIndex = swiper.getSlideIndex(swiper.slides.filter((el) => el.getAttribute("data-swiper-slide-index") * 1 === swiper.slides.length - 1)[0]), firstSlideTranslate = swiper.slidesGrid[firstSlideIndex], lastSlideTranslate = swiper.slidesGrid[lastSlideIndex], translateMax = swiper.slidesGrid[swiper.slidesGrid.length - 1], translateAbs = Math.abs(translate);
+    translateAbs >= firstSlideTranslate ? progressLoop = (translateAbs - firstSlideTranslate) / translateMax : progressLoop = (translateAbs + translateMax - lastSlideTranslate) / translateMax, progressLoop > 1 && (progressLoop -= 1);
+  }
+  Object.assign(swiper, {
+    progress: progress2,
+    progressLoop,
+    isBeginning,
+    isEnd
+  }), (params.watchSlidesProgress || params.centeredSlides && params.autoHeight) && swiper.updateSlidesProgress(translate), isBeginning && !wasBeginning && swiper.emit("reachBeginning toEdge"), isEnd && !wasEnd && swiper.emit("reachEnd toEdge"), (wasBeginning && !isBeginning || wasEnd && !isEnd) && swiper.emit("fromEdge"), swiper.emit("progress", progress2);
+}
+
+// node_modules/swiper/core/update/updateSlidesClasses.js
+function updateSlidesClasses() {
+  let swiper = this, {
+    slides,
+    params,
+    slidesEl,
+    activeIndex
+  } = swiper, isVirtual = swiper.virtual && params.virtual.enabled, getFilteredSlide = (selector) => elementChildren(slidesEl, `.${params.slideClass}${selector}, swiper-slide${selector}`)[0];
+  slides.forEach((slideEl) => {
+    slideEl.classList.remove(params.slideActiveClass, params.slideNextClass, params.slidePrevClass);
+  });
+  let activeSlide;
+  if (isVirtual)
+    if (params.loop) {
+      let slideIndex = activeIndex - swiper.virtual.slidesBefore;
+      slideIndex < 0 && (slideIndex = swiper.virtual.slides.length + slideIndex), slideIndex >= swiper.virtual.slides.length && (slideIndex -= swiper.virtual.slides.length), activeSlide = getFilteredSlide(`[data-swiper-slide-index="${slideIndex}"]`);
+    } else
+      activeSlide = getFilteredSlide(`[data-swiper-slide-index="${activeIndex}"]`);
+  else
+    activeSlide = slides[activeIndex];
+  if (activeSlide) {
+    activeSlide.classList.add(params.slideActiveClass);
+    let nextSlide = elementNextAll(activeSlide, `.${params.slideClass}, swiper-slide`)[0];
+    params.loop && !nextSlide && (nextSlide = slides[0]), nextSlide && nextSlide.classList.add(params.slideNextClass);
+    let prevSlide = elementPrevAll(activeSlide, `.${params.slideClass}, swiper-slide`)[0];
+    params.loop && !prevSlide === 0 && (prevSlide = slides[slides.length - 1]), prevSlide && prevSlide.classList.add(params.slidePrevClass);
+  }
+  swiper.emitSlidesClasses();
+}
+
+// node_modules/swiper/core/update/updateActiveIndex.js
+function getActiveIndexByTranslate(swiper) {
+  let {
+    slidesGrid,
+    params
+  } = swiper, translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate, activeIndex;
+  for (let i10 = 0; i10 < slidesGrid.length; i10 += 1)
+    typeof slidesGrid[i10 + 1] < "u" ? translate >= slidesGrid[i10] && translate < slidesGrid[i10 + 1] - (slidesGrid[i10 + 1] - slidesGrid[i10]) / 2 ? activeIndex = i10 : translate >= slidesGrid[i10] && translate < slidesGrid[i10 + 1] && (activeIndex = i10 + 1) : translate >= slidesGrid[i10] && (activeIndex = i10);
+  return params.normalizeSlideIndex && (activeIndex < 0 || typeof activeIndex > "u") && (activeIndex = 0), activeIndex;
+}
+function updateActiveIndex(newActiveIndex) {
+  let swiper = this, translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate, {
+    snapGrid,
+    params,
+    activeIndex: previousIndex,
+    realIndex: previousRealIndex,
+    snapIndex: previousSnapIndex
+  } = swiper, activeIndex = newActiveIndex, snapIndex, getVirtualRealIndex = (aIndex) => {
+    let realIndex2 = aIndex - swiper.virtual.slidesBefore;
+    return realIndex2 < 0 && (realIndex2 = swiper.virtual.slides.length + realIndex2), realIndex2 >= swiper.virtual.slides.length && (realIndex2 -= swiper.virtual.slides.length), realIndex2;
+  };
+  if (typeof activeIndex > "u" && (activeIndex = getActiveIndexByTranslate(swiper)), snapGrid.indexOf(translate) >= 0)
+    snapIndex = snapGrid.indexOf(translate);
+  else {
+    let skip = Math.min(params.slidesPerGroupSkip, activeIndex);
+    snapIndex = skip + Math.floor((activeIndex - skip) / params.slidesPerGroup);
+  }
+  if (snapIndex >= snapGrid.length && (snapIndex = snapGrid.length - 1), activeIndex === previousIndex) {
+    snapIndex !== previousSnapIndex && (swiper.snapIndex = snapIndex, swiper.emit("snapIndexChange")), swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled && (swiper.realIndex = getVirtualRealIndex(activeIndex));
+    return;
+  }
+  let realIndex;
+  swiper.virtual && params.virtual.enabled && params.loop ? realIndex = getVirtualRealIndex(activeIndex) : swiper.slides[activeIndex] ? realIndex = parseInt(swiper.slides[activeIndex].getAttribute("data-swiper-slide-index") || activeIndex, 10) : realIndex = activeIndex, Object.assign(swiper, {
+    snapIndex,
+    realIndex,
+    previousIndex,
+    activeIndex
+  }), swiper.emit("activeIndexChange"), swiper.emit("snapIndexChange"), previousRealIndex !== realIndex && swiper.emit("realIndexChange"), (swiper.initialized || swiper.params.runCallbacksOnInit) && swiper.emit("slideChange");
+}
+
+// node_modules/swiper/core/update/updateClickedSlide.js
+function updateClickedSlide(e6) {
+  let swiper = this, params = swiper.params, slide = e6.closest(`.${params.slideClass}, swiper-slide`), slideFound = !1, slideIndex;
+  if (slide) {
+    for (let i10 = 0; i10 < swiper.slides.length; i10 += 1)
+      if (swiper.slides[i10] === slide) {
+        slideFound = !0, slideIndex = i10;
+        break;
+      }
+  }
+  if (slide && slideFound)
+    swiper.clickedSlide = slide, swiper.virtual && swiper.params.virtual.enabled ? swiper.clickedIndex = parseInt(slide.getAttribute("data-swiper-slide-index"), 10) : swiper.clickedIndex = slideIndex;
+  else {
+    swiper.clickedSlide = void 0, swiper.clickedIndex = void 0;
+    return;
+  }
+  params.slideToClickedSlide && swiper.clickedIndex !== void 0 && swiper.clickedIndex !== swiper.activeIndex && swiper.slideToClickedSlide();
+}
+
+// node_modules/swiper/core/update/index.js
+var update_default = {
+  updateSize,
+  updateSlides,
+  updateAutoHeight,
+  updateSlidesOffset,
+  updateSlidesProgress,
+  updateProgress,
+  updateSlidesClasses,
+  updateActiveIndex,
+  updateClickedSlide
+};
+
+// node_modules/swiper/core/translate/getTranslate.js
+function getSwiperTranslate(axis = this.isHorizontal() ? "x" : "y") {
+  let swiper = this, {
+    params,
+    rtlTranslate: rtl,
+    translate,
+    wrapperEl
+  } = swiper;
+  if (params.virtualTranslate)
+    return rtl ? -translate : translate;
+  if (params.cssMode)
+    return translate;
+  let currentTranslate = getTranslate(wrapperEl, axis);
+  return rtl && (currentTranslate = -currentTranslate), currentTranslate || 0;
+}
+
+// node_modules/swiper/core/translate/setTranslate.js
+function setTranslate(translate, byController) {
+  let swiper = this, {
+    rtlTranslate: rtl,
+    params,
+    wrapperEl,
+    progress: progress2
+  } = swiper, x6 = 0, y4 = 0, z6 = 0;
+  swiper.isHorizontal() ? x6 = rtl ? -translate : translate : y4 = translate, params.roundLengths && (x6 = Math.floor(x6), y4 = Math.floor(y4)), params.cssMode ? wrapperEl[swiper.isHorizontal() ? "scrollLeft" : "scrollTop"] = swiper.isHorizontal() ? -x6 : -y4 : params.virtualTranslate || (wrapperEl.style.transform = `translate3d(${x6}px, ${y4}px, ${z6}px)`), swiper.previousTranslate = swiper.translate, swiper.translate = swiper.isHorizontal() ? x6 : y4;
+  let newProgress, translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  translatesDiff === 0 ? newProgress = 0 : newProgress = (translate - swiper.minTranslate()) / translatesDiff, newProgress !== progress2 && swiper.updateProgress(translate), swiper.emit("setTranslate", swiper.translate, byController);
+}
+
+// node_modules/swiper/core/translate/minTranslate.js
+function minTranslate() {
+  return -this.snapGrid[0];
+}
+
+// node_modules/swiper/core/translate/maxTranslate.js
+function maxTranslate() {
+  return -this.snapGrid[this.snapGrid.length - 1];
+}
+
+// node_modules/swiper/core/translate/translateTo.js
+function translateTo(translate = 0, speed = this.params.speed, runCallbacks = !0, translateBounds = !0, internal) {
+  let swiper = this, {
+    params,
+    wrapperEl
+  } = swiper;
+  if (swiper.animating && params.preventInteractionOnTransition)
+    return !1;
+  let minTranslate2 = swiper.minTranslate(), maxTranslate2 = swiper.maxTranslate(), newTranslate;
+  if (translateBounds && translate > minTranslate2 ? newTranslate = minTranslate2 : translateBounds && translate < maxTranslate2 ? newTranslate = maxTranslate2 : newTranslate = translate, swiper.updateProgress(newTranslate), params.cssMode) {
+    let isH = swiper.isHorizontal();
+    if (speed === 0)
+      wrapperEl[isH ? "scrollLeft" : "scrollTop"] = -newTranslate;
+    else {
+      if (!swiper.support.smoothScroll)
+        return animateCSSModeScroll({
+          swiper,
+          targetPosition: -newTranslate,
+          side: isH ? "left" : "top"
+        }), !0;
+      wrapperEl.scrollTo({
+        [isH ? "left" : "top"]: -newTranslate,
+        behavior: "smooth"
+      });
+    }
+    return !0;
+  }
+  return speed === 0 ? (swiper.setTransition(0), swiper.setTranslate(newTranslate), runCallbacks && (swiper.emit("beforeTransitionStart", speed, internal), swiper.emit("transitionEnd"))) : (swiper.setTransition(speed), swiper.setTranslate(newTranslate), runCallbacks && (swiper.emit("beforeTransitionStart", speed, internal), swiper.emit("transitionStart")), swiper.animating || (swiper.animating = !0, swiper.onTranslateToWrapperTransitionEnd || (swiper.onTranslateToWrapperTransitionEnd = function(e6) {
+    !swiper || swiper.destroyed || e6.target === this && (swiper.wrapperEl.removeEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd), swiper.onTranslateToWrapperTransitionEnd = null, delete swiper.onTranslateToWrapperTransitionEnd, runCallbacks && swiper.emit("transitionEnd"));
+  }), swiper.wrapperEl.addEventListener("transitionend", swiper.onTranslateToWrapperTransitionEnd))), !0;
+}
+
+// node_modules/swiper/core/translate/index.js
+var translate_default = {
+  getTranslate: getSwiperTranslate,
+  setTranslate,
+  minTranslate,
+  maxTranslate,
+  translateTo
+};
+
+// node_modules/swiper/core/transition/setTransition.js
+function setTransition(duration, byController) {
+  let swiper = this;
+  swiper.params.cssMode || (swiper.wrapperEl.style.transitionDuration = `${duration}ms`), swiper.emit("setTransition", duration, byController);
+}
+
+// node_modules/swiper/core/transition/transitionEmit.js
+function transitionEmit({
+  swiper,
+  runCallbacks,
+  direction,
+  step
+}) {
+  let {
+    activeIndex,
+    previousIndex
+  } = swiper, dir = direction;
+  if (dir || (activeIndex > previousIndex ? dir = "next" : activeIndex < previousIndex ? dir = "prev" : dir = "reset"), swiper.emit(`transition${step}`), runCallbacks && activeIndex !== previousIndex) {
+    if (dir === "reset") {
+      swiper.emit(`slideResetTransition${step}`);
+      return;
+    }
+    swiper.emit(`slideChangeTransition${step}`), dir === "next" ? swiper.emit(`slideNextTransition${step}`) : swiper.emit(`slidePrevTransition${step}`);
+  }
+}
+
+// node_modules/swiper/core/transition/transitionStart.js
+function transitionStart(runCallbacks = !0, direction) {
+  let swiper = this, {
+    params
+  } = swiper;
+  params.cssMode || (params.autoHeight && swiper.updateAutoHeight(), transitionEmit({
+    swiper,
+    runCallbacks,
+    direction,
+    step: "Start"
+  }));
+}
+
+// node_modules/swiper/core/transition/transitionEnd.js
+function transitionEnd(runCallbacks = !0, direction) {
+  let swiper = this, {
+    params
+  } = swiper;
+  swiper.animating = !1, !params.cssMode && (swiper.setTransition(0), transitionEmit({
+    swiper,
+    runCallbacks,
+    direction,
+    step: "End"
+  }));
+}
+
+// node_modules/swiper/core/transition/index.js
+var transition_default = {
+  setTransition,
+  transitionStart,
+  transitionEnd
+};
+
+// node_modules/swiper/core/slide/slideTo.js
+function slideTo(index = 0, speed = this.params.speed, runCallbacks = !0, internal, initial) {
+  typeof index == "string" && (index = parseInt(index, 10));
+  let swiper = this, slideIndex = index;
+  slideIndex < 0 && (slideIndex = 0);
+  let {
+    params,
+    snapGrid,
+    slidesGrid,
+    previousIndex,
+    activeIndex,
+    rtlTranslate: rtl,
+    wrapperEl,
+    enabled
+  } = swiper;
+  if (swiper.animating && params.preventInteractionOnTransition || !enabled && !internal && !initial)
+    return !1;
+  let skip = Math.min(swiper.params.slidesPerGroupSkip, slideIndex), snapIndex = skip + Math.floor((slideIndex - skip) / swiper.params.slidesPerGroup);
+  snapIndex >= snapGrid.length && (snapIndex = snapGrid.length - 1);
+  let translate = -snapGrid[snapIndex];
+  if (params.normalizeSlideIndex)
+    for (let i10 = 0; i10 < slidesGrid.length; i10 += 1) {
+      let normalizedTranslate = -Math.floor(translate * 100), normalizedGrid = Math.floor(slidesGrid[i10] * 100), normalizedGridNext = Math.floor(slidesGrid[i10 + 1] * 100);
+      typeof slidesGrid[i10 + 1] < "u" ? normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext - (normalizedGridNext - normalizedGrid) / 2 ? slideIndex = i10 : normalizedTranslate >= normalizedGrid && normalizedTranslate < normalizedGridNext && (slideIndex = i10 + 1) : normalizedTranslate >= normalizedGrid && (slideIndex = i10);
+    }
+  if (swiper.initialized && slideIndex !== activeIndex && (!swiper.allowSlideNext && translate < swiper.translate && translate < swiper.minTranslate() || !swiper.allowSlidePrev && translate > swiper.translate && translate > swiper.maxTranslate() && (activeIndex || 0) !== slideIndex))
+    return !1;
+  slideIndex !== (previousIndex || 0) && runCallbacks && swiper.emit("beforeSlideChangeStart"), swiper.updateProgress(translate);
+  let direction;
+  if (slideIndex > activeIndex ? direction = "next" : slideIndex < activeIndex ? direction = "prev" : direction = "reset", rtl && -translate === swiper.translate || !rtl && translate === swiper.translate)
+    return swiper.updateActiveIndex(slideIndex), params.autoHeight && swiper.updateAutoHeight(), swiper.updateSlidesClasses(), params.effect !== "slide" && swiper.setTranslate(translate), direction !== "reset" && (swiper.transitionStart(runCallbacks, direction), swiper.transitionEnd(runCallbacks, direction)), !1;
+  if (params.cssMode) {
+    let isH = swiper.isHorizontal(), t14 = rtl ? translate : -translate;
+    if (speed === 0) {
+      let isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+      isVirtual && (swiper.wrapperEl.style.scrollSnapType = "none", swiper._immediateVirtual = !0), isVirtual && !swiper._cssModeVirtualInitialSet && swiper.params.initialSlide > 0 ? (swiper._cssModeVirtualInitialSet = !0, requestAnimationFrame(() => {
+        wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t14;
+      })) : wrapperEl[isH ? "scrollLeft" : "scrollTop"] = t14, isVirtual && requestAnimationFrame(() => {
+        swiper.wrapperEl.style.scrollSnapType = "", swiper._immediateVirtual = !1;
+      });
+    } else {
+      if (!swiper.support.smoothScroll)
+        return animateCSSModeScroll({
+          swiper,
+          targetPosition: t14,
+          side: isH ? "left" : "top"
+        }), !0;
+      wrapperEl.scrollTo({
+        [isH ? "left" : "top"]: t14,
+        behavior: "smooth"
+      });
+    }
+    return !0;
+  }
+  return swiper.setTransition(speed), swiper.setTranslate(translate), swiper.updateActiveIndex(slideIndex), swiper.updateSlidesClasses(), swiper.emit("beforeTransitionStart", speed, internal), swiper.transitionStart(runCallbacks, direction), speed === 0 ? swiper.transitionEnd(runCallbacks, direction) : swiper.animating || (swiper.animating = !0, swiper.onSlideToWrapperTransitionEnd || (swiper.onSlideToWrapperTransitionEnd = function(e6) {
+    !swiper || swiper.destroyed || e6.target === this && (swiper.wrapperEl.removeEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd), swiper.onSlideToWrapperTransitionEnd = null, delete swiper.onSlideToWrapperTransitionEnd, swiper.transitionEnd(runCallbacks, direction));
+  }), swiper.wrapperEl.addEventListener("transitionend", swiper.onSlideToWrapperTransitionEnd)), !0;
+}
+
+// node_modules/swiper/core/slide/slideToLoop.js
+function slideToLoop(index = 0, speed = this.params.speed, runCallbacks = !0, internal) {
+  typeof index == "string" && (index = parseInt(index, 10));
+  let swiper = this, newIndex = index;
+  return swiper.params.loop && (swiper.virtual && swiper.params.virtual.enabled ? newIndex = newIndex + swiper.virtual.slidesBefore : newIndex = swiper.getSlideIndex(swiper.slides.filter((slideEl) => slideEl.getAttribute("data-swiper-slide-index") * 1 === newIndex)[0])), swiper.slideTo(newIndex, speed, runCallbacks, internal);
+}
+
+// node_modules/swiper/core/slide/slideNext.js
+function slideNext(speed = this.params.speed, runCallbacks = !0, internal) {
+  let swiper = this, {
+    enabled,
+    params,
+    animating
+  } = swiper;
+  if (!enabled)
+    return swiper;
+  let perGroup = params.slidesPerGroup;
+  params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto && (perGroup = Math.max(swiper.slidesPerViewDynamic("current", !0), 1));
+  let increment = swiper.activeIndex < params.slidesPerGroupSkip ? 1 : perGroup, isVirtual = swiper.virtual && params.virtual.enabled;
+  if (params.loop) {
+    if (animating && !isVirtual && params.loopPreventsSliding)
+      return !1;
+    swiper.loopFix({
+      direction: "next"
+    }), swiper._clientLeft = swiper.wrapperEl.clientLeft;
+  }
+  return params.rewind && swiper.isEnd ? swiper.slideTo(0, speed, runCallbacks, internal) : swiper.slideTo(swiper.activeIndex + increment, speed, runCallbacks, internal);
+}
+
+// node_modules/swiper/core/slide/slidePrev.js
+function slidePrev(speed = this.params.speed, runCallbacks = !0, internal) {
+  let swiper = this, {
+    params,
+    snapGrid,
+    slidesGrid,
+    rtlTranslate,
+    enabled,
+    animating
+  } = swiper;
+  if (!enabled)
+    return swiper;
+  let isVirtual = swiper.virtual && params.virtual.enabled;
+  if (params.loop) {
+    if (animating && !isVirtual && params.loopPreventsSliding)
+      return !1;
+    swiper.loopFix({
+      direction: "prev"
+    }), swiper._clientLeft = swiper.wrapperEl.clientLeft;
+  }
+  let translate = rtlTranslate ? swiper.translate : -swiper.translate;
+  function normalize(val) {
+    return val < 0 ? -Math.floor(Math.abs(val)) : Math.floor(val);
+  }
+  let normalizedTranslate = normalize(translate), normalizedSnapGrid = snapGrid.map((val) => normalize(val)), prevSnap = snapGrid[normalizedSnapGrid.indexOf(normalizedTranslate) - 1];
+  if (typeof prevSnap > "u" && params.cssMode) {
+    let prevSnapIndex;
+    snapGrid.forEach((snap, snapIndex) => {
+      normalizedTranslate >= snap && (prevSnapIndex = snapIndex);
+    }), typeof prevSnapIndex < "u" && (prevSnap = snapGrid[prevSnapIndex > 0 ? prevSnapIndex - 1 : prevSnapIndex]);
+  }
+  let prevIndex = 0;
+  if (typeof prevSnap < "u" && (prevIndex = slidesGrid.indexOf(prevSnap), prevIndex < 0 && (prevIndex = swiper.activeIndex - 1), params.slidesPerView === "auto" && params.slidesPerGroup === 1 && params.slidesPerGroupAuto && (prevIndex = prevIndex - swiper.slidesPerViewDynamic("previous", !0) + 1, prevIndex = Math.max(prevIndex, 0))), params.rewind && swiper.isBeginning) {
+    let lastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1;
+    return swiper.slideTo(lastIndex, speed, runCallbacks, internal);
+  }
+  return swiper.slideTo(prevIndex, speed, runCallbacks, internal);
+}
+
+// node_modules/swiper/core/slide/slideReset.js
+function slideReset(speed = this.params.speed, runCallbacks = !0, internal) {
+  let swiper = this;
+  return swiper.slideTo(swiper.activeIndex, speed, runCallbacks, internal);
+}
+
+// node_modules/swiper/core/slide/slideToClosest.js
+function slideToClosest(speed = this.params.speed, runCallbacks = !0, internal, threshold = 0.5) {
+  let swiper = this, index = swiper.activeIndex, skip = Math.min(swiper.params.slidesPerGroupSkip, index), snapIndex = skip + Math.floor((index - skip) / swiper.params.slidesPerGroup), translate = swiper.rtlTranslate ? swiper.translate : -swiper.translate;
+  if (translate >= swiper.snapGrid[snapIndex]) {
+    let currentSnap = swiper.snapGrid[snapIndex], nextSnap = swiper.snapGrid[snapIndex + 1];
+    translate - currentSnap > (nextSnap - currentSnap) * threshold && (index += swiper.params.slidesPerGroup);
+  } else {
+    let prevSnap = swiper.snapGrid[snapIndex - 1], currentSnap = swiper.snapGrid[snapIndex];
+    translate - prevSnap <= (currentSnap - prevSnap) * threshold && (index -= swiper.params.slidesPerGroup);
+  }
+  return index = Math.max(index, 0), index = Math.min(index, swiper.slidesGrid.length - 1), swiper.slideTo(index, speed, runCallbacks, internal);
+}
+
+// node_modules/swiper/core/slide/slideToClickedSlide.js
+function slideToClickedSlide() {
+  let swiper = this, {
+    params,
+    slidesEl
+  } = swiper, slidesPerView = params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : params.slidesPerView, slideToIndex = swiper.clickedIndex, realIndex, slideSelector = swiper.isElement ? "swiper-slide" : `.${params.slideClass}`;
+  if (params.loop) {
+    if (swiper.animating)
+      return;
+    realIndex = parseInt(swiper.clickedSlide.getAttribute("data-swiper-slide-index"), 10), params.centeredSlides ? slideToIndex < swiper.loopedSlides - slidesPerView / 2 || slideToIndex > swiper.slides.length - swiper.loopedSlides + slidesPerView / 2 ? (swiper.loopFix(), slideToIndex = swiper.getSlideIndex(elementChildren(slidesEl, `${slideSelector}[data-swiper-slide-index="${realIndex}"]`)[0]), nextTick(() => {
+      swiper.slideTo(slideToIndex);
+    })) : swiper.slideTo(slideToIndex) : slideToIndex > swiper.slides.length - slidesPerView ? (swiper.loopFix(), slideToIndex = swiper.getSlideIndex(elementChildren(slidesEl, `${slideSelector}[data-swiper-slide-index="${realIndex}"]`)[0]), nextTick(() => {
+      swiper.slideTo(slideToIndex);
+    })) : swiper.slideTo(slideToIndex);
+  } else
+    swiper.slideTo(slideToIndex);
+}
+
+// node_modules/swiper/core/slide/index.js
+var slide_default = {
+  slideTo,
+  slideToLoop,
+  slideNext,
+  slidePrev,
+  slideReset,
+  slideToClosest,
+  slideToClickedSlide
+};
+
+// node_modules/swiper/core/loop/loopCreate.js
+function loopCreate(slideRealIndex) {
+  let swiper = this, {
+    params,
+    slidesEl
+  } = swiper;
+  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled)
+    return;
+  elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`).forEach((el, index) => {
+    el.setAttribute("data-swiper-slide-index", index);
+  }), swiper.loopFix({
+    slideRealIndex,
+    direction: params.centeredSlides ? void 0 : "next"
+  });
+}
+
+// node_modules/swiper/core/loop/loopFix.js
+function loopFix({
+  slideRealIndex,
+  slideTo: slideTo2 = !0,
+  direction,
+  setTranslate: setTranslate2,
+  activeSlideIndex,
+  byController,
+  byMousewheel
+} = {}) {
+  let swiper = this;
+  if (!swiper.params.loop)
+    return;
+  swiper.emit("beforeLoopFix");
+  let {
+    slides,
+    allowSlidePrev,
+    allowSlideNext,
+    slidesEl,
+    params
+  } = swiper;
+  if (swiper.allowSlidePrev = !0, swiper.allowSlideNext = !0, swiper.virtual && params.virtual.enabled) {
+    slideTo2 && (!params.centeredSlides && swiper.snapIndex === 0 ? swiper.slideTo(swiper.virtual.slides.length, 0, !1, !0) : params.centeredSlides && swiper.snapIndex < params.slidesPerView ? swiper.slideTo(swiper.virtual.slides.length + swiper.snapIndex, 0, !1, !0) : swiper.snapIndex === swiper.snapGrid.length - 1 && swiper.slideTo(swiper.virtual.slidesBefore, 0, !1, !0)), swiper.allowSlidePrev = allowSlidePrev, swiper.allowSlideNext = allowSlideNext, swiper.emit("loopFix");
+    return;
+  }
+  let slidesPerView = params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(parseFloat(params.slidesPerView, 10)), loopedSlides = params.loopedSlides || slidesPerView;
+  loopedSlides % params.slidesPerGroup !== 0 && (loopedSlides += params.slidesPerGroup - loopedSlides % params.slidesPerGroup), swiper.loopedSlides = loopedSlides;
+  let prependSlidesIndexes = [], appendSlidesIndexes = [], activeIndex = swiper.activeIndex;
+  typeof activeSlideIndex > "u" ? activeSlideIndex = swiper.getSlideIndex(swiper.slides.filter((el) => el.classList.contains("swiper-slide-active"))[0]) : activeIndex = activeSlideIndex;
+  let isNext = direction === "next" || !direction, isPrev = direction === "prev" || !direction, slidesPrepended = 0, slidesAppended = 0;
+  if (activeSlideIndex < loopedSlides) {
+    slidesPrepended = Math.max(loopedSlides - activeSlideIndex, params.slidesPerGroup);
+    for (let i10 = 0; i10 < loopedSlides - activeSlideIndex; i10 += 1) {
+      let index = i10 - Math.floor(i10 / slides.length) * slides.length;
+      prependSlidesIndexes.push(slides.length - index - 1);
+    }
+  } else if (activeSlideIndex > swiper.slides.length - loopedSlides * 2) {
+    slidesAppended = Math.max(activeSlideIndex - (swiper.slides.length - loopedSlides * 2), params.slidesPerGroup);
+    for (let i10 = 0; i10 < slidesAppended; i10 += 1) {
+      let index = i10 - Math.floor(i10 / slides.length) * slides.length;
+      appendSlidesIndexes.push(index);
+    }
+  }
+  if (isPrev && prependSlidesIndexes.forEach((index) => {
+    slidesEl.prepend(swiper.slides[index]);
+  }), isNext && appendSlidesIndexes.forEach((index) => {
+    slidesEl.append(swiper.slides[index]);
+  }), swiper.recalcSlides(), params.watchSlidesProgress && swiper.updateSlidesOffset(), slideTo2) {
+    if (prependSlidesIndexes.length > 0 && isPrev)
+      if (typeof slideRealIndex > "u") {
+        let currentSlideTranslate = swiper.slidesGrid[activeIndex], diff2 = swiper.slidesGrid[activeIndex + slidesPrepended] - currentSlideTranslate;
+        byMousewheel ? swiper.setTranslate(swiper.translate - diff2) : (swiper.slideTo(activeIndex + slidesPrepended, 0, !1, !0), setTranslate2 && (swiper.touches[swiper.isHorizontal() ? "startX" : "startY"] += diff2));
+      } else
+        setTranslate2 && swiper.slideToLoop(slideRealIndex, 0, !1, !0);
+    else if (appendSlidesIndexes.length > 0 && isNext)
+      if (typeof slideRealIndex > "u") {
+        let currentSlideTranslate = swiper.slidesGrid[activeIndex], diff2 = swiper.slidesGrid[activeIndex - slidesAppended] - currentSlideTranslate;
+        byMousewheel ? swiper.setTranslate(swiper.translate - diff2) : (swiper.slideTo(activeIndex - slidesAppended, 0, !1, !0), setTranslate2 && (swiper.touches[swiper.isHorizontal() ? "startX" : "startY"] += diff2));
+      } else
+        swiper.slideToLoop(slideRealIndex, 0, !1, !0);
+  }
+  if (swiper.allowSlidePrev = allowSlidePrev, swiper.allowSlideNext = allowSlideNext, swiper.controller && swiper.controller.control && !byController) {
+    let loopParams = {
+      slideRealIndex,
+      slideTo: !1,
+      direction,
+      setTranslate: setTranslate2,
+      activeSlideIndex,
+      byController: !0
+    };
+    Array.isArray(swiper.controller.control) ? swiper.controller.control.forEach((c9) => {
+      c9.params.loop && c9.loopFix(loopParams);
+    }) : swiper.controller.control instanceof swiper.constructor && swiper.controller.control.params.loop && swiper.controller.control.loopFix(loopParams);
+  }
+  swiper.emit("loopFix");
+}
+
+// node_modules/swiper/core/loop/loopDestroy.js
+function loopDestroy() {
+  let swiper = this, {
+    slides,
+    params,
+    slidesEl
+  } = swiper;
+  if (!params.loop || swiper.virtual && swiper.params.virtual.enabled)
+    return;
+  swiper.recalcSlides();
+  let newSlidesOrder = [];
+  slides.forEach((slideEl) => {
+    let index = typeof slideEl.swiperSlideIndex > "u" ? slideEl.getAttribute("data-swiper-slide-index") * 1 : slideEl.swiperSlideIndex;
+    newSlidesOrder[index] = slideEl;
+  }), slides.forEach((slideEl) => {
+    slideEl.removeAttribute("data-swiper-slide-index");
+  }), newSlidesOrder.forEach((slideEl) => {
+    slidesEl.append(slideEl);
+  }), swiper.recalcSlides(), swiper.slideTo(swiper.realIndex, 0);
+}
+
+// node_modules/swiper/core/loop/index.js
+var loop_default = {
+  loopCreate,
+  loopFix,
+  loopDestroy
+};
+
+// node_modules/swiper/core/grab-cursor/setGrabCursor.js
+function setGrabCursor(moving) {
+  let swiper = this;
+  if (!swiper.params.simulateTouch || swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode)
+    return;
+  let el = swiper.params.touchEventsTarget === "container" ? swiper.el : swiper.wrapperEl;
+  swiper.isElement && (swiper.__preventObserver__ = !0), el.style.cursor = "move", el.style.cursor = moving ? "grabbing" : "grab", swiper.isElement && requestAnimationFrame(() => {
+    swiper.__preventObserver__ = !1;
+  });
+}
+
+// node_modules/swiper/core/grab-cursor/unsetGrabCursor.js
+function unsetGrabCursor() {
+  let swiper = this;
+  swiper.params.watchOverflow && swiper.isLocked || swiper.params.cssMode || (swiper.isElement && (swiper.__preventObserver__ = !0), swiper[swiper.params.touchEventsTarget === "container" ? "el" : "wrapperEl"].style.cursor = "", swiper.isElement && requestAnimationFrame(() => {
+    swiper.__preventObserver__ = !1;
+  }));
+}
+
+// node_modules/swiper/core/grab-cursor/index.js
+var grab_cursor_default = {
+  setGrabCursor,
+  unsetGrabCursor
+};
+
+// node_modules/swiper/core/events/onTouchStart.js
+function closestElement(selector, base = this) {
+  function __closestFrom(el) {
+    if (!el || el === getDocument() || el === getWindow())
+      return null;
+    el.assignedSlot && (el = el.assignedSlot);
+    let found = el.closest(selector);
+    return !found && !el.getRootNode ? null : found || __closestFrom(el.getRootNode().host);
+  }
+  return __closestFrom(base);
+}
+function onTouchStart(event2) {
+  let swiper = this, document2 = getDocument(), window2 = getWindow(), data = swiper.touchEventsData;
+  data.evCache.push(event2);
+  let {
+    params,
+    touches,
+    enabled
+  } = swiper;
+  if (!enabled || !params.simulateTouch && event2.pointerType === "mouse" || swiper.animating && params.preventInteractionOnTransition)
+    return;
+  !swiper.animating && params.cssMode && params.loop && swiper.loopFix();
+  let e6 = event2;
+  e6.originalEvent && (e6 = e6.originalEvent);
+  let targetEl = e6.target;
+  if (params.touchEventsTarget === "wrapper" && !swiper.wrapperEl.contains(targetEl) || "which" in e6 && e6.which === 3 || "button" in e6 && e6.button > 0 || data.isTouched && data.isMoved)
+    return;
+  let swipingClassHasValue = !!params.noSwipingClass && params.noSwipingClass !== "", eventPath = event2.composedPath ? event2.composedPath() : event2.path;
+  swipingClassHasValue && e6.target && e6.target.shadowRoot && eventPath && (targetEl = eventPath[0]);
+  let noSwipingSelector = params.noSwipingSelector ? params.noSwipingSelector : `.${params.noSwipingClass}`, isTargetShadow = !!(e6.target && e6.target.shadowRoot);
+  if (params.noSwiping && (isTargetShadow ? closestElement(noSwipingSelector, targetEl) : targetEl.closest(noSwipingSelector))) {
+    swiper.allowClick = !0;
+    return;
+  }
+  if (params.swipeHandler && !targetEl.closest(params.swipeHandler))
+    return;
+  touches.currentX = e6.pageX, touches.currentY = e6.pageY;
+  let startX = touches.currentX, startY = touches.currentY, edgeSwipeDetection = params.edgeSwipeDetection || params.iOSEdgeSwipeDetection, edgeSwipeThreshold = params.edgeSwipeThreshold || params.iOSEdgeSwipeThreshold;
+  if (edgeSwipeDetection && (startX <= edgeSwipeThreshold || startX >= window2.innerWidth - edgeSwipeThreshold))
+    if (edgeSwipeDetection === "prevent")
+      event2.preventDefault();
+    else
+      return;
+  Object.assign(data, {
+    isTouched: !0,
+    isMoved: !1,
+    allowTouchCallbacks: !0,
+    isScrolling: void 0,
+    startMoving: void 0
+  }), touches.startX = startX, touches.startY = startY, data.touchStartTime = now(), swiper.allowClick = !0, swiper.updateSize(), swiper.swipeDirection = void 0, params.threshold > 0 && (data.allowThresholdMove = !1);
+  let preventDefault = !0;
+  targetEl.matches(data.focusableElements) && (preventDefault = !1, targetEl.nodeName === "SELECT" && (data.isTouched = !1)), document2.activeElement && document2.activeElement.matches(data.focusableElements) && document2.activeElement !== targetEl && document2.activeElement.blur();
+  let shouldPreventDefault = preventDefault && swiper.allowTouchMove && params.touchStartPreventDefault;
+  (params.touchStartForcePreventDefault || shouldPreventDefault) && !targetEl.isContentEditable && e6.preventDefault(), swiper.params.freeMode && swiper.params.freeMode.enabled && swiper.freeMode && swiper.animating && !params.cssMode && swiper.freeMode.onTouchStart(), swiper.emit("touchStart", e6);
+}
+
+// node_modules/swiper/core/events/onTouchMove.js
+function onTouchMove(event2) {
+  let document2 = getDocument(), swiper = this, data = swiper.touchEventsData, {
+    params,
+    touches,
+    rtlTranslate: rtl,
+    enabled
+  } = swiper;
+  if (!enabled || !params.simulateTouch && event2.pointerType === "mouse")
+    return;
+  let e6 = event2;
+  if (e6.originalEvent && (e6 = e6.originalEvent), !data.isTouched) {
+    data.startMoving && data.isScrolling && swiper.emit("touchMoveOpposite", e6);
+    return;
+  }
+  let pointerIndex = data.evCache.findIndex((cachedEv) => cachedEv.pointerId === e6.pointerId);
+  pointerIndex >= 0 && (data.evCache[pointerIndex] = e6);
+  let targetTouch = data.evCache.length > 1 ? data.evCache[0] : e6, pageX = targetTouch.pageX, pageY = targetTouch.pageY;
+  if (e6.preventedByNestedSwiper) {
+    touches.startX = pageX, touches.startY = pageY;
+    return;
+  }
+  if (!swiper.allowTouchMove) {
+    e6.target.matches(data.focusableElements) || (swiper.allowClick = !1), data.isTouched && (Object.assign(touches, {
+      startX: pageX,
+      startY: pageY,
+      prevX: swiper.touches.currentX,
+      prevY: swiper.touches.currentY,
+      currentX: pageX,
+      currentY: pageY
+    }), data.touchStartTime = now());
+    return;
+  }
+  if (params.touchReleaseOnEdges && !params.loop) {
+    if (swiper.isVertical()) {
+      if (pageY < touches.startY && swiper.translate <= swiper.maxTranslate() || pageY > touches.startY && swiper.translate >= swiper.minTranslate()) {
+        data.isTouched = !1, data.isMoved = !1;
+        return;
+      }
+    } else if (pageX < touches.startX && swiper.translate <= swiper.maxTranslate() || pageX > touches.startX && swiper.translate >= swiper.minTranslate())
+      return;
+  }
+  if (document2.activeElement && e6.target === document2.activeElement && e6.target.matches(data.focusableElements)) {
+    data.isMoved = !0, swiper.allowClick = !1;
+    return;
+  }
+  if (data.allowTouchCallbacks && swiper.emit("touchMove", e6), e6.targetTouches && e6.targetTouches.length > 1)
+    return;
+  touches.currentX = pageX, touches.currentY = pageY;
+  let diffX = touches.currentX - touches.startX, diffY = touches.currentY - touches.startY;
+  if (swiper.params.threshold && Math.sqrt(diffX ** 2 + diffY ** 2) < swiper.params.threshold)
+    return;
+  if (typeof data.isScrolling > "u") {
+    let touchAngle;
+    swiper.isHorizontal() && touches.currentY === touches.startY || swiper.isVertical() && touches.currentX === touches.startX ? data.isScrolling = !1 : diffX * diffX + diffY * diffY >= 25 && (touchAngle = Math.atan2(Math.abs(diffY), Math.abs(diffX)) * 180 / Math.PI, data.isScrolling = swiper.isHorizontal() ? touchAngle > params.touchAngle : 90 - touchAngle > params.touchAngle);
+  }
+  if (data.isScrolling && swiper.emit("touchMoveOpposite", e6), typeof data.startMoving > "u" && (touches.currentX !== touches.startX || touches.currentY !== touches.startY) && (data.startMoving = !0), data.isScrolling || swiper.zoom && swiper.params.zoom && swiper.params.zoom.enabled && data.evCache.length > 1) {
+    data.isTouched = !1;
+    return;
+  }
+  if (!data.startMoving)
+    return;
+  swiper.allowClick = !1, !params.cssMode && e6.cancelable && e6.preventDefault(), params.touchMoveStopPropagation && !params.nested && e6.stopPropagation();
+  let diff2 = swiper.isHorizontal() ? diffX : diffY, touchesDiff = swiper.isHorizontal() ? touches.currentX - touches.previousX : touches.currentY - touches.previousY;
+  params.oneWayMovement && (diff2 = Math.abs(diff2) * (rtl ? 1 : -1), touchesDiff = Math.abs(touchesDiff) * (rtl ? 1 : -1)), touches.diff = diff2, diff2 *= params.touchRatio, rtl && (diff2 = -diff2, touchesDiff = -touchesDiff);
+  let prevTouchesDirection = swiper.touchesDirection;
+  swiper.swipeDirection = diff2 > 0 ? "prev" : "next", swiper.touchesDirection = touchesDiff > 0 ? "prev" : "next";
+  let isLoop = swiper.params.loop && !params.cssMode;
+  if (!data.isMoved) {
+    if (isLoop && swiper.loopFix({
+      direction: swiper.swipeDirection
+    }), data.startTranslate = swiper.getTranslate(), swiper.setTransition(0), swiper.animating) {
+      let evt = new window.CustomEvent("transitionend", {
+        bubbles: !0,
+        cancelable: !0
+      });
+      swiper.wrapperEl.dispatchEvent(evt);
+    }
+    data.allowMomentumBounce = !1, params.grabCursor && (swiper.allowSlideNext === !0 || swiper.allowSlidePrev === !0) && swiper.setGrabCursor(!0), swiper.emit("sliderFirstMove", e6);
+  }
+  let loopFixed;
+  data.isMoved && prevTouchesDirection !== swiper.touchesDirection && isLoop && Math.abs(diff2) >= 1 && (swiper.loopFix({
+    direction: swiper.swipeDirection,
+    setTranslate: !0
+  }), loopFixed = !0), swiper.emit("sliderMove", e6), data.isMoved = !0, data.currentTranslate = diff2 + data.startTranslate;
+  let disableParentSwiper = !0, resistanceRatio = params.resistanceRatio;
+  if (params.touchReleaseOnEdges && (resistanceRatio = 0), diff2 > 0 ? (isLoop && !loopFixed && data.currentTranslate > (params.centeredSlides ? swiper.minTranslate() - swiper.size / 2 : swiper.minTranslate()) && swiper.loopFix({
+    direction: "prev",
+    setTranslate: !0,
+    activeSlideIndex: 0
+  }), data.currentTranslate > swiper.minTranslate() && (disableParentSwiper = !1, params.resistance && (data.currentTranslate = swiper.minTranslate() - 1 + (-swiper.minTranslate() + data.startTranslate + diff2) ** resistanceRatio))) : diff2 < 0 && (isLoop && !loopFixed && data.currentTranslate < (params.centeredSlides ? swiper.maxTranslate() + swiper.size / 2 : swiper.maxTranslate()) && swiper.loopFix({
+    direction: "next",
+    setTranslate: !0,
+    activeSlideIndex: swiper.slides.length - (params.slidesPerView === "auto" ? swiper.slidesPerViewDynamic() : Math.ceil(parseFloat(params.slidesPerView, 10)))
+  }), data.currentTranslate < swiper.maxTranslate() && (disableParentSwiper = !1, params.resistance && (data.currentTranslate = swiper.maxTranslate() + 1 - (swiper.maxTranslate() - data.startTranslate - diff2) ** resistanceRatio))), disableParentSwiper && (e6.preventedByNestedSwiper = !0), !swiper.allowSlideNext && swiper.swipeDirection === "next" && data.currentTranslate < data.startTranslate && (data.currentTranslate = data.startTranslate), !swiper.allowSlidePrev && swiper.swipeDirection === "prev" && data.currentTranslate > data.startTranslate && (data.currentTranslate = data.startTranslate), !swiper.allowSlidePrev && !swiper.allowSlideNext && (data.currentTranslate = data.startTranslate), params.threshold > 0)
+    if (Math.abs(diff2) > params.threshold || data.allowThresholdMove) {
+      if (!data.allowThresholdMove) {
+        data.allowThresholdMove = !0, touches.startX = touches.currentX, touches.startY = touches.currentY, data.currentTranslate = data.startTranslate, touches.diff = swiper.isHorizontal() ? touches.currentX - touches.startX : touches.currentY - touches.startY;
+        return;
+      }
+    } else {
+      data.currentTranslate = data.startTranslate;
+      return;
+    }
+  !params.followFinger || params.cssMode || ((params.freeMode && params.freeMode.enabled && swiper.freeMode || params.watchSlidesProgress) && (swiper.updateActiveIndex(), swiper.updateSlidesClasses()), swiper.params.freeMode && params.freeMode.enabled && swiper.freeMode && swiper.freeMode.onTouchMove(), swiper.updateProgress(data.currentTranslate), swiper.setTranslate(data.currentTranslate));
+}
+
+// node_modules/swiper/core/events/onTouchEnd.js
+function onTouchEnd(event2) {
+  let swiper = this, data = swiper.touchEventsData, pointerIndex = data.evCache.findIndex((cachedEv) => cachedEv.pointerId === event2.pointerId);
+  if (pointerIndex >= 0 && data.evCache.splice(pointerIndex, 1), ["pointercancel", "pointerout", "pointerleave"].includes(event2.type) && !(event2.type === "pointercancel" && (swiper.browser.isSafari || swiper.browser.isWebView)))
+    return;
+  let {
+    params,
+    touches,
+    rtlTranslate: rtl,
+    slidesGrid,
+    enabled
+  } = swiper;
+  if (!enabled || !params.simulateTouch && event2.pointerType === "mouse")
+    return;
+  let e6 = event2;
+  if (e6.originalEvent && (e6 = e6.originalEvent), data.allowTouchCallbacks && swiper.emit("touchEnd", e6), data.allowTouchCallbacks = !1, !data.isTouched) {
+    data.isMoved && params.grabCursor && swiper.setGrabCursor(!1), data.isMoved = !1, data.startMoving = !1;
+    return;
+  }
+  params.grabCursor && data.isMoved && data.isTouched && (swiper.allowSlideNext === !0 || swiper.allowSlidePrev === !0) && swiper.setGrabCursor(!1);
+  let touchEndTime = now(), timeDiff = touchEndTime - data.touchStartTime;
+  if (swiper.allowClick) {
+    let pathTree = e6.path || e6.composedPath && e6.composedPath();
+    swiper.updateClickedSlide(pathTree && pathTree[0] || e6.target), swiper.emit("tap click", e6), timeDiff < 300 && touchEndTime - data.lastClickTime < 300 && swiper.emit("doubleTap doubleClick", e6);
+  }
+  if (data.lastClickTime = now(), nextTick(() => {
+    swiper.destroyed || (swiper.allowClick = !0);
+  }), !data.isTouched || !data.isMoved || !swiper.swipeDirection || touches.diff === 0 || data.currentTranslate === data.startTranslate) {
+    data.isTouched = !1, data.isMoved = !1, data.startMoving = !1;
+    return;
+  }
+  data.isTouched = !1, data.isMoved = !1, data.startMoving = !1;
+  let currentPos;
+  if (params.followFinger ? currentPos = rtl ? swiper.translate : -swiper.translate : currentPos = -data.currentTranslate, params.cssMode)
+    return;
+  if (swiper.params.freeMode && params.freeMode.enabled) {
+    swiper.freeMode.onTouchEnd({
+      currentPos
+    });
+    return;
+  }
+  let stopIndex = 0, groupSize = swiper.slidesSizesGrid[0];
+  for (let i10 = 0; i10 < slidesGrid.length; i10 += i10 < params.slidesPerGroupSkip ? 1 : params.slidesPerGroup) {
+    let increment2 = i10 < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+    typeof slidesGrid[i10 + increment2] < "u" ? currentPos >= slidesGrid[i10] && currentPos < slidesGrid[i10 + increment2] && (stopIndex = i10, groupSize = slidesGrid[i10 + increment2] - slidesGrid[i10]) : currentPos >= slidesGrid[i10] && (stopIndex = i10, groupSize = slidesGrid[slidesGrid.length - 1] - slidesGrid[slidesGrid.length - 2]);
+  }
+  let rewindFirstIndex = null, rewindLastIndex = null;
+  params.rewind && (swiper.isBeginning ? rewindLastIndex = swiper.params.virtual && swiper.params.virtual.enabled && swiper.virtual ? swiper.virtual.slides.length - 1 : swiper.slides.length - 1 : swiper.isEnd && (rewindFirstIndex = 0));
+  let ratio = (currentPos - slidesGrid[stopIndex]) / groupSize, increment = stopIndex < params.slidesPerGroupSkip - 1 ? 1 : params.slidesPerGroup;
+  if (timeDiff > params.longSwipesMs) {
+    if (!params.longSwipes) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    swiper.swipeDirection === "next" && (ratio >= params.longSwipesRatio ? swiper.slideTo(params.rewind && swiper.isEnd ? rewindFirstIndex : stopIndex + increment) : swiper.slideTo(stopIndex)), swiper.swipeDirection === "prev" && (ratio > 1 - params.longSwipesRatio ? swiper.slideTo(stopIndex + increment) : rewindLastIndex !== null && ratio < 0 && Math.abs(ratio) > params.longSwipesRatio ? swiper.slideTo(rewindLastIndex) : swiper.slideTo(stopIndex));
+  } else {
+    if (!params.shortSwipes) {
+      swiper.slideTo(swiper.activeIndex);
+      return;
+    }
+    swiper.navigation && (e6.target === swiper.navigation.nextEl || e6.target === swiper.navigation.prevEl) ? e6.target === swiper.navigation.nextEl ? swiper.slideTo(stopIndex + increment) : swiper.slideTo(stopIndex) : (swiper.swipeDirection === "next" && swiper.slideTo(rewindFirstIndex !== null ? rewindFirstIndex : stopIndex + increment), swiper.swipeDirection === "prev" && swiper.slideTo(rewindLastIndex !== null ? rewindLastIndex : stopIndex));
+  }
+}
+
+// node_modules/swiper/core/events/onResize.js
+var timeout;
+function onResize() {
+  let swiper = this, {
+    params,
+    el
+  } = swiper;
+  if (el && el.offsetWidth === 0)
+    return;
+  params.breakpoints && swiper.setBreakpoint();
+  let {
+    allowSlideNext,
+    allowSlidePrev,
+    snapGrid
+  } = swiper, isVirtual = swiper.virtual && swiper.params.virtual.enabled;
+  swiper.allowSlideNext = !0, swiper.allowSlidePrev = !0, swiper.updateSize(), swiper.updateSlides(), swiper.updateSlidesClasses();
+  let isVirtualLoop = isVirtual && params.loop;
+  (params.slidesPerView === "auto" || params.slidesPerView > 1) && swiper.isEnd && !swiper.isBeginning && !swiper.params.centeredSlides && !isVirtualLoop ? swiper.slideTo(swiper.slides.length - 1, 0, !1, !0) : swiper.params.loop && !isVirtual ? swiper.slideToLoop(swiper.realIndex, 0, !1, !0) : swiper.slideTo(swiper.activeIndex, 0, !1, !0), swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused && (clearTimeout(timeout), timeout = setTimeout(() => {
+    swiper.autoplay && swiper.autoplay.running && swiper.autoplay.paused && swiper.autoplay.resume();
+  }, 500)), swiper.allowSlidePrev = allowSlidePrev, swiper.allowSlideNext = allowSlideNext, swiper.params.watchOverflow && snapGrid !== swiper.snapGrid && swiper.checkOverflow();
+}
+
+// node_modules/swiper/core/events/onClick.js
+function onClick(e6) {
+  let swiper = this;
+  !swiper.enabled || swiper.allowClick || (swiper.params.preventClicks && e6.preventDefault(), swiper.params.preventClicksPropagation && swiper.animating && (e6.stopPropagation(), e6.stopImmediatePropagation()));
+}
+
+// node_modules/swiper/core/events/onScroll.js
+function onScroll() {
+  let swiper = this, {
+    wrapperEl,
+    rtlTranslate,
+    enabled
+  } = swiper;
+  if (!enabled)
+    return;
+  swiper.previousTranslate = swiper.translate, swiper.isHorizontal() ? swiper.translate = -wrapperEl.scrollLeft : swiper.translate = -wrapperEl.scrollTop, swiper.translate === 0 && (swiper.translate = 0), swiper.updateActiveIndex(), swiper.updateSlidesClasses();
+  let newProgress, translatesDiff = swiper.maxTranslate() - swiper.minTranslate();
+  translatesDiff === 0 ? newProgress = 0 : newProgress = (swiper.translate - swiper.minTranslate()) / translatesDiff, newProgress !== swiper.progress && swiper.updateProgress(rtlTranslate ? -swiper.translate : swiper.translate), swiper.emit("setTranslate", swiper.translate, !1);
+}
+
+// node_modules/swiper/shared/process-lazy-preloader.js
+var processLazyPreloader = (swiper, imageEl) => {
+  if (!swiper || swiper.destroyed || !swiper.params)
+    return;
+  let slideSelector = () => swiper.isElement ? "swiper-slide" : `.${swiper.params.slideClass}`, slideEl = imageEl.closest(slideSelector());
+  if (slideEl) {
+    let lazyEl = slideEl.querySelector(`.${swiper.params.lazyPreloaderClass}`);
+    lazyEl && lazyEl.remove();
+  }
+};
+
+// node_modules/swiper/core/events/onLoad.js
+function onLoad(e6) {
+  let swiper = this;
+  processLazyPreloader(swiper, e6.target), swiper.update();
+}
+
+// node_modules/swiper/core/events/index.js
+var dummyEventAttached = !1;
+function dummyEventListener() {
+}
+var events = (swiper, method) => {
+  let document2 = getDocument(), {
+    params,
+    el,
+    wrapperEl,
+    device
+  } = swiper, capture = !!params.nested, domMethod = method === "on" ? "addEventListener" : "removeEventListener", swiperMethod = method;
+  el[domMethod]("pointerdown", swiper.onTouchStart, {
+    passive: !1
+  }), document2[domMethod]("pointermove", swiper.onTouchMove, {
+    passive: !1,
+    capture
+  }), document2[domMethod]("pointerup", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("pointercancel", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("pointerout", swiper.onTouchEnd, {
+    passive: !0
+  }), document2[domMethod]("pointerleave", swiper.onTouchEnd, {
+    passive: !0
+  }), (params.preventClicks || params.preventClicksPropagation) && el[domMethod]("click", swiper.onClick, !0), params.cssMode && wrapperEl[domMethod]("scroll", swiper.onScroll), params.updateOnWindowResize ? swiper[swiperMethod](device.ios || device.android ? "resize orientationchange observerUpdate" : "resize observerUpdate", onResize, !0) : swiper[swiperMethod]("observerUpdate", onResize, !0), el[domMethod]("load", swiper.onLoad, {
+    capture: !0
+  });
+};
+function attachEvents() {
+  let swiper = this, document2 = getDocument(), {
+    params
+  } = swiper;
+  swiper.onTouchStart = onTouchStart.bind(swiper), swiper.onTouchMove = onTouchMove.bind(swiper), swiper.onTouchEnd = onTouchEnd.bind(swiper), params.cssMode && (swiper.onScroll = onScroll.bind(swiper)), swiper.onClick = onClick.bind(swiper), swiper.onLoad = onLoad.bind(swiper), dummyEventAttached || (document2.addEventListener("touchstart", dummyEventListener), dummyEventAttached = !0), events(swiper, "on");
+}
+function detachEvents() {
+  events(this, "off");
+}
+var events_default = {
+  attachEvents,
+  detachEvents
+};
+
+// node_modules/swiper/core/breakpoints/setBreakpoint.js
+var isGridEnabled = (swiper, params) => swiper.grid && params.grid && params.grid.rows > 1;
+function setBreakpoint() {
+  let swiper = this, {
+    realIndex,
+    initialized,
+    params,
+    el
+  } = swiper, breakpoints = params.breakpoints;
+  if (!breakpoints || breakpoints && Object.keys(breakpoints).length === 0)
+    return;
+  let breakpoint = swiper.getBreakpoint(breakpoints, swiper.params.breakpointsBase, swiper.el);
+  if (!breakpoint || swiper.currentBreakpoint === breakpoint)
+    return;
+  let breakpointParams = (breakpoint in breakpoints ? breakpoints[breakpoint] : void 0) || swiper.originalParams, wasMultiRow = isGridEnabled(swiper, params), isMultiRow = isGridEnabled(swiper, breakpointParams), wasEnabled = params.enabled;
+  wasMultiRow && !isMultiRow ? (el.classList.remove(`${params.containerModifierClass}grid`, `${params.containerModifierClass}grid-column`), swiper.emitContainerClasses()) : !wasMultiRow && isMultiRow && (el.classList.add(`${params.containerModifierClass}grid`), (breakpointParams.grid.fill && breakpointParams.grid.fill === "column" || !breakpointParams.grid.fill && params.grid.fill === "column") && el.classList.add(`${params.containerModifierClass}grid-column`), swiper.emitContainerClasses()), ["navigation", "pagination", "scrollbar"].forEach((prop) => {
+    let wasModuleEnabled = params[prop] && params[prop].enabled, isModuleEnabled = breakpointParams[prop] && breakpointParams[prop].enabled;
+    wasModuleEnabled && !isModuleEnabled && swiper[prop].disable(), !wasModuleEnabled && isModuleEnabled && swiper[prop].enable();
+  });
+  let directionChanged = breakpointParams.direction && breakpointParams.direction !== params.direction, needsReLoop = params.loop && (breakpointParams.slidesPerView !== params.slidesPerView || directionChanged);
+  directionChanged && initialized && swiper.changeDirection(), extend2(swiper.params, breakpointParams);
+  let isEnabled = swiper.params.enabled;
+  Object.assign(swiper, {
+    allowTouchMove: swiper.params.allowTouchMove,
+    allowSlideNext: swiper.params.allowSlideNext,
+    allowSlidePrev: swiper.params.allowSlidePrev
+  }), wasEnabled && !isEnabled ? swiper.disable() : !wasEnabled && isEnabled && swiper.enable(), swiper.currentBreakpoint = breakpoint, swiper.emit("_beforeBreakpoint", breakpointParams), needsReLoop && initialized && (swiper.loopDestroy(), swiper.loopCreate(realIndex), swiper.updateSlides()), swiper.emit("breakpoint", breakpointParams);
+}
+
+// node_modules/swiper/core/breakpoints/getBreakpoint.js
+function getBreakpoint(breakpoints, base = "window", containerEl) {
+  if (!breakpoints || base === "container" && !containerEl)
+    return;
+  let breakpoint = !1, window2 = getWindow(), currentHeight = base === "window" ? window2.innerHeight : containerEl.clientHeight, points2 = Object.keys(breakpoints).map((point) => {
+    if (typeof point == "string" && point.indexOf("@") === 0) {
+      let minRatio = parseFloat(point.substr(1));
+      return {
+        value: currentHeight * minRatio,
+        point
+      };
+    }
+    return {
+      value: point,
+      point
+    };
+  });
+  points2.sort((a10, b5) => parseInt(a10.value, 10) - parseInt(b5.value, 10));
+  for (let i10 = 0; i10 < points2.length; i10 += 1) {
+    let {
+      point,
+      value
+    } = points2[i10];
+    base === "window" ? window2.matchMedia(`(min-width: ${value}px)`).matches && (breakpoint = point) : value <= containerEl.clientWidth && (breakpoint = point);
+  }
+  return breakpoint || "max";
+}
+
+// node_modules/swiper/core/breakpoints/index.js
+var breakpoints_default = {
+  setBreakpoint,
+  getBreakpoint
+};
+
+// node_modules/swiper/core/classes/addClasses.js
+function prepareClasses(entries, prefix2) {
+  let resultClasses = [];
+  return entries.forEach((item) => {
+    typeof item == "object" ? Object.keys(item).forEach((classNames) => {
+      item[classNames] && resultClasses.push(prefix2 + classNames);
+    }) : typeof item == "string" && resultClasses.push(prefix2 + item);
+  }), resultClasses;
+}
+function addClasses() {
+  let swiper = this, {
+    classNames,
+    params,
+    rtl,
+    el,
+    device
+  } = swiper, suffixes = prepareClasses(["initialized", params.direction, {
+    "free-mode": swiper.params.freeMode && params.freeMode.enabled
+  }, {
+    autoheight: params.autoHeight
+  }, {
+    rtl
+  }, {
+    grid: params.grid && params.grid.rows > 1
+  }, {
+    "grid-column": params.grid && params.grid.rows > 1 && params.grid.fill === "column"
+  }, {
+    android: device.android
+  }, {
+    ios: device.ios
+  }, {
+    "css-mode": params.cssMode
+  }, {
+    centered: params.cssMode && params.centeredSlides
+  }, {
+    "watch-progress": params.watchSlidesProgress
+  }], params.containerModifierClass);
+  classNames.push(...suffixes), el.classList.add(...classNames), swiper.emitContainerClasses();
+}
+
+// node_modules/swiper/core/classes/removeClasses.js
+function removeClasses() {
+  let swiper = this, {
+    el,
+    classNames
+  } = swiper;
+  el.classList.remove(...classNames), swiper.emitContainerClasses();
+}
+
+// node_modules/swiper/core/classes/index.js
+var classes_default = {
+  addClasses,
+  removeClasses
+};
+
+// node_modules/swiper/core/check-overflow/index.js
+function checkOverflow() {
+  let swiper = this, {
+    isLocked: wasLocked,
+    params
+  } = swiper, {
+    slidesOffsetBefore
+  } = params;
+  if (slidesOffsetBefore) {
+    let lastSlideIndex = swiper.slides.length - 1, lastSlideRightEdge = swiper.slidesGrid[lastSlideIndex] + swiper.slidesSizesGrid[lastSlideIndex] + slidesOffsetBefore * 2;
+    swiper.isLocked = swiper.size > lastSlideRightEdge;
+  } else
+    swiper.isLocked = swiper.snapGrid.length === 1;
+  params.allowSlideNext === !0 && (swiper.allowSlideNext = !swiper.isLocked), params.allowSlidePrev === !0 && (swiper.allowSlidePrev = !swiper.isLocked), wasLocked && wasLocked !== swiper.isLocked && (swiper.isEnd = !1), wasLocked !== swiper.isLocked && swiper.emit(swiper.isLocked ? "lock" : "unlock");
+}
+var check_overflow_default = {
+  checkOverflow
+};
+
+// node_modules/swiper/core/defaults.js
+var defaults_default = {
+  init: !0,
+  direction: "horizontal",
+  oneWayMovement: !1,
+  touchEventsTarget: "wrapper",
+  initialSlide: 0,
+  speed: 300,
+  cssMode: !1,
+  updateOnWindowResize: !0,
+  resizeObserver: !0,
+  nested: !1,
+  createElements: !1,
+  enabled: !0,
+  focusableElements: "input, select, option, textarea, button, video, label",
+  width: null,
+  height: null,
+  preventInteractionOnTransition: !1,
+  userAgent: null,
+  url: null,
+  edgeSwipeDetection: !1,
+  edgeSwipeThreshold: 20,
+  autoHeight: !1,
+  setWrapperSize: !1,
+  virtualTranslate: !1,
+  effect: "slide",
+  breakpoints: void 0,
+  breakpointsBase: "window",
+  spaceBetween: 0,
+  slidesPerView: 1,
+  slidesPerGroup: 1,
+  slidesPerGroupSkip: 0,
+  slidesPerGroupAuto: !1,
+  centeredSlides: !1,
+  centeredSlidesBounds: !1,
+  slidesOffsetBefore: 0,
+  slidesOffsetAfter: 0,
+  normalizeSlideIndex: !0,
+  centerInsufficientSlides: !1,
+  watchOverflow: !0,
+  roundLengths: !1,
+  touchRatio: 1,
+  touchAngle: 45,
+  simulateTouch: !0,
+  shortSwipes: !0,
+  longSwipes: !0,
+  longSwipesRatio: 0.5,
+  longSwipesMs: 300,
+  followFinger: !0,
+  allowTouchMove: !0,
+  threshold: 5,
+  touchMoveStopPropagation: !1,
+  touchStartPreventDefault: !0,
+  touchStartForcePreventDefault: !1,
+  touchReleaseOnEdges: !1,
+  uniqueNavElements: !0,
+  resistance: !0,
+  resistanceRatio: 0.85,
+  watchSlidesProgress: !1,
+  grabCursor: !1,
+  preventClicks: !0,
+  preventClicksPropagation: !0,
+  slideToClickedSlide: !1,
+  loop: !1,
+  loopedSlides: null,
+  loopPreventsSliding: !0,
+  rewind: !1,
+  allowSlidePrev: !0,
+  allowSlideNext: !0,
+  swipeHandler: null,
+  noSwiping: !0,
+  noSwipingClass: "swiper-no-swiping",
+  noSwipingSelector: null,
+  passiveListeners: !0,
+  maxBackfaceHiddenSlides: 10,
+  containerModifierClass: "swiper-",
+  slideClass: "swiper-slide",
+  slideActiveClass: "swiper-slide-active",
+  slideVisibleClass: "swiper-slide-visible",
+  slideNextClass: "swiper-slide-next",
+  slidePrevClass: "swiper-slide-prev",
+  wrapperClass: "swiper-wrapper",
+  lazyPreloaderClass: "swiper-lazy-preloader",
+  runCallbacksOnInit: !0,
+  _emitClasses: !1
+};
+
+// node_modules/swiper/core/moduleExtendParams.js
+function moduleExtendParams(params, allModulesParams) {
+  return function(obj = {}) {
+    let moduleParamName = Object.keys(obj)[0], moduleParams = obj[moduleParamName];
+    if (typeof moduleParams != "object" || moduleParams === null) {
+      extend2(allModulesParams, obj);
+      return;
+    }
+    if (["navigation", "pagination", "scrollbar"].indexOf(moduleParamName) >= 0 && params[moduleParamName] === !0 && (params[moduleParamName] = {
+      auto: !0
+    }), !(moduleParamName in params && "enabled" in moduleParams)) {
+      extend2(allModulesParams, obj);
+      return;
+    }
+    params[moduleParamName] === !0 && (params[moduleParamName] = {
+      enabled: !0
+    }), typeof params[moduleParamName] == "object" && !("enabled" in params[moduleParamName]) && (params[moduleParamName].enabled = !0), params[moduleParamName] || (params[moduleParamName] = {
+      enabled: !1
+    }), extend2(allModulesParams, obj);
+  };
+}
+
+// node_modules/swiper/core/core.js
+var prototypes = {
+  eventsEmitter: events_emitter_default,
+  update: update_default,
+  translate: translate_default,
+  transition: transition_default,
+  slide: slide_default,
+  loop: loop_default,
+  grabCursor: grab_cursor_default,
+  events: events_default,
+  breakpoints: breakpoints_default,
+  checkOverflow: check_overflow_default,
+  classes: classes_default
+}, extendedDefaults = {}, Swiper = class {
+  constructor(...args) {
+    let el, params;
+    args.length === 1 && args[0].constructor && Object.prototype.toString.call(args[0]).slice(8, -1) === "Object" ? params = args[0] : [el, params] = args, params || (params = {}), params = extend2({}, params), el && !params.el && (params.el = el);
+    let document2 = getDocument();
+    if (params.el && typeof params.el == "string" && document2.querySelectorAll(params.el).length > 1) {
+      let swipers = [];
+      return document2.querySelectorAll(params.el).forEach((containerEl) => {
+        let newParams = extend2({}, params, {
+          el: containerEl
+        });
+        swipers.push(new Swiper(newParams));
+      }), swipers;
+    }
+    let swiper = this;
+    swiper.__swiper__ = !0, swiper.support = getSupport(), swiper.device = getDevice({
+      userAgent: params.userAgent
+    }), swiper.browser = getBrowser(), swiper.eventsListeners = {}, swiper.eventsAnyListeners = [], swiper.modules = [...swiper.__modules__], params.modules && Array.isArray(params.modules) && swiper.modules.push(...params.modules);
+    let allModulesParams = {};
+    swiper.modules.forEach((mod) => {
+      mod({
+        params,
+        swiper,
+        extendParams: moduleExtendParams(params, allModulesParams),
+        on: swiper.on.bind(swiper),
+        once: swiper.once.bind(swiper),
+        off: swiper.off.bind(swiper),
+        emit: swiper.emit.bind(swiper)
+      });
+    });
+    let swiperParams = extend2({}, defaults_default, allModulesParams);
+    return swiper.params = extend2({}, swiperParams, extendedDefaults, params), swiper.originalParams = extend2({}, swiper.params), swiper.passedParams = extend2({}, params), swiper.params && swiper.params.on && Object.keys(swiper.params.on).forEach((eventName) => {
+      swiper.on(eventName, swiper.params.on[eventName]);
+    }), swiper.params && swiper.params.onAny && swiper.onAny(swiper.params.onAny), Object.assign(swiper, {
+      enabled: swiper.params.enabled,
+      el,
+      classNames: [],
+      slides: [],
+      slidesGrid: [],
+      snapGrid: [],
+      slidesSizesGrid: [],
+      isHorizontal() {
+        return swiper.params.direction === "horizontal";
+      },
+      isVertical() {
+        return swiper.params.direction === "vertical";
+      },
+      activeIndex: 0,
+      realIndex: 0,
+      isBeginning: !0,
+      isEnd: !1,
+      translate: 0,
+      previousTranslate: 0,
+      progress: 0,
+      velocity: 0,
+      animating: !1,
+      allowSlideNext: swiper.params.allowSlideNext,
+      allowSlidePrev: swiper.params.allowSlidePrev,
+      touchEventsData: {
+        isTouched: void 0,
+        isMoved: void 0,
+        allowTouchCallbacks: void 0,
+        touchStartTime: void 0,
+        isScrolling: void 0,
+        currentTranslate: void 0,
+        startTranslate: void 0,
+        allowThresholdMove: void 0,
+        focusableElements: swiper.params.focusableElements,
+        lastClickTime: now(),
+        clickTimeout: void 0,
+        velocities: [],
+        allowMomentumBounce: void 0,
+        startMoving: void 0,
+        evCache: []
+      },
+      allowClick: !0,
+      allowTouchMove: swiper.params.allowTouchMove,
+      touches: {
+        startX: 0,
+        startY: 0,
+        currentX: 0,
+        currentY: 0,
+        diff: 0
+      },
+      imagesToLoad: [],
+      imagesLoaded: 0
+    }), swiper.emit("_swiper"), swiper.params.init && swiper.init(), swiper;
+  }
+  getSlideIndex(slideEl) {
+    let {
+      slidesEl,
+      params
+    } = this, slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`), firstSlideIndex = elementIndex(slides[0]);
+    return elementIndex(slideEl) - firstSlideIndex;
+  }
+  recalcSlides() {
+    let swiper = this, {
+      slidesEl,
+      params
+    } = swiper;
+    swiper.slides = elementChildren(slidesEl, `.${params.slideClass}, swiper-slide`);
+  }
+  enable() {
+    let swiper = this;
+    swiper.enabled || (swiper.enabled = !0, swiper.params.grabCursor && swiper.setGrabCursor(), swiper.emit("enable"));
+  }
+  disable() {
+    let swiper = this;
+    !swiper.enabled || (swiper.enabled = !1, swiper.params.grabCursor && swiper.unsetGrabCursor(), swiper.emit("disable"));
+  }
+  setProgress(progress2, speed) {
+    let swiper = this;
+    progress2 = Math.min(Math.max(progress2, 0), 1);
+    let min = swiper.minTranslate(), current = (swiper.maxTranslate() - min) * progress2 + min;
+    swiper.translateTo(current, typeof speed > "u" ? 0 : speed), swiper.updateActiveIndex(), swiper.updateSlidesClasses();
+  }
+  emitContainerClasses() {
+    let swiper = this;
+    if (!swiper.params._emitClasses || !swiper.el)
+      return;
+    let cls = swiper.el.className.split(" ").filter((className) => className.indexOf("swiper") === 0 || className.indexOf(swiper.params.containerModifierClass) === 0);
+    swiper.emit("_containerClasses", cls.join(" "));
+  }
+  getSlideClasses(slideEl) {
+    let swiper = this;
+    return swiper.destroyed ? "" : slideEl.className.split(" ").filter((className) => className.indexOf("swiper-slide") === 0 || className.indexOf(swiper.params.slideClass) === 0).join(" ");
+  }
+  emitSlidesClasses() {
+    let swiper = this;
+    if (!swiper.params._emitClasses || !swiper.el)
+      return;
+    let updates = [];
+    swiper.slides.forEach((slideEl) => {
+      let classNames = swiper.getSlideClasses(slideEl);
+      updates.push({
+        slideEl,
+        classNames
+      }), swiper.emit("_slideClass", slideEl, classNames);
+    }), swiper.emit("_slideClasses", updates);
+  }
+  slidesPerViewDynamic(view = "current", exact = !1) {
+    let swiper = this, {
+      params,
+      slides,
+      slidesGrid,
+      slidesSizesGrid,
+      size: swiperSize,
+      activeIndex
+    } = swiper, spv = 1;
+    if (params.centeredSlides) {
+      let slideSize = slides[activeIndex].swiperSlideSize, breakLoop;
+      for (let i10 = activeIndex + 1; i10 < slides.length; i10 += 1)
+        slides[i10] && !breakLoop && (slideSize += slides[i10].swiperSlideSize, spv += 1, slideSize > swiperSize && (breakLoop = !0));
+      for (let i10 = activeIndex - 1; i10 >= 0; i10 -= 1)
+        slides[i10] && !breakLoop && (slideSize += slides[i10].swiperSlideSize, spv += 1, slideSize > swiperSize && (breakLoop = !0));
+    } else if (view === "current")
+      for (let i10 = activeIndex + 1; i10 < slides.length; i10 += 1)
+        (exact ? slidesGrid[i10] + slidesSizesGrid[i10] - slidesGrid[activeIndex] < swiperSize : slidesGrid[i10] - slidesGrid[activeIndex] < swiperSize) && (spv += 1);
+    else
+      for (let i10 = activeIndex - 1; i10 >= 0; i10 -= 1)
+        slidesGrid[activeIndex] - slidesGrid[i10] < swiperSize && (spv += 1);
+    return spv;
+  }
+  update() {
+    let swiper = this;
+    if (!swiper || swiper.destroyed)
+      return;
+    let {
+      snapGrid,
+      params
+    } = swiper;
+    params.breakpoints && swiper.setBreakpoint(), [...swiper.el.querySelectorAll('[loading="lazy"]')].forEach((imageEl) => {
+      imageEl.complete && processLazyPreloader(swiper, imageEl);
+    }), swiper.updateSize(), swiper.updateSlides(), swiper.updateProgress(), swiper.updateSlidesClasses();
+    function setTranslate2() {
+      let translateValue = swiper.rtlTranslate ? swiper.translate * -1 : swiper.translate, newTranslate = Math.min(Math.max(translateValue, swiper.maxTranslate()), swiper.minTranslate());
+      swiper.setTranslate(newTranslate), swiper.updateActiveIndex(), swiper.updateSlidesClasses();
+    }
+    let translated;
+    swiper.params.freeMode && swiper.params.freeMode.enabled ? (setTranslate2(), swiper.params.autoHeight && swiper.updateAutoHeight()) : ((swiper.params.slidesPerView === "auto" || swiper.params.slidesPerView > 1) && swiper.isEnd && !swiper.params.centeredSlides ? translated = swiper.slideTo(swiper.slides.length - 1, 0, !1, !0) : translated = swiper.slideTo(swiper.activeIndex, 0, !1, !0), translated || setTranslate2()), params.watchOverflow && snapGrid !== swiper.snapGrid && swiper.checkOverflow(), swiper.emit("update");
+  }
+  changeDirection(newDirection, needUpdate = !0) {
+    let swiper = this, currentDirection = swiper.params.direction;
+    return newDirection || (newDirection = currentDirection === "horizontal" ? "vertical" : "horizontal"), newDirection === currentDirection || newDirection !== "horizontal" && newDirection !== "vertical" || (swiper.el.classList.remove(`${swiper.params.containerModifierClass}${currentDirection}`), swiper.el.classList.add(`${swiper.params.containerModifierClass}${newDirection}`), swiper.emitContainerClasses(), swiper.params.direction = newDirection, swiper.slides.forEach((slideEl) => {
+      newDirection === "vertical" ? slideEl.style.width = "" : slideEl.style.height = "";
+    }), swiper.emit("changeDirection"), needUpdate && swiper.update()), swiper;
+  }
+  changeLanguageDirection(direction) {
+    let swiper = this;
+    swiper.rtl && direction === "rtl" || !swiper.rtl && direction === "ltr" || (swiper.rtl = direction === "rtl", swiper.rtlTranslate = swiper.params.direction === "horizontal" && swiper.rtl, swiper.rtl ? (swiper.el.classList.add(`${swiper.params.containerModifierClass}rtl`), swiper.el.dir = "rtl") : (swiper.el.classList.remove(`${swiper.params.containerModifierClass}rtl`), swiper.el.dir = "ltr"), swiper.update());
+  }
+  mount(element) {
+    let swiper = this;
+    if (swiper.mounted)
+      return !0;
+    let el = element || swiper.params.el;
+    if (typeof el == "string" && (el = document.querySelector(el)), !el)
+      return !1;
+    el.swiper = swiper, el.shadowEl && (swiper.isElement = !0);
+    let getWrapperSelector = () => `.${(swiper.params.wrapperClass || "").trim().split(" ").join(".")}`, wrapperEl = (() => el && el.shadowRoot && el.shadowRoot.querySelector ? el.shadowRoot.querySelector(getWrapperSelector()) : elementChildren(el, getWrapperSelector())[0])();
+    return !wrapperEl && swiper.params.createElements && (wrapperEl = createElement8("div", swiper.params.wrapperClass), el.append(wrapperEl), elementChildren(el, `.${swiper.params.slideClass}`).forEach((slideEl) => {
+      wrapperEl.append(slideEl);
+    })), Object.assign(swiper, {
+      el,
+      wrapperEl,
+      slidesEl: swiper.isElement ? el : wrapperEl,
+      mounted: !0,
+      rtl: el.dir.toLowerCase() === "rtl" || elementStyle(el, "direction") === "rtl",
+      rtlTranslate: swiper.params.direction === "horizontal" && (el.dir.toLowerCase() === "rtl" || elementStyle(el, "direction") === "rtl"),
+      wrongRTL: elementStyle(wrapperEl, "display") === "-webkit-box"
+    }), !0;
+  }
+  init(el) {
+    let swiper = this;
+    return swiper.initialized || swiper.mount(el) === !1 || (swiper.emit("beforeInit"), swiper.params.breakpoints && swiper.setBreakpoint(), swiper.addClasses(), swiper.updateSize(), swiper.updateSlides(), swiper.params.watchOverflow && swiper.checkOverflow(), swiper.params.grabCursor && swiper.enabled && swiper.setGrabCursor(), swiper.params.loop && swiper.virtual && swiper.params.virtual.enabled ? swiper.slideTo(swiper.params.initialSlide + swiper.virtual.slidesBefore, 0, swiper.params.runCallbacksOnInit, !1, !0) : swiper.slideTo(swiper.params.initialSlide, 0, swiper.params.runCallbacksOnInit, !1, !0), swiper.params.loop && swiper.loopCreate(), swiper.attachEvents(), [...swiper.el.querySelectorAll('[loading="lazy"]')].forEach((imageEl) => {
+      imageEl.complete ? processLazyPreloader(swiper, imageEl) : imageEl.addEventListener("load", (e6) => {
+        processLazyPreloader(swiper, e6.target);
+      });
+    }), swiper.initialized = !0, swiper.emit("init"), swiper.emit("afterInit")), swiper;
+  }
+  destroy(deleteInstance = !0, cleanStyles = !0) {
+    let swiper = this, {
+      params,
+      el,
+      wrapperEl,
+      slides
+    } = swiper;
+    return typeof swiper.params > "u" || swiper.destroyed || (swiper.emit("beforeDestroy"), swiper.initialized = !1, swiper.detachEvents(), params.loop && swiper.loopDestroy(), cleanStyles && (swiper.removeClasses(), el.removeAttribute("style"), wrapperEl.removeAttribute("style"), slides && slides.length && slides.forEach((slideEl) => {
+      slideEl.classList.remove(params.slideVisibleClass, params.slideActiveClass, params.slideNextClass, params.slidePrevClass), slideEl.removeAttribute("style"), slideEl.removeAttribute("data-swiper-slide-index");
+    })), swiper.emit("destroy"), Object.keys(swiper.eventsListeners).forEach((eventName) => {
+      swiper.off(eventName);
+    }), deleteInstance !== !1 && (swiper.el.swiper = null, deleteProps(swiper)), swiper.destroyed = !0), null;
+  }
+  static extendDefaults(newDefaults) {
+    extend2(extendedDefaults, newDefaults);
+  }
+  static get extendedDefaults() {
+    return extendedDefaults;
+  }
+  static get defaults() {
+    return defaults_default;
+  }
+  static installModule(mod) {
+    Swiper.prototype.__modules__ || (Swiper.prototype.__modules__ = []);
+    let modules = Swiper.prototype.__modules__;
+    typeof mod == "function" && modules.indexOf(mod) < 0 && modules.push(mod);
+  }
+  static use(module) {
+    return Array.isArray(module) ? (module.forEach((m12) => Swiper.installModule(m12)), Swiper) : (Swiper.installModule(module), Swiper);
+  }
+};
+Object.keys(prototypes).forEach((prototypeGroup) => {
+  Object.keys(prototypes[prototypeGroup]).forEach((protoMethod) => {
+    Swiper.prototype[protoMethod] = prototypes[prototypeGroup][protoMethod];
+  });
+});
+Swiper.use([Resize, Observer]);
+var core_default = Swiper;
+
+// node_modules/swiper/components-shared/utils.js
+function isObject4(o10) {
+  return typeof o10 == "object" && o10 !== null && o10.constructor && Object.prototype.toString.call(o10).slice(8, -1) === "Object";
+}
+function extend3(target, src) {
+  let noExtend = ["__proto__", "constructor", "prototype"];
+  Object.keys(src).filter((key) => noExtend.indexOf(key) < 0).forEach((key) => {
+    typeof target[key] > "u" ? target[key] = src[key] : isObject4(src[key]) && isObject4(target[key]) && Object.keys(src[key]).length > 0 ? src[key].__swiper__ ? target[key] = src[key] : extend3(target[key], src[key]) : target[key] = src[key];
+  });
+}
+function needsNavigation(params = {}) {
+  return params.navigation && typeof params.navigation.nextEl > "u" && typeof params.navigation.prevEl > "u";
+}
+function needsPagination(params = {}) {
+  return params.pagination && typeof params.pagination.el > "u";
+}
+function needsScrollbar(params = {}) {
+  return params.scrollbar && typeof params.scrollbar.el > "u";
+}
+function uniqueClasses(classNames = "") {
+  let classes = classNames.split(" ").map((c9) => c9.trim()).filter((c9) => !!c9), unique = [];
+  return classes.forEach((c9) => {
+    unique.indexOf(c9) < 0 && unique.push(c9);
+  }), unique.join(" ");
+}
+function wrapperClass(className = "") {
+  return className ? className.includes("swiper-wrapper") ? className : `swiper-wrapper ${className}` : "swiper-wrapper";
+}
+
+// node_modules/swiper/components-shared/params-list.js
+var paramsList = [
+  "modules",
+  "init",
+  "_direction",
+  "oneWayMovement",
+  "touchEventsTarget",
+  "initialSlide",
+  "_speed",
+  "cssMode",
+  "updateOnWindowResize",
+  "resizeObserver",
+  "nested",
+  "focusableElements",
+  "_enabled",
+  "_width",
+  "_height",
+  "preventInteractionOnTransition",
+  "userAgent",
+  "url",
+  "_edgeSwipeDetection",
+  "_edgeSwipeThreshold",
+  "_freeMode",
+  "_autoHeight",
+  "setWrapperSize",
+  "virtualTranslate",
+  "_effect",
+  "breakpoints",
+  "_spaceBetween",
+  "_slidesPerView",
+  "maxBackfaceHiddenSlides",
+  "_grid",
+  "_slidesPerGroup",
+  "_slidesPerGroupSkip",
+  "_slidesPerGroupAuto",
+  "_centeredSlides",
+  "_centeredSlidesBounds",
+  "_slidesOffsetBefore",
+  "_slidesOffsetAfter",
+  "normalizeSlideIndex",
+  "_centerInsufficientSlides",
+  "_watchOverflow",
+  "roundLengths",
+  "touchRatio",
+  "touchAngle",
+  "simulateTouch",
+  "_shortSwipes",
+  "_longSwipes",
+  "longSwipesRatio",
+  "longSwipesMs",
+  "_followFinger",
+  "allowTouchMove",
+  "_threshold",
+  "touchMoveStopPropagation",
+  "touchStartPreventDefault",
+  "touchStartForcePreventDefault",
+  "touchReleaseOnEdges",
+  "uniqueNavElements",
+  "_resistance",
+  "_resistanceRatio",
+  "_watchSlidesProgress",
+  "_grabCursor",
+  "preventClicks",
+  "preventClicksPropagation",
+  "_slideToClickedSlide",
+  "_loop",
+  "loopedSlides",
+  "loopPreventsSliding",
+  "_rewind",
+  "_allowSlidePrev",
+  "_allowSlideNext",
+  "_swipeHandler",
+  "_noSwiping",
+  "noSwipingClass",
+  "noSwipingSelector",
+  "passiveListeners",
+  "containerModifierClass",
+  "slideClass",
+  "slideActiveClass",
+  "slideVisibleClass",
+  "slideNextClass",
+  "slidePrevClass",
+  "wrapperClass",
+  "lazyPreloaderClass",
+  "runCallbacksOnInit",
+  "observer",
+  "observeParents",
+  "observeSlideChildren",
+  "a11y",
+  "_autoplay",
+  "_controller",
+  "coverflowEffect",
+  "cubeEffect",
+  "fadeEffect",
+  "flipEffect",
+  "creativeEffect",
+  "cardsEffect",
+  "hashNavigation",
+  "history",
+  "keyboard",
+  "mousewheel",
+  "_navigation",
+  "_pagination",
+  "parallax",
+  "_scrollbar",
+  "_thumbs",
+  "virtual",
+  "zoom",
+  "control",
+  "injectStyles",
+  "injectStylesUrls"
+];
+
+// node_modules/swiper/components-shared/get-params.js
+function getParams(obj = {}, splitEvents = !0) {
+  let params = {
+    on: {}
+  }, events2 = {}, passedParams = {};
+  extend3(params, core_default.defaults), extend3(params, core_default.extendedDefaults), params._emitClasses = !0, params.init = !1;
+  let rest = {}, allowedParams = paramsList.map((key) => key.replace(/_/, "")), plainObj = Object.assign({}, obj);
+  return Object.keys(plainObj).forEach((key) => {
+    typeof obj[key] > "u" || (allowedParams.indexOf(key) >= 0 ? isObject4(obj[key]) ? (params[key] = {}, passedParams[key] = {}, extend3(params[key], obj[key]), extend3(passedParams[key], obj[key])) : (params[key] = obj[key], passedParams[key] = obj[key]) : key.search(/on[A-Z]/) === 0 && typeof obj[key] == "function" ? splitEvents ? events2[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key] : params.on[`${key[2].toLowerCase()}${key.substr(3)}`] = obj[key] : rest[key] = obj[key]);
+  }), ["navigation", "pagination", "scrollbar"].forEach((key) => {
+    params[key] === !0 && (params[key] = {}), params[key] === !1 && delete params[key];
+  }), {
+    params,
+    passedParams,
+    rest,
+    events: events2
+  };
+}
+
+// node_modules/swiper/components-shared/mount-swiper.js
+function mountSwiper({
+  el,
+  nextEl,
+  prevEl,
+  paginationEl,
+  scrollbarEl,
+  swiper
+}, swiperParams) {
+  needsNavigation(swiperParams) && nextEl && prevEl && (swiper.params.navigation.nextEl = nextEl, swiper.originalParams.navigation.nextEl = nextEl, swiper.params.navigation.prevEl = prevEl, swiper.originalParams.navigation.prevEl = prevEl), needsPagination(swiperParams) && paginationEl && (swiper.params.pagination.el = paginationEl, swiper.originalParams.pagination.el = paginationEl), needsScrollbar(swiperParams) && scrollbarEl && (swiper.params.scrollbar.el = scrollbarEl, swiper.originalParams.scrollbar.el = scrollbarEl), swiper.init(el);
+}
+
+// node_modules/swiper/components-shared/get-changed-params.js
+function getChangedParams(swiperParams, oldParams, children, oldChildren, getKey) {
+  let keys = [];
+  if (!oldParams)
+    return keys;
+  let addKey = (key) => {
+    keys.indexOf(key) < 0 && keys.push(key);
+  };
+  if (children && oldChildren) {
+    let oldChildrenKeys = oldChildren.map(getKey), childrenKeys = children.map(getKey);
+    oldChildrenKeys.join("") !== childrenKeys.join("") && addKey("children"), oldChildren.length !== children.length && addKey("children");
+  }
+  return paramsList.filter((key) => key[0] === "_").map((key) => key.replace(/_/, "")).forEach((key) => {
+    if (key in swiperParams && key in oldParams)
+      if (isObject4(swiperParams[key]) && isObject4(oldParams[key])) {
+        let newKeys = Object.keys(swiperParams[key]), oldKeys = Object.keys(oldParams[key]);
+        newKeys.length !== oldKeys.length ? addKey(key) : (newKeys.forEach((newKey) => {
+          swiperParams[key][newKey] !== oldParams[key][newKey] && addKey(key);
+        }), oldKeys.forEach((oldKey) => {
+          swiperParams[key][oldKey] !== oldParams[key][oldKey] && addKey(key);
+        }));
+      } else
+        swiperParams[key] !== oldParams[key] && addKey(key);
+  }), keys;
+}
+
+// node_modules/swiper/react/get-children.js
+var import_react105 = __toESM(require_react(), 1);
+function isChildSwiperSlide(child) {
+  return child.type && child.type.displayName && child.type.displayName.includes("SwiperSlide");
+}
+function processChildren(c9) {
+  let slides = [];
+  return import_react105.default.Children.toArray(c9).forEach((child) => {
+    isChildSwiperSlide(child) ? slides.push(child) : child.props && child.props.children && processChildren(child.props.children).forEach((slide) => slides.push(slide));
+  }), slides;
+}
+function getChildren(c9) {
+  let slides = [], slots = {
+    "container-start": [],
+    "container-end": [],
+    "wrapper-start": [],
+    "wrapper-end": []
+  };
+  return import_react105.default.Children.toArray(c9).forEach((child) => {
+    if (isChildSwiperSlide(child))
+      slides.push(child);
+    else if (child.props && child.props.slot && slots[child.props.slot])
+      slots[child.props.slot].push(child);
+    else if (child.props && child.props.children) {
+      let foundSlides = processChildren(child.props.children);
+      foundSlides.length > 0 ? foundSlides.forEach((slide) => slides.push(slide)) : slots["container-end"].push(child);
+    } else
+      slots["container-end"].push(child);
+  }), {
+    slides,
+    slots
+  };
+}
+
+// node_modules/swiper/components-shared/update-swiper.js
+function updateSwiper({
+  swiper,
+  slides,
+  passedParams,
+  changedParams,
+  nextEl,
+  prevEl,
+  scrollbarEl,
+  paginationEl
+}) {
+  let updateParams = changedParams.filter((key) => key !== "children" && key !== "direction" && key !== "wrapperClass"), {
+    params: currentParams,
+    pagination,
+    navigation,
+    scrollbar,
+    virtual,
+    thumbs
+  } = swiper, needThumbsInit, needControllerInit, needPaginationInit, needScrollbarInit, needNavigationInit, loopNeedDestroy, loopNeedEnable, loopNeedReloop;
+  changedParams.includes("thumbs") && passedParams.thumbs && passedParams.thumbs.swiper && currentParams.thumbs && !currentParams.thumbs.swiper && (needThumbsInit = !0), changedParams.includes("controller") && passedParams.controller && passedParams.controller.control && currentParams.controller && !currentParams.controller.control && (needControllerInit = !0), changedParams.includes("pagination") && passedParams.pagination && (passedParams.pagination.el || paginationEl) && (currentParams.pagination || currentParams.pagination === !1) && pagination && !pagination.el && (needPaginationInit = !0), changedParams.includes("scrollbar") && passedParams.scrollbar && (passedParams.scrollbar.el || scrollbarEl) && (currentParams.scrollbar || currentParams.scrollbar === !1) && scrollbar && !scrollbar.el && (needScrollbarInit = !0), changedParams.includes("navigation") && passedParams.navigation && (passedParams.navigation.prevEl || prevEl) && (passedParams.navigation.nextEl || nextEl) && (currentParams.navigation || currentParams.navigation === !1) && navigation && !navigation.prevEl && !navigation.nextEl && (needNavigationInit = !0);
+  let destroyModule = (mod) => {
+    !swiper[mod] || (swiper[mod].destroy(), mod === "navigation" ? (swiper.isElement && (swiper[mod].prevEl.remove(), swiper[mod].nextEl.remove()), currentParams[mod].prevEl = void 0, currentParams[mod].nextEl = void 0, swiper[mod].prevEl = void 0, swiper[mod].nextEl = void 0) : (swiper.isElement && swiper[mod].el.remove(), currentParams[mod].el = void 0, swiper[mod].el = void 0));
+  };
+  changedParams.includes("loop") && swiper.isElement && (currentParams.loop && !passedParams.loop ? loopNeedDestroy = !0 : !currentParams.loop && passedParams.loop ? loopNeedEnable = !0 : loopNeedReloop = !0), updateParams.forEach((key) => {
+    if (isObject4(currentParams[key]) && isObject4(passedParams[key]))
+      extend3(currentParams[key], passedParams[key]);
+    else {
+      let newValue = passedParams[key];
+      (newValue === !0 || newValue === !1) && (key === "navigation" || key === "pagination" || key === "scrollbar") ? newValue === !1 && destroyModule(key) : currentParams[key] = passedParams[key];
+    }
+  }), updateParams.includes("controller") && !needControllerInit && swiper.controller && swiper.controller.control && currentParams.controller && currentParams.controller.control && (swiper.controller.control = currentParams.controller.control), changedParams.includes("children") && slides && virtual && currentParams.virtual.enabled && (virtual.slides = slides, virtual.update(!0)), changedParams.includes("children") && slides && currentParams.loop && (loopNeedReloop = !0), needThumbsInit && thumbs.init() && thumbs.update(!0), needControllerInit && (swiper.controller.control = currentParams.controller.control), needPaginationInit && (swiper.isElement && (!paginationEl || typeof paginationEl == "string") && (paginationEl = document.createElement("div"), paginationEl.classList.add("swiper-pagination"), swiper.el.shadowEl.appendChild(paginationEl)), paginationEl && (currentParams.pagination.el = paginationEl), pagination.init(), pagination.render(), pagination.update()), needScrollbarInit && (swiper.isElement && (!scrollbarEl || typeof scrollbarEl == "string") && (scrollbarEl = document.createElement("div"), scrollbarEl.classList.add("swiper-scrollbar"), swiper.el.shadowEl.appendChild(scrollbarEl)), scrollbarEl && (currentParams.scrollbar.el = scrollbarEl), scrollbar.init(), scrollbar.updateSize(), scrollbar.setTranslate()), needNavigationInit && (swiper.isElement && ((!nextEl || typeof nextEl == "string") && (nextEl = document.createElement("div"), nextEl.classList.add("swiper-button-next"), swiper.el.shadowEl.appendChild(nextEl)), (!prevEl || typeof prevEl == "string") && (prevEl = document.createElement("div"), prevEl.classList.add("swiper-button-prev"), swiper.el.shadowEl.appendChild(prevEl))), nextEl && (currentParams.navigation.nextEl = nextEl), prevEl && (currentParams.navigation.prevEl = prevEl), navigation.init(), navigation.update()), changedParams.includes("allowSlideNext") && (swiper.allowSlideNext = passedParams.allowSlideNext), changedParams.includes("allowSlidePrev") && (swiper.allowSlidePrev = passedParams.allowSlidePrev), changedParams.includes("direction") && swiper.changeDirection(passedParams.direction, !1), (loopNeedDestroy || loopNeedReloop) && swiper.loopDestroy(), (loopNeedEnable || loopNeedReloop) && swiper.loopCreate(), swiper.update();
+}
+
+// node_modules/swiper/react/virtual.js
+var import_react106 = __toESM(require_react(), 1);
+function renderVirtual(swiper, slides, virtualData) {
+  if (!virtualData)
+    return null;
+  let getSlideIndex = (index) => {
+    let slideIndex = index;
+    return index < 0 ? slideIndex = slides.length + index : slideIndex >= slides.length && (slideIndex = slideIndex - slides.length), slideIndex;
+  }, style = swiper.isHorizontal() ? {
+    [swiper.rtlTranslate ? "right" : "left"]: `${virtualData.offset}px`
+  } : {
+    top: `${virtualData.offset}px`
+  }, {
+    from,
+    to
+  } = virtualData, loopFrom = swiper.params.loop ? -slides.length : 0, loopTo = swiper.params.loop ? slides.length * 2 : slides.length, slidesToRender = [];
+  for (let i10 = loopFrom; i10 < loopTo; i10 += 1)
+    i10 >= from && i10 <= to && slidesToRender.push(slides[getSlideIndex(i10)]);
+  return slidesToRender.map((child) => /* @__PURE__ */ import_react106.default.cloneElement(child, {
+    swiper,
+    style
+  }));
+}
+
+// node_modules/swiper/components-shared/update-on-virtual-data.js
+var updateOnVirtualData = (swiper) => {
+  !swiper || swiper.destroyed || !swiper.params.virtual || swiper.params.virtual && !swiper.params.virtual.enabled || (swiper.updateSlides(), swiper.updateProgress(), swiper.updateSlidesClasses(), swiper.parallax && swiper.params.parallax && swiper.params.parallax.enabled && swiper.parallax.setTranslate());
+};
+
+// node_modules/swiper/react/use-isomorphic-layout-effect.js
+var import_react107 = __toESM(require_react(), 1);
+function useIsomorphicLayoutEffect(callback, deps) {
+  return typeof window > "u" ? (0, import_react107.useEffect)(callback, deps) : (0, import_react107.useLayoutEffect)(callback, deps);
+}
+
+// node_modules/swiper/react/context.js
+var import_react108 = __toESM(require_react(), 1), SwiperSlideContext = /* @__PURE__ */ (0, import_react108.createContext)(null);
+var SwiperContext = /* @__PURE__ */ (0, import_react108.createContext)(null);
+
+// node_modules/swiper/react/swiper.js
+function _extends5() {
+  return _extends5 = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i10 = 1; i10 < arguments.length; i10++) {
+      var source = arguments[i10];
+      for (var key in source)
+        Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+    }
+    return target;
+  }, _extends5.apply(this, arguments);
+}
+var Swiper2 = /* @__PURE__ */ (0, import_react109.forwardRef)(function(_temp, externalElRef) {
+  let {
+    className,
+    tag: Tag = "div",
+    wrapperTag: WrapperTag = "div",
+    children,
+    onSwiper,
+    ...rest
+  } = _temp === void 0 ? {} : _temp, eventsAssigned = !1, [containerClasses, setContainerClasses] = (0, import_react109.useState)("swiper"), [virtualData, setVirtualData] = (0, import_react109.useState)(null), [breakpointChanged, setBreakpointChanged] = (0, import_react109.useState)(!1), initializedRef = (0, import_react109.useRef)(!1), swiperElRef = (0, import_react109.useRef)(null), swiperRef = (0, import_react109.useRef)(null), oldPassedParamsRef = (0, import_react109.useRef)(null), oldSlides = (0, import_react109.useRef)(null), nextElRef = (0, import_react109.useRef)(null), prevElRef = (0, import_react109.useRef)(null), paginationElRef = (0, import_react109.useRef)(null), scrollbarElRef = (0, import_react109.useRef)(null), {
+    params: swiperParams,
+    passedParams,
+    rest: restProps,
+    events: events2
+  } = getParams(rest), {
+    slides,
+    slots
+  } = getChildren(children), onBeforeBreakpoint = () => {
+    setBreakpointChanged(!breakpointChanged);
+  };
+  Object.assign(swiperParams.on, {
+    _containerClasses(swiper, classes) {
+      setContainerClasses(classes);
+    }
+  });
+  let initSwiper = () => {
+    Object.assign(swiperParams.on, events2), eventsAssigned = !0;
+    let passParams = {
+      ...swiperParams
+    };
+    if (delete passParams.wrapperClass, swiperRef.current = new core_default(passParams), swiperRef.current.virtual && swiperRef.current.params.virtual.enabled) {
+      swiperRef.current.virtual.slides = slides;
+      let extendWith = {
+        cache: !1,
+        slides,
+        renderExternal: setVirtualData,
+        renderExternalUpdate: !1
+      };
+      extend3(swiperRef.current.params.virtual, extendWith), extend3(swiperRef.current.originalParams.virtual, extendWith);
+    }
+  };
+  swiperElRef.current || initSwiper(), swiperRef.current && swiperRef.current.on("_beforeBreakpoint", onBeforeBreakpoint);
+  let attachEvents2 = () => {
+    eventsAssigned || !events2 || !swiperRef.current || Object.keys(events2).forEach((eventName) => {
+      swiperRef.current.on(eventName, events2[eventName]);
+    });
+  }, detachEvents2 = () => {
+    !events2 || !swiperRef.current || Object.keys(events2).forEach((eventName) => {
+      swiperRef.current.off(eventName, events2[eventName]);
+    });
+  };
+  (0, import_react109.useEffect)(() => () => {
+    swiperRef.current && swiperRef.current.off("_beforeBreakpoint", onBeforeBreakpoint);
+  }), (0, import_react109.useEffect)(() => {
+    !initializedRef.current && swiperRef.current && (swiperRef.current.emitSlidesClasses(), initializedRef.current = !0);
+  }), useIsomorphicLayoutEffect(() => {
+    if (externalElRef && (externalElRef.current = swiperElRef.current), !!swiperElRef.current)
+      return swiperRef.current.destroyed && initSwiper(), mountSwiper({
+        el: swiperElRef.current,
+        nextEl: nextElRef.current,
+        prevEl: prevElRef.current,
+        paginationEl: paginationElRef.current,
+        scrollbarEl: scrollbarElRef.current,
+        swiper: swiperRef.current
+      }, swiperParams), onSwiper && onSwiper(swiperRef.current), () => {
+        swiperRef.current && !swiperRef.current.destroyed && swiperRef.current.destroy(!0, !1);
+      };
+  }, []), useIsomorphicLayoutEffect(() => {
+    attachEvents2();
+    let changedParams = getChangedParams(passedParams, oldPassedParamsRef.current, slides, oldSlides.current, (c9) => c9.key);
+    return oldPassedParamsRef.current = passedParams, oldSlides.current = slides, changedParams.length && swiperRef.current && !swiperRef.current.destroyed && updateSwiper({
+      swiper: swiperRef.current,
+      slides,
+      passedParams,
+      changedParams,
+      nextEl: nextElRef.current,
+      prevEl: prevElRef.current,
+      scrollbarEl: scrollbarElRef.current,
+      paginationEl: paginationElRef.current
+    }), () => {
+      detachEvents2();
+    };
+  }), useIsomorphicLayoutEffect(() => {
+    updateOnVirtualData(swiperRef.current);
+  }, [virtualData]);
+  function renderSlides() {
+    return swiperParams.virtual ? renderVirtual(swiperRef.current, slides, virtualData) : slides.map((child, index) => /* @__PURE__ */ import_react109.default.cloneElement(child, {
+      swiper: swiperRef.current,
+      swiperSlideIndex: index
+    }));
+  }
+  return /* @__PURE__ */ import_react109.default.createElement(Tag, _extends5({
+    ref: swiperElRef,
+    className: uniqueClasses(`${containerClasses}${className ? ` ${className}` : ""}`)
+  }, restProps), /* @__PURE__ */ import_react109.default.createElement(SwiperContext.Provider, {
+    value: swiperRef.current
+  }, slots["container-start"], /* @__PURE__ */ import_react109.default.createElement(WrapperTag, {
+    className: wrapperClass(swiperParams.wrapperClass)
+  }, slots["wrapper-start"], renderSlides(), slots["wrapper-end"]), needsNavigation(swiperParams) && /* @__PURE__ */ import_react109.default.createElement(import_react109.default.Fragment, null, /* @__PURE__ */ import_react109.default.createElement("div", {
+    ref: prevElRef,
+    className: "swiper-button-prev"
+  }), /* @__PURE__ */ import_react109.default.createElement("div", {
+    ref: nextElRef,
+    className: "swiper-button-next"
+  })), needsScrollbar(swiperParams) && /* @__PURE__ */ import_react109.default.createElement("div", {
+    ref: scrollbarElRef,
+    className: "swiper-scrollbar"
+  }), needsPagination(swiperParams) && /* @__PURE__ */ import_react109.default.createElement("div", {
+    ref: paginationElRef,
+    className: "swiper-pagination"
+  }), slots["container-end"]));
+});
+Swiper2.displayName = "Swiper";
+
+// node_modules/swiper/react/swiper-slide.js
+var import_react110 = __toESM(require_react(), 1);
+function _extends6() {
+  return _extends6 = Object.assign ? Object.assign.bind() : function(target) {
+    for (var i10 = 1; i10 < arguments.length; i10++) {
+      var source = arguments[i10];
+      for (var key in source)
+        Object.prototype.hasOwnProperty.call(source, key) && (target[key] = source[key]);
+    }
+    return target;
+  }, _extends6.apply(this, arguments);
+}
+var SwiperSlide = /* @__PURE__ */ (0, import_react110.forwardRef)(function(_temp, externalRef) {
+  let {
+    tag: Tag = "div",
+    children,
+    className = "",
+    swiper,
+    zoom,
+    lazy,
+    virtualIndex,
+    swiperSlideIndex,
+    ...rest
+  } = _temp === void 0 ? {} : _temp, slideElRef = (0, import_react110.useRef)(null), [slideClasses, setSlideClasses] = (0, import_react110.useState)("swiper-slide"), [lazyLoaded, setLazyLoaded] = (0, import_react110.useState)(!1);
+  function updateClasses(_s, el, classNames) {
+    el === slideElRef.current && setSlideClasses(classNames);
+  }
+  useIsomorphicLayoutEffect(() => {
+    if (typeof swiperSlideIndex < "u" && (slideElRef.current.swiperSlideIndex = swiperSlideIndex), externalRef && (externalRef.current = slideElRef.current), !(!slideElRef.current || !swiper)) {
+      if (swiper.destroyed) {
+        slideClasses !== "swiper-slide" && setSlideClasses("swiper-slide");
+        return;
+      }
+      return swiper.on("_slideClass", updateClasses), () => {
+        !swiper || swiper.off("_slideClass", updateClasses);
+      };
+    }
+  }), useIsomorphicLayoutEffect(() => {
+    swiper && slideElRef.current && !swiper.destroyed && setSlideClasses(swiper.getSlideClasses(slideElRef.current));
+  }, [swiper]);
+  let slideData = {
+    isActive: slideClasses.indexOf("swiper-slide-active") >= 0,
+    isVisible: slideClasses.indexOf("swiper-slide-visible") >= 0,
+    isPrev: slideClasses.indexOf("swiper-slide-prev") >= 0,
+    isNext: slideClasses.indexOf("swiper-slide-next") >= 0
+  }, renderChildren = () => typeof children == "function" ? children(slideData) : children, onLoad2 = () => {
+    setLazyLoaded(!0);
+  };
+  return /* @__PURE__ */ import_react110.default.createElement(Tag, _extends6({
+    ref: slideElRef,
+    className: uniqueClasses(`${slideClasses}${className ? ` ${className}` : ""}`),
+    "data-swiper-slide-index": virtualIndex,
+    onLoad: onLoad2
+  }, rest), zoom && /* @__PURE__ */ import_react110.default.createElement(SwiperSlideContext.Provider, {
+    value: slideData
+  }, /* @__PURE__ */ import_react110.default.createElement("div", {
+    className: "swiper-zoom-container",
+    "data-swiper-zoom": typeof zoom == "number" ? zoom : void 0
+  }, renderChildren(), lazy && !lazyLoaded && /* @__PURE__ */ import_react110.default.createElement("div", {
+    className: "swiper-lazy-preloader"
+  }))), !zoom && /* @__PURE__ */ import_react110.default.createElement(SwiperSlideContext.Provider, {
+    value: slideData
+  }, renderChildren(), lazy && !lazyLoaded && /* @__PURE__ */ import_react110.default.createElement("div", {
+    className: "swiper-lazy-preloader"
+  })));
+});
+SwiperSlide.displayName = "SwiperSlide";
+
+// app/components/modules/TextColumnsModule.jsx
+var import_react111 = __toESM(require_react());
+var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime()), TextColumnsModule = ({ content }) => /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "w-full columns-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(PortableText2, { text: content }, void 0, !1, {
+  fileName: "app/components/modules/TextColumnsModule.jsx",
+  lineNumber: 7,
+  columnNumber: 4
+}, this) }, void 0, !1, {
+  fileName: "app/components/modules/TextColumnsModule.jsx",
+  lineNumber: 6,
+  columnNumber: 3
+}, this), TextColumnsModule_default = TextColumnsModule;
+
+// app/components/modules/CarouselModule.jsx
+var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), CarouselModule = ({ content }) => {
+  let [swiperInstance, setSwiperInstance] = (0, import_react112.useState)(null), ref = (0, import_react112.useRef)(null);
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+    "div",
+    {
+      className: "group relative w-full aspect-video bg-slate-200",
+      onClick: (e6) => {
+        e6.clientX - ref.current.getBoundingClientRect().left > window.innerHeight / 2 ? swiperInstance.slideNext() : swiperInstance.slidePrev();
+      },
+      ref,
+      children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          "div",
+          {
+            className: "absolute w-full h-full hidden z-50 pointer-events-none group-hover:flex justify-between items-center p-8 text-white text-6xl",
+            children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-1/4", children: "<" }, void 0, !1, {
+                fileName: "app/components/modules/CarouselModule.jsx",
+                lineNumber: 27,
+                columnNumber: 5
+              }, this),
+              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-1/4 text-right", children: ">" }, void 0, !1, {
+                fileName: "app/components/modules/CarouselModule.jsx",
+                lineNumber: 28,
+                columnNumber: 5
+              }, this)
+            ]
+          },
+          void 0,
+          !0,
+          {
+            fileName: "app/components/modules/CarouselModule.jsx",
+            lineNumber: 22,
+            columnNumber: 4
+          },
+          this
+        ),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          Swiper2,
+          {
+            onSwiper: (swiper) => setSwiperInstance(swiper),
+            className: "w-full h-full",
+            loop: !0,
+            children: content.slide.map((slide) => /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(SwiperSlide, { children: [
+              slide._type === "imageObject" && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                SanityImage,
+                {
+                  value: slide.asset,
+                  className: "h-full object-cover"
+                },
+                void 0,
+                !1,
+                {
+                  fileName: "app/components/modules/CarouselModule.jsx",
+                  lineNumber: 39,
+                  columnNumber: 9
+                },
+                this
+              ),
+              slide._type === "textObject" && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(TextColumnsModule_default, { content: slide.text }, void 0, !1, {
+                fileName: "app/components/modules/CarouselModule.jsx",
+                lineNumber: 46,
+                columnNumber: 10
+              }, this) }, void 0, !1, {
+                fileName: "app/components/modules/CarouselModule.jsx",
+                lineNumber: 45,
+                columnNumber: 9
+              }, this)
+            ] }, slide._key, !0, {
+              fileName: "app/components/modules/CarouselModule.jsx",
+              lineNumber: 37,
+              columnNumber: 7
+            }, this))
+          },
+          void 0,
+          !1,
+          {
+            fileName: "app/components/modules/CarouselModule.jsx",
+            lineNumber: 30,
+            columnNumber: 4
+          },
+          this
+        )
+      ]
+    },
+    void 0,
+    !0,
+    {
+      fileName: "app/components/modules/CarouselModule.jsx",
+      lineNumber: 10,
+      columnNumber: 3
+    },
+    this
+  );
+}, CarouselModule_default = CarouselModule;
+
+// app/components/modules/CollapsibleModule.jsx
+var import_react115 = __toESM(require_react());
+
+// app/components/parts/Layout.jsx
+var import_react114 = __toESM(require_react());
+var import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime()), layout = cva("layout", {
+  variants: {
+    intent: {
+      page: ["p-4"],
+      module: ["px-4"],
+      prose: ["max-w-prose mx-auto px-4"],
+      grid: ["grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"],
+      article: ["flex flex-col gap-4"],
+      centre: [
+        "flex",
+        "justify-center",
+        "items-center",
+        "h-[calc(100vh-6rem)]"
+      ]
+    }
+  },
+  defaultVariants: {
+    intent: "page"
+  }
+}), Layout2 = ({ tag, className, intent, children }) => {
+  let ElementTag = `${tag || "div"}`;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(ElementTag, { className: layout({ intent, className }), children }, void 0, !1, {
+    fileName: "app/components/parts/Layout.jsx",
+    lineNumber: 33,
+    columnNumber: 5
+  }, this);
+};
+
+// app/components/modules/CollapsibleModule.jsx
+var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime()), CollapsibleModule = ({ content }) => /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Layout2, { intent: "module", children: [
+  content.name && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Text2, { tag: "h4", children: content.name }, void 0, !1, {
+    fileName: "app/components/modules/CollapsibleModule.jsx",
+    lineNumber: 9,
+    columnNumber: 24
+  }, this),
+  /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("details", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("summary", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Text2, { className: "select-none", children: content.heading || "Collapsible" }, void 0, !1, {
+      fileName: "app/components/modules/CollapsibleModule.jsx",
+      lineNumber: 12,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/components/modules/CollapsibleModule.jsx",
+      lineNumber: 11,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(PortableTextPlain, { text: content.text }, void 0, !1, {
+      fileName: "app/components/modules/CollapsibleModule.jsx",
+      lineNumber: 14,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/modules/CollapsibleModule.jsx",
+    lineNumber: 10,
+    columnNumber: 7
+  }, this)
+] }, void 0, !0, {
+  fileName: "app/components/modules/CollapsibleModule.jsx",
+  lineNumber: 8,
+  columnNumber: 5
+}, this);
+
+// app/components/modules/HeadingModule.jsx
+var import_react116 = __toESM(require_react());
+var import_jsx_dev_runtime54 = __toESM(require_jsx_dev_runtime()), HeadingModule = ({ content }) => /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Layout2, { intent: "page", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Text2, { tag: "h3", size: "4xl", children: content.heading }, void 0, !1, {
+  fileName: "app/components/modules/HeadingModule.jsx",
+  lineNumber: 8,
+  columnNumber: 7
+}, this) }, void 0, !1, {
+  fileName: "app/components/modules/HeadingModule.jsx",
+  lineNumber: 7,
+  columnNumber: 5
+}, this);
+
+// app/components/modules/ImageGridModule.jsx
+var import_react117 = __toESM(require_react());
+var import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime()), ImageGridModule = ({ content }) => {
+  let { images } = content;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Layout2, { intent: "module", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-4", children: images.map((image) => /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+    "div",
+    {
+      className: "w-full aspect-square",
+      children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(SanityImage, { value: image, className: "h-full object-cover" }, void 0, !1, {
+        fileName: "app/components/modules/ImageGridModule.jsx",
+        lineNumber: 16,
+        columnNumber: 17
+      }, this)
+    },
+    image._id || image._key,
+    !1,
+    {
+      fileName: "app/components/modules/ImageGridModule.jsx",
+      lineNumber: 12,
+      columnNumber: 15
+    },
+    this
+  )) }, void 0, !1, {
+    fileName: "app/components/modules/ImageGridModule.jsx",
+    lineNumber: 9,
+    columnNumber: 9
+  }, this) }, void 0, !1, {
+    fileName: "app/components/modules/ImageGridModule.jsx",
+    lineNumber: 8,
+    columnNumber: 7
+  }, this);
+};
+
+// app/components/modules/ImageModule.jsx
+var import_react118 = __toESM(require_react());
+var import_jsx_dev_runtime56 = __toESM(require_jsx_dev_runtime()), ImageModule = ({ content }) => {
+  let { caption, image } = content;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("figure", { children: [
+    image && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "w-full aspect-video", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(SanityImage, { value: image, className: "h-full object-cover" }, void 0, !1, {
+      fileName: "app/components/modules/ImageModule.jsx",
+      lineNumber: 10,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/components/modules/ImageModule.jsx",
+      lineNumber: 9,
+      columnNumber: 9
+    }, this),
+    caption && /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("figcaption", { children: caption }, void 0, !1, {
+      fileName: "app/components/modules/ImageModule.jsx",
+      lineNumber: 13,
+      columnNumber: 19
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/modules/ImageModule.jsx",
+    lineNumber: 7,
+    columnNumber: 5
+  }, this);
+};
+
+// app/components/modules/TextBlockModule.jsx
+var import_react119 = __toESM(require_react());
+var import_jsx_dev_runtime57 = __toESM(require_jsx_dev_runtime()), TextBlockModule = ({ content }) => {
+  let { text: text2 } = content;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(Layout2, { intent: "prose", children: /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(PortableText2, { text: text2 }, void 0, !1, {
+    fileName: "app/components/modules/TextBlockModule.jsx",
+    lineNumber: 9,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/components/modules/TextBlockModule.jsx",
+    lineNumber: 8,
+    columnNumber: 5
+  }, this);
+};
+
+// app/components/content/Content.jsx
+var import_jsx_dev_runtime58 = __toESM(require_jsx_dev_runtime()), Content = ({ content }) => {
+  switch (content._type) {
+    case "textBlockModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(TextBlockModule, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 13,
+        columnNumber: 14
+      }, this);
+    case "headingModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(HeadingModule, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 15,
+        columnNumber: 14
+      }, this);
+    case "collapsibleModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(CollapsibleModule, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 17,
+        columnNumber: 14
+      }, this);
+    case "imageModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(ImageModule, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 19,
+        columnNumber: 14
+      }, this);
+    case "imageGridModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(ImageGridModule, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 21,
+        columnNumber: 14
+      }, this);
+    case "carouselModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(CarouselModule_default, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 27,
+        columnNumber: 14
+      }, this);
+    case "headingModule":
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(CarouselModule_default, { content }, void 0, !1, {
+        fileName: "app/components/content/Content.jsx",
+        lineNumber: 29,
+        columnNumber: 14
+      }, this);
+    default:
+      return null;
+  }
+};
+
+// app/lib/fragments.js
+init_groq_esm();
+var blockFragment = groq`_type == 'block' => {..., "colour": coalesce(*[_id == ^.^.^._id][0].colour->colourDark, "#000000")}`, headingModuleFragment = groq`_type == 'headingModule' => @`, collapsibleModuleFragment = groq`_type == 'collapsibleModule' => @`, articlesModuleFragment = groq`_type == 'articlesModule' => @`, shopModuleFragment = groq`_type == 'shopModule' => @`, carouselModuleFragment = groq`
+    _type == 'carouselModule' => {
+        _key,
+        _type,
+        slide[] {
+            _type == "imageObject" => {
+                ...,
+                asset -> {_id}
+            },
+            _type == "textObject" => {
+                ...
+            }
+        }
+    }`, imageModuleFragment = groq`
+    _type == 'imageModule' => {
+        _key,
+        _type,
+        caption,
+        image {
+            ...,
+            asset -> {_id}
+        }
+    }`, imageGridModuleFragment = groq`
+    _type == 'imageGridModule' => {
+        _key,
+        _type,
+        images[] {
+            ...,
+            asset -> {_id}
+        },
+    }`, textColumnsModuleFragment = groq`_type == 'textColumnsModule' => {
+    ...,
+    text[] {
+        ${blockFragment},
+        ${collapsibleModuleFragment},
+        ${carouselModuleFragment},
+        ${imageModuleFragment},
+    }
+}`, textBlockModuleFragment = groq`_type == 'textBlockModule' => {
+    ...,
+    text[] {
+        ${blockFragment},
+        ${collapsibleModuleFragment},
+        ${carouselModuleFragment},
+        ${imageModuleFragment},
+        ${imageGridModuleFragment}
+    }
+}`, contentFragment = groq`
+    content[] {
+        ${textBlockModuleFragment},
+        ${headingModuleFragment},
+        ${collapsibleModuleFragment},
+        ${textColumnsModuleFragment},
+        ${carouselModuleFragment},
+        ${imageModuleFragment},
+        ${imageGridModuleFragment},
+        ${articlesModuleFragment},
+        ${shopModuleFragment},
+    }`;
+
+// node_modules/swiper/swiper.min.css
+var swiper_min_default = "/build/_assets/swiper.min-L7NXCLXG.css";
+
+// app/routes/articles/$slug.jsx
+var import_jsx_dev_runtime59 = __toESM(require_jsx_dev_runtime()), seo5 = ({ data }) => ({
+  title: "UPDATE ME",
+  description: "article description"
+}), handle6 = {
+  seo: seo5
+}, links2 = () => [{ rel: "stylesheet", href: swiper_min_default }];
+async function loader9({ context: context2, params }) {
+  let [article, articleContent] = await Promise.all([
+    getArticleData(context2, params),
+    getArticleContentData(context2, params)
+  ]);
+  return json3({
+    article,
+    articleContent
+  });
+}
+function Article() {
+  let { article, articleContent } = useLoaderData2();
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime59.jsxDEV)(Layout2, { intent: "article", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime59.jsxDEV)(ArticleBlockBanner_default, { article }, void 0, !1, {
+      fileName: "app/routes/articles/$slug.jsx",
+      lineNumber: 39,
+      columnNumber: 7
+    }, this),
+    articleContent.content.map((content) => /* @__PURE__ */ (0, import_jsx_dev_runtime59.jsxDEV)(Content, { content }, content._id || content._key, !1, {
+      fileName: "app/routes/articles/$slug.jsx",
+      lineNumber: 41,
+      columnNumber: 16
+    }, this))
+  ] }, void 0, !0, {
+    fileName: "app/routes/articles/$slug.jsx",
+    lineNumber: 38,
+    columnNumber: 5
+  }, this);
+}
+async function getArticleData(context2, params) {
+  let { sanityClient } = context2, query2 = groq`*[_type == "article" && slug.current == $slug][0]{
+        _id,
+  		headline,
+  		"slug": slug.fullUrl,
+  		intro,
+  		"colour":colour->colourLight,
+  		author-> {name},
+  		media[],
+  		image {
+  			alt,
+  			asset->
+  		}
+    }`;
+  return await sanityClient.fetch(query2, params);
+}
+async function getArticleContentData(context2, params) {
+  let { sanityClient } = context2, query2 = groq`*[_type == "article" && slug.current == $slug][0]{
+       ${contentFragment}
+    }`;
+  return await sanityClient.fetch(query2, params);
+}
+
 // app/routes/policies/index.tsx
 var policies_exports = {};
 __export(policies_exports, {
   default: () => Policies2,
-  handle: () => handle6,
-  loader: () => loader9
+  handle: () => handle7,
+  loader: () => loader10
 });
-var import_jsx_dev_runtime45 = __toESM(require_jsx_dev_runtime()), handle6 = {
+var import_jsx_dev_runtime60 = __toESM(require_jsx_dev_runtime()), handle7 = {
   seo: {
     title: "Policies"
   }
 };
-async function loader9({ context: { storefront } }) {
+async function loader10({ context: { storefront } }) {
   let data = await storefront.query(POLICIES_QUERY);
   invariant4(data, "No data returned from Shopify API");
   let policies = Object.values(data.shop || {});
@@ -46381,13 +50116,13 @@ async function loader9({ context: { storefront } }) {
 }
 function Policies2() {
   let { policies } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(import_jsx_dev_runtime45.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(PageHeader, { heading: "Policies" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(import_jsx_dev_runtime60.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(PageHeader, { heading: "Policies" }, void 0, !1, {
       fileName: "app/routes/policies/index.tsx",
       lineNumber: 43,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Section, { padding: "x", className: "mb-24", children: policies.map((policy) => policy && /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Heading, { className: "font-normal text-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime45.jsxDEV)(Link3, { to: `/policies/${policy.handle}`, children: policy.title }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(Section, { padding: "x", className: "mb-24", children: policies.map((policy) => policy && /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(Heading, { className: "font-normal text-heading", children: /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(Link3, { to: `/policies/${policy.handle}`, children: policy.title }, void 0, !1, {
       fileName: "app/routes/policies/index.tsx",
       lineNumber: 49,
       columnNumber: 17
@@ -46440,11 +50175,11 @@ var POLICIES_QUERY = `#graphql
 var products_exports = {};
 __export(products_exports, {
   default: () => AllProducts,
-  handle: () => handle7,
-  loader: () => loader10
+  handle: () => handle8,
+  loader: () => loader11
 });
-var import_jsx_dev_runtime46 = __toESM(require_jsx_dev_runtime()), PAGE_BY = 8;
-async function loader10({ request, context: { storefront } }) {
+var import_jsx_dev_runtime61 = __toESM(require_jsx_dev_runtime()), PAGE_BY = 8;
+async function loader11({ request, context: { storefront } }) {
   let variables = getPaginationVariables(request, PAGE_BY), data = await storefront.query(ALL_PRODUCTS_QUERY, {
     variables: {
       ...variables,
@@ -46454,20 +50189,20 @@ async function loader10({ request, context: { storefront } }) {
   });
   return invariant4(data, "No data returned from Shopify API"), data.products;
 }
-var handle7 = {
+var handle8 = {
   seo: {
     title: "Products"
   }
 };
 function AllProducts() {
   let products = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(PageHeader, { heading: "All Products", variant: "allCollections" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(import_jsx_dev_runtime61.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(PageHeader, { heading: "All Products", variant: "allCollections" }, void 0, !1, {
       fileName: "app/routes/products/index.tsx",
       lineNumber: 47,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Pagination, { connection: products, children: ({
+    /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(Pagination, { connection: products, children: ({
       endCursor,
       hasNextPage,
       hasPreviousPage,
@@ -46478,7 +50213,7 @@ function AllProducts() {
       nextLinkRef,
       isLoading
     }) => {
-      let itemsMarkup = nodes.map((product, i10) => /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+      let itemsMarkup = nodes.map((product, i10) => /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(
         ProductCard,
         {
           product,
@@ -46493,8 +50228,8 @@ function AllProducts() {
         },
         this
       ));
-      return /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(import_jsx_dev_runtime46.Fragment, { children: [
-        hasPreviousPage && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+      return /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(import_jsx_dev_runtime61.Fragment, { children: [
+        hasPreviousPage && /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(
           Button,
           {
             to: prevPageUrl,
@@ -46525,12 +50260,12 @@ function AllProducts() {
           lineNumber: 72,
           columnNumber: 19
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(Grid, { "data-test": "product-grid", children: itemsMarkup }, void 0, !1, {
           fileName: "app/routes/products/index.tsx",
           lineNumber: 92,
           columnNumber: 17
         }, this),
-        hasNextPage && /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime46.jsxDEV)(
+        hasNextPage && /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)("div", { className: "flex items-center justify-center mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(
           Button,
           {
             ref: nextLinkRef,
@@ -46609,10 +50344,10 @@ var ALL_PRODUCTS_QUERY = `#graphql
 // app/routes/[sitemap.xml].tsx
 var sitemap_xml_exports = {};
 __export(sitemap_xml_exports, {
-  loader: () => loader11
+  loader: () => loader12
 });
 var MAX_URLS = 250;
-async function loader11({ request, context: { storefront } }) {
+async function loader12({ request, context: { storefront } }) {
   let data = await storefront.query(SITEMAP_QUERY, {
     variables: {
       urlLimits: MAX_URLS,
@@ -46723,9 +50458,9 @@ var SITEMAP_QUERY = `#graphql
 var countries_exports = {};
 __export(countries_exports, {
   default: () => CountriesApiRoute,
-  loader: () => loader12
+  loader: () => loader13
 });
-async function loader12({ context: { storefront } }) {
+async function loader13({ context: { storefront } }) {
   return json3(
     {
       ...countries
@@ -46746,9 +50481,9 @@ function CountriesApiRoute() {
 // app/routes/[robots.txt].tsx
 var robots_txt_exports = {};
 __export(robots_txt_exports, {
-  loader: () => loader13
+  loader: () => loader14
 });
-var loader13 = ({ request }) => {
+var loader14 = ({ request }) => {
   let url = new URL(request.url);
   return new Response(robotsTxtData({ url: url.origin }), {
     status: 200,
@@ -46787,9 +50522,9 @@ Crawl-delay: 1
 var products_exports2 = {};
 __export(products_exports2, {
   default: () => ProductsApiRoute,
-  loader: () => loader14
+  loader: () => loader15
 });
-async function loader14({ request, context: { storefront } }) {
+async function loader15({ request, context: { storefront } }) {
   let url = new URL(request.url), searchParams = new URLSearchParams(url.search), sortKey = searchParams.get("sortKey") ?? "BEST_SELLING", query2 = searchParams.get("query") ?? "", reverse = !1;
   try {
     searchParams.get("reverse") === "true" && (reverse = !0);
@@ -46837,150 +50572,6 @@ function ProductsApiRoute() {
   return null;
 }
 
-// app/routes/indexOLD.tsx
-var indexOLD_exports = {};
-__export(indexOLD_exports, {
-  FEATURED_COLLECTIONS_QUERY: () => FEATURED_COLLECTIONS_QUERY,
-  HOMEPAGE_FEATURED_PRODUCTS_QUERY: () => HOMEPAGE_FEATURED_PRODUCTS_QUERY,
-  default: () => Homepage,
-  loader: () => loader15
-});
-async function loader15({ params, context: context2 }) {
-  let { language, country } = context2.storefront.i18n;
-  if (params.lang && params.lang.toLowerCase() !== `${language}-${country}`.toLowerCase())
-    throw new Response(null, { status: 404 });
-  let { shop, hero } = await context2.storefront.query(HOMEPAGE_SEO_QUERY, {
-    variables: { handle: "freestyle" }
-  });
-  return defer3({
-    shop,
-    primaryHero: hero,
-    featuredProducts: context2.storefront.query(HOMEPAGE_FEATURED_PRODUCTS_QUERY, {
-      variables: {
-        country,
-        language
-      }
-    }),
-    secondaryHero: context2.storefront.query(
-      COLLECTION_HERO_QUERY,
-      {
-        variables: {
-          handle: "backcountry",
-          country,
-          language
-        }
-      }
-    ),
-    featuredCollections: context2.storefront.query(FEATURED_COLLECTIONS_QUERY, {
-      variables: {
-        country,
-        language
-      }
-    }),
-    tertiaryHero: context2.storefront.query(
-      COLLECTION_HERO_QUERY,
-      {
-        variables: {
-          handle: "winter-2022",
-          country,
-          language
-        }
-      }
-    ),
-    analytics: {
-      pageType: AnalyticsPageType.home
-    }
-  });
-}
-function Homepage() {
-  let {
-    primaryHero,
-    secondaryHero,
-    tertiaryHero,
-    featuredCollections,
-    featuredProducts
-  } = useLoaderData2(), skeletons = getHeroPlaceholder([{}, {}, {}]);
-  return null;
-}
-var COLLECTION_CONTENT_FRAGMENT = `#graphql
-  ${MEDIA_FRAGMENT}
-  fragment CollectionContent on Collection {
-    id
-    handle
-    title
-    descriptionHtml
-    heading: metafield(namespace: "hero", key: "title") {
-      value
-    }
-    byline: metafield(namespace: "hero", key: "byline") {
-      value
-    }
-    cta: metafield(namespace: "hero", key: "cta") {
-      value
-    }
-    spread: metafield(namespace: "hero", key: "spread") {
-      reference {
-        ...Media
-      }
-    }
-    spreadSecondary: metafield(namespace: "hero", key: "spread_secondary") {
-      reference {
-        ...Media
-      }
-    }
-  }
-`, HOMEPAGE_SEO_QUERY = `#graphql
-  ${COLLECTION_CONTENT_FRAGMENT}
-  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
-      ...CollectionContent
-    }
-    shop {
-      name
-      description
-    }
-  }
-`, COLLECTION_HERO_QUERY = `#graphql
-  ${COLLECTION_CONTENT_FRAGMENT}
-  query collectionContent($handle: String, $country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    hero: collection(handle: $handle) {
-      ...CollectionContent
-    }
-  }
-`, HOMEPAGE_FEATURED_PRODUCTS_QUERY = `#graphql
-  ${PRODUCT_CARD_FRAGMENT}
-  query homepageFeaturedProducts($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    products(first: 8) {
-      nodes {
-        ...ProductCard
-      }
-    }
-  }
-`, FEATURED_COLLECTIONS_QUERY = `#graphql
-  query homepageFeaturedCollections($country: CountryCode, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    collections(
-      first: 4,
-      sortKey: UPDATED_AT
-    ) {
-      nodes {
-        id
-        title
-        handle
-        image {
-          altText
-          width
-          height
-          url
-        }
-      }
-    }
-  }
-`;
-
 // app/routes/account.tsx
 var account_exports = {};
 __export(account_exports, {
@@ -46988,7 +50579,7 @@ __export(account_exports, {
   getCustomer: () => getCustomer,
   loader: () => loader17
 });
-var import_react104 = __toESM(require_react());
+var import_react125 = __toESM(require_react());
 
 // app/routes/account/__private/logout.ts
 var logout_exports = {};
@@ -47011,7 +50602,7 @@ async function loader16({ context: context2 }) {
 var action2 = async ({ context: context2 }) => doLogout(context2);
 
 // app/routes/account.tsx
-var import_jsx_dev_runtime47 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime62 = __toESM(require_jsx_dev_runtime());
 async function loader17({ request, context: context2, params }) {
   let { pathname } = new URL(request.url), lang = params.lang, customerAccessToken = await context2.session.get("customerAccessToken"), isAuthenticated = Boolean(customerAccessToken), loginPath = lang ? `/${lang}/account/login` : "/account/login";
   if (!isAuthenticated)
@@ -47031,8 +50622,8 @@ function Authenticated() {
     var _a2;
     return (_a2 = match2 == null ? void 0 : match2.handle) == null ? void 0 : _a2.renderInModal;
   });
-  return data.isAuthenticated ? outlet ? renderOutletInModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Modal, { cancelLink: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
+  return data.isAuthenticated ? outlet ? renderOutletInModal ? /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(import_jsx_dev_runtime62.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Modal, { cancelLink: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 99,
       columnNumber: 13
@@ -47041,7 +50632,7 @@ function Authenticated() {
       lineNumber: 98,
       columnNumber: 11
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Account, { ...data }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Account, { ...data }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 101,
       columnNumber: 11
@@ -47050,15 +50641,15 @@ function Authenticated() {
     fileName: "app/routes/account.tsx",
     lineNumber: 97,
     columnNumber: 9
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Outlet, { context: { customer: data.customer } }, void 0, !1, {
     fileName: "app/routes/account.tsx",
     lineNumber: 105,
     columnNumber: 14
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Account, { ...data }, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Account, { ...data }, void 0, !1, {
     fileName: "app/routes/account.tsx",
     lineNumber: 109,
     columnNumber: 10
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Outlet, {}, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Outlet, {}, void 0, !1, {
     fileName: "app/routes/account.tsx",
     lineNumber: 90,
     columnNumber: 12
@@ -47071,8 +50662,8 @@ function Account({
   addresses,
   featuredData
 }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("button", { type: "submit", className: "", children: "Sign out" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(import_jsx_dev_runtime62.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(PageHeader, { heading, children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Form, { method: "post", action: usePrefixPathWithLocale("/account/logout"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("button", { type: "submit", className: "", children: "Sign out" }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 131,
       columnNumber: 11
@@ -47085,17 +50676,17 @@ function Account({
       lineNumber: 129,
       columnNumber: 7
     }, this),
-    orders && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
+    orders && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(AccountOrderHistory, { orders }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 136,
       columnNumber: 18
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(AccountDetails, { customer }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 137,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
       AccountAddressBook,
       {
         addresses,
@@ -47110,13 +50701,13 @@ function Account({
       },
       this
     ),
-    !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_react104.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    !orders.length && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(import_react125.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
       Await2,
       {
         resolve: featuredData,
         errorElement: "There was a problem loading featured products.",
-        children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(import_jsx_dev_runtime47.Fragment, { children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+        children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(import_jsx_dev_runtime62.Fragment, { children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
             FeaturedCollections,
             {
               title: "Popular Collections",
@@ -47131,7 +50722,7 @@ function Account({
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(ProductSwimlane, { products: data.featuredProducts }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(ProductSwimlane, { products: data.featuredProducts }, void 0, !1, {
             fileName: "app/routes/account.tsx",
             lineNumber: 154,
             columnNumber: 17
@@ -47162,17 +50753,17 @@ function Account({
   }, this);
 }
 function AccountOrderHistory({ orders }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { className: "grid w-full gap-4 p-4 py-6 md:gap-8 md:p-8 lg:p-12", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("h2", { className: "font-bold text-lead", children: "Order History" }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 168,
       columnNumber: 9
     }, this),
-    orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Orders, { orders }, void 0, !1, {
+    orders != null && orders.length ? /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Orders, { orders }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 169,
       columnNumber: 27
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(EmptyOrders, {}, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(EmptyOrders, {}, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 169,
       columnNumber: 56
@@ -47188,13 +50779,13 @@ function AccountOrderHistory({ orders }) {
   }, this);
 }
 function EmptyOrders() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Text, { className: "mb-1", size: "fine", width: "narrow", as: "p", children: "You haven't placed any orders yet." }, void 0, !1, {
       fileName: "app/routes/account.tsx",
       lineNumber: 178,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { className: "w-48", children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
       Button,
       {
         className: "w-full mt-2 text-sm",
@@ -47222,7 +50813,7 @@ function EmptyOrders() {
   }, this);
 }
 function Orders({ orders }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order2) => /* @__PURE__ */ (0, import_jsx_dev_runtime47.jsxDEV)(OrderCard, { order: order2 }, order2.id, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("ul", { className: "grid grid-flow-row grid-cols-1 gap-2 gap-y-6 md:gap-4 lg:gap-6 false sm:grid-cols-3", children: orders.map((order2) => /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(OrderCard, { order: order2 }, order2.id, !1, {
     fileName: "app/routes/account.tsx",
     lineNumber: 198,
     columnNumber: 9
@@ -47326,11 +50917,11 @@ var activate_id_activationToken_exports = {};
 __export(activate_id_activationToken_exports, {
   action: () => action3,
   default: () => Activate,
-  handle: () => handle8,
+  handle: () => handle9,
   meta: () => meta4
 });
-var import_react106 = __toESM(require_react());
-var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), badRequest2 = (data) => json3(data, { status: 400 }), handle8 = {
+var import_react127 = __toESM(require_react());
+var import_jsx_dev_runtime63 = __toESM(require_jsx_dev_runtime()), badRequest2 = (data) => json3(data, { status: 400 }), handle9 = {
   isPublic: !0
 }, action3 = async ({
   request,
@@ -47376,33 +50967,33 @@ var import_jsx_dev_runtime48 = __toESM(require_jsx_dev_runtime()), badRequest2 =
   title: "Activate Account"
 });
 function Activate() {
-  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react106.useState)(
+  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react127.useState)(
     null
-  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react106.useState)(null), passwordInput = (0, import_react106.useRef)(null), passwordConfirmInput = (0, import_react106.useRef)(null), validatePasswordConfirm = () => {
+  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react127.useState)(null), passwordInput = (0, import_react127.useRef)(null), passwordConfirmInput = (0, import_react127.useRef)(null), validatePasswordConfirm = () => {
     var _a2;
     !passwordConfirmInput.current || (passwordConfirmInput.current.value.length && passwordConfirmInput.current.value !== ((_a2 = passwordInput.current) == null ? void 0 : _a2.value) ? setNativePasswordConfirmError("The two passwords entered did not match.") : passwordConfirmInput.current.validity.valid || !passwordConfirmInput.current.value.length ? setNativePasswordConfirmError(null) : setNativePasswordConfirmError(
       passwordConfirmInput.current.validity.valueMissing ? "Please re-enter the password" : "Passwords must be at least 8 characters"
     ));
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("h1", { className: "text-4xl", children: "Activate Account." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("h1", { className: "text-4xl", children: "Activate Account." }, void 0, !1, {
       fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
       lineNumber: 146,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "mt-4", children: "Create your password to activate your account." }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("p", { className: "mt-4", children: "Create your password to activate your account." }, void 0, !1, {
       fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
       lineNumber: 147,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/account/__public/activate.$id.$activationToken.tsx",
             lineNumber: 156,
             columnNumber: 15
@@ -47411,8 +51002,8 @@ function Activate() {
             lineNumber: 155,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
               "input",
               {
                 ref: passwordInput,
@@ -47426,9 +51017,9 @@ function Activate() {
                 minLength: 8,
                 required: !0,
                 autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                onBlur: (event2) => {
+                  event2.currentTarget.validity.valid || !event2.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
+                    event2.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
                   );
                 }
               },
@@ -47441,7 +51032,7 @@ function Activate() {
               },
               this
             ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordError,
               " \xA0"
@@ -47455,8 +51046,8 @@ function Activate() {
             lineNumber: 159,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
               "input",
               {
                 ref: passwordConfirmInput,
@@ -47483,7 +51074,7 @@ function Activate() {
               },
               this
             ),
-            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordConfirmError,
               " \xA0"
@@ -47497,7 +51088,7 @@ function Activate() {
             lineNumber: 196,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime48.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -47561,8 +51152,8 @@ __export(reset_id_resetToken_exports, {
   default: () => Reset,
   meta: () => meta5
 });
-var import_react108 = __toESM(require_react());
-var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), action4 = async ({
+var import_react129 = __toESM(require_react());
+var import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), action4 = async ({
   request,
   context: context2,
   params: { lang, id, resetToken }
@@ -47609,33 +51200,33 @@ var import_jsx_dev_runtime49 = __toESM(require_jsx_dev_runtime()), badRequest3 =
   title: "Reset Password"
 });
 function Reset() {
-  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react108.useState)(
+  let actionData = useActionData2(), [nativePasswordError, setNativePasswordError] = (0, import_react129.useState)(
     null
-  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react108.useState)(null), passwordInput = (0, import_react108.useRef)(null), passwordConfirmInput = (0, import_react108.useRef)(null), validatePasswordConfirm = () => {
+  ), [nativePasswordConfirmError, setNativePasswordConfirmError] = (0, import_react129.useState)(null), passwordInput = (0, import_react129.useRef)(null), passwordConfirmInput = (0, import_react129.useRef)(null), validatePasswordConfirm = () => {
     var _a2;
     !passwordConfirmInput.current || (passwordConfirmInput.current.value.length && passwordConfirmInput.current.value !== ((_a2 = passwordInput.current) == null ? void 0 : _a2.value) ? setNativePasswordConfirmError("The two passwords entered did not match.") : passwordConfirmInput.current.validity.valid || !passwordConfirmInput.current.value.length ? setNativePasswordConfirmError(null) : setNativePasswordConfirmError(
       passwordConfirmInput.current.validity.valueMissing ? "Please re-enter the password" : "Passwords must be at least 8 characters"
     ));
   };
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("h1", { className: "text-4xl", children: "Reset Password." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("h1", { className: "text-4xl", children: "Reset Password." }, void 0, !1, {
       fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
       lineNumber: 143,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "mt-4", children: "Enter a new password for your account." }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("p", { className: "mt-4", children: "Enter a new password for your account." }, void 0, !1, {
       fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
       lineNumber: 144,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/account/__public/reset.$id.$resetToken.tsx",
             lineNumber: 153,
             columnNumber: 15
@@ -47644,8 +51235,8 @@ function Reset() {
             lineNumber: 152,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
               "input",
               {
                 ref: passwordInput,
@@ -47659,9 +51250,9 @@ function Reset() {
                 minLength: 8,
                 required: !0,
                 autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                onBlur: (event2) => {
+                  event2.currentTarget.validity.valid || !event2.currentTarget.value.length ? (setNativePasswordError(null), validatePasswordConfirm()) : setNativePasswordError(
+                    event2.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
                   );
                 }
               },
@@ -47674,7 +51265,7 @@ function Reset() {
               },
               this
             ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordError,
               " \xA0"
@@ -47688,8 +51279,8 @@ function Reset() {
             lineNumber: 156,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "mb-3", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "mb-3", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
               "input",
               {
                 ref: passwordConfirmInput,
@@ -47716,7 +51307,7 @@ function Reset() {
               },
               this
             ),
-            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordConfirmError && /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordConfirmError,
               " \xA0"
@@ -47730,7 +51321,7 @@ function Reset() {
             lineNumber: 193,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime49.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -47792,9 +51383,9 @@ var id_exports = {};
 __export(id_exports, {
   action: () => action5,
   default: () => EditAddress,
-  handle: () => handle9
+  handle: () => handle10
 });
-var import_jsx_dev_runtime50 = __toESM(require_jsx_dev_runtime()), badRequest4 = (data) => json3(data, { status: 400 }), handle9 = {
+var import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime()), badRequest4 = (data) => json3(data, { status: 400 }), handle10 = {
   renderInModal: !0
 }, action5 = async ({ request, context: context2, params }) => {
   var _a2, _b;
@@ -47871,14 +51462,14 @@ function EditAddress() {
   let { id: addressId } = useParams(), isNewAddress = addressId === "add", actionData = useActionData2(), transition = useTransition(), { customer } = useOutletContext(), addresses = flattenConnection(customer.addresses), defaultAddress = customer.defaultAddress, normalizedAddress = decodeURIComponent(addressId ?? "").split("?")[0], address = addresses.find(
     (address2) => address2.id.startsWith(normalizedAddress)
   );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(import_jsx_dev_runtime50.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: isNewAddress ? "Add address" : "Edit address" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(import_jsx_dev_runtime65.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: isNewAddress ? "Add address" : "Edit address" }, void 0, !1, {
       fileName: "app/routes/account/__private/address/$id.tsx",
       lineNumber: 165,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(Form, { method: "post", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "max-w-lg", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(Form, { method: "post", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           type: "hidden",
@@ -47894,7 +51485,7 @@ function EditAddress() {
         },
         this
       ),
-      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
+      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
         fileName: "app/routes/account/__private/address/$id.tsx",
         lineNumber: 177,
         columnNumber: 15
@@ -47903,7 +51494,7 @@ function EditAddress() {
         lineNumber: 176,
         columnNumber: 13
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -47929,7 +51520,7 @@ function EditAddress() {
         lineNumber: 180,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -47955,7 +51546,7 @@ function EditAddress() {
         lineNumber: 193,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -47980,7 +51571,7 @@ function EditAddress() {
         lineNumber: 206,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48006,7 +51597,7 @@ function EditAddress() {
         lineNumber: 218,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48031,7 +51622,7 @@ function EditAddress() {
         lineNumber: 231,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48057,7 +51648,7 @@ function EditAddress() {
         lineNumber: 243,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48083,7 +51674,7 @@ function EditAddress() {
         lineNumber: 256,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48109,7 +51700,7 @@ function EditAddress() {
         lineNumber: 269,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48135,7 +51726,7 @@ function EditAddress() {
         lineNumber: 282,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -48160,8 +51751,8 @@ function EditAddress() {
         lineNumber: 295,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-4", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-4", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
           "input",
           {
             type: "checkbox",
@@ -48179,7 +51770,7 @@ function EditAddress() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
           "label",
           {
             className: "inline-block ml-2 text-sm cursor-pointer",
@@ -48200,7 +51791,7 @@ function EditAddress() {
         lineNumber: 307,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { className: "mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "mt-8", children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         Button,
         {
           className: "w-full rounded focus:shadow-outline",
@@ -48222,7 +51813,7 @@ function EditAddress() {
         lineNumber: 322,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime50.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
         Button,
         {
           to: "..",
@@ -48331,7 +51922,7 @@ __export(orders_id_exports, {
   loader: () => loader18,
   meta: () => meta6
 });
-var import_jsx_dev_runtime51 = __toESM(require_jsx_dev_runtime()), meta6 = ({ data }) => {
+var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), meta6 = ({ data }) => {
   var _a2;
   return {
     title: `Order ${(_a2 = data == null ? void 0 : data.order) == null ? void 0 : _a2.name}`
@@ -48365,8 +51956,8 @@ async function loader18({ request, context: context2, params }) {
 function OrderRoute() {
   var _a2;
   let { order: order2, lineItems, discountValue, discountPercentage } = useLoaderData2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(PageHeader, { heading: "Order detail", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Link3, { to: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { color: "subtle", children: "Return to Account Overview" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(PageHeader, { heading: "Order detail", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Link3, { to: "/account", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { color: "subtle", children: "Return to Account Overview" }, void 0, !1, {
       fileName: "app/routes/account/__private/orders.$id.tsx",
       lineNumber: 84,
       columnNumber: 11
@@ -48379,8 +51970,8 @@ function OrderRoute() {
       lineNumber: 82,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { as: "h3", size: "lead", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "w-full p-6 sm:grid-cols-1 md:p-8 lg:p-12 lg:py-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { as: "h3", size: "lead", children: [
         "Order No. ",
         order2.name
       ] }, void 0, !0, {
@@ -48388,7 +51979,7 @@ function OrderRoute() {
         lineNumber: 89,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { className: "mt-2", as: "p", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { className: "mt-2", as: "p", children: [
         "Placed on ",
         new Date(order2.processedAt).toDateString()
       ] }, void 0, !0, {
@@ -48396,10 +51987,10 @@ function OrderRoute() {
         lineNumber: 92,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("table", { className: "min-w-full my-8 divide-y divide-gray-300 md:col-span-3", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { className: "align-baseline ", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "grid items-start gap-12 sm:grid-cols-1 md:grid-cols-4 md:gap-16 sm:divide-y sm:divide-gray-200", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("table", { className: "min-w-full my-8 divide-y divide-gray-300 md:col-span-3", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("thead", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tr", { className: "align-baseline ", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -48415,7 +52006,7 @@ function OrderRoute() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -48431,7 +52022,7 @@ function OrderRoute() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -48447,7 +52038,7 @@ function OrderRoute() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
               "th",
               {
                 scope: "col",
@@ -48472,15 +52063,15 @@ function OrderRoute() {
             lineNumber: 97,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: lineItems.map((lineItem) => {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tbody", { className: "divide-y divide-gray-200", children: lineItems.map((lineItem) => {
             var _a3;
-            return /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex gap-6", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            return /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "w-full py-4 pl-0 pr-3 align-top sm:align-middle max-w-0 sm:w-auto sm:max-w-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "flex gap-6", children: [
+                /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                   Link3,
                   {
                     to: `/products/${lineItem.variant.product.handle}`,
-                    children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+                    children: ((_a3 = lineItem == null ? void 0 : lineItem.variant) == null ? void 0 : _a3.image) && /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "w-24 card-image aspect-square", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                       Image,
                       {
                         data: {
@@ -48517,13 +52108,13 @@ function OrderRoute() {
                   },
                   this
                 ),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "flex-col justify-center hidden lg:flex", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { as: "p", children: lineItem.title }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "flex-col justify-center hidden lg:flex", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { as: "p", children: lineItem.title }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 152,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", className: "mt-1", as: "p", children: lineItem.variant.title }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { size: "fine", className: "mt-1", as: "p", children: lineItem.variant.title }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 153,
                     columnNumber: 27
@@ -48533,19 +52124,19 @@ function OrderRoute() {
                   lineNumber: 151,
                   columnNumber: 25
                 }, this),
-                /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dl", { className: "grid", children: [
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dt", { className: "sr-only", children: "Product" }, void 0, !1, {
+                /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dl", { className: "grid", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dt", { className: "sr-only", children: "Product" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 158,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dd", { className: "truncate lg:hidden", children: [
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { size: "copy", format: !0, as: "h3", children: lineItem.title }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dd", { className: "truncate lg:hidden", children: [
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Heading, { size: "copy", format: !0, as: "h3", children: lineItem.title }, void 0, !1, {
                       fileName: "app/routes/account/__private/orders.$id.tsx",
                       lineNumber: 160,
                       columnNumber: 29
                     }, this),
-                    /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", className: "mt-1", children: lineItem.variant.title }, void 0, !1, {
+                    /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { size: "fine", className: "mt-1", children: lineItem.variant.title }, void 0, !1, {
                       fileName: "app/routes/account/__private/orders.$id.tsx",
                       lineNumber: 163,
                       columnNumber: 29
@@ -48555,12 +52146,12 @@ function OrderRoute() {
                     lineNumber: 159,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dt", { className: "sr-only", children: "Price" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dt", { className: "sr-only", children: "Price" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 167,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { size: "fine", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 170,
                     columnNumber: 31
@@ -48573,12 +52164,12 @@ function OrderRoute() {
                     lineNumber: 168,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dt", { className: "sr-only", children: "Quantity" }, void 0, !1, {
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dt", { className: "sr-only", children: "Quantity" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 173,
                     columnNumber: 27
                   }, this),
-                  /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { className: "mt-1", size: "fine", children: [
+                  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("dd", { className: "truncate sm:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { className: "mt-1", size: "fine", children: [
                     "Qty: ",
                     lineItem.quantity
                   ] }, void 0, !0, {
@@ -48604,7 +52195,7 @@ function OrderRoute() {
                 lineNumber: 129,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: lineItem.variant.price }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 183,
                 columnNumber: 23
@@ -48613,12 +52204,12 @@ function OrderRoute() {
                 lineNumber: 182,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: lineItem.quantity }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "hidden px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: lineItem.quantity }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 185,
                 columnNumber: 21
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: lineItem.discountedTotalPrice }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "px-3 py-4 text-right align-top sm:align-middle sm:table-cell", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: lineItem.discountedTotalPrice }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 190,
                 columnNumber: 25
@@ -48641,15 +52232,15 @@ function OrderRoute() {
             lineNumber: 125,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tfoot", { children: [
-            (discountValue && discountValue.amount || discountPercentage) && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tfoot", { children: [
+            (discountValue && discountValue.amount || discountPercentage) && /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   colSpan: 3,
                   className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 205,
                     columnNumber: 23
@@ -48664,12 +52255,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-6 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: "Discounts" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 211,
                     columnNumber: 23
@@ -48684,7 +52275,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3", children: discountPercentage ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("span", { className: "text-sm", children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 font-medium text-right text-green-700 md:pr-3", children: discountPercentage ? /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("span", { className: "text-sm", children: [
                 "-",
                 discountPercentage,
                 "% OFF"
@@ -48692,7 +52283,7 @@ function OrderRoute() {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 215,
                 columnNumber: 25
-              }, this) : discountValue && /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: discountValue }, void 0, !1, {
+              }, this) : discountValue && /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: discountValue }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 219,
                 columnNumber: 42
@@ -48706,14 +52297,14 @@ function OrderRoute() {
               lineNumber: 199,
               columnNumber: 19
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   colSpan: 3,
                   className: "hidden pt-6 pl-6 pr-3 font-normal text-right sm:table-cell md:pl-0",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 230,
                     columnNumber: 21
@@ -48728,12 +52319,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-6 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: "Subtotal" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 236,
                     columnNumber: 21
@@ -48748,7 +52339,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: order2.subtotalPriceV2 }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "pt-6 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: order2.subtotalPriceV2 }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 239,
                 columnNumber: 21
@@ -48762,8 +52353,8 @@ function OrderRoute() {
               lineNumber: 224,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
@@ -48780,12 +52371,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-4 pr-3 font-normal text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Tax" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: "Tax" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 254,
                     columnNumber: 21
@@ -48800,7 +52391,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: order2.totalTaxV2 }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: order2.totalTaxV2 }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 257,
                 columnNumber: 21
@@ -48814,8 +52405,8 @@ function OrderRoute() {
               lineNumber: 242,
               columnNumber: 17
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("tr", { children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("tr", { children: [
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
@@ -48832,12 +52423,12 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
                 "th",
                 {
                   scope: "row",
                   className: "pt-4 pr-3 font-semibold text-left sm:hidden",
-                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: "Total" }, void 0, !1, {
+                  children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: "Total" }, void 0, !1, {
                     fileName: "app/routes/account/__private/orders.$id.tsx",
                     lineNumber: 272,
                     columnNumber: 21
@@ -48852,7 +52443,7 @@ function OrderRoute() {
                 },
                 this
               ),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 font-semibold text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Money, { data: order2.totalPriceV2 }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("td", { className: "pt-4 pl-3 pr-4 font-semibold text-right md:pr-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Money, { data: order2.totalPriceV2 }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 275,
                 columnNumber: 21
@@ -48876,14 +52467,14 @@ function OrderRoute() {
           lineNumber: 96,
           columnNumber: 13
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("div", { className: "sticky border-none top-nav md:my-8", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { size: "copy", className: "font-semibold", as: "h3", children: "Shipping Address" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "sticky border-none top-nav md:my-8", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Heading, { size: "copy", className: "font-semibold", as: "h3", children: "Shipping Address" }, void 0, !1, {
             fileName: "app/routes/account/__private/orders.$id.tsx",
             lineNumber: 281,
             columnNumber: 15
           }, this),
-          order2 != null && order2.shippingAddress ? /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("ul", { className: "mt-6", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: [
+          order2 != null && order2.shippingAddress ? /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("ul", { className: "mt-6", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: [
               order2.shippingAddress.firstName && order2.shippingAddress.firstName + " ",
               order2.shippingAddress.lastName
             ] }, void 0, !0, {
@@ -48895,7 +52486,7 @@ function OrderRoute() {
               lineNumber: 286,
               columnNumber: 19
             }, this),
-            (_a2 = order2 == null ? void 0 : order2.shippingAddress) != null && _a2.formatted ? order2.shippingAddress.formatted.map((line) => /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { children: line }, void 0, !1, {
+            (_a2 = order2 == null ? void 0 : order2.shippingAddress) != null && _a2.formatted ? order2.shippingAddress.formatted.map((line) => /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { children: line }, void 0, !1, {
               fileName: "app/routes/account/__private/orders.$id.tsx",
               lineNumber: 296,
               columnNumber: 25
@@ -48903,7 +52494,7 @@ function OrderRoute() {
               fileName: "app/routes/account/__private/orders.$id.tsx",
               lineNumber: 295,
               columnNumber: 23
-            }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(import_jsx_dev_runtime51.Fragment, {}, void 0, !1, {
+            }, this)) : /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(import_jsx_dev_runtime66.Fragment, {}, void 0, !1, {
               fileName: "app/routes/account/__private/orders.$id.tsx",
               lineNumber: 300,
               columnNumber: 21
@@ -48912,24 +52503,24 @@ function OrderRoute() {
             fileName: "app/routes/account/__private/orders.$id.tsx",
             lineNumber: 285,
             columnNumber: 17
-          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)("p", { className: "mt-3", children: "No shipping address defined" }, void 0, !1, {
+          }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("p", { className: "mt-3", children: "No shipping address defined" }, void 0, !1, {
             fileName: "app/routes/account/__private/orders.$id.tsx",
             lineNumber: 304,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Heading, { size: "copy", className: "mt-8 font-semibold", as: "h3", children: "Status" }, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Heading, { size: "copy", className: "mt-8 font-semibold", as: "h3", children: "Status" }, void 0, !1, {
             fileName: "app/routes/account/__private/orders.$id.tsx",
             lineNumber: 306,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(
             "div",
             {
               className: cx(
                 "mt-3 px-3 py-1 text-xs font-medium rounded-full inline-block w-auto",
                 order2.fulfillmentStatus === "FULFILLED" ? "bg-green-100 text-green-800" : "bg-primary/20 "
               ),
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime51.jsxDEV)(Text, { size: "fine", children: statusMessage(order2.fulfillmentStatus) }, void 0, !1, {
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Text, { size: "fine", children: statusMessage(order2.fulfillmentStatus) }, void 0, !1, {
                 fileName: "app/routes/account/__private/orders.$id.tsx",
                 lineNumber: 317,
                 columnNumber: 17
@@ -49092,7 +52683,7 @@ __export(register_exports, {
   loader: () => loader20,
   meta: () => meta8
 });
-var import_react114 = __toESM(require_react());
+var import_react135 = __toESM(require_react());
 
 // app/routes/account/__public/login.tsx
 var login_exports = {};
@@ -49100,12 +52691,12 @@ __export(login_exports, {
   action: () => action6,
   default: () => Login,
   doLogin: () => doLogin,
-  handle: () => handle10,
+  handle: () => handle11,
   loader: () => loader19,
   meta: () => meta7
 });
-var import_react112 = __toESM(require_react());
-var import_jsx_dev_runtime52 = __toESM(require_jsx_dev_runtime()), handle10 = {
+var import_react133 = __toESM(require_react());
+var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), handle11 = {
   isPublic: !0
 };
 async function loader19({ context: context2, params }) {
@@ -49136,23 +52727,23 @@ var badRequest5 = (data) => json3(data, { status: 400 }), action6 = async ({ req
   title: "Login"
 });
 function Login() {
-  let { shopName } = useLoaderData2(), actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react112.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react112.useState)(
+  let { shopName } = useLoaderData2(), actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react133.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react133.useState)(
     null
   );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("h1", { className: "text-4xl", children: "Sign in." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("h1", { className: "text-4xl", children: "Sign in." }, void 0, !1, {
       fileName: "app/routes/account/__public/login.tsx",
       lineNumber: 99,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/account/__public/login.tsx",
             lineNumber: 108,
             columnNumber: 15
@@ -49161,8 +52752,8 @@ function Login() {
             lineNumber: 107,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
@@ -49174,9 +52765,9 @@ function Login() {
                 placeholder: "Email address",
                 "aria-label": "Email address",
                 autoFocus: !0,
-                onBlur: (event) => {
+                onBlur: (event2) => {
                   setNativeEmailError(
-                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
+                    event2.currentTarget.value.length && !event2.currentTarget.validity.valid ? "Invalid email address" : null
                   );
                 }
               },
@@ -49189,7 +52780,7 @@ function Login() {
               },
               this
             ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               nativeEmailError,
               " \xA0"
             ] }, void 0, !0, {
@@ -49202,8 +52793,8 @@ function Login() {
             lineNumber: 111,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
@@ -49216,9 +52807,9 @@ function Login() {
                 minLength: 8,
                 required: !0,
                 autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                onBlur: (event2) => {
+                  event2.currentTarget.validity.valid || !event2.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
+                    event2.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
                   );
                 }
               },
@@ -49231,7 +52822,7 @@ function Login() {
               },
               this
             ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordError,
               " \xA0"
@@ -49245,7 +52836,7 @@ function Login() {
             lineNumber: 137,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -49265,12 +52856,12 @@ function Login() {
             lineNumber: 172,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("div", { className: "flex justify-between items-center mt-8 border-t border-gray-300", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: "flex justify-between items-center mt-8 border-t border-gray-300", children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
               "New to ",
               shopName,
               "? \xA0",
-              /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(Link3, { className: "inline underline", to: "/account/register", children: "Create an account" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(Link3, { className: "inline underline", to: "/account/register", children: "Create an account" }, void 0, !1, {
                 fileName: "app/routes/account/__public/login.tsx",
                 lineNumber: 183,
                 columnNumber: 15
@@ -49280,7 +52871,7 @@ function Login() {
               lineNumber: 181,
               columnNumber: 13
             }, this),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime52.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)(
               Link3,
               {
                 className: "mt-6 inline-block align-baseline text-sm ",
@@ -49358,7 +52949,7 @@ async function doLogin({ storefront }, {
 }
 
 // app/routes/account/__public/register.tsx
-var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime());
 async function loader20({ context: context2, params }) {
   return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
 }
@@ -49394,23 +52985,23 @@ var badRequest6 = (data) => json3(data, { status: 400 }), action7 = async ({ req
   title: "Register"
 });
 function Register() {
-  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react114.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react114.useState)(
+  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react135.useState)(null), [nativePasswordError, setNativePasswordError] = (0, import_react135.useState)(
     null
   );
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "max-w-md w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("h1", { className: "text-4xl", children: "Create an Account." }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { className: "max-w-md w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("h1", { className: "text-4xl", children: "Create an Account." }, void 0, !1, {
       fileName: "app/routes/account/__public/register.tsx",
       lineNumber: 107,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/account/__public/register.tsx",
             lineNumber: 116,
             columnNumber: 15
@@ -49419,8 +53010,8 @@ function Register() {
             lineNumber: 115,
             columnNumber: 13
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
@@ -49432,9 +53023,9 @@ function Register() {
                 placeholder: "Email address",
                 "aria-label": "Email address",
                 autoFocus: !0,
-                onBlur: (event) => {
+                onBlur: (event2) => {
                   setNativeEmailError(
-                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
+                    event2.currentTarget.value.length && !event2.currentTarget.validity.valid ? "Invalid email address" : null
                   );
                 }
               },
@@ -49447,7 +53038,7 @@ function Register() {
               },
               this
             ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               nativeEmailError,
               " \xA0"
             ] }, void 0, !0, {
@@ -49460,8 +53051,8 @@ function Register() {
             lineNumber: 119,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativePasswordError)}`,
@@ -49474,9 +53065,9 @@ function Register() {
                 minLength: 8,
                 required: !0,
                 autoFocus: !0,
-                onBlur: (event) => {
-                  event.currentTarget.validity.valid || !event.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
-                    event.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
+                onBlur: (event2) => {
+                  event2.currentTarget.validity.valid || !event2.currentTarget.value.length ? setNativePasswordError(null) : setNativePasswordError(
+                    event2.currentTarget.validity.valueMissing ? "Please enter a password" : "Passwords must be at least 8 characters"
                   );
                 }
               },
@@ -49489,7 +53080,7 @@ function Register() {
               },
               this
             ),
-            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativePasswordError && /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               " ",
               nativePasswordError,
               " \xA0"
@@ -49503,7 +53094,7 @@ function Register() {
             lineNumber: 144,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -49523,9 +53114,9 @@ function Register() {
             lineNumber: 179,
             columnNumber: 11
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
             "Already have an account? \xA0",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Sign in" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Sign in" }, void 0, !1, {
               fileName: "app/routes/account/__public/register.tsx",
               lineNumber: 190,
               columnNumber: 15
@@ -49583,8 +53174,8 @@ __export(recover_exports, {
   loader: () => loader21,
   meta: () => meta9
 });
-var import_react116 = __toESM(require_react());
-var import_jsx_dev_runtime54 = __toESM(require_jsx_dev_runtime());
+var import_react137 = __toESM(require_react());
+var import_jsx_dev_runtime69 = __toESM(require_jsx_dev_runtime());
 async function loader21({ context: context2, params }) {
   return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
 }
@@ -49607,14 +53198,14 @@ var badRequest7 = (data) => json3(data, { status: 400 }), action8 = async ({ req
   title: "Recover Password"
 });
 function Recover() {
-  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react116.useState)(null), isSubmitted = actionData == null ? void 0 : actionData.resetRequested;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "max-w-md w-full", children: isSubmitted ? /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h1", { className: "text-4xl", children: "Request Sent." }, void 0, !1, {
+  let actionData = useActionData2(), [nativeEmailError, setNativeEmailError] = (0, import_react137.useState)(null), isSubmitted = actionData == null ? void 0 : actionData.resetRequested;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex justify-center my-24 px-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "max-w-md w-full", children: isSubmitted ? /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_jsx_dev_runtime69.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("h1", { className: "text-4xl", children: "Request Sent." }, void 0, !1, {
       fileName: "app/routes/account/__public/recover.tsx",
       lineNumber: 72,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "mt-4", children: "If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes." }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("p", { className: "mt-4", children: "If that email address is in our system, you will receive an email with instructions about how to reset your password in a few minutes." }, void 0, !1, {
       fileName: "app/routes/account/__public/recover.tsx",
       lineNumber: 73,
       columnNumber: 13
@@ -49623,25 +53214,25 @@ function Recover() {
     fileName: "app/routes/account/__public/recover.tsx",
     lineNumber: 71,
     columnNumber: 11
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(import_jsx_dev_runtime54.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("h1", { className: "text-4xl", children: "Forgot Password." }, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(import_jsx_dev_runtime69.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("h1", { className: "text-4xl", children: "Forgot Password." }, void 0, !1, {
       fileName: "app/routes/account/__public/recover.tsx",
       lineNumber: 81,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "mt-4", children: "Enter the email address associated with your account to receive a link to reset your password." }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("p", { className: "mt-4", children: "Enter the email address associated with your account to receive a link to reset your password." }, void 0, !1, {
       fileName: "app/routes/account/__public/recover.tsx",
       lineNumber: 82,
       columnNumber: 13
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+    /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
       Form,
       {
         method: "post",
         noValidate: !0,
         className: "pt-6 pb-8 mt-4 mb-4 space-y-3",
         children: [
-          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
+          (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-zinc-500", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("p", { className: "m-4 text-s text-contrast", children: actionData.formError }, void 0, !1, {
             fileName: "app/routes/account/__public/recover.tsx",
             lineNumber: 94,
             columnNumber: 19
@@ -49650,8 +53241,8 @@ function Recover() {
             lineNumber: 93,
             columnNumber: 17
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
               "input",
               {
                 className: `mb-1 ${getInputStyleClasses(nativeEmailError)}`,
@@ -49663,9 +53254,9 @@ function Recover() {
                 placeholder: "Email address",
                 "aria-label": "Email address",
                 autoFocus: !0,
-                onBlur: (event) => {
+                onBlur: (event2) => {
                   setNativeEmailError(
-                    event.currentTarget.value.length && !event.currentTarget.validity.valid ? "Invalid email address" : null
+                    event2.currentTarget.value.length && !event2.currentTarget.validity.valid ? "Invalid email address" : null
                   );
                 }
               },
@@ -49678,7 +53269,7 @@ function Recover() {
               },
               this
             ),
-            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+            nativeEmailError && /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
               nativeEmailError,
               " \xA0"
             ] }, void 0, !0, {
@@ -49691,7 +53282,7 @@ function Recover() {
             lineNumber: 99,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(
+          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex items-center justify-between", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(
             "button",
             {
               className: "bg-primary text-contrast rounded py-2 px-4 focus:shadow-outline block w-full",
@@ -49711,9 +53302,9 @@ function Recover() {
             lineNumber: 126,
             columnNumber: 15
           }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "flex items-center mt-8 border-t border-gray-300", children: /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("p", { className: "align-baseline text-sm mt-6", children: [
             "Return to \xA0",
-            /* @__PURE__ */ (0, import_jsx_dev_runtime54.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Login" }, void 0, !1, {
+            /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)(Link3, { className: "inline underline", to: "/account/login", children: "Login" }, void 0, !1, {
               fileName: "app/routes/account/__public/recover.tsx",
               lineNumber: 137,
               columnNumber: 19
@@ -49769,14 +53360,14 @@ var edit_exports = {};
 __export(edit_exports, {
   action: () => action9,
   default: () => AccountDetailsEdit,
-  handle: () => handle11
+  handle: () => handle12
 });
-var import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime()), badRequest8 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
+var import_jsx_dev_runtime70 = __toESM(require_jsx_dev_runtime()), badRequest8 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
   if (!formData.has(key))
     return !1;
   let value = formData.get(key);
   return typeof value == "string" && value.length > 0;
-}, handle11 = {
+}, handle12 = {
   renderInModal: !0
 }, action9 = async ({ request, context: context2, params }) => {
   let formData = await request.formData(), customerAccessToken = await context2.session.get("customerAccessToken");
@@ -49812,14 +53403,14 @@ var import_jsx_dev_runtime55 = __toESM(require_jsx_dev_runtime()), badRequest8 =
 function AccountDetailsEdit() {
   var _a2, _b, _c, _d, _e4, _f, _g, _h, _i;
   let actionData = useActionData2(), { customer } = useOutletContext(), transition = useTransition();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(import_jsx_dev_runtime55.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: "Update your profile" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(import_jsx_dev_runtime70.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Text, { className: "mt-4 mb-6", as: "h3", size: "lead", children: "Update your profile" }, void 0, !1, {
       fileName: "app/routes/account/__private/edit.tsx",
       lineNumber: 135,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Form, { method: "post", children: [
-      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Form, { method: "post", children: [
+      (actionData == null ? void 0 : actionData.formError) && /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "flex items-center justify-center mb-6 bg-red-100 rounded", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("p", { className: "m-4 text-sm text-red-900", children: actionData.formError }, void 0, !1, {
         fileName: "app/routes/account/__private/edit.tsx",
         lineNumber: 141,
         columnNumber: 13
@@ -49828,7 +53419,7 @@ function AccountDetailsEdit() {
         lineNumber: 140,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -49853,7 +53444,7 @@ function AccountDetailsEdit() {
         lineNumber: 144,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -49878,7 +53469,7 @@ function AccountDetailsEdit() {
         lineNumber: 156,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         "input",
         {
           className: getInputStyleClasses(),
@@ -49903,8 +53494,8 @@ function AccountDetailsEdit() {
         lineNumber: 168,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-3", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
           "input",
           {
             className: getInputStyleClasses((_a2 = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _a2.email),
@@ -49926,7 +53517,7 @@ function AccountDetailsEdit() {
           },
           this
         ),
-        ((_b = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _b.email) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
+        ((_b = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _b.email) && /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("p", { className: "text-red-500 text-xs", children: [
           actionData.fieldErrors.email,
           " \xA0"
         ] }, void 0, !0, {
@@ -49939,12 +53530,12 @@ function AccountDetailsEdit() {
         lineNumber: 180,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { className: "mb-6 mt-6", as: "h3", size: "lead", children: "Change your password" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Text, { className: "mb-6 mt-6", as: "h3", size: "lead", children: "Change your password" }, void 0, !1, {
         fileName: "app/routes/account/__private/edit.tsx",
         lineNumber: 198,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         Password,
         {
           name: "currentPassword",
@@ -49960,7 +53551,7 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      ((_d = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _d.currentPassword) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
+      ((_d = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _d.currentPassword) && /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
         actionData.fieldErrors.currentPassword,
         " \xA0"
       ] }, void 0, !0, {
@@ -49968,7 +53559,7 @@ function AccountDetailsEdit() {
         lineNumber: 207,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         Password,
         {
           name: "newPassword",
@@ -49984,7 +53575,7 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         Password,
         {
           name: "newPassword2",
@@ -50000,7 +53591,7 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         Text,
         {
           size: "fine",
@@ -50020,12 +53611,12 @@ function AccountDetailsEdit() {
         },
         this
       ),
-      (_h = actionData == null ? void 0 : actionData.fieldErrors) != null && _h.newPassword2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("br", {}, void 0, !1, {
+      (_h = actionData == null ? void 0 : actionData.fieldErrors) != null && _h.newPassword2 ? /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("br", {}, void 0, !1, {
         fileName: "app/routes/account/__private/edit.tsx",
         lineNumber: 231,
         columnNumber: 50
       }, this) : null,
-      ((_i = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _i.newPassword2) && /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
+      ((_i = actionData == null ? void 0 : actionData.fieldErrors) == null ? void 0 : _i.newPassword2) && /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Text, { size: "fine", className: "mt-1 text-red-500", children: [
         actionData.fieldErrors.newPassword2,
         " \xA0"
       ] }, void 0, !0, {
@@ -50033,7 +53624,7 @@ function AccountDetailsEdit() {
         lineNumber: 233,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-6", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
         Button,
         {
           className: "text-sm mb-2",
@@ -50056,7 +53647,7 @@ function AccountDetailsEdit() {
         lineNumber: 237,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(Button, { to: "..", className: "text-sm", variant: "secondary", width: "full", children: "Cancel" }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mb-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Button, { to: "..", className: "text-sm", variant: "secondary", width: "full", children: "Cancel" }, void 0, !1, {
         fileName: "app/routes/account/__private/edit.tsx",
         lineNumber: 249,
         columnNumber: 11
@@ -50081,7 +53672,7 @@ function Password({
   passwordError,
   label
 }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime55.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("div", { className: "mt-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(
     "input",
     {
       className: getInputStyleClasses(passwordError),
@@ -50131,8 +53722,8 @@ __export(cartOld_exports, {
   cartUpdateBuyerIdentity: () => cartUpdateBuyerIdentity,
   default: () => CartRoute
 });
-var import_react119 = __toESM(require_react());
-var import_jsx_dev_runtime56 = __toESM(require_jsx_dev_runtime());
+var import_react140 = __toESM(require_react());
+var import_jsx_dev_runtime71 = __toESM(require_jsx_dev_runtime());
 async function action10({ request, context: context2 }) {
   let { session, storefront } = context2, headers = new Headers(), [formData, storedCartId, customerAccessToken] = await Promise.all([
     request.formData(),
@@ -50220,11 +53811,11 @@ async function action10({ request, context: context2 }) {
 function CartRoute() {
   var _a2;
   let [root] = useMatches2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(import_react119.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(CartLoading, {}, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(import_react140.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(CartLoading, {}, void 0, !1, {
     fileName: "app/routes/cartOld.tsx",
     lineNumber: 181,
     columnNumber: 27
-  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Await2, { resolve: (_a2 = root.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime56.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
+  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(Await2, { resolve: (_a2 = root.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime71.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
     fileName: "app/routes/cartOld.tsx",
     lineNumber: 183,
     columnNumber: 22
@@ -50454,20 +54045,20 @@ __export(search_exports, {
   getNoResultRecommendations: () => getNoResultRecommendations,
   loader: () => loader22
 });
-var import_react121 = __toESM(require_react());
-var import_jsx_dev_runtime57 = __toESM(require_jsx_dev_runtime());
+var import_react142 = __toESM(require_react());
+var import_jsx_dev_runtime72 = __toESM(require_jsx_dev_runtime());
 function search_default() {
   var _a2;
   let { searchTerm, products, noResultRecommendations } = useLoaderData2(), noResults = ((_a2 = products == null ? void 0 : products.nodes) == null ? void 0 : _a2.length) === 0;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(import_jsx_dev_runtime57.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(PageHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(import_jsx_dev_runtime72.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(PageHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
         fileName: "app/routes/search.tsx",
         lineNumber: 33,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
           Input,
           {
             defaultValue: searchTerm,
@@ -50485,7 +54076,7 @@ function search_default() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
           fileName: "app/routes/search.tsx",
           lineNumber: 44,
           columnNumber: 11
@@ -50500,8 +54091,8 @@ function search_default() {
       lineNumber: 32,
       columnNumber: 7
     }, this),
-    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(import_jsx_dev_runtime57.Fragment, { children: [
-      noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(Text, { className: "opacity-50", children: "No results, try something else." }, void 0, !1, {
+    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(import_jsx_dev_runtime72.Fragment, { children: [
+      noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Text, { className: "opacity-50", children: "No results, try something else." }, void 0, !1, {
         fileName: "app/routes/search.tsx",
         lineNumber: 53,
         columnNumber: 15
@@ -50510,13 +54101,13 @@ function search_default() {
         lineNumber: 52,
         columnNumber: 13
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(import_react121.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(import_react142.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
         Await2,
         {
           errorElement: "There was a problem loading related products",
           resolve: noResultRecommendations,
-          children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(import_jsx_dev_runtime57.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(
+          children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(import_jsx_dev_runtime72.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
               FeaturedCollections,
               {
                 title: "Trending Collections",
@@ -50531,7 +54122,7 @@ function search_default() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
               ProductSwimlane,
               {
                 title: "Trending Products",
@@ -50569,7 +54160,7 @@ function search_default() {
       fileName: "app/routes/search.tsx",
       lineNumber: 50,
       columnNumber: 9
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime57.jsxDEV)(
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime72.jsxDEV)(
       ProductGrid,
       {
         url: `/search?q=${searchTerm}`,
@@ -50685,7 +54276,7 @@ var SEARCH_NO_RESULTS_QUERY = `#graphql
 var routes_exports = {};
 __export(routes_exports, {
   default: () => Index,
-  handle: () => handle12,
+  handle: () => handle13,
   loader: () => loader23,
   meta: () => meta10
 });
@@ -50693,9 +54284,9 @@ init_groq_esm();
 init_dist();
 
 // app/components/home/Hero.jsx
-var import_react122 = __toESM(require_react()), import_jsx_dev_runtime58 = __toESM(require_jsx_dev_runtime()), Hero2 = ({ hero }) => {
+var import_react143 = __toESM(require_react()), import_jsx_dev_runtime73 = __toESM(require_jsx_dev_runtime()), Hero2 = ({ hero }) => {
   let { colour } = hero;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime58.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime73.jsxDEV)(
     "div",
     {
       className: "w-full aspect-video p-4 flex flex-col justify-between gap-4",
@@ -50712,311 +54303,22 @@ var import_react122 = __toESM(require_react()), import_jsx_dev_runtime58 = __toE
   );
 }, Hero_default = Hero2;
 
-// app/components/article/ArticleBlockBanner.jsx
-var import_react124 = __toESM(require_react());
-
-// app/components/parts/Topic.jsx
-var import_react123 = __toESM(require_react()), import_jsx_dev_runtime59 = __toESM(require_jsx_dev_runtime()), Topic = () => /* @__PURE__ */ (0, import_jsx_dev_runtime59.jsxDEV)(
-  "span",
-  {
-    className: "float inline-block h-[1em] aspect-[3/2] border-black border-2 mr-4"
-  },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/parts/Topic.jsx",
-    lineNumber: 5,
-    columnNumber: 5
-  },
-  this
-), Topic_default = Topic;
-
-// app/components/article/ArticleBlockBanner.jsx
-var import_jsx_dev_runtime60 = __toESM(require_jsx_dev_runtime()), ArticleBlockBanner = ({ article }) => {
-  let { headline, intro, colour, author, media } = article;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(
-    "div",
-    {
-      className: "w-full aspect-video p-6 flex flex-col justify-between gap-4",
-      style: { background: colour || "#e3e8ef" },
-      children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(
-          "div",
-          {
-            className: cx(
-              "grid grid-rows-2 grid-cols-1 gap-4",
-              "lg:grid-cols-3 lg:grid-rows-1"
-            ),
-            children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)("h3", { className: "text-6xl", children: [
-                /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)(Topic_default, {}, void 0, !1, {
-                  fileName: "app/components/article/ArticleBlockBanner.jsx",
-                  lineNumber: 19,
-                  columnNumber: 33
-                }, this),
-                headline || "Untitled article"
-              ] }, void 0, !0, {
-                fileName: "app/components/article/ArticleBlockBanner.jsx",
-                lineNumber: 19,
-                columnNumber: 6
-              }, this) }, void 0, !1, {
-                fileName: "app/components/article/ArticleBlockBanner.jsx",
-                lineNumber: 18,
-                columnNumber: 5
-              }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)("h4", { className: cx("text-3xl columns-1 col-span-2 gap-4 ", "md:columns-2"), children: intro || "Intro text" }, void 0, !1, {
-                fileName: "app/components/article/ArticleBlockBanner.jsx",
-                lineNumber: 21,
-                columnNumber: 5
-              }, this)
-            ]
-          },
-          void 0,
-          !0,
-          {
-            fileName: "app/components/article/ArticleBlockBanner.jsx",
-            lineNumber: 12,
-            columnNumber: 4
-          },
-          this
-        ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)("div", { className: "flex justify-between", children: [
-          author.name && /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)("h5", { children: [
-            "By ",
-            author.name
-          ] }, void 0, !0, {
-            fileName: "app/components/article/ArticleBlockBanner.jsx",
-            lineNumber: 26,
-            columnNumber: 21
-          }, this),
-          media.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime60.jsxDEV)("h6", { children: [
-            "(",
-            media.join(", "),
-            ")"
-          ] }, void 0, !0, {
-            fileName: "app/components/article/ArticleBlockBanner.jsx",
-            lineNumber: 27,
-            columnNumber: 26
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/article/ArticleBlockBanner.jsx",
-          lineNumber: 25,
-          columnNumber: 4
-        }, this)
-      ]
-    },
-    void 0,
-    !0,
-    {
-      fileName: "app/components/article/ArticleBlockBanner.jsx",
-      lineNumber: 8,
-      columnNumber: 3
-    },
-    this
-  );
-}, ArticleBlockBanner_default = ArticleBlockBanner;
-
 // app/components/article/ArticleBlock.jsx
-var import_react126 = __toESM(require_react());
-
-// app/components/parts/SanityImage.jsx
-var import_react125 = __toESM(require_react()), import_image_url = __toESM(require_image_url_umd());
-
-// node_modules/@sanity/asset-utils/dist/asset-utils.esm.js
-function _inheritsLoose(subClass, superClass) {
-  subClass.prototype = Object.create(superClass.prototype), subClass.prototype.constructor = subClass, _setPrototypeOf(subClass, superClass);
-}
-function _getPrototypeOf(o10) {
-  return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function(o11) {
-    return o11.__proto__ || Object.getPrototypeOf(o11);
-  }, _getPrototypeOf(o10);
-}
-function _setPrototypeOf(o10, p8) {
-  return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function(o11, p9) {
-    return o11.__proto__ = p9, o11;
-  }, _setPrototypeOf(o10, p8);
-}
-function _isNativeReflectConstruct() {
-  if (typeof Reflect > "u" || !Reflect.construct || Reflect.construct.sham)
-    return !1;
-  if (typeof Proxy == "function")
-    return !0;
-  try {
-    return Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
-    })), !0;
-  } catch {
-    return !1;
-  }
-}
-function _construct(Parent, args, Class) {
-  return _isNativeReflectConstruct() ? _construct = Reflect.construct.bind() : _construct = function(Parent2, args2, Class2) {
-    var a10 = [null];
-    a10.push.apply(a10, args2);
-    var Constructor = Function.bind.apply(Parent2, a10), instance = new Constructor();
-    return Class2 && _setPrototypeOf(instance, Class2.prototype), instance;
-  }, _construct.apply(null, arguments);
-}
-function _isNativeFunction(fn) {
-  return Function.toString.call(fn).indexOf("[native code]") !== -1;
-}
-function _wrapNativeSuper(Class) {
-  var _cache = typeof Map == "function" ? /* @__PURE__ */ new Map() : void 0;
-  return _wrapNativeSuper = function(Class2) {
-    if (Class2 === null || !_isNativeFunction(Class2))
-      return Class2;
-    if (typeof Class2 != "function")
-      throw new TypeError("Super expression must either be null or a function");
-    if (typeof _cache < "u") {
-      if (_cache.has(Class2))
-        return _cache.get(Class2);
-      _cache.set(Class2, Wrapper);
-    }
-    function Wrapper() {
-      return _construct(Class2, arguments, _getPrototypeOf(this).constructor);
-    }
-    return Wrapper.prototype = Object.create(Class2.prototype, {
-      constructor: {
-        value: Wrapper,
-        enumerable: !1,
-        writable: !0,
-        configurable: !0
-      }
-    }), _setPrototypeOf(Wrapper, Class2);
-  }, _wrapNativeSuper(Class);
-}
-var UnresolvableError = /* @__PURE__ */ function(_Error) {
-  _inheritsLoose(UnresolvableError2, _Error);
-  function UnresolvableError2(inputSource, message) {
-    var _this;
-    return message === void 0 && (message = "Failed to resolve asset ID from source"), _this = _Error.call(this, message) || this, _this.unresolvable = !0, _this.input = inputSource, _this;
-  }
-  return UnresolvableError2;
-}(/* @__PURE__ */ _wrapNativeSuper(Error));
-var cdnUrl = "https://cdn.sanity.io", fileAssetFilenamePattern = /^([a-zA-Z0-9_]{24,40}|[a-f0-9]{40})+\.[a-z0-9]+$/;
-var imageAssetFilenamePattern = /^([a-zA-Z0-9_]{24,40}|[a-f0-9]{40})-\d+x\d+\.[a-z0-9]+$/;
-var pathPattern = /^(images|files)\/([a-z0-9]+)\/([a-z0-9][-\w]*)\//, idPattern = /^(?:image-(?:[a-zA-Z0-9_]{24,40}|[a-f0-9]{40})+-\d+x\d+-[a-z0-9]+|file-(?:[a-zA-Z0-9_]{24,40}|[a-f0-9]{40})+-[a-z0-9]+)$/;
-function isReference(ref) {
-  return isObject(ref) && typeof ref._ref == "string";
-}
-function isAssetIdStub(stub) {
-  return isObject(stub) && typeof stub._id == "string";
-}
-function isAssetPathStub(stub) {
-  return isObject(stub) && typeof stub.path == "string";
-}
-function isAssetUrlStub(stub) {
-  return isObject(stub) && typeof stub.url == "string";
-}
-function isAssetObjectStub(stub) {
-  var item = stub;
-  return isObject(item) && item.asset && typeof item.asset == "object";
-}
-function isObject(obj) {
-  return obj !== null && !Array.isArray(obj) && typeof obj == "object";
-}
-function getUrlPath(url) {
-  if (pathPattern.test(url))
-    return url;
-  if (!url.startsWith(cdnUrl + "/"))
-    throw new UnresolvableError('Failed to resolve path from URL "' + url + '"');
-  var qsPos = url.indexOf("?"), toIndex = qsPos === -1 ? void 0 : qsPos;
-  return url.slice(cdnUrl.length + 1, toIndex);
-}
-var exampleImageId = "image-027401f31c3ac1e6d78c5d539ccd1beff72b9b11-2000x3000-jpg";
-function parseImageAssetId(documentId) {
-  var _documentId$split2 = documentId.split("-"), assetId = _documentId$split2[1], dimensionString = _documentId$split2[2], extension = _documentId$split2[3], _split$map = (dimensionString || "").split("x").map(Number), width = _split$map[0], height = _split$map[1];
-  if (!assetId || !dimensionString || !extension || !(width > 0) || !(height > 0))
-    throw new Error("Malformed asset ID '" + documentId + `'. Expected an id like "` + exampleImageId + '".');
-  return {
-    type: "image",
-    assetId,
-    width,
-    height,
-    extension
-  };
-}
-function getImageDimensions(src) {
-  var imageId = getAssetDocumentId(src), _parseImageAssetId = parseImageAssetId(imageId), width = _parseImageAssetId.width, height = _parseImageAssetId.height, aspectRatio = width / height;
-  return {
-    width,
-    height,
-    aspectRatio
-  };
-}
-function getAssetDocumentId(src) {
-  var source = isAssetObjectStub(src) ? src.asset : src, id = "";
-  typeof source == "string" ? id = getIdFromString(source) : isReference(source) ? id = source._ref : isAssetIdStub(source) ? id = source._id : isAssetPathStub(source) ? id = idFromUrl(cdnUrl + "/" + source.path) : isAssetUrlStub(source) && (id = idFromUrl(source.url));
-  var hasId = id && idPattern.test(id);
-  if (!hasId)
-    throw new UnresolvableError(src);
-  return id;
-}
-function getIdFromString(str) {
-  if (idPattern.test(str))
-    return str;
-  if (str.indexOf(cdnUrl + "/images") === 0 || str.indexOf(cdnUrl + "/files") === 0)
-    return idFromUrl(str);
-  if (pathPattern.test(str))
-    return idFromUrl(cdnUrl + "/" + str);
-  if (isFileAssetFilename(str))
-    return idFromUrl(cdnUrl + "/files/a/b/" + str);
-  if (isImageAssetFilename(str))
-    return idFromUrl(cdnUrl + "/images/a/b/" + str);
-  throw new UnresolvableError(str);
-}
-function idFromUrl(url) {
-  var path2 = getUrlPath(url), _path$split = path2.split("/"), type = _path$split[0], fileName = _path$split[3], prefix2 = type.replace(/s$/, "");
-  return prefix2 + "-" + fileName.replace(/\./g, "-");
-}
-function isImageAssetFilename(filename) {
-  return imageAssetFilenamePattern.test(filename);
-}
-function isFileAssetFilename(filename) {
-  return fileAssetFilenamePattern.test(filename);
-}
-
-// app/components/parts/SanityImage.jsx
-var import_jsx_dev_runtime61 = __toESM(require_jsx_dev_runtime());
-function SanityImage(props) {
-  let { sanityProjectDetails } = useRouteData("root"), { value, isInline, className } = props, { width, height } = getImageDimensions(value);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime61.jsxDEV)(
-    "img",
-    {
-      className: cx("not-prose h-auto w-full", className),
-      src: (0, import_image_url.default)(sanityProjectDetails).image(value).width(isInline ? 100 : 800).fit("max").auto("format").url(),
-      alt: value.alt || "",
-      loading: "lazy",
-      style: {
-        display: isInline ? "inline-block" : "block",
-        aspectRatio: width / height
-      }
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/parts/SanityImage.jsx",
-      lineNumber: 15,
-      columnNumber: 5
-    },
-    this
-  );
-}
-
-// app/components/article/ArticleBlock.jsx
-var import_jsx_dev_runtime62 = __toESM(require_jsx_dev_runtime()), ArticleBlock = ({ article }) => {
-  let { headline, colour, author, media, image } = article;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
-    "div",
+var import_react144 = __toESM(require_react());
+var import_jsx_dev_runtime74 = __toESM(require_jsx_dev_runtime()), ArticleBlock = ({ article }) => {
+  let { headline, colour, author, media, image, topic } = article;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
+    "article",
     {
       className: "group relative w-full aspect-square p-6 flex flex-col justify-between gap-6",
       style: { background: colour || "#e3e8ef" },
       children: [
-        (image == null ? void 0 : image.asset) && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(
+        (image == null ? void 0 : image.asset) && /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
           "div",
           {
             className: "absolute w-full h-full inset-0 overflow-hidden hidden group-hover:block group-focus:hidden",
             style: { background: colour || "#dfdfdf" },
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(SanityImage, { value: image.asset, className: "mix-blend-overlay" }, void 0, !1, {
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(SanityImage, { value: image.asset, className: "mix-blend-overlay" }, void 0, !1, {
               fileName: "app/components/article/ArticleBlock.jsx",
               lineNumber: 21,
               columnNumber: 11
@@ -51031,11 +54333,11 @@ var import_jsx_dev_runtime62 = __toESM(require_jsx_dev_runtime()), ArticleBlock 
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("h3", { className: "text-5xl", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)(Topic_default, {}, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("h2", { className: "text-5xl", children: [
+          topic && /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Topic_default, { topic }, void 0, !1, {
             fileName: "app/components/article/ArticleBlock.jsx",
             lineNumber: 26,
-            columnNumber: 11
+            columnNumber: 21
           }, this),
           headline || "Untitled article"
         ] }, void 0, !0, {
@@ -51047,22 +54349,22 @@ var import_jsx_dev_runtime62 = __toESM(require_jsx_dev_runtime()), ArticleBlock 
           lineNumber: 24,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("div", { className: "flex justify-between", children: [
-          author.name && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("h5", { children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "flex justify-between", children: [
+          author.name && /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("address", { className: "not-italic", children: [
             "By ",
             author.name
           ] }, void 0, !0, {
             fileName: "app/components/article/ArticleBlock.jsx",
-            lineNumber: 31,
-            columnNumber: 25
+            lineNumber: 32,
+            columnNumber: 11
           }, this),
-          media.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime62.jsxDEV)("h6", { children: [
+          media.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("p", { children: [
             "(",
             media.join(", "),
             ")"
           ] }, void 0, !0, {
             fileName: "app/components/article/ArticleBlock.jsx",
-            lineNumber: 32,
+            lineNumber: 34,
             columnNumber: 30
           }, this)
         ] }, void 0, !0, {
@@ -51084,14 +54386,14 @@ var import_jsx_dev_runtime62 = __toESM(require_jsx_dev_runtime()), ArticleBlock 
 }, ArticleBlock_default = ArticleBlock;
 
 // app/components/parts/Banner.jsx
-var import_react127 = __toESM(require_react()), import_jsx_dev_runtime63 = __toESM(require_jsx_dev_runtime()), Banner = ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime63.jsxDEV)("div", { className: "w-full p-3 bg-white", children }, void 0, !1, {
+var import_react145 = __toESM(require_react()), import_jsx_dev_runtime75 = __toESM(require_jsx_dev_runtime()), Banner = ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("div", { className: "w-full p-3 bg-white", children }, void 0, !1, {
   fileName: "app/components/parts/Banner.jsx",
   lineNumber: 5,
   columnNumber: 7
 }, this), Banner_default = Banner;
 
 // app/routes/index.jsx
-var import_jsx_dev_runtime64 = __toESM(require_jsx_dev_runtime()), handle12 = {
+var import_jsx_dev_runtime76 = __toESM(require_jsx_dev_runtime()), handle13 = {
   seo: {
     title: "Home"
   }
@@ -51107,70 +54409,70 @@ async function loader23({ context: context2 }) {
 }
 function Index() {
   let { homepage } = useLoaderData();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Banner_default, { children: homepage.heroBanner ? homepage.heroBanner : "Currently\u2026" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Banner_default, { children: homepage.heroBanner ? homepage.heroBanner : "Currently\u2026" }, void 0, !1, {
       fileName: "app/routes/index.jsx",
-      lineNumber: 34,
+      lineNumber: 35,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Hero_default, { hero: {} }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Hero_default, { hero: {} }, void 0, !1, {
       fileName: "app/routes/index.jsx",
-      lineNumber: 37,
+      lineNumber: 38,
       columnNumber: 7
     }, this),
-    homepage.featured ? /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(import_jsx_dev_runtime64.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Banner_default, { children: homepage.featuredBanner ? homepage.featuredBanner : "Featured articles" }, void 0, !1, {
+    homepage.featured ? /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(import_jsx_dev_runtime76.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Banner_default, { children: homepage.featuredBanner ? homepage.featuredBanner : "Featured articles" }, void 0, !1, {
         fileName: "app/routes/index.jsx",
-        lineNumber: 40,
+        lineNumber: 41,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("ul", { className: "w-full grid-layout", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("li", { className: "col-span-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Link_default, { to: homepage.featured[0].slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(ArticleBlockBanner_default, { article: homepage.featured[0] }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Layout2, { intent: "grid", tag: "ul", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("li", { className: "col-span-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Link_default, { to: homepage.featured[0].slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(ArticleBlockBanner_default, { article: homepage.featured[0] }, void 0, !1, {
           fileName: "app/routes/index.jsx",
-          lineNumber: 48,
+          lineNumber: 49,
           columnNumber: 17
         }, this) }, void 0, !1, {
           fileName: "app/routes/index.jsx",
-          lineNumber: 47,
+          lineNumber: 48,
           columnNumber: 15
         }, this) }, void 0, !1, {
           fileName: "app/routes/index.jsx",
-          lineNumber: 46,
+          lineNumber: 47,
           columnNumber: 13
         }, this),
         homepage.featured.map((article, index) => {
           if (index !== 0)
-            return /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)("li", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Link_default, { to: article.slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(ArticleBlock_default, { article }, void 0, !1, {
+            return /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("li", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Link_default, { to: article.slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(ArticleBlock_default, { article }, void 0, !1, {
               fileName: "app/routes/index.jsx",
-              lineNumber: 58,
+              lineNumber: 59,
               columnNumber: 21
             }, this) }, void 0, !1, {
               fileName: "app/routes/index.jsx",
-              lineNumber: 57,
+              lineNumber: 58,
               columnNumber: 19
             }, this) }, article._id, !1, {
               fileName: "app/routes/index.jsx",
-              lineNumber: 56,
+              lineNumber: 57,
               columnNumber: 17
             }, this);
         })
       ] }, void 0, !0, {
         fileName: "app/routes/index.jsx",
-        lineNumber: 45,
+        lineNumber: 46,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/index.jsx",
-      lineNumber: 39,
+      lineNumber: 40,
       columnNumber: 9
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime64.jsxDEV)(Banner_default, { children: "No featured articles" }, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Banner_default, { children: "No featured articles" }, void 0, !1, {
       fileName: "app/routes/index.jsx",
-      lineNumber: 66,
+      lineNumber: 67,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/index.jsx",
-    lineNumber: 33,
+    lineNumber: 34,
     columnNumber: 5
   }, this);
 }
@@ -51185,10 +54487,16 @@ async function getHomepageData({ sanityClient }) {
 			intro,
 			"colour":colour->colourLight,
 			author-> {name},
+            topic -> {
+              topic,
+              image {
+                asset-> {_id}
+              }
+            },
 			media[],
 			image {
           		alt,
-            	asset->
+            	asset->{_id}
           	}
 		}}`;
   return await sanityClient.fetch(query2);
@@ -51198,18 +54506,18 @@ async function getHomepageData({ sanityClient }) {
 var cart_exports = {};
 __export(cart_exports, {
   default: () => CartPage,
-  handle: () => handle13,
+  handle: () => handle14,
   meta: () => meta11
 });
-var import_react132 = __toESM(require_react());
+var import_react149 = __toESM(require_react());
 
 // app/components/loaders/CartLoader.jsx
-var import_react129 = __toESM(require_react());
+var import_react147 = __toESM(require_react());
 
 // app/components/parts/Spinner.jsx
-var import_react128 = __toESM(require_react()), import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime()), points = 5, radius = 10, Spinner = () => /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)("div", { className: "relative w-8 h-8 animate-spin", children: Array(points).fill().map((v6, index) => {
+var import_react146 = __toESM(require_react()), import_jsx_dev_runtime77 = __toESM(require_jsx_dev_runtime()), points = 5, radius = 10, Spinner = () => /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "relative w-8 h-8 animate-spin", children: Array(points).fill().map((v6, index) => {
   let x6 = radius * Math.cos(2 * Math.PI * index / points), y4 = radius * Math.sin(2 * Math.PI * index / points);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime65.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
     "span",
     {
       className: "absolute w-1 h-1 rounded-full bg-black left-[calc(50%-2px)] top-[calc(50%-2px)]",
@@ -51231,13 +54539,13 @@ var import_react128 = __toESM(require_react()), import_jsx_dev_runtime65 = __toE
 }, this), Spinner_default = Spinner;
 
 // app/components/loaders/CartLoader.jsx
-var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), CartLoader = () => /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "w-full h-[calc(100vh-6rem)] flex justify-center items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("div", { className: "flex items-center justify-center gap-1", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)("h2", { className: "mb-[1px] text-2xl", children: "Loading Cart" }, void 0, !1, {
+var import_jsx_dev_runtime78 = __toESM(require_jsx_dev_runtime()), CartLoader = () => /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "w-full h-[calc(100vh-6rem)] flex justify-center items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "flex items-center justify-center gap-1", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("h2", { className: "mb-[1px] text-2xl", children: "Loading Cart" }, void 0, !1, {
     fileName: "app/components/loaders/CartLoader.jsx",
     lineNumber: 8,
     columnNumber: 9
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime66.jsxDEV)(Spinner_default, {}, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Spinner_default, {}, void 0, !1, {
     fileName: "app/components/loaders/CartLoader.jsx",
     lineNumber: 9,
     columnNumber: 9
@@ -51252,26 +54560,8 @@ var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), CartLoader = 
   columnNumber: 5
 }, this), CartLoader_default = CartLoader;
 
-// app/components/parts/Layout.jsx
-var import_react130 = __toESM(require_react());
-var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), layout = cva("layout", {
-  variants: {
-    intent: {
-      page: ["p-4"],
-      centre: ["flex", "justify-center", "items-center", "h-[calc(100vh-6rem)]"]
-    }
-  },
-  defaultVariants: {
-    intent: "page"
-  }
-}), Layout2 = ({ className, intent, children, ...props }) => /* @__PURE__ */ (0, import_jsx_dev_runtime67.jsxDEV)("div", { className: layout({ intent, className }), ...props, children }, void 0, !1, {
-  fileName: "app/components/parts/Layout.jsx",
-  lineNumber: 25,
-  columnNumber: 3
-}, this);
-
 // app/routes/cart.jsx
-var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), handle13 = {
+var import_jsx_dev_runtime79 = __toESM(require_jsx_dev_runtime()), handle14 = {
   seo: {
     title: "Cart"
   }
@@ -51281,11 +54571,11 @@ var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), handle13 = {
 });
 function CartPage() {
   let { cart } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_react132.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(CartLoader_default, {}, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(import_react149.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(CartLoader_default, {}, void 0, !1, {
     fileName: "app/routes/cart.jsx",
     lineNumber: 30,
     columnNumber: 27
-  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Cart2, { cart: cart2 }, void 0, !1, {
+  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Cart2, { cart: cart2 }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
     lineNumber: 31,
     columnNumber: 42
@@ -51306,11 +54596,11 @@ function CartPage() {
 var Cart2 = ({ cart }) => {
   var _a2, _b;
   let cartHasItems = Boolean(((_b = (_a2 = cart == null ? void 0 : cart.lines) == null ? void 0 : _a2.edges) == null ? void 0 : _b.length) || 0);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(import_jsx_dev_runtime68.Fragment, { children: cartHasItems ? /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(CartDetails2, {}, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(import_jsx_dev_runtime79.Fragment, { children: cartHasItems ? /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(CartDetails2, {}, void 0, !1, {
     fileName: "app/routes/cart.jsx",
     lineNumber: 40,
     columnNumber: 28
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(EmptyCart, {}, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(EmptyCart, {}, void 0, !1, {
     fileName: "app/routes/cart.jsx",
     lineNumber: 40,
     columnNumber: 46
@@ -51319,7 +54609,7 @@ var Cart2 = ({ cart }) => {
     lineNumber: 40,
     columnNumber: 10
   }, this);
-}, CartDetails2 = () => /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Layout2, { intent: "page", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("h2", { children: "Basket contents" }, void 0, !1, {
+}, CartDetails2 = () => /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Layout2, { intent: "page", children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("h2", { children: "Basket contents" }, void 0, !1, {
   fileName: "app/routes/cart.jsx",
   lineNumber: 46,
   columnNumber: 7
@@ -51327,7 +54617,7 @@ var Cart2 = ({ cart }) => {
   fileName: "app/routes/cart.jsx",
   lineNumber: 45,
   columnNumber: 5
-}, this), EmptyCart = () => /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)(Layout2, { intent: "centre", children: /* @__PURE__ */ (0, import_jsx_dev_runtime68.jsxDEV)("h2", { className: "text-2xl", children: "Cart is Empty" }, void 0, !1, {
+}, this), EmptyCart = () => /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Layout2, { intent: "centre", children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("h2", { className: "text-2xl", children: "Cart is Empty" }, void 0, !1, {
   fileName: "app/routes/cart.jsx",
   lineNumber: 54,
   columnNumber: 7
@@ -51361,7 +54651,7 @@ var loader25 = it;
 var virtual_root_exports = {};
 __export(virtual_root_exports, {
   default: () => App2,
-  links: () => links2,
+  links: () => links3,
   meta: () => meta12
 });
 
@@ -51372,9 +54662,9 @@ var styles_default = "/build/_assets/styles-O7MQZLJO.css";
 var favicon_default = "/build/_assets/favicon-5FIZBM2K.svg";
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/Layout.jsx
-var import_jsx_dev_runtime69 = __toESM(require_jsx_dev_runtime(), 1);
+var import_jsx_dev_runtime80 = __toESM(require_jsx_dev_runtime(), 1);
 function Layout3(props) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime69.jsxDEV)("div", { className: "hydrogen-virtual-route", children: props.children }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "hydrogen-virtual-route", children: props.children }, void 0, !1, {
     fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/Layout.jsx",
     lineNumber: 2,
     columnNumber: 10
@@ -51382,7 +54672,7 @@ function Layout3(props) {
 }
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx
-var import_jsx_dev_runtime70 = __toESM(require_jsx_dev_runtime(), 1), links2 = () => [
+var import_jsx_dev_runtime81 = __toESM(require_jsx_dev_runtime(), 1), links3 = () => [
   { rel: "stylesheet", href: styles_default },
   { rel: "icon", type: "image/svg+xml", href: favicon_default }
 ], meta12 = () => ({
@@ -51390,14 +54680,14 @@ var import_jsx_dev_runtime70 = __toESM(require_jsx_dev_runtime(), 1), links2 = (
   viewport: "width=device-width,initial-scale=1"
 });
 function App2() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Meta, {}, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 24,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 25,
         columnNumber: 7
@@ -51407,8 +54697,8 @@ function App2() {
       lineNumber: 23,
       columnNumber: 5
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Layout3, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Outlet, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Layout3, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Outlet, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 28,
         columnNumber: 15
@@ -51417,12 +54707,12 @@ function App2() {
         lineNumber: 28,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 29,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime70.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 30,
         columnNumber: 7
@@ -51440,7 +54730,7 @@ function App2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "b74c2f65", entry: { module: "/build/entry.client-DFB7YC4A.js", imports: ["/build/_shared/chunk-OMZJUDSO.js", "/build/_shared/chunk-Y6AO6HV5.js", "/build/_shared/chunk-HAK4ZCPU.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-QPLKG7CE.js", imports: ["/build/_shared/chunk-X5MFIYWG.js", "/build/_shared/chunk-2E5VCZ7B.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-LRIVPNUV.js", imports: ["/build/_shared/chunk-IDLANNNX.js", "/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/address/$id": { id: "routes/account/__private/address/$id", parentId: "routes/account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/address/$id-EF7QQ6TL.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/edit": { id: "routes/account/__private/edit", parentId: "routes/account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/edit-RICZD6KC.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/logout": { id: "routes/account/__private/logout", parentId: "routes/account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/logout-4Z5SN57J.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/orders.$id": { id: "routes/account/__private/orders.$id", parentId: "routes/account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/orders.$id-NUDNLNGS.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/activate.$id.$activationToken": { id: "routes/account/__public/activate.$id.$activationToken", parentId: "routes/account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/activate.$id.$activationToken-OZ4DBGLK.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/login": { id: "routes/account/__public/login", parentId: "routes/account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/login-EIVKLBEL.js", imports: ["/build/_shared/chunk-PYXJFZKB.js", "/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/recover": { id: "routes/account/__public/recover", parentId: "routes/account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/recover-5TTCF6BX.js", imports: ["/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/register": { id: "routes/account/__public/register", parentId: "routes/account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/register-A5SSZYWH.js", imports: ["/build/_shared/chunk-PYXJFZKB.js", "/build/_shared/chunk-7YRCQ4YI.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-CL62X2TH.js", "/build/_shared/chunk-X3DKXFQZ.js", "/build/_shared/chunk-BWK6FPRY.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/reset.$id.$resetToken": { id: "routes/account/__public/reset.$id.$resetToken", parentId: "routes/account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/reset.$id.$resetToken-ZYVMF3XG.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-CLTXHJMK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/products": { id: "routes/api/products", parentId: "root", path: "api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/api/products-NF3TO7HH.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-HKTZJGEV.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cartOld": { id: "routes/cartOld", parentId: "root", path: "cartOld", index: void 0, caseSensitive: void 0, module: "/build/routes/cartOld-MISIJZ3K.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/$collectionHandle": { id: "routes/collections/$collectionHandle", parentId: "root", path: "collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/$collectionHandle-BVWQIVZ5.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/all": { id: "routes/collections/all", parentId: "root", path: "collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/all-REPDOH3U.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/index": { id: "routes/collections/index", parentId: "root", path: "collections", index: !0, caseSensitive: void 0, module: "/build/routes/collections/index-GRPRZ532.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/featured-products": { id: "routes/featured-products", parentId: "root", path: "featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/featured-products-WN2C6U27.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-BG43OMGU.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/indexOLD": { id: "routes/indexOLD", parentId: "root", path: "indexOLD", index: void 0, caseSensitive: void 0, module: "/build/routes/indexOLD-NL6O37X4.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pages/$pageHandle": { id: "routes/pages/$pageHandle", parentId: "root", path: "pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/pages/$pageHandle-CGUSZJ5F.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/$policyHandle": { id: "routes/policies/$policyHandle", parentId: "root", path: "policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/policies/$policyHandle-YMMTERA3.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/index": { id: "routes/policies/index", parentId: "root", path: "policies", index: !0, caseSensitive: void 0, module: "/build/routes/policies/index-2HNUOOCG.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/$productHandle": { id: "routes/products/$productHandle", parentId: "root", path: "products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/products/$productHandle-5NZQBICN.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/index": { id: "routes/products/index", parentId: "root", path: "products", index: !0, caseSensitive: void 0, module: "/build/routes/products/index-G4GFLOOG.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/search": { id: "routes/search", parentId: "root", path: "search", index: void 0, caseSensitive: void 0, module: "/build/routes/search-VTIL3NJL.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-5TAHGJ6X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-B74C2F65.js" };
+var assets_manifest_default = { version: "84ac3d6d", entry: { module: "/build/entry.client-DFB7YC4A.js", imports: ["/build/_shared/chunk-OMZJUDSO.js", "/build/_shared/chunk-Y6AO6HV5.js", "/build/_shared/chunk-HAK4ZCPU.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-D3BQIACZ.js", imports: ["/build/_shared/chunk-X5MFIYWG.js", "/build/_shared/chunk-BBUMQJZS.js", "/build/_shared/chunk-QOQLFXQY.js", "/build/_shared/chunk-2E5VCZ7B.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-EZAJZ52L.js", imports: ["/build/_shared/chunk-OQK2J54F.js", "/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/address/$id": { id: "routes/account/__private/address/$id", parentId: "routes/account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/address/$id-2USAERBB.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/edit": { id: "routes/account/__private/edit", parentId: "routes/account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/edit-MEJJRORC.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/logout": { id: "routes/account/__private/logout", parentId: "routes/account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/logout-4Z5SN57J.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/orders.$id": { id: "routes/account/__private/orders.$id", parentId: "routes/account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/orders.$id-5GSBKDXQ.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/activate.$id.$activationToken": { id: "routes/account/__public/activate.$id.$activationToken", parentId: "routes/account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/activate.$id.$activationToken-OZ4DBGLK.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/login": { id: "routes/account/__public/login", parentId: "routes/account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/login-F5P7V2ZW.js", imports: ["/build/_shared/chunk-KXEI5ZID.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/recover": { id: "routes/account/__public/recover", parentId: "routes/account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/recover-OIH6SSE7.js", imports: ["/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/register": { id: "routes/account/__public/register", parentId: "routes/account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/register-2LUZYVHW.js", imports: ["/build/_shared/chunk-KXEI5ZID.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/reset.$id.$resetToken": { id: "routes/account/__public/reset.$id.$resetToken", parentId: "routes/account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/reset.$id.$resetToken-ZYVMF3XG.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-CLTXHJMK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/products": { id: "routes/api/products", parentId: "root", path: "api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/api/products-RC7JT5FY.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/articles/$slug": { id: "routes/articles/$slug", parentId: "root", path: "articles/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/articles/$slug-4TN2PTQY.js", imports: ["/build/_shared/chunk-ND72MRSE.js", "/build/_shared/chunk-FEASDZ3S.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-X4AISHCV.js", imports: ["/build/_shared/chunk-FEASDZ3S.js"], hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cartOld": { id: "routes/cartOld", parentId: "root", path: "cartOld", index: void 0, caseSensitive: void 0, module: "/build/routes/cartOld-LX2GLINE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/$collectionHandle": { id: "routes/collections/$collectionHandle", parentId: "root", path: "collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/$collectionHandle-EOLDSUQR.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/all": { id: "routes/collections/all", parentId: "root", path: "collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/all-REPDOH3U.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/index": { id: "routes/collections/index", parentId: "root", path: "collections", index: !0, caseSensitive: void 0, module: "/build/routes/collections/index-7JWFYATM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/featured-products": { id: "routes/featured-products", parentId: "root", path: "featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/featured-products-WN2C6U27.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-Y4T5MH2U.js", imports: ["/build/_shared/chunk-ND72MRSE.js", "/build/_shared/chunk-FEASDZ3S.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pages/$pageHandle": { id: "routes/pages/$pageHandle", parentId: "root", path: "pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/pages/$pageHandle-SZVDKS6T.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/$policyHandle": { id: "routes/policies/$policyHandle", parentId: "root", path: "policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/policies/$policyHandle-43NQJIYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/index": { id: "routes/policies/index", parentId: "root", path: "policies", index: !0, caseSensitive: void 0, module: "/build/routes/policies/index-A5HVZKYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/$productHandle": { id: "routes/products/$productHandle", parentId: "root", path: "products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/products/$productHandle-VJ5APYZC.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/index": { id: "routes/products/index", parentId: "root", path: "products", index: !0, caseSensitive: void 0, module: "/build/routes/products/index-P22WWOPM.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/search": { id: "routes/search", parentId: "root", path: "search", index: void 0, caseSensitive: void 0, module: "/build/routes/search-HTPMGYBF.js", imports: ["/build/_shared/chunk-YADXHAZD.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-5TAHGJ6X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-84AC3D6D.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -51508,6 +54798,14 @@ var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: 
     caseSensitive: void 0,
     module: all_exports
   },
+  "routes/articles/$slug": {
+    id: "routes/articles/$slug",
+    parentId: "root",
+    path: "articles/:slug",
+    index: void 0,
+    caseSensitive: void 0,
+    module: slug_exports
+  },
   "routes/policies/index": {
     id: "routes/policies/index",
     parentId: "root",
@@ -51555,14 +54853,6 @@ var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: 
     index: void 0,
     caseSensitive: void 0,
     module: products_exports2
-  },
-  "routes/indexOLD": {
-    id: "routes/indexOLD",
-    parentId: "root",
-    path: "indexOLD",
-    index: void 0,
-    caseSensitive: void 0,
-    module: indexOLD_exports
   },
   "routes/account": {
     id: "routes/account",
@@ -51821,9 +55111,9 @@ function createPubSub() {
       delete subscribers[id];
     };
   }
-  function publish(event) {
+  function publish(event2) {
     for (let id in subscribers)
-      subscribers[id](event);
+      subscribers[id](event2);
   }
   return {
     publish,
@@ -51941,7 +55231,7 @@ var adapter = typeof XMLHttpRequest == "function" ? "xhr" : "fetch", XmlHttpRequ
   if (xhr.onerror = onError, xhr.ontimeout = onError, xhr.onabort = () => {
     stopTimers(!0), aborted = !0;
   }, xhr.onreadystatechange = () => {
-    resetTimers(), !(aborted || xhr.readyState !== 4) && xhr.status !== 0 && onLoad();
+    resetTimers(), !(aborted || xhr.readyState !== 4) && xhr.status !== 0 && onLoad2();
   }, xhr.open(
     options.method,
     options.url,
@@ -51988,7 +55278,7 @@ var adapter = typeof XMLHttpRequest == "function" ? "xhr" : "fetch", XmlHttpRequ
       statusMessage: xhr.statusText
     };
   }
-  function onLoad() {
+  function onLoad2() {
     if (!(aborted || loaded || timedOut)) {
       if (xhr.status === 0) {
         onError(new Error("Unknown XHR error"));
@@ -52006,12 +55296,12 @@ var adapter = typeof XMLHttpRequest == "function" ? "xhr" : "fetch", XmlHttpRequ
 var import_debug = __toESM(require_browser(), 1);
 
 // node_modules/is-plain-object/dist/is-plain-object.mjs
-function isObject2(o10) {
+function isObject5(o10) {
   return Object.prototype.toString.call(o10) === "[object Object]";
 }
 function isPlainObject(o10) {
   var ctor, prot;
-  return isObject2(o10) === !1 ? !1 : (ctor = o10.constructor, ctor === void 0 ? !0 : (prot = ctor.prototype, !(isObject2(prot) === !1 || prot.hasOwnProperty("isPrototypeOf") === !1)));
+  return isObject5(o10) === !1 ? !1 : (ctor = o10.constructor, ctor === void 0 ? !0 : (prot = ctor.prototype, !(isObject5(prot) === !1 || prot.hasOwnProperty("isPrototypeOf") === !1)));
 }
 
 // node_modules/get-it/dist/middleware.browser.js
@@ -52059,9 +55349,9 @@ function observable() {
   if (!Observable2)
     throw new Error("`Observable` is not available in global scope, and no implementation was passed");
   return {
-    onReturn: (channels, context2) => new Observable2((observer) => (channels.error.subscribe((err) => observer.error(err)), channels.progress.subscribe((event) => observer.next(Object.assign({
+    onReturn: (channels, context2) => new Observable2((observer) => (channels.error.subscribe((err) => observer.error(err)), channels.progress.subscribe((event2) => observer.next(Object.assign({
       type: "progress"
-    }, event))), channels.response.subscribe((response) => {
+    }, event2))), channels.response.subscribe((response) => {
       observer.next(Object.assign({
         type: "response"
       }, response)), observer.complete();
@@ -52076,14 +55366,14 @@ function progress() {
       let xhr = evt.request, context2 = evt.context;
       "upload" in xhr && "onprogress" in xhr.upload && (xhr.upload.onprogress = handleProgress("upload")), "onprogress" in xhr && (xhr.onprogress = handleProgress("download"));
       function handleProgress(stage) {
-        return (event) => {
-          let percent = event.lengthComputable ? event.loaded / event.total * 100 : -1;
+        return (event2) => {
+          let percent = event2.lengthComputable ? event2.loaded / event2.total * 100 : -1;
           context2.channels.progress.publish({
             stage,
             percent,
-            total: event.total,
-            loaded: event.loaded,
-            lengthComputable: event.lengthComputable
+            total: event2.total,
+            loaded: event2.loaded,
+            lengthComputable: event2.lengthComputable
           });
         };
       }
@@ -52313,15 +55603,15 @@ var config = {
 
 // node_modules/rxjs/dist/esm5/internal/scheduler/timeoutProvider.js
 var timeoutProvider = {
-  setTimeout: function(handler, timeout) {
+  setTimeout: function(handler, timeout2) {
     for (var args = [], _i = 2; _i < arguments.length; _i++)
       args[_i - 2] = arguments[_i];
     var delegate = timeoutProvider.delegate;
-    return delegate != null && delegate.setTimeout ? delegate.setTimeout.apply(delegate, __spreadArray([handler, timeout], __read(args))) : setTimeout.apply(void 0, __spreadArray([handler, timeout], __read(args)));
+    return delegate != null && delegate.setTimeout ? delegate.setTimeout.apply(delegate, __spreadArray([handler, timeout2], __read(args))) : setTimeout.apply(void 0, __spreadArray([handler, timeout2], __read(args)));
   },
-  clearTimeout: function(handle14) {
+  clearTimeout: function(handle15) {
     var delegate = timeoutProvider.delegate;
-    return ((delegate == null ? void 0 : delegate.clearTimeout) || clearTimeout)(handle14);
+    return ((delegate == null ? void 0 : delegate.clearTimeout) || clearTimeout)(handle15);
   },
   delegate: void 0
 };
@@ -52740,10 +56030,10 @@ var projectHeader = "X-Sanity-Project-ID";
 function requestOptions(config2) {
   let overrides = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {}, headers = {}, token = overrides.token || config2.token;
   token && (headers.Authorization = "Bearer ".concat(token)), !overrides.useGlobalApi && !config2.useProjectHostname && config2.projectId && (headers[projectHeader] = config2.projectId);
-  let withCredentials = Boolean(typeof overrides.withCredentials > "u" ? config2.token || config2.withCredentials : overrides.withCredentials), timeout = typeof overrides.timeout > "u" ? config2.timeout : overrides.timeout;
+  let withCredentials = Boolean(typeof overrides.withCredentials > "u" ? config2.token || config2.withCredentials : overrides.withCredentials), timeout2 = typeof overrides.timeout > "u" ? config2.timeout : overrides.timeout;
   return Object.assign({}, overrides, {
     headers: Object.assign({}, headers, overrides.headers || {}),
-    timeout: typeof timeout > "u" ? 5 * 60 * 1e3 : timeout,
+    timeout: typeof timeout2 > "u" ? 5 * 60 * 1e3 : timeout2,
     proxy: overrides.proxy || config2.proxy,
     json: !0,
     withCredentials
@@ -53074,7 +56364,7 @@ var excludeFalsey = (param, defValue) => param === !1 ? void 0 : typeof param > 
     autoGenerateArrayKeys: options.autoGenerateArrayKeys,
     skipCrossDatasetReferenceValidation: options.skipCrossDatasetReferenceValidation
   };
-}, isResponse3 = (event) => event.type === "response", getBody = (event) => event.body, indexBy = (docs, attr) => docs.reduce((indexed, doc) => (indexed[attr(doc)] = doc, indexed), /* @__PURE__ */ Object.create(null)), getQuerySizeLimit = 11264;
+}, isResponse3 = (event2) => event2.type === "response", getBody = (event2) => event2.body, indexBy = (docs, attr) => docs.reduce((indexed, doc) => (indexed[attr(doc)] = doc, indexed), /* @__PURE__ */ Object.create(null)), getQuerySizeLimit = 11264;
 function _fetch(client, httpRequest2, query2, params) {
   let options = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : {}, mapResponse = options.filterResponse === !1 ? (res) => res : (res) => res.result;
   return _dataRequest(client, httpRequest2, "query", {
@@ -53088,7 +56378,7 @@ function _getDocument(client, httpRequest2, id) {
     json: !0,
     tag: opts.tag
   };
-  return _requestObservable(client, httpRequest2, options).pipe(filter(isResponse3), map((event) => event.body.documents && event.body.documents[0]));
+  return _requestObservable(client, httpRequest2, options).pipe(filter(isResponse3), map((event2) => event2.body.documents && event2.body.documents[0]));
 }
 function _getDocuments(client, httpRequest2, ids) {
   let opts = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {}, options = {
@@ -53096,8 +56386,8 @@ function _getDocuments(client, httpRequest2, ids) {
     json: !0,
     tag: opts.tag
   };
-  return _requestObservable(client, httpRequest2, options).pipe(filter(isResponse3), map((event) => {
-    let indexed = indexBy(event.body.documents || [], (doc) => doc._id);
+  return _requestObservable(client, httpRequest2, options).pipe(filter(isResponse3), map((event2) => {
+    let indexed = indexBy(event2.body.documents || [], (doc) => doc._id);
     return ids.map((id) => indexed[id] || null);
   }));
 }
@@ -53123,7 +56413,7 @@ function _mutate(client, httpRequest2, mutations, options) {
 }
 function _dataRequest(client, httpRequest2, endpoint, body) {
   let options = arguments.length > 4 && arguments[4] !== void 0 ? arguments[4] : {}, isMutation = endpoint === "mutate", isQuery = endpoint === "query", strQuery = isMutation ? "" : encodeQueryString(body), useGet = !isMutation && strQuery.length < getQuerySizeLimit, stringQuery = useGet ? strQuery : "", returnFirst = options.returnFirst, {
-    timeout,
+    timeout: timeout2,
     token,
     tag,
     headers
@@ -53133,7 +56423,7 @@ function _dataRequest(client, httpRequest2, endpoint, body) {
     json: !0,
     body: useGet ? void 0 : body,
     query: isMutation && getMutationQuery(options),
-    timeout,
+    timeout: timeout2,
     headers,
     token,
     tag,
@@ -53177,7 +56467,7 @@ function _requestObservable(client, httpRequest2, options) {
   return options.signal ? request.pipe(_withAbortSignal(options.signal)) : request;
 }
 function _request(client, httpRequest2, options) {
-  return _requestObservable(client, httpRequest2, options).pipe(filter((event) => event.type === "response"), map((event) => event.body));
+  return _requestObservable(client, httpRequest2, options).pipe(filter((event2) => event2.type === "response"), map((event2) => event2.body));
 }
 function _getDataUrl(client, operation, path2) {
   let config2 = client.config(), catalog = hasDataset(config2), baseUri = "/".concat(operation, "/").concat(catalog), uri = path2 ? "".concat(baseUri, "/").concat(path2) : baseUri;
@@ -53234,7 +56524,7 @@ var AssetsClient = class {
   }
   upload(assetType, body, options) {
     let observable3 = _upload(__privateGet$4(this, _client2$3), __privateGet$4(this, _httpRequest2$4), assetType, body, options);
-    return lastValueFrom(observable3.pipe(filter((event) => event.type === "response"), map((event) => event.body.document)));
+    return lastValueFrom(observable3.pipe(filter((event2) => event2.type === "response"), map((event2) => event2.body.document)));
   }
 };
 _client2$3 = /* @__PURE__ */ new WeakMap();
@@ -53350,8 +56640,8 @@ function _listen(query2, params) {
       observer.error(cooerceError(err));
     }
     function onMessage(evt) {
-      let event = parseEvent(evt);
-      return event instanceof Error ? observer.error(event) : observer.next(event);
+      let event2 = parseEvent(evt);
+      return event2 instanceof Error ? observer.error(event2) : observer.next(event2);
     }
     function onDisconnect() {
       stopped = !0, unsubscribe(), observer.complete();
@@ -53377,11 +56667,11 @@ function _listen(query2, params) {
     return stop;
   });
 }
-function parseEvent(event) {
+function parseEvent(event2) {
   try {
-    let data = event.data && JSON.parse(event.data) || {};
+    let data = event2.data && JSON.parse(event2.data) || {};
     return Object.assign({
-      type: event.type
+      type: event2.type
     }, data);
   } catch (err) {
     return err;
@@ -53669,7 +56959,7 @@ _httpRequest2 = /* @__PURE__ */ new WeakMap();
 var httpRequest = defineHttpRequest(envMiddleware), requester = httpRequest.defaultRequester, createClient = (config2) => new SanityClient(httpRequest, config2);
 
 // node_modules/@sanity/preview-kit/dist/index.js
-var import_react134 = __toESM(require_react(), 1);
+var import_react151 = __toESM(require_react(), 1);
 
 // node_modules/suspend-react/dist/index.js
 var globalCache = [];
@@ -53734,8 +57024,8 @@ var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1), _checkAuth = async 
   return EventSourcePolyfill;
 };
 function useParams2(params) {
-  let stringifiedParams = (0, import_react134.useMemo)(() => JSON.stringify(params || {}), [params]);
-  return (0, import_react134.useMemo)(() => JSON.parse(stringifiedParams), [stringifiedParams]);
+  let stringifiedParams = (0, import_react151.useMemo)(() => JSON.stringify(params || {}), [params]);
+  return (0, import_react151.useMemo)(() => JSON.parse(stringifiedParams), [stringifiedParams]);
 }
 var _definePreview = (_ref) => {
   let {
@@ -53761,7 +57051,7 @@ var _definePreview = (_ref) => {
       throw new Error("Calling usePreview outside a browser environment isn't supported. Ensure the component using the hook is only rendering on the client. For example by wrapping it in PreviewSuspense.");
     if (!token && token !== null)
       throw new Error("No `token` given to usePreview hook, if this is intentional then set it to `null`");
-    let [serverSnapshot] = (0, import_react134.useState)(() => _serverSnapshot), params = useParams2(_params);
+    let [serverSnapshot] = (0, import_react151.useState)(() => _serverSnapshot), params = useParams2(_params);
     store || (onPublicAccessOnly && (checkAuth(projectId2, token) || onPublicAccessOnly()), store = importGroqStore()({
       projectId: projectId2,
       dataset: dataset2,
@@ -53773,7 +57063,7 @@ var _definePreview = (_ref) => {
       listen: !0,
       overlayDrafts
     }));
-    let initial = serverSnapshot ?? preload(store, query2, params), syncStore = (0, import_react134.useMemo)(() => {
+    let initial = serverSnapshot ?? preload(store, query2, params), syncStore = (0, import_react151.useMemo)(() => {
       let snapshot = initial;
       return {
         getServerSnapshot: serverSnapshot === void 0 ? void 0 : () => serverSnapshot,
@@ -53788,12 +57078,12 @@ var _definePreview = (_ref) => {
         }
       };
     }, [initial, params, query2, serverSnapshot]);
-    return (0, import_react134.useEffect)(() => {
+    return (0, import_react151.useEffect)(() => {
       let callback = () => {
         store.close();
       };
       return window.addEventListener("beforeunload", callback), () => window.removeEventListener("beforeunload", callback);
-    }, []), (0, import_react134.useSyncExternalStore)(syncStore.subscribe, syncStore.getSnapshot, syncStore.getServerSnapshot);
+    }, []), (0, import_react151.useSyncExternalStore)(syncStore.subscribe, syncStore.getSnapshot, syncStore.getServerSnapshot);
   };
 }, _preloadQuery = (store, query2, params) => store.query(query2, params), definePreview = (config2) => _definePreview({
   ...config2,

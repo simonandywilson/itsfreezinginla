@@ -1,12 +1,15 @@
 import React from 'react';
+import SanityImage from './SanityImage';
 
-const Topic = () => {
+const Topic = ({topic}) => {
   return (
-    <span
-      className={
-        'float inline-block h-[1em] aspect-[3/2] border-black border-2 mr-4'
-      }
-    ></span>
+    <span className={'float inline-block h-[1em] mr-4'}>
+      <SanityImage
+        value={topic.image}
+        alt={`Topic: ${topic.topic}`}
+        className={'h-full'}
+      />
+    </span>
   );
 };
 

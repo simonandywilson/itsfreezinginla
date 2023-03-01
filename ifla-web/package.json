@@ -40,6 +40,7 @@
     "react-use": "^17.4.0",
     "remix-utils": "^4.4.0",
     "schema-dts": "^1.1.0",
+    "swiper": "^9.1.0",
     "tiny-invariant": "^1.2.0",
     "typographic-base": "^1.0.4"
   },

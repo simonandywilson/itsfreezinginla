@@ -1,3 +1,55 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  html body {
+    -webkit-tap-highlight-color: transparent;
+    scroll-behavior: smooth;
+  }
+
+  /* @font-face {
+    font-family: 'ABCArizonaFlare';
+    src: url('/fonts/ABCArizonaFlare-Regular-Trial.woff2') format('woff2'),
+      url('/fonts/ABCArizonaFlare-Regular-Trial.woff') format('woff');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'ABCArizonaFlare';
+    src: url('/fonts/ABCArizonaFlare-RegularItalic-Trial.woff2') format('woff2'),
+      url('/fonts/ABCArizonaFlare-RegularItalic-Trial.woff') format('woff');
+    font-weight: 400;
+    font-style: italic;
+    font-stretch: normal;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'ReviewCondensed';
+    src: url('/fonts/ReviewCondensed-Regular-Trial.otf') format('opentype');
+    font-weight: 400;
+    font-style: normal;
+    font-stretch: normal;
+    font-display: swap;
+  } */
+
+  details > summary {
+    list-style: none;
+  }
+
+  details > summary::marker,
+  details > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  summary::after {
+    content: ' ▴';
+  }
+  details[open] summary:after {
+    content: ' ▾';
+  }
+}

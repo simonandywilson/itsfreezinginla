@@ -27,6 +27,9 @@ import shopifyCollectionRule from "./objects/shopifyCollectionRule";
 
 // Blocks
 import defaultBlock from "./blocks/defaultBlock";
+import columnsBlock from './blocks/columnsBlock'
+import basicBlock from './blocks/basicBlock'
+
 // Arrays
 import contentArray from "./objects/contentArray";
 // Modules
@@ -38,9 +41,7 @@ import articlesModule from "./modules/articlesModule";
 import shopModule from "./modules/shopModule";
 import imageGridModule from "./modules/imageGridModule";
 import headingModule from "./modules/headingModule";
-
-
-
+import collapsibleModule from './modules/collapsibleModule'
 
 const singletons = new Set([settings]);
 const documents = new Set([
@@ -71,7 +72,7 @@ const objects = new Set([
 
 const arrays = new Set([contentArray]);
 
-const blocks = new Set([defaultBlock]);
+const blocks = new Set([defaultBlock, columnsBlock, basicBlock]);
 
 const modules = new Set([
 	textBlockModule,
@@ -82,6 +83,7 @@ const modules = new Set([
 	shopModule,
 	imageGridModule,
 	headingModule,
+	collapsibleModule
 ]);
 
 export const schema = [...singletons, ...documents, ...objects, ...arrays, ...blocks, ...modules];
