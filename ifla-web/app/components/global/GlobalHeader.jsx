@@ -5,7 +5,8 @@ import GlobalMenuItemDesktop from './GlobalMenuItemDesktop';
 import GlobalMenuItemMobile from './GlobalMenuItemMobile';
 import GlobalTitle from './GlobalTitle';
 import {Await} from '@remix-run/react';
-import Link from '~/components/parts/Link';
+import {Link} from '~/components/parts/Link';
+import {Badge} from '~/components/parts/Badge';
 import {BasketIcon} from '../icons/Icons';
 
 const GlobalHeader = () => {
@@ -70,24 +71,14 @@ const CartButton = () => {
     <Link to={'/cart'} aria-label="Go to cart">
       <div className={'h-14'}>
         <BasketIcon />
-        <Suspense fallback={<CartButtonBadge count={0} />}>
+        <Suspense fallback={<Badge intent={'small'}>0</Badge>}>
           <Await resolve={cart}>
-            {(cart) => <CartButtonBadge count={cart?.totalQuantity || 0} />}
+            {(cart) => (
+              <Badge intent={'small'}>{cart?.totalQuantity || 0}</Badge>
+            )}
           </Await>
         </Suspense>
       </div>
     </Link>
-  );
-};
-
-const CartButtonBadge = ({count}) => {
-  return (
-    <div
-      className={
-        'absolute w-6 h-6 bottom-0 right-0 -translate-x-1/2 -translate-y-1/2 aspect-square bg-black text-white text-sm rounded-full flex justify-center items-center'
-      }
-    >
-      <span className={'leading-none'}>{count || 0}</span>
-    </div>
   );
 };

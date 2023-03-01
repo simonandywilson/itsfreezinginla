@@ -1,4 +1,4 @@
-import Link from '~/components/parts/Link';
+import {Link} from '~/components/parts/Link';
 import {useRouteData} from 'remix-utils';
 import {PortableText} from '../parts/PortableText';
 import GlobalNewsletter from './GlobalNewsletter';

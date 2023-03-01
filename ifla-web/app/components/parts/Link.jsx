@@ -1,7 +1,7 @@
 import {Link as RemixLink} from '@remix-run/react';
-import { cx } from 'class-variance-authority';
+import {cx} from 'class-variance-authority';
 
-const Link = ({children, to, className}) => {
+export const Link = ({children, to, className}) => {
   return (
     <RemixLink
       to={to}
@@ -14,5 +14,3 @@ const Link = ({children, to, className}) => {
     </RemixLink>
   );
 };
-
-export default Link;

@@ -50,19 +50,23 @@ export const meta = () => ({
 });
 
 export async function loader({context}) {
-  const [cartId, shop, settings, menu, footer] = await Promise.all([
-    context.session.get('cartId'),
-    getShopData(context),
-    getSettingsData(context),
-    getMenuData(context),
-    getFooterData(context),
-  ]);
+  const [cartId, shop, allProducts, settings, menu, footer] = await Promise.all(
+    [
+      context.session.get('cartId'),
+      getShopData(context),
+      getAllProductsData(context),
+      getSettingsData(context),
+      getMenuData(context),
+      getFooterData(context),
+    ],
+  );
 
   return defer({
     settings,
     menu,
     footer,
     cart: cartId ? getCart(context, cartId) : undefined,
+    allProducts,
     analytics: {
       shopifySalesChannel: ShopifySalesChannel.hydrogen,
       shopId: shop.shop.id,
@@ -73,60 +77,62 @@ export async function loader({context}) {
 
 const badRequest = (data) => json(data, {status: 400});
 
-export async function action({request, context, params}) {
-  await new Promise((res) => setTimeout(res, 1000));
-  const {storefront} = context;
-  const formData = await request.formData();
-  const email = formData.get('email');
+// export async function action({request, context, params}) {
+//   await new Promise((res) => setTimeout(res, 1000));
+//   const {storefront} = context;
+//   const formData = await request.formData();
+//   const email = formData.get('email');
 
-  const CUSTOMER_CREATE_MUTATION = `#graphql
-  mutation customerCreate($input: CustomerCreateInput!) {
-    customerCreate(input: $input) {
-      customer {
-        id
-      }
-      customerUserErrors {
-        code
-        field
-        message
-      }
-    }
-  }
-`;
+//   const CUSTOMER_CREATE_MUTATION = `#graphql
+//   mutation customerCreate($input: CustomerCreateInput!) {
+//     customerCreate(input: $input) {
+//       customer {
+//         id
+//       }
+//       customerUserErrors {
+//         code
+//         field
+//         message
+//       }
+//     }
+//   }
+// `;
 
-  if (!email) {
-    console.log('no email');
-    return badRequest({
-      formError: 'Please provide both an email and a password.',
-    });
-  }
+//   if (!email) {
+//     console.log('no email');
+//     return badRequest({
+//       formError: 'Please provide both an email and a password.',
+//     });
+//   }
 
-  try {
-    const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
-      variables: {
-        input: {email: 'user@example.com'},
-      },
-    });
+//   try {
+//     const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
+//       variables: {
+//         input: {email: 'user@example.com'},
+//       },
+//     });
 
-    if (!data?.customerCreate?.customer?.id) {
-      /**
-       * Something is wrong with the user's input.
-       */
-      throw new Error(data?.customerCreate?.customerUserErrors.join(', '));
-    }
-  } catch (error) {
-    if (storefront.isApiError(error)) {
-      console.log(error);
-      return badRequest({
-        formError: 'Something went wrong. Please try again later.',
-      });
-    }
-    return badRequest({
-      formError:
-        'Sorry. We could not create an account with this email. User might already exist.',
-    });
-  }
-}
+//     if (!data?.customerCreate?.customer?.id) {
+//       /**
+//        * Something is wrong with the user's input.
+//        */
+//       throw new Error(data?.customerCreate?.customerUserErrors.join(', '));
+//     }
+//   } catch (error) {
+//     if (storefront.isApiError(error)) {
+//       console.log(error);
+//       return badRequest({
+//         formError: 'Something went wrong. Please try again later.',
+//       });
+//     }
+//     return badRequest({
+//       formError:
+//         'Sorry. We could not create an account with this email. User might already exist.',
+//     });
+//   }
+// }
+
+
 
 export default function App() {
   const locale = {
@@ -385,11 +391,68 @@ export async function getCart({storefront}, cartId) {
   const {cart} = await storefront.query(CART_QUERY, {
     variables: {
       cartId,
-      country: storefront.i18n.country,
-      language: storefront.i18n.language,
+      // country: storefront.i18n.country,
+      // language: storefront.i18n.language,
     },
     cache: storefront.CacheNone(),
   });
 
   return cart;
+}
+
+const ALL_PRODUCTS_QUERY = `#graphql
+  query AllProducts(
+    $country: CountryCode
+    $language: LanguageCode
+  ) @inContext(country: $country, language: $language) {
+      products(first: 100) {
+        nodes {
+          id
+          title
+          publishedAt
+          handle 
+          featuredImage {
+            url
+            altText
+            width
+            height
+          }
+          variants(first: 5) {
+            nodes {
+              id
+              price {
+                amount
+                currencyCode
+              }
+              compareAtPrice {
+                amount
+                currencyCode
+              }
+              selectedOptions {
+                name
+                value
+              }
+              product {
+                handle
+                title
+              }
+            }
+          }
+        }
+      }
+    }
+  
+`;
+
+export async function getAllProductsData({storefront}) {
+  invariant(storefront, 'missing storefront client in all products query');
+
+  const {products} = await storefront.query(ALL_PRODUCTS_QUERY, {
+    variables: {
+      country: storefront.i18n.country,
+      language: storefront.i18n.language,
+    },
+  });
+
+  return products;
 }

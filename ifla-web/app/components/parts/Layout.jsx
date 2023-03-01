@@ -5,6 +5,7 @@ const layout = cva('layout', {
   variants: {
     intent: {
       page: ['p-4'],
+      space: ['p-8'],
       module: ['px-4'],
       prose: ['max-w-prose mx-auto px-4'],
       grid: ['grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'],

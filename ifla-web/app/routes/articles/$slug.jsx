@@ -7,6 +7,7 @@ import {Content} from '../../components/content/Content';
 import {Layout} from '../../components/parts/Layout';
 import {contentFragment} from '../../lib/fragments';
 import swiperStyles from 'swiper/swiper.min.css';
+
 const seo = ({data}) => ({
   title: 'UPDATE ME',
   description: 'article description',

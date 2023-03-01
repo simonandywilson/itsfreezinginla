@@ -1,6 +1,6 @@
 import {Fragment} from 'react';
 import {Popover, Transition} from '@headlessui/react';
-import Link from '~/components/parts/Link';
+import {Link} from '~/components/parts/Link';
 
 const MenuDesktop = ({title, children}) => {
   return (
