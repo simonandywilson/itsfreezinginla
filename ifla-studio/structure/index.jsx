@@ -182,8 +182,10 @@ export const structure = (S, context) => {
 };
 
 export const defaultDocumentNode = (S, { schemaType, getClient }) => {
-	const { apiVersion } = projectDetails();
+	const { apiVersion } = projectDetails;
 	const client = getClient({ apiVersion });
+
+	return S.document().views([S.view.form()])
 
 	switch (schemaType) {
 		case `record`:
