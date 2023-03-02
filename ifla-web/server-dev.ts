@@ -61,6 +61,7 @@ export default {
         dataset: env.SANITY_PUBLIC_DATASET,
         apiVersion: env.SANITY_PUBLIC_API_VERSION,
       };
+      const mailerLiteApi = env.MAILERLITE_API_KEY;
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.
@@ -77,6 +78,7 @@ export default {
           sanityClient,
           usePreview,
           sanityProjectDetails,
+          mailerLiteApi,
         }),
       });
 

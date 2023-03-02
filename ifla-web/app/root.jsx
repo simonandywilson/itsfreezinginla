@@ -76,63 +76,48 @@ export async function loader({context}) {
 }
 
 const badRequest = (data) => json(data, {status: 400});
+const goodRequest = (data) => json(data, {status: 200});
 
-// export async function action({request, context, params}) {
-//   await new Promise((res) => setTimeout(res, 1000));
-//   const {storefront} = context;
-//   const formData = await request.formData();
-//   const email = formData.get('email');
+export async function action({request, context}) {
+  await new Promise((res) => setTimeout(res, 1000));
+  const formData = await request.formData();
+  const apiKey = context.mailerLiteApi;
 
-//   const CUSTOMER_CREATE_MUTATION = `#graphql
-//   mutation customerCreate($input: CustomerCreateInput!) {
-//     customerCreate(input: $input) {
-//       customer {
-//         id
-//       }
-//       customerUserErrors {
-//         code
-//         field
-//         message
-//       }
-//     }
-//   }
-// `;
+  const email = formData.get('email');
+  const subscribedAt = new Date().toLocaleString('sv-SE');
 
-//   if (!email) {
-//     console.log('no email');
-//     return badRequest({
-//       formError: 'Please provide both an email and a password.',
-//     });
-//   }
+  const subscriber = {
+    email: email,
+    subscribed_at: subscribedAt,
+  };
 
-//   try {
-//     const data = await storefront.mutate(CUSTOMER_CREATE_MUTATION, {
-//       variables: {
-//         input: {email: 'user@example.com'},
-//       },
-//     });
+  if (!email) {
+    console.log('no email');
+    return badRequest({
+      formError: 'Please provide an email.',
+    });
+  }
 
-//     if (!data?.customerCreate?.customer?.id) {
-//       /**
-//        * Something is wrong with the user's input.
-//        */
-//       throw new Error(data?.customerCreate?.customerUserErrors.join(', '));
-//     }
-//   } catch (error) {
-//     if (storefront.isApiError(error)) {
-//       console.log(error);
-//       return badRequest({
-//         formError: 'Something went wrong. Please try again later.',
-//       });
-//     }
-//     return badRequest({
-//       formError:
-//         'Sorry. We could not create an account with this email. User might already exist.',
-//     });
-//   }
-// }
+  try {
+    const res = await fetch('https://connect.mailerlite.com/api/subscribers', {
+      method: 'post',
+      body: JSON.stringify(subscriber),
+      headers: {
+        'Content-Type': 'application/json',
+        Accept: 'application/json',
+        Authorization: ` Bearer ${apiKey}`,
+      },
+    });
 
-
+    return json({ res });
+    
+  } catch (error) {
+    return badRequest({
+      formError:
+        'Sorry. We could not create an account with this email. User might already exist.',
+    });
+  }
+}
 
 export default function App() {
   const locale = {

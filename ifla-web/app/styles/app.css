@@ -565,6 +565,9 @@ video {
 .pointer-events-none {
   pointer-events: none;
 }
+.pointer-events-auto {
+  pointer-events: auto;
+}
 .static {
   position: static;
 }
@@ -704,6 +707,9 @@ video {
 .ml-6 {
   margin-left: 1.5rem;
 }
+.mr-2 {
+  margin-right: 0.5rem;
+}
 .mr-4 {
   margin-right: 1rem;
 }
@@ -773,8 +779,14 @@ video {
 .h-10 {
   height: 2.5rem;
 }
+.h-12 {
+  height: 3rem;
+}
 .h-14 {
   height: 3.5rem;
+}
+.h-20 {
+  height: 5rem;
 }
 .h-24 {
   height: 6rem;
@@ -819,21 +831,12 @@ video {
 .h-full {
   height: 100%;
 }
-.h-screen {
-  height: 100vh;
-}
 .h-max {
   height: -moz-max-content;
   height: max-content;
 }
-.h-12 {
-  height: 3rem;
-}
-.h-16 {
-  height: 4rem;
-}
-.h-20 {
-  height: 5rem;
+.h-screen {
+  height: 100vh;
 }
 .max-h-0 {
   max-height: 0px;
@@ -864,6 +867,9 @@ video {
 }
 .w-10 {
   width: 2.5rem;
+}
+.w-12 {
+  width: 3rem;
 }
 .w-24 {
   width: 6rem;
@@ -898,9 +904,6 @@ video {
 }
 .w-screen {
   width: 100vw;
-}
-.w-12 {
-  width: 3rem;
 }
 .min-w-\[0\.75rem\] {
   min-width: 0.75rem;
@@ -1067,6 +1070,9 @@ video {
 }
 .items-start {
   align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
 }
 .items-center {
   align-items: center;
@@ -1381,6 +1387,9 @@ video {
 .pb-2 {
   padding-bottom: 0.5rem;
 }
+.pb-24 {
+  padding-bottom: 6rem;
+}
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -1648,6 +1657,9 @@ video {
 .ease-out {
   transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
 }
+.rendering-pixelated {
+  image-rendering: pixelated;
+}
 .selection\:bg-green-200 *::-moz-selection {
   --tw-bg-opacity: 1;
   background-color: rgba(187, 247, 208, var(--tw-bg-opacity));
@@ -1681,11 +1693,6 @@ video {
 }
 @media (hover: hover) and (pointer: fine) {
 
-  .hover\:bg-zinc-300:hover {
-    --tw-bg-opacity: 1;
-    background-color: rgba(212, 212, 216, var(--tw-bg-opacity));
-  }
-
   .hover\:underline:hover {
     text-decoration-line: underline;
   }
@@ -1711,18 +1718,6 @@ video {
 }
 .focus\:ring-transparent:focus {
   --tw-ring-color: transparent;
-}
-.focus-visible\:bg-zinc-300.focus-visible {
-  --tw-bg-opacity: 1;
-  background-color: rgba(212, 212, 216, var(--tw-bg-opacity));
-}
-.focus-visible\:bg-zinc-300.focus-visible {
-  --tw-bg-opacity: 1;
-  background-color: rgba(212, 212, 216, var(--tw-bg-opacity));
-}
-.focus-visible\:bg-zinc-300:focus-visible {
-  --tw-bg-opacity: 1;
-  background-color: rgba(212, 212, 216, var(--tw-bg-opacity));
 }
 .focus-visible\:underline.focus-visible {
   text-decoration-line: underline;

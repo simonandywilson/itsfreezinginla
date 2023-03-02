@@ -18,7 +18,10 @@ const ArticleBlock = ({article}) => {
           }
           style={{background: colour ? colour : '#dfdfdf'}}
         >
-          <SanityImage value={image.asset} className={'mix-blend-overlay'} />
+          <SanityImage
+            value={image.asset}
+            className={'mix-blend-overlay rendering-pixelated'}
+          />
         </div>
       )}
       <div>

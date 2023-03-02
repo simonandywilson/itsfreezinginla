@@ -5,7 +5,6 @@ import article from "./documents/article";
 import product from "./documents/product";
 import collection from "./documents/collection";
 import productVariant from "./documents/productVariant";
-import productCollection from "./documents/productCollection";
 import author from "./documents/author";
 import home from "./documents/home.jsx";
 import page from "./documents/page";
@@ -51,7 +50,6 @@ const documents = new Set([
 	product,
 	collection,
 	productVariant,
-	productCollection,
 	topic,
 	page,
 	section,

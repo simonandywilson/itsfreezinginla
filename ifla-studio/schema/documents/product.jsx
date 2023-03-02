@@ -5,34 +5,18 @@ import ShopifyIcon from "../../styles/ShopifyIcon";
 import ShopifyDocumentStatus from '../../components/ShopifyDocumentStatus'
 import {getPriceRange} from '../../utils/getPriceRange'
 
-const GROUPS = [
-  {
-    default: true,
-    name: 'shopifySync',
-    title: 'Shopify sync',
-    icon: ShopifyIcon,
-  },
-  {
-    name: 'seo',
-    title: 'SEO',
-  },
-]
 
 export default {
-  // Required to hide 'create new' button in desk structure
-  __experimental_actions: [/*'create',*/ 'update', /*'delete',*/ 'publish'],
   name: 'product',
   title: 'Product',
   type: 'document',
   icon: TagIcon,
-  groups: GROUPS,
   fields: [
     // Product hidden status
     {
       name: 'hidden',
       type: 'string',
       //   inputComponent: ProductHiddenInput,
-      group: GROUPS.map((group) => group.name),
       hidden: ({ parent }) => {
         const isActive = parent?.store?.status === 'active'
         const isDeleted = parent?.store?.isDeleted
@@ -59,15 +43,14 @@ export default {
       title: 'Shopify',
       type: 'shopifyProduct',
       description: 'Product data from Shopify (read-only)',
-      group: 'shopifySync',
     },
     // SEO
-    {
-      name: 'seo',
-      title: 'SEO',
-      type: 'shopifySeo',
-      group: 'seo',
-    },
+    // {
+    //   name: 'seo',
+    //   title: 'SEO',
+    //   type: 'shopifySeo',
+    //   group: 'seo',
+    // },
   ],
   orderings: [
     {

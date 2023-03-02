@@ -15,14 +15,10 @@ const layout = cva('layout', {
         'justify-center',
         'items-center',
         'h-[calc(100vh-6rem)]',
+        'pb-24'
       ],
     },
-    // size: {
-    //   small: ['text-sm', 'py-1', 'px-2'],
-    //   medium: ['text-base', 'py-2', 'px-4'],
-    // },
   },
-  //   compoundVariants: [{intent: 'primary', size: 'medium', class: 'uppercase'}],
   defaultVariants: {
     intent: 'page',
   },

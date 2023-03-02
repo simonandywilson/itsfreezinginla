@@ -2,22 +2,23 @@ import React from "react";
 import Emoji from "a11y-react-emoji";
 
 const documentIcons = [
-	{ name: "home", emoji: "🏠" },
-	{ name: "content", emoji: "🌍" },
-	{ name: "article", emoji: "📣" },
-	{ name: "filtered", emoji: "⏳" },
-	{ name: "section", emoji: "🚧" },
-	{ name: "page", emoji: "📄" },
-	{ name: "colour", emoji: "🚦" },
-	{ name: "author", emoji: "👤" },
-	{ name: "topic", emoji: "⭐️" },
-	{ name: "product", emoji: "🛍️" },
-	{ name: "collection", emoji: "📦" },
-	{ name: "settings", emoji: "⚙️" },
-];
+  {name: 'home', emoji: '🏠'},
+  {name: 'content', emoji: '🌍'},
+  {name: 'article', emoji: '📣'},
+  {name: 'filtered', emoji: '⏳'},
+  {name: 'section', emoji: '🚧'},
+  {name: 'page', emoji: '📄'},
+  {name: 'colour', emoji: '🎨'},
+  {name: 'author', emoji: '👤'},
+  {name: 'topic', emoji: '⭐️'},
+  {name: 'product', emoji: '🛍️'},
+  {name: 'collection', emoji: '📦'},
+  {name: 'variant', emoji: '🚦'},
+  {name: 'settings', emoji: '⚙️'},
+]
 
 const filterIcons = [
-	// { name: "size", emoji: "📐" },
+	{ name: "year", emoji: "⏰" },
 ];
 
 const objectIcons = [

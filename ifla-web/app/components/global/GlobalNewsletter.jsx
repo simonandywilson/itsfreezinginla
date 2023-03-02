@@ -1,18 +1,20 @@
 import {Form, useActionData, useTransition} from '@remix-run/react';
 import {useEffect, useRef} from 'react';
-import Button from '~/components/parts/Button';
+import {Button} from '~/components/parts/Button';
 
 const GlobalNewsletter = () => {
   const actionData = useActionData();
   const transition = useTransition();
-  const state = transition.submission
+  const state = actionData?.res?.statusText
+    ? 'success'
+    : transition.submission
     ? 'submitting'
     : actionData?.subscription
     ? 'success'
     : actionData?.error
     ? 'error'
-              : 'idle';
-    
+    : 'idle';
+
   const inputRef = useRef(null);
   const successRef = useRef(null);
   const mounted = useRef(false);
@@ -48,25 +50,18 @@ const GlobalNewsletter = () => {
               name="email"
               placeholder=""
               className={
-                'text-white bg-black rounded-none border-b-2 py-2 border-dashed placeholder-white focus:border-solid focus:outline-none'
+                'text-white bg-black rounded-none border-b-2 py-2 border-dashed placeholder-white mr-2 focus:border-solid focus:outline-none'
               }
             />
-            <Button className={"ml-2"}>
-                {state === 'submitting' ? 'Subscribing...' : 'Go on'}
+            <Button type={'submit'} intent={'medium'} colour={'light'}>
+              {state === 'idle' && 'Go on'}
+              {state === 'submitting' && 'Subscribing...'}
+              {state === 'success' && 'Subscribed!'}
+              {state === 'error' && 'Error :('}
             </Button>
           </div>
         </fieldset>
-
-        <p id="error-message">
-          {state === 'error' ? actionData.message : <>&nbsp;</>}
-        </p>
       </Form>
-
-      {/* <div aria-hidden={state !== 'success'}>
-        <h2 ref={successRef} tabIndex={-1}>
-          You're subscribed!
-        </h2>
-      </div> */}
     </main>
   );
 };

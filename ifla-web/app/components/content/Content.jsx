@@ -25,8 +25,6 @@ export const Content = ({content}) => {
     //   return <ArticlesModule content={content} />;
     case 'carouselModule':
       return <CarouselModule content={content} />;
-    case 'headingModule':
-      return <CarouselModule content={content} />;
     case 'shopModule':
       return <ShopModule />;
     default:

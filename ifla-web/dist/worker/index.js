@@ -12103,7 +12103,7 @@ var require_react_jsx_dev_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV85(type, config2, maybeKey, source, self2) {
+      function jsxDEV84(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
@@ -12248,7 +12248,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV85(type, props, key, source, self2);
+          var element = jsxDEV84(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -12905,7 +12905,7 @@ var require_react_jsx_runtime_development = __commonJS({
           value: source
         }), Object.freeze && (Object.freeze(element.props), Object.freeze(element)), element;
       };
-      function jsxDEV85(type, config2, maybeKey, source, self2) {
+      function jsxDEV84(type, config2, maybeKey, source, self2) {
         {
           var propName, props = {}, key = null, ref = null;
           maybeKey !== void 0 && (checkKeyStringCoercion(maybeKey), key = "" + maybeKey), hasValidKey(config2) && (checkKeyStringCoercion(config2.key), key = "" + config2.key), hasValidRef(config2) && (ref = config2.ref, warnIfStringRefCannotBeAutoConverted(config2, self2));
@@ -13050,7 +13050,7 @@ Check the top-level render call using <` + parentName + ">.");
             var typeString;
             type === null ? typeString = "null" : isArray(type) ? typeString = "array" : type !== void 0 && type.$$typeof === REACT_ELEMENT_TYPE ? (typeString = "<" + (getComponentNameFromType(type.type) || "Unknown") + " />", info = " Did you accidentally export a JSX literal instead of a component?") : typeString = typeof type, error("React.jsx: type is invalid -- expected a string (for built-in components) or a class/function (for composite components) but got: %s.%s", typeString, info);
           }
-          var element = jsxDEV85(type, props, key, source, self2);
+          var element = jsxDEV84(type, props, key, source, self2);
           if (element == null)
             return element;
           if (validType) {
@@ -14114,7 +14114,7 @@ var require_react_dom_development = __commonJS({
           argsWithFormat.unshift("Warning: " + format), Function.prototype.apply.call(console[level], console, argsWithFormat);
         }
       }
-      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment34 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
+      var FunctionComponent = 0, ClassComponent = 1, IndeterminateComponent = 2, HostRoot = 3, HostPortal = 4, HostComponent = 5, HostText = 6, Fragment33 = 7, Mode = 8, ContextConsumer = 9, ContextProvider = 10, ForwardRef = 11, Profiler = 12, SuspenseComponent = 13, MemoComponent = 14, SimpleMemoComponent = 15, LazyComponent = 16, IncompleteClassComponent = 17, DehydratedFragment = 18, SuspenseListComponent = 19, ScopeComponent = 21, OffscreenComponent = 22, LegacyHiddenComponent = 23, CacheComponent = 24, TracingMarkerComponent = 25, enableClientRenderFallbackOnTextMismatch = !0, enableNewReconciler = !1, enableLazyContextPropagation = !1, enableLegacyHidden = !1, enableSuspenseAvoidThisFallback = !1, disableCommentsAsDOMContainers = !0, enableCustomElementPropertySupport = !1, warnAboutStringRefs = !1, enableSchedulingProfiler = !0, enableProfilerTimer = !0, enableProfilerCommitHooks = !0, allNativeEvents = /* @__PURE__ */ new Set(), registrationNameDependencies = {}, possibleRegistrationNames = {};
       function registerTwoPhaseEvent(registrationName, dependencies) {
         registerDirectEvent(registrationName, dependencies), registerDirectEvent(registrationName + "Capture", dependencies);
       }
@@ -14885,7 +14885,7 @@ Error generating stack: ` + x6.message + `
             return "DehydratedFragment";
           case ForwardRef:
             return getWrappedName$1(type, type.render, "ForwardRef");
-          case Fragment34:
+          case Fragment33:
             return "Fragment";
           case HostComponent:
             return type;
@@ -20914,7 +20914,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
           }
         }
         function updateFragment2(returnFiber, current2, fragment, lanes, key) {
-          if (current2 === null || current2.tag !== Fragment34) {
+          if (current2 === null || current2.tag !== Fragment33) {
             var created = createFiberFromFragment(fragment, returnFiber.mode, lanes, key);
             return created.return = returnFiber, created;
           } else {
@@ -21141,7 +21141,7 @@ See https://reactjs.org/link/refs-must-have-owner for more information.`);
             if (child.key === key) {
               var elementType = element.type;
               if (elementType === REACT_FRAGMENT_TYPE) {
-                if (child.tag === Fragment34) {
+                if (child.tag === Fragment33) {
                   deleteRemainingChildren(returnFiber, child.sibling);
                   var existing = useFiber(child, element.props.children);
                   return existing.return = returnFiber, existing._debugSource = element._source, existing._debugOwner = element._owner, existing;
@@ -23662,7 +23662,7 @@ Check the render method of \`` + ownerName + "`.");
             var type = workInProgress2.type, _unresolvedProps2 = workInProgress2.pendingProps, _resolvedProps2 = workInProgress2.elementType === type ? _unresolvedProps2 : resolveDefaultProps(type, _unresolvedProps2);
             return updateForwardRef(current2, workInProgress2, type, _resolvedProps2, renderLanes2);
           }
-          case Fragment34:
+          case Fragment33:
             return updateFragment(current2, workInProgress2, renderLanes2);
           case Mode:
             return updateMode(current2, workInProgress2, renderLanes2);
@@ -23813,7 +23813,7 @@ Check the render method of \`` + ownerName + "`.");
           case SimpleMemoComponent:
           case FunctionComponent:
           case ForwardRef:
-          case Fragment34:
+          case Fragment33:
           case Mode:
           case Profiler:
           case ContextConsumer:
@@ -26330,7 +26330,7 @@ Check the render method of \`` + ownerName + "`.");
         return fiber._debugSource = element._source, fiber._debugOwner = element._owner, fiber;
       }
       function createFiberFromFragment(elements, mode, lanes, key) {
-        var fiber = createFiber(Fragment34, elements, key, mode);
+        var fiber = createFiber(Fragment33, elements, key, mode);
         return fiber.lanes = lanes, fiber;
       }
       function createFiberFromProfiler(pendingProps, mode, lanes, key) {
@@ -26965,6 +26965,13 @@ function groq(strings) {
 }
 var init_groq_esm = __esm({
   "node_modules/groq/lib/groq.esm.js"() {
+  }
+});
+
+// app/routes/resource/preview.jsx
+var require_preview = __commonJS({
+  "app/routes/resource/preview.jsx"() {
+    "use strict";
   }
 });
 
@@ -33489,6 +33496,7 @@ var root_exports = {};
 __export(root_exports, {
   CatchBoundary: () => CatchBoundary,
   ErrorBoundary: () => ErrorBoundary,
+  action: () => action,
   default: () => App,
   getAllProductsData: () => getAllProductsData,
   getCart: () => getCart,
@@ -36076,14 +36084,6 @@ function useIsHomePath() {
   var _a2;
   let { pathname } = useLocation(), [root] = useMatches2(), selectedLocale = ((_a2 = root.data) == null ? void 0 : _a2.selectedLocale) ?? DEFAULT_LOCALE;
   return pathname.replace(selectedLocale.pathPrefix, "") === "/";
-}
-function isLocalPath2(url) {
-  try {
-    new URL(url);
-  } catch {
-    return !0;
-  }
-  return !1;
 }
 
 // node_modules/tslib/modules/index.js
@@ -43126,7 +43126,7 @@ function NotFound({ type = "page" }) {
 }
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-DXD6AOKG.css";
+var app_default = "/build/_assets/app-LJJ5OAXJ.css";
 
 // node_modules/tiny-invariant/dist/esm/tiny-invariant.js
 var isProduction = !1, prefix = "Invariant failed";
@@ -44891,42 +44891,45 @@ var import_jsx_dev_runtime38 = __toESM(require_jsx_dev_runtime()), components = 
 var import_react93 = __toESM(require_react());
 
 // app/components/parts/Button.jsx
-var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), Button2 = ({ type, className, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)(
-  "button",
-  {
-    type: type || "submit",
-    className: cx(
-      "bg-white text-black p-2 focus-visible:bg-zinc-300 focus:outline-none hover:bg-zinc-300",
-      className
-    ),
-    children
+var import_jsx_dev_runtime39 = __toESM(require_jsx_dev_runtime()), button = cva("", {
+  variants: {
+    intent: {
+      small: ["p-4"],
+      medium: ["p-2"],
+      large: ["px-4 py-2"]
+    },
+    colour: {
+      light: ["bg-white", "text-black"],
+      dark: ["bg-black", "text-white"]
+    }
   },
-  void 0,
-  !1,
-  {
-    fileName: "app/components/parts/Button.jsx",
-    lineNumber: 5,
-    columnNumber: 5
-  },
-  this
-), Button_default = Button2;
+  defaultVariants: {
+    intent: "medium",
+    colour: "light"
+  }
+}), Button2 = ({ type, intent, colour, className, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime39.jsxDEV)("button", { type: type || "button", className: button({ intent, colour, className }), children }, void 0, !1, {
+  fileName: "app/components/parts/Button.jsx",
+  lineNumber: 23,
+  columnNumber: 5
+}, this);
 
 // app/components/global/GlobalNewsletter.jsx
 var import_jsx_dev_runtime40 = __toESM(require_jsx_dev_runtime()), GlobalNewsletter = () => {
-  let actionData = useActionData2(), state = useTransition().submission ? "submitting" : actionData != null && actionData.subscription ? "success" : actionData != null && actionData.error ? "error" : "idle", inputRef = (0, import_react93.useRef)(null), successRef = (0, import_react93.useRef)(null), mounted = (0, import_react93.useRef)(!1);
+  var _a2;
+  let actionData = useActionData2(), transition = useTransition(), state = (_a2 = actionData == null ? void 0 : actionData.res) != null && _a2.statusText ? "success" : transition.submission ? "submitting" : actionData != null && actionData.subscription ? "success" : actionData != null && actionData.error ? "error" : "idle", inputRef = (0, import_react93.useRef)(null), successRef = (0, import_react93.useRef)(null), mounted = (0, import_react93.useRef)(!1);
   return (0, import_react93.useEffect)(() => {
-    var _a2, _b, _c;
-    state === "error" && ((_a2 = inputRef.current) == null || _a2.focus()), state === "idle" && mounted.current && ((_b = inputRef.current) == null || _b.select()), state === "success" && ((_c = successRef.current) == null || _c.focus()), mounted.current = !0;
+    var _a3, _b, _c;
+    state === "error" && ((_a3 = inputRef.current) == null || _a3.focus()), state === "idle" && mounted.current && ((_b = inputRef.current) == null || _b.select()), state === "success" && ((_c = successRef.current) == null || _c.focus()), mounted.current = !0;
   }, [state]), /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("main", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Form, { replace: !0, method: "post", "aria-hidden": state === "success", children: [
     /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("h2", { className: "mb-[1em]", children: "Sign up to our newsletter" }, void 0, !1, {
       fileName: "app/components/global/GlobalNewsletter.jsx",
-      lineNumber: 39,
+      lineNumber: 41,
       columnNumber: 9
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("fieldset", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("label", { children: "email:" }, void 0, !1, {
         fileName: "app/components/global/GlobalNewsletter.jsx",
-        lineNumber: 41,
+        lineNumber: 43,
         columnNumber: 11
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("div", { children: [
@@ -44939,48 +44942,44 @@ var import_jsx_dev_runtime40 = __toESM(require_jsx_dev_runtime()), GlobalNewslet
             type: "email",
             name: "email",
             placeholder: "",
-            className: "text-white bg-black rounded-none border-b-2 py-2 border-dashed placeholder-white focus:border-solid focus:outline-none"
+            className: "text-white bg-black rounded-none border-b-2 py-2 border-dashed placeholder-white mr-2 focus:border-solid focus:outline-none"
           },
           void 0,
           !1,
           {
             fileName: "app/components/global/GlobalNewsletter.jsx",
-            lineNumber: 43,
+            lineNumber: 45,
             columnNumber: 13
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Button_default, { className: "ml-2", children: state === "submitting" ? "Subscribing..." : "Go on" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(Button2, { type: "submit", intent: "medium", colour: "light", children: [
+          state === "idle" && "Go on",
+          state === "submitting" && "Subscribing...",
+          state === "success" && "Subscribed!",
+          state === "error" && "Error :("
+        ] }, void 0, !0, {
           fileName: "app/components/global/GlobalNewsletter.jsx",
-          lineNumber: 54,
+          lineNumber: 56,
           columnNumber: 13
         }, this)
       ] }, void 0, !0, {
         fileName: "app/components/global/GlobalNewsletter.jsx",
-        lineNumber: 42,
+        lineNumber: 44,
         columnNumber: 11
       }, this)
     ] }, void 0, !0, {
       fileName: "app/components/global/GlobalNewsletter.jsx",
-      lineNumber: 40,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)("p", { id: "error-message", children: state === "error" ? actionData.message : /* @__PURE__ */ (0, import_jsx_dev_runtime40.jsxDEV)(import_jsx_dev_runtime40.Fragment, { children: "\xA0" }, void 0, !1, {
-      fileName: "app/components/global/GlobalNewsletter.jsx",
-      lineNumber: 61,
-      columnNumber: 53
-    }, this) }, void 0, !1, {
-      fileName: "app/components/global/GlobalNewsletter.jsx",
-      lineNumber: 60,
+      lineNumber: 42,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/global/GlobalNewsletter.jsx",
-    lineNumber: 38,
+    lineNumber: 40,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/global/GlobalNewsletter.jsx",
-    lineNumber: 37,
+    lineNumber: 39,
     columnNumber: 5
   }, this);
 }, GlobalNewsletter_default = GlobalNewsletter;
@@ -45070,6 +45069,34 @@ async function loader({ context: context2 }) {
     sanityProjectDetails: context2.sanityProjectDetails
   });
 }
+var badRequest = (data) => json3(data, { status: 400 });
+async function action({ request, context: context2 }) {
+  await new Promise((res) => setTimeout(res, 1e3));
+  let formData = await request.formData(), apiKey = context2.mailerLiteApi, email = formData.get("email"), subscribedAt = new Date().toLocaleString("sv-SE"), subscriber = {
+    email,
+    subscribed_at: subscribedAt
+  };
+  if (!email)
+    return console.log("no email"), badRequest({
+      formError: "Please provide an email."
+    });
+  try {
+    let res = await fetch("https://connect.mailerlite.com/api/subscribers", {
+      method: "post",
+      body: JSON.stringify(subscriber),
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: ` Bearer ${apiKey}`
+      }
+    });
+    return json3({ res });
+  } catch {
+    return badRequest({
+      formError: "Sorry. We could not create an account with this email. User might already exist."
+    });
+  }
+}
 function App() {
   return useAnalytics(!0, {
     label: "United Kingdom (GBP \xA3)",
@@ -45080,28 +45107,28 @@ function App() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(It, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 151,
+        lineNumber: 136,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 152,
+        lineNumber: 137,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 153,
+        lineNumber: 138,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 150,
+      lineNumber: 135,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(GlobalHeader_default, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 156,
+        lineNumber: 141,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
@@ -45110,7 +45137,7 @@ function App() {
           className: "selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24 text-lg",
           children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Outlet, {}, void 0, !1, {
             fileName: "app/root.jsx",
-            lineNumber: 162,
+            lineNumber: 147,
             columnNumber: 11
           }, this)
         },
@@ -45118,34 +45145,34 @@ function App() {
         !1,
         {
           fileName: "app/root.jsx",
-          lineNumber: 157,
+          lineNumber: 142,
           columnNumber: 9
         },
         this
       ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(GlobalFooter_default, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 164,
+        lineNumber: 149,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 165,
+        lineNumber: 150,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 166,
+        lineNumber: 151,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 155,
+      lineNumber: 140,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.jsx",
-    lineNumber: 149,
+    lineNumber: 134,
     columnNumber: 5
   }, this);
 }
@@ -45156,22 +45183,22 @@ function CatchBoundary() {
     /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("title", { children: isNotFound ? "Not found" : "Error" }, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 181,
+        lineNumber: 166,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 182,
+        lineNumber: 167,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 183,
+        lineNumber: 168,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 180,
+      lineNumber: 165,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("body", { children: [
@@ -45181,7 +45208,7 @@ function CatchBoundary() {
           layout: (_b = root == null ? void 0 : root.data) == null ? void 0 : _b.layout,
           children: isNotFound ? /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(NotFound, { type: (_c = caught.data) == null ? void 0 : _c.pageType }, void 0, !1, {
             fileName: "app/root.jsx",
-            lineNumber: 191,
+            lineNumber: 176,
             columnNumber: 13
           }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(
             GenericError,
@@ -45192,7 +45219,7 @@ function CatchBoundary() {
             !1,
             {
               fileName: "app/root.jsx",
-              lineNumber: 193,
+              lineNumber: 178,
               columnNumber: 13
             },
             this
@@ -45202,24 +45229,24 @@ function CatchBoundary() {
         !1,
         {
           fileName: "app/root.jsx",
-          lineNumber: 186,
+          lineNumber: 171,
           columnNumber: 9
         },
         this
       ),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 198,
+        lineNumber: 183,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 185,
+      lineNumber: 170,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.jsx",
-    lineNumber: 179,
+    lineNumber: 164,
     columnNumber: 5
   }, this);
 }
@@ -45230,47 +45257,47 @@ function ErrorBoundary({ error }) {
     /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("title", { children: "Error" }, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 211,
+        lineNumber: 196,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 212,
+        lineNumber: 197,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 213,
+        lineNumber: 198,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 210,
+      lineNumber: 195,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)("body", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Layout, { layout: (_b = root == null ? void 0 : root.data) == null ? void 0 : _b.layout, children: /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(GenericError, { error }, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 217,
+        lineNumber: 202,
         columnNumber: 11
       }, this) }, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 216,
+        lineNumber: 201,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime42.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 219,
+        lineNumber: 204,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 215,
+      lineNumber: 200,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.jsx",
-    lineNumber: 209,
+    lineNumber: 194,
     columnNumber: 5
   }, this);
 }
@@ -47065,6 +47092,9 @@ var PAGE_QUERY = `#graphql
     }
   }
 `;
+
+// server-entry-module:@remix-run/dev/server-build
+var route7 = __toESM(require_preview());
 
 // app/routes/collections/all.tsx
 var all_exports = {};
@@ -50111,7 +50141,8 @@ var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime()), layout2 = cva
         "flex",
         "justify-center",
         "items-center",
-        "h-[calc(100vh-6rem)]"
+        "h-[calc(100vh-6rem)]",
+        "pb-24"
       ]
     }
   },
@@ -50122,7 +50153,7 @@ var import_jsx_dev_runtime53 = __toESM(require_jsx_dev_runtime()), layout2 = cva
   let ElementTag = `${tag || "div"}`;
   return /* @__PURE__ */ (0, import_jsx_dev_runtime53.jsxDEV)(ElementTag, { className: layout2({ intent, className }), children }, void 0, !1, {
     fileName: "app/components/parts/Layout.jsx",
-    lineNumber: 34,
+    lineNumber: 30,
     columnNumber: 5
   }, this);
 };
@@ -51122,7 +51153,7 @@ var import_react130 = __toESM(require_react());
 // app/routes/account/__private/logout.ts
 var logout_exports = {};
 __export(logout_exports, {
-  action: () => action,
+  action: () => action2,
   doLogout: () => doLogout,
   loader: () => loader16
 });
@@ -51137,7 +51168,7 @@ async function doLogout(context2) {
 async function loader16({ context: context2 }) {
   return redirect3(context2.storefront.i18n.pathPrefix);
 }
-var action = async ({ context: context2 }) => doLogout(context2);
+var action2 = async ({ context: context2 }) => doLogout(context2);
 
 // app/routes/account.tsx
 var import_jsx_dev_runtime65 = __toESM(require_jsx_dev_runtime());
@@ -51453,27 +51484,27 @@ async function getCustomer(context2, customerAccessToken) {
 // app/routes/account/__public/activate.$id.$activationToken.tsx
 var activate_id_activationToken_exports = {};
 __export(activate_id_activationToken_exports, {
-  action: () => action2,
+  action: () => action3,
   default: () => Activate,
   handle: () => handle9,
   meta: () => meta4
 });
 var import_react132 = __toESM(require_react());
-var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), badRequest = (data) => json3(data, { status: 400 }), handle9 = {
+var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), badRequest2 = (data) => json3(data, { status: 400 }), handle9 = {
   isPublic: !0
-}, action2 = async ({
+}, action3 = async ({
   request,
   context: context2,
   params: { lang, id, activationToken }
 }) => {
   var _a2, _b;
   if (!id || !activationToken || typeof id != "string" || typeof activationToken != "string")
-    return badRequest({
+    return badRequest2({
       formError: "Wrong token. The link you followed might be wrong."
     });
   let formData = await request.formData(), password = formData.get("password"), passwordConfirm = formData.get("passwordConfirm");
   if (!password || !passwordConfirm || typeof password != "string" || typeof passwordConfirm != "string" || password !== passwordConfirm)
-    return badRequest({
+    return badRequest2({
       formError: "Please provide matching passwords"
     });
   let { session, storefront } = context2;
@@ -51495,9 +51526,9 @@ var import_jsx_dev_runtime66 = __toESM(require_jsx_dev_runtime()), badRequest = 
       }
     });
   } catch (error) {
-    return storefront.isApiError(error) ? badRequest({
+    return storefront.isApiError(error) ? badRequest2({
       formError: "Something went wrong. Please try again later."
-    }) : badRequest({
+    }) : badRequest2({
       formError: "Sorry. We could not activate your account."
     });
   }
@@ -51686,24 +51717,24 @@ var CUSTOMER_ACTIVATE_MUTATION = `#graphql
 // app/routes/account/__public/reset.$id.$resetToken.tsx
 var reset_id_resetToken_exports = {};
 __export(reset_id_resetToken_exports, {
-  action: () => action3,
+  action: () => action4,
   default: () => Reset,
   meta: () => meta5
 });
 var import_react134 = __toESM(require_react());
-var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), badRequest2 = (data) => json3(data, { status: 400 }), action3 = async ({
+var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), action4 = async ({
   request,
   context: context2,
   params: { lang, id, resetToken }
 }) => {
   var _a2, _b;
   if (!id || !resetToken || typeof id != "string" || typeof resetToken != "string")
-    return badRequest2({
+    return badRequest3({
       formError: "Wrong token. Please try to reset your password again."
     });
   let formData = await request.formData(), password = formData.get("password"), passwordConfirm = formData.get("passwordConfirm");
   if (!password || !passwordConfirm || typeof password != "string" || typeof passwordConfirm != "string" || password !== passwordConfirm)
-    return badRequest2({
+    return badRequest3({
       formError: "Please provide matching passwords"
     });
   let { session, storefront } = context2;
@@ -51728,9 +51759,9 @@ var import_jsx_dev_runtime67 = __toESM(require_jsx_dev_runtime()), badRequest2 =
       }
     });
   } catch (error) {
-    return storefront.isApiError(error) ? badRequest2({
+    return storefront.isApiError(error) ? badRequest3({
       formError: "Something went wrong. Please try again later."
-    }) : badRequest2({
+    }) : badRequest3({
       formError: "Sorry. We could not update your password."
     });
   }
@@ -51919,13 +51950,13 @@ var CUSTOMER_RESET_MUTATION = `#graphql
 // app/routes/account/__private/address/$id.tsx
 var id_exports = {};
 __export(id_exports, {
-  action: () => action4,
+  action: () => action5,
   default: () => EditAddress,
   handle: () => handle10
 });
-var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), badRequest3 = (data) => json3(data, { status: 400 }), handle10 = {
+var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), badRequest4 = (data) => json3(data, { status: 400 }), handle10 = {
   renderInModal: !0
-}, action4 = async ({ request, context: context2, params }) => {
+}, action5 = async ({ request, context: context2, params }) => {
   var _a2, _b;
   let { storefront, session } = context2, formData = await request.formData(), customerAccessToken = await session.get("customerAccessToken");
   invariant4(customerAccessToken, "You must be logged in to edit your account.");
@@ -51937,7 +51968,7 @@ var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), badRequest3 =
       });
       return assertApiErrors(data.customerAddressDelete), redirect3(params.lang ? `${params.lang}/account` : "/account");
     } catch (error) {
-      return badRequest3({ formError: error.message });
+      return badRequest4({ formError: error.message });
     }
   let address = {}, keys = [
     "lastName",
@@ -51971,7 +52002,7 @@ var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), badRequest3 =
       }
       return redirect3(params.lang ? `${params.lang}/account` : "/account");
     } catch (error) {
-      return badRequest3({ formError: error.message });
+      return badRequest4({ formError: error.message });
     }
   else
     try {
@@ -51993,7 +52024,7 @@ var import_jsx_dev_runtime68 = __toESM(require_jsx_dev_runtime()), badRequest3 =
       }
       return redirect3(params.lang ? `${params.lang}/account` : "/account");
     } catch (error) {
-      return badRequest3({ formError: error.message });
+      return badRequest4({ formError: error.message });
     }
 };
 function EditAddress() {
@@ -53216,7 +53247,7 @@ var CUSTOMER_ORDER_QUERY = `#graphql
 // app/routes/account/__public/register.tsx
 var register_exports = {};
 __export(register_exports, {
-  action: () => action6,
+  action: () => action7,
   default: () => Register,
   loader: () => loader20,
   meta: () => meta8
@@ -53226,7 +53257,7 @@ var import_react140 = __toESM(require_react());
 // app/routes/account/__public/login.tsx
 var login_exports = {};
 __export(login_exports, {
-  action: () => action5,
+  action: () => action6,
   default: () => Login,
   doLogin: () => doLogin,
   handle: () => handle11,
@@ -53240,10 +53271,10 @@ var import_jsx_dev_runtime70 = __toESM(require_jsx_dev_runtime()), handle11 = {
 async function loader19({ context: context2, params }) {
   return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : json3({ shopName: "Hydrogen" });
 }
-var badRequest4 = (data) => json3(data, { status: 400 }), action5 = async ({ request, context: context2, params }) => {
+var badRequest5 = (data) => json3(data, { status: 400 }), action6 = async ({ request, context: context2, params }) => {
   let formData = await request.formData(), email = formData.get("email"), password = formData.get("password");
   if (!email || !password || typeof email != "string" || typeof password != "string")
-    return badRequest4({
+    return badRequest5({
       formError: "Please provide both an email and a password."
     });
   let { session, storefront } = context2;
@@ -53255,9 +53286,9 @@ var badRequest4 = (data) => json3(data, { status: 400 }), action5 = async ({ req
       }
     });
   } catch (error) {
-    return storefront.isApiError(error) ? badRequest4({
+    return storefront.isApiError(error) ? badRequest5({
       formError: "Something went wrong. Please try again later."
-    }) : badRequest4({
+    }) : badRequest5({
       formError: "Sorry. We did not recognize either your email or password. Please try to sign in again or create a new account."
     });
   }
@@ -53491,11 +53522,11 @@ var import_jsx_dev_runtime71 = __toESM(require_jsx_dev_runtime());
 async function loader20({ context: context2, params }) {
   return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
 }
-var badRequest5 = (data) => json3(data, { status: 400 }), action6 = async ({ request, context: context2, params }) => {
+var badRequest6 = (data) => json3(data, { status: 400 }), action7 = async ({ request, context: context2, params }) => {
   var _a2, _b, _c;
   let { session, storefront } = context2, formData = await request.formData(), email = formData.get("email"), password = formData.get("password");
   if (!email || !password || typeof email != "string" || typeof password != "string")
-    return badRequest5({
+    return badRequest6({
       formError: "Please provide both an email and a password."
     });
   try {
@@ -53513,9 +53544,9 @@ var badRequest5 = (data) => json3(data, { status: 400 }), action6 = async ({ req
       }
     });
   } catch (error) {
-    return storefront.isApiError(error) ? badRequest5({
+    return storefront.isApiError(error) ? badRequest6({
       formError: "Something went wrong. Please try again later."
-    }) : badRequest5({
+    }) : badRequest6({
       formError: "Sorry. We could not create an account with this email. User might already exist, try to login instead."
     });
   }
@@ -53707,7 +53738,7 @@ var CUSTOMER_CREATE_MUTATION = `#graphql
 // app/routes/account/__public/recover.tsx
 var recover_exports = {};
 __export(recover_exports, {
-  action: () => action7,
+  action: () => action8,
   default: () => Recover,
   loader: () => loader21,
   meta: () => meta9
@@ -53717,10 +53748,10 @@ var import_jsx_dev_runtime72 = __toESM(require_jsx_dev_runtime());
 async function loader21({ context: context2, params }) {
   return await context2.session.get("customerAccessToken") ? redirect3(params.lang ? `${params.lang}/account` : "/account") : new Response(null);
 }
-var badRequest6 = (data) => json3(data, { status: 400 }), action7 = async ({ request, context: context2 }) => {
+var badRequest7 = (data) => json3(data, { status: 400 }), action8 = async ({ request, context: context2 }) => {
   let email = (await request.formData()).get("email");
   if (!email || typeof email != "string")
-    return badRequest6({
+    return badRequest7({
       formError: "Please provide an email."
     });
   try {
@@ -53728,7 +53759,7 @@ var badRequest6 = (data) => json3(data, { status: 400 }), action7 = async ({ req
       variables: { email }
     }), json3({ resetRequested: !0 });
   } catch {
-    return badRequest6({
+    return badRequest7({
       formError: "Something went wrong. Please try again later."
     });
   }
@@ -53896,30 +53927,30 @@ var CUSTOMER_RECOVER_MUTATION = `#graphql
 // app/routes/account/__private/edit.tsx
 var edit_exports = {};
 __export(edit_exports, {
-  action: () => action8,
+  action: () => action9,
   default: () => AccountDetailsEdit,
   handle: () => handle12
 });
-var import_jsx_dev_runtime73 = __toESM(require_jsx_dev_runtime()), badRequest7 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
+var import_jsx_dev_runtime73 = __toESM(require_jsx_dev_runtime()), badRequest8 = (data) => json3(data, { status: 400 }), formDataHas = (formData, key) => {
   if (!formData.has(key))
     return !1;
   let value = formData.get(key);
   return typeof value == "string" && value.length > 0;
 }, handle12 = {
   renderInModal: !0
-}, action8 = async ({ request, context: context2, params }) => {
+}, action9 = async ({ request, context: context2, params }) => {
   let formData = await request.formData(), customerAccessToken = await context2.session.get("customerAccessToken");
   if (invariant4(
     customerAccessToken,
     "You must be logged in to update your account details."
   ), await getCustomer(context2, customerAccessToken), formDataHas(formData, "newPassword") && !formDataHas(formData, "currentPassword"))
-    return badRequest7({
+    return badRequest8({
       fieldErrors: {
         currentPassword: "Please enter your current password before entering a new password."
       }
     });
   if (formData.has("newPassword") && formData.get("newPassword") !== formData.get("newPassword2"))
-    return badRequest7({
+    return badRequest8({
       fieldErrors: {
         newPassword2: "New passwords must match."
       }
@@ -53935,7 +53966,7 @@ var import_jsx_dev_runtime73 = __toESM(require_jsx_dev_runtime()), badRequest7 =
     });
     return assertApiErrors(data.customerUpdate), redirect3(params != null && params.lang ? `${params.lang}/account` : "/account");
   } catch (error) {
-    return badRequest7({ formError: error.message });
+    return badRequest8({ formError: error.message });
   }
 };
 function AccountDetailsEdit() {
@@ -54248,334 +54279,6 @@ var CUSTOMER_UPDATE_MUTATION = `#graphql
   }
   `;
 
-// app/routes/cartOld.tsx
-var cartOld_exports = {};
-__export(cartOld_exports, {
-  action: () => action9,
-  cartAdd: () => cartAdd,
-  cartCreate: () => cartCreate,
-  cartDiscountCodesUpdate: () => cartDiscountCodesUpdate,
-  cartRemove: () => cartRemove,
-  cartUpdate: () => cartUpdate,
-  cartUpdateBuyerIdentity: () => cartUpdateBuyerIdentity,
-  default: () => CartRoute
-});
-var import_react145 = __toESM(require_react());
-var import_jsx_dev_runtime74 = __toESM(require_jsx_dev_runtime());
-async function action9({ request, context: context2 }) {
-  let { session, storefront } = context2, headers = new Headers(), [formData, storedCartId, customerAccessToken] = await Promise.all([
-    request.formData(),
-    session.get("cartId"),
-    session.get("customerAccessToken")
-  ]), cartId = storedCartId, cartAction = formData.get("cartAction");
-  invariant4(cartAction, "No cartAction defined");
-  let countryCode = formData.get("countryCode") ? formData.get("countryCode") : null, status = 200, result;
-  switch (cartAction) {
-    case "ADD_TO_CART" /* ADD_TO_CART */:
-      let lines = formData.get("lines") ? JSON.parse(String(formData.get("lines"))) : [];
-      invariant4(lines.length, "No lines to add"), cartId ? result = await cartAdd({
-        cartId,
-        lines,
-        storefront
-      }) : result = await cartCreate({
-        input: countryCode ? { lines, buyerIdentity: { countryCode } } : { lines },
-        storefront
-      }), cartId = result.cart.id;
-      break;
-    case "REMOVE_FROM_CART" /* REMOVE_FROM_CART */:
-      let lineIds = formData.get("linesIds") ? JSON.parse(String(formData.get("linesIds"))) : [];
-      invariant4(lineIds.length, "No lines to remove"), result = await cartRemove({
-        cartId,
-        lineIds,
-        storefront
-      }), cartId = result.cart.id;
-      break;
-    case "UPDATE_CART" /* UPDATE_CART */:
-      let updateLines = formData.get("lines") ? JSON.parse(String(formData.get("lines"))) : [];
-      invariant4(updateLines.length, "No lines to update"), result = await cartUpdate({
-        cartId,
-        lines: updateLines,
-        storefront
-      }), cartId = result.cart.id;
-      break;
-    case "UPDATE_DISCOUNT" /* UPDATE_DISCOUNT */:
-      invariant4(cartId, "Missing cartId");
-      let discountCodes = [formData.get("discountCode")];
-      result = await cartDiscountCodesUpdate({
-        cartId,
-        discountCodes,
-        storefront
-      }), cartId = result.cart.id;
-      break;
-    case "UPDATE_BUYER_IDENTITY" /* UPDATE_BUYER_IDENTITY */:
-      let buyerIdentity = formData.get("buyerIdentity") ? JSON.parse(
-        String(formData.get("buyerIdentity"))
-      ) : {};
-      result = cartId ? await cartUpdateBuyerIdentity({
-        cartId,
-        buyerIdentity: {
-          ...buyerIdentity,
-          customerAccessToken
-        },
-        storefront
-      }) : await cartCreate({
-        input: {
-          buyerIdentity: {
-            ...buyerIdentity,
-            customerAccessToken
-          }
-        },
-        storefront
-      }), cartId = result.cart.id;
-      break;
-    default:
-      invariant4(!1, `${cartAction} cart action is not defined`);
-  }
-  session.set("cartId", cartId), headers.set("Set-Cookie", await session.commit());
-  let redirectTo = formData.get("redirectTo") ?? null;
-  typeof redirectTo == "string" && isLocalPath2(redirectTo) && (status = 303, headers.set("Location", redirectTo));
-  let { cart, errors } = result;
-  return json3(
-    {
-      cart,
-      errors,
-      analytics: {
-        cartId
-      }
-    },
-    { status, headers }
-  );
-}
-function CartRoute() {
-  var _a2;
-  let [root] = useMatches2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("div", { className: "grid w-full gap-8 p-6 py-8 md:p-8 lg:p-12 justify-items-start", children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react145.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(CartLoading, {}, void 0, !1, {
-    fileName: "app/routes/cartOld.tsx",
-    lineNumber: 181,
-    columnNumber: 27
-  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Await2, { resolve: (_a2 = root.data) == null ? void 0 : _a2.cart, children: (cart) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Cart, { layout: "page", cart }, void 0, !1, {
-    fileName: "app/routes/cartOld.tsx",
-    lineNumber: 183,
-    columnNumber: 22
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/cartOld.tsx",
-    lineNumber: 182,
-    columnNumber: 9
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/cartOld.tsx",
-    lineNumber: 181,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/routes/cartOld.tsx",
-    lineNumber: 180,
-    columnNumber: 5
-  }, this);
-}
-var USER_ERROR_FRAGMENT = `#graphql
-  fragment ErrorFragment on CartUserError {
-    message
-    field
-    code
-  }
-`, LINES_CART_FRAGMENT = `#graphql
-  fragment CartLinesFragment on Cart {
-    id
-    totalQuantity
-  }
-`;
-var CREATE_CART_MUTATION = `#graphql
-  mutation ($input: CartInput!, $country: CountryCode = ZZ, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    cartCreate(input: $input) {
-      cart {
-        ...CartLinesFragment
-      }
-      errors: userErrors {
-        ...ErrorFragment
-      }
-    }
-  }
-  ${LINES_CART_FRAGMENT}
-  ${USER_ERROR_FRAGMENT}
-`;
-async function cartCreate({
-  input,
-  storefront
-}) {
-  let { cartCreate: cartCreate3 } = await storefront.mutate(CREATE_CART_MUTATION, {
-    variables: { input }
-  });
-  return invariant4(cartCreate3, "No data returned from cartCreate mutation"), cartCreate3;
-}
-var ADD_LINES_MUTATION = `#graphql
-  mutation ($cartId: ID!, $lines: [CartLineInput!]!, $country: CountryCode = ZZ, $language: LanguageCode)
-  @inContext(country: $country, language: $language) {
-    cartLinesAdd(cartId: $cartId, lines: $lines) {
-      cart {
-        ...CartLinesFragment
-      }
-      errors: userErrors {
-        ...ErrorFragment
-      }
-    }
-  }
-  ${LINES_CART_FRAGMENT}
-  ${USER_ERROR_FRAGMENT}
-`;
-async function cartAdd({
-  cartId,
-  lines,
-  storefront
-}) {
-  let { cartLinesAdd } = await storefront.mutate(ADD_LINES_MUTATION, {
-    variables: { cartId, lines }
-  });
-  return invariant4(cartLinesAdd, "No data returned from cartLinesAdd mutation"), cartLinesAdd;
-}
-var REMOVE_LINE_ITEMS_MUTATION = `#graphql
-  mutation ($cartId: ID!, $lineIds: [ID!]!, $language: LanguageCode, $country: CountryCode)
-  @inContext(country: $country, language: $language) {
-    cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
-      cart {
-        id
-        totalQuantity
-        lines(first: 100) {
-          edges {
-            node {
-              id
-              quantity
-              merchandise {
-                ...on ProductVariant {
-                  id
-                }
-              }
-            }
-          }
-        }
-      }
-      errors: userErrors {
-        message
-        field
-        code
-      }
-    }
-  }
-`;
-async function cartRemove({
-  cartId,
-  lineIds,
-  storefront
-}) {
-  let { cartLinesRemove } = await storefront.mutate(REMOVE_LINE_ITEMS_MUTATION, {
-    variables: {
-      cartId,
-      lineIds
-    }
-  });
-  return invariant4(cartLinesRemove, "No data returned from remove lines mutation"), cartLinesRemove;
-}
-var LINES_UPDATE_MUTATION = `#graphql
-  ${LINES_CART_FRAGMENT}
-  ${USER_ERROR_FRAGMENT}
-  mutation ($cartId: ID!, $lines: [CartLineUpdateInput!]!, $language: LanguageCode, $country: CountryCode)
-  @inContext(country: $country, language: $language) {
-    cartLinesUpdate(cartId: $cartId, lines: $lines) {
-      cart {
-        ...CartLinesFragment
-      }
-      errors: userErrors {
-        ...ErrorFragment
-      }
-    }
-  }
-`;
-async function cartUpdate({
-  cartId,
-  lines,
-  storefront
-}) {
-  let { cartLinesUpdate } = await storefront.mutate(LINES_UPDATE_MUTATION, {
-    variables: { cartId, lines }
-  });
-  return invariant4(
-    cartLinesUpdate,
-    "No data returned from update lines items mutation"
-  ), cartLinesUpdate;
-}
-var UPDATE_CART_BUYER_COUNTRY = `#graphql
- mutation(
-   $cartId: ID!
-   $buyerIdentity: CartBuyerIdentityInput!
-   $country: CountryCode = ZZ
-   $language: LanguageCode
- ) @inContext(country: $country, language: $language) {
-   cartBuyerIdentityUpdate(cartId: $cartId, buyerIdentity: $buyerIdentity) {
-     cart {
-       id
-       buyerIdentity {
-         email
-         phone
-         countryCode
-       }
-     }
-     errors: userErrors {
-       message
-       field
-       code
-     }
-   }
- }
-`;
-async function cartUpdateBuyerIdentity({
-  cartId,
-  buyerIdentity,
-  storefront
-}) {
-  let { cartBuyerIdentityUpdate } = await storefront.mutate(UPDATE_CART_BUYER_COUNTRY, {
-    variables: {
-      cartId,
-      buyerIdentity
-    }
-  });
-  return invariant4(
-    cartBuyerIdentityUpdate,
-    "No data returned from cart buyer identity update mutation"
-  ), cartBuyerIdentityUpdate;
-}
-var DISCOUNT_CODES_UPDATE = `#graphql
-  mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $country: CountryCode = ZZ)
-    @inContext(country: $country) {
-    cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
-      cart {
-        id
-        discountCodes {
-          code
-        }
-      }
-      errors: userErrors {
-        field
-        message
-      }
-    }
-  }
-`;
-async function cartDiscountCodesUpdate({
-  cartId,
-  discountCodes,
-  storefront
-}) {
-  let { cartDiscountCodesUpdate: cartDiscountCodesUpdate3 } = await storefront.mutate(DISCOUNT_CODES_UPDATE, {
-    variables: {
-      cartId,
-      discountCodes
-    }
-  });
-  return invariant4(
-    cartDiscountCodesUpdate3,
-    "No data returned from the cartDiscountCodesUpdate mutation"
-  ), cartDiscountCodesUpdate3;
-}
-
 // app/routes/search.tsx
 var search_exports = {};
 __export(search_exports, {
@@ -54583,20 +54286,20 @@ __export(search_exports, {
   getNoResultRecommendations: () => getNoResultRecommendations,
   loader: () => loader22
 });
-var import_react147 = __toESM(require_react());
-var import_jsx_dev_runtime75 = __toESM(require_jsx_dev_runtime());
+var import_react145 = __toESM(require_react());
+var import_jsx_dev_runtime74 = __toESM(require_jsx_dev_runtime());
 function search_default() {
   var _a2;
   let { searchTerm, products, noResultRecommendations } = useLoaderData2(), noResults = ((_a2 = products == null ? void 0 : products.nodes) == null ? void 0 : _a2.length) === 0;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_jsx_dev_runtime75.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(PageHeader, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_jsx_dev_runtime74.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(PageHeader, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Heading, { as: "h1", size: "copy", children: "Search" }, void 0, !1, {
         fileName: "app/routes/search.tsx",
         lineNumber: 33,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Form, { method: "get", className: "relative flex w-full text-heading", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
           Input,
           {
             defaultValue: searchTerm,
@@ -54614,7 +54317,7 @@ function search_default() {
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)("button", { className: "absolute right-0 py-2", type: "submit", children: "Go" }, void 0, !1, {
           fileName: "app/routes/search.tsx",
           lineNumber: 44,
           columnNumber: 11
@@ -54629,8 +54332,8 @@ function search_default() {
       lineNumber: 32,
       columnNumber: 7
     }, this),
-    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_jsx_dev_runtime75.Fragment, { children: [
-      noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(Text, { className: "opacity-50", children: "No results, try something else." }, void 0, !1, {
+    !searchTerm || noResults ? /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_jsx_dev_runtime74.Fragment, { children: [
+      noResults && /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Section, { padding: "x", children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Text, { className: "opacity-50", children: "No results, try something else." }, void 0, !1, {
         fileName: "app/routes/search.tsx",
         lineNumber: 53,
         columnNumber: 15
@@ -54639,13 +54342,13 @@ function search_default() {
         lineNumber: 52,
         columnNumber: 13
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_react147.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_react145.Suspense, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
         Await2,
         {
           errorElement: "There was a problem loading related products",
           resolve: noResultRecommendations,
-          children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(import_jsx_dev_runtime75.Fragment, { children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
+          children: (data) => /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(import_jsx_dev_runtime74.Fragment, { children: [
+            /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
               FeaturedCollections,
               {
                 title: "Trending Collections",
@@ -54660,7 +54363,7 @@ function search_default() {
               },
               this
             ),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
+            /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
               ProductSwimlane,
               {
                 title: "Trending Products",
@@ -54698,7 +54401,7 @@ function search_default() {
       fileName: "app/routes/search.tsx",
       lineNumber: 50,
       columnNumber: 9
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(Section, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime74.jsxDEV)(
       ProductGrid,
       {
         url: `/search?q=${searchTerm}`,
@@ -54822,9 +54525,9 @@ init_groq_esm();
 init_dist();
 
 // app/components/home/Hero.jsx
-var import_react148 = __toESM(require_react()), import_jsx_dev_runtime76 = __toESM(require_jsx_dev_runtime()), Hero2 = ({ hero }) => {
+var import_react146 = __toESM(require_react()), import_jsx_dev_runtime75 = __toESM(require_jsx_dev_runtime()), Hero2 = ({ hero }) => {
   let { colour } = hero;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime75.jsxDEV)(
     "div",
     {
       className: "w-full aspect-video p-4 flex flex-col justify-between gap-4",
@@ -54842,25 +54545,35 @@ var import_react148 = __toESM(require_react()), import_jsx_dev_runtime76 = __toE
 }, Hero_default = Hero2;
 
 // app/components/article/ArticleBlock.jsx
-var import_react149 = __toESM(require_react());
-var import_jsx_dev_runtime77 = __toESM(require_jsx_dev_runtime()), ArticleBlock = ({ article }) => {
+var import_react147 = __toESM(require_react());
+var import_jsx_dev_runtime76 = __toESM(require_jsx_dev_runtime()), ArticleBlock = ({ article }) => {
   let { headline, colour, author, media, image, topic } = article;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(
     "article",
     {
       className: "group relative w-full aspect-square p-6 flex flex-col justify-between gap-6",
       style: { background: colour || "#e3e8ef" },
       children: [
-        (image == null ? void 0 : image.asset) && /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(
+        (image == null ? void 0 : image.asset) && /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(
           "div",
           {
             className: "absolute w-full h-full inset-0 overflow-hidden hidden group-hover:block group-focus:hidden",
             style: { background: colour || "#dfdfdf" },
-            children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(SanityImage, { value: image.asset, className: "mix-blend-overlay" }, void 0, !1, {
-              fileName: "app/components/article/ArticleBlock.jsx",
-              lineNumber: 21,
-              columnNumber: 11
-            }, this)
+            children: /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(
+              SanityImage,
+              {
+                value: image.asset,
+                className: "mix-blend-overlay rendering-pixelated"
+              },
+              void 0,
+              !1,
+              {
+                fileName: "app/components/article/ArticleBlock.jsx",
+                lineNumber: 21,
+                columnNumber: 11
+              },
+              this
+            )
           },
           void 0,
           !1,
@@ -54871,43 +54584,43 @@ var import_jsx_dev_runtime77 = __toESM(require_jsx_dev_runtime()), ArticleBlock 
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("h2", { className: "text-5xl", children: [
-          topic && /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)(Topic_default, { topic }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("h2", { className: "text-5xl", children: [
+          topic && /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)(Topic_default, { topic }, void 0, !1, {
             fileName: "app/components/article/ArticleBlock.jsx",
-            lineNumber: 26,
+            lineNumber: 29,
             columnNumber: 21
           }, this),
           headline || "Untitled article"
         ] }, void 0, !0, {
           fileName: "app/components/article/ArticleBlock.jsx",
-          lineNumber: 25,
+          lineNumber: 28,
           columnNumber: 9
         }, this) }, void 0, !1, {
           fileName: "app/components/article/ArticleBlock.jsx",
-          lineNumber: 24,
+          lineNumber: 27,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "flex justify-between", children: [
-          author.name && /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("address", { className: "not-italic", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("div", { className: "flex justify-between", children: [
+          author.name && /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("address", { className: "not-italic", children: [
             "By ",
             author.name
           ] }, void 0, !0, {
             fileName: "app/components/article/ArticleBlock.jsx",
-            lineNumber: 32,
+            lineNumber: 35,
             columnNumber: 11
           }, this),
-          media.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("p", { children: [
+          media.length > 0 && /* @__PURE__ */ (0, import_jsx_dev_runtime76.jsxDEV)("p", { children: [
             "(",
             media.join(", "),
             ")"
           ] }, void 0, !0, {
             fileName: "app/components/article/ArticleBlock.jsx",
-            lineNumber: 34,
+            lineNumber: 37,
             columnNumber: 30
           }, this)
         ] }, void 0, !0, {
           fileName: "app/components/article/ArticleBlock.jsx",
-          lineNumber: 30,
+          lineNumber: 33,
           columnNumber: 7
         }, this)
       ]
@@ -54924,14 +54637,14 @@ var import_jsx_dev_runtime77 = __toESM(require_jsx_dev_runtime()), ArticleBlock 
 }, ArticleBlock_default = ArticleBlock;
 
 // app/components/parts/Banner.jsx
-var import_react150 = __toESM(require_react()), import_jsx_dev_runtime78 = __toESM(require_jsx_dev_runtime()), Banner = ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { className: "w-full p-3 bg-white", children }, void 0, !1, {
+var import_react148 = __toESM(require_react()), import_jsx_dev_runtime77 = __toESM(require_jsx_dev_runtime()), Banner = ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime77.jsxDEV)("div", { className: "w-full p-3 bg-white", children }, void 0, !1, {
   fileName: "app/components/parts/Banner.jsx",
   lineNumber: 5,
   columnNumber: 7
 }, this), Banner_default = Banner;
 
 // app/routes/index.jsx
-var import_jsx_dev_runtime79 = __toESM(require_jsx_dev_runtime()), handle13 = {
+var import_jsx_dev_runtime78 = __toESM(require_jsx_dev_runtime()), handle13 = {
   seo: {
     title: "Home"
   }
@@ -54947,25 +54660,25 @@ async function loader23({ context: context2 }) {
 }
 function Index() {
   let { homepage } = useLoaderData();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Banner_default, { children: homepage.heroBanner ? homepage.heroBanner : "Currently\u2026" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("div", { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Banner_default, { children: homepage.heroBanner ? homepage.heroBanner : "Currently\u2026" }, void 0, !1, {
       fileName: "app/routes/index.jsx",
       lineNumber: 35,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Hero_default, { hero: {} }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Hero_default, { hero: {} }, void 0, !1, {
       fileName: "app/routes/index.jsx",
       lineNumber: 38,
       columnNumber: 7
     }, this),
-    homepage.featured ? /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(import_jsx_dev_runtime79.Fragment, { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Banner_default, { children: homepage.featuredBanner ? homepage.featuredBanner : "Featured articles" }, void 0, !1, {
+    homepage.featured ? /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(import_jsx_dev_runtime78.Fragment, { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Banner_default, { children: homepage.featuredBanner ? homepage.featuredBanner : "Featured articles" }, void 0, !1, {
         fileName: "app/routes/index.jsx",
         lineNumber: 41,
         columnNumber: 11
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Layout2, { intent: "grid", tag: "ul", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("li", { className: "col-span-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Link4, { to: homepage.featured[0].slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(ArticleBlockBanner_default, { article: homepage.featured[0] }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Layout2, { intent: "grid", tag: "ul", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("li", { className: "col-span-full w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Link4, { to: homepage.featured[0].slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(ArticleBlockBanner_default, { article: homepage.featured[0] }, void 0, !1, {
           fileName: "app/routes/index.jsx",
           lineNumber: 49,
           columnNumber: 17
@@ -54980,7 +54693,7 @@ function Index() {
         }, this),
         homepage.featured.map((article, index) => {
           if (index !== 0)
-            return /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("li", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Link4, { to: article.slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(ArticleBlock_default, { article }, void 0, !1, {
+            return /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)("li", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Link4, { to: article.slug, children: /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(ArticleBlock_default, { article }, void 0, !1, {
               fileName: "app/routes/index.jsx",
               lineNumber: 59,
               columnNumber: 21
@@ -55003,7 +54716,7 @@ function Index() {
       fileName: "app/routes/index.jsx",
       lineNumber: 40,
       columnNumber: 9
-    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(Banner_default, { children: "No featured articles" }, void 0, !1, {
+    }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime78.jsxDEV)(Banner_default, { children: "No featured articles" }, void 0, !1, {
       fileName: "app/routes/index.jsx",
       lineNumber: 67,
       columnNumber: 9
@@ -55044,25 +54757,25 @@ async function getHomepageData({ sanityClient }) {
 var cart_exports = {};
 __export(cart_exports, {
   action: () => action10,
-  cartAdd: () => cartAdd2,
-  cartCreate: () => cartCreate2,
-  cartDiscountCodesUpdate: () => cartDiscountCodesUpdate2,
-  cartRemove: () => cartRemove2,
-  cartUpdate: () => cartUpdate2,
-  cartUpdateBuyerIdentity: () => cartUpdateBuyerIdentity2,
+  cartAdd: () => cartAdd,
+  cartCreate: () => cartCreate,
+  cartDiscountCodesUpdate: () => cartDiscountCodesUpdate,
+  cartRemove: () => cartRemove,
+  cartUpdate: () => cartUpdate,
+  cartUpdateBuyerIdentity: () => cartUpdateBuyerIdentity,
   default: () => CartPage,
   handle: () => handle14,
   meta: () => meta11
 });
-var import_react154 = __toESM(require_react());
-
-// app/components/loaders/CartLoader.jsx
 var import_react152 = __toESM(require_react());
 
+// app/components/loaders/CartLoader.jsx
+var import_react150 = __toESM(require_react());
+
 // app/components/parts/Spinner.jsx
-var import_react151 = __toESM(require_react()), import_jsx_dev_runtime80 = __toESM(require_jsx_dev_runtime()), points = 5, radius = 10, Spinner = () => /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "relative w-8 h-8 animate-spin", children: Array(points).fill().map((v6, index) => {
+var import_react149 = __toESM(require_react()), import_jsx_dev_runtime79 = __toESM(require_jsx_dev_runtime()), points = 5, radius = 10, Spinner = () => /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)("div", { className: "relative w-8 h-8 animate-spin", children: Array(points).fill().map((v6, index) => {
   let x6 = radius * Math.cos(2 * Math.PI * index / points), y4 = radius * Math.sin(2 * Math.PI * index / points);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime79.jsxDEV)(
     "span",
     {
       className: "absolute w-1 h-1 rounded-full bg-black left-[calc(50%-2px)] top-[calc(50%-2px)]",
@@ -55084,13 +54797,13 @@ var import_react151 = __toESM(require_react()), import_jsx_dev_runtime80 = __toE
 }, this), Spinner_default = Spinner;
 
 // app/components/loaders/CartLoader.jsx
-var import_jsx_dev_runtime81 = __toESM(require_jsx_dev_runtime()), CartLoader = () => /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "w-full h-[calc(100vh-6rem)] flex justify-center items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "flex items-center justify-center gap-1", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("h2", { className: "mb-[1px] text-2xl", children: "Loading Cart" }, void 0, !1, {
+var import_jsx_dev_runtime80 = __toESM(require_jsx_dev_runtime()), CartLoader = () => /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "w-full h-[calc(100vh-6rem)] flex justify-center items-center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("div", { className: "flex items-center justify-center gap-1", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)("h2", { className: "mb-[1px] text-2xl", children: "Loading Cart" }, void 0, !1, {
     fileName: "app/components/loaders/CartLoader.jsx",
     lineNumber: 8,
     columnNumber: 9
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Spinner_default, {}, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime80.jsxDEV)(Spinner_default, {}, void 0, !1, {
     fileName: "app/components/loaders/CartLoader.jsx",
     lineNumber: 9,
     columnNumber: 9
@@ -55106,7 +54819,7 @@ var import_jsx_dev_runtime81 = __toESM(require_jsx_dev_runtime()), CartLoader = 
 }, this), CartLoader_default = CartLoader;
 
 // app/routes/cart.jsx
-var import_jsx_dev_runtime82 = __toESM(require_jsx_dev_runtime()), handle14 = {
+var import_jsx_dev_runtime81 = __toESM(require_jsx_dev_runtime()), handle14 = {
   seo: {
     title: "Cart"
   }
@@ -55125,18 +54838,18 @@ async function action10({ request, context: context2 }) {
   switch (cartAction) {
     case "ADD_TO_CART":
       let lines = formData.get("lines") ? JSON.parse(String(formData.get("lines"))) : [];
-      invariant4(lines.length, "No lines to add"), cartId ? result = await cartAdd2({
+      invariant4(lines.length, "No lines to add"), cartId ? result = await cartAdd({
         cartId,
         lines,
         storefront
-      }) : result = await cartCreate2({
+      }) : result = await cartCreate({
         input: countryCode ? { lines, buyerIdentity: { countryCode } } : { lines },
         storefront
       }), cartId = result.cart.id;
       break;
     case "REMOVE_FROM_CART":
       let lineIds = formData.get("linesIds") ? JSON.parse(String(formData.get("linesIds"))) : [];
-      invariant4(lineIds.length, "No lines to remove"), result = await cartRemove2({
+      invariant4(lineIds.length, "No lines to remove"), result = await cartRemove({
         cartId,
         lineIds,
         storefront
@@ -55144,7 +54857,7 @@ async function action10({ request, context: context2 }) {
       break;
     case "UPDATE_CART":
       let updateLines = formData.get("lines") ? JSON.parse(String(formData.get("lines"))) : [];
-      invariant4(updateLines.length, "No lines to update"), result = await cartUpdate2({
+      invariant4(updateLines.length, "No lines to update"), result = await cartUpdate({
         cartId,
         lines: updateLines,
         storefront
@@ -55153,7 +54866,7 @@ async function action10({ request, context: context2 }) {
     case "UPDATE_DISCOUNT":
       invariant4(cartId, "Missing cartId");
       let discountCodes = [formData.get("discountCode")];
-      result = await cartDiscountCodesUpdate2({
+      result = await cartDiscountCodesUpdate({
         cartId,
         discountCodes,
         storefront
@@ -55161,14 +54874,14 @@ async function action10({ request, context: context2 }) {
       break;
     case "UPDATE_BUYER_IDENTITY":
       let buyerIdentity = formData.get("buyerIdentity") ? JSON.parse(String(formData.get("buyerIdentity"))) : {};
-      result = cartId ? await cartUpdateBuyerIdentity2({
+      result = cartId ? await cartUpdateBuyerIdentity({
         cartId,
         buyerIdentity: {
           ...buyerIdentity,
           customerAccessToken
         },
         storefront
-      }) : await cartCreate2({
+      }) : await cartCreate({
         input: {
           buyerIdentity: {
             ...buyerIdentity,
@@ -55198,179 +54911,182 @@ async function action10({ request, context: context2 }) {
 }
 function CartPage() {
   let { cart } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(import_react154.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(CartLoader_default, {}, void 0, !1, {
-    fileName: "app/routes/cart.jsx",
-    lineNumber: 175,
-    columnNumber: 27
-  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Cart2, { cart: cart2 }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(import_react152.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(CartLoader_default, {}, void 0, !1, {
     fileName: "app/routes/cart.jsx",
     lineNumber: 176,
+    columnNumber: 27
+  }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Cart2, { cart: cart2 }, void 0, !1, {
+    fileName: "app/routes/cart.jsx",
+    lineNumber: 177,
     columnNumber: 42
   }, this) }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 176,
+    lineNumber: 177,
     columnNumber: 9
   }, this) }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 175,
+    lineNumber: 176,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 174,
+    lineNumber: 175,
     columnNumber: 5
   }, this);
 }
 var Cart2 = ({ cart }) => {
   var _a2, _b;
   let cartHasItems = Boolean(((_b = (_a2 = cart == null ? void 0 : cart.lines) == null ? void 0 : _a2.edges) == null ? void 0 : _b.length) || 0);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(import_jsx_dev_runtime82.Fragment, { children: cartHasItems ? /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(CartDetails2, { cart }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(import_jsx_dev_runtime81.Fragment, { children: cartHasItems ? /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(CartDetails2, { cart }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 185,
+    lineNumber: 186,
     columnNumber: 28
-  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(EmptyCart, {}, void 0, !1, {
+  }, this) : /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(EmptyCart, {}, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 185,
+    lineNumber: 186,
     columnNumber: 58
   }, this) }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 185,
+    lineNumber: 186,
     columnNumber: 10
   }, this);
 }, CartDetails2 = ({ cart }) => {
   let { lines, cost, checkoutUrl } = cart;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Layout2, { intent: "page", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Text2, { tag: "h2", children: "Basket contents" }, void 0, !1, {
-      fileName: "app/routes/cart.jsx",
-      lineNumber: 192,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "grid grid-cols-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "col-span-2", children: [
-      lines.edges.map(({ node }) => /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(CartLine, { line: node }, node.id, !1, {
-        fileName: "app/routes/cart.jsx",
-        lineNumber: 196,
-        columnNumber: 13
-      }, this)),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(CartTotal, { cost }, void 0, !1, {
-        fileName: "app/routes/cart.jsx",
-        lineNumber: 198,
-        columnNumber: 11
-      }, this)
-    ] }, void 0, !0, {
-      fileName: "app/routes/cart.jsx",
-      lineNumber: 194,
-      columnNumber: 9
-    }, this) }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Layout2, { intent: "page", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Text2, { tag: "h2", children: "Basket contents" }, void 0, !1, {
       fileName: "app/routes/cart.jsx",
       lineNumber: 193,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("a", { href: checkoutUrl, target: "_self", children: "Checkout" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "grid grid-cols-3", children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "col-span-2", children: [
+      lines.edges.map(({ node }) => /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(CartLine, { line: node }, node.id, !1, {
+        fileName: "app/routes/cart.jsx",
+        lineNumber: 197,
+        columnNumber: 13
+      }, this)),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(CartTotal, { cost }, void 0, !1, {
+        fileName: "app/routes/cart.jsx",
+        lineNumber: 199,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
       fileName: "app/routes/cart.jsx",
-      lineNumber: 201,
+      lineNumber: 195,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/cart.jsx",
+      lineNumber: 194,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("a", { href: checkoutUrl, target: "_self", children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Button2, { tag: "a", link: "href='www.google.com'", intent: "large", colour: "dark", children: "Checkout" }, void 0, !1, {
+      fileName: "app/routes/cart.jsx",
+      lineNumber: 203,
+      columnNumber: 9
+    }, this) }, void 0, !1, {
+      fileName: "app/routes/cart.jsx",
+      lineNumber: 202,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 191,
+    lineNumber: 192,
     columnNumber: 5
   }, this);
-}, EmptyCart = () => /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Layout2, { intent: "centre", children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Text2, { tag: "h2", children: "Basket is empty" }, void 0, !1, {
+}, EmptyCart = () => /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Layout2, { intent: "centre", children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Text2, { tag: "h2", children: "Basket is empty" }, void 0, !1, {
   fileName: "app/routes/cart.jsx",
-  lineNumber: 211,
+  lineNumber: 214,
   columnNumber: 7
 }, this) }, void 0, !1, {
   fileName: "app/routes/cart.jsx",
-  lineNumber: 210,
+  lineNumber: 213,
   columnNumber: 5
 }, this), CartLine = ({ line }) => {
-  console.log(line);
   let { id, merchandise } = line;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "flex w-full", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "grid grid-cols-3 flex-1", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Text2, { tag: "h4", children: merchandise.product.title }, void 0, !1, {
-        fileName: "app/routes/cart.jsx",
-        lineNumber: 222,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Text2, { tag: "h5", children: merchandise.title }, void 0, !1, {
-        fileName: "app/routes/cart.jsx",
-        lineNumber: 223,
-        columnNumber: 9
-      }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Money, { withoutTrailingZeros: !0, data: merchandise.price }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "flex w-full", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "grid grid-cols-3 flex-1", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Text2, { tag: "h4", children: merchandise.product.title }, void 0, !1, {
         fileName: "app/routes/cart.jsx",
         lineNumber: 224,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Text2, { tag: "h5", children: merchandise.title }, void 0, !1, {
+        fileName: "app/routes/cart.jsx",
+        lineNumber: 225,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Money, { withoutTrailingZeros: !0, data: merchandise.price }, void 0, !1, {
+        fileName: "app/routes/cart.jsx",
+        lineNumber: 226,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/routes/cart.jsx",
-      lineNumber: 221,
+      lineNumber: 223,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(CartRemove, { id }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(CartRemove, { id }, void 0, !1, {
       fileName: "app/routes/cart.jsx",
-      lineNumber: 226,
+      lineNumber: 228,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 220,
+    lineNumber: 222,
     columnNumber: 5
   }, this);
 }, CartRemove = ({ id }) => {
   let fetcher = useFetcher2();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(fetcher.Form, { action: "/cart", method: "post", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("input", { type: "hidden", name: "cartAction", value: "REMOVE_FROM_CART" }, void 0, !1, {
-      fileName: "app/routes/cart.jsx",
-      lineNumber: 236,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("input", { type: "hidden", name: "linesIds", value: JSON.stringify(id) }, void 0, !1, {
-      fileName: "app/routes/cart.jsx",
-      lineNumber: 237,
-      columnNumber: 7
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("button", { type: "submit", children: "remove" }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(fetcher.Form, { action: "/cart", method: "post", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("input", { type: "hidden", name: "cartAction", value: "REMOVE_FROM_CART" }, void 0, !1, {
       fileName: "app/routes/cart.jsx",
       lineNumber: 238,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("input", { type: "hidden", name: "linesIds", value: JSON.stringify(id) }, void 0, !1, {
+      fileName: "app/routes/cart.jsx",
+      lineNumber: 239,
+      columnNumber: 7
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("button", { type: "submit", children: "remove" }, void 0, !1, {
+      fileName: "app/routes/cart.jsx",
+      lineNumber: 240,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 235,
+    lineNumber: 237,
     columnNumber: 5
   }, this);
-}, CartTotal = ({ cost }) => /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "flex w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "grid grid-cols-3 flex-1", children: [
-  /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Text2, { tag: "h4", children: "Total" }, void 0, !1, {
+}, CartTotal = ({ cost }) => /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "flex w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)("div", { className: "grid grid-cols-3 flex-1", children: [
+  /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Text2, { tag: "h4", children: "Total" }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 247,
+    lineNumber: 249,
     columnNumber: 9
   }, this),
-  /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)(Money, { withoutTrailingZeros: !0, data: cost.totalAmount }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime81.jsxDEV)(Money, { withoutTrailingZeros: !0, data: cost.totalAmount }, void 0, !1, {
     fileName: "app/routes/cart.jsx",
-    lineNumber: 248,
+    lineNumber: 250,
     columnNumber: 9
   }, this)
 ] }, void 0, !0, {
   fileName: "app/routes/cart.jsx",
-  lineNumber: 246,
+  lineNumber: 248,
   columnNumber: 7
 }, this) }, void 0, !1, {
   fileName: "app/routes/cart.jsx",
-  lineNumber: 245,
+  lineNumber: 247,
   columnNumber: 5
-}, this), USER_ERROR_FRAGMENT2 = `#graphql
+}, this), USER_ERROR_FRAGMENT = `#graphql
   fragment ErrorFragment on CartUserError {
     message
     field
     code
   }
-`, LINES_CART_FRAGMENT2 = `#graphql
+`, LINES_CART_FRAGMENT = `#graphql
   fragment CartLinesFragment on Cart {
     id
     totalQuantity
   }
-`, CREATE_CART_MUTATION2 = `#graphql
+`, CREATE_CART_MUTATION = `#graphql
   mutation ($input: CartInput!, $country: CountryCode = ZZ, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     cartCreate(input: $input) {
@@ -55382,16 +55098,16 @@ var Cart2 = ({ cart }) => {
       }
     }
   }
-  ${LINES_CART_FRAGMENT2}
-  ${USER_ERROR_FRAGMENT2}
+  ${LINES_CART_FRAGMENT}
+  ${USER_ERROR_FRAGMENT}
 `;
-async function cartCreate2({ input, storefront }) {
-  let { cartCreate: cartCreate3 } = await storefront.mutate(CREATE_CART_MUTATION2, {
+async function cartCreate({ input, storefront }) {
+  let { cartCreate: cartCreate2 } = await storefront.mutate(CREATE_CART_MUTATION, {
     variables: { input }
   });
-  return invariant4(cartCreate3, "No data returned from cartCreate mutation"), cartCreate3;
+  return invariant4(cartCreate2, "No data returned from cartCreate mutation"), cartCreate2;
 }
-var ADD_LINES_MUTATION2 = `#graphql
+var ADD_LINES_MUTATION = `#graphql
   mutation ($cartId: ID!, $lines: [CartLineInput!]!, $country: CountryCode = ZZ, $language: LanguageCode)
   @inContext(country: $country, language: $language) {
     cartLinesAdd(cartId: $cartId, lines: $lines) {
@@ -55403,16 +55119,16 @@ var ADD_LINES_MUTATION2 = `#graphql
       }
     }
   }
-  ${LINES_CART_FRAGMENT2}
-  ${USER_ERROR_FRAGMENT2}
+  ${LINES_CART_FRAGMENT}
+  ${USER_ERROR_FRAGMENT}
 `;
-async function cartAdd2({ cartId, lines, storefront }) {
-  let { cartLinesAdd } = await storefront.mutate(ADD_LINES_MUTATION2, {
+async function cartAdd({ cartId, lines, storefront }) {
+  let { cartLinesAdd } = await storefront.mutate(ADD_LINES_MUTATION, {
     variables: { cartId, lines }
   });
   return invariant4(cartLinesAdd, "No data returned from cartLinesAdd mutation"), cartLinesAdd;
 }
-var REMOVE_LINE_ITEMS_MUTATION2 = `#graphql
+var REMOVE_LINE_ITEMS_MUTATION = `#graphql
   mutation ($cartId: ID!, $lineIds: [ID!]!, $language: LanguageCode, $country: CountryCode)
   @inContext(country: $country, language: $language) {
     cartLinesRemove(cartId: $cartId, lineIds: $lineIds) {
@@ -55441,9 +55157,9 @@ var REMOVE_LINE_ITEMS_MUTATION2 = `#graphql
     }
   }
 `;
-async function cartRemove2({ cartId, lineIds, storefront }) {
+async function cartRemove({ cartId, lineIds, storefront }) {
   let { cartLinesRemove } = await storefront.mutate(
-    REMOVE_LINE_ITEMS_MUTATION2,
+    REMOVE_LINE_ITEMS_MUTATION,
     {
       variables: {
         cartId,
@@ -55453,9 +55169,9 @@ async function cartRemove2({ cartId, lineIds, storefront }) {
   );
   return invariant4(cartLinesRemove, "No data returned from remove lines mutation"), cartLinesRemove;
 }
-var LINES_UPDATE_MUTATION2 = `#graphql
-  ${LINES_CART_FRAGMENT2}
-  ${USER_ERROR_FRAGMENT2}
+var LINES_UPDATE_MUTATION = `#graphql
+  ${LINES_CART_FRAGMENT}
+  ${USER_ERROR_FRAGMENT}
   mutation ($cartId: ID!, $lines: [CartLineUpdateInput!]!, $language: LanguageCode, $country: CountryCode)
   @inContext(country: $country, language: $language) {
     cartLinesUpdate(cartId: $cartId, lines: $lines) {
@@ -55468,8 +55184,8 @@ var LINES_UPDATE_MUTATION2 = `#graphql
     }
   }
 `;
-async function cartUpdate2({ cartId, lines, storefront }) {
-  let { cartLinesUpdate } = await storefront.mutate(LINES_UPDATE_MUTATION2, {
+async function cartUpdate({ cartId, lines, storefront }) {
+  let { cartLinesUpdate } = await storefront.mutate(LINES_UPDATE_MUTATION, {
     variables: { cartId, lines }
   });
   return invariant4(
@@ -55477,7 +55193,7 @@ async function cartUpdate2({ cartId, lines, storefront }) {
     "No data returned from update lines items mutation"
   ), cartLinesUpdate;
 }
-var UPDATE_CART_BUYER_COUNTRY2 = `#graphql
+var UPDATE_CART_BUYER_COUNTRY = `#graphql
  mutation(
    $cartId: ID!
    $buyerIdentity: CartBuyerIdentityInput!
@@ -55501,13 +55217,13 @@ var UPDATE_CART_BUYER_COUNTRY2 = `#graphql
    }
  }
 `;
-async function cartUpdateBuyerIdentity2({
+async function cartUpdateBuyerIdentity({
   cartId,
   buyerIdentity,
   storefront
 }) {
   let { cartBuyerIdentityUpdate } = await storefront.mutate(
-    UPDATE_CART_BUYER_COUNTRY2,
+    UPDATE_CART_BUYER_COUNTRY,
     {
       variables: {
         cartId,
@@ -55520,7 +55236,7 @@ async function cartUpdateBuyerIdentity2({
     "No data returned from cart buyer identity update mutation"
   ), cartBuyerIdentityUpdate;
 }
-var DISCOUNT_CODES_UPDATE2 = `#graphql
+var DISCOUNT_CODES_UPDATE = `#graphql
   mutation cartDiscountCodesUpdate($cartId: ID!, $discountCodes: [String!], $country: CountryCode = ZZ)
     @inContext(country: $country) {
     cartDiscountCodesUpdate(cartId: $cartId, discountCodes: $discountCodes) {
@@ -55537,13 +55253,13 @@ var DISCOUNT_CODES_UPDATE2 = `#graphql
     }
   }
 `;
-async function cartDiscountCodesUpdate2({
+async function cartDiscountCodesUpdate({
   cartId,
   discountCodes,
   storefront
 }) {
-  let { cartDiscountCodesUpdate: cartDiscountCodesUpdate3 } = await storefront.mutate(
-    DISCOUNT_CODES_UPDATE2,
+  let { cartDiscountCodesUpdate: cartDiscountCodesUpdate2 } = await storefront.mutate(
+    DISCOUNT_CODES_UPDATE,
     {
       variables: {
         cartId,
@@ -55552,9 +55268,9 @@ async function cartDiscountCodesUpdate2({
     }
   );
   return invariant4(
-    cartDiscountCodesUpdate3,
+    cartDiscountCodesUpdate2,
     "No data returned from the cartDiscountCodesUpdate mutation"
-  ), cartDiscountCodesUpdate3;
+  ), cartDiscountCodesUpdate2;
 }
 
 // app/routes/$.tsx
@@ -55592,9 +55308,9 @@ var styles_default = "/build/_assets/styles-O7MQZLJO.css";
 var favicon_default = "/build/_assets/favicon-5FIZBM2K.svg";
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/Layout.jsx
-var import_jsx_dev_runtime83 = __toESM(require_jsx_dev_runtime(), 1);
+var import_jsx_dev_runtime82 = __toESM(require_jsx_dev_runtime(), 1);
 function Layout3(props) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)("div", { className: "hydrogen-virtual-route", children: props.children }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime82.jsxDEV)("div", { className: "hydrogen-virtual-route", children: props.children }, void 0, !1, {
     fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/components/Layout.jsx",
     lineNumber: 2,
     columnNumber: 10
@@ -55602,7 +55318,7 @@ function Layout3(props) {
 }
 
 // node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx
-var import_jsx_dev_runtime84 = __toESM(require_jsx_dev_runtime(), 1), links3 = () => [
+var import_jsx_dev_runtime83 = __toESM(require_jsx_dev_runtime(), 1), links3 = () => [
   { rel: "stylesheet", href: styles_default },
   { rel: "icon", type: "image/svg+xml", href: favicon_default }
 ], meta12 = () => ({
@@ -55610,14 +55326,14 @@ var import_jsx_dev_runtime84 = __toESM(require_jsx_dev_runtime(), 1), links3 = (
   viewport: "width=device-width,initial-scale=1"
 });
 function App2() {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)("html", { lang: "en", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)("head", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(Meta, {}, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)("html", { lang: "en", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)("head", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 24,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(Links, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 25,
         columnNumber: 7
@@ -55627,8 +55343,8 @@ function App2() {
       lineNumber: 23,
       columnNumber: 5
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(Layout3, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(Outlet, {}, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)("body", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(Layout3, { children: /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(Outlet, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 28,
         columnNumber: 15
@@ -55637,12 +55353,12 @@ function App2() {
         lineNumber: 28,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(ScrollRestoration2, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 29,
         columnNumber: 7
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime84.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime83.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "node_modules/@shopify/cli-hydrogen/dist/virtual-routes/virtual-root.jsx",
         lineNumber: 30,
         columnNumber: 7
@@ -55660,7 +55376,7 @@ function App2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "6cbcf315", entry: { module: "/build/entry.client-DFB7YC4A.js", imports: ["/build/_shared/chunk-OMZJUDSO.js", "/build/_shared/chunk-Y6AO6HV5.js", "/build/_shared/chunk-HAK4ZCPU.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NTIBQCXQ.js", imports: ["/build/_shared/chunk-6HD5NSU6.js", "/build/_shared/chunk-YIEVXXSI.js", "/build/_shared/chunk-YPJCCWME.js", "/build/_shared/chunk-2E5VCZ7B.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-MHPV2XUD.js", imports: ["/build/_shared/chunk-Y3JBBSNI.js", "/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/address/$id": { id: "routes/account/__private/address/$id", parentId: "routes/account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/address/$id-2USAERBB.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/edit": { id: "routes/account/__private/edit", parentId: "routes/account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/edit-OAHYXIIZ.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/logout": { id: "routes/account/__private/logout", parentId: "routes/account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/logout-4Z5SN57J.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/orders.$id": { id: "routes/account/__private/orders.$id", parentId: "routes/account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/orders.$id-5GSBKDXQ.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/activate.$id.$activationToken": { id: "routes/account/__public/activate.$id.$activationToken", parentId: "routes/account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/activate.$id.$activationToken-OZ4DBGLK.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/login": { id: "routes/account/__public/login", parentId: "routes/account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/login-F5P7V2ZW.js", imports: ["/build/_shared/chunk-KXEI5ZID.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/recover": { id: "routes/account/__public/recover", parentId: "routes/account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/recover-OIH6SSE7.js", imports: ["/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/register": { id: "routes/account/__public/register", parentId: "routes/account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/register-2LUZYVHW.js", imports: ["/build/_shared/chunk-KXEI5ZID.js", "/build/_shared/chunk-TZ2YZOM4.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-S5V3YEQA.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/reset.$id.$resetToken": { id: "routes/account/__public/reset.$id.$resetToken", parentId: "routes/account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/reset.$id.$resetToken-ZYVMF3XG.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-CLTXHJMK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/products": { id: "routes/api/products", parentId: "root", path: "api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/api/products-SWJW44FO.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/articles/$slug": { id: "routes/articles/$slug", parentId: "root", path: "articles/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/articles/$slug-XLGYEMFC.js", imports: ["/build/_shared/chunk-G7VMLHWI.js", "/build/_shared/chunk-2VEWQCWW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-WPEFLYTO.js", imports: ["/build/_shared/chunk-2VEWQCWW.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cartOld": { id: "routes/cartOld", parentId: "root", path: "cartOld", index: void 0, caseSensitive: void 0, module: "/build/routes/cartOld-LX2GLINE.js", imports: void 0, hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/$collectionHandle": { id: "routes/collections/$collectionHandle", parentId: "root", path: "collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/$collectionHandle-3PGCQHX3.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/all": { id: "routes/collections/all", parentId: "root", path: "collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/all-REPDOH3U.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/index": { id: "routes/collections/index", parentId: "root", path: "collections", index: !0, caseSensitive: void 0, module: "/build/routes/collections/index-7JWFYATM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/featured-products": { id: "routes/featured-products", parentId: "root", path: "featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/featured-products-WN2C6U27.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-5IYPUFRK.js", imports: ["/build/_shared/chunk-G7VMLHWI.js", "/build/_shared/chunk-2VEWQCWW.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pages/$pageHandle": { id: "routes/pages/$pageHandle", parentId: "root", path: "pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/pages/$pageHandle-SZVDKS6T.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/$policyHandle": { id: "routes/policies/$policyHandle", parentId: "root", path: "policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/policies/$policyHandle-43NQJIYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/index": { id: "routes/policies/index", parentId: "root", path: "policies", index: !0, caseSensitive: void 0, module: "/build/routes/policies/index-A5HVZKYI.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/$productHandle": { id: "routes/products/$productHandle", parentId: "root", path: "products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/products/$productHandle-PV3XRTZA.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/index": { id: "routes/products/index", parentId: "root", path: "products", index: !0, caseSensitive: void 0, module: "/build/routes/products/index-FAAA3GFL.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/search": { id: "routes/search", parentId: "root", path: "search", index: void 0, caseSensitive: void 0, module: "/build/routes/search-4EFEFMVA.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-5TAHGJ6X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-6CBCF315.js" };
+var assets_manifest_default = { version: "1ecd69b8", entry: { module: "/build/entry.client-DFB7YC4A.js", imports: ["/build/_shared/chunk-OMZJUDSO.js", "/build/_shared/chunk-Y6AO6HV5.js", "/build/_shared/chunk-HAK4ZCPU.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-NDGMPUV3.js", imports: ["/build/_shared/chunk-M67IP7CV.js", "/build/_shared/chunk-6HD5NSU6.js", "/build/_shared/chunk-YIEVXXSI.js", "/build/_shared/chunk-YPJCCWME.js", "/build/_shared/chunk-2E5VCZ7B.js", "/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account": { id: "routes/account", parentId: "root", path: "account", index: void 0, caseSensitive: void 0, module: "/build/routes/account-SYLA2WM6.js", imports: ["/build/_shared/chunk-HPYPOBGJ.js", "/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/address/$id": { id: "routes/account/__private/address/$id", parentId: "routes/account", path: "address/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/address/$id-TLSFJLPA.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/edit": { id: "routes/account/__private/edit", parentId: "routes/account", path: "edit", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/edit-LGSVBULA.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/logout": { id: "routes/account/__private/logout", parentId: "routes/account", path: "logout", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/logout-4Z5SN57J.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__private/orders.$id": { id: "routes/account/__private/orders.$id", parentId: "routes/account", path: "orders/:id", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__private/orders.$id-ZJB6VRS5.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/activate.$id.$activationToken": { id: "routes/account/__public/activate.$id.$activationToken", parentId: "routes/account", path: "activate/:id/:activationToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/activate.$id.$activationToken-OZ4DBGLK.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/login": { id: "routes/account/__public/login", parentId: "routes/account", path: "login", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/login-HUHSWOXU.js", imports: ["/build/_shared/chunk-HAMPYQFW.js", "/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/recover": { id: "routes/account/__public/recover", parentId: "routes/account", path: "recover", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/recover-XASFHBP4.js", imports: ["/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/register": { id: "routes/account/__public/register", parentId: "routes/account", path: "register", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/register-47HCUUXB.js", imports: ["/build/_shared/chunk-HAMPYQFW.js", "/build/_shared/chunk-EV5BX2IA.js", "/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-4CDXIIJL.js", "/build/_shared/chunk-PYXJSFWH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-RXS5LVRX.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/account/__public/reset.$id.$resetToken": { id: "routes/account/__public/reset.$id.$resetToken", parentId: "routes/account", path: "reset/:id/:resetToken", index: void 0, caseSensitive: void 0, module: "/build/routes/account/__public/reset.$id.$resetToken-ZYVMF3XG.js", imports: ["/build/_shared/chunk-SO75Y53X.js", "/build/_shared/chunk-S5V3YEQA.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-CLTXHJMK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/products": { id: "routes/api/products", parentId: "root", path: "api/products", index: void 0, caseSensitive: void 0, module: "/build/routes/api/products-SWJW44FO.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/articles/$slug": { id: "routes/articles/$slug", parentId: "root", path: "articles/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/articles/$slug-CXSOBNZF.js", imports: ["/build/_shared/chunk-G7VMLHWI.js", "/build/_shared/chunk-AALEAT5D.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-6LFKO2UT.js", imports: ["/build/_shared/chunk-AALEAT5D.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/$collectionHandle": { id: "routes/collections/$collectionHandle", parentId: "root", path: "collections/:collectionHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/$collectionHandle-V2CLJUHJ.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/all": { id: "routes/collections/all", parentId: "root", path: "collections/all", index: void 0, caseSensitive: void 0, module: "/build/routes/collections/all-REPDOH3U.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/collections/index": { id: "routes/collections/index", parentId: "root", path: "collections", index: !0, caseSensitive: void 0, module: "/build/routes/collections/index-ORBQP3EK.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/featured-products": { id: "routes/featured-products", parentId: "root", path: "featured-products", index: void 0, caseSensitive: void 0, module: "/build/routes/featured-products-WN2C6U27.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-IP4CC2HJ.js", imports: ["/build/_shared/chunk-G7VMLHWI.js", "/build/_shared/chunk-AALEAT5D.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/pages/$pageHandle": { id: "routes/pages/$pageHandle", parentId: "root", path: "pages/:pageHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/pages/$pageHandle-7FNTUQEH.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/$policyHandle": { id: "routes/policies/$policyHandle", parentId: "root", path: "policies/:policyHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/policies/$policyHandle-HCTY7PYC.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/policies/index": { id: "routes/policies/index", parentId: "root", path: "policies", index: !0, caseSensitive: void 0, module: "/build/routes/policies/index-HM66UZIM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/$productHandle": { id: "routes/products/$productHandle", parentId: "root", path: "products/:productHandle", index: void 0, caseSensitive: void 0, module: "/build/routes/products/$productHandle-OHFAKXNV.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/products/index": { id: "routes/products/index", parentId: "root", path: "products", index: !0, caseSensitive: void 0, module: "/build/routes/products/index-HFCFURA2.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resource/preview": { id: "routes/resource/preview", parentId: "root", path: "resource/preview", index: void 0, caseSensitive: void 0, module: "/build/routes/resource/preview-YVVN57HZ.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/search": { id: "routes/search", parentId: "root", path: "search", index: void 0, caseSensitive: void 0, module: "/build/routes/search-XRIXB7GN.js", imports: ["/build/_shared/chunk-7KTYR7BQ.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-5TAHGJ6X.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-1ECD69B8.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {
@@ -55719,6 +55435,14 @@ var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: 
     index: void 0,
     caseSensitive: void 0,
     module: pageHandle_exports
+  },
+  "routes/resource/preview": {
+    id: "routes/resource/preview",
+    parentId: "root",
+    path: "resource/preview",
+    index: void 0,
+    caseSensitive: void 0,
+    module: route7
   },
   "routes/collections/all": {
     id: "routes/collections/all",
@@ -55863,14 +55587,6 @@ var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: 
     index: void 0,
     caseSensitive: void 0,
     module: login_exports
-  },
-  "routes/cartOld": {
-    id: "routes/cartOld",
-    parentId: "root",
-    path: "cartOld",
-    index: void 0,
-    caseSensitive: void 0,
-    module: cartOld_exports
   },
   "routes/search": {
     id: "routes/search",
@@ -57889,7 +57605,7 @@ _httpRequest2 = /* @__PURE__ */ new WeakMap();
 var httpRequest = defineHttpRequest(envMiddleware), requester = httpRequest.defaultRequester, createClient = (config2) => new SanityClient(httpRequest, config2);
 
 // node_modules/@sanity/preview-kit/dist/index.js
-var import_react156 = __toESM(require_react(), 1);
+var import_react154 = __toESM(require_react(), 1);
 
 // node_modules/suspend-react/dist/index.js
 var globalCache = [];
@@ -57954,8 +57670,8 @@ var import_jsx_runtime6 = __toESM(require_jsx_runtime(), 1), _checkAuth = async 
   return EventSourcePolyfill;
 };
 function useParams2(params) {
-  let stringifiedParams = (0, import_react156.useMemo)(() => JSON.stringify(params || {}), [params]);
-  return (0, import_react156.useMemo)(() => JSON.parse(stringifiedParams), [stringifiedParams]);
+  let stringifiedParams = (0, import_react154.useMemo)(() => JSON.stringify(params || {}), [params]);
+  return (0, import_react154.useMemo)(() => JSON.parse(stringifiedParams), [stringifiedParams]);
 }
 var _definePreview = (_ref) => {
   let {
@@ -57981,7 +57697,7 @@ var _definePreview = (_ref) => {
       throw new Error("Calling usePreview outside a browser environment isn't supported. Ensure the component using the hook is only rendering on the client. For example by wrapping it in PreviewSuspense.");
     if (!token && token !== null)
       throw new Error("No `token` given to usePreview hook, if this is intentional then set it to `null`");
-    let [serverSnapshot] = (0, import_react156.useState)(() => _serverSnapshot), params = useParams2(_params);
+    let [serverSnapshot] = (0, import_react154.useState)(() => _serverSnapshot), params = useParams2(_params);
     store || (onPublicAccessOnly && (checkAuth(projectId2, token) || onPublicAccessOnly()), store = importGroqStore()({
       projectId: projectId2,
       dataset: dataset2,
@@ -57993,7 +57709,7 @@ var _definePreview = (_ref) => {
       listen: !0,
       overlayDrafts
     }));
-    let initial = serverSnapshot ?? preload(store, query2, params), syncStore = (0, import_react156.useMemo)(() => {
+    let initial = serverSnapshot ?? preload(store, query2, params), syncStore = (0, import_react154.useMemo)(() => {
       let snapshot = initial;
       return {
         getServerSnapshot: serverSnapshot === void 0 ? void 0 : () => serverSnapshot,
@@ -58008,12 +57724,12 @@ var _definePreview = (_ref) => {
         }
       };
     }, [initial, params, query2, serverSnapshot]);
-    return (0, import_react156.useEffect)(() => {
+    return (0, import_react154.useEffect)(() => {
       let callback = () => {
         store.close();
       };
       return window.addEventListener("beforeunload", callback), () => window.removeEventListener("beforeunload", callback);
-    }, []), (0, import_react156.useSyncExternalStore)(syncStore.subscribe, syncStore.getSnapshot, syncStore.getServerSnapshot);
+    }, []), (0, import_react154.useSyncExternalStore)(syncStore.subscribe, syncStore.getSnapshot, syncStore.getServerSnapshot);
   };
 }, _preloadQuery = (store, query2, params) => store.query(query2, params), definePreview = (config2) => _definePreview({
   ...config2,
@@ -58051,7 +57767,7 @@ var server_dev_default = {
         projectId: env.SANITY_PUBLIC_PROJECT_ID,
         dataset: env.SANITY_PUBLIC_DATASET,
         apiVersion: env.SANITY_PUBLIC_API_VERSION
-      }, response = await H({
+      }, mailerLiteApi = env.MAILERLITE_API_KEY, response = await H({
         build: server_build_exports,
         mode: "development",
         getLoadContext: () => ({
@@ -58062,7 +57778,8 @@ var server_dev_default = {
           env,
           sanityClient,
           usePreview,
-          sanityProjectDetails
+          sanityProjectDetails,
+          mailerLiteApi
         })
       })(request);
       return response.status === 404 ? ot({ request, response, storefront }) : response;

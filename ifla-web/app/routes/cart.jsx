@@ -7,6 +7,7 @@ import invariant from 'tiny-invariant';
 import CartLoader from '../components/loaders/CartLoader';
 import {Layout} from '../components/parts/Layout';
 import {Text} from '../components/parts/Text';
+import {Button} from '~/components/parts/Button';
 
 export const handle = {
   seo: {
@@ -199,7 +200,9 @@ const CartDetails = ({cart}) => {
         </div>
       </div>
       <a href={checkoutUrl} target="_self">
-        Checkout
+        <Button tag={'a'} link={`href='www.google.com'`} intent={'large'} colour={'dark'}>
+          Checkout
+        </Button>
       </a>
     </Layout>
   );
@@ -214,7 +217,6 @@ const EmptyCart = () => {
 };
 
 const CartLine = ({line}) => {
-  console.log(line);
   const {id, merchandise} = line;
   return (
     <div className={'flex w-full'}>

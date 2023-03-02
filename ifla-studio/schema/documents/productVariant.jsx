@@ -2,6 +2,7 @@ import { CopyIcon } from '@sanity/icons'
 import ShopifyDocumentStatus from '../../components/ShopifyDocumentStatus'
 import ShopifyIcon from "../../styles/ShopifyIcon";
 import ProductVariantHiddenInput from '../../components/ProductVariantHiddenInput'
+import { Icons } from '../../styles/SanityIcons';
 
 export default {
   name: 'productVariant',
@@ -62,6 +63,7 @@ export default {
             isDeleted={isDeleted}
             type="productVariant"
             url={previewImageUrl}
+            icon={Icons.variant}
           />
         ),
         subtitle: sku,

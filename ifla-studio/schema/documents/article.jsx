@@ -1,5 +1,6 @@
 import {defineField, defineType} from 'sanity'
 import {SlugInput} from 'sanity-plugin-prefixed-slug'
+import PlaceholderStringInput from '../../components/PlaceholderStringInput'
 import {isSlugUnique} from '../../functions/isSlugUnique'
 import {Icons} from '../../styles/SanityIcons'
 
@@ -8,10 +9,25 @@ export default defineType({
   title: 'Article',
   type: 'document',
   icon: () => Icons.article,
+  groups: [
+    {
+      name: 'info',
+      title: 'Info',
+    },
+    {
+      name: 'content',
+      title: 'Content',
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
+    },
+  ],
   fields: [
     defineField({
       name: 'headline',
       type: 'string',
+      group: 'info',
     }),
     defineField({
       title: 'Publication Date',
@@ -22,6 +38,7 @@ export default defineType({
         calendarTodayLabel: 'Today',
       },
       initialValue: new Date().toLocaleDateString('fr-CA'),
+      group: 'info',
     }),
     defineField({
       name: 'slug',
@@ -36,24 +53,29 @@ export default defineType({
         maxLength: 30,
         storeFullUrl: true,
       },
+      group: 'info',
     }),
     defineField({
       name: 'topic',
       type: 'reference',
       to: [{type: 'topic'}],
+      group: 'info',
     }),
     defineField({
       name: 'author',
       type: 'reference',
       to: [{type: 'author'}],
+      group: 'info',
     }),
     defineField({
       name: 'intro',
       type: 'basicBlock',
+      group: 'content',
     }),
     defineField({
       name: 'image',
       type: 'imageObject',
+      group: 'content',
     }),
     defineField({
       name: 'media',
@@ -69,6 +91,7 @@ export default defineType({
       },
       initialValue: ['Text'],
       hidden: true,
+      group: 'content',
     }),
 
     defineField({
@@ -77,17 +100,20 @@ export default defineType({
       to: [{type: 'colour'}],
       readOnly: true,
       hidden: true,
+      group: 'info',
     }),
 
     defineField({
       name: 'content',
       type: 'contentArray',
+      group: 'content',
     }),
     defineField({
       title: 'Auto Recommend Similar',
       name: 'autoRecommend',
       type: 'boolean',
       initialValue: true,
+      group: 'content',
     }),
     defineField({
       name: 'similarArticles',
@@ -95,6 +121,35 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'article'}], title: 'Reference to Article'}],
       hidden: ({document}) => document?.autoRecommend,
       validation: (Rule) => Rule.error().min(3).max(3),
+      group: 'content',
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO Title',
+      type: 'string',
+      group: 'seo',
+      components: {
+        input: PlaceholderStringInput,
+      },
+      options: {
+        field: 'headline',
+      },
+      validation: (Rule) => Rule.min(0).max(60),
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO Description',
+      type: 'text',
+      rows: 5,
+      group: 'seo',
+      components: {
+        input: PlaceholderStringInput,
+      },
+      options: {
+        field: 'intro',
+        type: 'text',
+      },
+      validation: (Rule) => Rule.min(0).max(160),
     }),
   ],
   orderings: [

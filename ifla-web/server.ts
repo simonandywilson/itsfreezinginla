@@ -26,6 +26,8 @@ export default async function (request: Request): Promise<Response> {
       SANITY_PUBLIC_PROJECT_ID: '',
       SANITY_PUBLIC_DATASET: '',
       SANITY_PUBLIC_API_VERSION: '',
+      SANITY_PUBLIC_API_VERSION: '',
+      MAILERLITE_API_KEY: '',
     };
     env.SESSION_SECRET = process.env.SESSION_SECRET;
     env.PUBLIC_STOREFRONT_API_TOKEN = process.env.PUBLIC_STOREFRONT_API_TOKEN;
@@ -37,6 +39,7 @@ export default async function (request: Request): Promise<Response> {
     env.SANITY_PUBLIC_PROJECT_ID = process.env.SANITY_PUBLIC_PROJECT_ID;
     env.SANITY_PUBLIC_DATASET = process.env.SANITY_PUBLIC_DATASET;
     env.SANITY_PUBLIC_API_VERSION = process.env.SANITY_PUBLIC_API_VERSION;
+    env.MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
     /**
      * Open a cache instance in the worker and a custom session instance.
      */
@@ -65,6 +68,7 @@ export default async function (request: Request): Promise<Response> {
     const projectId = env.SANITY_PUBLIC_PROJECT_ID;
     const dataset = env.SANITY_PUBLIC_DATASET;
     const apiVersion = env.SANITY_PUBLIC_API_VERSION;
+    const mailerLiteApi = env.MAILERLITE_API_KEY;
 
     const sanityClient = createClient({
       projectId,
@@ -89,6 +93,7 @@ export default async function (request: Request): Promise<Response> {
       sanityClient,
       usePreview,
       sanityProjectDetails,
+      mailerLiteApi,
       waitUntil: () => Promise.resolve(),
     });
 

@@ -7,6 +7,9 @@ import {Content} from '../../components/content/Content';
 import {Layout} from '../../components/parts/Layout';
 import {contentFragment} from '../../lib/fragments';
 import swiperStyles from 'swiper/swiper.min.css';
+import {getSession} from '~/sessions';
+import {articleDataQuery} from '../../lib/queries';
+import { ArticlePreview } from '../../components/preview/ArticlePreview';
 
 const seo = ({data}) => ({
   title: 'UPDATE ME',
@@ -21,56 +24,28 @@ export const links = () => {
   return [{rel: 'stylesheet', href: swiperStyles}];
 };
 
-export async function loader({context, params}) {
-  const [article, articleContent] = await Promise.all([
-    getArticleData(context, params),
-    getArticleContentData(context, params),
-  ]);
+export async function loader({context, params, request}) {
+  const {sanityClient, usePreview} = context;
+  const session = await getSession(request.headers.get('Cookie'));
+  const preview = session.get('preview');
+  if (preview) {
+    return {preview: true, articleDataQuery};
+  }
+  const article = await sanityClient.fetch(articleDataQuery, params);
   return json({
     article,
-    articleContent,
+    usePreview
   });
 }
 
 export default function Article() {
-  const {article, articleContent} = useLoaderData();
+  const {preview, article, query, usePreview} = useLoaderData();
 
-  return (
-    <Layout intent={'article'}>
-      <ArticleBlockBanner article={article} />
-      {articleContent.content.map((content) => {
-        return <Content key={content._id || content._key} content={content} />;
-      })}
-    </Layout>
+  return preview ? (
+    <PreviewSuspense fallback="Loading...">
+      <ArticlePreview query={query} usePreview={usePreview} />
+    </PreviewSuspense>
+  ) : (
+    <Article article={article} />
   );
-}
-
-async function getArticleData(context, params) {
-  const {sanityClient} = context;
-  const query = groq`*[_type == "article" && slug.current == $slug][0]{
-        _id,
-  		headline,
-  		"slug": slug.fullUrl,
-  		intro,
-  		"colour":colour->colourLight,
-  		author-> {name},
-  		media[],
-  		image {
-  			alt,
-  			asset->
-  		}
-    }`;
-  const article = await sanityClient.fetch(query, params);
-
-  return article;
-}
-
-async function getArticleContentData(context, params) {
-  const {sanityClient} = context;
-  const query = groq`*[_type == "article" && slug.current == $slug][0]{
-       ${contentFragment}
-    }`;
-  const article = await sanityClient.fetch(query, params);
-
-  return article;
 }

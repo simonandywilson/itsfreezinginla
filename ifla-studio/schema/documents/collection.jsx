@@ -2,32 +2,12 @@ import { defineType, defineField } from "sanity"
 import ShopifyDocumentStatus from '../../components/ShopifyDocumentStatus'
 import ShopifyIcon from "../../styles/ShopifyIcon";
 import CollectionHiddenInput from '../../components/CollectionHiddenInput'
+import { Icons } from "../../styles/SanityIcons";
 
 export default defineType({
   name: 'collection',
   title: 'Collection',
   type: 'document',
-  groups: [
-    {
-      name: 'theme',
-      title: 'Theme',
-    },
-    {
-      default: true,
-      name: 'editorial',
-      title: 'Editorial',
-    },
-    {
-      name: 'shopifySync',
-      title: 'Shopify sync',
-      icon: ShopifyIcon,
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
-    },
-  ],
-  // icon: PackageIcon,
   fields: [
     // Product hidden status
     defineField({
@@ -61,7 +41,6 @@ export default defineType({
       title: 'Shopify',
       type: 'shopifyCollection',
       description: 'Collection data from Shopify (read-only)',
-      group: 'shopifySync',
     }),
   ],
   orderings: [
@@ -94,12 +73,10 @@ export default defineType({
             type="collection"
             url={imageUrl}
             title={title}
+            icon={Icons.collection}
           />
         ),
-        subtitle:
-          ruleCount > 0
-            ? `Automated (${pluralize('rule', ruleCount, true)})`
-            : 'Manual',
+        subtitle: ruleCount > 0 ? `Automated (${pluralize('rule', ruleCount, true)})` : 'Manual',
         title,
       }
     },

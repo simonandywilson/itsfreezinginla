@@ -1,17 +1,27 @@
-import { cx } from 'class-variance-authority';
+import {cva} from 'class-variance-authority';
 
-const Button = ({type, className, children}) => {
+const button = cva('', {
+  variants: {
+    intent: {
+      small: ['p-4'],
+      medium: ['p-2'],
+      large: ['px-4 py-2'],
+    },
+    colour: {
+      light: ['bg-white', 'text-black'],
+      dark: ['bg-black', 'text-white'],
+    },
+  },
+  defaultVariants: {
+    intent: 'medium',
+    colour: 'light',
+  },
+});
+
+export const Button = ({  type, intent, colour, className, children }) => {
   return (
-    <button
-      type={type || 'submit'}
-      className={cx(
-        'bg-white text-black p-2 focus-visible:bg-zinc-300 focus:outline-none hover:bg-zinc-300',
-        className,
-      )}
-    >
+    <button type={type || 'button'} className={button({intent, colour, className})}>
       {children}
     </button>
   );
 };
-
-export default Button;

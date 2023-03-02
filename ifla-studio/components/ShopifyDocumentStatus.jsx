@@ -1,8 +1,8 @@
-import { CloseIcon, ImageIcon, LinkRemovedIcon } from '@sanity/icons'
-import React, { forwardRef, useState } from 'react'
+import {CloseIcon, ImageIcon, LinkRemovedIcon} from '@sanity/icons'
+import React, {forwardRef, useState} from 'react'
 
 const ShopifyDocumentStatus = forwardRef((props, ref) => {
-  const { isActive, isDeleted, type, url } = props
+  const {isActive, isDeleted, type, url, icon} = props
 
   const [imageVisible, setImageVisible] = useState(true)
 
@@ -36,7 +36,7 @@ const ShopifyDocumentStatus = forwardRef((props, ref) => {
           }}
         />
       ) : (
-        <ImageIcon style={{ position: 'absolute' }} />
+        icon || <ImageIcon style={{position: 'absolute'}} />
       )}
 
       {/* Item has been deleted */}
