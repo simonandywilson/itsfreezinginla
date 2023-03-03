@@ -196,20 +196,32 @@ const CartDetails = ({cart}) => {
       <Text tag={'h2'} intent={'ui-2xl'}>
         Basket contents
       </Text>
-      <div className={cx('mt-8 grid grid-cols-3 gap-8', 'md:gap-16')}>
-        <div className={'col-span-2 flex gap-4 flex-col'}>
+      <div
+        className={cx(
+          'mt-8 grid grid-cols-1 gap-8',
+          'md:grid-cols-3 md:gap-16',
+        )}
+      >
+        <div
+          className={cx(
+            'order-last col-span-2 flex gap-8 flex-col',
+            'md:order-first',
+          )}
+        >
           {lines.edges.map(({node}) => (
             <CartLine key={node.id} line={node} />
           ))}
           <CartTotal cost={cost} />
+          <a href={checkoutUrl} target="_self" className={'ml-auto mr-20'}>
+            <Button tag={'div'} intent={'lg'} colour={'dark'}>
+              <Text intent={'button-xl'}>Checkout</Text>
+            </Button>
+          </a>
         </div>
-        <CartPreview />
+        <div className={'max-w-sm mx-auto'}>
+          <CartPreview />
+        </div>
       </div>
-      <a href={checkoutUrl} target="_self">
-        <Button tag={'div'} intent={'large'} colour={'dark'}>
-          Checkout
-        </Button>
-      </a>
     </Layout>
   );
 };
@@ -222,28 +234,38 @@ const EmptyCart = () => {
   );
 };
 
+const CartLineWrapper = ({children}) => {
+  return (
+    <div className={'w-full h-max grid grid-cols-[1fr_64px] gap-2'}>
+      {children}
+    </div>
+  );
+};
+
 const CartLine = ({line}) => {
   const {id, merchandise} = line;
   return (
-    <div className={'w-full h-max grid auto-cols-fr gap-2'}>
-      <div className={'flex-1 flex gap-2 items-baseline justify-self-stretch'}>
-        <Text tag={'h4'} intent={'ui-lg'}>
-          {merchandise.product.title}
-        </Text>
-        <Text tag={'h5'} intent={'ui-lg'} className={'text-center'}>
-          {merchandise.title}
-        </Text>
-        <Dash className={'flex-1'} />
-        <Money
-          withoutTrailingZeros
-          data={merchandise.price}
-          className={'text-right'}
-        />
-      </div>
-      <div className={'justify-self-end'}>
-        <CartRemove id={id} />
-      </div>
-    </div>
+    <CartLineWrapper>
+        <div
+          className={'flex gap-2 items-baseline justify-self-stretch'}
+        >
+          <Text tag={'h4'} intent={'ui-lg'}>
+            {merchandise.product.title}
+          </Text>
+          <Text tag={'h5'} intent={'ui-lg'} className={'text-center'}>
+            {merchandise.title}
+          </Text>
+          <Dash className={'flex-1'} />
+          <Money
+            withoutTrailingZeros
+            data={merchandise.price}
+            className={'text-right'}
+          />
+        </div>
+        <div className={'justify-self-end w-16 text-right'}>
+          <CartRemove id={id} />
+        </div>
+    </CartLineWrapper>
   );
 };
 
@@ -254,7 +276,7 @@ const CartRemove = ({id}) => {
     <fetcher.Form action="/cart" method="post">
       <input type="hidden" name="cartAction" value={'REMOVE_FROM_CART'} />
       <input type="hidden" name="linesIds" value={JSON.stringify(id)} />
-      <Button type={'submit'} colour={'light'} intent={'sm'}>
+      <Button type={'submit'} colour={'light'} intent={'link'}>
         <Text intent={'button-lg'}>remove</Text>
       </Button>
     </fetcher.Form>
@@ -263,17 +285,19 @@ const CartRemove = ({id}) => {
 
 const CartTotal = ({cost}) => {
   return (
-    <div className={'w-full h-max flex gap-2 mt-4'}>
-      <Text tag={'h4'} intent={'text-xl'}>
-        Total
-      </Text>
-      <Dash className={'flex-1'} />
-      <Money
-        withoutTrailingZeros
-        data={cost.totalAmount}
-        className={'text-right'}
-      />
-    </div>
+    <CartLineWrapper>
+      <div className={'flex gap-2 items-baseline justify-self-stretch'}>
+        <Text tag={'h4'} intent={'text-xl'}>
+          Total
+        </Text>
+        <Dash className={'flex-1'} />
+        <Money
+          withoutTrailingZeros
+          data={cost.totalAmount}
+          className={'text-right'}
+        />
+      </div>
+    </CartLineWrapper>
   );
 };
 

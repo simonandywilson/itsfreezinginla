@@ -5,7 +5,9 @@ const link = cva('', {
   variants: {
     intent: {
       link: ['focus-visible:underline focus:border-none focus:outline-none'],
-      button: ['inline-block p-2'],
+      button: [
+        'inline-block p-2 hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
+      ],
     },
     colour: {
       light: ['text-white'],
