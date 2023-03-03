@@ -180,13 +180,6 @@ export function PageHeader({
   const styles = cx(variants[variant], className);
 
   return (
-    <header {...props} className={styles}>
-      {heading && (
-        <Heading as="h1" width="narrow" size="heading" className="inline-block">
-          {heading}
-        </Heading>
-      )}
-      {children}
-    </header>
+    null
   );
 }

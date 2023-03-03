@@ -22,13 +22,12 @@ export default defineField({
       lists: [],
       marks: {
         decorators: [],
-        annotations: [],
+        annotations: [{type: 'internalLinkObject'}, {type: 'externalLinkObject'}],
       },
     },
     {type: 'imageModule'},
     {type: 'carouselModule'},
     {type: 'imageGridModule'},
     {type: 'textColumnsModule'},
-    {type: 'collapsibleModule'},
   ],
 })

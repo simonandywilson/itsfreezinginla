@@ -6,36 +6,17 @@
   html body {
     -webkit-tap-highlight-color: transparent;
     scroll-behavior: smooth;
-  }
-
-  /* @font-face {
-    font-family: 'ABCArizonaFlare';
-    src: url('/fonts/ABCArizonaFlare-Regular-Trial.woff2') format('woff2'),
-      url('/fonts/ABCArizonaFlare-Regular-Trial.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal;
-    font-display: swap;
+    text-rendering: geometricPrecision;
   }
 
   @font-face {
-    font-family: 'ABCArizonaFlare';
-    src: url('/fonts/ABCArizonaFlare-RegularItalic-Trial.woff2') format('woff2'),
-      url('/fonts/ABCArizonaFlare-RegularItalic-Trial.woff') format('woff');
+    font-family: 'Peace';
+    src: url('/Peace-Medium.woff') format('woff');
+    font-style: normal;
     font-weight: 400;
-    font-style: italic;
     font-stretch: normal;
     font-display: swap;
   }
-
-  @font-face {
-    font-family: 'ReviewCondensed';
-    src: url('/fonts/ReviewCondensed-Regular-Trial.otf') format('opentype');
-    font-weight: 400;
-    font-style: normal;
-    font-stretch: normal;
-    font-display: swap;
-  } */
 
   details > summary {
     list-style: none;
@@ -51,5 +32,38 @@
   }
   details[open] summary:after {
     content: ' ▾';
+  }
+}
+
+@layer components {
+  .ui-xs {
+    @apply text-xs;
+  }
+  .ui-sm {
+    @apply text-sm;
+  }
+  .ui-base {
+    @apply text-base;
+  }
+  .ui-lg {
+    @apply text-lg;
+  }
+  .ui-xl {
+    @apply text-xl;
+  }
+  .ui-2xl {
+    @apply text-2xl;
+  }
+  .ui-3xl {
+    @apply text-3xl;
+  }
+  .ui-4xl {
+    @apply text-4xl;
+  }
+  .ui-5xl {
+    @apply text-5xl;
+  }
+  .ui-6xl {
+    @apply text-6xl;
   }
 }

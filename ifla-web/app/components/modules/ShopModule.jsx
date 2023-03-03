@@ -8,50 +8,31 @@ import {Link} from '../parts/Link';
 import {Badge} from '../parts/Badge';
 import {BasketIconThin} from '../icons/Icons';
 import {Await} from '@remix-run/react';
+import { cx } from 'class-variance-authority';
+import { CartPreview } from '../parts/CartPreview';
+
 
 export const ShopModule = () => {
   const {allProducts, cart} = useRouteData(`root`);
   return (
     <Layout intent={'space'}>
-      <div className={'grid grid-cols-3'}>
-        <div className={'col-span-2'}>
-          {allProducts.nodes.map((product) => (
-            <Product key={product.id} product={product} />
-          ))}
-        </div>
-        <div className={'flex items-center flex-col'}>
-          <div className={'relative'}>
-            <BasketIconThin />
-            {/* <div className={'absolute h-full w-full'}>
-              <Suspense fallback={null}>
-                <Await resolve={cart}>
-                  {(cart) =>
-                    cart.lines.edges.map(({node}) => {
-                      const rotation = Math.random() * 20 - 5;
-                      return (
-                        <img
-                          role="presentation"
-                          key={node.id}
-                          src={node.merchandise.image.url}
-							  className={'absolute h-20'}
-							  style={{transform: `rotate(${rotation}deg)`}}
-                        />
-                      );
-                    })
-                  }
-                </Await>
-              </Suspense>
-            </div> */}
+      <div
+        className={cx('grid grid-cols-1 gap-8', 'lg:grid-cols-3', 'md:gap-16')}
+      >
+        <div className={cx('col-span-1', 'sm:col-span-2')}>
+          <div
+            className={cx(
+              'grid grid-cols-1 gap-8',
+              'sm:grid-cols-2',
+              'md:grid-cols-3 md:gap-16',
+            )}
+          >
+            {allProducts.nodes.map((product) => (
+              <Product key={product.id} product={product} />
+            ))}
           </div>
-          <Suspense fallback={<Badge intent={'small'}>0</Badge>}>
-            <Await resolve={cart}>
-              {(cart) => (
-                <Badge intent={'big'}>{cart?.totalQuantity || 0}</Badge>
-              )}
-            </Await>
-          </Suspense>
-          <Link to={'/cart'}>View Basket</Link>
         </div>
+       <CartPreview />
       </div>
     </Layout>
   );
@@ -59,23 +40,21 @@ export const ShopModule = () => {
 
 const Product = ({product}) => {
   return (
-    <div className={'grid grid-cols-3'}>
-      <div className={'h-max'}>
-        <img
-          src={product.featuredImage.url}
-          alt={product.featuredImage.altText}
-          className="w-full h-full object-cover"
-        />
-        <Text tag={'h4'}>{product.title}</Text>
-        <div className={'mt-8 flex flex-col gap-4'}>
-          {product.variants.nodes.map((variant) => (
-            <ProductVariant
-              key={variant.id}
-              variant={variant}
-              product={product}
-            />
-          ))}
-        </div>
+    <div className={'h-max'}>
+      <img
+        src={product.featuredImage.url}
+        alt={product.featuredImage.altText}
+        className="w-full h-full object-cover"
+      />
+      <Text tag={'h4'} intent={"ui-base"} className={"my-8"}>{product.title}</Text>
+      <div className={'flex flex-col gap-4'}>
+        {product.variants.nodes.map((variant) => (
+          <ProductVariant
+            key={variant.id}
+            variant={variant}
+            product={product}
+          />
+        ))}
       </div>
     </div>
   );
@@ -96,9 +75,9 @@ const ProductVariant = ({variant, product}) => {
 
   return (
     <div className={'flex justify-between gap-2'}>
-      <div className={'flex gap-2'}>
-        <Text tag={'p'}>{selectedOptions[0].value}</Text>
-        <Money withoutTrailingZeros data={price} />
+      <div >
+        <Text tag={'p'} intent={"ui-base"}>{selectedOptions[0].value}</Text>
+        <Money withoutTrailingZeros data={price} className={"ui-base"} />
       </div>
       <AddToCart
         lines={[

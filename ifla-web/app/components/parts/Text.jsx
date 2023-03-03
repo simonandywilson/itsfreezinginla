@@ -1,46 +1,37 @@
-import React from 'react';
-
 import {cva} from 'class-variance-authority';
 
-const text = cva('', {
+const text = cva('text', {
   variants: {
-    size: {
-      '9xl': ['text-9xl'],
-      '8xl': ['text-8xl'],
-      '7xl': ['text-7xl'],
-      '6xl': ['text-6xl'],
-      '5xl': ['text-5xl'],
-      '4xl': ['text-4xl'],
-      '3xl': ['text-3xl'],
-      '2xl': ['text-2xl'],
-      xl: ['text-xl'],
-      lg: ['text-lg'],
-      base: ['text-base'],
-      sm: ['text-sm'],
-      xs: ['text-xs'],
-    },
     intent: {
-      body: ['font-serif text-base leading-snug'],
-      blockquote: ['text-6xl'],
+      'ui-xs': ['ui-xs'],
+      'ui-sm': ['ui-sm'],
+      'ui-base': ['ui-base'],
+      'ui-lg': ['ui-lg'],
+      'ui-xl': ['ui-xl'],
+      'ui-2xl': ['ui-2xl'],
+      'ui-3xl': ['ui-3xl'],
+      'ui-4xl': ['ui-4xl'],
+      'ui-5xl': ['ui-5xl'],
+      'ui-6xl': ['ui-6xl'],
+      'button-sm': ['ui-sm'],
+      'button-base': ['ui-base'],
+      'button-lg': ['ui-lg'],
+      'button-xl': ['ui-2xl'],
+      'bl-body': ['font-serif text-base leading-snug'],
+      'bl-quote': ['text-6xl'],
     },
-    leading: {},
-    // size: {
-    //   small: ['text-sm', 'py-1', 'px-2'],
-    //   medium: ['text-base', 'py-2', 'px-4'],
-    // },
   },
-  //   compoundVariants: [{intent: 'primary', size: 'medium', class: 'uppercase'}],
-  // defaultVariants: {
-  //   size: 'base',
-  // },
+  defaultVariants: {
+    intent: 'ui-base',
+  },
 });
 
-export const Text = ({tag, size, intent, className, children, colour}) => {
+export const Text = ({tag, intent, className, children, colour}) => {
   const ElementTag = `${tag || 'p'}`;
   return (
     <ElementTag
-      className={text({size, intent, className})}
-      style={{color: colour || "#000000"}}
+      className={text({intent, className})}
+      style={{color: colour}}
     >
       {children}
     </ElementTag>

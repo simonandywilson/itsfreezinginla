@@ -8,6 +8,9 @@ import CartLoader from '../components/loaders/CartLoader';
 import {Layout} from '../components/parts/Layout';
 import {Text} from '../components/parts/Text';
 import {Button} from '~/components/parts/Button';
+import {CartPreview} from '../components/parts/CartPreview';
+import {cx} from 'class-variance-authority';
+import {Dash} from '../components/parts/Dash';
 
 export const handle = {
   seo: {
@@ -190,17 +193,20 @@ const CartDetails = ({cart}) => {
   const {lines, cost, checkoutUrl} = cart;
   return (
     <Layout intent={'page'}>
-      <Text tag={'h2'}>Basket contents</Text>
-      <div className={'grid grid-cols-3'}>
-        <div className={'col-span-2'}>
+      <Text tag={'h2'} intent={'ui-2xl'}>
+        Basket contents
+      </Text>
+      <div className={cx('mt-8 grid grid-cols-3 gap-8', 'md:gap-16')}>
+        <div className={'col-span-2 flex gap-4 flex-col'}>
           {lines.edges.map(({node}) => (
             <CartLine key={node.id} line={node} />
           ))}
           <CartTotal cost={cost} />
         </div>
+        <CartPreview />
       </div>
       <a href={checkoutUrl} target="_self">
-        <Button tag={'a'} link={`href='www.google.com'`} intent={'large'} colour={'dark'}>
+        <Button tag={'div'} intent={'large'} colour={'dark'}>
           Checkout
         </Button>
       </a>
@@ -219,13 +225,24 @@ const EmptyCart = () => {
 const CartLine = ({line}) => {
   const {id, merchandise} = line;
   return (
-    <div className={'flex w-full'}>
-      <div className={'grid grid-cols-3 flex-1'}>
-        <Text tag={'h4'}>{merchandise.product.title}</Text>
-        <Text tag={'h5'}>{merchandise.title}</Text>
-        <Money withoutTrailingZeros data={merchandise.price} />
+    <div className={'w-full h-max grid auto-cols-fr gap-2'}>
+      <div className={'flex-1 flex gap-2 items-baseline justify-self-stretch'}>
+        <Text tag={'h4'} intent={'ui-lg'}>
+          {merchandise.product.title}
+        </Text>
+        <Text tag={'h5'} intent={'ui-lg'} className={'text-center'}>
+          {merchandise.title}
+        </Text>
+        <Dash className={'flex-1'} />
+        <Money
+          withoutTrailingZeros
+          data={merchandise.price}
+          className={'text-right'}
+        />
       </div>
-      <CartRemove id={id} />
+      <div className={'justify-self-end'}>
+        <CartRemove id={id} />
+      </div>
     </div>
   );
 };
@@ -237,18 +254,25 @@ const CartRemove = ({id}) => {
     <fetcher.Form action="/cart" method="post">
       <input type="hidden" name="cartAction" value={'REMOVE_FROM_CART'} />
       <input type="hidden" name="linesIds" value={JSON.stringify(id)} />
-      <button type="submit">remove</button>
+      <Button type={'submit'} colour={'light'} intent={'sm'}>
+        <Text intent={'button-lg'}>remove</Text>
+      </Button>
     </fetcher.Form>
   );
 };
 
 const CartTotal = ({cost}) => {
   return (
-    <div className={'flex w-full'}>
-      <div className={'grid grid-cols-3 flex-1'}>
-        <Text tag={'h4'}>Total</Text>
-        <Money withoutTrailingZeros data={cost.totalAmount} />
-      </div>
+    <div className={'w-full h-max flex gap-2 mt-4'}>
+      <Text tag={'h4'} intent={'text-xl'}>
+        Total
+      </Text>
+      <Dash className={'flex-1'} />
+      <Money
+        withoutTrailingZeros
+        data={cost.totalAmount}
+        className={'text-right'}
+      />
     </div>
   );
 };

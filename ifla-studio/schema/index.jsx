@@ -23,6 +23,8 @@ import shopifyProductVariant from "./objects/shopifyProductVariant";
 import shopifyProductOption from "./objects/shopifyProductOption";
 import shopifyPlaceholderString from "./objects/shopifyPlaceholderString";
 import shopifyCollectionRule from "./objects/shopifyCollectionRule";
+import externalLinkObject from './objects/externalLinkObject'
+import internalLinkObject from './objects/internalLinkObject'
 
 // Blocks
 import defaultBlock from "./blocks/defaultBlock";
@@ -41,6 +43,7 @@ import shopModule from "./modules/shopModule";
 import imageGridModule from "./modules/imageGridModule";
 import headingModule from "./modules/headingModule";
 import collapsibleModule from './modules/collapsibleModule'
+
 
 const singletons = new Set([settings]);
 const documents = new Set([
@@ -66,6 +69,8 @@ const objects = new Set([
 	shopifyProductOption,
 	shopifyPlaceholderString,
 	shopifyCollectionRule,
+	externalLinkObject,
+	internalLinkObject
 ]);
 
 const arrays = new Set([contentArray]);

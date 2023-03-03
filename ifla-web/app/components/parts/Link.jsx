@@ -1,15 +1,33 @@
 import {Link as RemixLink} from '@remix-run/react';
-import {cx} from 'class-variance-authority';
+import {cva} from 'class-variance-authority';
 
-export const Link = ({children, to, className}) => {
+const link = cva('', {
+  variants: {
+    intent: {
+      link: ['focus-visible:underline focus:border-none focus:outline-none'],
+      button: ['inline-block p-2'],
+    },
+    colour: {
+      light: ['text-white'],
+      dark: ['text-black'],
+    },
+  },
+  compoundVariants: [
+    {
+      intent: 'button',
+      colour: 'dark',
+      className: 'text-white bg-black',
+    },
+  ],
+  defaultVariants: {
+    intent: 'link',
+    colour: 'dark',
+  },
+});
+
+export const Link = ({children, to, intent, colour, className}) => {
   return (
-    <RemixLink
-      to={to}
-      className={cx(
-        'focus-visible:underline focus:border-none focus:outline-none',
-        className,
-      )}
-    >
+    <RemixLink to={to} className={link({intent, colour, className})}>
       {children}
     </RemixLink>
   );

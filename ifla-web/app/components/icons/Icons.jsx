@@ -153,7 +153,7 @@ export const BasketIconThin = () => {
        width="219.09"
        height="162.65"
        viewBox="0 0 219.09 162.65"
-       className={'w-full'}
+       className={'relative w-full h-auto'}
      >
        <line
          x1="109.78"

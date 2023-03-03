@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {},
     fontFamily: {
-      sans: ['ReviewCondensed', ...fontFamily.sans],
+      sans: ['Peace', ...fontFamily.sans],
       serif: ['Times New Roman', ...fontFamily.serif],
     },
   },
