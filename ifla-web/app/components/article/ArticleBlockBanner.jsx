@@ -1,10 +1,10 @@
 import React from 'react';
-import Topic from '../parts/Topic';
+import {Topic} from '../parts/Topic';
 import {cx} from 'class-variance-authority';
 import {PortableTextPlain} from '../parts/PortableTextPlain';
 
-const ArticleBlockBanner = ({article}) => {
-  const { headline, intro, colour, author, media , topic} = article;
+export const ArticleBlockBanner = ({article}) => {
+  const {headline, intro, colour, author, media, topic} = article;
   return (
     <article
       className={'w-full aspect-video p-6 flex flex-col justify-between gap-4'}
@@ -37,5 +37,3 @@ const ArticleBlockBanner = ({article}) => {
     </article>
   );
 };
-
-export default ArticleBlockBanner;

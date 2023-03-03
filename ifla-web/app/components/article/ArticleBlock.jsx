@@ -1,8 +1,8 @@
 import React from 'react';
 import SanityImage from '../parts/SanityImage';
-import Topic from '../parts/Topic';
+import {Topic} from '../parts/Topic';
 
-const ArticleBlock = ({article}) => {
+export const ArticleBlock = ({article}) => {
   const {headline, colour, author, media, image, topic} = article;
   return (
     <article
@@ -38,6 +38,4 @@ const ArticleBlock = ({article}) => {
       </div>
     </article>
   );
-};
-
-export default ArticleBlock;
+}

@@ -235,18 +235,26 @@ export const defaultDocumentNode = (S, {schemaType, getClient}) => {
   const {apiVersion} = projectDetails
   const client = getClient({apiVersion})
 
-  return S.document().views([S.view.form()])
-
   switch (schemaType) {
-    case `record`:
+    case `article`:
       return S.document().views([
         S.view.form(),
         S.view
           .component(Iframe)
           .options({
             url: (doc) => resolvePreviewUrl(doc, client),
-            reload: {button: true},
+            // url: "http://localhost:3000/resource/preview?fullSlug=%2Farticles%2Fa-greener-future-for-council-housing-interview-with-john-boughton&secret=knml72jgxj",
+            reload: {
+              button: true, // default `undefined`
+              revision: true, // boolean | number. default `undefined`. If a number is provided, add a delay (in ms) before the automatic reload on document revision
+            },
           })
+          // .options({
+          //   url: `http://localhost:3000/resource/preview/articles/a-greener-future-for-council-housing-interview-with-john-boughton`,
+          //   reload: {
+          //     button: true,
+          //   },
+          // })
           .title('Preview'),
       ])
 

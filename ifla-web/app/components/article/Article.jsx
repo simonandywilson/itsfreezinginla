@@ -1,6 +1,10 @@
-import React from 'react'
+import React from 'react';
+import {Layout} from '../parts/Layout';
+import {ArticleBlockBanner} from '../article/ArticleBlockBanner';
 
-export const Article = ({ article }) => {
+import {Content} from '../content/Content';
+
+export const Article = ({article}) => {
   return (
     <Layout intent={'article'}>
       <ArticleBlockBanner article={article} />
@@ -9,4 +13,4 @@ export const Article = ({ article }) => {
       })}
     </Layout>
   );
-}
+};

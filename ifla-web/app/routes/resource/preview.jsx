@@ -1,5 +1,5 @@
-import {json, redirect} from '@remix-run/node';
-import {getSession, commitSession, destroySession} from '~/sessions';
+import { json, redirect } from '@shopify/remix-oxygen';
+import { getSession, commitSession, destroySession } from '~/sessions';
 
 // A `POST` request to this route will exit preview mode
 export const action = async ({request}) => {

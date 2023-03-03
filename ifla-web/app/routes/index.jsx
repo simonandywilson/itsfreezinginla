@@ -4,9 +4,9 @@ import {useLoaderData} from 'react-router';
 
 import Hero from '../components/home/Hero';
 import {Link} from '../components/parts/Link';
-import ArticleBlockBanner from '../components/article/ArticleBlockBanner';
-import ArticleBlock from '../components/article/ArticleBlock';
-import Banner from '../components/parts/Banner';
+import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
+import {ArticleBlock} from '../components/article/ArticleBlock';
+import {Banner} from '../components/parts/Banner';
 import { Layout } from '../components/parts/Layout';
 
 export const handle = {

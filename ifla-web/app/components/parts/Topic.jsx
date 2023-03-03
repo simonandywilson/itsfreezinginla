@@ -1,7 +1,7 @@
 import React from 'react';
 import SanityImage from './SanityImage';
 
-const Topic = ({topic}) => {
+export const Topic = ({topic}) => {
   return (
     <span className={'float inline-block h-[1em] mr-4'}>
       <SanityImage
@@ -11,6 +11,4 @@ const Topic = ({topic}) => {
       />
     </span>
   );
-};
-
-export default Topic;
+}
