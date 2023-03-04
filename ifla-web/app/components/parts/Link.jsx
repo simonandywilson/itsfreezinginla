@@ -5,8 +5,20 @@ const link = cva('', {
   variants: {
     intent: {
       link: ['focus-visible:underline focus:border-none focus:outline-none'],
-      button: [
-        'inline-block p-2 hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
+      'button-sm': [
+        'p-1 inline-block hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
+      ],
+      'button-base': [
+        'p-2 inline-block  hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
+      ],
+      'button-lg': [
+        'p-3 inline-block  hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
+      ],
+      'button-xl': [
+        'px-4 py-2 inline-block hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
+      ],
+      'button-2xl': [
+        'px-4 py-2 inline-block hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
       ],
     },
     colour: {
@@ -16,7 +28,7 @@ const link = cva('', {
   },
   compoundVariants: [
     {
-      intent: 'button',
+      intent: ['button-sm', 'button-base', 'button-lg', 'button-xl', 'button-2xl'],
       colour: 'dark',
       className: 'text-white bg-black',
     },

@@ -1,15 +1,16 @@
 import React from 'react';
 import SanityImage from '../parts/SanityImage';
 import {Topic} from '../parts/Topic';
+import {Text} from '../parts/Text';
 
 export const ArticleBlock = ({article}) => {
   const {headline, colour, author, media, image, topic} = article;
   return (
     <article
       className={
-        'group relative w-full aspect-square p-6 flex flex-col justify-between gap-6'
+        'group relative w-full h-full aspect-square p-6 flex flex-col justify-between gap-6'
       }
-      style={{background: colour ? colour : '#e3e8ef'}}
+      style={{background: colour ? colour : 'var(--accent-colour)'}}
     >
       {image?.asset && (
         <div
@@ -20,21 +21,33 @@ export const ArticleBlock = ({article}) => {
         >
           <SanityImage
             value={image.asset}
-            className={'mix-blend-overlay rendering-pixelated'}
+            className={
+              'h-full mix-blend-overlay rendering-pixelated object-cover'
+            }
           />
         </div>
       )}
       <div>
-        <h2 className={'text-5xl'}>
+        <Text tag={'h2'} intent={'bl-heading-2xl'}>
           {topic && <Topic topic={topic} />}
           {headline ? headline : 'Untitled article'}
-        </h2>
+        </Text>
       </div>
       <div className={'flex justify-between'}>
         {author.name && (
-          <address className={'not-italic'}>By {author.name}</address>
+          <Text
+            tag={'address'}
+            intent={'bl-heading-base'}
+            className={'not-italic'}
+          >
+            By {author.name}
+          </Text>
         )}
-        {media.length > 0 && <p>({media.join(', ')})</p>}
+        {media && media.length > 0 && (
+          <Text tag={'p'} intent={'bl-heading-base'}>
+            ({media.join(', ')})
+          </Text>
+        )}{' '}
       </div>
     </article>
   );

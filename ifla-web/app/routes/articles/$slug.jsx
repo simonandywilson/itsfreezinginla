@@ -9,8 +9,11 @@ import {ArticlePreview} from '../../components/preview/ArticlePreview';
 import {PreviewSuspense} from '@sanity/preview-kit';
 
 const seo = ({data}) => ({
-  title: 'UPDATE ME',
-  description: 'article description',
+  title: data.article.seoTitle,
+  description:
+    data.article.seoDescription.length > 155
+      ? data.article.seoDescription.substring(0, 154) + '…'
+      : data.article.seoDescription,
 });
 
 export const handle = {
@@ -37,11 +40,11 @@ export async function loader({context, params, request}) {
 }
 
 export default function ArticleRoute() {
-  const {preview, article, query, params, usePreview} = useLoaderData();
+  const { preview, article, query, params, usePreview } = useLoaderData();
 
   return preview ? (
     <PreviewSuspense fallback="Loading...">
-      <ArticlePreview query={query} params={params } usePreview={usePreview} />
+      <ArticlePreview query={query} params={params} usePreview={usePreview} />
     </PreviewSuspense>
   ) : (
     <Article article={article} />

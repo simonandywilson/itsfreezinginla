@@ -1,7 +1,7 @@
 import {cva} from 'class-variance-authority';
 
 const layout = cva(
-  'absolute aspect-square bg-black text-white rounded-full flex justify-center items-center select-none z-50',
+  'absolute aspect-square bg-black text-white rounded-full flex justify-center items-center select-none z-10',
   {
     variants: {
       intent: {

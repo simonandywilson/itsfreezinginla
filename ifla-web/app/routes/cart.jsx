@@ -173,26 +173,29 @@ export async function action({request, context}) {
 }
 
 export default function CartPage() {
-  const {cart} = useRouteData(`root`);
+  const { cart, shop } = useRouteData(`root`);
   return (
     <div>
       <Suspense fallback={<CartLoader />}>
-        <Await resolve={cart}>{(cart) => <Cart cart={cart} />}</Await>
+        <Await resolve={cart}>{(cart) => <Cart cart={cart} shop={shop} />}</Await>
       </Suspense>
     </div>
   );
 }
 
-const Cart = ({cart}) => {
+const Cart = ({cart, shop}) => {
   const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
-
-  return <>{cartHasItems ? <CartDetails cart={cart} /> : <EmptyCart />}</>;
+  return (
+    <>
+      {cartHasItems ? <CartDetails cart={cart} shop={shop} /> : <EmptyCart />}
+    </>
+  );
 };
 
-const CartDetails = ({cart}) => {
+const CartDetails = ({ cart, shop }) => {
   const {lines, cost, checkoutUrl} = cart;
   return (
-    <Layout intent={'page'}>
+    <Layout intent={'cart'}>
       <Text tag={'h2'} intent={'ui-2xl'}>
         Basket contents
       </Text>
@@ -213,14 +216,12 @@ const CartDetails = ({cart}) => {
           ))}
           <CartTotal cost={cost} />
           <a href={checkoutUrl} target="_self" className={'ml-auto mr-20'}>
-            <Button tag={'div'} intent={'lg'} colour={'dark'}>
-              <Text intent={'button-xl'}>Checkout</Text>
+            <Button tag={'div'} intent={'xl'} colour={'dark'}>
+              <Text intent={'button-2xl'}>Checkout</Text>
             </Button>
           </a>
         </div>
-        <div className={'max-w-sm mx-auto'}>
-          <CartPreview />
-        </div>
+        <CartPreview text={'Back to shop'} link={shop.shop.slug.fullUrl} />
       </div>
     </Layout>
   );
@@ -229,7 +230,9 @@ const CartDetails = ({cart}) => {
 const EmptyCart = () => {
   return (
     <Layout intent={'centre'}>
-      <Text tag={'h2'}>Basket is empty</Text>
+      <Text tag={'h2'} intent={'ui-2xl'}>
+        Basket is empty
+      </Text>
     </Layout>
   );
 };
@@ -249,17 +252,17 @@ const CartLine = ({line}) => {
         <div
           className={'flex gap-2 items-baseline justify-self-stretch'}
         >
-          <Text tag={'h4'} intent={'ui-lg'}>
+          <Text tag={'h4'} intent={'ui-xl'}>
             {merchandise.product.title}
           </Text>
-          <Text tag={'h5'} intent={'ui-lg'} className={'text-center'}>
+          <Text tag={'h5'} intent={'ui-xl'} className={'text-center'}>
             {merchandise.title}
           </Text>
           <Dash className={'flex-1'} />
           <Money
             withoutTrailingZeros
             data={merchandise.price}
-            className={'text-right'}
+            className={'text-right ui-xl'}
           />
         </div>
         <div className={'justify-self-end w-16 text-right'}>
@@ -277,7 +280,7 @@ const CartRemove = ({id}) => {
       <input type="hidden" name="cartAction" value={'REMOVE_FROM_CART'} />
       <input type="hidden" name="linesIds" value={JSON.stringify(id)} />
       <Button type={'submit'} colour={'light'} intent={'link'}>
-        <Text intent={'button-lg'}>remove</Text>
+        <Text intent={'button-xl'}>remove</Text>
       </Button>
     </fetcher.Form>
   );
@@ -287,14 +290,14 @@ const CartTotal = ({cost}) => {
   return (
     <CartLineWrapper>
       <div className={'flex gap-2 items-baseline justify-self-stretch'}>
-        <Text tag={'h4'} intent={'text-xl'}>
+        <Text tag={'h4'} intent={'ui-xl'}>
           Total
         </Text>
         <Dash className={'flex-1'} />
         <Money
           withoutTrailingZeros
           data={cost.totalAmount}
-          className={'text-right'}
+          className={'text-right ui-xl'}
         />
       </div>
     </CartLineWrapper>

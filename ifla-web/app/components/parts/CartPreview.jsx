@@ -6,10 +6,10 @@ import {Badge} from './Badge';
 import {Link} from './Link';
 import {Text} from './Text';
 
-export const CartPreview = () => {
+export const CartPreview = ({text, link}) => {
   const {cart} = useRouteData(`root`);
   return (
-    <div className={'w-full h-max'}>
+    <div className={'w-full h-max max-w-sm mx-auto'}>
       <div className={'w-full relative'}>
         <Suspense
           fallback={
@@ -49,8 +49,8 @@ export const CartPreview = () => {
             </div> */}
       </div>
       <div className={'flex justify-center mt-8'}>
-        <Link to={'/cart'} intent={'button'} colour={'dark'}>
-          <Text intent={'button-xl'}>View Basket</Text>
+        <Link to={link || '/cart'} intent={'button-2xl'} colour={'dark'}>
+          <Text intent={'button-2xl'}>{text || "View Basket"}</Text>
         </Link>
       </div>
     </div>

@@ -1,10 +1,28 @@
 import groq from 'groq';
-
 const blockFragment = groq`_type == 'block' => {..., "colour": coalesce(*[_id == ^.^.^._id][0].colour->colourDark, "#000000")}`;
 const headingModuleFragment = groq`_type == 'headingModule' => @`;
 const collapsibleModuleFragment = groq`_type == 'collapsibleModule' => @`;
-const articlesModuleFragment = groq`_type == 'articlesModule' => @`;
 const shopModuleFragment = groq`_type == 'shopModule' => @`;
+const articlePreviewFragment = groq`{
+    _id,
+    headline,
+    "slug": slug.fullUrl,
+    "colour":colour->colourLight,
+    author-> {name},
+    media,
+    image {
+      alt,
+      asset->{_id}
+    },
+    topic -> {
+        topic,
+        image {
+          asset-> {_id}
+        }
+    },
+}`;
+
+const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"] [0..100]|order(date desc)${articlePreviewFragment}}`;
 
 const carouselModuleFragment = groq`
     _type == 'carouselModule' => {
@@ -29,7 +47,8 @@ const imageModuleFragment = groq`
         image {
             ...,
             asset -> {_id}
-        }
+        },
+        "colour": coalesce(*[_id == ^.^._id][0].colour->colourDark, *[_id == ^.^.^.^._id][0].colour->colourDark, "#000000")
     }`;
 
 const imageGridModuleFragment = groq`

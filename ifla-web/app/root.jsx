@@ -23,6 +23,8 @@ import {useAnalytics} from './hooks/useAnalytics';
 import GlobalHeader from './components/global/GlobalHeader';
 import GlobalFooter from './components/global/GlobalFooter';
 
+import {shopLinkQuery} from "./lib/queries"
+
 const seo = ({data: {settings}, pathname}) => ({
   title: settings.seoTitle,
   titleTemplate: `%s | ${settings.shortTitle}`,
@@ -50,7 +52,7 @@ export const meta = () => ({
 });
 
 export async function loader({context}) {
-  const [cartId, shop, allProducts, settings, menu, footer] = await Promise.all(
+  const [cartId, shop, allProducts, settings, menu, footer, shopLink] = await Promise.all(
     [
       context.session.get('cartId'),
       getShopData(context),
@@ -58,6 +60,7 @@ export async function loader({context}) {
       getSettingsData(context),
       getMenuData(context),
       getFooterData(context),
+      getShopPage(context)
     ],
   );
 
@@ -72,6 +75,7 @@ export async function loader({context}) {
       shopId: shop.shop.id,
     },
     sanityProjectDetails: context.sanityProjectDetails,
+    shop: shopLink
   });
 }
 
@@ -109,8 +113,7 @@ export async function action({request, context}) {
       },
     });
 
-    return json({ res });
-    
+    return json({res});
   } catch (error) {
     return badRequest({
       formError:
@@ -137,13 +140,9 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body className={'selection:bg-accent/20'}>
         <GlobalHeader />
-        <main
-          className={
-            'selection:bg-green-200 min-h-screen flex flex-col leading-tight pt-24 text-lg'
-          }
-        >
+        <main className={'min-h-screen flex flex-col pt-24'}>
           <Outlet />
         </main>
         <GlobalFooter />
@@ -440,4 +439,9 @@ export async function getAllProductsData({storefront}) {
   });
 
   return products;
+}
+
+export async function getShopPage({sanityClient}) {
+ const shop = await sanityClient.fetch(shopLinkQuery);
+ return shop;
 }

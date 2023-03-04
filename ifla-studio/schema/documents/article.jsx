@@ -149,7 +149,7 @@ export default defineType({
         field: 'intro',
         type: 'text',
       },
-      validation: (Rule) => Rule.min(0).max(160),
+      validation: (Rule) => Rule.min(0).max(155),
     }),
   ],
   orderings: [

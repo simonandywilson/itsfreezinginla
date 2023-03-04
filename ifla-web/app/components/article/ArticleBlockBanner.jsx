@@ -1,5 +1,6 @@
 import React from 'react';
 import {Topic} from '../parts/Topic';
+import {Text} from '../parts/Text';
 import {cx} from 'class-variance-authority';
 import {PortableTextPlain} from '../parts/PortableTextPlain';
 
@@ -17,22 +18,32 @@ export const ArticleBlockBanner = ({article}) => {
         )}
       >
         <div>
-          <h2 className={'text-6xl'}>
+          <Text tag={'h2'} intent={'bl-heading-3xl'}>
             {topic && <Topic topic={topic} />}
             {headline ? headline : 'Untitled article'}
-          </h2>
+          </Text>
         </div>
-        <h3
-          className={cx('text-3xl columns-1 col-span-2 gap-4 ', 'md:columns-2')}
-        >
-          {intro ? <PortableTextPlain text={intro} /> : 'Intro text'}
-        </h3>
+        <div className={cx('columns-1 col-span-2 gap-4', 'md:columns-2')}>
+          <Text tag={'h3'} intent={'bl-heading-xl'}>
+            {intro ? <PortableTextPlain text={intro} /> : 'Intro text'}
+          </Text>
+        </div>
       </div>
       <div className={'flex justify-between'}>
         {author.name && (
-          <address className={'not-italic'}>By {author.name}</address>
+          <Text
+            tag={'address'}
+            intent={'bl-heading-base'}
+            className={'not-italic'}
+          >
+            By {author.name}
+          </Text>
         )}
-        {media.length > 0 && <p>({media.join(', ')})</p>}
+        {(media && media.length > 0) && (
+          <Text tag={'p'} intent={'bl-heading-base'}>
+            ({media.join(', ')})
+          </Text>
+        )}
       </div>
     </article>
   );

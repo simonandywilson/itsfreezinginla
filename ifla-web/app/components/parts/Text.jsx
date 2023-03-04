@@ -1,6 +1,6 @@
 import {cva} from 'class-variance-authority';
 
-const text = cva('text', {
+const text = cva('break-words', {
   variants: {
     intent: {
       'ui-xs': ['ui-xs'],
@@ -16,9 +16,17 @@ const text = cva('text', {
       'button-sm': ['ui-sm'],
       'button-base': ['ui-base'],
       'button-lg': ['ui-lg'],
-      'button-xl': ['ui-2xl'],
-      'bl-body': ['font-serif text-base leading-snug'],
-      'bl-quote': ['text-6xl'],
+      'button-xl': ['ui-xl'],
+      'button-2xl': ['ui-2xl'],
+      'bl-heading-sm': ['bl-heading-sm'],
+      'bl-heading-base': ['bl-heading-base'],
+      'bl-heading-lg': ['bl-heading-lg'],
+      'bl-heading-xl': ['bl-heading-xl'],
+      'bl-heading-2xl': ['bl-heading-2xl'],
+      'bl-heading-3xl': ['bl-heading-3xl'],
+      'bl-body': ['bl-body'],
+      'bl-body-alt': ['bl-body-alt'],
+      'bl-quote': ['bl-quote'],
     },
   },
   defaultVariants: {
@@ -31,7 +39,7 @@ export const Text = ({tag, intent, className, children, colour}) => {
   return (
     <ElementTag
       className={text({intent, className})}
-      style={{color: colour}}
+      style={{color: colour, hyphen: "auto"}}
     >
       {children}
     </ElementTag>

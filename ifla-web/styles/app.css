@@ -71,4 +71,32 @@
   .ui-6xl {
     @apply text-6xl;
   }
+  .bl-heading-sm {
+    @apply text-sm;
+  }
+  .bl-heading-base {
+    @apply text-xl;
+  }
+  .bl-heading-lg {
+    @apply text-2xl;
+  }
+  .bl-heading-xl {
+    @apply text-4xl;
+  }
+  .bl-heading-2xl {
+    @apply text-5xl;
+  }
+  .bl-heading-3xl {
+    @apply text-6xl;
+  }
+  .bl-quote {
+    @apply text-4xl;
+  }
+  .bl-body {
+    @apply text-base font-serif leading-snug;
+  }
+  .bl-body-alt {
+    @apply text-base;
+  }
 }
+

@@ -81,12 +81,12 @@ async function getHomepageData({sanityClient}) {
 			intro,
 			"colour":colour->colourLight,
 			author-> {name},
-            topic -> {
-              topic,
-              image {
-                asset-> {_id}
-              }
-            },
+      topic -> {
+        topic,
+        image {
+          asset-> {_id}
+        }
+      },
 			media[],
 			image {
           		alt,
