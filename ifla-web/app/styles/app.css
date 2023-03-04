@@ -615,6 +615,10 @@ video {
   font-size: 1rem;
   line-height: 1.5rem;
 }
+.bl-body-lg {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -729,6 +733,9 @@ video {
 .m-4 {
   margin: 1rem;
 }
+.m-5 {
+  margin: 1.25rem;
+}
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -820,6 +827,9 @@ video {
 }
 .mt-auto {
   margin-top: auto;
+}
+.mb-5 {
+  margin-bottom: 1.25rem;
 }
 .block {
   display: block;
@@ -1125,6 +1135,10 @@ video {
 .columns-3 {
   -moz-columns: 3;
        columns: 3;
+}
+.break-before-column {
+  -moz-column-break-before: column;
+       break-before: column;
 }
 .auto-cols-auto {
   grid-auto-columns: auto;
@@ -1573,6 +1587,9 @@ video {
 }
 .text-right {
   text-align: right;
+}
+.indent-5 {
+  text-indent: 1.25rem;
 }
 .align-baseline {
   vertical-align: baseline;
@@ -2469,6 +2486,15 @@ video {
   }
 }
 .\[\&\>\*\:not\(\:last-child\)\:not\(p\)\]\:mb-\[1em\]>*:not(:last-child):not(p) {
+  margin-bottom: 1em;
+}
+.\[\&\>p\:not\(\:first-of-type\)\]\:m-5>p:not(:first-of-type) {
+  margin: 1.25rem;
+}
+.\[\&\>p\:not\(\:first-of-type\)\]\:mb-5>p:not(:first-of-type) {
+  margin-bottom: 1.25rem;
+}
+.\[\&\>p\:not\(\:first-of-type\)\]\:mb-\[1em\]>p:not(:first-of-type) {
   margin-bottom: 1em;
 }
 .\[\&\>p\:not\(\:first-of-type\)\]\:indent-5>p:not(:first-of-type) {

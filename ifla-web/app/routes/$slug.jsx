@@ -6,17 +6,17 @@ import {getSession} from '~/sessions';
 import {pageDataQuery} from '../lib/queries';
 import { Page } from '../components/page/Page';
 
-// const seo = ({data}) => ({
-//   title: data.article.seoTitle,
-//   description:
-//     data.article.seoDescription.length > 155
-//       ? data.article.seoDescription.substring(0, 154) + '…'
-//       : data.article.seoDescription,
-// });
+const seo = ({data}) => ({
+  title: data.page.seoTitle,
+  description:  data.page?.seoDescription ? 
+    data.page.seoDescription.length > 155
+      ? data.page.seoDescription.substring(0, 154) + '…'
+      : data.page.seoDescription : '',
+});
 
-// export const handle = {
-//   seo,
-// };
+export const handle = {
+  seo,
+};
 
 export const links = () => {
   return [{rel: 'stylesheet', href: swiperStyles}];

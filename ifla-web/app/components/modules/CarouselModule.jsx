@@ -2,7 +2,7 @@ import React, {useRef, useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Layout} from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
-import TextColumnsModule from './TextColumnsModule';
+import {TextColumnsModule} from './TextColumnsModule';
 
 export const CarouselModule = ({content}) => {
    const [swiperInstance, setSwiperInstance] = useState(null);

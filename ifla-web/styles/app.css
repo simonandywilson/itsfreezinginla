@@ -98,5 +98,8 @@
   .bl-body-alt {
     @apply text-base;
   }
+  .bl-body-lg {
+    @apply text-xl;
+  }
 }
 

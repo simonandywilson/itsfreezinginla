@@ -25,7 +25,8 @@ const text = cva('break-words', {
       'bl-heading-2xl': ['bl-heading-2xl'],
       'bl-heading-3xl': ['bl-heading-3xl'],
       'bl-body': ['bl-body'],
-      'bl-body-alt': ['bl-body-alt'],
+      'bl-body-alt': ['bl-body-alt'], 
+      'bl-body-lg': ['bl-body-lg'],
       'bl-quote': ['bl-quote'],
     },
   },
@@ -39,7 +40,7 @@ export const Text = ({tag, intent, className, children, colour}) => {
   return (
     <ElementTag
       className={text({intent, className})}
-      style={{color: colour, hyphen: "auto"}}
+      style={{color: colour}}
     >
       {children}
     </ElementTag>

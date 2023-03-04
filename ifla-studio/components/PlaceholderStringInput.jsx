@@ -22,7 +22,8 @@ const PlaceholderStringInput = (props) => {
     (o) => o.flag === 'max'
   )?.constraint
 
-  const tooLong = characterCount > 0 ? characterCount > characterLimit : placeholderLength > characterLimit
+  const tooLong =
+    characterCount > 0 ? characterCount > characterLimit : placeholderLength > characterLimit
 
   const handleChange = useCallback(
     (event) => {
@@ -39,6 +40,7 @@ const PlaceholderStringInput = (props) => {
         defaultValue={value}
         placeholder={proxyValue}
         onChange={handleChange}
+        style={{height: '75px'}}
       />
       {characterLimit && (
         <Flex justify="flex-end">

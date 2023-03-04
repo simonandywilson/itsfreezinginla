@@ -1,4 +1,4 @@
-// import TextColumnsModule from "../modules/TextColumnsModule"
+import {TextColumnsModule} from '../modules/TextColumnsModule';
 import {ArticlesModule} from '../modules/ArticlesModule';
 import {CarouselModule} from '../modules/CarouselModule';
 import {CollapsibleModule} from '../modules/CollapsibleModule';
@@ -19,8 +19,8 @@ export const Content = ({content}) => {
       return <ImageModule content={content} />;
     case 'imageGridModule':
       return <ImageGridModule content={content} />;
-    // case 'textColumnsModule':
-    //   return <TextColumnsModule content={content.text} />;
+    case 'textColumnsModule':
+      return <TextColumnsModule content={content} />;
     case 'articlesModule':
       return <ArticlesModule content={content} />;
     case 'carouselModule':

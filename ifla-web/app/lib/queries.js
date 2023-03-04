@@ -26,7 +26,7 @@ export const shopLinkQuery = groq`*[_type == "settings"][0] {
 
 export const pageDataQuery = groq`*[_type == "page" && slug.current == $slug][0]{
         _id,
-		"seoTitle": coalesce(seoTitle, headline),
-		"seoDescription": coalesce(seoDescription, pt::text(intro)),
+		"seoTitle": coalesce(seoTitle, title),
+		"seoDescription": seoDescription,
         ${contentFragment}
     }`;

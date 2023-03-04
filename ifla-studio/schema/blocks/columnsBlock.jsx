@@ -1,8 +1,6 @@
 import {defineField} from 'sanity'
 
-const BodyStyle = (props) => (
-  <span style={{fontFamily: 'Times New Roman, serif', display: 'flex'}}>{props.children}</span>
-)
+
 const HeadingStyle = (props) => (
   <span style={{display: 'flex', fontSize: '1rem'}}>{props.children}</span>
 )
@@ -15,9 +13,8 @@ export default defineField({
     {
       type: 'block',
       styles: [
+        {title: 'Heading', value: 'h3'},
         {title: 'Body', value: 'normal'},
-        {title: 'Heading', value: 'h2'},
-        {title: 'Subheading', value: 'h4'},
       ],
       lists: [],
       marks: {
