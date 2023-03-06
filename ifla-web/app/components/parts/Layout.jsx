@@ -5,6 +5,9 @@ const layout = cva('layout', {
     intent: {
       page: [''],
       footer: ['p-4 lg:p-0 lg:py-4'],
+      banner: [
+        'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-8rem)]',
+      ],
       cart: ['p-4'],
       space: ['px-4 py-0 sm:p-8'],
       module: ['px-4 py-4'],
@@ -26,10 +29,13 @@ const layout = cva('layout', {
   },
 });
 
-export const Layout = ({tag, className, intent, children}) => {
+export const Layout = ({tag, className, intent, children, colour}) => {
   const ElementTag = `${tag || 'section'}`;
   return (
-    <ElementTag className={layout({intent, className})}>
+    <ElementTag
+      className={layout({intent, className})}
+      style={{background: colour}}
+    >
       {children}
     </ElementTag>
   );

@@ -8,6 +8,7 @@ import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {Banner} from '../components/parts/Banner';
 import { Layout } from '../components/parts/Layout';
+import {shopLinkQuery} from '../lib/queries';
 
 export const handle = {
   seo: {
@@ -29,13 +30,14 @@ export async function loader({context}) {
 }
 
 export default function Index() {
-    const { homepage } = useLoaderData();
+  const { homepage } = useLoaderData();
+  console.log(homepage);
   return (
     <div>
       <Banner>
         {homepage.heroBanner ? homepage.heroBanner : 'Currently…'}
       </Banner>
-      <Hero hero={{}} />
+      <Hero hero={homepage.hero} />
       {homepage.featured ? (
         <>
           <Banner>
@@ -43,7 +45,7 @@ export default function Index() {
               ? homepage.featuredBanner
               : 'Featured articles'}
           </Banner>
-          <Layout intent={'grid'} tag={"ul"}>
+          <Layout intent={'grid'} tag={'ul'}>
             <li className={'col-span-full w-full'}>
               <Link to={homepage.featured[0].slug}>
                 <ArticleBlockBanner article={homepage.featured[0]} />
@@ -73,6 +75,11 @@ export default function Index() {
 async function getHomepageData({sanityClient}) {
   const query = groq`*[_type == "home"][0] {
 		"heroBanner": heroBanner,
+    "hero": hero -> store {
+      title,
+      "image": previewImageUrl,
+      "slug": ${shopLinkQuery}
+    },
 		"featuredBanner": featuredBanner,
 		"featured": featured[0...3] -> {
 			_id,

@@ -2,11 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  * {
-    font-weight: normal!important;
-  }
-  
+@layer base {  
   :root {
     --accent-colour: '#db4d68';
   }

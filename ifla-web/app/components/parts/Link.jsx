@@ -1,7 +1,7 @@
 import {Link as RemixLink} from '@remix-run/react';
 import {cva} from 'class-variance-authority';
 
-const link = cva('', {
+const link = cva('w-max', {
   variants: {
     intent: {
       link: [

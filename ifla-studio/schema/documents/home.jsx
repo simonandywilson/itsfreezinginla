@@ -16,7 +16,7 @@ export default defineType({
     defineField({
       name: 'hero',
       type: 'reference',
-      to: [{type: 'article'}, {type: 'product'}],
+      to: [ {type: 'product'}],
 		validation: (Rule) => Rule.required(),
 	  
     }),

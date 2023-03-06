@@ -3,13 +3,15 @@ import {Topic} from '../parts/Topic';
 import {Text} from '../parts/Text';
 import {cx} from 'class-variance-authority';
 import {PortableTextPlain} from '../parts/PortableTextPlain';
+import {Layout} from '../parts/Layout';
 
 export const ArticleBlockBanner = ({article}) => {
   const {headline, intro, colour, author, media, topic} = article;
   return (
-    <article
-      className={'w-full aspect-video p-6 flex flex-col justify-between gap-4'}
-      style={{background: colour ? colour : '#e3e8ef'}}
+    <Layout
+      tag={'article'}
+      intent={'banner'}
+      colour={colour || '#e3e8ef'}
     >
       <div
         className={cx(
@@ -39,12 +41,12 @@ export const ArticleBlockBanner = ({article}) => {
             By {author.name}
           </Text>
         )}
-        {(media && media.length > 0) && (
+        {media && media.length > 0 && (
           <Text tag={'p'} intent={'bl-heading-base'}>
             ({media.join(', ')})
           </Text>
         )}
       </div>
-    </article>
+    </Layout>
   );
 };
