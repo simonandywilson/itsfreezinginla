@@ -1,14 +1,15 @@
-import { useCallback, useState, useRef, useEffect } from "react";
-import { Stack, Flex, Card, Inline, Label, Badge, TextInput } from "@sanity/ui";
-import { set, unset } from "sanity";
-import useDebounce from "../functions/useDebounce";
-import useClickOutside from "../functions/useClickOutside";
+import {useCallback, useState, useRef, useEffect} from 'react'
+import {Stack, Flex, Card, Inline, Label, Badge, TextInput} from '@sanity/ui'
+import {set, unset} from 'sanity'
+import useDebounce from '../functions/useDebounce'
+import useClickOutside from '../functions/useClickOutside'
 
-import { wcagContrastChecker } from "@mdhnpm/wcag-contrast-checker";
-import namer from "color-namer";
-import { HexColorPicker } from "react-colorful";
-import { useClient, useFormValue } from "sanity";
+import {wcagContrastChecker} from '@mdhnpm/wcag-contrast-checker'
+import namer from 'color-namer'
+import {HexColorPicker, HexColorInput} from 'react-colorful'
+import {useClient, useFormValue} from 'sanity'
 import styled from 'styled-components'
+import * as styles from "./colour.module.css"
 
 const Preview = styled.button`
   width: 2.5rem;
@@ -28,70 +29,73 @@ const Picker = styled.div`
 `
 
 const titleCase = (str) => {
-	let splitStr = str.toLowerCase().split(" ");
-	for (var i = 0; i < splitStr.length; i++) {
-		splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
-	}
-	return splitStr.join(" ");
-};
+  let splitStr = str.toLowerCase().split(' ')
+  for (var i = 0; i < splitStr.length; i++) {
+    splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1)
+  }
+  return splitStr.join(' ')
+}
 
 export const AccessibleColourInput = (props) => {
-	const { elementProps, onChange, value = "", schemaType } = props;
-	const popover = useRef();
-	const documentId = useFormValue(["_id"]);
+  const {elementProps, onChange, value = '', schemaType} = props
+  const popover = useRef()
+  const documentId = useFormValue(['_id'])
 
-	const handleChange = useCallback(
-		(event) => {
-			const nextValue = event.currentTarget.value;
-			onChange(nextValue ? set(nextValue) : unset());
-		},
-		[onChange]
-    );
-    
-    const defaultColour = schemaType?.options?.defaultColour
-		? schemaType?.options?.defaultColour
-		: "#ffffff";
+  const defaultColour = schemaType?.options?.defaultColour
+    ? schemaType?.options?.defaultColour
+    : '#ffffff'
 
-	const [colour, setColour] = useState(value ? value : defaultColour);
-	const [colourName, setColourName] = useState("");
-	const [isOpen, toggle] = useState(false);
-	const [regularAA, setRegularAA] = useState("");
-	const [regularAAA, setRegularAAA] = useState("");
-	const [largeAA, setLargeAA] = useState("");
-	const [largeAAA, setLargeAAA] = useState("");
-	const debouncedColour = useDebounce(colour, 1000);
-	const close = useCallback(() => toggle(false), []);
-	useClickOutside(popover, close);
-	const client = useClient({ apiVersion: "2023-01-01" });
+  const [colour, setColour] = useState(value ? value : defaultColour)
+  const [colourName, setColourName] = useState('')
+  const [isOpen, toggle] = useState(false)
+  const [regularAA, setRegularAA] = useState('')
+  const [regularAAA, setRegularAAA] = useState('')
+  const [largeAA, setLargeAA] = useState('')
+  const [largeAAA, setLargeAAA] = useState('')
+  const debouncedColour = useDebounce(colour, 1000)
+  const close = useCallback(() => toggle(false), [])
+  useClickOutside(popover, close)
+  const client = useClient({apiVersion: '2023-01-01'})
 
-	useEffect(() => {
-		if (value !== debouncedColour) {
-			onChange(set(debouncedColour));
-		}
-		setColourName(titleCase(namer(colour).ntc[0].name));
-	}, [debouncedColour]);
+  const handleChange = useCallback(
+    (event) => {
+      const colourValue = event
+      setColour(colourValue)
+      onChange(colourValue ? set(colourValue) : unset())
+    },
+    [onChange]
+  )
 
-	useEffect(() => {
-		const contrast = wcagContrastChecker(
-			schemaType?.options?.type ? schemaType?.options?.type : "#000000",
-			colour
-		);
-		contrast.regularText.aa ? setRegularAA("positive") : setRegularAA("critical");
-		contrast.largeText.aa ? setLargeAA("positive") : setLargeAA("critical");
-		contrast.regularText.aaa ? setRegularAAA("positive") : setRegularAAA("critical");
-		contrast.largeText.aaa ? setLargeAAA("positive") : setLargeAAA("critical");
-	}, [colour, document?.text?.value]);
+  console.log(colour)
 
-	useEffect(() => {
-		if (documentId && schemaType?.options?.nameField) {
-			client
-				.patch(documentId)
-				.set({ [schemaType.options.nameField]: colourName })
-				.commit();
-		}
-	}, [colourName]);
+  useEffect(() => {
+    if (value !== debouncedColour) {
+      onChange(set(debouncedColour))
+    }
+    setColourName(titleCase(namer(colour).ntc[0].name))
+  }, [debouncedColour])
 
-	return (
+  useEffect(() => {
+    const contrast = wcagContrastChecker(
+      schemaType?.options?.type ? schemaType?.options?.type : '#000000',
+      colour
+    )
+    contrast.regularText.aa ? setRegularAA('positive') : setRegularAA('critical')
+    contrast.largeText.aa ? setLargeAA('positive') : setLargeAA('critical')
+    contrast.regularText.aaa ? setRegularAAA('positive') : setRegularAAA('critical')
+    contrast.largeText.aaa ? setLargeAAA('positive') : setLargeAAA('critical')
+  }, [colour, document?.text?.value])
+
+  useEffect(() => {
+    if (documentId && schemaType?.options?.nameField) {
+      client
+        .patch(documentId)
+        .set({[schemaType.options.nameField]: colourName})
+        .commit()
+    }
+  }, [colourName])
+
+  return (
     <Stack space={2}>
       <Card shadow={1} radius={2}>
         <Stack>
@@ -110,11 +114,8 @@ export const AccessibleColourInput = (props) => {
             <Stack space={4}>
               <Flex display={'flex'}>
                 <Card marginRight={3}>
-                  <div style={{position: "relative"}}>
-                    <Preview
-                      style={{backgroundColor: colour}}
-                      onClick={() => toggle(true)}
-                    />
+                  <div style={{position: 'relative'}}>
+                    <Preview style={{backgroundColor: colour}} onClick={() => toggle(true)} />
                     {isOpen && (
                       <Picker ref={popover}>
                         <HexColorPicker color={colour} onChange={setColour} />
@@ -123,7 +124,13 @@ export const AccessibleColourInput = (props) => {
                   </div>
                 </Card>
                 <Card flex={3}>
-                  <TextInput {...elementProps} onChange={handleChange} value={value} />
+                  {/* <TextInput onChange={handleChange} value={value} /> */}
+                  <HexColorInput
+                    {...elementProps}
+                    color={value}
+                    onChange={handleChange}
+                    className={styles.input}
+                  />
                 </Card>
               </Flex>
               <Label size={1}>{colourName}</Label>
@@ -133,4 +140,4 @@ export const AccessibleColourInput = (props) => {
       </Card>
     </Stack>
   )
-};
+}
