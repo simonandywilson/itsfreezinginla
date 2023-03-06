@@ -34,52 +34,52 @@ export const links = () => {
     {rel: 'stylesheet', href: styles},
     {rel: 'preconnect', href: 'https://cdn.shopify.com'},
     {rel: 'preconnect', href: 'https://shop.app'},
-    {
-      rel: 'apple-touch-icon',
-      sizes: '180x180',
-      href: './favicon/apple-touch-icon.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '32x32',
-      href: './favicon/favicon-32x32.png',
-    },
-    {
-      rel: 'icon',
-      type: 'image/png',
-      sizes: '16x16',
-      href: './favicon/favicon-16x16.png',
-    },
-    {
-      rel: 'manifest',
-      href: './favicon/site.webmanifest',
-    },
-    {
-      rel: 'mask-icon',
-      href: './favicon/safari-pinned-tab.svg',
-      color: '#000000',
-    },
-    {
-      rel: 'shortcut icon',
-      href: './favicon/favicon.ico',
-    },
-    {
-      name: 'msapplication-TileColor',
-      content: '#ffffff',
-    },
-    {
-      name: 'msapplication-config',
-      content: '#ffffff',
-    },
-    {
-      name: 'msapplication-config',
-      content: './favicon/browserconfig.xml',
-    },
-    {
-      name: 'theme-color',
-      content: '#ffffff',
-    },
+    // {
+    //   rel: 'apple-touch-icon',
+    //   sizes: '180x180',
+    //   href: './favicon/apple-touch-icon.png',
+    // },
+    // {
+    //   rel: 'icon',
+    //   type: 'image/png',
+    //   sizes: '32x32',
+    //   href: './favicon/favicon-32x32.png',
+    // },
+    // {
+    //   rel: 'icon',
+    //   type: 'image/png',
+    //   sizes: '16x16',
+    //   href: './favicon/favicon-16x16.png',
+    // },
+    // {
+    //   rel: 'manifest',
+    //   href: './favicon/site.webmanifest',
+    // },
+    // {
+    //   rel: 'mask-icon',
+    //   href: './favicon/safari-pinned-tab.svg',
+    //   color: '#000000',
+    // },
+    // {
+    //   rel: 'shortcut icon',
+    //   href: './favicon/favicon.ico',
+    // },
+    // {
+    //   name: 'msapplication-TileColor',
+    //   content: '#ffffff',
+    // },
+    // {
+    //   name: 'msapplication-config',
+    //   content: '#ffffff',
+    // },
+    // {
+    //   name: 'msapplication-config',
+    //   content: './favicon/browserconfig.xml',
+    // },
+    // {
+    //   name: 'theme-color',
+    //   content: '#ffffff',
+    // },
   ];
 };
 
