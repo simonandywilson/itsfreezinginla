@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../../../../../../app/routes/($lang)/api/countries.tsx"],
-  "sourcesContent": ["import {json, type LoaderArgs} from '@shopify/remix-oxygen';\nimport {countries} from '~/data/countries';\n\nexport async function loader({context: {storefront}}: LoaderArgs) {\n  return json(\n    {\n      ...countries,\n    },\n    {\n      headers: {\n        'cache-control': storefront.generateCacheControlHeader(\n          storefront.CacheLong(),\n        ),\n      },\n    },\n  );\n}\n\n// no-op\nexport default function CountriesApiRoute() {\n  return null;\n}\n"],
-  "mappings": ";;;;AAmBe,SAAR,oBAAqC;AAC1C,SAAO;AACT;",
-  "names": []
-}
