@@ -27,30 +27,38 @@ export const CartPreview = ({text, link}) => {
           </Await>
         </Suspense>
         <BasketIconThin />
-        {/* <div className={'absolute h-full w-full'}>
-              <Suspense fallback={null}>
-                <Await resolve={cart}>
-                  {(cart) =>
-                    cart.lines.edges.map(({node}) => {
-                      const rotation = Math.random() * 20 - 5;
-                      return (
-                        <img
-                          role="presentation"
-                          key={node.id}
-                          src={node.merchandise.image.url}
-							  className={'absolute h-20'}
-							  style={{transform: `rotate(${rotation}deg)`}}
-                        />
-                      );
-                    })
-                  }
-                </Await>
-              </Suspense>
-            </div> */}
+        <div className={'absolute w-full h-full inset-0 -z-10 flex items-end'}>
+          <div className={'relative w-full  h-[79%]'}>
+            <Suspense fallback={null}>
+              <Await resolve={cart}>
+                {(cart) =>
+                  cart.lines.edges.map(({node}) => {
+                    const rotation = Math.floor(Math.random() * 50) - 25;
+                    const x = Math.floor(Math.random() * 75) + 1;
+                    const y = Math.floor(Math.random() * 50) + 1;
+                    return (
+                      <img
+                        role="presentation"
+                        key={node.id}
+                        src={node.merchandise.image.url}
+                        className={'absolute h-1/2'}
+                        style={{
+                          transform: `rotate(${rotation}deg)`,
+                          left: `${x}%`,
+                          top: `${y}%`,
+                        }}
+                      />
+                    );
+                  })
+                }
+              </Await>
+            </Suspense>
+          </div>
+        </div>
       </div>
       <div className={'flex justify-center mt-8'}>
         <Link to={link || '/cart'} intent={'button-2xl'} colour={'dark'}>
-          <Text intent={'button-2xl'}>{text || "View Basket"}</Text>
+          <Text intent={'button-2xl'}>{text || 'View Basket'}</Text>
         </Link>
       </div>
     </div>

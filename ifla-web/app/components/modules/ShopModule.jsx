@@ -17,8 +17,8 @@ export const ShopModule = () => {
         <div className={cx('col-span-1', 'sm:col-span-2')}>
           <div
             className={cx(
-              'grid grid-cols-2 gap-4',
-              'sm:grid-cols-2 sm:gap-8',
+              'grid grid-cols-1 gap-16 px-0',
+              'sm:grid-cols-2 sm:gap-8 sm:px-0',
               'md:grid-cols-2',
               'lg:grid-cols-3 lg:gap-16',
             )}
@@ -28,7 +28,7 @@ export const ShopModule = () => {
             ))}
           </div>
         </div>
-        <div className={'sticky top-24 h-max'}>
+        <div className={'sticky top-24 h-max hidden sm:block'}>
           <CartPreview />
         </div>
       </div>
@@ -38,7 +38,7 @@ export const ShopModule = () => {
 
 const Product = ({product}) => {
   return (
-    <div className={'h-max'}>
+    <div className={'h-max max-w-xs mx-auto'}>
       <img
         src={product.featuredImage.url}
         alt={product.featuredImage.altText}

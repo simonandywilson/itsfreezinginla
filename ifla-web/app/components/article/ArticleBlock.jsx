@@ -8,7 +8,7 @@ export const ArticleBlock = ({article}) => {
   return (
     <article
       className={
-        'relative w-full h-full aspect-square p-6 flex flex-col justify-between gap-6 '
+        'group relative w-full h-full aspect-square p-6 flex flex-col justify-between gap-6 '
       }
       style={{background: colour ? colour : 'var(--accent-colour)'}}
     >

@@ -72,7 +72,7 @@ const components = (intent) => {
           tag={'blockquote'}
           intent={'bl-quote'}
           colour={value.colour}
-          className={'my-16 px-8'}
+          className={'my-20 px-8'}
         >
           {children}
         </Text>
