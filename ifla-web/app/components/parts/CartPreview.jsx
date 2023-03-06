@@ -3,6 +3,7 @@ import React, {Suspense} from 'react';
 import {useRouteData} from 'remix-utils';
 import {BasketIconThin} from '../icons/Icons';
 import {Badge} from './Badge';
+import {CartPreviewItem} from './CartPreviewItem';
 import {Link} from './Link';
 import {Text} from './Text';
 
@@ -32,24 +33,10 @@ export const CartPreview = ({text, link}) => {
             <Suspense fallback={null}>
               <Await resolve={cart}>
                 {(cart) =>
-                  cart?.lines?.edges && cart.lines.edges.map(({node}) => {
-                    const rotation = Math.floor(Math.random() * 50) - 25;
-                    const x = Math.floor(Math.random() * 75) + 1;
-                    const y = Math.floor(Math.random() * 50) + 1;
-                    return (
-                      <img
-                        role="presentation"
-                        key={node.id}
-                        src={node.merchandise.image.url}
-                        className={'absolute h-1/2'}
-                        style={{
-                          transform: `rotate(${rotation}deg)`,
-                          left: `${x}%`,
-                          top: `${y}%`,
-                        }}
-                      />
-                    );
-                  })
+                  cart?.lines?.edges &&
+                  cart.lines.edges.map(({node}) => (
+                    <CartPreviewItem key={node.id} item={node} />
+                  ))
                 }
               </Await>
             </Suspense>
