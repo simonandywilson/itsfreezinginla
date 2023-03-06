@@ -6,7 +6,7 @@ export const BasketIcon = () => {
       width="80.11"
       height="59.56"
       viewBox="0 0 80.11 59.56"
-      className={'w-full h-full'}
+      className={'h-full'}
     >
       <line
         x1="40.14"
