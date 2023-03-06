@@ -68,6 +68,12 @@ export default defineType({
       group: 'info',
     }),
     defineField({
+      name: 'category',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'category'}], title: 'Reference to Category'}],
+      group: 'info',
+    }),
+    defineField({
       name: 'intro',
       type: 'basicBlock',
       group: 'content',
@@ -77,23 +83,6 @@ export default defineType({
       type: 'imageObject',
       group: 'content',
     }),
-    defineField({
-      name: 'media',
-      type: 'array',
-      of: [{type: 'string'}],
-      options: {
-        layout: 'grid',
-        list: [
-          {title: 'Text', value: 'Text'},
-          {title: 'Audio', value: 'Audio'},
-          {title: 'Video', value: 'Video'},
-        ],
-      },
-      initialValue: ['Text'],
-      hidden: true,
-      group: 'content',
-    }),
-
     defineField({
       name: 'colour',
       type: 'reference',

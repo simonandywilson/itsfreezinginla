@@ -14,7 +14,6 @@ import {Layout} from '~/components';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
-import favicon from '../public/favicon.svg';
 import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
 import invariant from 'tiny-invariant';
 import groq from 'groq';
@@ -42,7 +41,52 @@ export const links = () => {
     {rel: 'stylesheet', href: styles},
     {rel: 'preconnect', href: 'https://cdn.shopify.com'},
     {rel: 'preconnect', href: 'https://shop.app'},
-    // {rel: 'icon', type: 'image/svg+xml', href: favicon},
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: '../public/favicon/apple-touch-icon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      href: '../public/favicon/favicon-32x32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: '../public/favicon/favicon-16x16.png',
+    },
+    {
+      rel: 'manifest',
+      href: '../public/favicon/site.webmanifest',
+    },
+    {
+      rel: 'mask-icon',
+      href: '../public/favicon/safari-pinned-tab.svg',
+      color: '#000000',
+    },
+    {
+      rel: 'shortcut icon',
+      href: '../public/favicon/favicon.ico',
+    },
+    {
+      name: 'msapplication-TileColor',
+      content: '#ffffff',
+    },
+    {
+      name: 'msapplication-config',
+      content: '#ffffff',
+    },
+    {
+      name: 'msapplication-config',
+      content: '../public/favicon/browserconfig.xml',
+    },
+    {
+      name: 'theme-color',
+      content: '#ffffff',
+    },
   ];
 };
 

@@ -118,6 +118,21 @@ export const structure = (S, context) => {
                     )
                 ),
               S.listItem()
+                .title('By Category')
+                .icon(() => Icons.category)
+                .child(
+                  S.documentTypeList('category')
+                    .title('Articles by Category')
+                    .child((categoryId) =>
+                      S.documentList()
+                        .title('Categories')
+                        .filter('_type == "category" && $categoryId == category._ref')
+                        .params({
+                          categoryId,
+                        })
+                    )
+                ),
+              S.listItem()
                 .title('By Year')
                 .icon(() => Icons.year)
                 .child(() => {
@@ -223,6 +238,11 @@ export const structure = (S, context) => {
         .icon(() => Icons.topic)
         .schemaType('topic')
         .child(S.documentTypeList('topic')),
+      S.listItem()
+        .title('Categories')
+        .icon(() => Icons.category)
+        .schemaType('category')
+        .child(S.documentTypeList('category')),
       S.divider(),
       S.listItem()
         .title('Settings')

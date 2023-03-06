@@ -44,7 +44,9 @@ export default defineType({
         source: 'title',
         urlPrefix: async (document) => {
           const parent = await getParentSlug(document)
-          return `/${parent}/`
+          if (typeof parent !== 'undefined' && parent !== null) {
+            return `/${parent}/`
+          } else return ''
         },
         isUnique: isSlugUnique,
         maxLength: 30,

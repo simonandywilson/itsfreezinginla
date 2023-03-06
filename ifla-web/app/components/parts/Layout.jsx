@@ -4,7 +4,7 @@ const layout = cva('layout', {
   variants: {
     intent: {
       page: [''],
-      footer: ['p-4 mt-8 lg:p-0 lg:py-4'],
+      footer: ['p-4 lg:p-0 lg:py-4'],
       banner: [
         'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-8rem)]',
       ],

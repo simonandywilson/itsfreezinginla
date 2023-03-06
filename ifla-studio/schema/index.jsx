@@ -11,6 +11,7 @@ import page from "./documents/page";
 import topic from "./documents/topic";
 import section from "./documents/section";
 import colour from "./documents/colour";
+import category from './documents/category'
 
 // Objects
 import imageObject from "./objects/imageObject";
@@ -47,17 +48,18 @@ import collapsibleModule from './modules/collapsibleModule'
 
 const singletons = new Set([settings]);
 const documents = new Set([
-	home,
-	article,
-	author,
-	product,
-	collection,
-	productVariant,
-	topic,
-	page,
-	section,
-	colour
-]);
+  home,
+  article,
+  author,
+  product,
+  collection,
+  productVariant,
+  topic,
+  page,
+  section,
+  colour,
+  category,
+])
 const objects = new Set([
 	imageObject,
 	textObject,
