@@ -7,7 +7,7 @@ import {pageDataQuery} from '../lib/queries';
 import { Page } from '../components/page/Page';
 
 const seo = ({data}) => ({
-  title: data.page.seoTitle,
+  title: data.page?.seoTitle || "Page",
   description:  data.page?.seoDescription ? 
     data.page.seoDescription.length > 155
       ? data.page.seoDescription.substring(0, 154) + '…'
