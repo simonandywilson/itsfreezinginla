@@ -6,7 +6,6 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-  useLoaderData,
   useMatches,
 } from '@remix-run/react';
 import {ShopifySalesChannel, Seo} from '@shopify/hydrogen';
@@ -14,14 +13,12 @@ import {Layout} from '~/components';
 import {GenericError} from './components/GenericError';
 import {NotFound} from './components/NotFound';
 import styles from './styles/app.css';
-import {DEFAULT_LOCALE, parseMenu} from './lib/utils';
+import {DEFAULT_LOCALE} from './lib/utils';
 import invariant from 'tiny-invariant';
 import groq from 'groq';
 import {useAnalytics} from './hooks/useAnalytics';
-
 import GlobalHeader from './components/global/GlobalHeader';
 import GlobalFooter from './components/global/GlobalFooter';
-
 import {shopLinkQuery} from "./lib/queries"
 
 const seo = ({data: {settings}, pathname}) => ({
@@ -44,32 +41,32 @@ export const links = () => {
     {
       rel: 'apple-touch-icon',
       sizes: '180x180',
-      href: '../public/favicon/apple-touch-icon.png',
+      href: './favicon/apple-touch-icon.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '32x32',
-      href: '../public/favicon/favicon-32x32.png',
+      href: './favicon/favicon-32x32.png',
     },
     {
       rel: 'icon',
       type: 'image/png',
       sizes: '16x16',
-      href: '../public/favicon/favicon-16x16.png',
+      href: './favicon/favicon-16x16.png',
     },
     {
       rel: 'manifest',
-      href: '../public/favicon/site.webmanifest',
+      href: './favicon/site.webmanifest',
     },
     {
       rel: 'mask-icon',
-      href: '../public/favicon/safari-pinned-tab.svg',
+      href: './favicon/safari-pinned-tab.svg',
       color: '#000000',
     },
     {
       rel: 'shortcut icon',
-      href: '../public/favicon/favicon.ico',
+      href: './favicon/favicon.ico',
     },
     {
       name: 'msapplication-TileColor',
@@ -81,7 +78,7 @@ export const links = () => {
     },
     {
       name: 'msapplication-config',
-      content: '../public/favicon/browserconfig.xml',
+      content: './favicon/browserconfig.xml',
     },
     {
       name: 'theme-color',

@@ -196,7 +196,7 @@ const CartDetails = ({ cart, shop }) => {
   const {lines, cost, checkoutUrl} = cart;
   return (
     <Layout intent={'cart'}>
-      <Text tag={'h2'} intent={'ui-2xl'}>
+      <Text tag={'h2'} intent={'ui-3xl'}>
         Basket contents
       </Text>
       <div
@@ -207,7 +207,7 @@ const CartDetails = ({ cart, shop }) => {
       >
         <div
           className={cx(
-            'order-last col-span-2 flex gap-8 flex-col',
+            'order-last col-span-2 flex flex-col',
             'md:order-first',
           )}
         >
@@ -215,7 +215,7 @@ const CartDetails = ({ cart, shop }) => {
             <CartLine key={node.id} line={node} />
           ))}
           <CartTotal cost={cost} />
-          <a href={checkoutUrl} target="_self" className={'ml-auto mr-20'}>
+          <a href={checkoutUrl} target="_self" className={'ml-auto mr-20 mt-8'}>
             <Button tag={'div'} intent={'xl'} colour={'dark'}>
               <Text intent={'button-2xl'}>Checkout</Text>
             </Button>
@@ -289,7 +289,7 @@ const CartRemove = ({id}) => {
 const CartTotal = ({cost}) => {
   return (
     <CartLineWrapper>
-      <div className={'flex gap-2 items-baseline justify-self-stretch'}>
+      <div className={'flex gap-2 items-baseline justify-self-stretch mt-8'}>
         <Text tag={'h4'} intent={'ui-xl'}>
           Total
         </Text>
