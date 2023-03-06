@@ -1,4 +1,3 @@
-import {defer, json} from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
@@ -6,20 +5,17 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
-  useMatches,
 } from '@remix-run/react';
-import {ShopifySalesChannel, Seo} from '@shopify/hydrogen';
-import {Layout} from '~/components';
-import {GenericError} from './components/GenericError';
-import {NotFound} from './components/NotFound';
-import styles from './styles/app.css';
-import {DEFAULT_LOCALE} from './lib/utils';
-import invariant from 'tiny-invariant';
+import {Seo, ShopifySalesChannel} from '@shopify/hydrogen';
+import {defer, json} from '@shopify/remix-oxygen';
 import groq from 'groq';
-import {useAnalytics} from './hooks/useAnalytics';
-import GlobalHeader from './components/global/GlobalHeader';
+import invariant from 'tiny-invariant';
+import {NotFound} from './components/error/NotFound';
 import GlobalFooter from './components/global/GlobalFooter';
-import {shopLinkQuery} from "./lib/queries"
+import GlobalHeader from './components/global/GlobalHeader';
+import {useAnalytics} from './hooks/useAnalytics';
+import {shopLinkQuery} from './lib/queries';
+import styles from './styles/app.css';
 
 const seo = ({data: {settings}, pathname}) => ({
   title: settings.seoTitle,
@@ -38,52 +34,52 @@ export const links = () => {
     {rel: 'stylesheet', href: styles},
     {rel: 'preconnect', href: 'https://cdn.shopify.com'},
     {rel: 'preconnect', href: 'https://shop.app'},
-    // {
-    //   rel: 'apple-touch-icon',
-    //   sizes: '180x180',
-    //   href: './favicon/apple-touch-icon.png',
-    // },
-    // {
-    //   rel: 'icon',
-    //   type: 'image/png',
-    //   sizes: '32x32',
-    //   href: './favicon/favicon-32x32.png',
-    // },
-    // {
-    //   rel: 'icon',
-    //   type: 'image/png',
-    //   sizes: '16x16',
-    //   href: './favicon/favicon-16x16.png',
-    // },
-    // {
-    //   rel: 'manifest',
-    //   href: './favicon/site.webmanifest',
-    // },
-    // {
-    //   rel: 'mask-icon',
-    //   href: './favicon/safari-pinned-tab.svg',
-    //   color: '#000000',
-    // },
-    // {
-    //   rel: 'shortcut icon',
-    //   href: './favicon/favicon.ico',
-    // },
-    // {
-    //   name: 'msapplication-TileColor',
-    //   content: '#ffffff',
-    // },
-    // {
-    //   name: 'msapplication-config',
-    //   content: '#ffffff',
-    // },
-    // {
-    //   name: 'msapplication-config',
-    //   content: './favicon/browserconfig.xml',
-    // },
-    // {
-    //   name: 'theme-color',
-    //   content: '#ffffff',
-    // },
+    {
+      rel: 'apple-touch-icon',
+      sizes: '180x180',
+      href: './favicon/apple-touch-icon.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '32x32',
+      href: './favicon/favicon-32x32.png',
+    },
+    {
+      rel: 'icon',
+      type: 'image/png',
+      sizes: '16x16',
+      href: './favicon/favicon-16x16.png',
+    },
+    {
+      rel: 'manifest',
+      href: './favicon/site.webmanifest',
+    },
+    {
+      rel: 'mask-icon',
+      href: './favicon/safari-pinned-tab.svg',
+      color: '#000000',
+    },
+    {
+      rel: 'shortcut icon',
+      href: './favicon/favicon.ico',
+    },
+    {
+      name: 'msapplication-TileColor',
+      content: '#ffffff',
+    },
+    {
+      name: 'msapplication-config',
+      content: '#ffffff',
+    },
+    {
+      name: 'msapplication-config',
+      content: './favicon/browserconfig.xml',
+    },
+    {
+      name: 'theme-color',
+      content: '#ffffff',
+    },
   ];
 };
 
@@ -93,17 +89,16 @@ export const meta = () => ({
 });
 
 export async function loader({context}) {
-  const [cartId, shop, allProducts, settings, menu, footer, shopLink] = await Promise.all(
-    [
+  const [cartId, shop, allProducts, settings, menu, footer, shopLink] =
+    await Promise.all([
       context.session.get('cartId'),
       getShopData(context),
       getAllProductsData(context),
       getSettingsData(context),
       getMenuData(context),
       getFooterData(context),
-      getShopPage(context)
-    ],
-  );
+      getShopPage(context),
+    ]);
 
   return defer({
     settings,
@@ -116,7 +111,7 @@ export async function loader({context}) {
       shopId: shop.shop.id,
     },
     sanityProjectDetails: context.sanityProjectDetails,
-    shop: shopLink
+    shop: shopLink,
   });
 }
 
@@ -195,11 +190,14 @@ export default function App() {
 }
 
 export function CatchBoundary() {
-  const [root] = useMatches();
   const caught = useCatch();
   const isNotFound = caught.status === 404;
-  const locale = root.data?.selectedLocale ?? DEFAULT_LOCALE;
-
+  const locale = {
+    label: 'United Kingdom (GBP £)',
+    language: 'EN',
+    country: 'GB',
+    currency: 'GBP',
+  };
   return (
     <html lang={locale.language}>
       <head>
@@ -208,18 +206,7 @@ export function CatchBoundary() {
         <Links />
       </head>
       <body>
-        <Layout
-          layout={root?.data?.layout}
-          key={`${locale.language}-${locale.country}`}
-        >
-          {isNotFound ? (
-            <NotFound type={caught.data?.pageType} />
-          ) : (
-            <GenericError
-              error={{message: `${caught.status} ${caught.data}`}}
-            />
-          )}
-        </Layout>
+        <NotFound error={error} />
         <Scripts />
       </body>
     </html>
@@ -227,9 +214,12 @@ export function CatchBoundary() {
 }
 
 export function ErrorBoundary({error}) {
-  const [root] = useMatches();
-  const locale = root?.data?.selectedLocale ?? DEFAULT_LOCALE;
-
+  const locale = {
+    label: 'United Kingdom (GBP £)',
+    language: 'EN',
+    country: 'GB',
+    currency: 'GBP',
+  };
   return (
     <html lang={locale.language}>
       <head>
@@ -238,9 +228,7 @@ export function ErrorBoundary({error}) {
         <Links />
       </head>
       <body>
-        <Layout layout={root?.data?.layout}>
-          <GenericError error={error} />
-        </Layout>
+        <NotFound error={error} />
         <Scripts />
       </body>
     </html>
@@ -483,6 +471,6 @@ export async function getAllProductsData({storefront}) {
 }
 
 export async function getShopPage({sanityClient}) {
- const shop = await sanityClient.fetch(shopLinkQuery);
- return shop;
+  const shop = await sanityClient.fetch(shopLinkQuery);
+  return shop;
 }
