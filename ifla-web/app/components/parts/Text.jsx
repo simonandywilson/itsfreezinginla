@@ -1,6 +1,6 @@
 import {cva} from 'class-variance-authority';
 
-const text = cva('break-words', {
+const text = cva('break-words font-sans', {
   variants: {
     intent: {
       'ui-xs': ['ui-xs'],

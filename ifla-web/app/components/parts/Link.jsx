@@ -4,7 +4,9 @@ import {cva} from 'class-variance-authority';
 const link = cva('', {
   variants: {
     intent: {
-      link: ['focus-visible:underline focus:border-none focus:outline-none'],
+      link: [
+        'hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none',
+      ],
       'button-sm': [
         'p-1 inline-block hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
       ],
@@ -28,7 +30,13 @@ const link = cva('', {
   },
   compoundVariants: [
     {
-      intent: ['button-sm', 'button-base', 'button-lg', 'button-xl', 'button-2xl'],
+      intent: [
+        'button-sm',
+        'button-base',
+        'button-lg',
+        'button-xl',
+        'button-2xl',
+      ],
       colour: 'dark',
       className: 'text-white bg-black',
     },

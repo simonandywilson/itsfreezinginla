@@ -12,11 +12,13 @@ export const Article = ({article}) => {
       <ArticleBlockBanner article={article} />
       {article.date && (
         <Banner>
-          {new Date(article.date).toLocaleDateString('en-UK', {
-            year: 'numeric',
-            month: 'long',
-            day: '2-digit',
-          })}
+          <time>
+            {new Date(article.date).toLocaleDateString('en-UK', {
+              year: 'numeric',
+              month: 'long',
+              day: '2-digit',
+            })}
+          </time>
         </Banner>
       )}
       {article.content.map((content) => {

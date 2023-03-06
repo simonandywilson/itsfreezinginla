@@ -42,10 +42,6 @@ export default defineType({
       },
       options: {
         source: 'title',
-        // urlPrefix: (document) => {
-        // 	console.log(document);
-        // 	return `/${document.parent.name}/`;
-        // },
         urlPrefix: async (document) => {
           const parent = await getParentSlug(document)
           return `/${parent}/`

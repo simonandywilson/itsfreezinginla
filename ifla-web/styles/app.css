@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+  * {
+    font-weight: normal!important;
+  }
   
   :root {
     --accent-colour: '#db4d68';
@@ -33,10 +36,13 @@
   }
 
   summary::after {
-    content: ' ▴';
+    content: ' ⌄';
   }
+
   details[open] summary:after {
-    content: ' ▾';
+    content: ' ⌄';
+        transform: rotate(180deg);
+
   }
 }
 
@@ -102,4 +108,3 @@
     @apply text-xl;
   }
 }
-

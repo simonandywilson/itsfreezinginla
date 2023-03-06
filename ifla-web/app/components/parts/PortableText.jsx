@@ -1,12 +1,14 @@
 import {PortableText as SanityPortableText} from '@portabletext/react';
-import { Text } from './Text';
+import {Text} from './Text';
 import {cva} from 'class-variance-authority';
+import { CollapsibleModule } from '../modules/CollapsibleModule';
 
 const portableText = cva('[&>*:not(:last-child):not(p)]:mb-[1em]', {
   variants: {
     intent: {
-      body: [ '[&>p:not(:first-of-type)]:indent-5'],
+      body: ['[&>p:not(:first-of-type)]:indent-5'],
       column: ['[&>p:not(:first-of-type)]:mb-[1em]'],
+      footer: ['[&>p:not(:last-child)]:mb-[1em]'],
     },
   },
   defaultVariants: {
@@ -42,6 +44,11 @@ const components = (intent) => {
           {children}
         </Text>
       ),
+      h6: ({children}) => (
+        <Text tag={'h5'} intent={'bl-heading-sm'} className={"!mb-0"}>
+          {children}
+        </Text>
+      ),
       blockquote: ({children, value}) => (
         <Text
           tag={'blockquote'}
@@ -52,6 +59,9 @@ const components = (intent) => {
           {children}
         </Text>
       ),
+    },
+    types: {
+      collapsibleModule: ({value}) => <CollapsibleModule content={value} />,
     },
   };
 };

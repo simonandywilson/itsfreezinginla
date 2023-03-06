@@ -1,10 +1,10 @@
-import React from 'react';
 import {cva} from 'class-variance-authority';
 
 const layout = cva('layout', {
   variants: {
     intent: {
       page: [''],
+      footer: ['p-4 lg:p-0 lg:py-4'],
       cart: ['p-4'],
       space: ['px-4 py-0 sm:p-8'],
       module: ['px-4 py-4'],

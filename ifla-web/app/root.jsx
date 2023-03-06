@@ -233,7 +233,7 @@ async function getMenuData({sanityClient}) {
 		"children": *[_type == "page" && !(_id in path('drafts.**')) && references(^._id)] | order(orderRank asc) {
 			_id,
     		title,
-    		"slug":slug.fullUrl
+    		"slug":slug.current
 		}
 	}	
 `;

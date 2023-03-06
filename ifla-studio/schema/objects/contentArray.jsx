@@ -7,7 +7,6 @@ export default defineField({
   of: [
     {type: 'headingModule'},
     {type: 'textBlockModule'},
-    {type: 'collapsibleModule'},
     {type: 'textColumnsModule'},
     {type: 'imageModule'},
     {type: 'carouselModule'},

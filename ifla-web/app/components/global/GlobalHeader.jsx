@@ -13,7 +13,7 @@ const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
   return (
     <Popover
-      className="fixed h-24 w-screen bg-white z-50 text-3xl md:text-2xl"
+      className="fixed h-24 w-screen bg-white z-50"
       as={'header'}
     >
       <div className="relative w-full p-4 flex items-center justify-between">
@@ -26,7 +26,7 @@ const GlobalHeader = () => {
                 ' focus-visible:underline focus:border-none focus:outline-none'
               }
             >
-              {({open}) => <span>{open ? 'Close Menu' : 'Menu'}</span>}
+              {({open}) => <span>{open ? 'X' : 'Menu'}</span>}
             </Popover.Button>
           </div>
           {/* Desktop Menu Items */}

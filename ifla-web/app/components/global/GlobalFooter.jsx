@@ -2,29 +2,50 @@ import {Link} from '~/components/parts/Link';
 import {useRouteData} from 'remix-utils';
 import {PortableText} from '../parts/PortableText';
 import GlobalNewsletter from './GlobalNewsletter';
+import {Text} from '../parts/Text';
+import {cx} from 'class-variance-authority';
+import {Layout} from '../parts/Layout';
 
 const GlobalFooter = () => {
   const {footer} = useRouteData(`root`);
   return (
-    <footer className="bg-black p-4 mt-auto text-white flex justify-between gap-4 flex-col sm:flex-row">
-      <div className={'flex-1 flex flex-col min-w-[10rem]'}>
+    <Layout
+      tag={'footer'}
+      intent={'footer'}
+      className={cx(
+        'bg-black mt-auto text-white flex justify-between flex-col gap-8',
+        'md:flex-row md:gap-0',
+      )}
+    >
+      <div className={cx('w-1/3 order-first flex flex-col', 'lg:px-4')}>
+        <Text className={'text-white mb-[1em]'}>Pages</Text>
         {footer.footerLinks.map((link) => {
           return (
-            <Link to={link.slug} key={link._id}>
-              {link.title}
+            <Link
+              to={link.slug}
+              key={link._id}
+              colour={'light'}
+              className={'w-max'}
+            >
+              <Text>{link.title}</Text>
             </Link>
           );
         })}
       </div>
-      <div className={'flex gap-4 justify-between flex-col md:flex-row'}>
-        <div className={'flex-1 order-last md:order-first'}>
-          <PortableText text={footer.footerText} />
+      <div className={cx('flex-1 flex gap-8 flex-col', 'lg:flex-row lg:gap-0')}>
+        <div
+          className={cx(
+            'max-w-prose flex-1 order-last',
+            'lg:order-first lg:pr-4 lg:w-1/2',
+          )}
+        >
+          <PortableText text={footer.footerText} intent={'footer'} />
         </div>
-        <div className={'flex-1 order-first md:order-last'}>
+        <div className={cx('flex-1 order-first', 'lg:order-last lg:pr-4')}>
           <GlobalNewsletter />
         </div>
       </div>
-    </footer>
+    </Layout>
   );
 };
 

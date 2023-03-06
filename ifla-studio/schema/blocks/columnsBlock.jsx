@@ -13,8 +13,9 @@ export default defineField({
     {
       type: 'block',
       styles: [
-        {title: 'Heading', value: 'h3'},
         {title: 'Body', value: 'normal'},
+        {title: 'Subheading', value: 'h6'},
+        {title: 'Heading', value: 'h3'},
       ],
       lists: [],
       marks: {

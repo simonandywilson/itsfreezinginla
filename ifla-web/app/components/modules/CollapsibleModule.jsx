@@ -1,17 +1,25 @@
-import React from 'react';
 import {Layout} from '../parts/Layout';
 import {PortableTextPlain} from '../parts/PortableTextPlain';
 import {Text} from '../parts/Text';
 
 export const CollapsibleModule = ({content}) => {
+  const {name, heading, text} = content;
   return (
-    <Layout intent={'module'}>
-      {content.name && <Text tag={"h4"}>{content.name}</Text>}
+    <Layout>
+      {name && (
+        <Text tag={'h5'} intent={'bl-heading-sm'} className={'!mb-0'}>
+          {name}
+        </Text>
+      )}
       <details>
-        <summary>
-          <Text className={"select-none"}>{content.heading || 'Collapsible'}</Text>
+        <summary className={'flex gap-2'}>
+          <Text tag={'p'} intent={'bl-body-lg'} className={"select-none"}>
+            {heading || 'Collapsible'}
+          </Text>
         </summary>
-        <PortableTextPlain text={content.text} />
+        <Text tag={'p'} intent={'bl-body-alt'} className={"mt-4"}>
+          <PortableTextPlain text={text} />
+        </Text>
       </details>
     </Layout>
   );

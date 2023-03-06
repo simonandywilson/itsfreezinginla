@@ -36,33 +36,31 @@ const GlobalNewsletter = () => {
   }, [state]);
 
   return (
-    <main>
-      <Form replace method="post" aria-hidden={state === 'success'}>
-        <h2 className={'mb-[1em]'}>Sign up to our newsletter</h2>
-        <fieldset>
-          <label>email:</label>
-          <div>
-            <input
-              aria-label="Email address"
-              aria-describedby="error-message"
-              ref={inputRef}
-              type="email"
-              name="email"
-              placeholder=""
-              className={
-                'text-white bg-black rounded-none border-b-2 py-2 border-dashed placeholder-white mr-2 focus:border-solid focus:outline-none'
-              }
-            />
-            <Button type={'submit'} intent={'medium'} colour={'light'}>
-              {state === 'idle' && 'Go on'}
-              {state === 'submitting' && 'Subscribing...'}
-              {state === 'success' && 'Subscribed!'}
-              {state === 'error' && 'Error :('}
-            </Button>
-          </div>
-        </fieldset>
-      </Form>
-    </main>
+    <Form method="post" aria-hidden={state === 'success'}>
+      <h2 className={'mb-[1em]'}>Sign up to our newsletter</h2>
+      <fieldset>
+        <label>email:</label>
+        <div className={"flex max-w-sm"}>
+          <input
+            aria-label="Email address"
+            aria-describedby="error-message"
+            ref={inputRef}
+            type="email"
+            name="email"
+            placeholder=""
+            className={
+              'flex-1 text-white bg-black rounded-none border-b-2 py-2 placeholder-white mr-2 focus:outline-none'
+            }
+          />
+          <Button type={'submit'} intent={'base'} colour={'light'} aria-label={"Submit email"}>
+            {state === 'idle' && 'Go on'}
+            {state === 'submitting' && 'Subscribing...'}
+            {state === 'success' && 'Subscribed!'}
+            {state === 'error' && 'Error :('}
+          </Button>
+        </div>
+      </fieldset>
+    </Form>
   );
 };
 
