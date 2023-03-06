@@ -38,7 +38,6 @@ node_modules/
 node_modules.nosync
 node_modules
 .cache/
-public
 
 # Env
 .env
@@ -49,5 +48,4 @@ dist
 *.local
 /build
 /dist
-/public/build
 /app/styles/app.css
