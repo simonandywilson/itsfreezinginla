@@ -11,6 +11,7 @@ import {Button} from '~/components/parts/Button';
 import {CartPreview} from '../components/parts/CartPreview';
 import {cx} from 'class-variance-authority';
 import {Dash} from '../components/parts/Dash';
+import { Link } from '../components/parts/Link';
 
 export const handle = {
   seo: {
@@ -173,11 +174,13 @@ export async function action({request, context}) {
 }
 
 export default function CartPage() {
-  const { cart, shop } = useRouteData(`root`);
+  const {cart, shop} = useRouteData(`root`);
   return (
     <div>
       <Suspense fallback={<CartLoader />}>
-        <Await resolve={cart}>{(cart) => <Cart cart={cart} shop={shop} />}</Await>
+        <Await resolve={cart}>
+          {(cart) => <Cart cart={cart} shop={shop} />}
+        </Await>
       </Suspense>
     </div>
   );
@@ -187,12 +190,16 @@ const Cart = ({cart, shop}) => {
   const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
   return (
     <>
-      {cartHasItems ? <CartDetails cart={cart} shop={shop} /> : <EmptyCart />}
+      {cartHasItems ? (
+        <CartDetails cart={cart} shop={shop} />
+      ) : (
+        <EmptyCart shop={shop} />
+      )}
     </>
   );
 };
 
-const CartDetails = ({ cart, shop }) => {
+const CartDetails = ({cart, shop}) => {
   const {lines, cost, checkoutUrl} = cart;
   return (
     <Layout intent={'cart'}>
@@ -227,12 +234,17 @@ const CartDetails = ({ cart, shop }) => {
   );
 };
 
-const EmptyCart = () => {
+const EmptyCart = ({shop}) => {
   return (
     <Layout intent={'centre'}>
-      <Text tag={'h2'} intent={'ui-2xl'}>
-        Basket is empty
-      </Text>
+      <div className={"flex flex-col gap-4 justify-center items-center"}>
+        <Text tag={'h2'} intent={'ui-2xl'}>
+          Basket is empty
+        </Text>
+        <Link to={shop.shop.slug.fullUrl} intent={'button-2xl'} colour={'dark'}>
+          <Text intent={'button-2xl'}>Back to shop</Text>
+        </Link>
+      </div>
     </Layout>
   );
 };
@@ -249,25 +261,23 @@ const CartLine = ({line}) => {
   const {id, merchandise} = line;
   return (
     <CartLineWrapper>
-        <div
-          className={'flex gap-2 items-baseline justify-self-stretch'}
-        >
-          <Text tag={'h4'} intent={'ui-xl'}>
-            {merchandise.product.title}
-          </Text>
-          <Text tag={'h5'} intent={'ui-xl'} className={'text-center'}>
-            {merchandise.title}
-          </Text>
-          <Dash className={'flex-1'} />
-          <Money
-            withoutTrailingZeros
-            data={merchandise.price}
-            className={'text-right ui-xl'}
-          />
-        </div>
-        <div className={'justify-self-end w-16 text-right'}>
-          <CartRemove id={id} />
-        </div>
+      <div className={'flex gap-2 items-baseline justify-self-stretch'}>
+        <Text tag={'h4'} intent={'ui-xl'}>
+          {merchandise.product.title}
+        </Text>
+        <Text tag={'h5'} intent={'ui-xl'} className={'text-center'}>
+          {merchandise.title}
+        </Text>
+        <Dash className={'flex-1'} />
+        <Money
+          withoutTrailingZeros
+          data={merchandise.price}
+          className={'text-right ui-xl'}
+        />
+      </div>
+      <div className={'justify-self-end w-16 text-right'}>
+        <CartRemove id={id} />
+      </div>
     </CartLineWrapper>
   );
 };
