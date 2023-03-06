@@ -32,7 +32,7 @@ export const CartPreview = ({text, link}) => {
             <Suspense fallback={null}>
               <Await resolve={cart}>
                 {(cart) =>
-                  cart.lines.edges.map(({node}) => {
+                  cart?.lines?.edges && cart.lines.edges.map(({node}) => {
                     const rotation = Math.floor(Math.random() * 50) - 25;
                     const x = Math.floor(Math.random() * 75) + 1;
                     const y = Math.floor(Math.random() * 50) + 1;
