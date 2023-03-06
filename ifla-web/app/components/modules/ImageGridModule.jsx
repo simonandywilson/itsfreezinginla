@@ -1,7 +1,8 @@
 import { Layout } from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
 
-export const ImageGridModule = ({content, inline}) => {
+export const ImageGridModule = ({ content }) => {
+  const inline = true
   const {images} = content;
     return (
       <Layout intent={inline ? 'module-inline' : 'module'}>

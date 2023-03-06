@@ -7,6 +7,7 @@ const link = cva('w-max', {
       link: [
         'hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none',
       ],
+      block: ['focus:outline-none focus:border-none'],
       'button-sm': [
         'p-1 inline-block hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none',
       ],
@@ -26,6 +27,9 @@ const link = cva('w-max', {
     colour: {
       light: ['text-white'],
       dark: ['text-black'],
+      mono: [
+        'text-white bg-black hover:text-black hover:bg-white focus-visible:text-black focus-visible:bg-white',
+      ],
     },
   },
   compoundVariants: [

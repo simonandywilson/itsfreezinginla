@@ -8,6 +8,24 @@ import { wcagContrastChecker } from "@mdhnpm/wcag-contrast-checker";
 import namer from "color-namer";
 import { HexColorPicker } from "react-colorful";
 import { useClient, useFormValue } from "sanity";
+import styled from 'styled-components'
+
+const Preview = styled.button`
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.375rem;
+  border: none;
+  cursor: pointer;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+`
+
+const Picker = styled.div`
+  position: absolute;
+  border-radius: 0.375rem;
+  top: 0;
+  z-index: 50;
+  filter: drop-shadow(0 4px 3px rgb(0 0 0 / 0.07)) drop-shadow(0 2px 2px rgb(0 0 0 / 0.06));
+`
 
 const titleCase = (str) => {
 	let splitStr = str.toLowerCase().split(" ");
@@ -74,60 +92,45 @@ export const AccessibleColourInput = (props) => {
 	}, [colourName]);
 
 	return (
-		<Stack space={2}>
-			<Card shadow={1} radius={2}>
-				<Stack>
-					<Card padding={4} style={{ background: "#f6f6f6" }}>
-						<Stack space={2}>
-							<Label size={1}>WCAG Compliance Results:</Label>
-							<Inline space={2}>
-								<Badge tone={regularAA}>AA Regular</Badge>
-								<Badge tone={largeAA}>AA Large</Badge>
-								<Badge tone={regularAAA}>AAA Regular</Badge>
-								<Badge tone={largeAAA}>AAA Large</Badge>
-							</Inline>
-						</Stack>
-					</Card>
-					<Card shadow={1} radius={2} padding={4}>
-						<Stack space={4}>
-							<Flex display={"flex"}>
-								<Card marginRight={3}>
-									<div className={"relative"}>
-										<button
-											className={
-												"w-10 h-10 rounded-md border shadow-sm cursor-pointer"
-											}
-											style={{ backgroundColor: colour }}
-											onClick={() => toggle(true)}
-										/>
-										{isOpen && (
-											<div
-												ref={popover}
-												className={
-													"absolute inset-0 rounded-md z-50 shadow-md"
-												}
-											>
-												<HexColorPicker
-													color={colour}
-													onChange={setColour}
-												/>
-											</div>
-										)}
-									</div>
-								</Card>
-								<Card flex={3}>
-									<TextInput
-										{...elementProps}
-										onChange={handleChange}
-										value={value}
-									/>
-								</Card>
-							</Flex>
-							<Label size={1}>{colourName}</Label>
-						</Stack>
-					</Card>
-				</Stack>
-			</Card>
-		</Stack>
-	);
+    <Stack space={2}>
+      <Card shadow={1} radius={2}>
+        <Stack>
+          <Card padding={4} style={{background: '#f6f6f6'}}>
+            <Stack space={2}>
+              <Label size={1}>WCAG Compliance Results:</Label>
+              <Inline space={2}>
+                <Badge tone={regularAA}>AA Regular</Badge>
+                <Badge tone={largeAA}>AA Large</Badge>
+                <Badge tone={regularAAA}>AAA Regular</Badge>
+                <Badge tone={largeAAA}>AAA Large</Badge>
+              </Inline>
+            </Stack>
+          </Card>
+          <Card shadow={1} radius={2} padding={4}>
+            <Stack space={4}>
+              <Flex display={'flex'}>
+                <Card marginRight={3}>
+                  <div style={{position: "relative"}}>
+                    <Preview
+                      style={{backgroundColor: colour}}
+                      onClick={() => toggle(true)}
+                    />
+                    {isOpen && (
+                      <Picker ref={popover}>
+                        <HexColorPicker color={colour} onChange={setColour} />
+                      </Picker>
+                    )}
+                  </div>
+                </Card>
+                <Card flex={3}>
+                  <TextInput {...elementProps} onChange={handleChange} value={value} />
+                </Card>
+              </Flex>
+              <Label size={1}>{colourName}</Label>
+            </Stack>
+          </Card>
+        </Stack>
+      </Card>
+    </Stack>
+  )
 };

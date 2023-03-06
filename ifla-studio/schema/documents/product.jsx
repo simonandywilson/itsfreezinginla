@@ -4,7 +4,8 @@ import pluralize from 'pluralize'
 import ShopifyIcon from "../../styles/ShopifyIcon";
 import ShopifyDocumentStatus from '../../components/ShopifyDocumentStatus'
 import {getPriceRange} from '../../utils/getPriceRange'
-
+import { AccessibleColourInput } from '../../components/AccessibleColourInput';
+import { defineField } from 'sanity';
 
 export default {
   name: 'product',
@@ -17,25 +18,33 @@ export default {
       name: 'hidden',
       type: 'string',
       //   inputComponent: ProductHiddenInput,
-      hidden: ({ parent }) => {
+      hidden: ({parent}) => {
         const isActive = parent?.store?.status === 'active'
         const isDeleted = parent?.store?.isDeleted
         return isActive && !isDeleted
       },
     },
+    defineField({
+      name: 'colour',
+      type: 'string',
+      components: {
+        input: AccessibleColourInput,
+      },
+      options: {type: '#000000', defaultColour: '#e3e8ef'},
+    }),
     // Title (proxy)
     {
       name: 'titleProxy',
       title: 'Title',
       type: 'shopifyProxyString',
-      options: { field: 'store.title' },
+      options: {field: 'store.title'},
     },
     // Slug (proxy)
     {
       name: 'slugProxy',
       title: 'Slug',
       type: 'shopifyProxyString',
-      options: { field: 'store.slug.current' },
+      options: {field: 'store.slug.current'},
     },
     // Shopify product
     {
@@ -56,22 +65,22 @@ export default {
     {
       name: 'titleAsc',
       title: 'Title (A-Z)',
-      by: [{ field: 'store.title', direction: 'asc' }],
+      by: [{field: 'store.title', direction: 'asc'}],
     },
     {
       name: 'titleAsc',
       title: 'Title (Z-A)',
-      by: [{ field: 'store.title', direction: 'desc' }],
+      by: [{field: 'store.title', direction: 'desc'}],
     },
     {
       name: 'titleAsc',
       title: 'Price (Highest first)',
-      by: [{ field: 'store.priceRange.minVariantPrice', direction: 'desc' }],
+      by: [{field: 'store.priceRange.minVariantPrice', direction: 'desc'}],
     },
     {
       name: 'titleAsc',
       title: 'Title (Lowest first)',
-      by: [{ field: 'store.priceRange.minVariantPrice', direction: 'asc' }],
+      by: [{field: 'store.priceRange.minVariantPrice', direction: 'asc'}],
     },
   ],
   preview: {
@@ -85,15 +94,8 @@ export default {
       variantCount: 'store.variants.length',
     },
     prepare(selection) {
-      const {
-        isDeleted,
-        optionCount,
-        previewImageUrl,
-        priceRange,
-        status,
-        title,
-        variantCount,
-      } = selection
+      const {isDeleted, optionCount, previewImageUrl, priceRange, status, title, variantCount} =
+        selection
 
       let description = [
         variantCount ? pluralize('variant', variantCount, true) : 'No variants',

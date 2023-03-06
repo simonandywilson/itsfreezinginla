@@ -6,7 +6,7 @@ const layout = cva('layout', {
       page: [''],
       footer: ['p-4 lg:p-0 lg:py-4'],
       banner: [
-        'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-8rem)]',
+        'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
       ],
       cart: ['p-4'],
       space: ['px-4 py-0 sm:p-8'],
@@ -23,7 +23,7 @@ const layout = cva('layout', {
         'h-[calc(100vh-6rem)]',
         'pb-24',
       ],
-      columns: [' md:columns-2 lg:columns-3 px-4'],
+      columns: ['md:columns-2 lg:columns-3 px-4'],
     },
   },
   defaultVariants: {

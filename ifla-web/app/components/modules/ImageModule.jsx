@@ -2,8 +2,10 @@ import {Layout} from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
 import {Text} from '../parts/Text';
 
-export const ImageModule = ({content, inline}) => {
-  const {caption, image, colour} = content;
+export const ImageModule = ({ content }) => {
+    const inline = true;
+  const { caption, image, colour } = content;
+  
   return (
     <Layout intent={inline ? 'module-inline' : 'module'}>
       {image && (

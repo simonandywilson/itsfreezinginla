@@ -5,18 +5,19 @@ import {Link} from '../parts/Link';
 import { cx } from 'class-variance-authority';
 
 const Hero = ({hero}) => {
-  const {title, slug, image, colour} = hero;
+	const { store, colour } = hero;
   return (
     <Layout tag={'article'} intent={'banner'} colour={colour || '#e3e8ef'}>
       <div className={'relative w-full h-full'}>
         <div className={cx('relative w-full h-full flex flex-col gap-4 z-10')}>
-          <Text intent={'ui-6xl'}>{title}</Text>
+          <Text intent={'ui-6xl'}>{store.title}</Text>
           <Link
             intent={'button-2xl'}
+            colour={'mono'}
             className={'flex-grow-0'}
-            to={slug.shop.slug.fullUrl}
+            to={store.slug.shop.slug.fullUrl}
           >
-            <Text intent={'ui-6xl'}>Buy</Text>
+            <Text intent={'ui-3xl'}>Buy</Text>
           </Link>
         </div>
         <div
@@ -25,8 +26,8 @@ const Hero = ({hero}) => {
           }
         >
           <img
-            src={image}
-            alt={title}
+            src={store.image}
+            alt={store.title}
             className={'w-full h-full object-contain'}
           />
         </div>

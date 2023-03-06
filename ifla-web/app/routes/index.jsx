@@ -7,7 +7,7 @@ import {Link} from '../components/parts/Link';
 import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {Banner} from '../components/parts/Banner';
-import { Layout } from '../components/parts/Layout';
+import {Layout} from '../components/parts/Layout';
 import {shopLinkQuery} from '../lib/queries';
 
 export const handle = {
@@ -30,7 +30,7 @@ export async function loader({context}) {
 }
 
 export default function Index() {
-  const { homepage } = useLoaderData();
+  const {homepage} = useLoaderData();
   return (
     <div>
       <Banner>
@@ -46,9 +46,10 @@ export default function Index() {
           </Banner>
           <Layout intent={'grid'} tag={'ul'}>
             <li className={'col-span-full w-full'}>
-              <Link to={homepage.featured[0].slug}>
-                <ArticleBlockBanner article={homepage.featured[0]} />
-              </Link>
+                <ArticleBlockBanner
+                  article={homepage.featured[0]}
+                  link={homepage.featured[0].slug}
+                />
             </li>
             {homepage.featured.map((article, index) => {
               if (index === 0) {
@@ -56,7 +57,7 @@ export default function Index() {
               }
               return (
                 <li key={article._id} className={'w-full'}>
-                  <Link to={article.slug}>
+                  <Link to={article.slug} intent={'block'} className={"group"}>
                     <ArticleBlock article={article} />
                   </Link>
                 </li>
@@ -74,11 +75,11 @@ export default function Index() {
 async function getHomepageData({sanityClient}) {
   const query = groq`*[_type == "home"][0] {
 		"heroBanner": heroBanner,
-    "hero": hero -> store {
+    "hero": hero -> {colour, store {
       title,
       "image": previewImageUrl,
-      "slug": ${shopLinkQuery}
-    },
+      "slug": ${shopLinkQuery},
+    }},
 		"featuredBanner": featuredBanner,
 		"featured": featured[0...3] -> {
 			_id,
@@ -93,7 +94,7 @@ async function getHomepageData({sanityClient}) {
           asset-> {_id}
         }
       },
-			media[],
+			category[] -> {_id, category},
 			image {
           		alt,
             	asset->{_id}
