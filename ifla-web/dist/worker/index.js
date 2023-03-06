@@ -22104,58 +22104,8 @@ var falsyToString = (value) => typeof value == "boolean" ? "".concat(value) : va
   return cx(base, getVariantClassNames, getCompoundVariantClassNames, props == null ? void 0 : props.class, props == null ? void 0 : props.className);
 };
 
-// app/components/parts/Layout.jsx
-var import_jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime()), layout = cva("layout", {
-  variants: {
-    intent: {
-      page: [""],
-      footer: ["p-4 lg:p-0 lg:py-4"],
-      banner: [
-        "w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]"
-      ],
-      cart: ["p-4"],
-      space: ["px-4 py-4 sm:p-8"],
-      module: ["px-4 my-8"],
-      "module-full": ["my-8"],
-      "module-inline": ["prose my-8 break-inside-avoid-column"],
-      text: ["py-8"],
-      grid: ["grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"],
-      article: ["flex flex-col"],
-      centre: [
-        "flex",
-        "justify-center",
-        "items-center",
-        "h-[calc(100vh-6rem)]",
-        "pb-24"
-      ],
-      columns: ["md:columns-2 lg:columns-3 px-4"]
-    }
-  },
-  defaultVariants: {
-    intent: "page"
-  }
-}), Layout = ({ tag, className, intent, children, colour }) => {
-  let ElementTag = `${tag || "section"}`;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(
-    ElementTag,
-    {
-      className: layout({ intent, className }),
-      style: { background: colour },
-      children
-    },
-    void 0,
-    !1,
-    {
-      fileName: "app/components/parts/Layout.jsx",
-      lineNumber: 37,
-      columnNumber: 5
-    },
-    this
-  );
-};
-
 // app/components/parts/Link.jsx
-var import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime()), link = cva("w-max", {
+var import_jsx_dev_runtime2 = __toESM(require_jsx_dev_runtime()), link = cva("w-max", {
   variants: {
     intent: {
       link: [
@@ -22203,118 +22153,11 @@ var import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime()), link = cva("w-
     intent: "link",
     colour: "dark"
   }
-}), Link3 = ({ children, to, intent, colour, className }) => /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(Link2, { to, className: link({ intent, colour, className }), children }, void 0, !1, {
+}), Link3 = ({ children, to, intent, colour, className }) => /* @__PURE__ */ (0, import_jsx_dev_runtime2.jsxDEV)(Link2, { to, className: link({ intent, colour, className }), children }, void 0, !1, {
   fileName: "app/components/parts/Link.jsx",
   lineNumber: 56,
   columnNumber: 5
 }, this);
-
-// app/components/parts/Text.jsx
-var import_jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime()), text = cva("break-words font-sans", {
-  variants: {
-    intent: {
-      "ui-xs": ["ui-xs"],
-      "ui-sm": ["ui-sm"],
-      "ui-base": ["ui-base"],
-      "ui-lg": ["ui-lg"],
-      "ui-xl": ["ui-xl"],
-      "ui-2xl": ["ui-2xl"],
-      "ui-3xl": ["ui-3xl"],
-      "ui-4xl": ["ui-4xl"],
-      "ui-5xl": ["ui-5xl"],
-      "ui-6xl": ["ui-6xl"],
-      "button-sm": ["ui-sm"],
-      "button-base": ["ui-base"],
-      "button-lg": ["ui-lg"],
-      "button-xl": ["ui-xl"],
-      "button-2xl": ["ui-2xl"],
-      "bl-heading-sm": ["bl-heading-sm"],
-      "bl-heading-base": ["bl-heading-base"],
-      "bl-heading-lg": ["bl-heading-lg"],
-      "bl-heading-xl": ["bl-heading-xl"],
-      "bl-heading-2xl": ["bl-heading-2xl"],
-      "bl-heading-3xl": ["bl-heading-3xl"],
-      "bl-body": ["bl-body"],
-      "bl-body-alt": ["bl-body-alt"],
-      "bl-body-lg": ["bl-body-lg"],
-      "bl-quote": ["bl-quote"]
-    }
-  },
-  defaultVariants: {
-    intent: "ui-base"
-  },
-  compoundVariants: [
-    {
-      intent: ["bl-body"],
-      className: "font-serif"
-    }
-  ]
-}), Text = ({ tag, intent, className, children, colour }) => {
-  let ElementTag = `${tag || "p"}`;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(ElementTag, { className: text({ intent, className }), style: { color: colour }, children }, void 0, !1, {
-    fileName: "app/components/parts/Text.jsx",
-    lineNumber: 47,
-    columnNumber: 5
-  }, this);
-};
-
-// app/components/error/NotFound.js
-var import_jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime());
-function NotFound({ error: error2 }) {
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Layout, { intent: "center", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("div", { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Text, { tag: "h2", children: "Not Found" }, void 0, !1, {
-      fileName: "app/components/error/NotFound.js",
-      lineNumber: 9,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Link3, { intent: "button-xl", to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Text, { tag: "h3", children: "Take me to homepage" }, void 0, !1, {
-      fileName: "app/components/error/NotFound.js",
-      lineNumber: 11,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/error/NotFound.js",
-      lineNumber: 10,
-      columnNumber: 9
-    }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Text, { children: (error2 == null ? void 0 : error2.stack) && /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(
-      "pre",
-      {
-        dangerouslySetInnerHTML: {
-          __html: addLinksToStackTrace(error2.stack)
-        }
-      },
-      void 0,
-      !1,
-      {
-        fileName: "app/components/error/NotFound.js",
-        lineNumber: 15,
-        columnNumber: 13
-      },
-      this
-    ) }, void 0, !1, {
-      fileName: "app/components/error/NotFound.js",
-      lineNumber: 13,
-      columnNumber: 9
-    }, this)
-  ] }, void 0, !0, {
-    fileName: "app/components/error/NotFound.js",
-    lineNumber: 8,
-    columnNumber: 7
-  }, this) }, void 0, !1, {
-    fileName: "app/components/error/NotFound.js",
-    lineNumber: 7,
-    columnNumber: 5
-  }, this);
-}
-function addLinksToStackTrace(stackTrace) {
-  return stackTrace == null ? void 0 : stackTrace.replace(
-    /^\s*at\s?.*?[(\s]((\/|\w\:).+)\)\n/gim,
-    (all, m1) => all.replace(
-      m1,
-      `<a href="vscode://file${m1}" class="hover:underline">${m1}</a>`
-    )
-  );
-}
 
 // node_modules/remix-utils/browser/react/use-route-data.js
 function useRouteData(routeId) {
@@ -22973,20 +22816,119 @@ function serializeBlock(options) {
 function noop() {
 }
 
+// app/components/parts/Text.jsx
+var import_jsx_dev_runtime3 = __toESM(require_jsx_dev_runtime()), text = cva("break-words font-sans", {
+  variants: {
+    intent: {
+      "ui-xs": ["ui-xs"],
+      "ui-sm": ["ui-sm"],
+      "ui-base": ["ui-base"],
+      "ui-lg": ["ui-lg"],
+      "ui-xl": ["ui-xl"],
+      "ui-2xl": ["ui-2xl"],
+      "ui-3xl": ["ui-3xl"],
+      "ui-4xl": ["ui-4xl"],
+      "ui-5xl": ["ui-5xl"],
+      "ui-6xl": ["ui-6xl"],
+      "button-sm": ["ui-sm"],
+      "button-base": ["ui-base"],
+      "button-lg": ["ui-lg"],
+      "button-xl": ["ui-xl"],
+      "button-2xl": ["ui-2xl"],
+      "bl-heading-sm": ["bl-heading-sm"],
+      "bl-heading-base": ["bl-heading-base"],
+      "bl-heading-lg": ["bl-heading-lg"],
+      "bl-heading-xl": ["bl-heading-xl"],
+      "bl-heading-2xl": ["bl-heading-2xl"],
+      "bl-heading-3xl": ["bl-heading-3xl"],
+      "bl-body": ["bl-body"],
+      "bl-body-alt": ["bl-body-alt"],
+      "bl-body-lg": ["bl-body-lg"],
+      "bl-quote": ["bl-quote"]
+    }
+  },
+  defaultVariants: {
+    intent: "ui-base"
+  },
+  compoundVariants: [
+    {
+      intent: ["bl-body"],
+      className: "font-serif"
+    }
+  ]
+}), Text = ({ tag, intent, className, children, colour }) => {
+  let ElementTag = `${tag || "p"}`;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime3.jsxDEV)(ElementTag, { className: text({ intent, className }), style: { color: colour }, children }, void 0, !1, {
+    fileName: "app/components/parts/Text.jsx",
+    lineNumber: 47,
+    columnNumber: 5
+  }, this);
+};
+
+// app/components/parts/Layout.jsx
+var import_jsx_dev_runtime4 = __toESM(require_jsx_dev_runtime()), layout = cva("layout", {
+  variants: {
+    intent: {
+      page: [""],
+      footer: ["p-4 lg:p-0 lg:py-4"],
+      banner: [
+        "w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]"
+      ],
+      cart: ["p-4"],
+      space: ["px-4 py-4 sm:p-8"],
+      module: ["px-4 my-8"],
+      "module-full": ["my-8"],
+      "module-inline": ["prose my-8 break-inside-avoid-column"],
+      text: ["py-8"],
+      grid: ["grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3"],
+      article: ["flex flex-col"],
+      centre: [
+        "flex",
+        "justify-center",
+        "items-center",
+        "h-[calc(100vh-6rem)]",
+        "pb-24"
+      ],
+      columns: ["md:columns-2 lg:columns-3 px-4"]
+    }
+  },
+  defaultVariants: {
+    intent: "page"
+  }
+}), Layout = ({ tag, className, intent, children, colour }) => {
+  let ElementTag = `${tag || "section"}`;
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime4.jsxDEV)(
+    ElementTag,
+    {
+      className: layout({ intent, className }),
+      style: { background: colour },
+      children
+    },
+    void 0,
+    !1,
+    {
+      fileName: "app/components/parts/Layout.jsx",
+      lineNumber: 37,
+      columnNumber: 5
+    },
+    this
+  );
+};
+
 // app/components/parts/PortableTextPlain.jsx
 var PortableTextPlain = ({ text: text2 }) => toPlainText(text2);
 
 // app/components/modules/CollapsibleModule.jsx
-var import_jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime()), CollapsibleModule = ({ content }) => {
+var import_jsx_dev_runtime5 = __toESM(require_jsx_dev_runtime()), CollapsibleModule = ({ content }) => {
   let { name, heading, text: text2 } = content;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Layout, { children: [
-    name && /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Text, { tag: "h5", intent: "bl-heading-sm", className: "!mb-0", children: name }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Layout, { children: [
+    name && /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Text, { tag: "h5", intent: "bl-heading-sm", className: "!mb-0", children: name }, void 0, !1, {
       fileName: "app/components/modules/CollapsibleModule.jsx",
       lineNumber: 10,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("details", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)("summary", { className: "flex gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Text, { tag: "p", intent: "bl-body-lg", className: "select-none", children: heading || "Collapsible" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("details", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)("summary", { className: "flex gap-2", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Text, { tag: "p", intent: "bl-body-lg", className: "select-none", children: heading || "Collapsible" }, void 0, !1, {
         fileName: "app/components/modules/CollapsibleModule.jsx",
         lineNumber: 16,
         columnNumber: 11
@@ -22995,7 +22937,7 @@ var import_jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime()), CollapsibleMod
         lineNumber: 15,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(Text, { tag: "p", intent: "bl-body-alt", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(PortableTextPlain, { text: text2 }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(Text, { tag: "p", intent: "bl-body-alt", className: "mt-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime5.jsxDEV)(PortableTextPlain, { text: text2 }, void 0, !1, {
         fileName: "app/components/modules/CollapsibleModule.jsx",
         lineNumber: 21,
         columnNumber: 11
@@ -23173,10 +23115,10 @@ function isFileAssetFilename(filename) {
 }
 
 // app/components/parts/SanityImage.jsx
-var import_jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime());
+var import_jsx_dev_runtime6 = __toESM(require_jsx_dev_runtime());
 function SanityImage({ value, isInline, className, alt }) {
   let { sanityProjectDetails } = useRouteData("root"), { width, height } = getImageDimensions(value);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime6.jsxDEV)(
     "img",
     {
       className: cx("not-prose h-auto w-full", className),
@@ -23200,10 +23142,10 @@ function SanityImage({ value, isInline, className, alt }) {
 }
 
 // app/components/modules/ImageModule.jsx
-var import_jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime()), ImageModule = ({ content }) => {
+var import_jsx_dev_runtime7 = __toESM(require_jsx_dev_runtime()), ImageModule = ({ content }) => {
   let { caption, image, colour } = content;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Layout, { intent: "module-inline", children: [
-    image && /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(SanityImage, { value: image }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(Layout, { intent: "module-inline", children: [
+    image && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)("div", { className: "w-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(SanityImage, { value: image }, void 0, !1, {
       fileName: "app/components/modules/ImageModule.jsx",
       lineNumber: 13,
       columnNumber: 11
@@ -23212,7 +23154,7 @@ var import_jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime()), ImageModule = 
       lineNumber: 12,
       columnNumber: 9
     }, this),
-    caption && /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
+    caption && /* @__PURE__ */ (0, import_jsx_dev_runtime7.jsxDEV)(
       Text,
       {
         tag: "figcaption",
@@ -23238,13 +23180,13 @@ var import_jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime()), ImageModule = 
 };
 
 // app/components/modules/ImageGridModule.jsx
-var import_jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime()), ImageGridModule = ({ content }) => {
+var import_jsx_dev_runtime8 = __toESM(require_jsx_dev_runtime()), ImageGridModule = ({ content }) => {
   let { images } = content;
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(Layout, { intent: "module-inline", children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-4", children: images.map((image) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(Layout, { intent: "module-inline", children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)("div", { className: "grid grid-cols-1 sm:grid-cols-2 gap-4", children: images.map((image) => /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(
     "div",
     {
       className: "w-full aspect-square",
-      children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(SanityImage, { value: image, className: "h-full object-cover" }, void 0, !1, {
+      children: /* @__PURE__ */ (0, import_jsx_dev_runtime8.jsxDEV)(SanityImage, { value: image, className: "h-full object-cover" }, void 0, !1, {
         fileName: "app/components/modules/ImageGridModule.jsx",
         lineNumber: 16,
         columnNumber: 17
@@ -25855,7 +25797,7 @@ var SwiperSlide = /* @__PURE__ */ (0, import_react17.forwardRef)(function(_temp,
 SwiperSlide.displayName = "SwiperSlide";
 
 // app/components/modules/TextColumnsModule.jsx
-var import_jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime()), TextColumnsModule = ({ content }) => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(Layout, { intent: "columns", style: { columnFill: "auto" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(PortableText2, { text: content.text, intent: "column" }, void 0, !1, {
+var import_jsx_dev_runtime9 = __toESM(require_jsx_dev_runtime()), TextColumnsModule = ({ content }) => /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(Layout, { intent: "columns", style: { columnFill: "auto" }, children: /* @__PURE__ */ (0, import_jsx_dev_runtime9.jsxDEV)(PortableText2, { text: content.text, intent: "column" }, void 0, !1, {
   fileName: "app/components/modules/TextColumnsModule.jsx",
   lineNumber: 7,
   columnNumber: 7
@@ -25866,9 +25808,9 @@ var import_jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime()), TextColumnsMo
 }, this);
 
 // app/components/modules/CarouselModule.jsx
-var import_jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime()), CarouselModule = ({ content }) => {
+var import_jsx_dev_runtime10 = __toESM(require_jsx_dev_runtime()), CarouselModule = ({ content }) => {
   let [swiperInstance, setSwiperInstance] = (0, import_react18.useState)(null), ref = (0, import_react18.useRef)(null);
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(Layout, { intent: "module-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(Layout, { intent: "module-full", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
     "div",
     {
       className: "group relative w-full aspect-video bg-slate-200",
@@ -25877,17 +25819,17 @@ var import_jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime()), CarouselModul
       },
       ref,
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
           "div",
           {
             className: "absolute w-full h-full hidden z-50 pointer-events-none group-hover:flex justify-between items-center p-8 text-white text-6xl",
             children: [
-              /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "w-1/4", children: "<" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "w-1/4", children: "<" }, void 0, !1, {
                 fileName: "app/components/modules/CarouselModule.jsx",
                 lineNumber: 29,
                 columnNumber: 12
               }, this),
-              /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "w-1/4 text-right", children: ">" }, void 0, !1, {
+              /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "w-1/4 text-right", children: ">" }, void 0, !1, {
                 fileName: "app/components/modules/CarouselModule.jsx",
                 lineNumber: 30,
                 columnNumber: 12
@@ -25903,14 +25845,14 @@ var import_jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime()), CarouselModul
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
           Swiper2,
           {
             onSwiper: (swiper) => setSwiperInstance(swiper),
             className: "w-full h-full",
             loop: !0,
-            children: content.slide.map((slide) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(SwiperSlide, { children: [
-              slide._type === "imageObject" && /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
+            children: content.slide.map((slide) => /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(SwiperSlide, { children: [
+              slide._type === "imageObject" && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(
                 SanityImage,
                 {
                   value: slide.asset,
@@ -25925,7 +25867,7 @@ var import_jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime()), CarouselModul
                 },
                 this
               ),
-              slide._type === "textObject" && /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: "p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(TextColumnsModule, { content: slide.text }, void 0, !1, {
+              slide._type === "textObject" && /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)("div", { className: "p-4", children: /* @__PURE__ */ (0, import_jsx_dev_runtime10.jsxDEV)(TextColumnsModule, { content: slide.text }, void 0, !1, {
                 fileName: "app/components/modules/CarouselModule.jsx",
                 lineNumber: 48,
                 columnNumber: 22
@@ -25967,7 +25909,7 @@ var import_jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime()), CarouselModul
 };
 
 // app/components/parts/PortableText.jsx
-var import_jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime()), portableText = cva(
+var import_jsx_dev_runtime11 = __toESM(require_jsx_dev_runtime()), portableText = cva(
   "[&>*:not(:last-child):not(p):not(blockquote):not(section)]:mb-[1em]",
   {
     variants: {
@@ -25986,26 +25928,26 @@ var import_jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime()), portableText 
     normal: ({ children }) => {
       switch (intent) {
         case "column":
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(Text, { tag: "p", intent: "bl-body-lg", children }, void 0, !1, {
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(Text, { tag: "p", intent: "bl-body-lg", children }, void 0, !1, {
             fileName: "app/components/parts/PortableText.jsx",
             lineNumber: 32,
             columnNumber: 15
           }, this);
         case "footer":
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(Text, { tag: "p", intent: "bl-body-alt", children }, void 0, !1, {
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(Text, { tag: "p", intent: "bl-body-alt", children }, void 0, !1, {
             fileName: "app/components/parts/PortableText.jsx",
             lineNumber: 38,
             columnNumber: 15
           }, this);
         default:
-          return /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(Text, { tag: "p", intent: "bl-body", children }, void 0, !1, {
+          return /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(Text, { tag: "p", intent: "bl-body", children }, void 0, !1, {
             fileName: "app/components/parts/PortableText.jsx",
             lineNumber: 44,
             columnNumber: 15
           }, this);
       }
     },
-    h3: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+    h3: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
       Text,
       {
         tag: "h3",
@@ -26022,17 +25964,17 @@ var import_jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime()), portableText 
       },
       this
     ),
-    h5: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(Text, { tag: "h4", intent: "bl-heading-lg", children }, void 0, !1, {
+    h5: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(Text, { tag: "h4", intent: "bl-heading-lg", children }, void 0, !1, {
       fileName: "app/components/parts/PortableText.jsx",
       lineNumber: 61,
       columnNumber: 9
     }, this),
-    h6: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(Text, { tag: "h5", intent: "bl-heading-sm", className: "!mb-0", children }, void 0, !1, {
+    h6: ({ children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(Text, { tag: "h5", intent: "bl-heading-sm", className: "!mb-0", children }, void 0, !1, {
       fileName: "app/components/parts/PortableText.jsx",
       lineNumber: 66,
       columnNumber: 9
     }, this),
-    blockquote: ({ children, value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(
+    blockquote: ({ children, value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(
       Text,
       {
         tag: "blockquote",
@@ -26052,28 +25994,28 @@ var import_jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime()), portableText 
     )
   },
   types: {
-    collapsibleModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(CollapsibleModule, { content: value, inline: !0 }, void 0, !1, {
+    collapsibleModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(CollapsibleModule, { content: value, inline: !0 }, void 0, !1, {
       fileName: "app/components/parts/PortableText.jsx",
       lineNumber: 83,
       columnNumber: 9
     }, this),
-    imageModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(ImageModule, { content: value, inline: !0 }, void 0, !1, {
+    imageModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(ImageModule, { content: value, inline: !0 }, void 0, !1, {
       fileName: "app/components/parts/PortableText.jsx",
       lineNumber: 85,
       columnNumber: 33
     }, this),
-    carouselModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(CarouselModule, { content: value }, void 0, !1, {
+    carouselModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(CarouselModule, { content: value }, void 0, !1, {
       fileName: "app/components/parts/PortableText.jsx",
       lineNumber: 86,
       columnNumber: 36
     }, this),
-    imageGridModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(ImageGridModule, { content: value, inline: !0 }, void 0, !1, {
+    imageGridModule: ({ value }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(ImageGridModule, { content: value, inline: !0 }, void 0, !1, {
       fileName: "app/components/parts/PortableText.jsx",
       lineNumber: 87,
       columnNumber: 37
     }, this)
   }
-}), PortableText2 = ({ text: text2, intent, className }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("div", { className: portableText({ intent, className }), children: /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)(PortableText, { value: text2, components: components(intent) }, void 0, !1, {
+}), PortableText2 = ({ text: text2, intent, className }) => /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)("div", { className: portableText({ intent, className }), children: /* @__PURE__ */ (0, import_jsx_dev_runtime11.jsxDEV)(PortableText, { value: text2, components: components(intent) }, void 0, !1, {
   fileName: "app/components/parts/PortableText.jsx",
   lineNumber: 95,
   columnNumber: 7
@@ -26087,7 +26029,7 @@ var import_jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime()), portableText 
 var import_react22 = __toESM(require_react());
 
 // app/components/parts/Button.jsx
-var import_jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime()), button = cva(
+var import_jsx_dev_runtime12 = __toESM(require_jsx_dev_runtime()), button = cva(
   "hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased",
   {
     variants: {
@@ -26111,33 +26053,33 @@ var import_jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime()), button = cva(
       colour: "light"
     }
   }
-), Button = ({ type, intent, colour, className, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("button", { type: type || "button", className: button({ intent, colour, className }), children }, void 0, !1, {
+), Button = ({ type, intent, colour, className, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime12.jsxDEV)("button", { type: type || "button", className: button({ intent, colour, className }), children }, void 0, !1, {
   fileName: "app/components/parts/Button.jsx",
   lineNumber: 31,
   columnNumber: 5
 }, this);
 
 // app/components/global/GlobalNewsletter.jsx
-var import_jsx_dev_runtime14 = __toESM(require_jsx_dev_runtime()), GlobalNewsletter = () => {
+var import_jsx_dev_runtime13 = __toESM(require_jsx_dev_runtime()), GlobalNewsletter = () => {
   var _a2;
   let actionData = useActionData2(), transition = useTransition(), state = (_a2 = actionData == null ? void 0 : actionData.res) != null && _a2.statusText ? "success" : transition.submission ? "submitting" : actionData != null && actionData.subscription ? "success" : actionData != null && actionData.error ? "error" : "idle", inputRef = (0, import_react22.useRef)(null), successRef = (0, import_react22.useRef)(null), mounted = (0, import_react22.useRef)(!1);
   return (0, import_react22.useEffect)(() => {
     var _a3, _b, _c;
     state === "error" && ((_a3 = inputRef.current) == null || _a3.focus()), state === "idle" && mounted.current && ((_b = inputRef.current) == null || _b.select()), state === "success" && ((_c = successRef.current) == null || _c.focus()), mounted.current = !0;
-  }, [state]), /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Form, { method: "post", "aria-hidden": state === "success", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("h2", { className: "mb-[1em]", children: "Sign up to our newsletter" }, void 0, !1, {
+  }, [state]), /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(Form, { method: "post", "aria-hidden": state === "success", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("h2", { className: "mb-[1em]", children: "Sign up to our newsletter" }, void 0, !1, {
       fileName: "app/components/global/GlobalNewsletter.jsx",
       lineNumber: 40,
       columnNumber: 7
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("fieldset", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("label", { children: "email:" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("fieldset", { children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("label", { children: "email:" }, void 0, !1, {
         fileName: "app/components/global/GlobalNewsletter.jsx",
         lineNumber: 42,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: "flex max-w-sm", children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)("div", { className: "flex max-w-sm", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
           "input",
           {
             "aria-label": "Email address",
@@ -26157,16 +26099,29 @@ var import_jsx_dev_runtime14 = __toESM(require_jsx_dev_runtime()), GlobalNewslet
           },
           this
         ),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Button, { type: "submit", intent: "base", colour: "light", "aria-label": "Submit email", children: [
-          state === "idle" && "Go on",
-          state === "submitting" && "Subscribing...",
-          state === "success" && "Subscribed!",
-          state === "error" && "Error :("
-        ] }, void 0, !0, {
-          fileName: "app/components/global/GlobalNewsletter.jsx",
-          lineNumber: 55,
-          columnNumber: 11
-        }, this)
+        /* @__PURE__ */ (0, import_jsx_dev_runtime13.jsxDEV)(
+          Button,
+          {
+            type: "submit",
+            intent: "base",
+            colour: "light",
+            "aria-label": "Submit email",
+            children: [
+              state === "idle" && "Go on",
+              state === "submitting" && "Subscribing...",
+              state === "success" && "Subscribed!",
+              state === "error" && "Error :("
+            ]
+          },
+          void 0,
+          !0,
+          {
+            fileName: "app/components/global/GlobalNewsletter.jsx",
+            lineNumber: 55,
+            columnNumber: 11
+          },
+          this
+        )
       ] }, void 0, !0, {
         fileName: "app/components/global/GlobalNewsletter.jsx",
         lineNumber: 43,
@@ -26182,12 +26137,12 @@ var import_jsx_dev_runtime14 = __toESM(require_jsx_dev_runtime()), GlobalNewslet
     lineNumber: 39,
     columnNumber: 5
   }, this);
-}, GlobalNewsletter_default = GlobalNewsletter;
+};
 
 // app/components/global/GlobalFooter.jsx
-var import_jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime()), GlobalFooter = () => {
+var import_jsx_dev_runtime14 = __toESM(require_jsx_dev_runtime()), GlobalFooter = () => {
   let { footer } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
     Layout,
     {
       tag: "footer",
@@ -26197,19 +26152,19 @@ var import_jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
         "md:flex-row md:gap-0"
       ),
       children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: cx("w-1/3 order-first flex flex-col", "lg:px-4"), children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Text, { className: "text-white mb-[1em]", children: "Pages" }, void 0, !1, {
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: cx("w-1/3 order-first flex flex-col", "lg:px-4"), children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Text, { className: "text-white mb-[1em]", children: "Pages" }, void 0, !1, {
             fileName: "app/components/global/GlobalFooter.jsx",
             lineNumber: 21,
             columnNumber: 9
           }, this),
-          footer.footerLinks.map((link3) => /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+          footer.footerLinks.map((link3) => /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
             Link3,
             {
               to: link3.slug,
               colour: "light",
               className: "w-max",
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Text, { children: link3.title }, void 0, !1, {
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(Text, { children: link3.title }, void 0, !1, {
                 fileName: "app/components/global/GlobalFooter.jsx",
                 lineNumber: 30,
                 columnNumber: 15
@@ -26229,15 +26184,15 @@ var import_jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
           lineNumber: 20,
           columnNumber: 7
         }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: cx("flex-1 flex gap-8 flex-col", "lg:flex-row lg:gap-0"), children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
+        /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: cx("flex-1 flex gap-8 flex-col", "lg:flex-row lg:gap-0"), children: [
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(
             "div",
             {
               className: cx(
                 "max-w-prose flex-1 order-last",
                 "lg:order-first lg:pr-4 lg:w-1/2"
               ),
-              children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(PortableText2, { text: footer.footerText, intent: "footer" }, void 0, !1, {
+              children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(PortableText2, { text: footer.footerText, intent: "footer" }, void 0, !1, {
                 fileName: "app/components/global/GlobalFooter.jsx",
                 lineNumber: 42,
                 columnNumber: 11
@@ -26252,7 +26207,7 @@ var import_jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
             },
             this
           ),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("div", { className: cx("flex-1 order-first", "lg:order-last lg:pr-4"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(GlobalNewsletter_default, {}, void 0, !1, {
+          /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)("div", { className: cx("flex-1 order-first", "lg:order-last lg:pr-4"), children: /* @__PURE__ */ (0, import_jsx_dev_runtime14.jsxDEV)(GlobalNewsletter, {}, void 0, !1, {
             fileName: "app/components/global/GlobalFooter.jsx",
             lineNumber: 45,
             columnNumber: 11
@@ -26277,7 +26232,7 @@ var import_jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime()), GlobalFooter 
     },
     this
   );
-}, GlobalFooter_default = GlobalFooter;
+};
 
 // app/components/global/GlobalHeader.jsx
 var import_react46 = __toESM(require_react());
@@ -27219,16 +27174,16 @@ var Re2 = "div", oe = j2.RenderStrategy, se3 = V2(function(e3, s10) {
 
 // app/components/global/GlobalMenuItemDesktop.jsx
 var import_react43 = __toESM(require_react());
-var import_jsx_dev_runtime16 = __toESM(require_jsx_dev_runtime()), MenuDesktop = ({ title, children }) => {
+var import_jsx_dev_runtime15 = __toESM(require_jsx_dev_runtime()), GlobalMenuItemDesktop = ({ title, children }) => {
   let navigate = useNavigate();
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Rt.Group, { as: "nav", className: "hidden md:flex", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Rt, { className: "relative", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(import_jsx_dev_runtime16.Fragment, { children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Rt.Group, { as: "nav", className: "hidden md:flex", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Rt, { className: "relative", children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(import_jsx_dev_runtime15.Fragment, { children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(
       Rt.Button,
       {
         className: "hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none antialiased",
         onClick: () => navigate(children[0].slug),
         onMouseEnter: (e3) => e3.target.click(),
-        children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Text, { intent: "ui-2xl", className: "font-normal", children: title }, void 0, !1, {
+        children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Text, { intent: "ui-2xl", className: "font-normal", children: title }, void 0, !1, {
           fileName: "app/components/global/GlobalMenuItemDesktop.jsx",
           lineNumber: 21,
           columnNumber: 15
@@ -27243,7 +27198,7 @@ var import_jsx_dev_runtime16 = __toESM(require_jsx_dev_runtime()), MenuDesktop =
       },
       this
     ),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Ye, { as: import_react43.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Rt.Panel, { className: "absolute", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("ul", { className: "relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2", children: children.map((child) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Text, { intent: "ui-2xl", className: "leading-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Link3, { to: child.slug, children: child.title }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Ye, { as: import_react43.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Rt.Panel, { className: "absolute", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("ul", { className: "relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2", children: children.map((child) => /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Text, { intent: "ui-2xl", className: "leading-none", children: /* @__PURE__ */ (0, import_jsx_dev_runtime15.jsxDEV)(Link3, { to: child.slug, children: child.title }, void 0, !1, {
       fileName: "app/components/global/GlobalMenuItemDesktop.jsx",
       lineNumber: 31,
       columnNumber: 25
@@ -27281,12 +27236,12 @@ var import_jsx_dev_runtime16 = __toESM(require_jsx_dev_runtime()), MenuDesktop =
     lineNumber: 10,
     columnNumber: 5
   }, this);
-}, GlobalMenuItemDesktop_default = MenuDesktop;
+};
 
 // app/components/global/GlobalMenuItemMobile.jsx
-var import_jsx_dev_runtime17 = __toESM(require_jsx_dev_runtime()), MenuItemMobile = ({ title, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("ul", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("li", { children: [
+var import_jsx_dev_runtime16 = __toESM(require_jsx_dev_runtime()), GlobalMenuItemMobile = ({ title, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("ul", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("li", { children: [
   title,
-  /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("ul", { className: "ml-4", children: children.map((child) => /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Link3, { to: child.slug, children: child.title }, void 0, !1, {
+  /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("ul", { className: "ml-4", children: children.map((child) => /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)("li", { children: /* @__PURE__ */ (0, import_jsx_dev_runtime16.jsxDEV)(Link3, { to: child.slug, children: child.title }, void 0, !1, {
     fileName: "app/components/global/GlobalMenuItemMobile.jsx",
     lineNumber: 11,
     columnNumber: 15
@@ -27307,35 +27262,35 @@ var import_jsx_dev_runtime17 = __toESM(require_jsx_dev_runtime()), MenuItemMobil
   fileName: "app/components/global/GlobalMenuItemMobile.jsx",
   lineNumber: 5,
   columnNumber: 5
-}, this), GlobalMenuItemMobile_default = MenuItemMobile;
+}, this);
 
 // app/components/global/GlobalTitle.jsx
-var import_jsx_dev_runtime18 = __toESM(require_jsx_dev_runtime()), GlobalTitle = () => {
+var import_jsx_dev_runtime17 = __toESM(require_jsx_dev_runtime()), GlobalTitle = () => {
   let { settings } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(Text, { tag: "h1", intent: "ui-3xl", children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)(Link3, { to: "/", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("span", { className: "sr-only md:not-sr-only", children: settings.title }, void 0, !1, {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Text, { tag: "h1", intent: "ui-3xl", children: /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)(Link3, { to: "/", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("span", { className: "sr-only md:not-sr-only", children: settings.title }, void 0, !1, {
       fileName: "app/components/global/GlobalTitle.jsx",
       lineNumber: 10,
-      columnNumber: 9
+      columnNumber: 8
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("span", { "aria-hidden": !0, className: "md:hidden", children: settings.shortTitle }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime17.jsxDEV)("span", { "aria-hidden": !0, className: "md:hidden", children: settings.shortTitle }, void 0, !1, {
       fileName: "app/components/global/GlobalTitle.jsx",
       lineNumber: 11,
-      columnNumber: 9
+      columnNumber: 8
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/global/GlobalTitle.jsx",
     lineNumber: 9,
-    columnNumber: 7
+    columnNumber: 6
   }, this) }, void 0, !1, {
     fileName: "app/components/global/GlobalTitle.jsx",
     lineNumber: 8,
-    columnNumber: 5
+    columnNumber: 4
   }, this);
-}, GlobalTitle_default = GlobalTitle;
+};
 
 // app/components/parts/Badge.jsx
-var import_jsx_dev_runtime19 = __toESM(require_jsx_dev_runtime()), layout2 = cva(
+var import_jsx_dev_runtime18 = __toESM(require_jsx_dev_runtime()), layout2 = cva(
   "absolute aspect-square bg-black text-white rounded-full flex justify-center items-center select-none z-10",
   {
     variants: {
@@ -27353,7 +27308,7 @@ var import_jsx_dev_runtime19 = __toESM(require_jsx_dev_runtime()), layout2 = cva
       location: "bottom"
     }
   }
-), Badge = ({ intent, location: location2, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("div", { className: layout2({ intent, location: location2 }), "aria-hidden": !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)("span", { className: "leading-none", children }, void 0, !1, {
+), Badge = ({ intent, location: location2, children }) => /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("div", { className: layout2({ intent, location: location2 }), "aria-hidden": !0, children: /* @__PURE__ */ (0, import_jsx_dev_runtime18.jsxDEV)("span", { className: "leading-none", children }, void 0, !1, {
   fileName: "app/components/parts/Badge.jsx",
   lineNumber: 26,
   columnNumber: 7
@@ -27364,7 +27319,7 @@ var import_jsx_dev_runtime19 = __toESM(require_jsx_dev_runtime()), layout2 = cva
 }, this);
 
 // app/components/icons/Icons.jsx
-var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = () => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+var import_jsx_dev_runtime19 = __toESM(require_jsx_dev_runtime()), BasketIcon = () => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
   "svg",
   {
     id: "a",
@@ -27374,7 +27329,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
     viewBox: "0 0 80.11 59.56",
     className: "h-full",
     children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "40.14",
@@ -27395,7 +27350,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "polygon",
         {
           points: ".86 12.88 9.75 58.85 70.75 58.85 79.26 12.88 .86 12.88",
@@ -27413,7 +27368,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "25.47",
@@ -27434,7 +27389,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "8.08",
@@ -27455,7 +27410,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "54.81",
@@ -27476,7 +27431,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "5.75",
@@ -27497,7 +27452,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "3.51",
@@ -27518,7 +27473,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "polyline",
         {
           points: "54.85 12.79 54.85 .71 25.46 .71 25.46 12.79",
@@ -27536,7 +27491,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "18.14",
@@ -27557,7 +27512,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "10.81",
@@ -27578,7 +27533,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "32.81",
@@ -27599,7 +27554,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "47.48",
@@ -27620,7 +27575,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "62.14",
@@ -27641,7 +27596,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "69.48",
@@ -27672,7 +27627,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
     columnNumber: 5
   },
   this
-), BasketIconThin = () => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+), BasketIconThin = () => /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
   "svg",
   {
     id: "a",
@@ -27682,7 +27637,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
     viewBox: "0 0 219.09 162.65",
     className: "relative w-full h-auto",
     children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "109.78",
@@ -27703,7 +27658,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "polygon",
         {
           points: ".97 34.51 25.59 161.85 194.55 161.85 218.13 34.51 .97 34.51",
@@ -27721,7 +27676,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "69.15",
@@ -27742,7 +27697,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "20.97",
@@ -27763,7 +27718,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "150.41",
@@ -27784,7 +27739,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "14.51",
@@ -27805,7 +27760,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "8.3",
@@ -27826,7 +27781,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "polyline",
         {
           points: "150.52 34.26 150.52 .8 69.11 .8 69.11 34.26",
@@ -27844,7 +27799,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "48.83",
@@ -27865,7 +27820,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "28.52",
@@ -27886,7 +27841,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "89.46",
@@ -27907,7 +27862,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "130.09",
@@ -27928,7 +27883,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "170.72",
@@ -27949,7 +27904,7 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
         },
         this
       ),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      /* @__PURE__ */ (0, import_jsx_dev_runtime19.jsxDEV)(
         "line",
         {
           x1: "191.04",
@@ -27983,154 +27938,175 @@ var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), BasketIcon = 
 );
 
 // app/components/global/GlobalHeader.jsx
-var import_jsx_dev_runtime21 = __toESM(require_jsx_dev_runtime()), GlobalHeader = () => {
+var import_jsx_dev_runtime20 = __toESM(require_jsx_dev_runtime()), GlobalHeader = () => {
   let { menu } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
-    Rt,
-    {
-      className: "fixed h-24 w-screen bg-white z-50",
-      as: "header",
-      children: [
-        /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "relative w-full p-4 flex items-center justify-between", children: [
-          /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(GlobalTitle_default, {}, void 0, !1, {
-            fileName: "app/components/global/GlobalHeader.jsx",
-            lineNumber: 20,
-            columnNumber: 9
-          }, this),
-          /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex items-center gap-16", children: [
-            /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "md:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
-              Rt.Button,
-              {
-                className: " focus-visible:underline focus:border-none focus:outline-none",
-                children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("span", { children: open ? "X" : "Menu" }, void 0, !1, {
-                  fileName: "app/components/global/GlobalHeader.jsx",
-                  lineNumber: 29,
-                  columnNumber: 28
-                }, this)
-              },
-              void 0,
-              !1,
-              {
-                fileName: "app/components/global/GlobalHeader.jsx",
-                lineNumber: 24,
-                columnNumber: 13
-              },
-              this
-            ) }, void 0, !1, {
-              fileName: "app/components/global/GlobalHeader.jsx",
-              lineNumber: 23,
-              columnNumber: 11
-            }, this),
-            menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
-              GlobalMenuItemDesktop_default,
-              {
-                title: section.name,
-                children: section.children
-              },
-              section._id,
-              !1,
-              {
-                fileName: "app/components/global/GlobalHeader.jsx",
-                lineNumber: 35,
-                columnNumber: 15
-              },
-              this
-            )),
-            /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(CartButton, {}, void 0, !1, {
-              fileName: "app/components/global/GlobalHeader.jsx",
-              lineNumber: 42,
-              columnNumber: 11
-            }, this)
-          ] }, void 0, !0, {
-            fileName: "app/components/global/GlobalHeader.jsx",
-            lineNumber: 21,
-            columnNumber: 9
-          }, this)
-        ] }, void 0, !0, {
-          fileName: "app/components/global/GlobalHeader.jsx",
-          lineNumber: 19,
-          columnNumber: 7
-        }, this),
-        /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Ye, { as: import_react46.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
-          Rt.Panel,
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(Rt, { className: "fixed h-24 w-screen bg-white z-50", as: "header", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "relative w-full p-4 flex items-center justify-between", children: [
+      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(GlobalTitle, {}, void 0, !1, {
+        fileName: "app/components/global/GlobalHeader.jsx",
+        lineNumber: 17,
+        columnNumber: 11
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "flex items-center gap-16", children: [
+        /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "md:hidden", children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+          Rt.Button,
           {
-            focus: !0,
-            className: "absolute inset-0 top-20 h-[calc(100vh-5rem)] bg-white p-4 md:hidden",
-            children: menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(
-              GlobalMenuItemMobile_default,
-              {
-                title: section.name,
-                children: section.children
-              },
-              section._id,
-              !1,
-              {
-                fileName: "app/components/global/GlobalHeader.jsx",
-                lineNumber: 53,
-                columnNumber: 15
-              },
-              this
-            ))
+            className: " focus-visible:underline focus:border-none focus:outline-none",
+            children: ({ open }) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("span", { children: open ? "X" : "Menu" }, void 0, !1, {
+              fileName: "app/components/global/GlobalHeader.jsx",
+              lineNumber: 26,
+              columnNumber: 30
+            }, this)
           },
           void 0,
           !1,
           {
             fileName: "app/components/global/GlobalHeader.jsx",
-            lineNumber: 47,
-            columnNumber: 9
+            lineNumber: 21,
+            columnNumber: 15
           },
           this
         ) }, void 0, !1, {
           fileName: "app/components/global/GlobalHeader.jsx",
-          lineNumber: 46,
-          columnNumber: 7
+          lineNumber: 20,
+          columnNumber: 13
+        }, this),
+        menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+          GlobalMenuItemDesktop,
+          {
+            title: section.name,
+            children: section.children
+          },
+          section._id,
+          !1,
+          {
+            fileName: "app/components/global/GlobalHeader.jsx",
+            lineNumber: 32,
+            columnNumber: 17
+          },
+          this
+        )),
+        /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(CartButton, {}, void 0, !1, {
+          fileName: "app/components/global/GlobalHeader.jsx",
+          lineNumber: 39,
+          columnNumber: 13
         }, this)
-      ]
-    },
-    void 0,
-    !0,
-    {
+      ] }, void 0, !0, {
+        fileName: "app/components/global/GlobalHeader.jsx",
+        lineNumber: 18,
+        columnNumber: 11
+      }, this)
+    ] }, void 0, !0, {
       fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 15,
-      columnNumber: 5
-    },
-    this
-  );
-}, GlobalHeader_default = GlobalHeader, CartButton = () => {
-  let { cart } = useRouteData("root");
-  return /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Link3, { to: "/cart", "aria-label": "Go to cart", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "h-14", children: [
-    /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(BasketIcon, {}, void 0, !1, {
-      fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 73,
+      lineNumber: 16,
       columnNumber: 9
     }, this),
-    /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(import_react46.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Badge, { intent: "small", children: "0" }, void 0, !1, {
+    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(Ye, { as: import_react46.Fragment, children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+      Rt.Panel,
+      {
+        focus: !0,
+        className: "absolute inset-0 top-20 h-[calc(100vh-5rem)] bg-white p-4 md:hidden",
+        children: menu.map((section) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(
+          GlobalMenuItemMobile,
+          {
+            title: section.name,
+            children: section.children
+          },
+          section._id,
+          !1,
+          {
+            fileName: "app/components/global/GlobalHeader.jsx",
+            lineNumber: 50,
+            columnNumber: 17
+          },
+          this
+        ))
+      },
+      void 0,
+      !1,
+      {
+        fileName: "app/components/global/GlobalHeader.jsx",
+        lineNumber: 44,
+        columnNumber: 11
+      },
+      this
+    ) }, void 0, !1, {
       fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 74,
-      columnNumber: 29
-    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Badge, { intent: "small", children: (cart2 == null ? void 0 : cart2.totalQuantity) || 0 }, void 0, !1, {
-      fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 77,
-      columnNumber: 15
-    }, this) }, void 0, !1, {
-      fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 75,
-      columnNumber: 11
-    }, this) }, void 0, !1, {
-      fileName: "app/components/global/GlobalHeader.jsx",
-      lineNumber: 74,
+      lineNumber: 43,
       columnNumber: 9
     }, this)
   ] }, void 0, !0, {
     fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 72,
+    lineNumber: 15,
+    columnNumber: 7
+  }, this);
+}, CartButton = () => {
+  let { cart } = useRouteData("root");
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(Link3, { to: "/cart", "aria-label": "Go to cart", children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)("div", { className: "h-14", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(BasketIcon, {}, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 68,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(import_react46.Suspense, { fallback: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(Badge, { intent: "small", children: "0" }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 69,
+      columnNumber: 29
+    }, this), children: /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(Await2, { resolve: cart, children: (cart2) => /* @__PURE__ */ (0, import_jsx_dev_runtime20.jsxDEV)(Badge, { intent: "small", children: (cart2 == null ? void 0 : cart2.totalQuantity) || 0 }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 72,
+      columnNumber: 15
+    }, this) }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 70,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/components/global/GlobalHeader.jsx",
+      lineNumber: 69,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/global/GlobalHeader.jsx",
+    lineNumber: 67,
     columnNumber: 7
   }, this) }, void 0, !1, {
     fileName: "app/components/global/GlobalHeader.jsx",
-    lineNumber: 71,
+    lineNumber: 66,
     columnNumber: 5
   }, this);
 };
+
+// app/components/global/GlobalNotFound.js
+var import_jsx_dev_runtime21 = __toESM(require_jsx_dev_runtime());
+function GlobalNotFound({ error: error2 }) {
+  return /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Layout, { intent: "centre", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)("div", { className: "flex flex-col gap-4 justify-center items-center pt-16", children: [
+    /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Text, { tag: "h2", intent: "ui-3xl", children: [
+      "Not Found ",
+      ":("
+    ] }, void 0, !0, {
+      fileName: "app/components/global/GlobalNotFound.js",
+      lineNumber: 9,
+      columnNumber: 9
+    }, this),
+    /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Link3, { intent: "button-xl", to: "/", children: /* @__PURE__ */ (0, import_jsx_dev_runtime21.jsxDEV)(Text, { tag: "h3", intent: "ui-2xl", children: "Back to homepage" }, void 0, !1, {
+      fileName: "app/components/global/GlobalNotFound.js",
+      lineNumber: 11,
+      columnNumber: 11
+    }, this) }, void 0, !1, {
+      fileName: "app/components/global/GlobalNotFound.js",
+      lineNumber: 10,
+      columnNumber: 9
+    }, this)
+  ] }, void 0, !0, {
+    fileName: "app/components/global/GlobalNotFound.js",
+    lineNumber: 8,
+    columnNumber: 7
+  }, this) }, void 0, !1, {
+    fileName: "app/components/global/GlobalNotFound.js",
+    lineNumber: 7,
+    columnNumber: 5
+  }, this);
+}
 
 // app/hooks/useAnalytics.js
 var import_react50 = __toESM(require_react());
@@ -28317,7 +28293,7 @@ var articleDataQuery = groq`*[_type == "article" && slug.current == $slug][0]{
     }`;
 
 // app/styles/app.css
-var app_default = "/build/_assets/app-T36CCLCP.css";
+var app_default = "/build/_assets/app-I274YROV.css";
 
 // app/root.jsx
 var import_jsx_dev_runtime22 = __toESM(require_jsx_dev_runtime()), seo = ({ data: { settings }, pathname }) => ({
@@ -28417,7 +28393,7 @@ function App() {
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("body", { className: "selection:bg-accent/20", children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalHeader_default, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalHeader, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 180,
         columnNumber: 9
@@ -28431,7 +28407,7 @@ function App() {
         lineNumber: 181,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalFooter_default, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalFooter, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 184,
         columnNumber: 9
@@ -28487,14 +28463,24 @@ function CatchBoundary() {
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(NotFound, { error }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalHeader, {}, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 209,
         columnNumber: 9
       }, this),
-      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(Scripts, {}, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalNotFound, { error }, void 0, !1, {
         fileName: "app/root.jsx",
         lineNumber: 210,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalFooter, {}, void 0, !1, {
+        fileName: "app/root.jsx",
+        lineNumber: 211,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(Scripts, {}, void 0, !1, {
+        fileName: "app/root.jsx",
+        lineNumber: 212,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
@@ -28518,43 +28504,53 @@ function ErrorBoundary({ error: error2 }) {
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("head", { children: [
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("title", { children: "Error" }, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 226,
+        lineNumber: 228,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(Meta, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 227,
+        lineNumber: 229,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(Links, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 228,
+        lineNumber: 230,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 225,
+      lineNumber: 227,
       columnNumber: 7
     }, this),
     /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)("body", { children: [
-      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(NotFound, { error: error2 }, void 0, !1, {
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalHeader, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 231,
+        lineNumber: 233,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalNotFound, { error: error2 }, void 0, !1, {
+        fileName: "app/root.jsx",
+        lineNumber: 234,
+        columnNumber: 9
+      }, this),
+      /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(GlobalFooter, {}, void 0, !1, {
+        fileName: "app/root.jsx",
+        lineNumber: 235,
         columnNumber: 9
       }, this),
       /* @__PURE__ */ (0, import_jsx_dev_runtime22.jsxDEV)(Scripts, {}, void 0, !1, {
         fileName: "app/root.jsx",
-        lineNumber: 232,
+        lineNumber: 236,
         columnNumber: 9
       }, this)
     ] }, void 0, !0, {
       fileName: "app/root.jsx",
-      lineNumber: 230,
+      lineNumber: 232,
       columnNumber: 7
     }, this)
   ] }, void 0, !0, {
     fileName: "app/root.jsx",
-    lineNumber: 224,
+    lineNumber: 226,
     columnNumber: 5
   }, this);
 }
@@ -30993,7 +30989,7 @@ function App2() {
 }
 
 // server-assets-manifest:@remix-run/dev/assets-manifest
-var assets_manifest_default = { version: "2cbf4522", entry: { module: "/build/entry.client-OKERB4MM.js", imports: ["/build/_shared/chunk-66Q2ORQR.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-HWQJGKLM.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-4FYRCE6B.js", "/build/_shared/chunk-UGZJF77U.js", "/build/_shared/chunk-37MA56SS.js", "/build/_shared/chunk-M2ZFJSOH.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-V65A42ED.js", "/build/_shared/chunk-TKX6R6MJ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$slug": { id: "routes/$slug", parentId: "root", path: ":slug", index: void 0, caseSensitive: void 0, module: "/build/routes/$slug-RMIAASY5.js", imports: ["/build/_shared/chunk-EHWD6G22.js", "/build/_shared/chunk-T63E7VI6.js", "/build/_shared/chunk-NWZXRDRY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-VV6C7QBM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/articles/$slug": { id: "routes/articles/$slug", parentId: "root", path: "articles/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/articles/$slug-QIDSKSTJ.js", imports: ["/build/_shared/chunk-B6B6KJGD.js", "/build/_shared/chunk-EHWD6G22.js", "/build/_shared/chunk-T63E7VI6.js", "/build/_shared/chunk-NWZXRDRY.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-AXZOTFJ4.js", imports: ["/build/_shared/chunk-NWZXRDRY.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-ARSNMH7O.js", imports: ["/build/_shared/chunk-B6B6KJGD.js", "/build/_shared/chunk-T63E7VI6.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resource/preview": { id: "routes/resource/preview", parentId: "root", path: "resource/preview", index: void 0, caseSensitive: void 0, module: "/build/routes/resource/preview-YVVN57HZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-WQPYWL65.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-2CBF4522.js" };
+var assets_manifest_default = { version: "3497f8cd", entry: { module: "/build/entry.client-OKERB4MM.js", imports: ["/build/_shared/chunk-66Q2ORQR.js", "/build/_shared/chunk-5KL4PAQL.js"] }, routes: { root: { id: "root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/root-LYQESDMF.js", imports: ["/build/_shared/chunk-AUYLHJJM.js", "/build/_shared/chunk-6O4PP677.js", "/build/_shared/chunk-MHLIA3DD.js", "/build/_shared/chunk-MREP47CG.js", "/build/_shared/chunk-IIKMHYVA.js", "/build/_shared/chunk-BWK6FPRY.js", "/build/_shared/chunk-V65A42ED.js", "/build/_shared/chunk-TKX6R6MJ.js"], hasAction: !0, hasLoader: !0, hasCatchBoundary: !0, hasErrorBoundary: !0 }, "routes/$": { id: "routes/$", parentId: "root", path: "*", index: void 0, caseSensitive: void 0, module: "/build/routes/$-UTJQRW44.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/$slug": { id: "routes/$slug", parentId: "root", path: ":slug", index: void 0, caseSensitive: void 0, module: "/build/routes/$slug-OD734LSL.js", imports: ["/build/_shared/chunk-7KLQDEOK.js", "/build/_shared/chunk-AK6TEST4.js", "/build/_shared/chunk-KYHT2LPK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[robots.txt]": { id: "routes/[robots.txt]", parentId: "root", path: "robots.txt", index: void 0, caseSensitive: void 0, module: "/build/routes/[robots.txt]-VQ27HJRM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/[sitemap.xml]": { id: "routes/[sitemap.xml]", parentId: "root", path: "sitemap.xml", index: void 0, caseSensitive: void 0, module: "/build/routes/[sitemap.xml]-LMNECGY7.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/api/countries": { id: "routes/api/countries", parentId: "root", path: "api/countries", index: void 0, caseSensitive: void 0, module: "/build/routes/api/countries-VV6C7QBM.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/articles/$slug": { id: "routes/articles/$slug", parentId: "root", path: "articles/:slug", index: void 0, caseSensitive: void 0, module: "/build/routes/articles/$slug-4DK7FSZK.js", imports: ["/build/_shared/chunk-ELJMHRQW.js", "/build/_shared/chunk-7KLQDEOK.js", "/build/_shared/chunk-AK6TEST4.js", "/build/_shared/chunk-KYHT2LPK.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/cart": { id: "routes/cart", parentId: "root", path: "cart", index: void 0, caseSensitive: void 0, module: "/build/routes/cart-OINH53KE.js", imports: ["/build/_shared/chunk-KYHT2LPK.js"], hasAction: !0, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/index": { id: "routes/index", parentId: "root", path: void 0, index: !0, caseSensitive: void 0, module: "/build/routes/index-BE4EARP6.js", imports: ["/build/_shared/chunk-ELJMHRQW.js", "/build/_shared/chunk-AK6TEST4.js"], hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "routes/resource/preview": { id: "routes/resource/preview", parentId: "root", path: "resource/preview", index: void 0, caseSensitive: void 0, module: "/build/routes/resource/preview-YVVN57HZ.js", imports: void 0, hasAction: !0, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/routes/graphiql": { id: "virtual-routes/routes/graphiql", parentId: "virtual-routes/virtual-root", path: "graphiql", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/routes/graphiql-GPDYRMZP.js", imports: void 0, hasAction: !1, hasLoader: !0, hasCatchBoundary: !1, hasErrorBoundary: !1 }, "virtual-routes/virtual-root": { id: "virtual-routes/virtual-root", parentId: void 0, path: "", index: void 0, caseSensitive: void 0, module: "/build/virtual-routes/virtual-root-WQPYWL65.js", imports: void 0, hasAction: !1, hasLoader: !1, hasCatchBoundary: !1, hasErrorBoundary: !1 } }, cssBundleHref: void 0, url: "/build/manifest-3497F8CD.js" };
 
 // server-entry-module:@remix-run/dev/server-build
 var assetsBuildDirectory = "dist/client/build", future = { unstable_cssModules: !1, unstable_cssSideEffectImports: !1, unstable_dev: !1, unstable_vanillaExtract: !1, v2_errorBoundary: !1, v2_meta: !1, v2_routeConvention: !1 }, publicPath = "/build/", entry = { module: entry_server_exports }, routes = {

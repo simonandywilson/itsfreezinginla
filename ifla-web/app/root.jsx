@@ -10,9 +10,9 @@ import {Seo, ShopifySalesChannel} from '@shopify/hydrogen';
 import {defer, json} from '@shopify/remix-oxygen';
 import groq from 'groq';
 import invariant from 'tiny-invariant';
-import {NotFound} from './components/error/NotFound';
-import GlobalFooter from './components/global/GlobalFooter';
-import GlobalHeader from './components/global/GlobalHeader';
+import {GlobalFooter} from './components/global/GlobalFooter';
+import {GlobalHeader} from './components/global/GlobalHeader';
+import {GlobalNotFound} from './components/global/GlobalNotFound';
 import {useAnalytics} from './hooks/useAnalytics';
 import {shopLinkQuery} from './lib/queries';
 import styles from './styles/app.css';
@@ -206,7 +206,9 @@ export function CatchBoundary() {
         <Links />
       </head>
       <body>
-        <NotFound error={error} />
+        <GlobalHeader />
+        <GlobalNotFound error={error} />
+        <GlobalFooter />
         <Scripts />
       </body>
     </html>
@@ -228,7 +230,9 @@ export function ErrorBoundary({error}) {
         <Links />
       </head>
       <body>
-        <NotFound error={error} />
+        <GlobalHeader />
+        <GlobalNotFound error={error} />
+        <GlobalFooter />
         <Scripts />
       </body>
     </html>

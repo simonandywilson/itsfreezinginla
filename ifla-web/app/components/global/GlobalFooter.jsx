@@ -1,12 +1,12 @@
 import {Link} from '~/components/parts/Link';
 import {useRouteData} from 'remix-utils';
 import {PortableText} from '../parts/PortableText';
-import GlobalNewsletter from './GlobalNewsletter';
+import {GlobalNewsletter} from './GlobalNewsletter';
 import {Text} from '../parts/Text';
 import {cx} from 'class-variance-authority';
 import {Layout} from '../parts/Layout';
 
-const GlobalFooter = () => {
+export const GlobalFooter = () => {
   const {footer} = useRouteData(`root`);
   return (
     <Layout
@@ -48,5 +48,3 @@ const GlobalFooter = () => {
     </Layout>
   );
 };
-
-export default GlobalFooter;

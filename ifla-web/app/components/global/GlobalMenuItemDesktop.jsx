@@ -4,8 +4,8 @@ import {Link} from '~/components/parts/Link';
 import {Text} from '../parts/Text';
 import {useNavigate} from '@remix-run/react';
 
-const MenuDesktop = ({ title, children }) => {
-  let navigate = useNavigate();
+export const GlobalMenuItemDesktop = ({title, children}) => {
+  const navigate = useNavigate();
   return (
     <Popover.Group as="nav" className="hidden md:flex">
       <Popover className="relative">
@@ -41,5 +41,3 @@ const MenuDesktop = ({ title, children }) => {
     </Popover.Group>
   );
 };
-
-export default MenuDesktop;

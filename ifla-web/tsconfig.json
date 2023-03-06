@@ -4,8 +4,9 @@
     "./**/*.ts",
     "./**/*.tsx",
     "app/root.jsx",
-    "app/components/error/NotFound.js"
-, "app/hooks/useAnalytics.js"  ],
+    "app/components/global/GlobalNotFound.js",
+    "app/hooks/useAnalytics.js"
+  ],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,

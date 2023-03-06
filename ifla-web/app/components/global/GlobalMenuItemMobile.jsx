@@ -1,6 +1,6 @@
 import {Link} from '~/components/parts/Link';
 
-const MenuItemMobile = ({title, children}) => {
+export const GlobalMenuItemMobile = ({title, children}) => {
   return (
     <ul>
       <li>
@@ -16,5 +16,3 @@ const MenuItemMobile = ({title, children}) => {
     </ul>
   );
 };
-
-export default MenuItemMobile;
