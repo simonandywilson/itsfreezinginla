@@ -15,11 +15,12 @@ export const articleDataQuery = groq`*[_type == "article" && slug.current == $sl
   			asset->
   		},
 		topic -> {
-        topic,
-			image {
-			asset-> {_id}
-			}
+        	topic,
+				image {
+					asset-> {_id}
+				}
       	},
+		category[] -> {_id, category},
 		"seoTitle": coalesce(seoTitle, headline),
 		"seoDescription": coalesce(seoDescription, pt::text(intro)),
         ${contentFragment}

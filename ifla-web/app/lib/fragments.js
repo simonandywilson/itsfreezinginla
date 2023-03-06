@@ -20,6 +20,8 @@ const articlePreviewFragment = groq`{
           asset-> {_id}
         }
     },
+    category[] -> {_id, category},
+
 }`;
 
 const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"] [0..100]|order(date desc)${articlePreviewFragment}}`;

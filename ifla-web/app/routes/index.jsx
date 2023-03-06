@@ -81,7 +81,7 @@ async function getHomepageData({sanityClient}) {
       "slug": ${shopLinkQuery},
     }},
 		"featuredBanner": featuredBanner,
-		"featured": featured[0...3] -> {
+		"featured": featured[0...4] -> {
 			_id,
 			headline,
 			"slug": slug.fullUrl,
