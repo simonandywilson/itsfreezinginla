@@ -223,11 +223,13 @@ export const structure = (S, context) => {
         .schemaType('collection')
         .child(S.documentTypeList('collection')),
       S.divider(),
-      S.listItem()
-        .title('Colours')
-        .icon(() => Icons.colour)
-        .schemaType('colour')
-        .child(S.documentTypeList('colour')),
+      orderableDocumentListDeskItem({
+        type: 'colour',
+        title: 'Colours',
+        icon: () => Icons.colour,
+        S,
+        context,
+      }),
       S.listItem()
         .title('Authors')
         .icon(() => Icons.author)

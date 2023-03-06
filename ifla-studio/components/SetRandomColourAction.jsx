@@ -11,24 +11,22 @@ export function SetRandomColourAction(originalAction, context) {
 		return {
 			...originalResult,
 			onHandle: async () => {
-				const query = `
-         			*[_type == 'colour'] {
-				  		_id,
-				  		'totalReferences': count(*[_type in ['article'] && references(^._id)])
-					} | order(_createdAt asc) | order(totalReferences asc) [0]`;
-				
-				const leastUsedColour = await client.fetch(query);
-
-				patch.execute([
-					{
-						setIfMissing: {
-							colour: {
-								_type: "reference",
-								_ref: leastUsedColour._id,
-							},
-						},
-					},
-				]);
+				// const query = `
+         		// 	*[_type == 'colour'] {
+				//   		_id,
+				//   		'totalReferences': count(*[_type in ['article'] && references(^._id)])
+				// 	} | order(_createdAt asc) | order(totalReferences asc) [0]`;
+				// const leastUsedColour = await client.fetch(query);
+				// patch.execute([
+				// 	{
+				// 		setIfMissing: {
+				// 			colour: {
+				// 				_type: "reference",
+				// 				_ref: leastUsedColour._id,
+				// 			},
+				// 		},
+				// 	},
+				// ]);
 				publish.execute();
 				props.onComplete();
 			},

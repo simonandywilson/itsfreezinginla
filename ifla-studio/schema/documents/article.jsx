@@ -68,11 +68,20 @@ export default defineType({
       group: 'info',
     }),
     defineField({
+      name: 'colour',
+      type: 'reference',
+      to: [{type: 'colour'}],
+      // readOnly: true,
+      // hidden: true,
+      group: 'info',
+    }),
+    defineField({
       name: 'category',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'category'}], title: 'Reference to Category'}],
       group: 'info',
     }),
+
     defineField({
       name: 'intro',
       type: 'basicBlock',
@@ -82,14 +91,6 @@ export default defineType({
       name: 'image',
       type: 'imageObject',
       group: 'content',
-    }),
-    defineField({
-      name: 'colour',
-      type: 'reference',
-      to: [{type: 'colour'}],
-      readOnly: true,
-      hidden: true,
-      group: 'info',
     }),
 
     defineField({

@@ -6,9 +6,15 @@ import {useNavigate} from '@remix-run/react';
 
 export const GlobalMenuItemDesktop = ({title, children}) => {
   const navigate = useNavigate();
+
   return (
     <Popover.Group as="nav" className="hidden md:flex">
-      <Popover className="relative">
+      <Popover
+        className="relative"
+        onMouseEnter={(event) => {
+          togglePopover(event, index);
+        }}
+      >
         {({open}) => (
           <>
             <Popover.Button
@@ -16,13 +22,14 @@ export const GlobalMenuItemDesktop = ({title, children}) => {
                 'hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none antialiased'
               }
               onClick={() => navigate(children[0].slug)}
-              onMouseEnter={(e) => e.target.click()}
             >
               <Text intent={'ui-2xl'} className={'font-normal'}>
                 {title}
               </Text>
             </Popover.Button>
-            <Transition as={Fragment}>
+            <Transition
+              as={Fragment}
+            >
               <Popover.Panel className={'absolute'}>
                 <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
                   {children.map((child) => (

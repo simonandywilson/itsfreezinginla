@@ -23,7 +23,7 @@ export const GlobalFooter = () => {
           return (
             <Link
               to={link.slug}
-              key={link._id}
+              key={link._id || link._key}
               colour={'light'}
               className={'w-max'}
             >
