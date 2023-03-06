@@ -3,7 +3,6 @@ import * as remixBuild from '@remix-run/dev/server-build';
 import {createRequestHandler} from '@remix-run/server-runtime';
 import {createStorefrontClient} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
-import {getLocaleFromRequest} from '~/lib/utils';
 import {createClient} from '@sanity/client';
 import {definePreview} from '@sanity/preview-kit';
 
@@ -56,7 +55,6 @@ export default async function (request: Request): Promise<Response> {
      */
     const {storefront} = createStorefrontClient({
       buyerIp: request.headers.get('x-forwarded-for') ?? undefined,
-      i18n: getLocaleFromRequest(request),
       publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
       privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
       storeDomain: `https://${env.PUBLIC_STORE_DOMAIN}`,
