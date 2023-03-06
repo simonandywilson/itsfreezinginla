@@ -19,6 +19,10 @@ export default defineType({
       title: 'Content',
     },
     {
+      name: 'options',
+      title: 'Options',
+    },
+    {
       name: 'seo',
       title: 'SEO',
     },
@@ -67,14 +71,7 @@ export default defineType({
       to: [{type: 'author'}],
       group: 'info',
     }),
-    defineField({
-      name: 'colour',
-      type: 'reference',
-      to: [{type: 'colour'}],
-      // readOnly: true,
-      // hidden: true,
-      group: 'info',
-    }),
+
     defineField({
       name: 'category',
       type: 'array',
@@ -103,7 +100,7 @@ export default defineType({
       name: 'autoRecommend',
       type: 'boolean',
       initialValue: true,
-      group: 'content',
+      group: 'options',
     }),
     defineField({
       name: 'similarArticles',
@@ -111,7 +108,23 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'article'}], title: 'Reference to Article'}],
       hidden: ({document}) => document?.autoRecommend,
       validation: (Rule) => Rule.error().min(3).max(3),
-      group: 'content',
+      group: 'options',
+    }),
+    defineField({
+      name: 'overrideColour',
+      type: 'boolean',
+      initialValue: false,
+      group: 'options',
+    }),
+    defineField({
+      name: 'colour',
+      type: 'reference',
+      to: [{type: 'colour'}],
+      description:
+        '💡 Colours are auto-assigned when document is published. Only override if strictly necessary!',
+      hidden: ({document}) => !document?.overrideColour,
+      readOnly: ({document}) => !document?.overrideColour,
+      group: 'options',
     }),
     defineField({
       name: 'seoTitle',
