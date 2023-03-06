@@ -25,7 +25,7 @@ const text = cva('break-words font-sans', {
       'bl-heading-2xl': ['bl-heading-2xl'],
       'bl-heading-3xl': ['bl-heading-3xl'],
       'bl-body': ['bl-body'],
-      'bl-body-alt': ['bl-body-alt'], 
+      'bl-body-alt': ['bl-body-alt'],
       'bl-body-lg': ['bl-body-lg'],
       'bl-quote': ['bl-quote'],
     },
@@ -33,15 +33,18 @@ const text = cva('break-words font-sans', {
   defaultVariants: {
     intent: 'ui-base',
   },
+  compoundVariants: [
+    {
+      intent: ['bl-body'],
+      className: 'font-serif',
+    },
+  ],
 });
 
 export const Text = ({tag, intent, className, children, colour}) => {
   const ElementTag = `${tag || 'p'}`;
   return (
-    <ElementTag
-      className={text({intent, className})}
-      style={{color: colour}}
-    >
+    <ElementTag className={text({intent, className})} style={{color: colour}}>
       {children}
     </ElementTag>
   );

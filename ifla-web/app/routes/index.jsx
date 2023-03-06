@@ -31,7 +31,6 @@ export async function loader({context}) {
 
 export default function Index() {
   const { homepage } = useLoaderData();
-  console.log(homepage);
   return (
     <div>
       <Banner>

@@ -9,7 +9,7 @@ const Hero = ({hero}) => {
   return (
     <Layout tag={'article'} intent={'banner'} colour={colour || '#e3e8ef'}>
       <div className={'relative w-full h-full'}>
-        <div className={cx('relative w-full h-full flex flex-col gap-4 z-10', 'md:gap-8')}>
+        <div className={cx('relative w-full h-full flex flex-col gap-4 z-10')}>
           <Text intent={'ui-6xl'}>{title}</Text>
           <Link
             intent={'button-2xl'}
