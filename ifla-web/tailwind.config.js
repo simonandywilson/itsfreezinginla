@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: "#db4d68",
+        accent: '#db4d68',
       },
     },
     fontFamily: {
@@ -16,5 +16,8 @@ module.exports = {
   future: {
     hoverOnlyWhenSupported: true,
   },
-  plugins: [require('tailwindcss-image-rendering')()],
+  plugins: [
+    require('tailwindcss-image-rendering')(),
+    require('tailwindcss-multi-column')(),
+  ],
 };

@@ -1,11 +1,10 @@
-import React from 'react';
 import { Layout } from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
 
-export const ImageGridModule = ({content}) => {
+export const ImageGridModule = ({content, inline}) => {
   const {images} = content;
     return (
-      <Layout intent={"module"} >
+      <Layout intent={inline ? 'module-inline' : 'module'}>
         <div className={'grid grid-cols-1 sm:grid-cols-2 gap-4'}>
           {images.map((image) => {
             return (

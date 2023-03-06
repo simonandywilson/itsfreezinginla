@@ -5,7 +5,7 @@ import {PortableText} from '../parts/PortableText';
 export const TextBlockModule = ({content}) => {
     const { text } = content;
   return (
-    <Layout intent={"prose"}>
+    <Layout intent={"text"}>
       <PortableText text={text} />
     </Layout>
   );

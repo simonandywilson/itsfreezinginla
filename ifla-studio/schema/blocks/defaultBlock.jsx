@@ -29,6 +29,5 @@ export default defineField({
     {type: 'carouselModule'},
     {type: 'imageGridModule'},
     {type: 'textColumnsModule'},
-    {type: 'collapsibleModule'},
   ],
 })

@@ -104,3 +104,9 @@
     @apply text-xl;
   }
 }
+
+@layer components {
+  .prose {
+    @apply max-w-xl mx-auto;
+  }
+}

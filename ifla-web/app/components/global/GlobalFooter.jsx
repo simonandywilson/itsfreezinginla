@@ -13,7 +13,7 @@ const GlobalFooter = () => {
       tag={'footer'}
       intent={'footer'}
       className={cx(
-        'bg-black mt-auto text-white flex justify-between flex-col gap-8',
+        'bg-black text-white flex justify-between flex-col gap-8',
         'md:flex-row md:gap-0',
       )}
     >

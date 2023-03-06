@@ -621,6 +621,11 @@ video {
   font-size: 1.25rem;
   line-height: 1.75rem;
 }
+.prose {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36rem;
+}
 .sr-only {
   position: absolute;
   width: 1px;
@@ -829,9 +834,6 @@ video {
 }
 .mt-8 {
   margin-top: 2rem;
-}
-.mt-auto {
-  margin-top: auto;
 }
 .block {
   display: block;
@@ -1150,6 +1152,10 @@ video {
 .break-before-column {
   -moz-column-break-before: column;
        break-before: column;
+}
+.break-inside-avoid-column {
+  -moz-column-break-inside: avoid;
+       break-inside: avoid-column;
 }
 .auto-cols-auto {
   grid-auto-columns: auto;
@@ -1790,6 +1796,11 @@ video {
 }
 .rendering-pixelated {
   image-rendering: pixelated;
+}
+.\[\&\>\*\:not\(section\)\]\:prose>*:not(section) {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 36rem;
 }
 .selection\:bg-accent\/20 *::-moz-selection {
   background-color: rgba(219, 77, 104, 0.2);
@@ -2444,6 +2455,11 @@ video {
          columns: 2;
   }
 
+  .lg\:columns-3 {
+    -moz-columns: 3;
+         columns: 3;
+  }
+
   .lg\:grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
@@ -2535,7 +2551,7 @@ video {
     aspect-ratio: 2/1;
   }
 }
-.\[\&\>\*\:not\(\:last-child\)\:not\(p\)\]\:mb-\[1em\]>*:not(:last-child):not(p) {
+.\[\&\>\*\:not\(\:last-child\)\:not\(p\)\:not\(blockquote\)\:not\(section\)\]\:mb-\[1em\]>*:not(:last-child):not(p):not(blockquote):not(section) {
   margin-bottom: 1em;
 }
 .\[\&\>p\:not\(\:first-of-type\)\]\:mb-\[1em\]>p:not(:first-of-type) {

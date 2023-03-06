@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react';
+import {useRef, useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Layout} from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
@@ -8,7 +8,7 @@ export const CarouselModule = ({content}) => {
    const [swiperInstance, setSwiperInstance] = useState(null);
    const ref = useRef(null);
    return (
-     <Layout intent={'full'}>
+     <Layout intent={'module-full'}>
        <div
          className={'group relative w-full aspect-video bg-slate-200'}
          onClick={(e) => {

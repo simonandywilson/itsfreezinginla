@@ -1,12 +1,11 @@
-import React from 'react';
 import {Layout} from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
 import {Text} from '../parts/Text';
 
-export const ImageModule = ({content}) => {
+export const ImageModule = ({content, inline}) => {
   const {caption, image, colour} = content;
   return (
-    <Layout intent={'module'}>
+    <Layout intent={inline ? 'module-inline' : 'module'}>
       {image && (
         <div className={'w-full'}>
           <SanityImage value={image} />
