@@ -31,10 +31,18 @@ export const ArticleBlock = ({article}) => {
         </div>
       )}
       <div className={'filter group-focus-visible:invert'}>
-        <Text as={'h2'} intent={'text-xl'}>
-          {topic && <Topic topic={topic} />}
-          {headline ? headline : 'Untitled article'}
-        </Text>
+        <span className={'hidden md:block'}>
+          <Text as={'h2'} intent={'text-xl'}>
+            {topic && <Topic topic={topic} />}
+            {headline ? headline : 'Untitled article'}
+          </Text>
+        </span>
+        <span className={'block md:hidden'}>
+          <Text as={'h2'} intent={'text-2xl'}>
+            {topic && <Topic topic={topic} />}
+            {headline ? headline : 'Untitled article'}
+          </Text>
+        </span>
       </div>
       <div
         className={

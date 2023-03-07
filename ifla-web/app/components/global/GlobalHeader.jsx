@@ -5,11 +5,11 @@ import {GlobalMenuItemDesktop} from './GlobalMenuItemDesktop';
 import {GlobalMenuMobile} from './GlobalMenuMobile';
 import {GlobalTitle} from './GlobalTitle';
 import {Await, useLocation} from '@remix-run/react';
-import {Link} from '~/components/parts/Link';
 import {Badge} from '~/components/parts/Badge';
 import {BasketIcon} from '../icons/Icons';
 import {Text} from '../parts/Text';
 import {GlobalSubmenu} from './GlobalSubmenu';
+import { BlockLink } from '../parts/Links';
 
 export const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
@@ -70,7 +70,7 @@ export const GlobalHeader = () => {
 const CartButton = () => {
   const {cart} = useRouteData(`root`);
   return (
-    <Link to={'/cart'} aria-label="Go to cart">
+    <BlockLink to={'/cart'} aria-label="Go to cart">
       <div className={'h-14'}>
         <BasketIcon />
         <Suspense fallback={<Badge intent={'small'}>0</Badge>}>
@@ -81,6 +81,6 @@ const CartButton = () => {
           </Await>
         </Suspense>
       </div>
-    </Link>
+    </BlockLink>
   );
 };

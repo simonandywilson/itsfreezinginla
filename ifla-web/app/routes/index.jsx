@@ -1,4 +1,5 @@
 import {json} from '@shopify/remix-oxygen';
+import { cx } from 'class-variance-authority';
 import groq from 'groq';
 import {useLoaderData} from 'react-router';
 
@@ -7,7 +8,7 @@ import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import Hero from '../components/hero/Hero';
 import {Banner} from '../components/parts/Banner';
 import {Layout} from '../components/parts/Layout';
-import {Link} from '../components/parts/Link';
+import { BlockLink } from '../components/parts/Links';
 import {shopLinkQuery} from '../lib/queries';
 
 export const handle = {
@@ -46,10 +47,17 @@ export default function Index() {
           </Banner>
           <Layout intent={'grid'} as={'ul'}>
             <li className={'col-span-full w-full'}>
-              <ArticleBlockBanner
-                article={homepage.featured[0]}
-                link={homepage.featured[0].slug}
-              />
+              <span className={cx('hidden', 'sm:block')}>
+                <ArticleBlockBanner
+                  article={homepage.featured[0]}
+                  link={homepage.featured[0].slug}
+                />
+              </span>
+              <span className={cx('block', 'sm:hidden')}>
+                <BlockLink to={homepage.featured[0].slug}>
+                  <ArticleBlock article={homepage.featured[0]} />
+                </BlockLink>
+              </span>
             </li>
             {homepage.featured.map((article, index) => {
               if (index === 0) {
@@ -57,9 +65,9 @@ export default function Index() {
               }
               return (
                 <li key={article._id} className={'w-full'}>
-                  <Link to={article.slug} intent={'block'} className={'group'}>
+                  <BlockLink to={article.slug}>
                     <ArticleBlock article={article} />
-                  </Link>
+                  </BlockLink>
                 </li>
               );
             })}

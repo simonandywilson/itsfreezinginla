@@ -1,7 +1,7 @@
-import {Link} from '@remix-run/react';
 import React from 'react';
 import {ArticleBlock} from '~/components/article/ArticleBlock';
 import {Layout} from '../parts/Layout';
+import { BlockLink } from '../parts/Links';
 
 export const ArticlesModule = ({content}) => {
   return (
@@ -9,9 +9,9 @@ export const ArticlesModule = ({content}) => {
       {content.articles.map((article) => {
         return (
           <li key={article._id} className={'w-full'}>
-            <Link to={article.slug}>
+            <BlockLink to={article.slug}>
               <ArticleBlock article={article} />
-            </Link>
+            </BlockLink>
           </li>
         );
       })}

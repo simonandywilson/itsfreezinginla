@@ -47,18 +47,17 @@ const buttonStyle = cva(
   },
 );
 
-export const ButtonLink = ({
-  intent,
-  children,
-  to,
-  className,
-  colour,
-}) => {
+export const BlockLink = ({children, to}) => {
   return (
-    <RemixLink
-      to={to}
-      className={buttonStyle({intent, colour, className})}
-    >
+    <RemixLink to={to} className={'focus:outline-none focus:border-none'}>
+        {children}
+    </RemixLink>
+  );
+};
+
+export const ButtonLink = ({intent, children, to, className, colour}) => {
+  return (
+    <RemixLink to={to} className={buttonStyle({intent, colour, className})}>
       <Text intent={intent} className={'inline-block'}>
         {children}
       </Text>
@@ -72,10 +71,14 @@ export const ButtonLinkExternal = ({
   to,
   className,
   colour,
-  target
+  target,
 }) => {
   return (
-    <a href={to} className={buttonStyle({intent, colour, className})} target={target}>
+    <a
+      href={to}
+      className={buttonStyle({intent, colour, className})}
+      target={target}
+    >
       <Text intent={intent} className={'inline-block'}>
         {children}
       </Text>

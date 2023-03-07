@@ -17,7 +17,7 @@ export const ArticleBlockBanner = ({article, link}) => {
       <Layout
         intent={'grid'}
         as={'div'}
-        className={cx('gap-4 flex-1', 'md:gap-8')}
+        className={cx('gap-4', 'md:gap-8 md:flex-1')}
       >
         <div>
           <Text as={'h2'} intent={'text-2xl'}>
