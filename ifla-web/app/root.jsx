@@ -178,7 +178,7 @@ export default function App() {
       </head>
       <body className={'selection:bg-accent/20'}>
         <GlobalHeader />
-        <main className={'min-h-screen flex flex-col pt-24'}>
+        <main className={'min-h-screen flex flex-col'}>
           <Outlet />
         </main>
         <GlobalFooter />

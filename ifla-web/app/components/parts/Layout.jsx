@@ -1,9 +1,10 @@
 import {cva} from 'class-variance-authority';
 
-const layout = cva('layout', {
+const layout = cva('', {
   variants: {
     intent: {
-      page: [''],
+      home: ['pt-24'],
+      page: ['pt-28'],
       footer: ['p-4 lg:p-0 lg:py-4'],
       banner: [
         'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
@@ -15,7 +16,7 @@ const layout = cva('layout', {
       'module-inline': ['prose my-8 break-inside-avoid-column'],
       text: ['py-8 mx-4'],
       grid: ['grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'],
-      article: ['flex flex-col'],
+      article: ['flex flex-col pt-24'],
       centre: [
         'flex',
         'justify-center',
@@ -23,7 +24,7 @@ const layout = cva('layout', {
         'h-[calc(100vh-6rem)]',
         'pb-24',
       ],
-      columns: ['md:columns-2 lg:columns-3 px-4'],
+      columns: ['md:columns-2 lg:columns-3 p-4'],
     },
   },
   defaultVariants: {

@@ -4,14 +4,20 @@ import {Popover, Transition} from '@headlessui/react';
 import {GlobalMenuItemDesktop} from './GlobalMenuItemDesktop';
 import {GlobalMenuItemMobile} from './GlobalMenuItemMobile';
 import {GlobalTitle} from './GlobalTitle';
-import {Await} from '@remix-run/react';
+import {Await, useLocation} from '@remix-run/react';
 import {Link} from '~/components/parts/Link';
 import {Badge} from '~/components/parts/Badge';
 import {BasketIcon} from '../icons/Icons';
 import {Text} from '../parts/Text';
+import {GlobalSubmenu} from './GlobalSubmenu';
 
 export const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
+  const {pathname} = useLocation();
+  const submenuActiveOn = menu
+    .map((section) => section.children)
+    .flat()
+    .map((page) => page.slug);
 
   return (
     <Popover className="fixed h-24 w-screen bg-white z-50" as={'header'}>
@@ -64,6 +70,9 @@ export const GlobalHeader = () => {
           }
         </Popover.Panel>
       </Transition>
+      {submenuActiveOn.includes(pathname.slice(1)) && (
+        <GlobalSubmenu menu={menu} />
+      )}
     </Popover>
   );
 };

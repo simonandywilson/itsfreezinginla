@@ -32,7 +32,7 @@ export async function loader({context}) {
 export default function Index() {
   const {homepage} = useLoaderData();
   return (
-    <div>
+    <Layout intent={"home"}>
       <Banner>
         {homepage.heroBanner ? homepage.heroBanner : 'Currently…'}
       </Banner>
@@ -68,7 +68,7 @@ export default function Index() {
       ) : (
         <Banner>No featured articles</Banner>
       )}
-    </div>
+    </Layout>
   );
 }
 

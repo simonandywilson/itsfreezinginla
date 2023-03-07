@@ -28,7 +28,7 @@ export const ShopModule = () => {
             ))}
           </div>
         </div>
-        <div className={'sticky top-24 h-max hidden sm:block'}>
+        <div className={'sticky top-28 h-max hidden sm:block'}>
           <CartPreview />
         </div>
       </div>
