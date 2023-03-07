@@ -1,10 +1,10 @@
 import {PortableText as SanityPortableText} from '@portabletext/react';
-import {Text} from './Text';
 import {cva} from 'class-variance-authority';
-import {CollapsibleModule} from '../modules/CollapsibleModule';
-import {ImageModule} from '../modules/ImageModule';
-import {ImageGridModule} from '../modules/ImageGridModule';
 import {CarouselModule} from '../modules/CarouselModule';
+import {CollapsibleModule} from '../modules/CollapsibleModule';
+import {ImageGridModule} from '../modules/ImageGridModule';
+import {ImageModule} from '../modules/ImageModule';
+import {Text} from './Text';
 
 const portableText = cva(
   '[&>*:not(:last-child):not(p):not(blockquote):not(section)]:mb-[1em]',
@@ -29,47 +29,48 @@ const components = (intent) => {
         switch (intent) {
           case 'column':
             return (
-              <Text tag={'p'} intent={'bl-body-lg'}>
+              <Text as={'p'} intent={'text-base'}>
                 {children}
               </Text>
             );
           case 'footer':
             return (
-              <Text tag={'p'} intent={'bl-body-alt'}>
+              <Text as={'p'} intent={'text-sm'}>
                 {children}
               </Text>
             );
           default:
             return (
-              <Text tag={'p'} intent={'bl-body'}>
+              <Text as={'p'} intent={'text-base-serif'}>
                 {children}
               </Text>
             );
         }
       },
+      large: ({children}) => (
+        <Text as={'p'} intent={'text-lg'}>
+          {children}
+        </Text>
+      ),
       h3: ({children}) => (
-        <Text
-          tag={'h3'}
-          intent={'bl-heading-2xl'}
-          className={'break-before-avoid'}
-        >
+        <Text as={'h3'} intent={'text-xl'} className={'break-before-column'}>
           {children}
         </Text>
       ),
       h5: ({children}) => (
-        <Text tag={'h4'} intent={'bl-heading-lg'}>
+        <Text as={'h4'} intent={'textlg'}>
           {children}
         </Text>
       ),
       h6: ({children}) => (
-        <Text tag={'h5'} intent={'bl-heading-sm'} className={'!mb-0'}>
+        <Text as={'h5'} intent={'text-sm'} className={'!mb-0'}>
           {children}
         </Text>
       ),
       blockquote: ({children, value}) => (
         <Text
-          tag={'blockquote'}
-          intent={'bl-quote'}
+          as={'blockquote'}
+          intent={'text-xl'}
           colour={value.colour}
           className={'my-20 px-8'}
         >

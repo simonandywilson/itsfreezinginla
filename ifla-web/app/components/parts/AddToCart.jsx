@@ -1,7 +1,6 @@
 import {useFetcher} from '@remix-run/react';
 import React from 'react';
 import {Button} from './Button';
-import {Text} from './Text';
 
 export const AddToCart = ({lines, analytics, soldOut}) => {
   const fetcher = useFetcher();
@@ -13,12 +12,12 @@ export const AddToCart = ({lines, analytics, soldOut}) => {
       <input type="hidden" name="analytics" value={JSON.stringify(analytics)} />
       <Button
         type={'submit'}
-        colour={'dark'}
-        intent={'base'}
+        colour={'default'}
+        intent={'text-sm'}
         status={soldOut ? 'disabled' : ''}
         disabled={soldOut}
       >
-        <Text intent={'button-base'}>{soldOut ? 'Sold Out' : 'Add to Cart'}</Text>
+        {soldOut ? 'Sold Out' : 'Add to Cart'}
       </Button>
     </fetcher.Form>
   );

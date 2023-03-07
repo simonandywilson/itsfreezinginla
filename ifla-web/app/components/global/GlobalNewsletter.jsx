@@ -1,6 +1,7 @@
 import {Form, useActionData, useTransition} from '@remix-run/react';
 import {useEffect, useRef} from 'react';
 import {Button} from '~/components/parts/Button';
+import { Text } from '../parts/Text';
 
 export const GlobalNewsletter = () => {
   const actionData = useActionData();
@@ -37,9 +38,13 @@ export const GlobalNewsletter = () => {
 
   return (
     <Form method="post" aria-hidden={state === 'success'}>
-      <h2 className={'mb-[1em]'}>Sign up to our newsletter</h2>
+      <Text as={'h2'} className={'mb-[1em]'} intent={'text-sm'}>
+        Sign up to our newsletter
+      </Text>
       <fieldset>
-        <label>email:</label>
+        <Text as={'label'} intent={'text-sm'}>
+          email:
+        </Text>
         <div className={'flex max-w-sm'}>
           <input
             aria-label="Email address"
@@ -54,7 +59,7 @@ export const GlobalNewsletter = () => {
           />
           <Button
             type={'submit'}
-            intent={'base'}
+            intent={'text-sm'}
             colour={'light'}
             aria-label={'Submit email'}
           >

@@ -1,21 +1,44 @@
 import {cva} from 'class-variance-authority';
+import { Text } from './Text';
 
-const button = cva(
-  'hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased whitespace-nowrap',
+const buttonStyle = cva(
+  'w-max focus:outline-none focus:border-none antialiased whitespace-nowrap flex-grow-0 leading-none inline-block',
   {
     variants: {
       intent: {
-        link: [
-          'hover:bg-transparent focus-visible:bg-transparent hover:text-accent focus-visible:text-accent',
-        ],
-        sm: [''],
-        base: ['py-2 px-3'],
-        lg: ['p-3'],
-        xl: ['px-4 py-2'],
+        'text-sm': ['button-sm'],
+        'text-base': ['button-base'],
+        'text-lg': ['button-lg'],
+        'text-xl': ['button-xl'],
+        'text-2xl': ['button-2xl'],
       },
       colour: {
-        light: ['bg-white', 'text-black'],
-        dark: ['bg-black', 'text-white'],
+        transparent: [
+          'bg-white',
+          'text-black',
+          'hover:text-accent',
+          'focus-visible:text-accent',
+        ],
+        light: [
+          'bg-white',
+          'text-black',
+          'hover:bg-accent',
+          'focus-visible:bg-accent',
+        ],
+        default: [
+          'bg-black',
+          'text-white',
+          'hover:bg-accent',
+          'focus-visible:bg-accent',
+        ],
+        mono: [
+          'bg-black',
+          'text-white',
+          'hover:bg-white',
+          'hover:text-black',
+          'focus-visible:bg-white',
+          'focus-visible:text-black',
+        ],
       },
       status: {
         disabled: [
@@ -27,8 +50,8 @@ const button = cva(
       },
     },
     defaultVariants: {
-      intent: 'base',
-      colour: 'light',
+      intent: 'text-base',
+      colour: 'default',
     },
   },
 );
@@ -42,17 +65,19 @@ export const Button = ({
   children,
   disabled,
   value,
-  aria
+  aria,
 }) => {
   return (
     <button
       type={type || 'button'}
-      className={button({intent, colour, status, className})}
+      className={buttonStyle({intent, colour, status, className})}
       disabled={disabled}
       value={value}
       aria-label={aria}
     >
-      {children}
+      <Text intent={intent} className={'inline-block leading-none'}>
+        {children}
+      </Text>
     </button>
   );
 };

@@ -1,8 +1,8 @@
 import {Fragment} from 'react';
 import {Popover, Transition} from '@headlessui/react';
-import {Link} from '~/components/parts/Link';
 import {Text} from '../parts/Text';
 import {useNavigate} from '@remix-run/react';
+import {TextLink} from '../parts/Links';
 
 export const GlobalMenuItemDesktop = ({title, children}) => {
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ export const GlobalMenuItemDesktop = ({title, children}) => {
           }
           onClick={() => navigate(children[0].slug)}
         >
-          <Text intent={'ui-2xl'} className={'font-normal'}>
+          <Text intent={'text-base'} className={'font-normal'}>
             {title}
           </Text>
         </Popover.Button>
@@ -31,9 +31,9 @@ export const GlobalMenuItemDesktop = ({title, children}) => {
               <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
                 {children.map((child) => (
                   <li key={child._id}>
-                    <Text intent={'ui-2xl'} className={'leading-none'}>
-                      <Link to={child.slug}>{child.title}</Link>
-                    </Text>
+                    <TextLink intent={'text-base'} to={child.slug} className={"leading-none"}>
+                      {child.title}
+                    </TextLink>
                   </li>
                 ))}
               </ul>

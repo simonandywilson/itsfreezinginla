@@ -189,7 +189,7 @@ export default function App() {
   );
 }
 
-export function CatchBoundary() {
+export function CatchBoundary({error}) {
   const caught = useCatch();
   const isNotFound = caught.status === 404;
   const locale = {

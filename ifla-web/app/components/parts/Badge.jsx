@@ -10,7 +10,7 @@ const layout = cva(
       },
       location: {
         top: ['top-0 right-0 -translate-x-1/2 translate-y-full'],
-        bottom: ['bottom-0 right-0 -translate-x-1/2 -translate-y-1/2'],
+        bottom: ['bottom-0 right-0 -translate-x-full -translate-y-1/2'],
       },
     },
     defaultVariants: {

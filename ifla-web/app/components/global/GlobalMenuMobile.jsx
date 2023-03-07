@@ -26,7 +26,6 @@ export const GlobalMenuMobile = ({menu, close}) => {
         key={section._id || section._key}
         title={section.name}
         children={section.children}
-        close={close}
       />
     );
   });

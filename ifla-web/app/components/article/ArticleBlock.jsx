@@ -1,16 +1,19 @@
 import React from 'react';
+import {Layout} from '../parts/Layout';
 import SanityImage from '../parts/SanityImage';
-import {Topic} from '../parts/Topic';
 import {Text} from '../parts/Text';
+import {Topic} from '../parts/Topic';
 
 export const ArticleBlock = ({article}) => {
   const {headline, colour, author, category, image, topic} = article;
   return (
-    <article
+    <Layout
+      as={'article'}
+      intent={'block'}
       className={
-        'group relative w-full h-full aspect-square p-6 flex flex-col justify-between gap-6 '
+        'group relative w-full h-full aspect-square flex flex-col justify-between gap-6'
       }
-      style={{background: colour ? colour : 'var(--accent-colour)'}}
+      colour={colour || 'var(--accent-colour)'}
     >
       {image?.asset && (
         <div
@@ -28,40 +31,38 @@ export const ArticleBlock = ({article}) => {
         </div>
       )}
       <div className={'filter group-focus-visible:invert'}>
-        <Text tag={'h2'} intent={'bl-heading-2xl'}>
+        <Text as={'h2'} intent={'text-xl'}>
           {topic && <Topic topic={topic} />}
           {headline ? headline : 'Untitled article'}
         </Text>
       </div>
-      <div className={'flex justify-between filter group-focus-visible:invert'}>
+      <div
+        className={
+          'flex justify-between items-end gap-4 filter group-focus-visible:invert '
+        }
+      >
         {author.name && (
-          <Text
-            tag={'address'}
-            intent={'bl-heading-base'}
-            className={'not-italic'}
-          >
+          <Text as={'address'} intent={'text-base'} className={'not-italic'}>
             By {author.name}
           </Text>
         )}
         {category && category.length > 0 && (
-          <div className={'flex'}>
+          <div>
             <span>(</span>
             {category.map((cat, index) => {
               return (
-                <div key={cat._id}>
-                  <Text tag={'p'} intent={'bl-heading-base'}>
-                    {cat.category}
-                    {category.length > 0 && index + 1 !== category.length && (
-                      <span>,&nbsp;</span>
-                    )}
-                  </Text>
-                </div>
+                <Text as={'span'} intent={'text-sm'} key={cat._id}>
+                  {cat.category}
+                  {category.length > 0 && index + 1 !== category.length && (
+                    <span>,&nbsp;</span>
+                  )}
+                </Text>
               );
             })}
             <span>)</span>
           </div>
         )}
       </div>
-    </article>
+    </Layout>
   );
 };

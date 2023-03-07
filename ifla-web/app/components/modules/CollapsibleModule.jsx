@@ -7,17 +7,17 @@ export const CollapsibleModule = ({content}) => {
   return (
     <Layout>
       {name && (
-        <Text tag={'h5'} intent={'bl-heading-sm'} className={'!mb-0'}>
+        <Text as={'h5'} intent={'bl-heading-sm'} className={'!mb-0'}>
           {name}
         </Text>
       )}
       <details>
         <summary className={'flex gap-2'}>
-          <Text tag={'p'} intent={'bl-body-lg'} className={"select-none"}>
+          <Text as={'p'} intent={'bl-body-lg'} className={'select-none'}>
             {heading || 'Collapsible'}
           </Text>
         </summary>
-        <Text tag={'p'} intent={'bl-body-alt'} className={"mt-4"}>
+        <Text as={'p'} intent={'bl-body-alt'} className={'mt-4'}>
           <PortableTextPlain text={text} />
         </Text>
       </details>

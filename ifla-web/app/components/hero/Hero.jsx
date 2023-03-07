@@ -1,24 +1,25 @@
+import {cx} from 'class-variance-authority';
 import React from 'react';
 import {Layout} from '../parts/Layout';
+import {ButtonLink} from '../parts/Links';
 import {Text} from '../parts/Text';
-import {Link} from '../parts/Link';
-import { cx } from 'class-variance-authority';
 
 const Hero = ({hero}) => {
-	const { store, colour } = hero;
+  const {store, colour} = hero;
   return (
-    <Layout tag={'article'} intent={'banner'} colour={colour || '#e3e8ef'}>
+    <Layout as={'article'} intent={'banner'} colour={colour || '#e3e8ef'}>
       <div className={'relative w-full h-full'}>
         <div className={cx('relative w-full h-full flex flex-col gap-4 z-10')}>
-          <Text intent={'ui-6xl'}>{store.title}</Text>
-          <Link
-            intent={'button-2xl'}
+          <Text as={'h2'} intent={'text-2xl'}>
+            {store.title}
+          </Text>
+          <ButtonLink
+            intent={'text-lg'}
             colour={'mono'}
-            className={'flex-grow-0'}
             to={store.slug.shop.slug.fullUrl}
           >
-            <Text intent={'ui-3xl'}>Buy</Text>
-          </Link>
+            Buy
+          </ButtonLink>
         </div>
         <div
           className={

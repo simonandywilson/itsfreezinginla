@@ -31,6 +31,13 @@ export async function loader({context, params, request}) {
     return {preview: true, query: pageDataQuery, params};
   }
   const page = await sanityClient.fetch(pageDataQuery, params);
+
+   if (!page) {
+     throw new Response('Not Found', {
+       status: 404,
+     });
+   }
+  
   return json({
     page,
     usePreview,
@@ -38,7 +45,7 @@ export async function loader({context, params, request}) {
 }
 
 export default function PageRoute() {
-  const {page} = useLoaderData();
+  const { page } = useLoaderData();
 
   return <Page page={page} />;
 }

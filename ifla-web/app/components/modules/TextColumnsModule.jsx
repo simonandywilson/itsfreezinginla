@@ -3,7 +3,7 @@ import {PortableText} from '../parts/PortableText';
 
 export const TextColumnsModule = ({content}) => {
   return (
-    <Layout intent={"columns"} style={{columnFill: 'auto'}}>
+    <Layout intent={"columns"}>
       <PortableText text={content.text} intent={'column'} />
     </Layout>
   );

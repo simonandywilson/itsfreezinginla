@@ -1,22 +1,26 @@
-import React from 'react';
-import {Topic} from '../parts/Topic';
-import {Text} from '../parts/Text';
 import {cx} from 'class-variance-authority';
-import {PortableTextPlain} from '../parts/PortableTextPlain';
+import React from 'react';
 import {Layout} from '../parts/Layout';
-import {Link} from '../parts/Link';
+import {ButtonLink} from '../parts/Links';
+import {PortableTextPlain} from '../parts/PortableTextPlain';
+import {Text} from '../parts/Text';
+import {Topic} from '../parts/Topic';
 
 export const ArticleBlockBanner = ({article, link}) => {
   const {headline, intro, colour, author, category, topic} = article;
   return (
-    <Layout tag={'article'} intent={'banner'} colour={colour || '#e3e8ef'}>
+    <Layout
+      as={'article'}
+      intent={'banner'}
+      colour={colour || 'var(--accent-colour)'}
+    >
       <Layout
         intent={'grid'}
-        tag={'div'}
+        as={'div'}
         className={cx('gap-4 flex-1', 'md:gap-8')}
       >
         <div>
-          <Text tag={'h2'} intent={'bl-heading-3xl'}>
+          <Text as={'h2'} intent={'text-2xl'}>
             {topic && <Topic topic={topic} />}
             {headline ? headline : 'Untitled article'}
           </Text>
@@ -27,28 +31,26 @@ export const ArticleBlockBanner = ({article, link}) => {
             'lg:col-span-2 lg:columns-2 ',
           )}
         >
-          <Text tag={'h3'} intent={'bl-heading-xl'}>
+          <Text as={'h3'} intent={'text-xl'}>
             {intro ? <PortableTextPlain text={intro} /> : 'Intro text'}
           </Text>
           {link && (
-            <Link
-              className={'mt-[1em]'}
-              intent={'button-xl'}
+            <ButtonLink
+              intent={'text-lg'}
               colour={'mono'}
               to={link}
+              className={'mt-[1em]'}
             >
-              <Text tag={'p'} intent={'ui-3xl'}>
-                Read on
-              </Text>
-            </Link>
+              Read on
+            </ButtonLink>
           )}
         </div>
       </Layout>
       <div className={'flex justify-between'}>
         {author.name && (
           <Text
-            tag={'address'}
-            intent={'bl-heading-base'}
+            as={'address'}
+            intent={'text-sm'}
             className={'not-italic'}
           >
             By {author.name}
@@ -60,7 +62,7 @@ export const ArticleBlockBanner = ({article, link}) => {
             {category.map((cat, index) => {
               return (
                 <div key={cat._id}>
-                  <Text tag={'p'} intent={'bl-heading-base'}>
+                  <Text as={'p'} intent={'bl-heading-base'}>
                     {cat.category}
                     {category.length > 0 && index + 1 !== category.length && (
                       <span>,&nbsp;</span>

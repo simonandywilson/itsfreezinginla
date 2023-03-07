@@ -21,7 +21,7 @@ export const GlobalHeader = () => {
 
   return (
     <Popover className="fixed h-24 w-screen bg-white z-50" as={'header'}>
-      <div className="relative w-full p-4 flex items-center justify-between">
+      <div className="relative w-full p-4 flex items-center justify-between bg-white">
         <GlobalTitle />
         <div className={'flex items-center gap-16'}>
           {/* Mobile Menu Button */}
@@ -32,7 +32,7 @@ export const GlobalHeader = () => {
               }
             >
               {({open}) => (
-                <Text intent={'ui-3xl'} className={'font-normal'}>
+                <Text intent={'text-lg'}>
                   {open ? 'X' : 'Menu'}
                 </Text>
               )}

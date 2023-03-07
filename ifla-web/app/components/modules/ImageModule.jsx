@@ -15,7 +15,7 @@ export const ImageModule = ({content}) => {
       )}
       {caption && (
         <Text
-          tag={'figcaption'}
+          as={'figcaption'}
           intent={'bl-body-alt'}
           className={'my-4'}
           colour={colour}

@@ -5,7 +5,7 @@ import {Text} from '../parts/Text';
 export const HeadingModule = ({content}) => {
   return (
     <Layout intent={'module'}>
-      <Text tag={'h3'} intent={'bl-heading-2xl'}>
+      <Text as={'h3'} intent={'bl-heading-2xl'}>
         {content.heading}
       </Text>
     </Layout>

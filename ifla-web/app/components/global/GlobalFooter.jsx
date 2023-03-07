@@ -1,36 +1,34 @@
-import {Link} from '~/components/parts/Link';
-import {useRouteData} from 'remix-utils';
-import {PortableText} from '../parts/PortableText';
-import {GlobalNewsletter} from './GlobalNewsletter';
-import {Text} from '../parts/Text';
 import {cx} from 'class-variance-authority';
+import {useRouteData} from 'remix-utils';
+import {TextLink} from '~/components/parts/Links';
 import {Layout} from '../parts/Layout';
+import {PortableText} from '../parts/PortableText';
+import {Text} from '../parts/Text';
+import {GlobalNewsletter} from './GlobalNewsletter';
 
 export const GlobalFooter = () => {
   const {footer} = useRouteData(`root`);
   return (
-    <Layout
-      tag={'footer'}
-      intent={'footer'}
-      className={cx(
-        'bg-black text-white flex justify-between flex-col gap-8',
-        'md:flex-row md:gap-0',
-      )}
-    >
-      <div className={cx('w-1/2 order-first flex flex-col', 'lg:w-1/3','lg:px-4')}>
-        <Text className={'text-white mb-[1em]'}>Pages</Text>
-        {footer.footerLinks.map((link) => {
-          return (
-            <Link
-              to={link.slug}
-              key={link._id || link._key}
-              colour={'light'}
-              className={'w-max'}
-            >
-              <Text>{link.title}</Text>
-            </Link>
-          );
-        })}
+    <Layout as={'footer'} intent={'footer'}>
+      <div
+        className={cx('w-1/2 order-first flex flex-col', 'lg:w-1/3', 'lg:px-8')}
+      >
+        <Text intent={'text-sm'} className={'text-white mb-[1em]'}>
+          Pages
+        </Text>
+        <div className={'flex flex-col gap-2'}>
+          {footer.footerLinks.map((link) => {
+            return (
+              <TextLink
+                to={link.slug}
+                key={link._id || link._key}
+                intent={'text-sm'}
+              >
+                {link.title}
+              </TextLink>
+            );
+          })}
+        </div>
       </div>
       <div className={cx('flex-1 flex gap-8 flex-col', 'lg:flex-row lg:gap-0')}>
         <div

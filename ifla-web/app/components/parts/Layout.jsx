@@ -4,11 +4,17 @@ const layout = cva('', {
   variants: {
     intent: {
       home: ['pt-24'],
-      page: ['pt-28'],
-      footer: ['p-4 lg:p-0 lg:py-4'],
-      banner: [
-        'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
+      page: ['pt-32'],
+      footer: [
+        'px-4 pt-4 pb-24 bg-black text-white flex justify-between flex-col gap-8',
+        'sm:px-8 sm:pt-8',
+        'md:flex-row md:gap-0',
+        'lg:px-0',
       ],
+      banner: [
+        'w-full aspect-video p-8 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
+      ],
+      block: ['px-6 pb-6 pt-4'],
       cart: ['p-8'],
       module: ['px-4 my-8'],
       'module-full': ['my-8'],
@@ -23,7 +29,7 @@ const layout = cva('', {
         'h-[calc(100vh-6rem)]',
         'pb-24',
       ],
-      columns: ['w-full sm:columns-2 xl:w-2/3 p-4'],
+      columns: ['w-full md:columns-2 xl:w-2/3 px-4 py-8 col-fill-auto'],
     },
   },
   defaultVariants: {
@@ -31,8 +37,8 @@ const layout = cva('', {
   },
 });
 
-export const Layout = ({tag, className, intent, children, colour}) => {
-  const ElementTag = `${tag || 'div'}`;
+export const Layout = ({as, className, intent, children, colour}) => {
+  const ElementTag = `${as || 'div'}`;
   return (
     <ElementTag
       className={layout({intent, className})}

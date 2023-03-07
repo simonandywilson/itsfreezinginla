@@ -2,12 +2,12 @@ import {json} from '@shopify/remix-oxygen';
 import groq from 'groq';
 import {useLoaderData} from 'react-router';
 
-import Hero from '../components/home/Hero';
-import {Link} from '../components/parts/Link';
-import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import {ArticleBlock} from '../components/article/ArticleBlock';
+import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
+import Hero from '../components/hero/Hero';
 import {Banner} from '../components/parts/Banner';
 import {Layout} from '../components/parts/Layout';
+import {Link} from '../components/parts/Link';
 import {shopLinkQuery} from '../lib/queries';
 
 export const handle = {
@@ -32,7 +32,7 @@ export async function loader({context}) {
 export default function Index() {
   const {homepage} = useLoaderData();
   return (
-    <Layout intent={"home"}>
+    <Layout intent={'home'}>
       <Banner>
         {homepage.heroBanner ? homepage.heroBanner : 'Currently…'}
       </Banner>
@@ -44,12 +44,12 @@ export default function Index() {
               ? homepage.featuredBanner
               : 'Featured articles'}
           </Banner>
-          <Layout intent={'grid'} tag={'ul'}>
+          <Layout intent={'grid'} as={'ul'}>
             <li className={'col-span-full w-full'}>
-                <ArticleBlockBanner
-                  article={homepage.featured[0]}
-                  link={homepage.featured[0].slug}
-                />
+              <ArticleBlockBanner
+                article={homepage.featured[0]}
+                link={homepage.featured[0].slug}
+              />
             </li>
             {homepage.featured.map((article, index) => {
               if (index === 0) {
@@ -57,7 +57,7 @@ export default function Index() {
               }
               return (
                 <li key={article._id} className={'w-full'}>
-                  <Link to={article.slug} intent={'block'} className={"group"}>
+                  <Link to={article.slug} intent={'block'} className={'group'}>
                     <ArticleBlock article={article} />
                   </Link>
                 </li>

@@ -1,17 +1,17 @@
 import {Await, useFetcher} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
 import {json} from '@shopify/remix-oxygen';
+import {cx} from 'class-variance-authority';
 import {Suspense} from 'react';
 import {useRouteData} from 'remix-utils';
 import invariant from 'tiny-invariant';
-import CartLoader from '../components/loaders/CartLoader';
-import {Layout} from '../components/parts/Layout';
-import {Text} from '../components/parts/Text';
 import {Button} from '~/components/parts/Button';
+import CartLoader from '../components/loaders/CartLoader';
 import {CartPreview} from '../components/parts/CartPreview';
-import {cx} from 'class-variance-authority';
 import {Dash} from '../components/parts/Dash';
-import {Link} from '../components/parts/Link';
+import {Layout} from '../components/parts/Layout';
+import {ButtonLink, ButtonLinkExternal} from '../components/parts/Links';
+import {Text} from '../components/parts/Text';
 
 export const handle = {
   seo: {
@@ -177,11 +177,14 @@ export default function CartPage() {
   const {cart, shop} = useRouteData(`root`);
   return (
     <Layout intent={'home'}>
-      <Suspense fallback={<CartLoader />}>
+      {/* <Suspense fallback={<CartLoader />}>
         <Await resolve={cart}>
-          {(cart) => <Cart cart={cart} shop={shop} />}
+          {(cart) =>
+            cart ? <Cart cart={cart} shop={shop} /> : <EmptyCart shop={shop} />
+          }
         </Await>
-      </Suspense>
+      </Suspense> */}
+      <Await resolve={cart}>{(cart) => <Cart cart={cart} shop={shop} />}</Await>
     </Layout>
   );
 }
@@ -210,28 +213,26 @@ const CartDetails = ({cart, shop}) => {
             'md:order-first md:mt-0',
           )}
         >
-          <Text tag={'h2'} intent={'ui-3xl'} className={'mb-4'}>
+          <Text as={'h2'} intent={'text-base'} className={'mb-4'}>
             Basket contents
           </Text>
           {lines.edges.map(({node}) => (
             <CartLine key={node.id} line={node} />
           ))}
           <CartTotal cost={cost} />
-          <a
-            href={checkoutUrl}
-            target="_self"
-            className={cx(
-              'mx-auto mt-8 px-4 py-2 hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased bg-black text-white',
-              'md:ml-auto md:mr-20',
-            )}
+          <ButtonLinkExternal
+            to={checkoutUrl}
+            target={'_self'}
+            intent={'text-lg'}
+            className={cx('mx-auto mt-8 px-4 py-2', 'md:ml-auto md:mr-20')}
           >
-            <Text intent={'button-2xl'}>Checkout</Text>
-          </a>
+            Checkout
+          </ButtonLinkExternal>
         </div>
         <CartPreview
           text={'Back to shop'}
           link={shop.shop.slug.fullUrl}
-          className={'mt-4'}
+          className={'mt-8'}
         />
       </div>
     </Layout>
@@ -242,12 +243,12 @@ const EmptyCart = ({shop}) => {
   return (
     <Layout intent={'centre'}>
       <div className={'flex flex-col gap-4 justify-center items-center'}>
-        <Text tag={'h2'} intent={'ui-2xl'}>
+        <Text as={'h2'} intent={'text-lg'}>
           Basket is empty
         </Text>
-        <Link to={shop.shop.slug.fullUrl} intent={'button-2xl'} colour={'dark'}>
-          <Text intent={'button-2xl'}>Back to shop</Text>
-        </Link>
+        <ButtonLink to={shop.shop.slug.fullUrl} intent={'text-lg'}>
+          Go to shop
+        </ButtonLink>
       </div>
     </Layout>
   );
@@ -268,41 +269,41 @@ const CartLine = ({line}) => {
   return (
     <CartLineWrapper>
       <div className={'flex gap-2 items-baseline justify-self-stretch'}>
-        <Text tag={'h4'} intent={'ui-xl'}>
+        <Text as={'h4'} intent={'text-sm'}>
           {merchandise.product.title}
         </Text>
-        <Text tag={'h5'} intent={'ui-xl'} className={'text-center'}>
+        <Text as={'h5'} intent={'text-sm'} className={'text-center'}>
           {merchandise.title}
         </Text>
         <Dash className={'flex-1'} />
-        <Text intent={'ui-xl'}>x{quantity}</Text>
+        <Text intent={'text-sm'}>x{quantity}</Text>
         <Money
           withoutTrailingZeros
           data={cost.totalAmount}
-          className={'text-right ui-xl'}
+          className={'text-right text-sm'}
         />
       </div>
-      <div className={'flex gap-2 ml-4'}>
+      <div className={'flex gap-1 ml-4'}>
         <CartUpdateQuantity lines={[{id: id, quantity: prevQuantity}]}>
           <Button
             type={'submit'}
-            colour={'light'}
-            intent={'link'}
+            colour={'transparent'}
+            intent={'text-sm'}
             value={prevQuantity}
             aria="Decrease quantity"
           >
-            <Text intent={'button-xl'}>–</Text>
+            –
           </Button>
         </CartUpdateQuantity>
         <CartUpdateQuantity lines={[{id: id, quantity: nextQuantity}]}>
           <Button
             type={'submit'}
-            colour={'light'}
-            intent={'link'}
+            colour={'transparent'}
+            intent={'text-sm'}
             value={nextQuantity}
             aria="Increase quantity"
           >
-            <Text intent={'button-xl'}>+</Text>
+            +
           </Button>
         </CartUpdateQuantity>
       </div>
@@ -338,14 +339,14 @@ const CartTotal = ({cost}) => {
   return (
     <CartLineWrapper>
       <div className={'flex gap-2 items-baseline justify-self-stretch mt-8'}>
-        <Text tag={'h4'} intent={'ui-xl'}>
+        <Text as={'h4'} intent={'text-sm'}>
           Total
         </Text>
         <Dash className={'flex-1'} />
         <Money
           withoutTrailingZeros
           data={cost.totalAmount}
-          className={'text-right ui-xl'}
+          className={'text-right text-sm'}
         />
       </div>
     </CartLineWrapper>

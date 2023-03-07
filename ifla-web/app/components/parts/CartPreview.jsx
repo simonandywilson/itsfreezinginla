@@ -5,8 +5,7 @@ import {useRouteData} from 'remix-utils';
 import {BasketIconThin} from '../icons/Icons';
 import {Badge} from './Badge';
 import {CartPreviewItem} from './CartPreviewItem';
-import {Link} from './Link';
-import {Text} from './Text';
+import {ButtonLink} from './Links';
 
 export const CartPreview = ({text, link, className}) => {
   const {cart} = useRouteData(`root`);
@@ -35,7 +34,7 @@ export const CartPreview = ({text, link, className}) => {
               <Await resolve={cart}>
                 {(cart) =>
                   cart?.lines?.edges &&
-                  cart.lines.edges.map(({ node }) => {
+                  cart.lines.edges.map(({node}) => {
                     return [...Array(node.quantity)].map((e, i) => (
                       <CartPreviewItem key={node.id + i} item={node} />
                     ));
@@ -47,9 +46,9 @@ export const CartPreview = ({text, link, className}) => {
         </div>
       </div>
       <div className={'flex justify-center mt-8'}>
-        <Link to={link || '/cart'} intent={'button-2xl'} colour={'dark'}>
-          <Text intent={'button-2xl'}>{text || 'View Basket'}</Text>
-        </Link>
+        <ButtonLink to={link || '/cart'} intent={'text-lg'}>
+          {text || 'View Basket'}
+        </ButtonLink>
       </div>
     </div>
   );

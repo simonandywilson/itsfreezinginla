@@ -3,9 +3,9 @@ import React from 'react';
 import {ArticleBlock} from '~/components/article/ArticleBlock';
 import {Layout} from '../parts/Layout';
 
-export const ArticlesModule = ({ content }) => {
+export const ArticlesModule = ({content}) => {
   return (
-    <Layout tag={'ul'} intent={'grid'} className={'grid-layout'}>
+    <Layout as={'ul'} intent={'grid'} className={'grid-layout'}>
       {content.articles.map((article) => {
         return (
           <li key={article._id} className={'w-full'}>
