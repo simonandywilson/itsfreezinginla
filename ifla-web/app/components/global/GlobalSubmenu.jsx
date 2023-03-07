@@ -1,11 +1,12 @@
 import { useLocation} from '@remix-run/react';
+import { cx } from 'class-variance-authority';
 import {Link} from '../parts/Link';
 import {Text} from '../parts/Text';
 
 export const GlobalSubmenu = ({menu}) => {
   const {pathname} = useLocation();
   return (
-    <div className={'border-b-[1px] border-black bg-white px-4 flex gap-8 '}>
+    <div className={cx('border-b-[1px] border-black bg-white px-4 gap-8 hidden', 'md:flex')}>
       <Text className={'-translate-y-1'}>Section:</Text>
       <div className={'flex -translate-y-1'}>
         {menu.map((section) => {

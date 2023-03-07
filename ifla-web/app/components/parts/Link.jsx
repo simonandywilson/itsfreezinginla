@@ -1,4 +1,4 @@
-import {Link as RemixLink} from '@remix-run/react';
+import {Link as RemixLink, useTransition} from '@remix-run/react';
 import {cva} from 'class-variance-authority';
 
 const link = cva('w-max', {
@@ -52,8 +52,12 @@ const link = cva('w-max', {
 });
 
 export const Link = ({children, to, intent, colour, className}) => {
+
   return (
-    <RemixLink to={to} className={link({intent, colour, className})}>
+    <RemixLink
+      to={to}
+      className={link({intent, colour, className})}
+    >
       {children}
     </RemixLink>
   );
