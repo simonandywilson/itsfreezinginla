@@ -37,7 +37,7 @@ const Hero = ({hero}) => {
             className={cx(
               'w-full h-full object-contain max-w-[10rem]',
               'md:max-w-[15rem]',
-              'lg:max-w-[20rem]',
+              'lg:max-w-[25rem]',
             )}
           />
         </div>
