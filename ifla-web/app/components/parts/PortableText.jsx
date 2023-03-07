@@ -47,7 +47,6 @@ const components = (intent) => {
             );
         }
       },
-      // h2: ({children}) => <Text tag={'h3'}>{children}</Text>,
       h3: ({children}) => (
         <Text
           tag={'h3'}
@@ -85,6 +84,37 @@ const components = (intent) => {
       imageModule: ({value}) => <ImageModule content={value} inline />,
       carouselModule: ({value}) => <CarouselModule content={value} />,
       imageGridModule: ({value}) => <ImageGridModule content={value} inline />,
+    },
+    marks: {
+      externalLinkObject: ({value, children}) => {
+        switch (value.type) {
+          case 'website':
+            return (
+              <a
+                href={value?.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={'link'}
+              >
+                {children}
+              </a>
+            );
+          case 'telephone':
+            return (
+              <a href={`tel:${value?.link}`} className={'link'}>
+                {children}
+              </a>
+            );
+          case 'email':
+            return (
+              <a href={`mailto:${value?.link}`} className={'link'}>
+                {children}
+              </a>
+            );
+          default:
+            return null;
+        }
+      },
     },
   };
 };

@@ -109,4 +109,8 @@
   .prose {
     @apply max-w-xl mx-auto;
   }
+
+  .link {
+    @apply hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none;
+  }
 }

@@ -16,7 +16,6 @@ export function SetRandomColourAction(originalAction, context) {
 						'totalReferences': count(*[_type in ['article'] && references(^._id)])
 					} | order(totalReferences asc)[0]`
         const leastUsedColour = await client.fetch(query)
-        console.log(leastUsedColour)
         patch.execute([
           {
             setIfMissing: {

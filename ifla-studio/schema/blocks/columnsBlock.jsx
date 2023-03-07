@@ -19,6 +19,5 @@ export default defineField({
       },
     },
     {type: 'imageModule'},
-    {type: 'carouselModule'},
   ],
 })

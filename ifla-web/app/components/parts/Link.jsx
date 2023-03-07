@@ -1,4 +1,4 @@
-import {Link as RemixLink, useTransition} from '@remix-run/react';
+import {Link as RemixLink} from '@remix-run/react';
 import {cva} from 'class-variance-authority';
 
 const link = cva('w-max', {
