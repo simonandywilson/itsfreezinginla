@@ -176,13 +176,13 @@ export async function action({request, context}) {
 export default function CartPage() {
   const {cart, shop} = useRouteData(`root`);
   return (
-    <div>
+    <Layout intent={"home"}>
       <Suspense fallback={<CartLoader />}>
         <Await resolve={cart}>
           {(cart) => <Cart cart={cart} shop={shop} />}
         </Await>
       </Suspense>
-    </div>
+    </Layout>
   );
 }
 

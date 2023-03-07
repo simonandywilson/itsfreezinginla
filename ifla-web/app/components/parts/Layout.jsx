@@ -33,7 +33,7 @@ const layout = cva('', {
 });
 
 export const Layout = ({tag, className, intent, children, colour}) => {
-  const ElementTag = `${tag || 'section'}`;
+  const ElementTag = `${tag || 'div'}`;
   return (
     <ElementTag
       className={layout({intent, className})}

@@ -18,6 +18,8 @@ export const GlobalHeader = () => {
     .map((section) => section.children)
     .flat()
     .map((page) => page.slug);
+  
+  console.log(submenuActiveOn);
 
   return (
     <Popover className="fixed h-24 w-screen bg-white z-50" as={'header'}>

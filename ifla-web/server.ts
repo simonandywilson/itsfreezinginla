@@ -55,6 +55,12 @@ export default async function (request: Request): Promise<Response> {
      */
     const {storefront} = createStorefrontClient({
       buyerIp: request.headers.get('x-forwarded-for') ?? undefined,
+      i18n: {
+        label: 'United Kingdom (GBP £)',
+        language: 'EN',
+        country: 'GB',
+        currency: 'GBP',
+      },
       publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
       privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
       storeDomain: `https://${env.PUBLIC_STORE_DOMAIN}`,

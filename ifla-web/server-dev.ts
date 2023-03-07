@@ -5,7 +5,6 @@ import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
 import {createClient} from '@sanity/client';
 import {definePreview} from '@sanity/preview-kit';
-
 /**
  * Export a fetch handler in module format.
  */
@@ -36,6 +35,12 @@ export default {
         cache,
         waitUntil,
         buyerIp: getBuyerIp(request),
+        i18n: {
+          label: 'United Kingdom (GBP £)',
+          language: 'EN',
+          country: 'GB',
+          currency: 'GBP',
+        },
         publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
         privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
         storeDomain: `https://${env.PUBLIC_STORE_DOMAIN}`,
