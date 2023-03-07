@@ -1,5 +1,5 @@
 import {PortableText as SanityPortableText} from '@portabletext/react';
-import {cva} from 'class-variance-authority';
+import {cva, cx} from 'class-variance-authority';
 import {CarouselModule} from '../modules/CarouselModule';
 import {CollapsibleModule} from '../modules/CollapsibleModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
@@ -72,7 +72,7 @@ const components = (intent) => {
           as={'blockquote'}
           intent={'text-xl'}
           colour={value.colour}
-          className={'my-20 px-8'}
+          className={cx('my-20 px-4', 'md:px-8')}
         >
           {children}
         </Text>

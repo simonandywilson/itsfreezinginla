@@ -12,7 +12,8 @@ const layout = cva('', {
         'lg:px-0',
       ],
       banner: [
-        'w-full aspect-video p-8 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
+        'w-full aspect-[9/16] p-6 flex flex-col justify-between gap-4 ',
+        'md:p-8 md:aspect-video md:max-h-[calc(100vh-12rem)]',
       ],
       block: ['px-6 pb-6 pt-4'],
       cart: ['p-8'],
