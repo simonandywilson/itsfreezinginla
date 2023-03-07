@@ -15,34 +15,30 @@ export const GlobalMenuItemDesktop = ({title, children}) => {
           togglePopover(event, index);
         }}
       >
-        {({open}) => (
-          <>
-            <Popover.Button
-              className={
-                'hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none antialiased'
-              }
-              onClick={() => navigate(children[0].slug)}
-            >
-              <Text intent={'ui-2xl'} className={'font-normal'}>
-                {title}
-              </Text>
-            </Popover.Button>
-            <Transition
-              as={Fragment}
-            >
-              <Popover.Panel className={'absolute'}>
-                <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
-                  {children.map((child) => (
-                    <li key={child._id}>
-                      <Text intent={'ui-2xl'} className={'leading-none'}>
-                        <Link to={child.slug}>{child.title}</Link>
-                      </Text>
-                    </li>
-                  ))}
-                </ul>
-              </Popover.Panel>
-            </Transition>
-          </>
+        <Popover.Button
+          className={
+            'hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none antialiased'
+          }
+          onClick={() => navigate(children[0].slug)}
+        >
+          <Text intent={'ui-2xl'} className={'font-normal'}>
+            {title}
+          </Text>
+        </Popover.Button>
+        {children.length > 1 && (
+          <Transition as={Fragment}>
+            <Popover.Panel className={'absolute'}>
+              <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
+                {children.map((child) => (
+                  <li key={child._id}>
+                    <Text intent={'ui-2xl'} className={'leading-none'}>
+                      <Link to={child.slug}>{child.title}</Link>
+                    </Text>
+                  </li>
+                ))}
+              </ul>
+            </Popover.Panel>
+          </Transition>
         )}
       </Popover>
     </Popover.Group>

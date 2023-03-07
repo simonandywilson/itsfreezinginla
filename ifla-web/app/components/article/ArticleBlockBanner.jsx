@@ -54,7 +54,7 @@ export const ArticleBlockBanner = ({article, link}) => {
             By {author.name}
           </Text>
         )}
-        {category && category.length > 0 && (
+        {/* {category && category.length > 0 && (
           <div className={'flex'}>
             <span>(</span>
             {category.map((cat, index) => {
@@ -71,7 +71,7 @@ export const ArticleBlockBanner = ({article, link}) => {
             })}
             <span>)</span>
           </div>
-        )}
+        )} */}
       </div>
     </Layout>
   );

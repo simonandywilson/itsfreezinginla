@@ -24,7 +24,7 @@ const layout = cva('', {
         'h-[calc(100vh-6rem)]',
         'pb-24',
       ],
-      columns: ['md:columns-2 lg:columns-3 p-4'],
+      columns: ['w-full sm:columns-2 xl:w-2/3 p-4'],
     },
   },
   defaultVariants: {

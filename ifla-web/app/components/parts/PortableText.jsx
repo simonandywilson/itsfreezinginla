@@ -52,7 +52,7 @@ const components = (intent) => {
         <Text
           tag={'h3'}
           intent={'bl-heading-2xl'}
-          className={'break-before-column'}
+          className={'break-before-avoid'}
         >
           {children}
         </Text>
