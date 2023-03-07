@@ -17,7 +17,7 @@ export const GlobalFooter = () => {
         'md:flex-row md:gap-0',
       )}
     >
-      <div className={cx('w-1/3 order-first flex flex-col', 'lg:px-4')}>
+      <div className={cx('w-1/2 order-first flex flex-col', 'lg:w-1/3','lg:px-4')}>
         <Text className={'text-white mb-[1em]'}>Pages</Text>
         {footer.footerLinks.map((link) => {
           return (
