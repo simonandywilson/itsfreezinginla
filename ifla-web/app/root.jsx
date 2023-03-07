@@ -437,6 +437,8 @@ const ALL_PRODUCTS_QUERY = `#graphql
           variants(first: 5) {
             nodes {
               id
+              availableForSale
+              currentlyNotInStock
               price {
                 amount
                 currencyCode

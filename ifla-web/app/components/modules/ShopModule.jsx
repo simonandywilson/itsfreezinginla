@@ -8,7 +8,7 @@ import {cx} from 'class-variance-authority';
 import {CartPreview} from '../parts/CartPreview';
 
 export const ShopModule = () => {
-  const {allProducts} = useRouteData(`root`);
+  const {allProducts, cart} = useRouteData(`root`);
   return (
     <Layout intent={'space'}>
       <div
@@ -24,7 +24,7 @@ export const ShopModule = () => {
             )}
           >
             {allProducts.nodes.map((product) => (
-              <Product key={product.id} product={product} />
+              <Product key={product.id} product={product} cart={cart} />
             ))}
           </div>
         </div>
@@ -36,7 +36,7 @@ export const ShopModule = () => {
   );
 };
 
-const Product = ({product}) => {
+const Product = ({product, cart}) => {
   return (
     <div className={'h-max max-w-xs mx-auto'}>
       <img
@@ -53,6 +53,7 @@ const Product = ({product}) => {
             key={variant.id}
             variant={variant}
             product={product}
+            cart={cart}
           />
         ))}
       </div>
@@ -60,8 +61,15 @@ const Product = ({product}) => {
   );
 };
 
-const ProductVariant = ({variant, product}) => {
-  const {id, selectedOptions, title, price} = variant;
+const ProductVariant = ({variant, product, cart}) => {
+  const {
+    id,
+    selectedOptions,
+    title,
+    price,
+    availableForSale,
+    currentlyNotInStock,
+  } = variant;
 
   const productAnalytics = {
     productGid: product.id,
@@ -92,6 +100,7 @@ const ProductVariant = ({variant, product}) => {
           products: [productAnalytics],
           totalValue: parseFloat(productAnalytics.price),
         }}
+        soldOut={!availableForSale || currentlyNotInStock}
       />
     </div>
   );

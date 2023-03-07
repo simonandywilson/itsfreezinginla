@@ -9,14 +9,21 @@ const button = cva(
           'hover:bg-transparent focus-visible:bg-transparent hover:text-accent focus-visible:text-accent',
         ],
         sm: [''],
-        base: ['p-2'],
+        base: ['py-2 px-3'],
         lg: ['p-3'],
         xl: ['px-4 py-2'],
       },
       colour: {
         light: ['bg-white', 'text-black'],
-        mid: ['bg-zinc-500', 'text-white'],
         dark: ['bg-black', 'text-white'],
+      },
+      status: {
+        disabled: [
+          'bg-zinc-400',
+          'text-white',
+          'hover:bg-zinc-400',
+          'focus-visible:bg-zinc-400',
+        ],
       },
     },
     defaultVariants: {
@@ -26,9 +33,21 @@ const button = cva(
   },
 );
 
-export const Button = ({  type, intent, colour, className, children }) => {
+export const Button = ({
+  type,
+  intent,
+  colour,
+  status,
+  className,
+  children,
+  disabled,
+}) => {
   return (
-    <button type={type || 'button'} className={button({intent, colour, className})}>
+    <button
+      type={type || 'button'}
+      className={button({intent, colour, status, className})}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

@@ -29,14 +29,16 @@ export const CartPreview = ({text, link}) => {
         </Suspense>
         <BasketIconThin />
         <div className={'absolute w-full h-full inset-0 -z-10 flex items-end'}>
-          <div className={'relative w-full  h-[79%]'}>
+          <div className={'relative w-full h-[79%]'}>
             <Suspense fallback={null}>
               <Await resolve={cart}>
                 {(cart) =>
                   cart?.lines?.edges &&
-                  cart.lines.edges.map(({node}) => (
-                    <CartPreviewItem key={node.id} item={node} />
-                  ))
+                  cart.lines.edges.map(({ node }) => {
+                    return [...Array(node.quantity)].map((e, i) => (
+                      <CartPreviewItem key={node.id + i} item={node} />
+                    ));
+                  })
                 }
               </Await>
             </Suspense>
