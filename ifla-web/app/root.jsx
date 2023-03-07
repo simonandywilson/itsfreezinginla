@@ -165,7 +165,7 @@ export default function App() {
     country: 'GB',
     currency: 'GBP',
   };
-  const hasUserConsent = true;
+  const hasUserConsent = false;
 
   useAnalytics(hasUserConsent, locale);
 

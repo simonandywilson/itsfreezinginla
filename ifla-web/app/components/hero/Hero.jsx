@@ -35,9 +35,7 @@ const Hero = ({hero}) => {
             src={store.image}
             alt={store.title}
             className={cx(
-              'w-full h-full object-contain max-w-[10rem]',
-              'md:max-w-[15rem]',
-              'lg:max-w-[25rem]',
+              'w-full h-full object-contain max-w-[50vw]'
             )}
           />
         </div>
