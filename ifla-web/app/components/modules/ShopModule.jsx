@@ -12,15 +12,19 @@ export const ShopModule = () => {
   return (
     <Layout intent={'cart'}>
       <div
-        className={cx('grid grid-cols-1 gap-8', 'sm:grid-cols-3', 'md:gap-16')}
+        className={cx(
+          'grid grid-cols-1 gap-8',
+          'sm:grid-cols-2',
+          'md:grid-cols-3 md:gap-16',
+        )}
       >
         <div className={cx('col-span-1', 'sm:col-span-2')}>
           <div
             className={cx(
-              'grid grid-cols-1 gap-16 px-0',
-              'sm:grid-cols-2 sm:gap-8 sm:px-0',
-              'md:grid-cols-2',
-              'lg:grid-cols-3 lg:gap-16',
+              'grid grid-cols-1 gap-8',
+              'sm:grid-cols-2 sm:gap-8',
+              'md:grid-cols-2 md:gap-16',
+              'lg:grid-cols-3 lg:gap-8',
             )}
           >
             {allProducts.nodes.map((product) => (
@@ -28,7 +32,7 @@ export const ShopModule = () => {
             ))}
           </div>
         </div>
-        <div className={'sticky top-28 h-max hidden sm:block'}>
+        <div className={'sticky top-36 h-max hidden md:block'}>
           <CartPreview />
         </div>
       </div>
@@ -38,7 +42,7 @@ export const ShopModule = () => {
 
 const Product = ({product, cart}) => {
   return (
-    <div className={'h-max max-w-xs mx-auto'}>
+    <div className={cx('h-max max-w-[15rem] mx-auto', 'sm:mx-0')}>
       <img
         src={product.featuredImage.url}
         alt={product.featuredImage.altText}
@@ -82,7 +86,7 @@ const ProductVariant = ({variant, product, cart}) => {
   };
 
   return (
-    <div className={cx('flex justify-between gap-2 flex-col', 'sm:flex-row')}>
+    <div className={cx('flex justify-between gap-2 flex-row')}>
       <div>
         <Text tag={'p'} intent={'ui-base'}>
           {selectedOptions[0].value}

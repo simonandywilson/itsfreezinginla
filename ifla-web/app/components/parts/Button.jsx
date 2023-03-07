@@ -1,7 +1,7 @@
 import {cva} from 'class-variance-authority';
 
 const button = cva(
-  'hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased',
+  'hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased whitespace-nowrap',
   {
     variants: {
       intent: {

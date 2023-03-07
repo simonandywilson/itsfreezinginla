@@ -220,9 +220,10 @@ const CartDetails = ({cart, shop}) => {
           <a
             href={checkoutUrl}
             target="_self"
-            className={
-              'ml-auto mr-20 mt-8 px-4 py-2 hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased bg-black text-white'
-            }
+            className={cx(
+              'mx-auto mt-8 px-4 py-2 hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased bg-black text-white',
+              'md:ml-auto md:mr-20',
+            )}
           >
             <Text intent={'button-2xl'}>Checkout</Text>
           </a>
