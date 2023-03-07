@@ -9,7 +9,12 @@ const Hero = ({hero}) => {
   return (
     <Layout as={'article'} intent={'hero'} colour={colour || '#e3e8ef'}>
       <div className={'relative w-full h-full'}>
-        <div className={cx('relative w-full h-full flex flex-col gap-4 z-10 justify-between', 'md:justify-start')}>
+        <div
+          className={cx(
+            'relative w-full h-full flex flex-col gap-4 z-10 justify-between',
+            'md:justify-start',
+          )}
+        >
           <Text as={'h2'} intent={'text-2xl'}>
             {store.title}
           </Text>
@@ -29,7 +34,11 @@ const Hero = ({hero}) => {
           <img
             src={store.image}
             alt={store.title}
-            className={'w-full h-full object-contain max-w-[20rem]'}
+            className={cx(
+              'w-full h-full object-contain max-w-[10rem]',
+              'md:max-w-[15rem]',
+              'lg:max-w-[20rem]',
+            )}
           />
         </div>
       </div>
