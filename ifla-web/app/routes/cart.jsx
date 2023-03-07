@@ -11,7 +11,7 @@ import {Button} from '~/components/parts/Button';
 import {CartPreview} from '../components/parts/CartPreview';
 import {cx} from 'class-variance-authority';
 import {Dash} from '../components/parts/Dash';
-import { Link } from '../components/parts/Link';
+import {Link} from '../components/parts/Link';
 
 export const handle = {
   seo: {
@@ -176,7 +176,7 @@ export async function action({request, context}) {
 export default function CartPage() {
   const {cart, shop} = useRouteData(`root`);
   return (
-    <Layout intent={"home"}>
+    <Layout intent={'home'}>
       <Suspense fallback={<CartLoader />}>
         <Await resolve={cart}>
           {(cart) => <Cart cart={cart} shop={shop} />}
@@ -203,32 +203,35 @@ const CartDetails = ({cart, shop}) => {
   const {lines, cost, checkoutUrl} = cart;
   return (
     <Layout intent={'cart'}>
-      <Text tag={'h2'} intent={'ui-3xl'}>
-        Basket contents
-      </Text>
-      <div
-        className={cx(
-          'mt-8 grid grid-cols-1 gap-8',
-          'md:grid-cols-3 md:gap-16',
-        )}
-      >
+      <div className={cx('grid grid-cols-1', 'md:grid-cols-3 md:gap-16')}>
         <div
           className={cx(
-            'order-last col-span-2 flex flex-col',
-            'md:order-first',
+            'order-last col-span-2 flex flex-col mt-8',
+            'md:order-first md:mt-0',
           )}
         >
+          <Text tag={'h2'} intent={'ui-3xl'} className={'mb-4'}>
+            Basket contents
+          </Text>
           {lines.edges.map(({node}) => (
             <CartLine key={node.id} line={node} />
           ))}
           <CartTotal cost={cost} />
-          <a href={checkoutUrl} target="_self" className={'ml-auto mr-20 mt-8'}>
-            <Button tag={'div'} intent={'xl'} colour={'dark'}>
-              <Text intent={'button-2xl'}>Checkout</Text>
-            </Button>
+          <a
+            href={checkoutUrl}
+            target="_self"
+            className={
+              'ml-auto mr-20 mt-8 px-4 py-2 hover:bg-accent focus-visible:bg-accent focus:outline-none focus:border-none antialiased bg-black text-white'
+            }
+          >
+            <Text intent={'button-2xl'}>Checkout</Text>
           </a>
         </div>
-        <CartPreview text={'Back to shop'} link={shop.shop.slug.fullUrl} />
+        <CartPreview
+          text={'Back to shop'}
+          link={shop.shop.slug.fullUrl}
+          className={'mt-4'}
+        />
       </div>
     </Layout>
   );
@@ -237,7 +240,7 @@ const CartDetails = ({cart, shop}) => {
 const EmptyCart = ({shop}) => {
   return (
     <Layout intent={'centre'}>
-      <div className={"flex flex-col gap-4 justify-center items-center"}>
+      <div className={'flex flex-col gap-4 justify-center items-center'}>
         <Text tag={'h2'} intent={'ui-2xl'}>
           Basket is empty
         </Text>
@@ -251,14 +254,16 @@ const EmptyCart = ({shop}) => {
 
 const CartLineWrapper = ({children}) => {
   return (
-    <div className={'w-full h-max grid grid-cols-[1fr_64px] gap-2'}>
+    <div className={'w-full h-max grid grid-cols-[1fr_64px] gap-1'}>
       {children}
     </div>
   );
 };
 
 const CartLine = ({line}) => {
-  const {id, merchandise} = line;
+  const {id, merchandise, quantity, cost} = line;
+  const prevQuantity = Number(Math.max(0, quantity - 1).toFixed(0));
+  const nextQuantity = Number((quantity + 1).toFixed(0));
   return (
     <CartLineWrapper>
       <div className={'flex gap-2 items-baseline justify-self-stretch'}>
@@ -269,32 +274,64 @@ const CartLine = ({line}) => {
           {merchandise.title}
         </Text>
         <Dash className={'flex-1'} />
+        <Text intent={'ui-xl'}>x{quantity}</Text>
         <Money
           withoutTrailingZeros
-          data={merchandise.price}
+          data={cost.totalAmount}
           className={'text-right ui-xl'}
         />
       </div>
-      <div className={'justify-self-end w-16 text-right'}>
-        <CartRemove id={id} />
+      <div className={'flex gap-2 ml-4'}>
+        <CartUpdateQuantity lines={[{id: id, quantity: prevQuantity}]}>
+          <Button
+            type={'submit'}
+            colour={'light'}
+            intent={'link'}
+            value={prevQuantity}
+            aria="Decrease quantity"
+          >
+            <Text intent={'button-xl'}>–</Text>
+          </Button>
+        </CartUpdateQuantity>
+        <CartUpdateQuantity lines={[{id: id, quantity: nextQuantity}]}>
+          <Button
+            type={'submit'}
+            colour={'light'}
+            intent={'link'}
+            value={nextQuantity}
+            aria="Increase quantity"
+          >
+            <Text intent={'button-xl'}>+</Text>
+          </Button>
+        </CartUpdateQuantity>
       </div>
     </CartLineWrapper>
   );
 };
 
-const CartRemove = ({id}) => {
+const CartUpdateQuantity = ({lines, children}) => {
   const fetcher = useFetcher();
-
   return (
     <fetcher.Form action="/cart" method="post">
-      <input type="hidden" name="cartAction" value={'REMOVE_FROM_CART'} />
-      <input type="hidden" name="linesIds" value={JSON.stringify(id)} />
-      <Button type={'submit'} colour={'light'} intent={'link'}>
-        <Text intent={'button-xl'}>remove</Text>
-      </Button>
+      <input type="hidden" name="cartAction" value={'UPDATE_CART'} />
+      <input type="hidden" name="lines" value={JSON.stringify(lines)} />
+      {children}
     </fetcher.Form>
   );
 };
+
+// const CartRemove = ({id}) => {
+//   const fetcher = useFetcher();
+//   return (
+//     <fetcher.Form action="/cart" method="post">
+//       <input type="hidden" name="cartAction" value={'REMOVE_FROM_CART'} />
+//       <input type="hidden" name="linesIds" value={JSON.stringify(id)} />
+//       <Button type={'submit'} colour={'light'} intent={'link'}>
+//         <Text intent={'button-xl'}>remove</Text>
+//       </Button>
+//     </fetcher.Form>
+//   );
+// };
 
 const CartTotal = ({cost}) => {
   return (

@@ -1,4 +1,5 @@
 import {Await} from '@remix-run/react';
+import { cx } from 'class-variance-authority';
 import React, {Suspense} from 'react';
 import {useRouteData} from 'remix-utils';
 import {BasketIconThin} from '../icons/Icons';
@@ -7,10 +8,10 @@ import {CartPreviewItem} from './CartPreviewItem';
 import {Link} from './Link';
 import {Text} from './Text';
 
-export const CartPreview = ({text, link}) => {
+export const CartPreview = ({text, link, className}) => {
   const {cart} = useRouteData(`root`);
   return (
-    <div className={'w-full h-max max-w-sm mx-auto'}>
+    <div className={cx('w-full h-max max-w-sm mx-auto', className)}>
       <div className={'w-full relative'}>
         <Suspense
           fallback={

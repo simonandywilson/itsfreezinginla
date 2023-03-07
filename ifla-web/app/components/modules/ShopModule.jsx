@@ -10,7 +10,7 @@ import {CartPreview} from '../parts/CartPreview';
 export const ShopModule = () => {
   const {allProducts, cart} = useRouteData(`root`);
   return (
-    <Layout intent={'space'}>
+    <Layout intent={'cart'}>
       <div
         className={cx('grid grid-cols-1 gap-8', 'sm:grid-cols-3', 'md:gap-16')}
       >

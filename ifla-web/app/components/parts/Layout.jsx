@@ -10,7 +10,6 @@ const layout = cva('', {
         'w-full aspect-video p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
       ],
       cart: ['p-4'],
-      space: ['px-4 py-4 sm:p-8'],
       module: ['px-4 my-8'],
       'module-full': ['my-8'],
       'module-inline': ['prose my-8 break-inside-avoid-column'],

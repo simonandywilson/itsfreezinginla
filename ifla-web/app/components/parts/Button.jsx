@@ -41,12 +41,16 @@ export const Button = ({
   className,
   children,
   disabled,
+  value,
+  aria
 }) => {
   return (
     <button
       type={type || 'button'}
       className={button({intent, colour, status, className})}
       disabled={disabled}
+      value={value}
+      aria-label={aria}
     >
       {children}
     </button>
