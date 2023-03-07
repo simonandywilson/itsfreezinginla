@@ -4,7 +4,7 @@ const layout = cva('', {
   variants: {
     intent: {
       home: ['pt-24'],
-      page: ['pt-32'],
+      page: ['pt-28'],
       footer: [
         'px-4 pt-4 pb-24 bg-black text-white flex justify-between flex-col gap-8',
         'sm:px-8 sm:pt-8',

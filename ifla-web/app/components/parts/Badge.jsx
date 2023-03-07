@@ -6,7 +6,7 @@ const layout = cva(
     variants: {
       intent: {
         small: ['w-6 h-6 text-sm'],
-        big: ['w-12 h-12 text-xl'],
+        big: ['w-12 h-12 text-base'],
       },
       location: {
         top: ['top-0 right-0 -translate-x-1/2 translate-y-full'],

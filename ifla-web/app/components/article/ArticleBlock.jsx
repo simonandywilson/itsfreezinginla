@@ -25,7 +25,7 @@ export const ArticleBlock = ({article}) => {
           <SanityImage
             value={image.asset}
             className={
-              'h-full mix-blend-overlay rendering-pixelated object-cover'
+              'h-full rendering-pixelated object-cover'
             }
           />
         </div>
