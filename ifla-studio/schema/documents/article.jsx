@@ -28,6 +28,12 @@ export default defineType({
     },
   ],
   fields: [
+    // defineField({
+    //   title: 'TEST',
+    //   name: 'bitmapImage',
+    //   type: 'bitmapImageObject',
+    //   group: 'info',
+    // }),
     defineField({
       name: 'headline',
       type: 'string',
@@ -85,11 +91,33 @@ export default defineType({
       group: 'content',
     }),
     defineField({
+      name: 'defaultQuiltImage',
+      type: 'boolean',
+      initialValue: true,
+      group: 'content',
+    }),
+    defineField({
+      title: 'Default Quilt Image',
+      name: 'defaultQuilt',
+      type: 'image',
+      group: 'content',
+      hidden: ({document}) => !document?.defaultQuiltImage,
+      readOnly: true,
+      initialValue: {
+        _type: 'image',
+        asset: {
+          _ref: 'image-b9be03f91e5e19f715d42b93c7c2918d48565f0c-167x167-png',
+          _type: 'reference',
+        },
+      },
+    }),
+    defineField({
+      title: 'Custom Quilt Image',
       name: 'image',
       type: 'imageObject',
       group: 'content',
+      hidden: ({document}) => document?.defaultQuiltImage,
     }),
-
     defineField({
       name: 'content',
       type: 'contentArray',

@@ -151,6 +151,7 @@ export async function action({request, context}) {
 
     return json({res});
   } catch (error) {
+    console.log(error);
     return badRequest({
       formError:
         'Sorry. We could not create an account with this email. User might already exist.',

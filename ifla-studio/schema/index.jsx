@@ -26,6 +26,7 @@ import shopifyPlaceholderString from "./objects/shopifyPlaceholderString";
 import shopifyCollectionRule from "./objects/shopifyCollectionRule";
 import externalLinkObject from './objects/externalLinkObject'
 import internalLinkObject from './objects/internalLinkObject'
+import bitmapImageObject from './objects/bitmapImageObject'
 
 // Blocks
 import defaultBlock from "./blocks/defaultBlock";
@@ -72,7 +73,8 @@ const objects = new Set([
 	shopifyPlaceholderString,
 	shopifyCollectionRule,
 	externalLinkObject,
-	internalLinkObject
+	internalLinkObject,
+	bitmapImageObject
 ]);
 
 const arrays = new Set([contentArray]);
