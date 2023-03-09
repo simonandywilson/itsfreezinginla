@@ -28,9 +28,7 @@ export const GlobalSubmenu = ({menu}) => {
                   <TextLink
                     key={page._id || page._key}
                     intent={'text-sm'}
-                    className={
-                      pathname.slice(1) === page.slug ? 'text-accent' : ''
-                    }
+                    focused={pathname.slice(1) === page.slug ? true : false}
                     to={page.slug}
                   >
                     {page.title}

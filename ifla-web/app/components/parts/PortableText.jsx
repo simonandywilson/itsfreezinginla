@@ -4,6 +4,7 @@ import {CarouselModule} from '../modules/CarouselModule';
 import {CollapsibleModule} from '../modules/CollapsibleModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
 import {ImageModule} from '../modules/ImageModule';
+import {LinkExternal} from './Links';
 import {Text} from './Text';
 
 const portableText = cva(
@@ -91,26 +92,26 @@ const components = (intent) => {
         switch (value.type) {
           case 'website':
             return (
-              <a
+              <LinkExternal
                 href={value?.link}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={'link'}
               >
                 {children}
-              </a>
+              </LinkExternal>
             );
           case 'telephone':
             return (
-              <a href={`tel:${value?.link}`} className={'link'}>
+              <LinkExternal href={`tel:${value?.link}`} className={'link'}>
                 {children}
-              </a>
+              </LinkExternal>
             );
           case 'email':
             return (
-              <a href={`mailto:${value?.link}`} className={'link'}>
+              <LinkExternal href={`mailto:${value?.link}`} className={'link'}>
                 {children}
-              </a>
+              </LinkExternal>
             );
           default:
             return null;

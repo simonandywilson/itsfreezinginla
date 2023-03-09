@@ -232,7 +232,7 @@ const CartDetails = ({cart, shop}) => {
         <CartPreview
           text={'Back to shop'}
           link={shop.shop.slug.fullUrl}
-          className={'mt-8'}
+          className={'mt-4'}
         />
       </div>
     </Layout>

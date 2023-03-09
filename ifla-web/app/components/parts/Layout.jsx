@@ -4,7 +4,7 @@ const layout = cva('', {
   variants: {
     intent: {
       home: ['pt-24'],
-      page: ['pt-28'],
+      page: ['pt-28 flex flex-col flex-1'],
       footer: [
         'px-4 pt-4 pb-24 bg-black text-white flex justify-between flex-col gap-8',
         'sm:px-8 sm:pt-8',
@@ -34,7 +34,7 @@ const layout = cva('', {
         'h-[calc(100vh-6rem)]',
         'pb-24',
       ],
-      columns: ['w-full md:columns-2 xl:w-2/3 px-4 py-8 col-fill-auto'],
+      columns: ['flex-1 w-full md:columns-2 xl:w-2/3 px-4 py-8 col-fill-auto'],
     },
   },
   defaultVariants: {

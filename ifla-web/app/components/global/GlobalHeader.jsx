@@ -1,15 +1,13 @@
-import {Fragment, Suspense} from 'react';
+import {Fragment} from 'react';
 import {useRouteData} from 'remix-utils';
 import {Popover, Transition} from '@headlessui/react';
 import {GlobalMenuItemDesktop} from './GlobalMenuItemDesktop';
 import {GlobalMenuMobile} from './GlobalMenuMobile';
 import {GlobalTitle} from './GlobalTitle';
-import {Await, useLocation} from '@remix-run/react';
-import {Badge} from '~/components/parts/Badge';
-import {BasketIcon} from '../icons/Icons';
+import {useLocation} from '@remix-run/react';
 import {Text} from '../parts/Text';
 import {GlobalSubmenu} from './GlobalSubmenu';
-import { BlockLink } from '../parts/Links';
+import {Basket} from '../parts/Basket';
 
 export const GlobalHeader = () => {
   const {menu} = useRouteData(`root`);
@@ -32,9 +30,7 @@ export const GlobalHeader = () => {
               }
             >
               {({open}) => (
-                <Text intent={'text-lg'}>
-                  {open ? 'X' : 'Menu'}
-                </Text>
+                <Text intent={'text-lg'}>{open ? 'X' : 'Menu'}</Text>
               )}
             </Popover.Button>
           </div>
@@ -48,7 +44,7 @@ export const GlobalHeader = () => {
               />
             );
           })}
-          <CartButton />
+          <Basket />
         </div>
       </div>
       {/* Mobile Menu */}
@@ -64,23 +60,5 @@ export const GlobalHeader = () => {
         <GlobalSubmenu menu={menu} />
       )}
     </Popover>
-  );
-};
-
-const CartButton = () => {
-  const {cart} = useRouteData(`root`);
-  return (
-    <BlockLink to={'/cart'} aria-label="Go to cart">
-      <div className={'h-14'}>
-        <BasketIcon />
-        <Suspense fallback={<Badge intent={'small'}>0</Badge>}>
-          <Await resolve={cart}>
-            {(cart) => (
-              <Badge intent={'small'}>{cart?.totalQuantity || 0}</Badge>
-            )}
-          </Await>
-        </Suspense>
-      </div>
-    </BlockLink>
   );
 };

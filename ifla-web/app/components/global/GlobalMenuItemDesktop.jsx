@@ -11,9 +11,7 @@ export const GlobalMenuItemDesktop = ({title, children}) => {
     <Popover.Group as="nav" className="hidden md:flex">
       <Popover
         className="relative"
-        onMouseEnter={(event) => {
-          togglePopover(event, index);
-        }}
+
       >
         <Popover.Button
           className={

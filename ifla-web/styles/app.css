@@ -2,7 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {  
+@layer base {
   :root {
     --accent-colour: '#db4d68';
   }
@@ -14,8 +14,9 @@
   }
 
   @font-face {
-    font-family: 'Peace';
-    src: url('/Peace-Medium.woff') format('woff');
+    font-family: 'Peace2020';
+    src: url('/fonts/Peace2020-Medium.woff2') format('woff2'),
+      url('/fonts/Peace2020-Medium.woff') format('woff');
     font-style: normal;
     font-weight: 400;
     font-stretch: normal;
@@ -37,8 +38,7 @@
 
   details[open] summary:after {
     content: ' ⌄';
-        transform: rotate(180deg);
-
+    transform: rotate(180deg);
   }
 }
 
@@ -65,10 +65,9 @@
     @apply max-w-xl mx-auto;
   }
   .link {
-    @apply w-max leading-none hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none;
+    @apply w-max leading-none focus:outline-none focus:border-none;
   }
 }
-
 
 @layer components {
   .button-sm {
@@ -87,4 +86,3 @@
     @apply px-4 py-2;
   }
 }
-

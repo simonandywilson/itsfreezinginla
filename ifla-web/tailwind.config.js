@@ -9,7 +9,7 @@ module.exports = {
       },
     },
     fontFamily: {
-      sans: ['Peace', ...fontFamily.sans],
+      sans: ['Peace2020', ...fontFamily.sans],
       serif: ['Times New Roman', ...fontFamily.serif],
     },
     fontSize: {

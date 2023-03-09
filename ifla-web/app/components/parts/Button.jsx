@@ -1,5 +1,9 @@
 import {cva} from 'class-variance-authority';
-import { Text } from './Text';
+import {Text} from './Text';
+import {motion} from 'framer-motion';
+import {useRouteData} from 'remix-utils';
+import {useRandomColour} from '~/hooks/useRandomColour';
+import {useRef} from 'react';
 
 const buttonStyle = cva(
   'w-max focus:outline-none focus:border-none antialiased whitespace-nowrap flex-grow-0 leading-none inline-block',
@@ -13,24 +17,9 @@ const buttonStyle = cva(
         'text-2xl': ['button-2xl'],
       },
       colour: {
-        transparent: [
-          'bg-white',
-          'text-black',
-          'hover:text-accent',
-          'focus-visible:text-accent',
-        ],
-        light: [
-          'bg-white',
-          'text-black',
-          'hover:bg-accent',
-          'focus-visible:bg-accent',
-        ],
-        default: [
-          'bg-black',
-          'text-white',
-          'hover:bg-accent',
-          'focus-visible:bg-accent',
-        ],
+        transparent: ['bg-white', 'text-black'],
+        light: ['bg-white', 'text-black'],
+        default: ['bg-black', 'text-white'],
         mono: [
           'bg-black',
           'text-white',
@@ -56,6 +45,8 @@ const buttonStyle = cva(
   },
 );
 
+
+
 export const Button = ({
   type,
   intent,
@@ -67,7 +58,9 @@ export const Button = ({
   value,
   aria,
 }) => {
-  return (
+  const {colours} = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours));
+  return colour === 'mono' ? (
     <button
       type={type || 'button'}
       className={buttonStyle({intent, colour, status, className})}
@@ -79,5 +72,45 @@ export const Button = ({
         {children}
       </Text>
     </button>
+  ) : (
+    <motion.button
+      type={type || 'button'}
+      className={buttonStyle({intent, colour, status, className})}
+      disabled={disabled}
+      value={value}
+      aria-label={aria}
+      transition={{duration: 0}}
+      initial={
+        colour === 'transparent'
+          ? {
+              color: '#000000',
+            }
+          : {
+              background: colour === 'light' ? '#ffffff' : '#000000',
+            }
+      }
+      whileHover={
+        colour === 'transparent'
+          ? {
+              color: randomColour.current,
+            }
+          : {
+              background: randomColour.current,
+            }
+      }
+      whileFocus={
+        colour === 'transparent'
+          ? {
+              color: randomColour.current,
+            }
+          : {
+              background: randomColour.current,
+            }
+      }
+    >
+      <Text intent={intent} className={'inline-block leading-none'}>
+        {children}
+      </Text>
+    </motion.button>
   );
 };

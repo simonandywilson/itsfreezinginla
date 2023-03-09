@@ -68,18 +68,14 @@ export const links = () => {
       name: 'msapplication-TileColor',
       content: '#ffffff',
     },
-    {
-      name: 'msapplication-config',
-      content: '#ffffff',
-    },
-    {
-      name: 'msapplication-config',
-      content: '/favicon/browserconfig.xml',
-    },
-    {
-      name: 'theme-color',
-      content: '#ffffff',
-    },
+    // {
+    //   name: 'msapplication-config',
+    //   content: '/favicon/browserconfig.xml',
+    // },
+    // {
+    //   name: 'theme-color',
+    //   content: '#ffffff',
+    // },
   ];
 };
 
@@ -89,7 +85,7 @@ export const meta = () => ({
 });
 
 export async function loader({context}) {
-  const [cartId, shop, allProducts, settings, menu, footer, shopLink] =
+  const [cartId, shop, allProducts, settings, menu, footer, shopLink, colours] =
     await Promise.all([
       context.session.get('cartId'),
       getShopData(context),
@@ -98,12 +94,14 @@ export async function loader({context}) {
       getMenuData(context),
       getFooterData(context),
       getShopPage(context),
+      getColoursData(context),
     ]);
 
   return defer({
     settings,
     menu,
     footer,
+    colours,
     cart: cartId ? getCart(context, cartId) : undefined,
     allProducts,
     analytics: {
@@ -287,6 +285,12 @@ async function getFooterData({sanityClient}) {
 `;
   const menu = await sanityClient.fetch(query);
   return menu;
+}
+
+async function getColoursData({sanityClient}) {
+  const query = groq`array::unique(*[_type == "colour"].colourDark)`;
+  const colours = await sanityClient.fetch(query);
+  return colours;
 }
 
 const CART_QUERY = `#graphql

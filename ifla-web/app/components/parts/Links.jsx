@@ -1,14 +1,35 @@
 import {cx, cva} from 'class-variance-authority';
-import {Link as RemixLink} from '@remix-run/react';
+import {Link} from '@remix-run/react';
 import {Text} from './Text';
+import {useRandomColour} from '../../hooks/useRandomColour';
+import {useRouteData} from 'remix-utils';
+import {motion} from 'framer-motion';
+import {useRef} from 'react';
 
-export const TextLink = ({intent, children, to, className, as}) => {
+const MotionLink = motion(Link);
+
+export const TextLink = ({intent, children, to, className, as, focused}) => {
+  const {colours} = useRouteData(`root`);
+  const colour = useRef(useRandomColour(colours));
   return (
-    <RemixLink to={to} className={cx('link', className)}>
+    <MotionLink
+      to={to}
+      className={cx('link', className)}
+      initial={{color: 'inherit'}}
+      animate={{
+        color: focused ? colour.current : 'inherit',
+      }}
+      whileHover={{
+        color: !focused && colour.current,
+      }}
+      whileFocus={{
+        color: colour.current,
+      }}
+    >
       <Text intent={intent} as={as}>
         {children}
       </Text>
-    </RemixLink>
+    </MotionLink>
   );
 };
 
@@ -24,12 +45,7 @@ const buttonStyle = cva(
         'text-2xl': ['button-2xl'],
       },
       colour: {
-        default: [
-          'bg-black',
-          'text-white',
-          'hover:bg-accent',
-          'focus-visible:bg-accent',
-        ],
+        default: ['bg-black', 'text-white'],
         mono: [
           'bg-black',
           'text-white',
@@ -49,19 +65,39 @@ const buttonStyle = cva(
 
 export const BlockLink = ({children, to}) => {
   return (
-    <RemixLink to={to} className={'focus:outline-none focus:border-none'}>
-        {children}
-    </RemixLink>
+    <Link to={to} className={'focus:outline-none focus:border-none'}>
+      {children}
+    </Link>
   );
 };
 
 export const ButtonLink = ({intent, children, to, className, colour}) => {
-  return (
-    <RemixLink to={to} className={buttonStyle({intent, colour, className})}>
+  const {colours} = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours));
+
+  return colour === 'mono' ? (
+    <Link to={to} className={buttonStyle({intent, colour, className})}>
       <Text intent={intent} className={'inline-block'}>
         {children}
       </Text>
-    </RemixLink>
+    </Link>
+  ) : (
+    <MotionLink
+      to={to}
+      className={buttonStyle({intent, colour, className})}
+      transition={{duration: 0}}
+      initial={{background: '#000000'}}
+      whileHover={{
+        background: randomColour.current,
+      }}
+      whileFocus={{
+        background: randomColour.current,
+      }}
+    >
+      <Text intent={intent} className={'inline-block'}>
+        {children}
+      </Text>
+    </MotionLink>
   );
 };
 
@@ -73,7 +109,9 @@ export const ButtonLinkExternal = ({
   colour,
   target,
 }) => {
-  return (
+  const {colours} = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours));
+  return colour === 'mono' ? (
     <a
       href={to}
       className={buttonStyle({intent, colour, className})}
@@ -83,5 +121,46 @@ export const ButtonLinkExternal = ({
         {children}
       </Text>
     </a>
+  ) : (
+    <motion.a
+      href={to}
+      className={buttonStyle({intent, colour, className})}
+      target={target}
+      transition={{duration: 0}}
+      initial={{background: '#000000'}}
+      whileHover={{
+        background: randomColour.current,
+      }}
+      whileFocus={{
+        background: randomColour.current,
+      }}
+    >
+      <Text intent={intent} className={'inline-block'}>
+        {children}
+      </Text>
+    </motion.a>
+  );
+};
+
+export const LinkExternal = ({href, target, rel, className, children}) => {
+  const {colours} = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours));
+  return (
+    <motion.a
+      href={href}
+      target={target}
+      rel={rel}
+      className={className}
+      transition={{duration: 0}}
+      initial={{color: randomColour.current}}
+      whileHover={{
+        color: 'inherit',
+      }}
+      whileFocus={{
+        color: 'inherit',
+      }}
+    >
+      {children}
+    </motion.a>
   );
 };
