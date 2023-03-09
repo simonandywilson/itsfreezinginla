@@ -20,8 +20,6 @@ export const GlobalNewsletter = () => {
   const successRef = useRef(null);
   const mounted = useRef(false);
 
-  console.log(actionData, transition);
-
   useEffect(() => {
     if (state === 'error') {
       inputRef.current?.focus();
