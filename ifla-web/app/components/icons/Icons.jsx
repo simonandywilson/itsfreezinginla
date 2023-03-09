@@ -7,6 +7,7 @@ export const BasketIcon = () => {
       height="59.56"
       viewBox="0 0 80.11 59.56"
       className={'h-full'}
+      stroke="inherit"
     >
       <line
         x1="40.14"
@@ -14,14 +15,12 @@ export const BasketIcon = () => {
         x2="40.14"
         y2="58.91"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
       <polygon
         points=".86 12.88 9.75 58.85 70.75 58.85 79.26 12.88 .86 12.88"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -31,7 +30,6 @@ export const BasketIcon = () => {
         x2="25.47"
         y2="58.91"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -41,7 +39,6 @@ export const BasketIcon = () => {
         x2="72.43"
         y2="50.31"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -51,7 +48,6 @@ export const BasketIcon = () => {
         x2="54.81"
         y2="58.91"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -61,7 +57,6 @@ export const BasketIcon = () => {
         x2="74.8"
         y2="37.46"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -71,14 +66,12 @@ export const BasketIcon = () => {
         x2="77.34"
         y2="24.61"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
       <polyline
         points="54.85 12.79 54.85 .71 25.46 .71 25.46 12.79"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -88,7 +81,6 @@ export const BasketIcon = () => {
         x2="18.14"
         y2="58.91"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -98,7 +90,6 @@ export const BasketIcon = () => {
         x2="10.81"
         y2="58.66"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -108,7 +99,6 @@ export const BasketIcon = () => {
         x2="32.81"
         y2="58.66"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -118,7 +108,6 @@ export const BasketIcon = () => {
         x2="47.48"
         y2="58.66"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -128,7 +117,6 @@ export const BasketIcon = () => {
         x2="62.14"
         y2="58.66"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />
@@ -138,7 +126,6 @@ export const BasketIcon = () => {
         x2="69.48"
         y2="58.66"
         fill="none"
-        stroke="#000000"
         strokeMiterlimit="10"
         strokeWidth="1.42"
       />

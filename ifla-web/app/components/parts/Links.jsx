@@ -8,7 +8,15 @@ import {useRef} from 'react';
 
 const MotionLink = motion(Link);
 
-export const TextLink = ({intent, children, to, className, as, focused}) => {
+export const TextLink = ({
+  intent,
+  children,
+  to,
+  className,
+  as,
+  focused,
+  onClick,
+}) => {
   const {colours} = useRouteData(`root`);
   const colour = useRef(useRandomColour(colours));
   return (
@@ -25,6 +33,7 @@ export const TextLink = ({intent, children, to, className, as, focused}) => {
       whileFocus={{
         color: colour.current,
       }}
+      onClick={onClick}
     >
       <Text intent={intent} as={as}>
         {children}
@@ -62,6 +71,27 @@ const buttonStyle = cva(
     },
   },
 );
+
+export const IconLink = ({children, to}) => {
+  const {colours} = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours));
+  return (
+    <MotionLink
+      to={to}
+      className={'focus:outline-none focus:border-none'}
+      transition={{duration: 0}}
+      initial={{stroke: '#000000'}}
+      whileHover={{
+        stroke: randomColour.current,
+      }}
+      whileFocus={{
+        stroke: randomColour.current,
+      }}
+    >
+      {children}
+    </MotionLink>
+  );
+};
 
 export const BlockLink = ({children, to}) => {
   return (

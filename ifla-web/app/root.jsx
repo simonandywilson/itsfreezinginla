@@ -175,7 +175,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className={'selection:bg-accent/20'}>
+      <body className={'selection:bg-yellow-200/50'}>
         <GlobalHeader />
         <main className={'min-h-screen flex flex-col'}>
           <Outlet />
