@@ -1,29 +1,37 @@
 import {GlobalTitle} from './GlobalTitle';
 import {Basket} from '../parts/Basket';
-import {Fragment, useEffect, useRef, useState} from 'react';
+import {Fragment, useRef} from 'react';
 import {Popover, Transition} from '@headlessui/react';
 import {Text} from '../parts/Text';
-import {useNavigate, useTransition} from '@remix-run/react';
+import {useNavigate} from '@remix-run/react';
 import {TextLink} from '../parts/Links';
 import {motion} from 'framer-motion';
 import {useRandomColour} from '~/hooks/useRandomColour';
 import {useRouteData} from 'remix-utils';
 const MotionButton = motion(Popover.Button);
 
-export const GlobalMenuDesktop = ({menu}) => {
+export const GlobalMenuDesktop = ({ menu }) => {
+  const {colours} = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours));
   return (
     <div className="relative w-full p-4 flex items-center justify-between bg-white">
       <GlobalTitle />
       <div className={'flex items-center gap-16'}>
         {/* Mobile Menu Button */}
         <div className="md:hidden">
-          <Popover.Button
-            className={
-              'hover:text-accent focus-visible:text-accent focus:outline-none focus:border-none antialiased'
-            }
+          <MotionButton
+            className={'focus:outline-none focus:border-none antialiased'}
+            transition={{duration: 0}}
+            initial={{color: '#000000'}}
+            whileHover={{
+              color: randomColour.current,
+            }}
+            whileFocus={{
+              color: randomColour.current,
+            }}
           >
             {({open}) => <Text intent={'text-lg'}>{open ? 'X' : 'Menu'}</Text>}
-          </Popover.Button>
+          </MotionButton>
         </div>
         {/* Desktop Menu Items */}
         {menu.map((section) => {

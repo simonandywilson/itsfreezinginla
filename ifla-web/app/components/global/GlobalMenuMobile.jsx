@@ -1,7 +1,6 @@
 import {useTransition} from '@remix-run/react';
 import { useEffect, useState, useRef } from 'react';
 import {useLocation} from '@remix-run/react';
-import {cx} from 'class-variance-authority';
 import {TextLink} from '../parts/Links';
 import {Text} from '../parts/Text';
 
@@ -54,9 +53,7 @@ const MenuItem = ({title, children}) => {
               <TextLink
                 to={page.slug}
                 intent={'text-lg'}
-                className={cx(
-                  pathname.slice(1) === page.slug ? 'text-accent' : '',
-                )}
+                focused={pathname.slice(1) === page.slug ? true : false}
               >
                 {page.title}
               </TextLink>
