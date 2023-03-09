@@ -24,7 +24,8 @@ export const Newsletter = ({title, titleIntent, buttonColour, onSuccess}) => {
       inputRef.current?.focus();
     }
     if (state === 'success') {
-      formRef.current?.reset();
+        formRef.current?.reset();
+        localStorage.setItem('newsletter', true);
     }
   }, [state]);
 

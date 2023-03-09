@@ -9,8 +9,11 @@ export const GlobalNewsletter = () => {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (localStorage.getItem('newsletter')) {
+      return
+    }
     const timer = setTimeout(() => {
-      setVisible(true)
+      setVisible(true);
     }, 3000);
     return () => clearTimeout(timer);
   }, []);
@@ -36,13 +39,19 @@ export const GlobalNewsletter = () => {
               intent={'text-lg'}
               colour={'transparent'}
               className={'!p-0'}
-              onClick={() => setVisible(false)}
+              onClick={() => {
+                setVisible(false);
+                localStorage.setItem('newsletter', true);
+              }}
               aria-label={'Close newsletter popup'}
             >
               X
             </Button>
           </div>
-          <Newsletter buttonColour={'default'} onSuccess={() => setVisible(false)} />
+          <Newsletter
+            buttonColour={'default'}
+            onSuccess={() => setVisible(false)}
+          />
         </motion.div>
       )}
     </AnimatePresence>
