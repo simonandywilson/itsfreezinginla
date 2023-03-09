@@ -11,7 +11,8 @@ import {defer, json} from '@shopify/remix-oxygen';
 import groq from 'groq';
 import invariant from 'tiny-invariant';
 import {GlobalFooter} from './components/global/GlobalFooter';
-import {GlobalHeader} from './components/global/GlobalHeader';
+import { GlobalHeader } from './components/global/GlobalHeader';
+import {GlobalNewsletter} from './components/global/GlobalNewsletter';
 import {GlobalNotFound} from './components/global/GlobalNotFound';
 import {useAnalytics} from './hooks/useAnalytics';
 import {shopLinkQuery} from './lib/queries';
@@ -180,6 +181,7 @@ export default function App() {
         <main className={'min-h-screen flex flex-col'}>
           <Outlet />
         </main>
+        <GlobalNewsletter/>
         <GlobalFooter />
         <ScrollRestoration />
         <Scripts />

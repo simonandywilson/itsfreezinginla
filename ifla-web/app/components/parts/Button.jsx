@@ -57,6 +57,7 @@ export const Button = ({
   disabled,
   value,
   aria,
+  onClick
 }) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
@@ -67,6 +68,7 @@ export const Button = ({
       disabled={disabled}
       value={value}
       aria-label={aria}
+      onClick={onClick}
     >
       <Text intent={intent} className={'inline-block leading-none'}>
         {children}
@@ -79,6 +81,7 @@ export const Button = ({
       disabled={disabled}
       value={value}
       aria-label={aria}
+      onClick={onClick}
       transition={{duration: 0}}
       initial={
         colour === 'transparent'

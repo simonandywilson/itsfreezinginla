@@ -1,75 +1,50 @@
-import {Form, useActionData, useTransition} from '@remix-run/react';
-import {useEffect, useRef} from 'react';
-import {Button} from '~/components/parts/Button';
-import { Text } from '../parts/Text';
+import {Newsletter} from '../parts/Newsletter';
+import {Text} from '../parts/Text';
+import {Button} from '../parts/Button';
+import {useEffect, useState} from 'react';
+import {AnimatePresence, motion} from 'framer-motion';
+import {cx} from 'class-variance-authority';
 
 export const GlobalNewsletter = () => {
-  const actionData = useActionData();
-  const transition = useTransition();
-  const state = actionData?.res?.statusText
-    ? 'success'
-    : transition.submission
-    ? 'submitting'
-    : actionData?.subscription
-    ? 'success'
-    : actionData?.error
-    ? 'error'
-    : 'idle';
-
-  const inputRef = useRef(null);
-  const successRef = useRef(null);
-  const mounted = useRef(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    if (state === 'error') {
-      inputRef.current?.focus();
-    }
-
-    if (state === 'idle' && mounted.current) {
-      inputRef.current?.select();
-    }
-
-    if (state === 'success') {
-      successRef.current?.focus();
-    }
-
-    mounted.current = true;
-  }, [state]);
+    const timer = setTimeout(() => {
+      setVisible(true)
+    }, 3000);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
-    <Form method="post" aria-hidden={state === 'success'}>
-      <Text as={'h2'} className={'mb-[1em]'} intent={'text-sm'}>
-        Sign up to our newsletter
-      </Text>
-      <fieldset>
-        <Text as={'label'} intent={'text-sm'}>
-          email:
-        </Text>
-        <div className={'flex max-w-sm'}>
-          <input
-            aria-label="Email address"
-            aria-describedby="error-message"
-            ref={inputRef}
-            type="email"
-            name="email"
-            placeholder=""
-            className={
-              'flex-1 text-white bg-black rounded-none border-b-2 py-2 placeholder-white mr-2 focus:outline-none'
-            }
-          />
-          <Button
-            type={'submit'}
-            intent={'text-sm'}
-            colour={'light'}
-            aria-label={'Submit email'}
-          >
-            {state === 'idle' && 'Go on'}
-            {state === 'submitting' && 'Subscribing...'}
-            {state === 'success' && 'Subscribed!'}
-            {state === 'error' && 'Error :('}
-          </Button>
-        </div>
-      </fieldset>
-    </Form>
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          className={cx(
+            'max-w-[calc(100vw-2)] fixed bottom-0 right-0 m-4 z-50 bg-white p-4',
+            'md:m-8',
+          )}
+          initial={{x: '120%'}}
+          animate={{x: 0}}
+          exit={{x: '120%'}}
+          transition={{duration: 1, type: 'tween'}}
+        >
+          <div className={cx('flex gap-36 justify-between', 'md:gap-48')}>
+            <Text as={'h2'} intent={'text-lg'}>
+              Newsletter
+            </Text>
+            <Button
+              intent={'text-lg'}
+              colour={'transparent'}
+              className={'!p-0'}
+              onClick={() => setVisible(false)}
+              aria-label={'Close newsletter popup'}
+            >
+              X
+            </Button>
+          </div>
+          <Newsletter buttonColour={'default'} onSuccess={() => setVisible(false)} />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
-}
+};

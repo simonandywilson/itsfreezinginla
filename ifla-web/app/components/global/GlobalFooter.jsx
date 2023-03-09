@@ -4,7 +4,7 @@ import {TextLink} from '~/components/parts/Links';
 import {Layout} from '../parts/Layout';
 import {PortableText} from '../parts/PortableText';
 import {Text} from '../parts/Text';
-import {GlobalNewsletter} from './GlobalNewsletter';
+import {Newsletter} from '../parts/Newsletter';
 
 export const GlobalFooter = () => {
   const {footer} = useRouteData(`root`);
@@ -40,7 +40,11 @@ export const GlobalFooter = () => {
           <PortableText text={footer.footerText} intent={'footer'} />
         </div>
         <div className={cx('flex-1 order-first', 'lg:order-last lg:pr-4')}>
-          <GlobalNewsletter />
+          <Newsletter
+            title={'Sign up to our newsletter'}
+            titleIntent={'text-sm'}
+            buttonColour={'light'}
+          />
         </div>
       </div>
     </Layout>
