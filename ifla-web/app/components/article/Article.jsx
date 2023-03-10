@@ -1,9 +1,7 @@
 import React from 'react';
 import {Layout} from '../parts/Layout';
 import {Banner} from '../parts/Banner';
-
 import {ArticleBlockBanner} from '../article/ArticleBlockBanner';
-
 import {Content} from '../content/Content';
 
 export const Article = ({article}) => {

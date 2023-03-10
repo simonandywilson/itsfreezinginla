@@ -16,8 +16,8 @@ const layout = cva('', {
         'md:p-8 md:aspect-video ',
       ],
       banner: [
-        'w-full h-min aspect-video p-6 flex flex-col justify-between gap-4',
-        'md:p-8 lg:max-h-[calc(100vh-12rem)]',
+        'w-full h-max min-h-[40vw] p-6 flex flex-col justify-between gap-4',
+        'md:p-8',
       ],
       block: ['px-6 pb-6 pt-4'],
       cart: ['p-8'],
@@ -25,7 +25,7 @@ const layout = cva('', {
       'module-full': ['my-8'],
       'module-inline': ['prose my-8 break-inside-avoid-column'],
       text: ['py-8 mx-4'],
-      grid: ['grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3'],
+      grid: ['grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'],
       article: ['flex flex-col pt-24'],
       centre: [
         'flex',
@@ -34,7 +34,7 @@ const layout = cva('', {
         'h-[calc(100vh-6rem)]',
         'pb-24',
       ],
-      columns: ['flex-1 w-full md:columns-2 xl:w-2/3 px-4 py-8 col-fill-auto'],
+      columns: ['flex-1 w-full md:columns-2 xl:w-2/3 px-4 py-8 col-fill-balance'],
     },
   },
   defaultVariants: {

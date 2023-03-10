@@ -1,33 +1,12 @@
 import {flattenConnection} from '@shopify/hydrogen';
-import type {LoaderArgs} from '@shopify/remix-oxygen';
-import {
-  CollectionConnection,
-  PageConnection,
-  ProductConnection,
-} from '@shopify/hydrogen/storefront-api-types';
 import invariant from 'tiny-invariant';
 
 const MAX_URLS = 250; // the google limit is 50K, however, SF API only allow querying for 250 resources each time
 
-interface SitemapQueryData {
-  products: ProductConnection;
-  collections: CollectionConnection;
-  pages: PageConnection;
-}
+export async function loader({request, context: {storefront}}) {
+  const [sitemap] = await Promise.all([getSitemapData(context)]);
 
-interface ProductEntry {
-  url: string;
-  lastMod: string;
-  changeFreq: string;
-  image?: {
-    url: string;
-    title?: string;
-    caption?: string;
-  };
-}
-
-export async function loader({request, context: {storefront}}: LoaderArgs) {
-  const data = await storefront.query<SitemapQueryData>(SITEMAP_QUERY, {
+  const data = await storefront.query(SITEMAP_QUERY, {
     variables: {
       urlLimits: MAX_URLS,
       language: storefront.i18n.language,
@@ -48,35 +27,29 @@ export async function loader({request, context: {storefront}}: LoaderArgs) {
   );
 }
 
-function shopSitemap({
-  data,
-  baseUrl,
-}: {
-  data: SitemapQueryData;
-  baseUrl: string;
-}) {
+function shopSitemap({data, baseUrl}) {
   const productsData = flattenConnection(data.products)
     .filter((product) => product.onlineStoreUrl)
     .map((product) => {
       const url = `${baseUrl}/products/${product.handle}`;
 
-      const finalObject: ProductEntry = {
+      const finalObject = {
         url,
-        lastMod: product.updatedAt!,
+        lastMod: product.updatedAt,
         changeFreq: 'daily',
       };
 
       if (product.featuredImage?.url) {
         finalObject.image = {
-          url: product.featuredImage!.url,
+          url: product.featuredImage.url,
         };
 
         if (product.title) {
           finalObject.image.title = product.title;
         }
 
-        if (product.featuredImage!.altText) {
-          finalObject.image.caption = product.featuredImage!.altText;
+        if (product.featuredImage.altText) {
+          finalObject.image.caption = product.featuredImage.altText;
         }
       }
 
@@ -114,25 +87,11 @@ function shopSitemap({
       xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
       xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
     >
-      ${urlsDatas.map((url) => renderUrlTag(url!)).join('')}
+      ${urlsDatas.map((url) => renderUrlTag(url)).join('')}
     </urlset>`;
 }
 
-function renderUrlTag({
-  url,
-  lastMod,
-  changeFreq,
-  image,
-}: {
-  url: string;
-  lastMod?: string;
-  changeFreq?: string;
-  image?: {
-    url: string;
-    title?: string;
-    caption?: string;
-  };
-}) {
+function renderUrlTag({url, lastMod, changeFreq, image}) {
   return `
     <url>
       <loc>${url}</loc>
@@ -190,3 +149,64 @@ const SITEMAP_QUERY = `#graphql
     }
   }
 `;
+
+async function getSitemapData({sanityClient}) {
+  const query = groq`*[_type == "home"][0] {
+    "hero": hero[] {
+      _key,
+      background,
+      banner,
+      heading,
+      imageFormat,
+      image {
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+      },
+      links[] {
+        _type == 'checkoutObject' => {
+          _key,
+          _type,
+          title,
+          "variantId": reference -> store.id
+        },
+        _type == 'internalLinkObject' => {
+          _key,
+          _type,
+          title,
+          "type": reference -> _type,
+          "slug": reference -> slug.current,
+          "slugFull": reference -> slug.fullUrl,
+        },
+        _type == 'externalLinkObject' => @
+      }
+    },
+		"featuredBanner": featuredBanner,
+		"featured": featured[0...4] -> {
+			_id,
+			headline,
+			"slug": slug.fullUrl,
+			intro,
+			"colour":colour->colourLight,
+			author-> {name},
+      topic -> {
+        topic,
+          image {
+            "_id": asset->_id,
+            alt,
+            crop,
+            hotspot
+        },
+      },
+			category[] -> {_id, category},
+			image {
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+      },
+		}}`;
+  const homepage = await sanityClient.fetch(query);
+  return homepage;
+}

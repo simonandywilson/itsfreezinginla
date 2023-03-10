@@ -92,7 +92,7 @@ export const Hero = ({hero}) => {
               className={clsx(
                 'h-full w-full',
                 {
-                  ' object-contain max-w-[50vw] md:max-w-[30vw] ':
+                  'p-8 object-contain max-w-[50vw] md:max-w-[30vw] ':
                     imageFormat === 'contain',
                 },
                 {

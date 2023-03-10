@@ -1,6 +1,4 @@
-import {type LoaderArgs} from '@shopify/remix-oxygen';
-
-export const loader = ({request}: LoaderArgs) => {
+export const loader = ({request}) => {
   const url = new URL(request.url);
 
   return new Response(robotsTxtData({url: url.origin}), {
@@ -13,7 +11,7 @@ export const loader = ({request}: LoaderArgs) => {
   });
 };
 
-function robotsTxtData({url}: {url: string}) {
+function robotsTxtData({url}) {
   const sitemapUrl = url ? `${url}/sitemap.xml` : undefined;
 
   return `
