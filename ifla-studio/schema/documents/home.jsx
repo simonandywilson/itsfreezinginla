@@ -9,16 +9,9 @@ export default defineType({
 
   fields: [
     defineField({
-      name: 'heroBanner',
-      type: 'string',
-		title: 'Hero Banner',
-    }),
-    defineField({
       name: 'hero',
-      type: 'reference',
-      to: [ {type: 'product'}],
-		validation: (Rule) => Rule.required(),
-	  
+      type: 'array',
+      of: [{type: 'heroObject'}],
     }),
     defineField({
       name: 'featuredBanner',

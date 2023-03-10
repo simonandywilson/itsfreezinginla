@@ -8,6 +8,11 @@ export default defineField({
   icon: <ExternalLink strokeWidth={1.5} size={20} />,
   fields: [
     defineField({
+      name: 'title',
+      type: 'string',
+      hidden: ({document}) => !document._type === 'home',
+    }),
+    defineField({
       name: 'type',
       title: 'Type',
       type: 'string',

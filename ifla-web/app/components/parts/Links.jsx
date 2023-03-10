@@ -138,6 +138,7 @@ export const ButtonLinkExternal = ({
   className,
   colour,
   target,
+  rel
 }) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
@@ -146,6 +147,7 @@ export const ButtonLinkExternal = ({
       href={to}
       className={buttonStyle({intent, colour, className})}
       target={target}
+      rel={rel}
     >
       <Text intent={intent} className={'inline-block'}>
         {children}
@@ -155,7 +157,8 @@ export const ButtonLinkExternal = ({
     <motion.a
       href={to}
       className={buttonStyle({intent, colour, className})}
-      target={target}
+        target={target}
+        rel={rel}
       transition={{duration: 0}}
       initial={{background: '#000000'}}
       whileHover={{

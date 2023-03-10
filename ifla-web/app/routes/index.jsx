@@ -1,5 +1,5 @@
 import {json} from '@shopify/remix-oxygen';
-import { cx } from 'class-variance-authority';
+import {cx} from 'class-variance-authority';
 import groq from 'groq';
 import {useLoaderData} from 'react-router';
 
@@ -8,7 +8,7 @@ import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import Hero from '../components/hero/Hero';
 import {Banner} from '../components/parts/Banner';
 import {Layout} from '../components/parts/Layout';
-import { BlockLink } from '../components/parts/Links';
+import {BlockLink} from '../components/parts/Links';
 import {shopLinkQuery} from '../lib/queries';
 
 export const handle = {
@@ -34,10 +34,9 @@ export default function Index() {
   const {homepage} = useLoaderData();
   return (
     <Layout intent={'home'}>
-      <Banner>
-        {homepage.heroBanner ? homepage.heroBanner : 'Currently…'}
-      </Banner>
-      <Hero hero={homepage.hero} />
+      {homepage.heroNew.map((hero) => (
+        <Hero key={hero._key} hero={hero} />
+      ))}
       {homepage.featured ? (
         <>
           <Banner>
@@ -82,12 +81,34 @@ export default function Index() {
 
 async function getHomepageData({sanityClient}) {
   const query = groq`*[_type == "home"][0] {
-		"heroBanner": heroBanner,
-    "hero": hero -> {colour, store {
-      title,
-      "image": previewImageUrl,
-      "slug": ${shopLinkQuery},
-    }},
+    "hero": hero[] {
+      _key,
+      background,
+      banner,
+      heading,
+      imageFormat,
+      image {
+        ...,
+        asset->{url}
+      },
+      links[] {
+        _type == 'checkoutObject' => {
+          _key,
+          _type,
+          title,
+          "variantId": reference -> store.id
+        },
+        _type == 'internalLinkObject' => {
+          _key,
+          _type,
+          title,
+          "type": reference -> _type,
+          "slug": reference -> slug.current,
+          "slugFull": reference -> slug.fullUrl,
+        },
+        _type == 'externalLinkObject' => @
+      }
+    },
 		"featuredBanner": featuredBanner,
 		"featured": featured[0...4] -> {
 			_id,

@@ -54,17 +54,17 @@ const components = (intent) => {
         </Text>
       ),
       h3: ({children}) => (
-        <Text as={'h3'} intent={'text-xl'} className={'break-before-column'}>
+        <Text as={'h3'} intent={'text-xl'} className={'break-after-avoid'}>
           {children}
         </Text>
       ),
       h5: ({children}) => (
-        <Text as={'h4'} intent={'textlg'}>
+        <Text as={'h4'} intent={'text-lg'}>
           {children}
         </Text>
       ),
       h6: ({children}) => (
-        <Text as={'h5'} intent={'text-sm'} className={'!mb-0'}>
+        <Text as={'h5'} intent={'text-sm'} className={'!mb-0 break-after-avoid'}>
           {children}
         </Text>
       ),

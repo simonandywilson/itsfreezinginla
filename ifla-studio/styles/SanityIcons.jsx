@@ -23,7 +23,7 @@ const filterIcons = [
 ];
 
 const objectIcons = [
-	// { name: "resource", emoji: "💪" },
+	{ name: "hero", emoji: "💥" },
 	// { name: "link", emoji: "🔗" },
 ];
 

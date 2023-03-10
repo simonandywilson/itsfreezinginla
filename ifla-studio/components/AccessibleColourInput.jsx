@@ -66,8 +66,6 @@ export const AccessibleColourInput = (props) => {
     [onChange]
   )
 
-  console.log(colour)
-
   useEffect(() => {
     if (value !== debouncedColour) {
       onChange(set(debouncedColour))
@@ -99,17 +97,19 @@ export const AccessibleColourInput = (props) => {
     <Stack space={2}>
       <Card shadow={1} radius={2}>
         <Stack>
-          <Card padding={4} style={{background: '#f6f6f6'}}>
-            <Stack space={2}>
-              <Label size={1}>WCAG Compliance Results:</Label>
-              <Inline space={2}>
-                <Badge tone={regularAA}>AA Regular</Badge>
-                <Badge tone={largeAA}>AA Large</Badge>
-                <Badge tone={regularAAA}>AAA Regular</Badge>
-                <Badge tone={largeAAA}>AAA Large</Badge>
-              </Inline>
-            </Stack>
-          </Card>
+          {!schemaType?.options?.basic && (
+            <Card padding={4} style={{background: '#f6f6f6'}}>
+              <Stack space={2}>
+                <Label size={1}>WCAG Compliance Results:</Label>
+                <Inline space={2}>
+                  <Badge tone={regularAA}>AA Regular</Badge>
+                  <Badge tone={largeAA}>AA Large</Badge>
+                  <Badge tone={regularAAA}>AAA Regular</Badge>
+                  <Badge tone={largeAAA}>AAA Large</Badge>
+                </Inline>
+              </Stack>
+            </Card>
+          )}
           <Card shadow={1} radius={2} padding={4}>
             <Stack space={4}>
               <Flex display={'flex'}>
