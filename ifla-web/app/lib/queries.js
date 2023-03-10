@@ -11,14 +11,19 @@ export const articleDataQuery = groq`*[_type == "article" && slug.current == $sl
   		author-> {name},
   		media[],
   		image {
-  			alt,
-  			asset->
-  		},
+			"_id": asset->_id,
+			alt,
+			crop,
+			hotspot
+      	},
 		topic -> {
         	topic,
 				image {
-					asset-> {_id}
-				}
+			"_id": asset->_id,
+			alt,
+			crop,
+			hotspot
+      	},
       	},
 		category[] -> {_id, category},
 		"seoTitle": coalesce(seoTitle, headline),

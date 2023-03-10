@@ -2,14 +2,12 @@ import {json} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
 import groq from 'groq';
 import {useLoaderData} from 'react-router';
-
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
-import Hero from '../components/hero/Hero';
+import {Hero} from '../components/hero/Hero';
 import {Banner} from '../components/parts/Banner';
 import {Layout} from '../components/parts/Layout';
 import {BlockLink} from '../components/parts/Links';
-import {shopLinkQuery} from '../lib/queries';
 
 export const handle = {
   seo: {
@@ -24,7 +22,6 @@ export const meta = () => ({
 
 export async function loader({context}) {
   const [homepage] = await Promise.all([getHomepageData(context)]);
-
   return json({
     homepage,
   });
@@ -87,8 +84,10 @@ async function getHomepageData({sanityClient}) {
       heading,
       imageFormat,
       image {
-        ...,
-        asset->{url}
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
       },
       links[] {
         _type == 'checkoutObject' => {
@@ -118,15 +117,20 @@ async function getHomepageData({sanityClient}) {
 			author-> {name},
       topic -> {
         topic,
-        image {
-          asset-> {_id}
-        }
+          image {
+            "_id": asset->_id,
+            alt,
+            crop,
+            hotspot
+        },
       },
 			category[] -> {_id, category},
 			image {
-          		alt,
-            	asset->{_id}
-          	}
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+      },
 		}}`;
   const homepage = await sanityClient.fetch(query);
   return homepage;

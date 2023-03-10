@@ -11,14 +11,19 @@ const articlePreviewFragment = groq`{
     author-> {name},
     media,
     image {
-      alt,
-      asset->{_id}
-    },
+			"_id": asset->_id,
+			alt,
+			crop,
+			hotspot
+      	},
     topic -> {
         topic,
-        image {
-          asset-> {_id}
-        }
+       image {
+			"_id": asset->_id,
+			alt,
+			crop,
+			hotspot
+      	},
     },
     category[] -> {_id, category},
 
@@ -32,8 +37,10 @@ const carouselModuleFragment = groq`
         _type,
         slide[] {
             _type == "imageObject" => {
-                ...,
-                asset -> {_id}
+                "_id": asset->_id,
+                alt,
+                crop,
+                hotspot
             },
             _type == "textObject" => {
                 ...
@@ -47,9 +54,11 @@ const imageModuleFragment = groq`
         _type,
         caption,
         image {
-            ...,
-            asset -> {_id}
-        },
+			"_id": asset->_id,
+			alt,
+			crop,
+			hotspot
+      	},
         "colour": coalesce(*[_id == ^.^._id][0].colour->colourDark, *[_id == ^.^.^.^._id][0].colour->colourDark, "#000000")
     }`;
 
@@ -58,8 +67,10 @@ const imageGridModuleFragment = groq`
         _key,
         _type,
         images[] {
-            ...,
-            asset -> {_id}
+            "_id": asset->_id,
+                alt,
+                crop,
+                hotspot
         },
     }`;
 

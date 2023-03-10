@@ -1,6 +1,6 @@
 import React from 'react';
+import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import SanityImage from '../parts/SanityImage';
 import {Text} from '../parts/Text';
 import {Topic} from '../parts/Topic';
 
@@ -15,18 +15,23 @@ export const ArticleBlock = ({article}) => {
       }
       colour={colour || 'var(--accent-colour)'}
     >
-      {image?.asset && (
+      {image && (
         <div
           className={
             'absolute w-full h-full inset-0 overflow-hidden hidden group-hover:block group-focus:hidden'
           }
           style={{background: colour ? colour : '#dfdfdf'}}
         >
-          <SanityImage
-            value={image.asset}
-            className={
-              'h-full rendering-pixelated object-cover'
-            }
+          <Image
+            asset={{
+              _id: image._id,
+            }}
+            hotspot={image.hotspot}
+            crop={image.crop}
+            alt={image.alt}
+            width={1000}
+            options={{aspectRatio: true}}
+            className={'h-full rendering-pixelated object-cover'}
           />
         </div>
       )}

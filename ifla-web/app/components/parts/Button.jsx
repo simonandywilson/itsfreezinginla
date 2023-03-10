@@ -61,7 +61,7 @@ export const Button = ({
 }) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
-  return colour === 'mono' ? (
+  return (colour === 'mono' || disabled) ? (
     <button
       type={type || 'button'}
       className={buttonStyle({intent, colour, status, className})}

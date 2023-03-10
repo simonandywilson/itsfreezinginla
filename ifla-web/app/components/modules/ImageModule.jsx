@@ -1,5 +1,5 @@
+import  { Image } from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import SanityImage from '../parts/SanityImage';
 import {Text} from '../parts/Text';
 
 export const ImageModule = ({content}) => {
@@ -10,7 +10,16 @@ export const ImageModule = ({content}) => {
     <Layout intent={inline ? 'module-inline' : 'module'}>
       {image && (
         <div className={'w-full'}>
-          <SanityImage value={image} />
+          <Image
+            asset={{
+              _id: image._id,
+            }}
+            hotspot={image.hotspot}
+            crop={image.crop}
+            alt={image.alt}
+            width={1000}
+            options={{aspectRatio: true}}
+          />
         </div>
       )}
       {caption && (

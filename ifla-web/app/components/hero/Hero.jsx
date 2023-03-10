@@ -2,12 +2,12 @@ import {cx} from 'class-variance-authority';
 import clsx from 'clsx';
 import React from 'react';
 import {Banner} from '../parts/Banner';
+import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import {ButtonLink, ButtonLinkExternal, LinkExternal} from '../parts/Links';
-import SanityImage from '../parts/SanityImage';
+import {ButtonLink, ButtonLinkExternal} from '../parts/Links';
 import {Text} from '../parts/Text';
 
-const Hero = ({hero}) => {
+export const Hero = ({hero}) => {
   const {banner, heading, background, image, imageFormat, links} = hero;
   return (
     <>
@@ -25,14 +25,17 @@ const Hero = ({hero}) => {
           )}
         >
           {heading && (
-            <Text as={'h2'} intent={'text-2xl'} className={'z-10 mb-[0.5em]'}>
+            <Text
+              as={'h2'}
+              intent={'text-2xl'}
+              className={cx('w-full z-10 mb-[0.5em]', 'md:w-1/2 lg:w-1/3')}
+            >
               {heading}
             </Text>
           )}
           <div className={'flex flex-col gap-4'}>
             {links &&
               links.map((link) => {
-                console.log(link.title);
                 switch (link?._type) {
                   case 'externalLinkObject':
                     return (
@@ -77,8 +80,15 @@ const Hero = ({hero}) => {
               'absolute w-full h-full inset-0 flex justify-center items-center'
             }
           >
-            <SanityImage
-              value={image}
+            <Image
+              asset={{
+                _id: image._id,
+              }}
+              hotspot={image.hotspot}
+              crop={image.crop}
+              alt={image.alt}
+              width={3000}
+              options={{aspectRatio: true}}
               className={clsx(
                 'h-full w-full',
                 {
@@ -95,30 +105,7 @@ const Hero = ({hero}) => {
       </Layout>
     </>
   );
-  // <Layout as={'article'} intent={'hero'} colour={colour || '#e3e8ef'}>
-  //   <div className={'relative w-full h-full'}>
-  //     <div
-  //       className={cx(
-  //         'relative w-full h-full flex flex-col gap-4 z-10 justify-between',
-  //         'md:justify-start',
-  //       )}
-  //     >
-  //       <Text as={'h2'} intent={'text-2xl'}>
-  //         {store.title}
-  //       </Text>
-  //       <ButtonLink
-  //         intent={'text-lg'}
-  //         colour={'mono'}
-  //         to={store.slug.shop.slug.fullUrl}
-  //       >
-  //         Buy
-  //       </ButtonLink>
-  //     </div>
-
-  // </Layout>
 };
-
-export default Hero;
 
 const ExternalLink = ({link, children}) => {
   switch (link.type) {
