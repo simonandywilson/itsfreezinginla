@@ -60,6 +60,7 @@ const Hero = ({hero}) => {
                         to={`https://shop.itsfreezinginla.com/cart/${link.variantId}:1`}
                         target={'_self'}
                         intent={'text-lg'}
+                        colour={'mono'}
                       >
                         {link.title}
                       </ButtonLinkExternal>

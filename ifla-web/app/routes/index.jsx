@@ -34,9 +34,8 @@ export default function Index() {
   const {homepage} = useLoaderData();
   return (
     <Layout intent={'home'}>
-      {homepage.heroNew.map((hero) => (
-        <Hero key={hero._key} hero={hero} />
-      ))}
+      {homepage.hero &&
+        homepage.hero.map((hero) => <Hero key={hero._key} hero={hero} />)}
       {homepage.featured ? (
         <>
           <Banner>
