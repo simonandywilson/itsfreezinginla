@@ -12,7 +12,7 @@ const layout = cva('', {
         'lg:px-0',
       ],
       hero: [
-        'w-full aspect-[9/16] p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-12rem)]',
+        'w-full aspect-[9/16] p-6 flex flex-col justify-between gap-4 max-h-[calc(100vh-16rem)]',
         'md:p-8 md:aspect-video ',
       ],
       banner: [

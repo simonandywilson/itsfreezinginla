@@ -1,86 +1,54 @@
-import {flattenConnection} from '@shopify/hydrogen';
+import groq from 'groq';
 import invariant from 'tiny-invariant';
 
-const MAX_URLS = 250; // the google limit is 50K, however, SF API only allow querying for 250 resources each time
-
-export async function loader({request, context: {storefront}}) {
-  const [sitemap] = await Promise.all([getSitemapData(context)]);
-
-  const data = await storefront.query(SITEMAP_QUERY, {
-    variables: {
-      urlLimits: MAX_URLS,
-      language: storefront.i18n.language,
-    },
-  });
+export async function loader({request, context}) {
+  const [data] = await Promise.all([
+    getSitemapData(context, {baseUrl: new URL(request.url).origin}),
+  ]);
 
   invariant(data, 'Sitemap data is missing');
 
   return new Response(
-    shopSitemap({data, baseUrl: new URL(request.url).origin}),
+    generateSitemap({data, baseUrl: new URL(request.url).origin}),
     {
       headers: {
         'content-type': 'application/xml',
-        // Cache for 24 hours
         'cache-control': `max-age=${60 * 60 * 24}`,
       },
     },
   );
 }
 
-function shopSitemap({data, baseUrl}) {
-  const productsData = flattenConnection(data.products)
-    .filter((product) => product.onlineStoreUrl)
-    .map((product) => {
-      const url = `${baseUrl}/products/${product.handle}`;
+function generateSitemap({ data, baseUrl }) {
 
-      const finalObject = {
-        url,
-        lastMod: product.updatedAt,
-        changeFreq: 'daily',
-      };
+    const homeObject = {
+      url: baseUrl,
+      lastMod: data.home._updatedAt,
+      changeFreq: 'weekly',
+      priority: 1,
+    };
 
-      if (product.featuredImage?.url) {
-        finalObject.image = {
-          url: product.featuredImage.url,
-        };
+  const pagesData = data.pages.map((page) => {
+    const finalObject = {
+      url: page.url,
+      lastMod: page._updatedAt,
+      changeFreq: 'weekly',
+      priority: 0.9,
+    };
+    return finalObject;
+  });
 
-        if (product.title) {
-          finalObject.image.title = product.title;
-        }
+  const articlesData = data.articles.map((article) => {
+    const finalObject = {
+      url: article.url,
+      lastMod: article._updatedAt,
+      changeFreq: 'weekly',
+      priority: 0.8,
+    };
+    return finalObject;
+  });
 
-        if (product.featuredImage.altText) {
-          finalObject.image.caption = product.featuredImage.altText;
-        }
-      }
-
-      return finalObject;
-    });
-
-  const collectionsData = flattenConnection(data.collections)
-    .filter((collection) => collection.onlineStoreUrl)
-    .map((collection) => {
-      const url = `${baseUrl}/collections/${collection.handle}`;
-
-      return {
-        url,
-        lastMod: collection.updatedAt,
-        changeFreq: 'daily',
-      };
-    });
-
-  const pagesData = flattenConnection(data.pages)
-    .filter((page) => page.onlineStoreUrl)
-    .map((page) => {
-      const url = `${baseUrl}/pages/${page.handle}`;
-
-      return {
-        url,
-        lastMod: page.updatedAt,
-        changeFreq: 'weekly',
-      };
-    });
-
-  const urlsDatas = [...productsData, ...collectionsData, ...pagesData];
+  const urlsDatas = [homeObject, ...pagesData, ...articlesData];
 
   return `
     <urlset
@@ -91,12 +59,13 @@ function shopSitemap({data, baseUrl}) {
     </urlset>`;
 }
 
-function renderUrlTag({url, lastMod, changeFreq, image}) {
+function renderUrlTag({url, lastMod, changeFreq, priority, image}) {
   return `
     <url>
       <loc>${url}</loc>
       <lastmod>${lastMod}</lastmod>
       <changefreq>${changeFreq}</changefreq>
+      <priority>${priority}</priority>
       ${
         image
           ? `
@@ -112,101 +81,27 @@ function renderUrlTag({url, lastMod, changeFreq, image}) {
   `;
 }
 
-const SITEMAP_QUERY = `#graphql
-  query sitemaps($urlLimits: Int, $language: LanguageCode)
-  @inContext(language: $language) {
-    products(
-      first: $urlLimits
-      query: "published_status:'online_store:visible'"
-    ) {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-        title
-        featuredImage {
-          url
-          altText
-        }
-      }
-    }
-    collections(
-      first: $urlLimits
-      query: "published_status:'online_store:visible'"
-    ) {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-      }
-    }
-    pages(first: $urlLimits, query: "published_status:'published'") {
-      nodes {
-        updatedAt
-        handle
-        onlineStoreUrl
-      }
-    }
-  }
-`;
-
-async function getSitemapData({sanityClient}) {
-  const query = groq`*[_type == "home"][0] {
-    "hero": hero[] {
-      _key,
-      background,
-      banner,
-      heading,
-      imageFormat,
-      image {
-        "_id": asset->_id,
-        alt,
-        crop,
-        hotspot
-      },
-      links[] {
-        _type == 'checkoutObject' => {
-          _key,
-          _type,
-          title,
-          "variantId": reference -> store.id
-        },
-        _type == 'internalLinkObject' => {
-          _key,
-          _type,
-          title,
-          "type": reference -> _type,
-          "slug": reference -> slug.current,
-          "slugFull": reference -> slug.fullUrl,
-        },
-        _type == 'externalLinkObject' => @
-      }
-    },
-		"featuredBanner": featuredBanner,
-		"featured": featured[0...4] -> {
-			_id,
-			headline,
-			"slug": slug.fullUrl,
-			intro,
-			"colour":colour->colourLight,
-			author-> {name},
-      topic -> {
-        topic,
-          image {
-            "_id": asset->_id,
-            alt,
-            crop,
-            hotspot
-        },
-      },
-			category[] -> {_id, category},
-			image {
-        "_id": asset->_id,
-        alt,
-        crop,
-        hotspot
-      },
-		}}`;
-  const homepage = await sanityClient.fetch(query);
-  return homepage;
+async function getSitemapData(context, params) {
+  const query = groq`{
+  "home": *[
+    _type == 'home'
+  ][0] {
+    _updatedAt,
+    "url": $baseUrl
+  },
+  "pages": *[
+    _type == 'page' && slug != null
+  ] {
+    _updatedAt,
+    "url": $baseUrl + "/" + slug.current,
+  },
+  "articles": *[
+    _type == 'article' && slug != null
+  ] {
+    _updatedAt,
+    "url": $baseUrl + "/articles/" + slug.current,
+  },
+}`;
+  const sitemap = await context.sanityClient.fetch(query, params);
+  return sitemap;
 }
