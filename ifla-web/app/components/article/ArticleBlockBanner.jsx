@@ -27,7 +27,7 @@ export const ArticleBlockBanner = ({article, link}) => {
         </div>
         <div
           className={cx(
-            'col-span-1 columns-1 gap-8 col-fill-auto',
+            'h-min col-span-1 columns-1 gap-8 col-fill-auto',
             'lg:col-span-2 lg:columns-2 ',
           )}
         >
