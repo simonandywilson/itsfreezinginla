@@ -11,7 +11,7 @@ import {defer, json} from '@shopify/remix-oxygen';
 import groq from 'groq';
 import invariant from 'tiny-invariant';
 import {GlobalFooter} from './components/global/GlobalFooter';
-import { GlobalHeader } from './components/global/GlobalHeader';
+import {GlobalHeader} from './components/global/GlobalHeader';
 import {GlobalNewsletter} from './components/global/GlobalNewsletter';
 import {GlobalNotFound} from './components/global/GlobalNotFound';
 import {useAnalytics} from './hooks/useAnalytics';
@@ -86,10 +86,11 @@ export const meta = () => ({
 });
 
 export async function loader({context}) {
-  const [cartId, shop, allProducts, settings, menu, footer, shopLink, colours] =
+  const [cartId, shop, allCollections, allProducts, settings, menu, footer, shopLink, colours] =
     await Promise.all([
       context.session.get('cartId'),
       getShopData(context),
+      getAllCollectionsData(context),
       getAllProductsData(context),
       getSettingsData(context),
       getMenuData(context),
@@ -104,6 +105,7 @@ export async function loader({context}) {
     footer,
     colours,
     cart: cartId ? getCart(context, cartId) : undefined,
+    allCollections,
     allProducts,
     analytics: {
       shopifySalesChannel: ShopifySalesChannel.hydrogen,
@@ -181,7 +183,7 @@ export default function App() {
         <main className={'min-h-screen flex flex-col'}>
           <Outlet />
         </main>
-        <GlobalNewsletter/>
+        <GlobalNewsletter />
         <GlobalFooter />
         <ScrollRestoration />
         <Scripts />
@@ -425,10 +427,7 @@ export async function getCart({storefront}, cartId) {
 }
 
 const ALL_PRODUCTS_QUERY = `#graphql
-  query AllProducts(
-    $country: CountryCode
-    $language: LanguageCode
-  ) @inContext(country: $country, language: $language) {
+  query AllProducts {
       products(first: 100) {
         nodes {
           id
@@ -467,20 +466,66 @@ const ALL_PRODUCTS_QUERY = `#graphql
         }
       }
     }
-  
 `;
 
 export async function getAllProductsData({storefront}) {
   invariant(storefront, 'missing storefront client in all products query');
-
-  const {products} = await storefront.query(ALL_PRODUCTS_QUERY, {
-    variables: {
-      country: storefront.i18n.country,
-      language: storefront.i18n.language,
-    },
-  });
-
+  const {products} = await storefront.query(ALL_PRODUCTS_QUERY);
   return products;
+}
+
+const ALL_COLLECTIONS_QUERY = `#graphql
+  query AllCollections {
+    collections(first: 8) {
+      nodes {
+        title
+        id
+        products(first: 100, sortKey: MANUAL) {
+          nodes {
+            id
+            title
+            publishedAt
+            handle 
+            featuredImage {
+              url
+              altText
+              width
+              height
+            }
+            variants(first: 5) {
+              nodes {
+                id
+                availableForSale
+                currentlyNotInStock
+                price {
+                  amount
+                  currencyCode
+                }
+                compareAtPrice {
+                  amount
+                  currencyCode
+                }
+                selectedOptions {
+                  name
+                  value
+                }
+                product {
+                  handle
+                  title
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`;
+
+export async function getAllCollectionsData({storefront}) {
+  invariant(storefront, 'missing storefront client in all collections query');
+  const {collections} = await storefront.query(ALL_COLLECTIONS_QUERY);
+  return collections;
 }
 
 export async function getShopPage({sanityClient}) {
