@@ -108,7 +108,7 @@ async function getHomepageData({sanityClient}) {
       }
     },
 		"featuredBanner": featuredBanner,
-		"featured": featured[0...4] -> {
+		"featured": featured[0...5] -> {
 			_id,
 			headline,
 			"slug": slug.fullUrl,
