@@ -200,6 +200,7 @@ export default defineType({
       title: 'headline',
       subtitle: 'date',
       media: 'colour.colourLight',
+      topic: 'topic.image.asset.url',
     },
     prepare({title, subtitle, media}) {
       return {
@@ -211,7 +212,19 @@ export default defineType({
               month: 'long',
             })
           : '',
-        media: <span style={{background: media, height: '100%', width: '100%'}}></span>,
+        media: (
+          <span
+            style={{
+              background: media,
+              height: '100%',
+              width: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+          </span>
+        ),
       }
     },
   },

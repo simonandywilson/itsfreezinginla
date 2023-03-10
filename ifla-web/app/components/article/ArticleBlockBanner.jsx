@@ -17,7 +17,7 @@ export const ArticleBlockBanner = ({article, link}) => {
       <Layout
         intent={'grid'}
         as={'div'}
-        className={cx('gap-4', 'md:gap-8 md:flex-1')}
+        className={cx('gap-4 h-min', 'md:gap-8 md:flex-1')}
       >
         <div>
           <Text as={'h2'} intent={'text-2xl'}>
@@ -39,7 +39,7 @@ export const ArticleBlockBanner = ({article, link}) => {
               intent={'text-lg'}
               colour={'mono'}
               to={link}
-              className={'mt-[1em]'}
+              className={'mt-[1em] break-before-avoid'}
             >
               Read on
             </ButtonLink>
@@ -48,11 +48,7 @@ export const ArticleBlockBanner = ({article, link}) => {
       </Layout>
       <div className={'flex justify-between'}>
         {author.name && (
-          <Text
-            as={'address'}
-            intent={'text-sm'}
-            className={'not-italic'}
-          >
+          <Text as={'address'} intent={'text-sm'} className={'not-italic'}>
             By {author.name}
           </Text>
         )}

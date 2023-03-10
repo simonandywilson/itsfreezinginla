@@ -23,7 +23,7 @@ export default defineType({
       type: 'array',
       title: 'Featured Articles',
       of: [{type: 'reference', to: [{type: 'article'}], title: 'Reference to Article'}],
-      validation: (Rule) => Rule.required().min(1).max(4),
+      validation: (Rule) => Rule.required().min(1).max(5),
     }),
   ],
   preview: {
