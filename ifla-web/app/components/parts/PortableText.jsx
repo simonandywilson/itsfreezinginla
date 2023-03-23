@@ -88,7 +88,7 @@ const components = (intent) => {
       imageGridModule: ({value}) => <ImageGridModule content={value} inline />,
     },
     marks: {
-      externalLinkObject: ({value, children}) => {
+      externalLinkObject: ({ value, children }) => {
         switch (value.type) {
           case 'website':
             return (
@@ -96,20 +96,29 @@ const components = (intent) => {
                 href={value?.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={'link'}
+                className={'link '}
+                mono={value.colourful === false}
               >
                 {children}
               </LinkExternal>
             );
           case 'telephone':
             return (
-              <LinkExternal href={`tel:${value?.link}`} className={'link'}>
+              <LinkExternal
+                href={`tel:${value?.link}`}
+                className={'link '}
+                mono={value.colourful === false}
+              >
                 {children}
               </LinkExternal>
             );
           case 'email':
             return (
-              <LinkExternal href={`mailto:${value?.link}`} className={'link'}>
+              <LinkExternal
+                href={`mailto:${value?.link}`}
+                className={'link '}
+                mono={value.colourful === false}
+              >
                 {children}
               </LinkExternal>
             );

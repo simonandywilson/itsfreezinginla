@@ -25,7 +25,7 @@ const layout = cva('', {
       'module-full': ['my-8'],
       'module-inline': ['prose my-8 break-inside-avoid-column'],
       text: ['py-8 mx-4'],
-      grid: ['grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'],
+      grid: ['grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 3xl:grid-cols-4'],
       article: ['flex flex-col pt-24'],
       centre: [
         'flex',

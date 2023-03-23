@@ -65,7 +65,7 @@
     @apply max-w-xl mx-auto;
   }
   .link {
-    @apply w-max leading-none focus:outline-none focus:border-none;
+    @apply w-max leading-none focus:outline-none focus:border-none focus-visible:underline;
   }
 }
 

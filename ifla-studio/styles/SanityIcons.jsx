@@ -16,6 +16,9 @@ const documentIcons = [
   {name: 'collection', emoji: '📦'},
   {name: 'variant', emoji: '🚦'},
   {name: 'settings', emoji: '⚙️'},
+
+  {name: 'audiobook', emoji: '🔈'},
+  {name: 'illustrator', emoji: '✏️'},
 ]
 
 const filterIcons = [

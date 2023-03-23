@@ -3,7 +3,7 @@ const blockFragment = groq`_type == 'block' => {..., "colour": coalesce(*[_id ==
 const headingModuleFragment = groq`_type == 'headingModule' => @`;
 const collapsibleModuleFragment = groq`_type == 'collapsibleModule' => @`;
 const shopModuleFragment = groq`_type == 'shopModule' => @`;
-const articlePreviewFragment = groq`{
+export const articlePreviewFragment = groq`{
     _id,
     headline,
     "slug": slug.fullUrl,

@@ -7,6 +7,9 @@ module.exports = {
       colors: {
         accent: '#db4d68',
       },
+      screens: {
+        '3xl': '1700px',
+      },
     },
     fontFamily: {
       sans: ['Peace2020', ...fontFamily.sans],

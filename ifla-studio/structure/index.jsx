@@ -111,7 +111,7 @@ export const structure = (S, context) => {
                     .child((topicId) =>
                       S.documentList()
                         .title('Topics')
-                        .filter('_type == "topic" && $topicId == topic._ref')
+                        .filter('_type == "article" && $topicId == topic._ref')
                         .params({
                           topicId,
                         })
@@ -126,7 +126,7 @@ export const structure = (S, context) => {
                     .child((categoryId) =>
                       S.documentList()
                         .title('Categories')
-                        .filter('_type == "category" && $categoryId == category._ref')
+                        .filter('_type == "article" && $categoryId in category[]._ref')
                         .params({
                           categoryId,
                         })
@@ -140,7 +140,7 @@ export const structure = (S, context) => {
                   const client = context.getClient({apiVersion})
                   const type = 'article'
                   return client
-                    .fetch('*[_type == "article" && defined(date)] {_id, _type, date}', {
+                    .fetch('*[_type == $type && defined(date)]{_id, _type, date}', {
                       type,
                     })
                     .then((docs) => {
@@ -176,8 +176,13 @@ export const structure = (S, context) => {
                 }),
             ])
         ),
-
       S.divider(),
+
+      S.documentTypeListItem('audiobook')
+        .title('Audiobooks')
+        .icon(() => Icons.audiobook),
+      S.divider(),
+
       S.listItem()
         .title('Products')
         .icon(() => Icons.product)
@@ -235,6 +240,11 @@ export const structure = (S, context) => {
         .icon(() => Icons.author)
         .schemaType('author')
         .child(S.documentTypeList('author')),
+      S.listItem()
+        .title('Illustrators')
+        .icon(() => Icons.illustrator)
+        .schemaType('illustrator')
+        .child(S.documentTypeList('illustrator')),
       S.listItem()
         .title('Topics')
         .icon(() => Icons.topic)

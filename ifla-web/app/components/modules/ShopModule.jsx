@@ -8,7 +8,7 @@ import {Layout} from '../parts/Layout';
 import {Text} from '../parts/Text';
 
 export const ShopModule = () => {
-  const {allProducts, cart} = useRouteData(`root`);
+  const {allProducts, allCollections, cart} = useRouteData(`root`);
   return (
     <Layout intent={'cart'}>
       <div
@@ -27,9 +27,15 @@ export const ShopModule = () => {
               'lg:grid-cols-3 lg:gap-8',
             )}
           >
-            {allProducts.nodes.map((product) => (
-              <Product key={product.id} product={product} cart={cart} />
-            ))}
+            {allCollections.nodes.map((collection) =>
+              collection.products.nodes.map((product) => (
+                <Product key={product.id} product={product} cart={cart} />
+              )),
+            )}
+
+            {/* {allProducts.nodes.map((product) => (
+             
+            ))} */}
           </div>
         </div>
         <div className={'sticky top-36 h-max hidden md:block'}>

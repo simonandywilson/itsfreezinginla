@@ -11,7 +11,7 @@ export const ArticleBlock = ({article}) => {
       as={'article'}
       intent={'block'}
       className={
-        'group relative w-full h-full aspect-square flex flex-col justify-between gap-6'
+        'relative w-full h-full aspect-square flex flex-col justify-between gap-6'
       }
       colour={colour || 'var(--accent-colour)'}
     >
@@ -51,7 +51,7 @@ export const ArticleBlock = ({article}) => {
       </div>
       <div
         className={
-          'flex justify-between items-end gap-4 filter group-focus-visible:invert '
+          'flex justify-between items-end gap-4 filter group-focus-visible:invert'
         }
       >
         {author.name && (

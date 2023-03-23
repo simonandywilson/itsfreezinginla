@@ -47,6 +47,8 @@ import headingModule from './modules/headingModule'
 import collapsibleModule from './modules/collapsibleModule'
 import heroObject from './objects/heroObject'
 import checkoutObject from './objects/checkoutObject'
+import audiobook from './documents/audiobook'
+import illustrator from './documents/illustrator'
 
 const singletons = new Set([settings])
 const documents = new Set([
@@ -61,6 +63,8 @@ const documents = new Set([
   section,
   colour,
   category,
+  audiobook,
+  illustrator
 ])
 const objects = new Set([
   imageObject,

@@ -18,20 +18,20 @@ export const TextLink = ({
   onClick,
 }) => {
   const {colours} = useRouteData(`root`);
-  const colour = useRef(useRandomColour(colours));
+  const randomColour = useRef(useRandomColour(colours));
   return (
     <MotionLink
       to={to}
       className={cx('link', className)}
       initial={{color: 'inherit'}}
       animate={{
-        color: focused ? colour.current : 'inherit',
+        color: focused ? randomColour.current : 'inherit',
       }}
       whileHover={{
-        color: !focused && colour.current,
+        color: !focused && randomColour.current,
       }}
       whileFocus={{
-        color: colour.current,
+        color: randomColour.current,
       }}
       onClick={onClick}
     >
@@ -95,7 +95,7 @@ export const IconLink = ({children, to}) => {
 
 export const BlockLink = ({children, to}) => {
   return (
-    <Link to={to} className={'focus:outline-none focus:border-none'}>
+    <Link to={to} className={'group focus:outline-none focus:border-none'}>
       {children}
     </Link>
   );
@@ -138,7 +138,7 @@ export const ButtonLinkExternal = ({
   className,
   colour,
   target,
-  rel
+  rel,
 }) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
@@ -157,8 +157,8 @@ export const ButtonLinkExternal = ({
     <motion.a
       href={to}
       className={buttonStyle({intent, colour, className})}
-        target={target}
-        rel={rel}
+      target={target}
+      rel={rel}
       transition={{duration: 0}}
       initial={{background: '#000000'}}
       whileHover={{
@@ -175,10 +175,26 @@ export const ButtonLinkExternal = ({
   );
 };
 
-export const LinkExternal = ({href, target, rel, className, children}) => {
+export const LinkExternal = ({
+  href,
+  target,
+  rel,
+  className,
+  children,
+  mono,
+}) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
-  return (
+  return mono ? (
+    <a
+      href={href}
+      target={target}
+      rel={rel}
+      className={className}
+    >
+      {children}
+    </a>
+  ) : (
     <motion.a
       href={href}
       target={target}

@@ -10,11 +10,15 @@ export default defineField({
     defineField({
       name: 'title',
       type: 'string',
-      hidden: ({document}) => !document._type === 'home',
+      hidden: ({document}) => document._id === 'home' ? false : true,
+    }),
+    defineField({
+      name: 'colourful',
+      type: 'boolean',
+      initialValue: true,
     }),
     defineField({
       name: 'type',
-      title: 'Type',
       type: 'string',
       options: {
         list: [
@@ -26,7 +30,6 @@ export default defineField({
     }),
     defineField({
       name: 'link',
-      title: 'Link',
       type: 'string',
       validation: (Rule) =>
         Rule.regex(/https:\/\/(www\.|)(itsfreezinginla\.co.uk)\/.*/i, {

@@ -17,22 +17,6 @@ export const GlobalMenuDesktop = ({ menu }) => {
     <div className="relative w-full p-4 flex items-center justify-between bg-white">
       <GlobalTitle />
       <div className={'flex items-center gap-16'}>
-        {/* Mobile Menu Button */}
-        <div className="md:hidden">
-          <MotionButton
-            className={'focus:outline-none focus:border-none antialiased'}
-            transition={{duration: 0}}
-            initial={{color: '#000000'}}
-            whileHover={{
-              color: randomColour.current,
-            }}
-            whileFocus={{
-              color: randomColour.current,
-            }}
-          >
-            {({open}) => <Text intent={'text-lg'}>{open ? 'X' : 'Menu'}</Text>}
-          </MotionButton>
-        </div>
         {/* Desktop Menu Items */}
         {menu.map((section) => {
           return (
@@ -54,6 +38,22 @@ export const GlobalMenuDesktop = ({ menu }) => {
           );
         })}
         <Basket />
+        {/* Mobile Menu Button */}
+        <div className={"flex-shrink-0 md:hidden w-20 text-right"}>
+          <MotionButton
+            className={'focus:outline-none focus:border-none antialiased focus-visible:underline '}
+            transition={{duration: 0}}
+            initial={{color: '#000000'}}
+            whileHover={{
+              color: randomColour.current,
+            }}
+            whileFocus={{
+              color: randomColour.current,
+            }}
+          >
+            {({open}) => <Text intent={'text-lg'} >{open ? 'X' : 'Menu'}</Text>}
+          </MotionButton>
+        </div>
       </div>
     </div>
   );
@@ -67,7 +67,7 @@ const MenuItem = ({title, children, close}) => {
   return (
     <>
       <MotionButton
-        className={'focus:outline-none focus:border-none antialiased'}
+        className={'focus:outline-none focus:border-none antialiased focus-visible:underline'}
         onClick={() => navigate(children[0].slug)}
         transition={{duration: 0}}
         initial={{color: '#000000'}}

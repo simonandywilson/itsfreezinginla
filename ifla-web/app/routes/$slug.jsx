@@ -4,14 +4,15 @@ import React from 'react';
 import swiperStyles from 'swiper/swiper.min.css';
 import {getSession} from '~/sessions';
 import {pageDataQuery} from '../lib/queries';
-import { Page } from '../components/page/Page';
+import {Page} from '../components/page/Page';
 
 const seo = ({data}) => ({
-  title: data.page?.seoTitle || "Page",
-  description:  data.page?.seoDescription ? 
-    data.page.seoDescription.length > 155
+  title: data.page?.seoTitle || 'Page',
+  description: data.page?.seoDescription
+    ? data.page.seoDescription.length > 155
       ? data.page.seoDescription.substring(0, 154) + '…'
-      : data.page.seoDescription : '',
+      : data.page.seoDescription
+    : '',
 });
 
 export const handle = {
@@ -32,12 +33,12 @@ export async function loader({context, params, request}) {
   }
   const page = await sanityClient.fetch(pageDataQuery, params);
 
-   if (!page) {
-     throw new Response('Not Found', {
-       status: 404,
-     });
-   }
-  
+  if (!page) {
+    throw new Response('Not Found', {
+      status: 404,
+    });
+  }
+
   return json({
     page,
     usePreview,
@@ -45,7 +46,7 @@ export async function loader({context, params, request}) {
 }
 
 export default function PageRoute() {
-  const { page } = useLoaderData();
+  const {page} = useLoaderData();
 
   return <Page page={page} />;
 }

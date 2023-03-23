@@ -1,13 +1,13 @@
 import {json} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
-import groq from 'groq';
 import {useLoaderData} from 'react-router';
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import {Hero} from '../components/hero/Hero';
 import {Banner} from '../components/parts/Banner';
 import {Layout} from '../components/parts/Layout';
-import {BlockLink} from '../components/parts/Links';
+import {BlockLink, ButtonLink} from '../components/parts/Links';
+import {homepageDataQuery} from '../lib/queries';
 
 export const handle = {
   seo: {
@@ -66,6 +66,16 @@ export default function Index() {
                 </li>
               );
             })}
+            <li
+              className={cx(
+                'w-full flex items-center justify-center aspect-square',
+                'lg:hidden 3xl:flex',
+              )}
+            >
+              <ButtonLink to={'/articles'} intent={'text-lg'}>
+                Read more
+              </ButtonLink>
+            </li>
           </Layout>
         </>
       ) : (
@@ -76,62 +86,6 @@ export default function Index() {
 }
 
 async function getHomepageData({sanityClient}) {
-  const query = groq`*[_type == "home"][0] {
-    "hero": hero[] {
-      _key,
-      background,
-      banner,
-      heading,
-      imageFormat,
-      image {
-        "_id": asset->_id,
-        alt,
-        crop,
-        hotspot
-      },
-      links[] {
-        _type == 'checkoutObject' => {
-          _key,
-          _type,
-          title,
-          "variantId": reference -> store.id
-        },
-        _type == 'internalLinkObject' => {
-          _key,
-          _type,
-          title,
-          "type": reference -> _type,
-          "slug": reference -> slug.current,
-          "slugFull": reference -> slug.fullUrl,
-        },
-        _type == 'externalLinkObject' => @
-      }
-    },
-		"featuredBanner": featuredBanner,
-		"featured": featured[0...5] -> {
-			_id,
-			headline,
-			"slug": slug.fullUrl,
-			intro,
-			"colour":colour->colourLight,
-			author-> {name},
-      topic -> {
-        topic,
-          image {
-            "_id": asset->_id,
-            alt,
-            crop,
-            hotspot
-        },
-      },
-			category[] -> {_id, category},
-			image {
-        "_id": asset->_id,
-        alt,
-        crop,
-        hotspot
-      },
-		}}`;
-  const homepage = await sanityClient.fetch(query);
+  const homepage = await sanityClient.fetch(homepageDataQuery);
   return homepage;
 }

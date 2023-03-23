@@ -4,14 +4,16 @@ import {Banner} from '../parts/Banner';
 import {ArticleBlockBanner} from '../article/ArticleBlockBanner';
 import {Content} from '../content/Content';
 
-export const Article = ({article}) => {
+export const Article = ({ article }) => {
+  const { date, content, related } = article
+  console.log(related);
   return (
     <Layout intent={'article'}>
       <ArticleBlockBanner article={article} />
-      {article.date && (
+      {date && (
         <Banner>
           <time>
-            {new Date(article.date).toLocaleDateString('en-UK', {
+            {new Date(date).toLocaleDateString('en-UK', {
               year: 'numeric',
               month: 'long',
               day: '2-digit',
@@ -19,7 +21,7 @@ export const Article = ({article}) => {
           </time>
         </Banner>
       )}
-      {article.content.map((content) => {
+      {content.map((content) => {
         return <Content key={content._id || content._key} content={content} />;
       })}
     </Layout>

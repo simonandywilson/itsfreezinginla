@@ -32,7 +32,17 @@ export async function loader({context, params, request}) {
   if (preview) {
     return {preview: true, query: articleDataQuery, params};
   }
+
   const article = await sanityClient.fetch(articleDataQuery, params);
+
+  console.log(article);
+
+  if (!article) {
+    throw new Response('Not Found', {
+      status: 404,
+    });
+  }
+  
   return json({
     article,
     usePreview,
