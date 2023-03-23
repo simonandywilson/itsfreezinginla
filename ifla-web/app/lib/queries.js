@@ -1,5 +1,5 @@
 import groq from 'groq';
-import {contentFragment, articlePreviewFragment} from './fragments';
+import {contentFragment, articlePreviewFragment, relatedArticlesFragment} from './fragments';
 
 export const homepageDataQuery = groq`*[_type == "home"][0] {
     "hero": hero[] {
@@ -37,34 +37,35 @@ export const homepageDataQuery = groq`*[_type == "home"][0] {
 }`;
 
 export const articleDataQuery = groq`*[_type == "article" && slug.current == $slug][0]{
-        _id,
-  		headline,
+    _id,
+  	headline,
 		date,
-  		"slug": slug.fullUrl,
-  		intro,
-  		"colour":colour->colourLight,
-  		author-> {name},
-  		media[],
-  		image {
-			"_id": asset->_id,
-			alt,
-			crop,
-			hotspot
-      	},
+  	"slug": slug.fullUrl,
+  	intro,
+  	"colour":colour->colourLight,
+  	author-> {name},
+  	media[],
+  	image {
+      "_id": asset->_id,
+      alt,
+      crop,
+      hotspot
+    },
 		topic -> {
-        	topic,
-				image {
-			"_id": asset->_id,
-			alt,
-			crop,
-			hotspot
-      	},
-      	},
+      topic,
+      image {
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+      },
+    },
 		category[] -> {_id, category},
 		"seoTitle": coalesce(seoTitle, headline),
 		"seoDescription": coalesce(seoDescription, pt::text(intro)),
-        ${contentFragment}
-    }`;
+    ${relatedArticlesFragment},
+    ${contentFragment}
+}`;
 
 export const shopLinkQuery = groq`*[_type == "settings"][0] {
   shop->{slug{fullUrl}}

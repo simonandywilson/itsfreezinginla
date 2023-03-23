@@ -107,3 +107,12 @@ export const contentFragment = groq`
         ${articlesModuleFragment},
         ${shopModuleFragment},
     }`;
+
+
+
+export const relatedArticlesFragment = groq`"related": select(autoRecommend => *[_type == "article" && _id != ^._id] {
+      "matchingTopic": topic -> topic == ^.topic -> topic,
+      "matchingAuthor": author -> name == ^.author -> name,
+      "matchingCategory": category[0] -> category == ^.category[0] -> category,
+       ...${articlePreviewFragment}
+    } | order(matchingTopic desc, matchingAuthor desc, matchingCategory desc, date desc)[0...3], similarArticles[]->${articlePreviewFragment})`;

@@ -33,7 +33,7 @@ export default function Index() {
     <Layout intent={'home'}>
       {homepage.hero &&
         homepage.hero.map((hero) => <Hero key={hero._key} hero={hero} />)}
-      {homepage.featured ? (
+      {homepage.featured && (
         <>
           <Banner>
             {homepage.featuredBanner
@@ -78,8 +78,6 @@ export default function Index() {
             </li>
           </Layout>
         </>
-      ) : (
-        <Banner>No featured articles</Banner>
       )}
     </Layout>
   );

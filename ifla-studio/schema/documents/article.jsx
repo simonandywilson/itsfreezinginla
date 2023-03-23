@@ -135,7 +135,7 @@ export default defineType({
       type: 'array',
       of: [{type: 'reference', to: [{type: 'article'}], title: 'Reference to Article'}],
       hidden: ({document}) => document?.autoRecommend,
-      validation: (Rule) => Rule.error().min(3).max(3),
+      validation: (Rule) => Rule.warning().min(3).max(3),
       group: 'options',
     }),
     defineField({
