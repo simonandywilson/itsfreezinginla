@@ -4,7 +4,6 @@ import {useLoaderData} from 'react-router';
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import {Hero} from '../components/hero/Hero';
-import {Banner} from '../components/parts/Banner';
 import {Layout} from '../components/parts/Layout';
 import {BlockLink, ButtonLink} from '../components/parts/Links';
 import {homepageDataQuery} from '../lib/queries';
@@ -35,11 +34,6 @@ export default function Index() {
         homepage.hero.map((hero) => <Hero key={hero._key} hero={hero} />)}
       {homepage.featured && (
         <>
-          <Banner>
-            {homepage.featuredBanner
-              ? homepage.featuredBanner
-              : 'Featured articles'}
-          </Banner>
           <Layout intent={'grid'} as={'ul'}>
             <li className={'col-span-full w-full'}>
               <span className={cx('hidden', 'sm:block')}>

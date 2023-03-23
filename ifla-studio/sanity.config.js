@@ -1,17 +1,17 @@
-import { defineConfig, isDev } from "sanity";
-import { deskTool } from "sanity/desk";
-import { schema, singletonDocs, singletonActions } from "./schema";
-import { structure, defaultDocumentNode } from "./structure";
-import { visionTool } from "@sanity/vision";
-import ToolMenuWithShopify from "./components/ToolMenuWithShopify";
-import { SetRandomColourAction } from "./components/SetRandomColourAction";
-import "./styles/studio.css"
-import { projectDetails } from "./projectDetails";
+import {defineConfig, isDev} from 'sanity'
+import {deskTool} from 'sanity/desk'
+import {schema, singletonDocs, singletonActions} from './schema'
+import {structure, defaultDocumentNode} from './structure'
+import {visionTool} from '@sanity/vision'
+import ToolMenuWithShopify from './components/ToolMenuWithShopify'
+import {SetRandomColourAction} from './components/SetRandomColourAction'
+import './styles/studio.css'
+import {projectDetails} from './projectDetails'
 
-export default defineConfig({
+const config = {
   ...projectDetails,
-  title: 'It’s Freezing in LA!',
-  basePath: `/studio`,
+ 
+
   plugins: [deskTool({structure, defaultDocumentNode}), ...(isDev ? [visionTool()] : [])],
   schema: {
     types: schema,
@@ -37,4 +37,11 @@ export default defineConfig({
       toolMenu: ToolMenuWithShopify,
     },
   },
+}
+
+export default defineConfig({
+  ...config,
+  title: isDev ? 'IFLA STAGING': 'It’s Freezing in LA!',
+  dataset: isDev ? 'staging' : 'production',
+  basePath: `/studio`,
 })

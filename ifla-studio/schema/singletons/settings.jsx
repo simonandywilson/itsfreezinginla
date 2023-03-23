@@ -34,6 +34,12 @@ export default defineType({
       group: 'global',
     }),
     defineField({
+      name: 'longTitle',
+      type: 'string',
+      description: '💡 Appears in website header.',
+      group: 'global',
+    }),
+    defineField({
       name: 'shop',
       type: 'reference',
       to: [{type: 'page'}],

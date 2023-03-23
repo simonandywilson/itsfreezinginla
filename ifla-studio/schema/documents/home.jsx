@@ -14,11 +14,6 @@ export default defineType({
       of: [{type: 'heroObject'}],
     }),
     defineField({
-      name: 'featuredBanner',
-      type: 'string',
-      title: 'Featured Articles Banner',
-    }),
-    defineField({
       name: 'featured',
       type: 'array',
       title: 'Featured Articles',

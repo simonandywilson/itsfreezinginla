@@ -34,7 +34,7 @@ import columnsBlock from './blocks/columnsBlock'
 import basicBlock from './blocks/basicBlock'
 
 // Arrays
-import contentArray from './objects/contentArray'
+import contentArray from './arrays/contentArray'
 // Modules
 import textBlockModule from './modules/textBlockModule'
 import textColumnsModule from './modules/textColumnsModule'

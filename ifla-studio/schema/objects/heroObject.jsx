@@ -9,10 +9,6 @@ export default defineField({
   type: 'object',
   fields: [
     defineField({
-      name: 'banner',
-      type: 'string',
-    }),
-    defineField({
       name: 'heading',
       type: 'string',
     }),

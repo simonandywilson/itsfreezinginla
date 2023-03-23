@@ -2,7 +2,7 @@ import {cx} from 'class-variance-authority';
 import React from 'react';
 import {Layout} from '../parts/Layout';
 import {ButtonLink} from '../parts/Links';
-import {PortableTextPlain} from '../parts/PortableTextPlain';
+import { PortableText } from '../parts/PortableText';
 import {Text} from '../parts/Text';
 import {Topic} from '../parts/Topic';
 
@@ -27,13 +27,11 @@ export const ArticleBlockBanner = ({article, link}) => {
         </div>
         <div
           className={cx(
-            'h-min col-span-1 columns-1 gap-8 col-fill-auto',
+            'h-min col-span-1 columns-1 gap-8 ',
             'lg:col-span-2 lg:columns-2 ',
           )}
         >
-          <Text as={'h3'} intent={'text-xl'}>
-            {intro ? <PortableTextPlain text={intro} /> : 'Intro text'}
-          </Text>
+          {intro && <PortableText text={intro} intent={'intro'} />}
           {link && (
             <ButtonLink
               intent={'text-lg'}

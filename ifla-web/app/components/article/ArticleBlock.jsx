@@ -1,11 +1,14 @@
 import React from 'react';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
+import {PortableText} from '../parts/PortableText';
 import {Text} from '../parts/Text';
 import {Topic} from '../parts/Topic';
 
 export const ArticleBlock = ({article}) => {
-  const {headline, colour, author, category, image, topic} = article;
+  const {headline, intro, colour, author, category, quiltImage, image, topic} =
+    article;
+
   return (
     <Layout
       as={'article'}
@@ -15,13 +18,19 @@ export const ArticleBlock = ({article}) => {
       }
       colour={colour || 'var(--accent-colour)'}
     >
-      {image && (
-        <div
-          className={
-            'absolute w-full h-full inset-0 overflow-hidden hidden group-hover:block group-focus:hidden'
-          }
-          style={{background: colour ? colour : '#dfdfdf'}}
-        >
+      <div
+        className={
+          'absolute w-full h-full inset-0 overflow-hidden hidden group-hover:block group-focus:hidden'
+        }
+        style={{background: colour ? colour : '#dfdfdf'}}
+      >
+        {!quiltImage && (
+          <div className={'h-full p-4 flex justify-between flex-col'}>
+            <PortableText text={intro} intent={'preview'} />
+            <p className={"ml-auto"}>Keep reading {">"}</p>
+          </div>
+        )}
+        {image && quiltImage && (
           <Image
             asset={{
               _id: image._id,
@@ -33,8 +42,9 @@ export const ArticleBlock = ({article}) => {
             options={{aspectRatio: true}}
             className={'h-full rendering-pixelated object-cover'}
           />
-        </div>
-      )}
+        )}
+      </div>
+
       <div className={'filter group-focus-visible:invert'}>
         <span className={'hidden md:block'}>
           <Text as={'h2'} intent={'text-xl'}>

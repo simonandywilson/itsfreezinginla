@@ -15,6 +15,8 @@ const portableText = cva(
         body: ['[&>p:not(:first-of-type)]:indent-5 [&>*:not(section)]:prose '],
         column: ['[&>p:not(:first-of-type)]:mb-[1em]'],
         footer: ['[&>p:not(:last-child)]:mb-[1em]'],
+        preview: ['[&>p:not(:last-child)]:mb-[1em]'],
+        intro: ['[&>*:not(:last-child)]:mb-[1em]'],
       },
     },
     defaultVariants: {
@@ -37,6 +39,18 @@ const components = (intent) => {
           case 'footer':
             return (
               <Text as={'p'} intent={'text-sm'}>
+                {children}
+              </Text>
+            );
+          case 'intro':
+            return (
+              <Text as={'h3'} intent={'text-xl'}>
+                {children}
+              </Text>
+            );
+          case 'preview':
+            return (
+              <Text as={'p'} intent={'text-xs'}>
                 {children}
               </Text>
             );

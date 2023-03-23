@@ -6,10 +6,12 @@ const shopModuleFragment = groq`_type == 'shopModule' => @`;
 export const articlePreviewFragment = groq`{
     _id,
     headline,
+    intro,
     "slug": slug.fullUrl,
     "colour":colour->colourLight,
     author-> {name},
     media,
+    quiltImage,
     image {
 			"_id": asset->_id,
 			alt,
@@ -18,7 +20,7 @@ export const articlePreviewFragment = groq`{
       	},
     topic -> {
         topic,
-       image {
+        image {
 			"_id": asset->_id,
 			alt,
 			crop,

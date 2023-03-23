@@ -5,7 +5,6 @@ export const homepageDataQuery = groq`*[_type == "home"][0] {
     "hero": hero[] {
       _key,
       background,
-      banner,
       heading,
       imageFormat,
       image {
@@ -32,7 +31,6 @@ export const homepageDataQuery = groq`*[_type == "home"][0] {
         _type == 'externalLinkObject' => @
       }
     },
-		"featuredBanner": featuredBanner,
     "featured": featured[0...4] -> ${articlePreviewFragment}
 }`;
 

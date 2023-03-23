@@ -1,17 +1,15 @@
 import {cx} from 'class-variance-authority';
 import clsx from 'clsx';
 import React from 'react';
-import {Banner} from '../parts/Banner';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
 import {ButtonLink, ButtonLinkExternal} from '../parts/Links';
 import {Text} from '../parts/Text';
 
 export const Hero = ({hero}) => {
-  const {banner, heading, background, image, imageFormat, links} = hero;
+  const { heading, background, image, imageFormat, links} = hero;
   return (
     <>
-      {banner && <Banner>{banner}</Banner>}
       <Layout
         as={'article'}
         intent={'hero'}

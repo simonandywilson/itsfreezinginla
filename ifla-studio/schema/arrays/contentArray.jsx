@@ -1,4 +1,4 @@
-import { defineField } from "sanity";
+import {defineField} from 'sanity'
 
 export default defineField({
   name: 'contentArray',
@@ -14,6 +14,19 @@ export default defineField({
     {type: 'articlesModule'},
     {type: 'shopModule'},
   ],
+  validation: (Rule) =>
+    Rule.error().custom((array) => {
+      if (array.length <=1) {
+        return true
+      }
+      if (array.filter((e) => e._type === 'articlesModule').length > 0) {
+        return 'Content can only contain one instance of Articles'
+      }
+      if (array.filter((e) => e._type === 'audiobooksModule').length > 0) {
+        return 'Content can only contain one instance of Audiobooks'
+      }
+      return true
+    }),
   // preview: {
   // 	select: {
   // 		media: "asset",

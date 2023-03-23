@@ -50,7 +50,7 @@ export default {
       });
 
       const projectId = env.SANITY_PUBLIC_PROJECT_ID;
-      const dataset = env.SANITY_PUBLIC_DATASET;
+      const dataset = 'staging';
       const apiVersion = env.SANITY_PUBLIC_API_VERSION;
       const sanityClient = createClient({
         projectId,
@@ -60,9 +60,9 @@ export default {
       });
       const usePreview = definePreview({projectId, dataset});
       const sanityProjectDetails = {
-        projectId: env.SANITY_PUBLIC_PROJECT_ID,
-        dataset: env.SANITY_PUBLIC_DATASET,
-        apiVersion: env.SANITY_PUBLIC_API_VERSION,
+        projectId: projectId,
+        dataset: dataset,
+        apiVersion: apiVersion,
       };
       const mailerLiteApi = env.MAILERLITE_API_KEY;
       /**
