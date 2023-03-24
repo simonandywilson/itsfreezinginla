@@ -1,5 +1,9 @@
 import groq from 'groq';
-import {contentFragment, articlePreviewFragment, relatedArticlesFragment} from './fragments';
+import {
+  contentFragment,
+  articlePreviewFragment,
+  relatedArticlesFragment,
+} from './fragments';
 
 export const homepageDataQuery = groq`*[_type == "home"][0] {
     "hero": hero[] {
@@ -69,14 +73,12 @@ export const shopLinkQuery = groq`*[_type == "settings"][0] {
   shop->{slug{fullUrl}}
 }`;
 
-
 export const pageDataQuery = groq`*[_type == "page" && slug.current == $slug][0]{
         _id,
 		"seoTitle": coalesce(seoTitle, title),
 		"seoDescription": seoDescription,
         ${contentFragment}
     }`;
-
 
 export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]{
     _id,
@@ -92,3 +94,5 @@ export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]{
       hotspot
     },
 }`;
+
+export const allArticlesDataQuery = groq`*[_type == "article"]${articlePreviewFragment}`;
