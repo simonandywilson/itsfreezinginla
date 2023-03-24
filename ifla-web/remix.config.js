@@ -13,4 +13,9 @@ module.exports = {
   serverBuildPath: 'dist/worker/index.js',
   serverDependenciesToBundle: 'all',
   serverBuildTarget: 'vercel',
+  future: {
+    unstable_tailwind: true,
+    v2_routeConvention: true,
+    v2_meta: false,
+  },
 };
