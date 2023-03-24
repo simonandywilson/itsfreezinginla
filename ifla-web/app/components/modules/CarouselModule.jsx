@@ -39,14 +39,14 @@ export const CarouselModule = ({content}) => {
               <SwiperSlide key={slide._key}>
                 {slide._type === 'imageObject' && (
                   <Image
-                    asset={{
-                      _id: slide._id,
-                    }}
+                    id={slide._id}
+                    width={2000}
+                    mode="cover"
                     hotspot={slide.hotspot}
                     crop={slide.crop}
-                    alt={slide.alt}
-                    width={1000}
-                    options={{aspectRatio: true}}
+                    alt={slide.alt || ''}
+                    preview={slide.preview}
+                    sizes={'100vw'}
                     className={'h-full object-cover'}
                   />
                 )}

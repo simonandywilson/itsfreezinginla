@@ -16,7 +16,7 @@ export const TextLink = ({
   as,
   focused,
   onClick,
-  onMouseEnter,onMouseLeave
+  onMouseEnter,onMouseLeave, onFocus, onBlur
 }, props) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
@@ -37,6 +37,8 @@ export const TextLink = ({
       onClick={onClick}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
+      onFocus={onFocus}
+      onBlur={onBlur}
     >
       <Text intent={intent} as={as}>
         {children}

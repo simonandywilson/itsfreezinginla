@@ -11,14 +11,14 @@ export const ImageModule = ({content}) => {
       {image && (
         <div className={'w-full'}>
           <Image
-            asset={{
-              _id: image._id,
-            }}
+            id={image._id}
+            width={1000}
+            mode="contain"
             hotspot={image.hotspot}
             crop={image.crop}
-            alt={image.alt}
-            width={1000}
-            options={{aspectRatio: true}}
+            alt={image.alt || ''}
+            preview={image.preview}
+            // sizes={'100vw'}
           />
         </div>
       )}

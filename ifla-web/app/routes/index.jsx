@@ -1,4 +1,4 @@
-import {json} from '@shopify/remix-oxygen';
+import {defer} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
 import {useLoaderData} from 'react-router';
 import {ArticleBlock} from '../components/article/ArticleBlock';
@@ -21,7 +21,7 @@ export const meta = () => ({
 
 export async function loader({context}) {
   const [homepage] = await Promise.all([getHomepageData(context)]);
-  return json({
+  return defer({
     homepage,
   });
 }

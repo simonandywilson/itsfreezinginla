@@ -3,6 +3,7 @@ import {Image} from './Image';
 import {Text} from './Text';
 
 export const Topic = ({topic}) => {
+  const {image} = topic;
   return (
     <span
       className={
@@ -17,15 +18,11 @@ export const Topic = ({topic}) => {
         <Text intent={'text-sm'}>{topic.topic}</Text>
       </div>
       <Image
-        asset={{
-          _id: topic.image._id,
-        }}
-        hotspot={topic.image.hotspot}
-        crop={topic.image.crop}
+        id={image._id}
+        width={200}
         alt={`Topic: ${topic.topic}`}
-        width={1000}
-        options={{aspectRatio: true}}
-        className={'h-full group-hover/topic:invisible'}
+        sizes={'200px'}
+        className={'h-full w-full group-hover/topic:invisible'}
       />
     </span>
   );

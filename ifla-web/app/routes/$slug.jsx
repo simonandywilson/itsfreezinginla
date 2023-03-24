@@ -1,5 +1,5 @@
 import {useLoaderData} from '@remix-run/react';
-import {json} from '@shopify/remix-oxygen';
+import {defer} from '@shopify/remix-oxygen';
 import React from 'react';
 import swiperStyles from 'swiper/swiper.min.css';
 import {getSession} from '~/sessions';
@@ -39,7 +39,7 @@ export async function loader({context, params, request}) {
     });
   }
 
-  return json({
+  return defer({
     page,
     usePreview,
   });

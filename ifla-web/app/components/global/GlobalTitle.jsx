@@ -26,6 +26,8 @@ export const GlobalTitle = () => {
         className={'group inline-block'}
         onMouseEnter={() => setLong(true)}
         onMouseLeave={() => setLong(false)}
+        onFocus={() => setLong(true)}
+        onBlur={() => setLong(false)}
       >
         <AnimatePresence>
           {long && (

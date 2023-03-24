@@ -1,12 +1,5 @@
 {
-  "include": [
-    "./**/*.d.ts",
-    "./**/*.ts",
-    "./**/*.tsx",
-    "app/root.jsx",
-    "app/components/global/GlobalNotFound.jsx",
-    "app/hooks/useAnalytics.js"
-, "app/routes/[robots.txt].jsx", "app/routes/[sitemap.xml].jsx", "app/entry.client.jsx", "app/entry.server.jsx", "remix.env.d.ts"  ],
+  "include": ["./**/*.d.ts", "./**/*.ts", "./**/*.tsx"],
   "compilerOptions": {
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "isolatedModules": true,

@@ -1,10 +1,12 @@
-import {SanityImage, createBuilder} from 'sanity-image';
+import {SanityImage} from 'sanity-image';
 
-const builder = createBuilder({
-  dataset: !process.env.NODE_ENV || process.env.NODE_ENV === 'development' ? 'staging' : 'production',
-  projectId: 'yt08sdph',
-});
+const projectId = 'yt08sdph';
+const dataset =
+  !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+    ? 'staging'
+    : 'production';
+const baseUrl = `https://cdn.sanity.io/images/${projectId}/${dataset}/`;
 
 export const Image = (props) => {
-  return <SanityImage builder={builder} {...props} />;
+  return <SanityImage baseUrl={baseUrl} {...props} />;
 };

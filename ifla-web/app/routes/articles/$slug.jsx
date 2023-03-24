@@ -1,11 +1,11 @@
 import {useLoaderData} from '@remix-run/react';
-import {json} from '@shopify/remix-oxygen';
+import {defer} from '@shopify/remix-oxygen';
 import React from 'react';
 import swiperStyles from 'swiper/swiper.min.css';
 import {getSession} from '~/sessions';
-import {articleDataQuery} from '../lib/queries';
-import {Article} from '../components/article/Article';
-import {ArticlePreview} from '../components/preview/ArticlePreview';
+import {articleDataQuery} from '../../lib/queries';
+import {Article} from '../../components/article/Article';
+import {ArticlePreview} from '../../components/preview/ArticlePreview';
 import {PreviewSuspense} from '@sanity/preview-kit';
 
 const seo = ({data}) => ({
@@ -41,7 +41,7 @@ export async function loader({context, params, request}) {
     });
   }
   
-  return json({
+  return defer({
     article,
     usePreview,
   });

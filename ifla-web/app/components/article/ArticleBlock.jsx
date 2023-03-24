@@ -27,20 +27,20 @@ export const ArticleBlock = ({article}) => {
         {!quiltImage && (
           <div className={'h-full p-4 flex justify-between flex-col'}>
             <PortableText text={intro} intent={'preview'} />
-            <p className={"ml-auto"}>Keep reading {">"}</p>
+            <p className={'ml-auto'}>Keep reading {'>'}</p>
           </div>
         )}
         {image && quiltImage && (
           <Image
-            asset={{
-              _id: image._id,
-            }}
+            id={image._id}
+            width={500}
+            mode="cover"
             hotspot={image.hotspot}
             crop={image.crop}
-            alt={image.alt}
-            width={1000}
-            options={{aspectRatio: true}}
+            alt={image.alt || ''}
+            preview={image.preview}
             className={'h-full rendering-pixelated object-cover'}
+            sizes="33vw"
           />
         )}
       </div>

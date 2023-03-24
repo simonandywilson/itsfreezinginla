@@ -3,8 +3,9 @@ import * as remixBuild from '@remix-run/dev/server-build';
 import {createRequestHandler, getBuyerIp} from '@shopify/remix-oxygen';
 import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
-import {createClient} from '@sanity/client';
 import {definePreview} from '@sanity/preview-kit';
+import PicoSanity from 'picosanity';
+
 /**
  * Export a fetch handler in module format.
  */
@@ -48,11 +49,10 @@ export default {
         // storefrontId: env.PUBLIC_STOREFRONT_ID,
         requestGroupId: request.headers.get('request-id'),
       });
-
       const projectId = env.SANITY_PUBLIC_PROJECT_ID;
       const dataset = 'staging';
       const apiVersion = env.SANITY_PUBLIC_API_VERSION;
-      const sanityClient = createClient({
+      const sanityClient = new PicoSanity({
         projectId,
         dataset,
         apiVersion,
@@ -65,6 +65,7 @@ export default {
         apiVersion: apiVersion,
       };
       const mailerLiteApi = env.MAILERLITE_API_KEY;
+
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.

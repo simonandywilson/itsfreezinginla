@@ -3,8 +3,7 @@ import * as remixBuild from '@remix-run/dev/server-build';
 import {createRequestHandler} from '@remix-run/server-runtime';
 import {createStorefrontClient} from '@shopify/hydrogen';
 import {HydrogenSession} from '~/lib/session.server';
-import {createClient} from '@sanity/client';
-import {definePreview} from '@sanity/preview-kit';
+import {getLocaleFromRequest} from '~/lib/utils';
 
 /**
  * Export a fetch handler in module format.
@@ -16,29 +15,18 @@ export default async function (request: Request): Promise<Response> {
      * and only variables explicitly named are present inside a Vercel Edge Function.
      * See https://github.com/vercel/next.js/pull/31237/files
      */
-    const env: Env = {
+     const env: Env = {
       SESSION_SECRET: '',
       PUBLIC_STOREFRONT_API_TOKEN: '',
       PUBLIC_STOREFRONT_API_VERSION: '',
       PRIVATE_STOREFRONT_API_TOKEN: '',
       PUBLIC_STORE_DOMAIN: '',
-      SANITY_PUBLIC_PROJECT_ID: '',
-      SANITY_PUBLIC_DATASET: '',
-      SANITY_PUBLIC_API_VERSION: '',
-      SANITY_PUBLIC_API_VERSION: '',
-      MAILERLITE_API_KEY: '',
     };
     env.SESSION_SECRET = process.env.SESSION_SECRET;
     env.PUBLIC_STOREFRONT_API_TOKEN = process.env.PUBLIC_STOREFRONT_API_TOKEN;
     env.PRIVATE_STOREFRONT_API_TOKEN = process.env.PRIVATE_STOREFRONT_API_TOKEN;
-    env.PUBLIC_STOREFRONT_API_VERSION =
-      process.env.PUBLIC_STOREFRONT_API_VERSION;
+    env.PUBLIC_STOREFRONT_API_VERSION = process.env.PUBLIC_STOREFRONT_API_VERSION;
     env.PUBLIC_STORE_DOMAIN = process.env.PUBLIC_STORE_DOMAIN;
-
-    env.SANITY_PUBLIC_PROJECT_ID = process.env.SANITY_PUBLIC_PROJECT_ID;
-    env.SANITY_PUBLIC_DATASET = process.env.SANITY_PUBLIC_DATASET;
-    env.SANITY_PUBLIC_API_VERSION = process.env.SANITY_PUBLIC_API_VERSION;
-    env.MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
     /**
      * Open a cache instance in the worker and a custom session instance.
      */
@@ -55,12 +43,7 @@ export default async function (request: Request): Promise<Response> {
      */
     const {storefront} = createStorefrontClient({
       buyerIp: request.headers.get('x-forwarded-for') ?? undefined,
-      i18n: {
-        label: 'United Kingdom (GBP £)',
-        language: 'EN',
-        country: 'GB',
-        currency: 'GBP',
-      },
+      i18n: getLocaleFromRequest(request),
       publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
       privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
       storeDomain: `https://${env.PUBLIC_STORE_DOMAIN}`,
@@ -69,35 +52,12 @@ export default async function (request: Request): Promise<Response> {
       // requestGroupId: request.headers.get('request-id'),
     });
 
-    const projectId = env.SANITY_PUBLIC_PROJECT_ID;
-    const dataset = env.SANITY_PUBLIC_DATASET;
-    const apiVersion = env.SANITY_PUBLIC_API_VERSION;
-    const mailerLiteApi = env.MAILERLITE_API_KEY;
-
-    const sanityClient = createClient({
-      projectId,
-      dataset,
-      apiVersion,
-      useCdn: true,
-    });
-    const usePreview = definePreview({projectId, dataset});
-
-    const sanityProjectDetails = {
-      projectId: env.SANITY_PUBLIC_PROJECT_ID,
-      dataset: env.SANITY_PUBLIC_DATASET,
-      apiVersion: env.SANITY_PUBLIC_API_VERSION,
-    };
-
     const handleRequest = createRequestHandler(remixBuild as any, 'production');
 
     const response = await handleRequest(request, {
       session,
       storefront,
       env,
-      sanityClient,
-      usePreview,
-      sanityProjectDetails,
-      mailerLiteApi,
       waitUntil: () => Promise.resolve(),
     });
 

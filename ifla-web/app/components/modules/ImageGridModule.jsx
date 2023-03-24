@@ -14,14 +14,14 @@ export const ImageGridModule = ({content}) => {
               key={image._id || image._key}
             >
               <Image
-                asset={{
-                  _id: image._id,
-                }}
+                id={image._id}
+                width={500}
+                mode="cover"
                 hotspot={image.hotspot}
                 crop={image.crop}
-                alt={image.alt}
-                width={1000}
-                options={{aspectRatio: true}}
+                alt={image.alt || ''}
+                preview={image.preview}
+                // sizes={'100vw'}
                 className={'h-full object-cover'}
               />
             </div>

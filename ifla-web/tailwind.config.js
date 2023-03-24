@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        accent: '#db4d68',
+        audiobook: '#ded3c5',
       },
       screens: {
         '3xl': '1700px',

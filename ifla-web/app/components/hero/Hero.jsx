@@ -7,7 +7,7 @@ import {ButtonLink, ButtonLinkExternal} from '../parts/Links';
 import {Text} from '../parts/Text';
 
 export const Hero = ({hero}) => {
-  const { heading, background, image, imageFormat, links} = hero;
+  const {heading, background, image, imageFormat, links} = hero;
   return (
     <>
       <Layout
@@ -79,14 +79,14 @@ export const Hero = ({hero}) => {
             }
           >
             <Image
-              asset={{
-                _id: image._id,
-              }}
+              id={image._id}
+              width={500}
+              mode="cover"
               hotspot={image.hotspot}
               crop={image.crop}
-              alt={image.alt}
-              width={3000}
-              options={{aspectRatio: true}}
+              alt={image.alt || ''}
+              preview={image.preview}
+              sizes={'100vw'}
               className={clsx(
                 'h-full w-full',
                 {

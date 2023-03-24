@@ -76,3 +76,19 @@ export const pageDataQuery = groq`*[_type == "page" && slug.current == $slug][0]
 		"seoDescription": seoDescription,
         ${contentFragment}
     }`;
+
+
+export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]{
+    _id,
+  	headline,
+		date,
+  	"slug": slug.fullUrl,
+  	intro,
+  	media[],
+  	image {
+      "_id": asset->_id,
+      alt,
+      crop,
+      hotspot
+    },
+}`;

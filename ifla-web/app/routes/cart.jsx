@@ -1,6 +1,6 @@
 import {Await, useFetcher} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
-import {json} from '@shopify/remix-oxygen';
+import {defer} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
 import {Suspense} from 'react';
 import {useRouteData} from 'remix-utils';
@@ -161,7 +161,7 @@ export async function action({request, context}) {
   }
 
   const {cart, errors} = result;
-  return json(
+  return defer(
     {
       cart,
       errors,
