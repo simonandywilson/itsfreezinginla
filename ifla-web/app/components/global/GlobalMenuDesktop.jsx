@@ -14,7 +14,7 @@ export const GlobalMenuDesktop = ({ menu }) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
-    <div className={"min-w-0 relative w-full p-4 flex items-center justify-between bg-white gap-4"}>
+    <div className={"h-full min-w-0 relative w-full p-4 flex items-center justify-between bg-white gap-4"}>
       <GlobalTitle />
       <div className={'flex-shrink-0 flex items-center gap-16'}>
         {/* Desktop Menu Items */}

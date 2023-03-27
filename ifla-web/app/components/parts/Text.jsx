@@ -7,8 +7,10 @@ const text = cva('break-words font-sans', {
       'text-xl': ['text-xl'],
       'text-lg': ['text-lg'],
       'text-base': ['text-base'],
-      'text-base-serif': ['text-base font-serif leading-[130%]'],
+      'text-base-serif': ['text-base font-serif'],
       'text-sm': ['text-sm'],
+      'text-xs': ['text-xs'],
+      'text-2xs': ['text-2xs'],
     },
   },
   defaultVariants: {

@@ -7,6 +7,7 @@ export const articlePreviewFragment = groq`{
     _id,
     headline,
     intro,
+    date,
     "slug": slug.fullUrl,
     "colour":colour->colourLight,
     author-> {name},

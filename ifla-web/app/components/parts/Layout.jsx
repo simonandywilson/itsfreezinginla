@@ -3,8 +3,8 @@ import {cva} from 'class-variance-authority';
 const layout = cva('', {
   variants: {
     intent: {
-      home: ['pt-24'],
-      page: ['pt-28 flex flex-col flex-1'],
+      home: ['pt-header'],
+      page: ['pt-header-submenu flex flex-col flex-1'],
       footer: [
         'px-4 pt-4 pb-24 bg-black text-white flex justify-between flex-col gap-8',
         'sm:px-8 sm:pt-8',

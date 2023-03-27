@@ -95,4 +95,13 @@ export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]{
     },
 }`;
 
-export const allArticlesDataQuery = groq`*[_type == "article"]${articlePreviewFragment}`;
+export const allArticlesDataQueryFiltered = groq`*[_type == "article" && headline match $search && $topic match topic->topic]${articlePreviewFragment}`;
+export const allArticlesDataQuery = groq`*[_type == "article" && headline match $search ]${articlePreviewFragment}`;
+
+export const allTopicsDataQuery = groq`*[_type == "topic" && count( *[_type == 'article' && references(^._id)]) > 0] | order(topic asc){
+  _id,
+  topic,
+  image {
+    "_id": asset->_id,
+  },
+}`;

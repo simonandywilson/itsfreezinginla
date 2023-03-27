@@ -15,7 +15,7 @@ export const GlobalHeader = () => {
     .map((page) => page.slug);
 
   return (
-    <Popover className="fixed h-24 w-screen bg-white z-50" as={'header'}>
+    <Popover className="fixed h-header w-screen bg-white z-50" as={'header'}>
       {({close}) => (
         <>
           <GlobalMenuDesktop close={close} menu={menu} />

@@ -1,20 +1,6 @@
-import React from 'react';
-import {ArticleBlock} from '~/components/article/ArticleBlock';
-import {Layout} from '../parts/Layout';
-import {BlockLink} from '../parts/Links';
+import {redirect} from '@remix-run/server-runtime';
+
 
 export const ArticlesModule = ({content}) => {
-  return (
-    <Layout as={'ul'} intent={'grid'}>
-      {content.articles.map((article) => {
-        return (
-          <li key={article._id} className={'w-full'}>
-            <BlockLink to={article.slug}>
-              <ArticleBlock article={article} />
-            </BlockLink>
-          </li>
-        );
-      })}
-    </Layout>
-  );
+  return null;  
 };
