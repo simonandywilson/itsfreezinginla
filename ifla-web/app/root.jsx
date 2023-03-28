@@ -192,7 +192,7 @@ export default function App() {
         <Links />
       </head>
       <body className={'selection:bg-yellow-200/50'}>
-        {!process.env.NODE_ENV === 'development' || !gaTrackingId ? null : (
+        {process.env.NODE_ENV === 'development' || !gaTrackingId ? null : (
           <>
             <script
               async
@@ -206,10 +206,7 @@ export default function App() {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-                gtag('consent', 'default', {
-                  'ad_storage': 'denied',
-                  'analytics_storage': 'denied'
-                });
+               
                 gtag('config', '${gaTrackingId}', {
                   page_path: window.location.pathname,
                 });

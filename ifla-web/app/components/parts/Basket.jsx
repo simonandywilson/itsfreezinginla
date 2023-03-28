@@ -3,7 +3,6 @@ import {useRouteData} from 'remix-utils';
 import { IconLink} from './Links';
 import {Badge} from './Badge';
 import {BasketIcon} from '../icons/Icons';
-import { Suspense } from 'react';
 
 export const Basket = () => {
   const {cart} = useRouteData(`root`);
