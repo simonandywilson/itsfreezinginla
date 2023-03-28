@@ -6,18 +6,21 @@ import {
   ScrollRestoration,
   useCatch,
   useLoaderData,
+  useLocation,
 } from '@remix-run/react';
 import {Seo, ShopifySalesChannel} from '@shopify/hydrogen';
 import {defer, json} from '@shopify/remix-oxygen';
 import groq from 'groq';
 import invariant from 'tiny-invariant';
+import { GlobalCookie } from './components/global/GlobalCookie';
 import {GlobalFooter} from './components/global/GlobalFooter';
 import {GlobalHeader} from './components/global/GlobalHeader';
-import {GlobalNewsletter} from './components/global/GlobalNewsletter';
 import {GlobalNotFound} from './components/global/GlobalNotFound';
 import {useAnalytics} from './hooks/useAnalytics';
 import {shopLinkQuery} from './lib/queries';
 import styles from './styles/app.css';
+import * as gtag from '~/utils/gtags.client';
+import { useEffect } from 'react';
 
 const seo = ({data: {settings}, pathname}) => ({
   title: settings.seoTitle,
@@ -114,6 +117,7 @@ export async function loader({ context }) {
     },
     sanityProjectDetails: context.sanityProjectDetails,
     shop: shopLink,
+    gaTrackingId: context.analyticsTrackingId,
   });
 }
 
@@ -162,6 +166,8 @@ export async function action({request, context}) {
 }
 
 export default function App() {
+  const location = useLocation();
+  const { gaTrackingId } = useLoaderData();
   const locale = {
     label: 'United Kingdom (GBP £)',
     language: 'EN',
@@ -172,8 +178,11 @@ export default function App() {
 
   useAnalytics(hasUserConsent, locale);
 
-  const test = useLoaderData()
-  console.log(test);
+   useEffect(() => {
+     if (gaTrackingId?.length) {
+       gtag.pageview(location.pathname, gaTrackingId);
+     }
+   }, [location, gaTrackingId]);
 
   return (
     <html lang="en">
@@ -183,11 +192,39 @@ export default function App() {
         <Links />
       </head>
       <body className={'selection:bg-yellow-200/50'}>
+        {!process.env.NODE_ENV === 'development' || !gaTrackingId ? null : (
+          <>
+            <script
+              async
+              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
+            />
+            <script
+              async
+              id="gtag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+          
+                gtag('js', new Date());
+                gtag('consent', 'default', {
+                  'ad_storage': 'denied',
+                  'analytics_storage': 'denied'
+                });
+                gtag('config', '${gaTrackingId}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+              }}
+            />
+          </>
+        )}
         <GlobalHeader />
         <main className={'min-h-screen flex flex-col'}>
           <Outlet />
         </main>
-        <GlobalNewsletter />
+        <GlobalCookie />
+
         <GlobalFooter />
         <ScrollRestoration />
         <Scripts />
@@ -260,7 +297,7 @@ async function getShopData({storefront}) {
 }
 
 async function getSettingsData({sanityClient}) {
-  const query = groq`*[_type == "settings"][0]`;
+  const query = groq`*[_type == "settings"][0]{...}`;
   const settings = await sanityClient.fetch(query);
 
   return settings;

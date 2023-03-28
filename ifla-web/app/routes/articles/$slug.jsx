@@ -26,9 +26,9 @@ export const links = () => {
 export async function loader({context, params, request}) {
   const {sanityClient, usePreview} = context;
 
-  if (preview) {
-    return {preview: true, query: articleDataQuery, params};
-  }
+  // if (preview) {
+  //   return {preview: true, query: articleDataQuery, params};
+  // }
 
   const article = await sanityClient.fetch(articleDataQuery, params);
 

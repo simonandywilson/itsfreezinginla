@@ -2,9 +2,9 @@
 import * as remixBuild from '@remix-run/dev/server-build';
 import {createRequestHandler, getBuyerIp} from '@shopify/remix-oxygen';
 import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
-import {HydrogenSession} from '~/lib/session.server';
 import PicoSanity from 'picosanity';
 import {definePreview} from '@sanity/preview-kit';
+import {HydrogenSession} from './app/lib/session.server';
 /**
  * Export a fetch handler in module format.
  */
@@ -50,7 +50,10 @@ export default {
       });
 
       const projectId = env.SANITY_PUBLIC_PROJECT_ID;
-      const dataset = env.SANITY_PUBLIC_DATASET;
+      const dataset =
+        !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
+          ? 'staging'
+          : env.SANITY_PUBLIC_DATASET;
       const apiVersion = env.SANITY_PUBLIC_API_VERSION;
       const sanityClient = new PicoSanity({
         projectId,
@@ -60,11 +63,10 @@ export default {
       });
       const usePreview = definePreview({projectId, dataset});
       const sanityProjectDetails = {
-        projectId: env.SANITY_PUBLIC_PROJECT_ID,
-        dataset: env.SANITY_PUBLIC_DATASET,
-        apiVersion: env.SANITY_PUBLIC_API_VERSION,
+        projectId,
+        dataset,
+        apiVersion,
       };
-      const mailerLiteApi = env.MAILERLITE_API_KEY;
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.
@@ -81,7 +83,8 @@ export default {
           sanityClient,
           usePreview,
           sanityProjectDetails,
-          mailerLiteApi,
+          mailerLiteApi: env.MAILERLITE_API_KEY,
+          analyticsTrackingId: env.GA_TRACKING_ID,
         }),
       });
 

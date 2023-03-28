@@ -23,7 +23,7 @@ export const GlobalNewsletter = () => {
       {visible && (
         <motion.div
           className={cx(
-            'max-w-[calc(100vw-2)] fixed bottom-0 right-0 m-4 z-50 bg-white p-4 shadow-lg',
+            'max-w-[calc(100vw-2)] fixed bottom-0 right-0 m-4 z-50 bg-white p-4 border-black border-1',
             'md:m-8',
           )}
           initial={{x: '120%'}}

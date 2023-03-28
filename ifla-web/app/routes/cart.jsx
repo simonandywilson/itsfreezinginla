@@ -160,7 +160,7 @@ export async function action({request, context}) {
     headers.set('Location', redirectTo);
   }
 
-  const { cart, errors } = result;
+  const {cart, errors} = result;
 
   return defer(
     {
@@ -191,20 +191,9 @@ export default function CartPage() {
 }
 
 const Cart = ({cart, shop}) => {
-  const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
-  return (
-    <>
-      {cartHasItems ? (
-        <CartDetails cart={cart} shop={shop} />
-      ) : (
-        <EmptyCart shop={shop} />
-      )}
-    </>
-  );
-};
-
-const CartDetails = ({cart, shop}) => {
   const {lines, cost, checkoutUrl} = cart;
+  const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
+
   return (
     <Layout intent={'cart'}>
       <div className={cx('grid grid-cols-1', 'md:grid-cols-3 md:gap-16')}>
@@ -235,21 +224,6 @@ const CartDetails = ({cart, shop}) => {
           link={shop.shop.slug.fullUrl}
           className={'mt-4'}
         />
-      </div>
-    </Layout>
-  );
-};
-
-const EmptyCart = ({shop}) => {
-  return (
-    <Layout intent={'centre'}>
-      <div className={'flex flex-col gap-4 justify-center items-center'}>
-        <Text as={'h2'} intent={'text-lg'}>
-          Basket is empty
-        </Text>
-        <ButtonLink to={shop.shop.slug.fullUrl} intent={'text-lg'}>
-          Go to shop
-        </ButtonLink>
       </div>
     </Layout>
   );
@@ -336,7 +310,7 @@ const CartUpdateQuantity = ({lines, children}) => {
 //   );
 // };
 
-const CartTotal = ({cost}) => {
+const CartTotal = ({ cost }) => {
   return (
     <CartLineWrapper>
       <div className={'flex gap-2 items-baseline justify-self-stretch mt-8'}>
@@ -344,11 +318,15 @@ const CartTotal = ({cost}) => {
           Total
         </Text>
         <Dash className={'flex-1'} />
-        <Money
-          withoutTrailingZeros
-          data={cost.totalAmount}
-          className={'text-right text-sm'}
-        />
+        {cost.totalAmount.amount > 0 ? (
+          <Money
+            withoutTrailingZeros
+            data={cost.totalAmount}
+            className={'text-right text-sm'}
+          />
+        ) : (
+          <span className={'text-sm text-right'}>{':('}</span>
+        )}
       </div>
     </CartLineWrapper>
   );
