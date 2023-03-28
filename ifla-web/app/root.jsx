@@ -206,7 +206,7 @@ export default function App() {
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());
-               gtag('consent', 'default', {
+                gtag('consent', 'default', {
                   'ad_storage': 'denied',
                   'analytics_storage': 'denied'
                 });
