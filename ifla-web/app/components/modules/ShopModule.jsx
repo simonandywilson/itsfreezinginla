@@ -1,3 +1,4 @@
+import { Await } from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
 import {cx} from 'class-variance-authority';
 import React from 'react';
@@ -72,24 +73,17 @@ const Product = ({product, cart}) => {
 };
 
 const ProductVariant = ({variant, product, cart}) => {
-  const {
-    id,
-    selectedOptions,
-    title,
-    price,
-    availableForSale,
-    currentlyNotInStock,
-  } = variant;
+  const { id, title, price, availableForSale, currentlyNotInStock, selectedOptions } = variant;
 
-  const productAnalytics = {
-    productGid: product.id,
-    variantGid: id,
-    name: product.title,
-    variantName: title,
-    brand: product.vendor,
-    price: price.amount,
-    quantity: 1,
-  };
+ const productAnalytics = {
+   productGid: product.id,
+   variantGid: id,
+   name: product.title,
+   variantName: title,
+   brand: product.vendor,
+   price: price.amount,
+   quantity: 1,
+ };
 
   return (
     <div className={cx('flex justify-between gap-2 flex-row')}>
@@ -99,6 +93,11 @@ const ProductVariant = ({variant, product, cart}) => {
         </Text>
         <Money withoutTrailingZeros data={price} className={'text-sm'} />
       </div>
+      {/* <Await resolve={cart}>
+        {(cart) => (
+          
+        )}
+      </Await> */}
       <AddToCart
         lines={[
           {
@@ -112,6 +111,43 @@ const ProductVariant = ({variant, product, cart}) => {
         }}
         soldOut={!availableForSale || currentlyNotInStock}
       />
+      {/* <AddEditRemove variant={variant} product={product} cart={cart} /> */}
     </div>
   );
 };
+
+// const AddEditRemove = ({variant, product, cart}) => {
+//   const {
+//     id,
+//     title,
+//     price,
+//     availableForSale,
+//     currentlyNotInStock,
+//   } = variant;
+
+//   const productAnalytics = {
+//     productGid: product.id,
+//     variantGid: id,
+//     name: product.title,
+//     variantName: title,
+//     brand: product.vendor,
+//     price: price.amount,
+//     quantity: 1,
+//   };
+
+//   return (
+//     <AddToCart
+//       lines={[
+//         {
+//           quantity: 1,
+//           merchandiseId: id,
+//         },
+//       ]}
+//       analytics={{
+//         products: [productAnalytics],
+//         totalValue: parseFloat(productAnalytics.price),
+//       }}
+//       soldOut={!availableForSale || currentlyNotInStock}
+//     />
+//   );
+// };

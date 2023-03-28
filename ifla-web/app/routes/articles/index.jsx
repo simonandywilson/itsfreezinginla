@@ -3,7 +3,7 @@ import {useLoaderData} from 'react-router';
 import {ArticleBlock} from '../../components/article/ArticleBlock';
 import {Image} from '../../components/parts/Image';
 import {Layout} from '../../components/parts/Layout';
-import {BlockLink} from '../../components/parts/Links';
+import {BlockLink, TextLink} from '../../components/parts/Links';
 import {Submenu} from '../../components/parts/Submenu';
 import {
   allArticlesDataQuery,
@@ -47,46 +47,61 @@ export default function Articles() {
     <Layout intent={'home'}>
       <Submenu>
         <FilterDialog topics={topics} />
+        <Button
+          colour={'transparent'}
+          intent={'text-sm'}
+          onClick={() => setText((prevState) => !prevState)}
+        >
+          {text ? 'Block' : 'Text'} View
+        </Button>
         <Search />
       </Submenu>
       <Layout intent={'grid'} as={'ul'}>
-        {/* {!text && articles.map((article) => {
-          return (
-            <li key={article._id} className={'w-full'}>
-              <BlockLink to={article.slug}>
-                <ArticleBlock article={article} />
-              </BlockLink>
-            </li>
-          );
-        })} */}
+        {!text &&
+          Object.keys(articles).map((keyName, i) =>
+            articles[keyName].map((article) => {
+              return (
+                <li key={article._id} className={'w-full'}>
+                  <BlockLink to={article.slug}>
+                    <ArticleBlock article={article} />
+                  </BlockLink>
+                </li>
+              );
+            }),
+          )}
       </Layout>
-      <Layout intent={'columns'}>
-        <div className={'grid grid-cols-2'}>
-          {Object.keys(articles).map((keyName, i) => (
-            <Fragment key={keyName + i}>
-              <Text
-                as={'h3'}
-                className={'col-start-2 mb-[1em]'}
-                intent={'text-2xl'}
-              >
-                {keyName}
-              </Text>
-              {articles[keyName].map((article) => {
-                return (
-                  <Link
-                    to={article.slug}
-                    key={article._id}
-                    className={'col-span-2 grid grid-cols-2'}
-                  >
-                    <Text intent={'text-sm'}>{`[${article.topic.topic}]`}</Text>
-                    <Text>{article.headline}</Text>
-                  </Link>
-                );
-              })}
-            </Fragment>
-          ))}
-        </div>
-      </Layout>
+      {text && (
+        <Layout intent={'columns'}>
+          <div className={'grid grid-cols-2'}>
+            {Object.keys(articles).map((keyName, i) => (
+              <Fragment key={keyName + i}>
+                <Text
+                  as={'h3'}
+                  className={'col-start-2 mb-[1em]'}
+                  intent={'text-2xl'}
+                >
+                  {keyName}
+                </Text>
+                {articles[keyName].map((article) => {
+                  return (
+                    <div
+                      key={article._id}
+                      className={'col-span-2 grid grid-cols-2 '}
+                    >
+                      <Text
+                        intent={'text-sm'}
+                      >{`[${article.topic.topic}]`}</Text>
+                      <TextLink to={article.slug} className={'w-auto'}>
+                        {article.headline}
+                      </TextLink>
+                    </div>
+                  );
+                })}
+              </Fragment>
+            ))}
+          </div>
+        </Layout>
+      )}
     </Layout>
   );
 }

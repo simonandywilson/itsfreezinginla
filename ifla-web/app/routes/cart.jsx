@@ -160,7 +160,8 @@ export async function action({request, context}) {
     headers.set('Location', redirectTo);
   }
 
-  const {cart, errors} = result;
+  const { cart, errors } = result;
+
   return defer(
     {
       cart,

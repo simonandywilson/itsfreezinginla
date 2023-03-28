@@ -2,7 +2,6 @@ import {useLoaderData} from '@remix-run/react';
 import {defer} from '@shopify/remix-oxygen';
 import React from 'react';
 import swiperStyles from 'swiper/swiper.min.css';
-import {getSession} from '~/sessions';
 import {articleDataQuery} from '../../lib/queries';
 import {Article} from '../../components/article/Article';
 import {ArticlePreview} from '../../components/preview/ArticlePreview';
@@ -26,8 +25,6 @@ export const links = () => {
 
 export async function loader({context, params, request}) {
   const {sanityClient, usePreview} = context;
-  const session = await getSession(request.headers.get('Cookie'));
-  const preview = session.get('preview');
 
   if (preview) {
     return {preview: true, query: articleDataQuery, params};

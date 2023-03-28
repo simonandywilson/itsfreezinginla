@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useLoaderData,
 } from '@remix-run/react';
 import {Seo, ShopifySalesChannel} from '@shopify/hydrogen';
 import {defer, json} from '@shopify/remix-oxygen';
@@ -85,7 +86,7 @@ export const meta = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-export async function loader({context}) {
+export async function loader({ context }) {
   const [cartId, shop, allCollections, allProducts, settings, menu, footer, shopLink, colours] =
     await Promise.all([
       context.session.get('cartId'),
@@ -170,6 +171,9 @@ export default function App() {
   const hasUserConsent = false;
 
   useAnalytics(hasUserConsent, locale);
+
+  const test = useLoaderData()
+  console.log(test);
 
   return (
     <html lang="en">

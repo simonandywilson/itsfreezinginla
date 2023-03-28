@@ -37,7 +37,7 @@ export const GlobalTitle = () => {
               animate={'visible'}
               className={'whitespace-nowrap  hidden xl:inline-block'}
             >
-              {settings.longTitle.split('').map((char, index) => {
+              {settings?.longTitle && settings.longTitle.split('').map((char, index) => {
                 return (
                   <motion.span variants={letter} key={`${char}+${index}`}>
                     {char}
