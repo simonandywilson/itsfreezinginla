@@ -45,6 +45,7 @@ export const articleDataQuery = groq`*[_type == "article" && slug.current == $sl
   	"slug": slug.fullUrl,
   	intro,
   	"colour":colour->colourLight,
+    "colourDark":colour->colourDark,
   	author-> {name},
   	media[],
   	image {

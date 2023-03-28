@@ -4,6 +4,7 @@ import {CarouselModule} from '../modules/CarouselModule';
 import {CollapsibleModule} from '../modules/CollapsibleModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
 import {ImageModule} from '../modules/ImageModule';
+import {Footnote} from './Footnote';
 import {LinkExternal} from './Links';
 import {Text} from './Text';
 
@@ -25,7 +26,7 @@ const portableText = cva(
   },
 );
 
-const components = (intent) => {
+const components = (intent, colour) => {
   return {
     block: {
       normal: ({children}) => {
@@ -54,6 +55,12 @@ const components = (intent) => {
                 {children}
               </Text>
             );
+          case 'footnote':
+            return (
+              <Text as={'p'} intent={'text-sm'}>
+                {children}
+              </Text>
+            );
           default:
             return (
               <Text as={'p'} intent={'text-base-serif'}>
@@ -78,7 +85,11 @@ const components = (intent) => {
         </Text>
       ),
       h6: ({children}) => (
-        <Text as={'h5'} intent={'text-sm'} className={'!mb-0 break-after-avoid'}>
+        <Text
+          as={'h5'}
+          intent={'text-sm'}
+          className={'!mb-0 break-after-avoid'}
+        >
           {children}
         </Text>
       ),
@@ -100,9 +111,10 @@ const components = (intent) => {
       imageModule: ({value}) => <ImageModule content={value} inline />,
       carouselModule: ({value}) => <CarouselModule content={value} />,
       imageGridModule: ({value}) => <ImageGridModule content={value} inline />,
+      footnote: ({value}) => <Footnote content={value} colour={colour} />,
     },
     marks: {
-      externalLinkObject: ({ value, children }) => {
+      externalLinkObject: ({value, children}) => {
         switch (value.type) {
           case 'website':
             return (
@@ -144,10 +156,13 @@ const components = (intent) => {
   };
 };
 
-export const PortableText = ({text, intent, className}) => {
+export const PortableText = ({text, intent, className, colour}) => {
   return (
     <div className={portableText({intent, className})}>
-      <SanityPortableText value={text} components={components(intent)} />
+      <SanityPortableText
+        value={text}
+        components={components(intent, colour)}
+      />
     </div>
   );
 };

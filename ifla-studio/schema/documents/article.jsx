@@ -84,7 +84,6 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'category'}], title: 'Reference to Category'}],
       group: 'info',
     }),
-
     defineField({
       name: 'intro',
       type: 'basicBlock',

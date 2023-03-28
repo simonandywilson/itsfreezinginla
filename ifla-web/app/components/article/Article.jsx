@@ -8,7 +8,7 @@ import {ArticleBlock} from './ArticleBlock';
 import { cx } from 'class-variance-authority';
 
 export const Article = ({article}) => {
-  const {date, content, related} = article;
+  const {date, content, related, colourDark} = article;
   return (
     <>
       <Layout intent={'article'}>
@@ -26,7 +26,11 @@ export const Article = ({article}) => {
         )}
         {content.map((content) => {
           return (
-            <Content key={content._id || content._key} content={content} />
+            <Content
+              key={content._id || content._key}
+              content={content}
+              colour={colourDark}
+            />
           );
         })}
       </Layout>

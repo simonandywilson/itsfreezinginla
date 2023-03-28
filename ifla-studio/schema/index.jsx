@@ -49,6 +49,7 @@ import heroObject from './objects/heroObject'
 import checkoutObject from './objects/checkoutObject'
 import audiobook from './documents/audiobook'
 import illustrator from './documents/illustrator'
+import footnoteObject from './objects/footnoteObject'
 
 const singletons = new Set([settings])
 const documents = new Set([
@@ -82,6 +83,7 @@ const objects = new Set([
   bitmapImageObject,
   heroObject,
   checkoutObject,
+  footnoteObject
 ])
 
 const arrays = new Set([contentArray])

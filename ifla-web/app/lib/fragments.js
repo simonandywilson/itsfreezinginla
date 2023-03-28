@@ -77,6 +77,12 @@ const imageGridModuleFragment = groq`
         },
     }`;
 
+const footnoteFragment = groq`
+    _type == 'footnote' => {
+        ...,
+        "colour": coalesce(*[_id == ^.^._id][0].colour->colourDark, *[_id == ^.^.^.^._id][0].colour->colourDark, "#000000")
+    }`;
+
 const textColumnsModuleFragment = groq`_type == 'textColumnsModule' => {
     ...,
     text[] {
@@ -94,7 +100,8 @@ const textBlockModuleFragment = groq`_type == 'textBlockModule' => {
         ${collapsibleModuleFragment},
         ${carouselModuleFragment},
         ${imageModuleFragment},
-        ${imageGridModuleFragment}
+        ${imageGridModuleFragment},
+        ${footnoteFragment}
     }
 }`;
 
@@ -110,8 +117,6 @@ export const contentFragment = groq`
         ${articlesModuleFragment},
         ${shopModuleFragment},
     }`;
-
-
 
 export const relatedArticlesFragment = groq`"related": select(autoRecommend => *[_type == "article" && _id != ^._id] {
       "matchingTopic": topic -> topic == ^.topic -> topic,

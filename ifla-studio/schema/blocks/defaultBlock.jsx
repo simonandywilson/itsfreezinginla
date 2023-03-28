@@ -24,6 +24,12 @@ export default defineField({
         decorators: [],
         annotations: [{type: 'internalLinkObject'}, {type: 'externalLinkObject'}],
       },
+      of: [
+        {
+          name: 'footnote',
+          type: 'footnoteObject',
+        },
+      ],
     },
     {type: 'imageModule'},
     {type: 'carouselModule'},
