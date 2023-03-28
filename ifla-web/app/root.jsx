@@ -183,6 +183,8 @@ export default function App() {
        gtag.pageview(location.pathname, gaTrackingId);
      }
    }, [location, gaTrackingId]);
+  
+  console.log(gaTrackingId);
 
   return (
     <html lang="en">
