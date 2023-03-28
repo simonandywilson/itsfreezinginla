@@ -3,62 +3,87 @@ import {Text} from '../parts/Text';
 import {Button} from '../parts/Button';
 import {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
-import { cx } from 'class-variance-authority';
+import {cx} from 'class-variance-authority';
 import CookieConsent, {getCookieConsentValue} from 'react-cookie-consent';
+import {TextLink} from '../parts/Links';
 
 export const GlobalCookie = () => {
   const [visible, setVisible] = useState(false);
-
-  const [cookie, setCookie] = useState(false);
+  const [consentValue, setConsentValue] = useState(
+    getCookieConsentValue() || false,
+  );
 
   useEffect(() => {
-    const value = getCookieConsentValue();
-    let timer = setTimeout(() => {
-      if (value === undefined) {
-        setCookie(true);
-      }
-    }, 2000);
+    const consent = getCookieConsentValue();
+    if (consent === 'true') {
+      return;
+    }
+    const timer = setTimeout(() => {
+      setVisible(true);
+    }, 3000);
     return () => clearTimeout(timer);
-  }, [setCookie]);
+  }, []);
 
-    const optOut = () => {
-      document.cookie = `ga-disable-${process.env.GATSBY_GOOGLE_TRACKING_ID}=true; expires=Thu, 31 Dec 2099 23:59:59 UTC;path=/`;
-      window[`ga-disable-${process.env.GATSBY_GOOGLE_TRACKING_ID}`] = true;
-      window.disableStr = 1;
-    };
+  // Enable GA on consent
+  useEffect(() => {
+    if (consentValue) {
+      if (!window.gtag) {
+        console.warn(
+          'window.gtag is not defined. This could mean your google analytics script has not loaded on the page yet.',
+        );
+        return;
+      }
+      console.log("User consent granted for analytics.")
+      window.gtag('consent', 'update', {
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+      });
+    }
+  }, [consentValue]);
 
   return (
-    // <AnimatePresence>
-    //   {visible && (
-    <motion.div
-      className={cx(
-        'max-w-[calc(100vw-2)] fixed bottom-0 right-0 m-4 z-50 bg-white p-4 border-black border-1',
-        'md:m-8',
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          className={cx(
+            'max-w-[calc(100vw-2)] fixed bottom-0 right-0 m-4 z-50 bg-white p-4 border-black border-1 flex flex-col gap-4',
+            'md:m-8',
+          )}
+          initial={{x: '120%'}}
+          animate={{x: 0}}
+          exit={{x: '120%'}}
+          transition={{duration: 1, type: 'tween'}}
+        >
+          <Text intent={'text-xl'}>Accept cookies?</Text>
+          <CookieConsent
+            disableStyles={true}
+            visible={'show'}
+            containerClasses={'flex gap-2'}
+            buttonWrapperClasses={'flex gap-2'}
+            contentClasses={'flex items-center mr-2'}
+            ButtonComponent={({children, ...props}) => (
+              <Button colour={''} intent={'text-base'} {...props}>
+                {children}
+              </Button>
+            )}
+            buttonText={'Alright'}
+            declineButtonText={'No'}
+            enableDeclineButton
+            hideOnAccept={false}
+            onAccept={() => {
+              setConsentValue(true);
+              setVisible(false);
+            }}
+            onDecline={() => {
+              setConsentValue(false);
+              setVisible(false);
+            }}
+            flipButtons={true}
+          >
+            <TextLink to={''}>Read our cookie policy</TextLink>
+          </CookieConsent>
+        </motion.div>
       )}
-      // initial={{x: '120%'}}
-      // animate={{x: 0}}
-      // exit={{x: '120%'}}
-      // transition={{duration: 1, type: 'tween'}}
-    >
-      <CookieConsent
-        disableStyles={true}
-        // containerClasses={style.consent}
-        // buttonClasses={style.accept}
-        buttonText={<Button colour={''}>Alright</Button>}
-        // declineButtonClasses={style.decline}
-        declineButtonText={<Button colour={''}>No</Button>}
-        enableDeclineButton
-        hideOnAccept={false}
-        onAccept={() => setCookie(false)}
-        onDecline={() => {
-          setCookie(false);
-          optOut();
-        }}
-        flipButtons={true}
-        debug={false}
-      ></CookieConsent>
-    </motion.div>
-    //   )}
-    // </AnimatePresence>
+    </AnimatePresence>
   );
 };

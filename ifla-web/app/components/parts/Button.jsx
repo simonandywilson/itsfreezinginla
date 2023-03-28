@@ -58,10 +58,10 @@ export const Button = ({
   value,
   aria,
   onClick
-}) => {
+}, props) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
-  return (colour === 'mono' || disabled) ? (
+  return colour === 'mono' || disabled ? (
     <button
       type={type || 'button'}
       className={buttonStyle({intent, colour, status, className})}
@@ -69,6 +69,7 @@ export const Button = ({
       value={value}
       aria-label={aria}
       onClick={onClick}
+      {...props}
     >
       <Text intent={intent} className={'inline-block leading-none'}>
         {children}
@@ -110,6 +111,7 @@ export const Button = ({
               background: randomColour.current,
             }
       }
+      {...props}
     >
       <Text intent={intent} className={'inline-block leading-none'}>
         {children}
