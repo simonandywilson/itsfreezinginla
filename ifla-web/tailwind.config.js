@@ -15,8 +15,8 @@ module.exports = {
       },
       spacing: {
         header: '4.5rem',
-        submenu: '1.5rem',
-        'header-submenu': '6rem',
+        submenu: '1.8rem',
+        'header-submenu': '6.3rem',
       },
     },
     fontFamily: {

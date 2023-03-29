@@ -1,8 +1,7 @@
 import {useTransition} from '@remix-run/react';
-import { useEffect, useState, useRef } from 'react';
+import {useEffect, useState, useRef} from 'react';
 import {useLocation} from '@remix-run/react';
-import {TextLink} from '../parts/Links';
-import {Text} from '../parts/Text';
+import {TextLink} from '../parts/LinksNew';
 
 export const GlobalMenuMobile = ({menu, close}) => {
   const transition = useTransition();
@@ -41,24 +40,31 @@ function usePrevious(value) {
   return ref.current;
 }
 
-const MenuItem = ({title, children}) => {
+const MenuItem = ({ children}) => {
   const {pathname} = useLocation();
   return (
     <ul>
       <li>
-        <Text intent={'text-lg'}>{title}</Text>
+        <TextLink
+          to={children[0].slug}
+          className={'text-40'}
+          focused={pathname.slice(1) === children[0].slug ? true : false}
+        >
+          {children[0].title}
+        </TextLink>
         <ul className={'ml-4'}>
-          {children.map((page) => (
-            <li key={page._id}>
-              <TextLink
-                to={page.slug}
-                intent={'text-lg'}
-                focused={pathname.slice(1) === page.slug ? true : false}
-              >
-                {page.title}
-              </TextLink>
-            </li>
-          ))}
+          {children.length > 1 &&
+            children.map((page) => (
+              <li key={page._id}>
+                <TextLink
+                  to={page.slug}
+                  className={'text-40'}
+                  focused={pathname.slice(1) === page.slug ? true : false}
+                >
+                  {page.title}
+                </TextLink>
+              </li>
+            ))}
         </ul>
       </li>
     </ul>

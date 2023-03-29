@@ -1,60 +1,22 @@
-import {cx, cva} from 'class-variance-authority';
 import {Link} from '@remix-run/react';
-import {Text} from './Text';
 import {useRandomColour} from '../../hooks/useRandomColour';
 import {useRouteData} from 'remix-utils';
 import {motion} from 'framer-motion';
 import {useRef} from 'react';
+import clsx from 'clsx';
 
 const MotionLink = motion(Link);
 
-const linkStyle = cva(
-  'w-max leading-none focus:outline-none focus:border-none focus-visible:underline',
-  {
-    variants: {
-      intent: {
-        'text-sm': ['button-sm'],
-        'text-base': ['button-base'],
-        'text-lg': ['button-lg'],
-        'text-xl': ['button-xl'],
-        'text-2xl': ['button-2xl'],
-      },
-      colour: {
-        default: ['bg-black', 'text-white'],
-        mono: [
-          'bg-black',
-          'text-white',
-          'hover:bg-white',
-          'hover:text-black',
-          'focus-visible:bg-white',
-          'focus-visible:text-black',
-        ],
-      },
-    },
-    defaultVariants: {
-      intent: 'text-base',
-      colour: 'default',
-    },
-  },
-);
-
-export const TextLink = ({
-  intent,
-  children,
-  to,
-  className,
-  classNameChild,
-  as,
-  focused,
-  ...props
-}) => {
+export const TextLink = ({children, to, className, focused, ...props}) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
-  const ElementTag = `${as || 'span'}`;
   return (
     <MotionLink
       to={to}
-      className={linkStyle(className)}
+      className={clsx(
+        'w-max leading-none focus:outline-none focus:underline-none focus:border-none ',
+        className,
+      )}
       initial={{color: 'inherit'}}
       animate={{
         color: focused ? randomColour.current : 'inherit',
@@ -67,12 +29,10 @@ export const TextLink = ({
       }}
       {...props}
     >
-      <ElementTag className={classNameChild}>{children}</ElementTag>
+      {children}
     </MotionLink>
   );
 };
-
-
 
 export const IconLink = ({children, to}) => {
   const {colours} = useRouteData(`root`);
@@ -94,7 +54,6 @@ export const IconLink = ({children, to}) => {
     </MotionLink>
   );
 };
-
 
 export const LinkExternal = ({
   href,

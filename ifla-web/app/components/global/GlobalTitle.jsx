@@ -1,7 +1,8 @@
+import clsx from 'clsx';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useState} from 'react';
 import {useRouteData} from 'remix-utils';
-import {TextLink} from '../parts/Links';
+import {TextLink} from '../parts/LinksNew';
 
 export const GlobalTitle = () => {
   const {settings} = useRouteData(`root`);
@@ -18,7 +19,7 @@ export const GlobalTitle = () => {
   };
 
   return (
-    <div className={'flex-1 overflow-x-hidden'}>
+    <div className={'relative flex-1 overflow-x-hidden'}>
       <TextLink
         as={'h1'}
         to={'/'}
@@ -35,22 +36,27 @@ export const GlobalTitle = () => {
               variants={sentence}
               initial={'hidden'}
               animate={'visible'}
-              className={'whitespace-nowrap  hidden xl:inline-block'}
+              aria-hidden="true"
+              className={
+                'absolute text-32 font-sans-alt whitespace-nowrap  hidden xl:inline-block'
+              }
             >
-              {settings?.longTitle && settings.longTitle.split('').map((char, index) => {
-                return (
-                  <motion.span variants={letter} key={`${char}+${index}`}>
-                    {char}
-                  </motion.span>
-                );
-              })}
+              {settings?.longTitle &&
+                settings.longTitle.split('').map((char, index) => {
+                  return (
+                    <motion.span variants={letter} key={`${char}+${index}`}>
+                      {char}
+                    </motion.span>
+                  );
+                })}
             </motion.div>
           )}
         </AnimatePresence>
+
         <div
-          className={
-            'inline-block xl:group-hover:hidden xl:group-focus-visible:hidden'
-          }
+          className={clsx(
+            'text-32 font-sans-alt inline-block xl:group-hover:hidden xl:group-focus-visible:hidden', {"xl:invisible": long}
+          )}
         >
           <span className={'sr-only md:not-sr-only'}>{settings.title}</span>
           <span aria-hidden className={'md:hidden'}>

@@ -1,7 +1,7 @@
 import {Form, useSearchParams} from '@remix-run/react';
-import {cx} from 'class-variance-authority';
+import clsx from 'clsx';
 import React, { useRef } from 'react';
-import {Button} from './Button';
+import {Button} from './ButtonNew';
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -9,24 +9,26 @@ export const Search = () => {
   const formRef = useRef(null);
   return (
     <div>
-      <Form className={'w-full flex gap-2 '} ref={formRef}>
-        <label htmlFor={'search-query'}>Search</label>
+      <Form className={'w-full h-full flex items-center'} ref={formRef}>
+        <label htmlFor={'search-query'} className={'leading-none mr-4'}>
+          Search
+        </label>
         <input
           type={'search-query'}
           name={'search-query'}
           id={'search-query'}
-          className={cx(
-            'w-full appearance-none bg-transparent text-inherit placeholder-inherit border-b-1 border-black -translate-y-[2px]',
+          className={clsx(
+            'w-full h-full appearance-none  text-inherit placeholder-inherit  bg-zinc-200 px-2',
             ' focus:outline-none',
           )}
           defaultValue={defaultQuery}
         />
-        <Button intent={'text-sm'} type={'submit'}>
+        <Button className={'h-full px-3'} type={'submit'}>
           Go
         </Button>
         <Button
-          intent={'text-sm'}
           colour={'transparent'}
+          className={'h-full px-3'}
           onClick={() => {
             setSearchParams({});
             formRef.current?.reset();

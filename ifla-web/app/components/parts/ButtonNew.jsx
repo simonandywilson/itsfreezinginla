@@ -21,6 +21,7 @@ const buttonStyle = cva(
           'focus-visible:bg-white',
           'focus-visible:text-black',
         ],
+        outline: ["bg-transparent border-1 text-black"]
       },
       status: {
         disabled: [

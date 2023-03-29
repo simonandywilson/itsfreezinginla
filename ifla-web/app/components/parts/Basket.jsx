@@ -8,7 +8,7 @@ export const Basket = () => {
   const {cart} = useRouteData(`root`);
   return (
     <IconLink to={'/cart'} aria-label="Go to cart">
-      <div className={'relative h-8'}>
+      <div className={'relative w-full h-full'}>
         <BasketIcon />
           <Await resolve={cart}>
             {(cart) => (

@@ -96,8 +96,8 @@ export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]{
     },
 }`;
 
-export const allArticlesDataQueryFiltered = groq`*[_type == "article" && headline match $search && $topic match topic->topic]${articlePreviewFragment}`;
-export const allArticlesDataQuery = groq`*[_type == "article" && headline match $search ]${articlePreviewFragment}`;
+export const allArticlesDataQueryFiltered = groq`*[_type == "article" && headline match $search && $topic match topic->topic]| order(date desc)${articlePreviewFragment}`;
+export const allArticlesDataQuery = groq`*[_type == "article" && headline match $search ]| order(date desc)${articlePreviewFragment}`;
 
 export const allTopicsDataQuery = groq`*[_type == "topic" && count( *[_type == 'article' && references(^._id)]) > 0] | order(topic asc){
   _id,

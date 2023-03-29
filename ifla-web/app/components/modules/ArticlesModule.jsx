@@ -1,21 +1,25 @@
 import {Dialog} from '@headlessui/react';
-import {Form, Link, useSearchParams, useSubmit} from '@remix-run/react';
+import {Form, useSearchParams, useSubmit} from '@remix-run/react';
 import {Fragment, useRef, useState} from 'react';
-import { ArticleBlock } from '../article/ArticleBlock';
-import { Button } from '../parts/Button';
-import { Image } from '../parts/Image';
-import { Layout } from '../parts/Layout';
-import { BlockLink, TextLink } from '../parts/Links';
-import { Search } from '../parts/Search';
-import { Submenu } from '../parts/Submenu';
-import { Text } from '../parts/Text';
+import {ArticleBlock} from '../article/ArticleBlock';
+import {Button} from '../parts/ButtonNew';
+import {Image} from '../parts/Image';
+import {Layout} from '../parts/Layout';
+import {BlockLink, TextLink} from '../parts/Links';
+import {Search} from '../parts/Search';
+import {Submenu} from '../parts/Submenu';
+import {Text} from '../parts/Text';
 
 export const ArticlesModule = ({articles, topics}) => {
   const [text, setText] = useState(false);
 
   return (
     <>
-      <Submenu>
+      <Submenu
+        className={
+          'justify-between sticky top-header-submenu z-40 border-b-1 border-black'
+        }
+      >
         <FilterDialog topics={topics} />
         <Button
           colour={'transparent'}
@@ -28,40 +32,35 @@ export const ArticlesModule = ({articles, topics}) => {
       </Submenu>
       <Layout intent={'grid'} as={'ul'}>
         {!text &&
-          Object.keys(articles).map((keyName, i) =>
-            articles[keyName].map((article) => {
-              return (
-                <li key={article._id} className={'w-full'}>
-                  <BlockLink to={article.slug}>
-                    <ArticleBlock article={article} />
-                  </BlockLink>
-                </li>
-              );
-            }),
-          )}
+          Object.keys(articles)
+            .slice(0)
+            .reverse()
+            .map((keyName, i) =>
+              articles[keyName].map((article) => {
+                return (
+                  <li key={article._id} className={'w-full'}>
+                    <BlockLink to={article.slug}>
+                      <ArticleBlock article={article} />
+                    </BlockLink>
+                  </li>
+                );
+              }),
+            )}
       </Layout>
       {text && (
         <Layout intent={'columns'}>
           <div className={'grid grid-cols-2'}>
             {Object.keys(articles).map((keyName, i) => (
               <Fragment key={keyName + i}>
-                <Text
-                  as={'h3'}
-                  className={'col-start-2 mb-[1em]'}
-                  intent={'text-2xl'}
-                >
-                  {keyName}
-                </Text>
+                <h3 className={'col-start-2 mb-[1em] text-40'}>{keyName}</h3>
                 {articles[keyName].map((article) => {
                   return (
                     <div
                       key={article._id}
-                      className={'col-span-2 grid grid-cols-2 '}
+                      className={'col-span-2 grid grid-cols-2'}
                     >
-                      <Text
-                        intent={'text-sm'}
-                      >{`[${article.topic.topic}]`}</Text>
-                      <TextLink to={article.slug} className={'w-auto'}>
+                      <p className={'text-16'}>{`[${article.topic.topic}]`}</p>
+                      <TextLink to={article.slug} className={'w-auto text-24'}>
                         {article.headline}
                       </TextLink>
                     </div>

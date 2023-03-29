@@ -55,9 +55,9 @@ const components = (intent, colour) => {
             );
           default:
             return (
-              <Text as={'p'} intent={'text-base-serif'}>
+              <p className={'font-serif text-18 xl:text-24'}>
                 {children}
-              </Text>
+              </p>
             );
         }
       },

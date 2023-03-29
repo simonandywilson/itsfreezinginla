@@ -2,21 +2,25 @@ import {GlobalTitle} from './GlobalTitle';
 import {Basket} from '../parts/Basket';
 import {Fragment, useRef} from 'react';
 import {Popover, Transition} from '@headlessui/react';
-import {Text} from '../parts/Text';
 import {useNavigate} from '@remix-run/react';
-import {TextLink} from '../parts/Links';
+import {TextLink} from '../parts/LinksNew';
 import {motion} from 'framer-motion';
 import {useRandomColour} from '~/hooks/useRandomColour';
 import {useRouteData} from 'remix-utils';
+import clsx from 'clsx';
 const MotionButton = motion(Popover.Button);
 
-export const GlobalMenuDesktop = ({ menu }) => {
+export const GlobalMenuDesktop = ({menu}) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
-    <div className={"h-full min-w-0 relative w-full p-4 flex items-center justify-between bg-white gap-4"}>
+    <div
+      className={
+        'h-full min-w-0 relative w-full p-4 flex items-center justify-between bg-white gap-4'
+      }
+    >
       <GlobalTitle />
-      <div className={'flex-shrink-0 flex items-center gap-16'}>
+      <div className={clsx('flex-shrink-0 flex items-center gap-16')}>
         {/* Desktop Menu Items */}
         {menu.map((section) => {
           return (
@@ -37,11 +41,15 @@ export const GlobalMenuDesktop = ({ menu }) => {
             </Popover.Group>
           );
         })}
-        <Basket />
+        <nav className={'h-10'}>
+          <Basket />
+        </nav>
         {/* Mobile Menu Button */}
-        <div className={"flex-shrink-0 md:hidden w-20 text-right"}>
+        <div className={'flex-shrink-0 md:hidden w-[4rem]'}>
           <MotionButton
-            className={'focus:outline-none focus:border-none antialiased focus-visible:underline '}
+            className={
+              'w-full focus:outline-none focus:border-none antialiased focus-visible:underline '
+            }
             transition={{duration: 0}}
             initial={{color: '#000000'}}
             whileHover={{
@@ -51,7 +59,18 @@ export const GlobalMenuDesktop = ({ menu }) => {
               color: randomColour.current,
             }}
           >
-            {({open}) => <Text intent={'text-lg'} >{open ? 'X' : 'Menu'}</Text>}
+            {({open}) => (
+              <>
+                {open && (
+                  <span className={'w-full block text-24 text-center'}>X</span>
+                )}
+                {!open && (
+                  <span className={'w-full block text-24 text-right'}>
+                    Menu
+                  </span>
+                )}
+              </>
+            )}
           </MotionButton>
         </div>
       </div>
@@ -67,7 +86,9 @@ const MenuItem = ({title, children, close}) => {
   return (
     <>
       <MotionButton
-        className={'focus:outline-none focus:border-none antialiased focus-visible:underline'}
+        className={
+          'focus:outline-none focus:border-none antialiased focus-visible:underline'
+        }
         onClick={() => navigate(children[0].slug)}
         transition={{duration: 0}}
         initial={{color: '#000000'}}
@@ -78,29 +99,24 @@ const MenuItem = ({title, children, close}) => {
           color: randomColour.current,
         }}
       >
-        <Text intent={'text-base'} className={'font-normal'}>
-          {title}
-        </Text>
+        <p className={'font-normal text-24'}>{title}</p>
       </MotionButton>
       {children.length > 1 && (
-        <Transition as={Fragment}>
-          <Popover.Panel className={'absolute'} onMouseLeave={() => close()}>
-            <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
-              {children.map((child) => (
-                <li key={child._id}>
-                  <TextLink
-                    intent={'text-base'}
-                    to={child.slug}
-                    className={'leading-none'}
-                    onClick={() => close()}
-                  >
-                    {child.title}
-                  </TextLink>
-                </li>
-              ))}
-            </ul>
-          </Popover.Panel>
-        </Transition>
+        <Popover.Panel className={'absolute z-50'} onMouseLeave={() => close()}>
+          <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
+            {children.map((child) => (
+              <li key={child._id}>
+                <TextLink
+                  to={child.slug}
+                  className={'leading-none text-24'}
+                  onClick={() => close()}
+                >
+                  {child.title}
+                </TextLink>
+              </li>
+            ))}
+          </ul>
+        </Popover.Panel>
       )}
     </>
   );

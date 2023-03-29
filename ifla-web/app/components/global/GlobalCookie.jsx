@@ -1,5 +1,4 @@
-import {Text} from '../parts/Text';
-import {Button} from '../parts/Button';
+import {Button} from '../parts/ButtonNew';
 import {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import {cx} from 'class-variance-authority';
@@ -36,7 +35,7 @@ export const GlobalCookie = () => {
           transition={{duration: 1, type: 'tween'}}
         >
           <analyticsFetcher.Form method="post" action="/enable-analytics">
-            <Text intent={'text-xl'}>Accept cookies?</Text>
+            <h2 className={'text-24 mb-4'}>Accept cookies?</h2>
             <div className={'flex gap-2 items-center'}>
               <TextLink to={''} className={'h-max mr-2'}>
                 Read our cookie policy
@@ -51,6 +50,7 @@ export const GlobalCookie = () => {
                   }, 150)
                 }
                 aria-label={'Accept cookies'}
+                className={'button-18'}
               >
                 Alright
               </Button>
@@ -59,6 +59,8 @@ export const GlobalCookie = () => {
                 value={'false'}
                 type={'submit'}
                 aria-label={'Decline cookies'}
+                className={'button-18'}
+                colour={"outline"}
               >
                 No
               </Button>

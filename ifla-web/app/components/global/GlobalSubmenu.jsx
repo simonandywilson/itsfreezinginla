@@ -1,13 +1,12 @@
 import {useLocation} from '@remix-run/react';
-import {TextLink} from '../parts/Links';
+import {TextLink} from '../parts/LinksNew';
 import {Submenu} from '../parts/Submenu';
-import { Text } from '../parts/Text';
 
 export const GlobalSubmenu = ({menu}) => {
   const {pathname} = useLocation();
   return (
-    <Submenu>
-      <Text intent={'text-sm mr-8'}>Section:</Text>
+    <Submenu className={"border-b-1 border-black"}>
+      <h2 className={'text-18 mr-8 leading-none'}>Section:</h2>
       {menu.map((section) => {
         const children = section.children.map((child) => child.slug);
         return children.includes(pathname.slice(1)) ? (
@@ -19,7 +18,7 @@ export const GlobalSubmenu = ({menu}) => {
               return (
                 <TextLink
                   key={page._id || page._key}
-                  intent={'text-sm'}
+                  className={'text-18'}
                   focused={pathname.slice(1) === page.slug ? true : false}
                   to={page.slug}
                 >
