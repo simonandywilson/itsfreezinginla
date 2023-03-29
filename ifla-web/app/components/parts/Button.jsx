@@ -45,20 +45,22 @@ const buttonStyle = cva(
   },
 );
 
-
-
-export const Button = ({
-  type,
-  intent,
-  colour,
-  status,
-  className,
-  children,
-  disabled,
-  value,
-  aria,
-  onClick
-}, props) => {
+export const Button = (
+  {
+    type,
+    intent,
+    colour,
+    status,
+    className,
+    children,
+    disabled,
+    value,
+    aria,
+    onClick,
+    name,
+  },
+  props,
+) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return colour === 'mono' || disabled ? (
@@ -69,6 +71,7 @@ export const Button = ({
       value={value}
       aria-label={aria}
       onClick={onClick}
+      name={name}
       {...props}
     >
       <Text intent={intent} className={'inline-block leading-none'}>
@@ -83,6 +86,7 @@ export const Button = ({
       value={value}
       aria-label={aria}
       onClick={onClick}
+      name={name}
       transition={{duration: 0}}
       initial={
         colour === 'transparent'

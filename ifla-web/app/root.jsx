@@ -183,16 +183,13 @@ export async function action({request, context}) {
 export default function App() {
   const location = useLocation();
   const {gaTrackingId, track} = useLoaderData();
-  const analyticsFetcher = useFetcher();
-  const locale = {
+
+  useAnalytics(track, {
     label: 'United Kingdom (GBP £)',
     language: 'EN',
     country: 'GB',
     currency: 'GBP',
-  };
-  const hasUserConsent = false;
-
-  useAnalytics(hasUserConsent, locale);
+  });
 
   useEffect(() => {
     if (track && gaTrackingId?.length) {
@@ -217,51 +214,11 @@ export default function App() {
         <Links />
       </head>
       <body className={'selection:bg-yellow-200/50'}>
-        {/* {process.env.NODE_ENV === 'development' || !gaTrackingId ? null : (
-          <>
-            <script
-              async
-              src={`https://www.googletagmanager.com/gtag/js?id=${gaTrackingId}`}
-            />
-            <script
-              async
-              id="gtag-init"
-              dangerouslySetInnerHTML={{
-                __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('consent', 'default', {
-                  'ad_storage': 'denied',
-                  'analytics_storage': 'denied'
-                });
-                gtag('config', '${gaTrackingId}', {
-                  page_path: window.location.pathname,
-                });
-              `,
-              }}
-            />
-          </>
-        )} */}
         <GlobalHeader />
         <main className={'min-h-screen flex flex-col'}>
           <Outlet />
         </main>
-        {!track && (
-          <div className={'fixed bottom-0 z-50 bg-slate-300'}>
-            <analyticsFetcher.Form method="post" action="/enable-analytics">
-              We use Cookies...
-              <button name="accept-gdpr" value="true" type="submit">
-                Accept
-              </button>
-              <button name="accept-gdpr" value="false" type="submit">
-                Decline
-              </button>
-            </analyticsFetcher.Form>
-          </div>
-        )}
-        {/* <GlobalCookie /> */}
-
+        <GlobalCookie />
         <GlobalFooter />
         <ScrollRestoration />
         <Scripts />
