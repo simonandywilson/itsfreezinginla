@@ -2,7 +2,12 @@ import {useLoaderData} from '@remix-run/react';
 import {defer} from '@shopify/remix-oxygen';
 import React from 'react';
 import swiperStyles from 'swiper/swiper.min.css';
-import {pageDataQuery} from '../lib/queries';
+import {
+  pageDataQuery,
+  allArticlesDataQuery,
+  allTopicsDataQuery,
+  allArticlesDataQueryFiltered,
+} from '../lib/queries';
 import {Page} from '../components/page/Page';
 
 const seo = ({data}) => ({
@@ -30,7 +35,12 @@ export async function loader({context, params, request}) {
   // if (preview) {
   //   return {preview: true, query: pageDataQuery, params};
   // }
-  const page = await sanityClient.fetch(pageDataQuery, params);
+
+  const [page, articles, topics] = await Promise.all([
+    getAllPageData(context, params),
+    getAllArticlesData(context, request),
+    getAllTopicsData(context),
+  ]);
 
   if (!page) {
     throw new Response('Not Found', {
@@ -40,12 +50,51 @@ export async function loader({context, params, request}) {
 
   return defer({
     page,
+    articles,
+    topics,
     usePreview,
   });
 }
 
 export default function PageRoute() {
-  const {page} = useLoaderData();
+  const { page, articles, topics } = useLoaderData();
+  return <Page page={page} articles={articles} topics={topics} />;
+}
 
-  return <Page page={page} />;
+async function getAllPageData({sanityClient}, params) {
+  const page = await sanityClient.fetch(pageDataQuery, params);
+  return page;
+}
+
+async function getAllArticlesData({sanityClient}, request) {
+  const url = new URL(request.url);
+  const search = new URLSearchParams(url.search).get('search-query');
+  const topic = new URLSearchParams(url.search).getAll('topic-query');
+
+  const rawArticles = await sanityClient.fetch(
+    topic === undefined || topic.length == 0
+      ? allArticlesDataQuery
+      : allArticlesDataQueryFiltered,
+    {
+      search: `${search || ''}*`,
+      topic: topic,
+    },
+  );
+
+  const articles = {};
+  rawArticles.forEach((d) => {
+    const date = new Date(d.date);
+    const year = date.getFullYear();
+    if (!articles[year]) {
+      articles[year] = [];
+    }
+    articles[year].push(d);
+  });
+
+  return articles;
+}
+
+async function getAllTopicsData({sanityClient}) {
+  const topics = await sanityClient.fetch(allTopicsDataQuery);
+  return topics;
 }

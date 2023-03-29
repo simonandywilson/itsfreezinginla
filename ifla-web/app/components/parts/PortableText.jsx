@@ -38,22 +38,14 @@ const components = (intent, colour) => {
               </Text>
             );
           case 'footer':
-            return (
-              <Text as={'p'} intent={'text-sm'}>
-                {children}
-              </Text>
-            );
+            return <p className={'text-18 xl:text-24'}>{children}</p>;
           case 'intro':
-            return (
-              <Text as={'h3'} intent={'text-xl'}>
-                {children}
-              </Text>
-            );
+            return <h3 className={'text-24 md:text-40'}>{children}</h3>;
           case 'preview':
             return (
-              <Text as={'p'} intent={'text-xs'}>
+              <p className={'text-16 line-clamp-short md:no-line-clamp'}>
                 {children}
-              </Text>
+              </p>
             );
           case 'footnote':
             return (

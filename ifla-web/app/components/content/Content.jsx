@@ -7,7 +7,7 @@ import {ImageGridModule} from '../modules/ImageGridModule';
 import {ImageModule} from '../modules/ImageModule';
 import {TextBlockModule} from '../modules/TextBlockModule';
 import {ShopModule} from '../modules/ShopModule';
-export const Content = ({content, colour}) => {
+export const Content = ({content, articles, topics, colour}) => {
   switch (content._type) {
     case 'textBlockModule':
       return <TextBlockModule content={content} colour={colour} />;
@@ -22,7 +22,7 @@ export const Content = ({content, colour}) => {
     case 'textColumnsModule':
       return <TextColumnsModule content={content} />;
     case 'articlesModule':
-      return <ArticlesModule content={content} />;
+      return <ArticlesModule articles={articles} topics={topics} />;
     case 'carouselModule':
       return <CarouselModule content={content} />;
     case 'shopModule':

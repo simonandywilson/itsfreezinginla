@@ -1,13 +1,12 @@
-import {cx} from 'class-variance-authority';
 import React from 'react';
 import {Layout} from '../parts/Layout';
-import {ButtonLink} from '../parts/Links';
-import { PortableText } from '../parts/PortableText';
-import {Text} from '../parts/Text';
+import {PortableText} from '../parts/PortableText';
 import {Topic} from '../parts/Topic';
+import {ButtonLink} from '../parts/LinksButton';
+import clsx from 'clsx';
 
-export const ArticleBlockBanner = ({article, link}) => {
-  const {headline, intro, colour, author, category, topic} = article;
+export const ArticleBlockBanner = ({article, link, truncate}) => {
+  const {headline, intro, colour, author, topic} = article;
   return (
     <Layout
       as={'article'}
@@ -17,57 +16,45 @@ export const ArticleBlockBanner = ({article, link}) => {
       <Layout
         intent={'grid'}
         as={'div'}
-        className={cx('gap-4 h-min', 'md:gap-8 md:flex-1')}
+        className={clsx('gap-4 h-min', 'lg:gap-8 lg:flex-1')}
       >
         <div>
-          <Text as={'h2'} intent={'text-2xl'}>
+          <h2 className={clsx('break-words', 'text-32 md:text-56 lg:text-68')}>
             {topic && <Topic topic={topic} />}
             {headline ? headline : 'Untitled article'}
-          </Text>
+          </h2>
         </div>
         <div
-          className={cx(
-            'h-min col-span-1 columns-1 gap-8 ',
-            'lg:col-span-2 lg:columns-2 ',
+          className={clsx(
+            'h-min col-span-1 columns-1 gap-8',
+            'xl:col-span-2 xl:columns-2 ',
           )}
         >
-          {intro && <PortableText text={intro} intent={'intro'} />}
+          <div
+            className={clsx({
+              ' line-clamp xl:no-line-clamp':
+                truncate,
+            })}
+          >
+            {intro && <PortableText text={intro} intent={'intro'} />}
+          </div>
           {link && (
             <ButtonLink
-              intent={'text-lg'}
               colour={'mono'}
               to={link}
-              className={'mt-[1em] break-before-avoid'}
+              className={'button-24 md:button-32 mt-[1em] break-before-avoid'}
             >
-              Read on
+              Keep reading
             </ButtonLink>
           )}
         </div>
       </Layout>
       <div className={'flex justify-between'}>
         {author.name && (
-          <Text as={'address'} intent={'text-sm'} className={'not-italic'}>
+          <address className={'text-18 md:text-24 not-italic'}>
             By {author.name}
-          </Text>
+          </address>
         )}
-        {/* {category && category.length > 0 && (
-          <div className={'flex'}>
-            <span>(</span>
-            {category.map((cat, index) => {
-              return (
-                <div key={cat._id}>
-                  <Text as={'p'} intent={'bl-heading-base'}>
-                    {cat.category}
-                    {category.length > 0 && index + 1 !== category.length && (
-                      <span>,&nbsp;</span>
-                    )}
-                  </Text>
-                </div>
-              );
-            })}
-            <span>)</span>
-          </div>
-        )} */}
       </div>
     </Layout>
   );

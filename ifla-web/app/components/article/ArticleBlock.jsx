@@ -1,8 +1,8 @@
+import clsx from 'clsx';
 import React from 'react';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
 import {PortableText} from '../parts/PortableText';
-import {Text} from '../parts/Text';
 import {Topic} from '../parts/Topic';
 
 export const ArticleBlock = ({article}) => {
@@ -13,9 +13,10 @@ export const ArticleBlock = ({article}) => {
     <Layout
       as={'article'}
       intent={'block'}
-      className={
-        'relative w-full h-full aspect-square flex flex-col justify-between gap-6'
-      }
+      className={clsx(
+        'relative w-full h-full aspect-[2.5/2] flex flex-col justify-between gap-6',
+        'md:aspect-square',
+      )}
       colour={colour || 'var(--accent-colour)'}
     >
       <div
@@ -25,9 +26,9 @@ export const ArticleBlock = ({article}) => {
         style={{background: colour ? colour : '#dfdfdf'}}
       >
         {!quiltImage && (
-          <div className={'h-full p-4 flex justify-between flex-col'}>
+          <div className={'h-full p-6 flex justify-between flex-col'}>
             <PortableText text={intro} intent={'preview'} />
-            <p className={'ml-auto'}>Keep reading {'>'}</p>
+            <p className={'text-16 ml-auto'}>Keep reading {'>'}</p>
           </div>
         )}
         {image && quiltImage && (
@@ -46,17 +47,11 @@ export const ArticleBlock = ({article}) => {
       </div>
 
       <div className={'filter group-focus-visible:invert'}>
-        <span className={'hidden md:block'}>
-          <Text as={'h2'} intent={'text-xl'}>
+        <span>
+          <h2 className={'text-32 md:text-40'}>
             {topic && <Topic topic={topic} />}
             {headline ? headline : 'Untitled article'}
-          </Text>
-        </span>
-        <span className={'block md:hidden'}>
-          <Text as={'h2'} intent={'text-2xl'}>
-            {topic && <Topic topic={topic} />}
-            {headline ? headline : 'Untitled article'}
-          </Text>
+          </h2>
         </span>
       </div>
       <div
@@ -65,21 +60,21 @@ export const ArticleBlock = ({article}) => {
         }
       >
         {author.name && (
-          <Text as={'address'} intent={'text-base'} className={'not-italic'}>
+          <address className={'text-18 not-italic'}>
             By {author.name}
-          </Text>
+          </address>
         )}
         {category && category.length > 0 && (
           <div>
             <span>(</span>
             {category.map((cat, index) => {
               return (
-                <Text as={'span'} intent={'text-sm'} key={cat._id}>
+                <span className={"text-18"} key={cat._id}>
                   {cat.category}
                   {category.length > 0 && index + 1 !== category.length && (
                     <span>,&nbsp;</span>
                   )}
-                </Text>
+                </span>
               );
             })}
             <span>)</span>

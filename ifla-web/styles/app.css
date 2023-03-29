@@ -23,6 +23,15 @@
     font-display: swap;
   }
 
+  @font-face {
+    font-family: 'Peace';
+    src: url('/fonts/Peace-Medium.woff') format('woff'),;
+    font-style: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-display: swap;
+  }
+
   details > summary {
     list-style: none;
   }
@@ -40,6 +49,30 @@
     content: ' ⌄';
     transform: rotate(180deg);
   }
+
+  .line-clamp-short {
+    display: -webkit-box;
+    -webkit-line-clamp: 8;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-bottom: 0.25em;
+  }
+
+  .line-clamp {
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    padding-bottom: 0.25em;
+  }
+
+  .no-line-clamp {
+    display: inline;
+    -webkit-line-clamp: unset;
+    -webkit-box-orient: unset;
+    overflow: none;
+  }
+
 }
 
 /* @layer components {
@@ -70,19 +103,28 @@
 }
 
 @layer components {
-  .button-sm {
-    @apply py-1 px-1;
+  .button-none {
+    @apply p-0;
   }
-  .button-base {
-    @apply py-2 px-3;
+  .button-16 {
+    @apply text-16;
   }
-  .button-lg {
-    @apply px-4 py-3;
+  .button-18 {
+    @apply text-18 py-2 px-2;
   }
-  .button-xl {
-    @apply px-4 py-2;
+  .button-24 {
+    @apply text-24 py-3 px-3;
   }
-  .button-2xl {
-    @apply px-4 py-2;
+  .button-32 {
+    @apply text-32 px-4 py-3;
+  }
+  .button-40 {
+    @apply text-40;
+  }
+  .button-56 {
+    @apply text-56;
+  }
+  .button-68 {
+    @apply text-68;
   }
 }

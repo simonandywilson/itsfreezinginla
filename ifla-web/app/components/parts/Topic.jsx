@@ -1,21 +1,22 @@
+import { cx } from 'class-variance-authority';
 import React from 'react';
 import {Image} from './Image';
-import {Text} from './Text';
 
 export const Topic = ({topic}) => {
   const {image} = topic;
   return (
     <span
-      className={
-        'group/topic relative float inline-block h-[1em] mr-4 group-hover:hidden'
-      }
+      className={cx(
+        'group/topic relative float-left inline-block h-[1.8em] top-2 mr-3 group-hover:hidden',
+        'md:h-[0.8em] md:mr-4',
+      )}
     >
       <div
         className={
           'absolute w-full h-full inset-0 border-2 border-black whitespace-wrap hidden p-2 group-hover/topic:block'
         }
       >
-        <Text intent={'text-sm'}>{topic.topic}</Text>
+        <p className={'text-16 break-words leading-none'}>{topic.topic}</p>
       </div>
       <Image
         id={image._id}

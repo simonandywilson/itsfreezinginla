@@ -42,7 +42,7 @@ export const GlobalCookie = () => {
                 Read our cookie policy
               </TextLink>
               <Button
-                name={'accept-gdpr'}
+                name={'accept-cookies'}
                 value={'true'}
                 type={'submit'}
                 onClick={() =>
@@ -50,10 +50,16 @@ export const GlobalCookie = () => {
                     setVisible(false);
                   }, 150)
                 }
+                aria-label={'Accept cookies'}
               >
                 Alright
               </Button>
-              <Button name={'accept-gdpr'} value={'false'} type={'submit'}>
+              <Button
+                name={'decline-cookies'}
+                value={'false'}
+                type={'submit'}
+                aria-label={'Decline cookies'}
+              >
                 No
               </Button>
             </div>

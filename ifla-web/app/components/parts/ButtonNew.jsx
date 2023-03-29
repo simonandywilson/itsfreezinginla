@@ -9,17 +9,10 @@ const buttonStyle = cva(
   'w-max focus:outline-none focus:border-none antialiased whitespace-nowrap flex-grow-0 leading-none inline-block',
   {
     variants: {
-      // intent: {
-      //   'text-sm': ['button-sm'],
-      //   'text-base': ['button-base'],
-      //   'text-lg': ['button-lg'],
-      //   'text-xl': ['button-xl'],
-      //   'text-2xl': ['button-2xl'],
-      // },
-       colour: {
-        transparent: ['bg-white', 'text-black'],
-        light: ['bg-white', 'text-black'],
+      colour: {
         default: ['bg-black', 'text-white'],
+        transparent: ['bg-transparent', 'text-black'],
+        light: ['bg-white', 'text-black'],
         mono: [
           'bg-black',
           'text-white',
@@ -39,7 +32,6 @@ const buttonStyle = cva(
       },
     },
     defaultVariants: {
-      // intent: 'text-base',
       colour: 'default',
     },
   },
@@ -47,44 +39,18 @@ const buttonStyle = cva(
 
 export const Button = ({
   type,
-  intent,
   colour,
   status,
   className,
   children,
-  disabled,
-  value,
-  aria,
-  onClick,
-  name,
   ...props
 }) => {
   const {colours} = useRouteData(`root`);
   const randomColour = useRef(useRandomColour(colours));
-  return colour === 'mono' || disabled ? (
-    <button
-      type={type || 'button'}
-      className={buttonStyle({intent, colour, status, className})}
-      // disabled={disabled}
-      // value={value}
-      // aria-label={aria}
-      // onClick={onClick}
-      // name={name}
-      {...props}
-    >
-      <Text intent={intent} className={'inline-block leading-none'}>
-        {children}
-      </Text>
-    </button>
-  ) : (
+  return (
     <motion.button
       type={type || 'button'}
-      className={buttonStyle({intent, colour, status, className})}
-      // disabled={disabled}
-      // value={value}
-      // aria-label={aria}
-      // onClick={onClick}
-      // name={name}
+      className={buttonStyle({colour, status, className})}
       transition={{duration: 0}}
       initial={
         colour === 'transparent'
@@ -115,9 +81,7 @@ export const Button = ({
       }
       {...props}
     >
-      <Text intent={intent} className={'inline-block leading-none'}>
-        {children}
-      </Text>
+      {children}
     </motion.button>
   );
 };

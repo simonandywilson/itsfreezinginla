@@ -5,8 +5,9 @@ import {ArticleBlock} from '../components/article/ArticleBlock';
 import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
 import {Hero} from '../components/hero/Hero';
 import {Layout} from '../components/parts/Layout';
-import {BlockLink, ButtonLink} from '../components/parts/Links';
-import {homepageDataQuery} from '../lib/queries';
+import {BlockLink, ButtonLink} from '../components/parts/LinksButton';
+import { homepageDataQuery } from '../lib/queries';
+
 
 export const handle = {
   seo: {
@@ -36,17 +37,11 @@ export default function Index() {
         <>
           <Layout intent={'grid'} as={'ul'}>
             <li className={'col-span-full w-full'}>
-              <span className={cx('hidden', 'sm:block')}>
-                <ArticleBlockBanner
-                  article={homepage.featured[0]}
-                  link={homepage.featured[0].slug}
-                />
-              </span>
-              <span className={cx('block', 'sm:hidden')}>
-                <BlockLink to={homepage.featured[0].slug}>
-                  <ArticleBlock article={homepage.featured[0]} />
-                </BlockLink>
-              </span>
+              <ArticleBlockBanner
+                article={homepage.featured[0]}
+                link={homepage.featured[0].slug}
+                truncate
+              />
             </li>
             {homepage.featured.map((article, index) => {
               if (index === 0) {
@@ -62,11 +57,15 @@ export default function Index() {
             })}
             <li
               className={cx(
-                'w-full flex items-center justify-center aspect-square',
-                'lg:hidden 3xl:flex',
+                'w-full hidden items-center justify-center aspect-square',
+                'md:flex xl:hidden 3xl:flex',
               )}
             >
-              <ButtonLink to={'/articles'} intent={'text-lg'}>
+              <ButtonLink
+                colour={'mono'}
+                to={'/articles'}
+                className={'button-24 md:button-32 mt-[1em] break-before-avoid'}
+              >
                 Read more
               </ButtonLink>
             </li>
