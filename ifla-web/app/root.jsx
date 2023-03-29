@@ -5,6 +5,7 @@ import {
   Scripts,
   ScrollRestoration,
   useCatch,
+  useFetcher,
   useLoaderData,
   useLocation,
 } from '@remix-run/react';
@@ -12,15 +13,16 @@ import {Seo, ShopifySalesChannel} from '@shopify/hydrogen';
 import {defer, json} from '@shopify/remix-oxygen';
 import groq from 'groq';
 import invariant from 'tiny-invariant';
-import { GlobalCookie } from './components/global/GlobalCookie';
+import {GlobalCookie} from './components/global/GlobalCookie';
 import {GlobalFooter} from './components/global/GlobalFooter';
 import {GlobalHeader} from './components/global/GlobalHeader';
 import {GlobalNotFound} from './components/global/GlobalNotFound';
 import {useAnalytics} from './hooks/useAnalytics';
 import {shopLinkQuery} from './lib/queries';
 import styles from './styles/app.css';
-import * as gtag from '~/utils/gtags.client';
-import { useEffect } from 'react';
+import {useEffect} from 'react';
+import {gdprConsent} from './cookies';
+import ReactGA from 'react-ga4';
 
 const seo = ({data: {settings}, pathname}) => ({
   title: settings.seoTitle,
@@ -89,19 +91,31 @@ export const meta = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-export async function loader({ context }) {
-  const [cartId, shop, allCollections, allProducts, settings, menu, footer, shopLink, colours] =
-    await Promise.all([
-      context.session.get('cartId'),
-      getShopData(context),
-      getAllCollectionsData(context),
-      getAllProductsData(context),
-      getSettingsData(context),
-      getMenuData(context),
-      getFooterData(context),
-      getShopPage(context),
-      getColoursData(context),
-    ]);
+export async function loader({context, request}) {
+  const [
+    cartId,
+    shop,
+    allCollections,
+    allProducts,
+    settings,
+    menu,
+    footer,
+    shopLink,
+    colours,
+  ] = await Promise.all([
+    context.session.get('cartId'),
+    getShopData(context),
+    getAllCollectionsData(context),
+    getAllProductsData(context),
+    getSettingsData(context),
+    getMenuData(context),
+    getFooterData(context),
+    getShopPage(context),
+    getColoursData(context),
+  ]);
+
+  const cookieHeader = request.headers.get('Cookie');
+  const cookie = (await gdprConsent.parse(cookieHeader)) || {};
 
   return defer({
     settings,
@@ -118,6 +132,7 @@ export async function loader({ context }) {
     sanityProjectDetails: context.sanityProjectDetails,
     shop: shopLink,
     gaTrackingId: context.analyticsTrackingId,
+    track: cookie.gdprConsent,
   });
 }
 
@@ -167,7 +182,8 @@ export async function action({request, context}) {
 
 export default function App() {
   const location = useLocation();
-  const { gaTrackingId } = useLoaderData();
+  const {gaTrackingId, track} = useLoaderData();
+  const analyticsFetcher = useFetcher();
   const locale = {
     label: 'United Kingdom (GBP £)',
     language: 'EN',
@@ -178,12 +194,21 @@ export default function App() {
 
   useAnalytics(hasUserConsent, locale);
 
-   useEffect(() => {
-     if (gaTrackingId?.length) {
-       gtag.pageview(location.pathname, gaTrackingId);
-     }
-   }, [location, gaTrackingId]);
-  
+  useEffect(() => {
+    if (track && gaTrackingId?.length) {
+      ReactGA.initialize(gaTrackingId);
+    }
+  }, [track, gaTrackingId]);
+
+  useEffect(() => {
+    if (track && gaTrackingId?.length) {
+      ReactGA.send({
+        hitType: 'pageview',
+        page: location.pathname,
+      });
+    }
+  }, [track, location, gaTrackingId]);
+
   return (
     <html lang="en">
       <head>
@@ -192,7 +217,7 @@ export default function App() {
         <Links />
       </head>
       <body className={'selection:bg-yellow-200/50'}>
-        {process.env.NODE_ENV === 'development' || !gaTrackingId ? null : (
+        {/* {process.env.NODE_ENV === 'development' || !gaTrackingId ? null : (
           <>
             <script
               async
@@ -217,12 +242,25 @@ export default function App() {
               }}
             />
           </>
-        )}
+        )} */}
         <GlobalHeader />
         <main className={'min-h-screen flex flex-col'}>
           <Outlet />
         </main>
-        <GlobalCookie />
+        {!track && (
+          <div className={'fixed bottom-0 z-50 bg-slate-300'}>
+            <analyticsFetcher.Form method="post" action="/enable-analytics">
+              We use Cookies...
+              <button name="accept-gdpr" value="true" type="submit">
+                Accept
+              </button>
+              <button name="accept-gdpr" value="false" type="submit">
+                Decline
+              </button>
+            </analyticsFetcher.Form>
+          </div>
+        )}
+        {/* <GlobalCookie /> */}
 
         <GlobalFooter />
         <ScrollRestoration />
