@@ -1,6 +1,6 @@
 import {useFetcher} from '@remix-run/react';
 import React from 'react';
-import {Button} from './Button';
+import {Button} from './ButtonNew';
 
 export const AddToCart = ({lines, analytics, soldOut}) => {
   const fetcher = useFetcher();

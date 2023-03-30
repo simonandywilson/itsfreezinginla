@@ -2,15 +2,14 @@ import {Await, useFetcher} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
 import {defer} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
-import {Suspense} from 'react';
 import {useRouteData} from 'remix-utils';
 import invariant from 'tiny-invariant';
-import {Button} from '~/components/parts/Button';
+import {Button} from '~/components/parts/ButtonNew';
 import CartLoader from '../components/loaders/CartLoader';
 import {CartPreview} from '../components/parts/CartPreview';
 import {Dash} from '../components/parts/Dash';
 import {Layout} from '../components/parts/Layout';
-import {ButtonLink, ButtonLinkExternal} from '../components/parts/Links';
+import {ButtonLinkExternal} from '../components/parts/LinksButton';
 import {Text} from '../components/parts/Text';
 
 export const handle = {

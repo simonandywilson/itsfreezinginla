@@ -6,7 +6,6 @@ import {useRouteData} from 'remix-utils';
 import {AddToCart} from '../parts/AddToCart';
 import {CartPreview} from '../parts/CartPreview';
 import {Layout} from '../parts/Layout';
-import {Text} from '../parts/Text';
 
 export const ShopModule = () => {
   const {allProducts, allCollections, cart} = useRouteData(`root`);
@@ -55,9 +54,9 @@ const Product = ({product, cart}) => {
         alt={product.featuredImage.altText}
         className="w-full h-full object-cover"
       />
-      <Text as={'h4'} intent={'text-sm'} className={cx('my-4', 'sm:my-8')}>
+      <h4 as={'h4'} className={cx('text-32 my-4', 'sm:my-8')}>
         {product.title}
-      </Text>
+      </h4>
       <div className={'flex flex-col gap-4'}>
         {product.variants.nodes.map((variant) => (
           <ProductVariant
@@ -95,9 +94,9 @@ const ProductVariant = ({variant, product, cart}) => {
   return (
     <div className={cx('flex justify-between gap-2 flex-row')}>
       <div>
-        <Text as={'p'} intent={'text-sm'}>
+        <p as={'p'} className={'text-18'}>
           {selectedOptions[0].value}
-        </Text>
+        </p>
         <Money withoutTrailingZeros data={price} className={'text-sm'} />
       </div>
       <Await resolve={cart}>
