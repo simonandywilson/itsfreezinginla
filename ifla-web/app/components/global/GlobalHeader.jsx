@@ -21,7 +21,7 @@ export const GlobalHeader = () => {
           <Popover.Panel
             focus
             className={
-              'absolute inset-0 top-20 h-[calc(100vh-5rem)] bg-white p-4 md:hidden'
+              'absolute inset-0 top-header h-screen bg-white p-4 md:hidden'
             }
           >
             {({close}) => <GlobalMenuMobile menu={menu} close={close} />}

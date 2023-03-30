@@ -48,7 +48,7 @@ const MenuItem = ({ children}) => {
         <TextLink
           to={children[0].slug}
           className={'text-40'}
-          focused={pathname.slice(1) === children[0].slug ? true : false}
+          focused={children.length === 0 && pathname.slice(1) === children[0].slug ? true : false}
         >
           {children[0].title}
         </TextLink>

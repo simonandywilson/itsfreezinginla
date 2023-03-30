@@ -55,36 +55,17 @@ export const IconLink = ({children, to}) => {
   );
 };
 
-export const LinkExternal = ({
-  href,
-  target,
-  rel,
-  className,
-  children,
-  mono,
-}) => {
-  const {colours} = useRouteData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
-  return mono ? (
-    <a href={href} target={target} rel={rel} className={className}>
-      {children}
-    </a>
-  ) : (
-    <motion.a
+export const LinkExternal = ({href, className, children, mono, ...props}) => {
+  const { colours } = useRouteData(`root`);
+  const randomColour = useRef(useRandomColour(colours.dark));
+  return (
+    <a
       href={href}
-      target={target}
-      rel={rel}
-      className={className}
-      transition={{duration: 0}}
-      initial={{color: randomColour.current}}
-      whileHover={{
-        color: 'inherit',
-      }}
-      whileFocus={{
-        color: 'inherit',
-      }}
+      className={clsx("hover:underline focus-visible:underline",className)}
+      style={{color: randomColour.current}}
+      {...props}
     >
       {children}
-    </motion.a>
+    </a>
   );
 };

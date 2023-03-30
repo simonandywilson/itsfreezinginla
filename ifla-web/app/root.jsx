@@ -327,7 +327,7 @@ async function getFooterData({sanityClient}) {
 }
 
 async function getColoursData({sanityClient}) {
-  const query = groq`array::unique(*[_type == "colour"].colourDark)`;
+  const query = groq`{"dark":array::unique(*[_type == "colour"].colourDark), "light":array::unique(*[_type == "colour"].colourLight)}`;
   const colours = await sanityClient.fetch(query);
   return colours;
 }

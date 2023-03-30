@@ -5,15 +5,15 @@ import {CollapsibleModule} from '../modules/CollapsibleModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
 import {ImageModule} from '../modules/ImageModule';
 import {Footnote} from './Footnote';
-import {LinkExternal} from './Links';
-import {Text} from './Text';
+import {LinkExternal} from './LinksNew';
 
 const portableText = cva(
   '[&>*:not(:last-child):not(p):not(blockquote):not(section)]:mb-[1em]',
   {
     variants: {
       intent: {
-        body: ['[&>p:not(:first-of-type)]:indent-5 [&>*:not(section)]:prose '],
+        // body: ['[&>p:not(:first-of-type)]:indent-7 [&>*:not(section)]:prose '],
+        body: ['[&>p+p]:indent-7 [&>*:not(section)]:prose '],
         column: ['[&>p:not(:first-of-type)]:mb-[1em]'],
         footer: ['[&>p:not(:last-child)]:mb-[1em]'],
         preview: ['[&>p:not(:last-child)]:mb-[1em]'],
@@ -26,17 +26,13 @@ const portableText = cva(
   },
 );
 
-const components = (intent, colour) => {
+const components = (intent, colour, footnoteIndexes) => {
   return {
     block: {
       normal: ({children}) => {
         switch (intent) {
           case 'column':
-            return (
-              <Text as={'p'} intent={'text-base'}>
-                {children}
-              </Text>
-            );
+            return <p>{children}</p>;
           case 'footer':
             return <p className={'text-18 xl:text-24'}>{children}</p>;
           case 'intro':
@@ -48,52 +44,28 @@ const components = (intent, colour) => {
               </p>
             );
           case 'footnote':
-            return (
-              <Text as={'p'} intent={'text-sm'}>
-                {children}
-              </Text>
-            );
+            return <p className={'text-16'}>{children}</p>;
+          case 'footnoteList':
+            return <p className={'text-16'}>{children}</p>;
           default:
             return (
-              <p className={'font-serif text-18 xl:text-24'}>
-                {children}
-              </p>
+              <p className={'font-serif text-18 xl:text-24'}>{children}</p>
             );
         }
       },
-      large: ({children}) => (
-        <Text as={'p'} intent={'text-lg'}>
-          {children}
-        </Text>
-      ),
-      h3: ({children}) => (
-        <Text as={'h3'} intent={'text-xl'} className={'break-after-avoid'}>
-          {children}
-        </Text>
-      ),
-      h5: ({children}) => (
-        <Text as={'h4'} intent={'text-lg'}>
-          {children}
-        </Text>
-      ),
+      large: ({children}) => <p>{children}</p>,
+      h3: ({children}) => <h3 className={'break-after-avoid'}>{children}</h3>,
+      h5: ({children}) => <h4>{children}</h4>,
       h6: ({children}) => (
-        <Text
-          as={'h5'}
-          intent={'text-sm'}
-          className={'!mb-0 break-after-avoid'}
-        >
-          {children}
-        </Text>
+        <h5 className={'!mb-0 break-after-avoid'}>{children}</h5>
       ),
       blockquote: ({children, value}) => (
-        <Text
-          as={'blockquote'}
-          intent={'text-xl'}
-          colour={value.colour}
-          className={cx('my-20 px-4', 'md:px-8')}
+        <blockquote
+          className={cx('text-32 my-20 px-4', 'md:px-8')}
+          style={{color: value.colour}}
         >
           {children}
-        </Text>
+        </blockquote>
       ),
     },
     types: {
@@ -103,7 +75,13 @@ const components = (intent, colour) => {
       imageModule: ({value}) => <ImageModule content={value} inline />,
       carouselModule: ({value}) => <CarouselModule content={value} />,
       imageGridModule: ({value}) => <ImageGridModule content={value} inline />,
-      footnote: ({value}) => <Footnote content={value} colour={colour} />,
+      footnote: ({value}) => (
+        <Footnote
+          content={value}
+          colour={colour}
+          footnoteIndexes={footnoteIndexes}
+        />
+      ),
     },
     marks: {
       externalLinkObject: ({value, children}) => {
@@ -148,12 +126,18 @@ const components = (intent, colour) => {
   };
 };
 
-export const PortableText = ({text, intent, className, colour}) => {
+export const PortableText = ({
+  text,
+  intent,
+  className,
+  colour,
+  footnoteIndexes,
+}) => {
   return (
     <div className={portableText({intent, className})}>
       <SanityPortableText
         value={text}
-        components={components(intent, colour)}
+        components={components(intent, colour, footnoteIndexes)}
       />
     </div>
   );

@@ -1,5 +1,8 @@
 import groq from 'groq';
-const blockFragment = groq`_type == 'block' => {..., "colour": coalesce(*[_id == ^.^.^._id][0].colour->colourDark, "#000000")}`;
+const blockFragment = groq`_type == 'block' => {
+    ..., 
+    "colour": coalesce(*[_id == ^.^.^._id][0].colour->colourDark, "#000000"),
+}`;
 const headingModuleFragment = groq`_type == 'headingModule' => @`;
 const collapsibleModuleFragment = groq`_type == 'collapsibleModule' => @`;
 const shopModuleFragment = groq`_type == 'shopModule' => @`;
@@ -102,6 +105,9 @@ const textBlockModuleFragment = groq`_type == 'textBlockModule' => {
         ${imageModuleFragment},
         ${imageGridModuleFragment},
         ${footnoteFragment}
+    },
+    "footnotes": text[].children[] {
+        _type == "footnote" => @
     }
 }`;
 

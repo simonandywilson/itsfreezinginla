@@ -8,7 +8,6 @@ import {Layout} from '../parts/Layout';
 import {BlockLink, TextLink} from '../parts/Links';
 import {Search} from '../parts/Search';
 import {Submenu} from '../parts/Submenu';
-import {Text} from '../parts/Text';
 
 export const ArticlesModule = ({articles, topics}) => {
   const [text, setText] = useState(false);

@@ -21,7 +21,7 @@
 
   @font-face {
     font-family: 'Peace';
-    src: url('/fonts/Peace-Medium.woff') format('woff'),;
+    src: url('/fonts/Peace-Medium.woff') format('woff');
     font-style: normal;
     font-weight: 400;
     font-stretch: normal;
@@ -69,6 +69,15 @@
     overflow: none;
   }
 
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  /* For IE, Edge and Firefox */
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
 
 /* @layer components {
