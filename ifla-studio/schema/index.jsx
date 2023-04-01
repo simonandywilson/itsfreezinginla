@@ -1,17 +1,20 @@
 // Singletons
 import settings from './singletons/settings'
+import home from './singletons/home.jsx'
+
 // Documents
 import article from './documents/article'
 import product from './documents/product'
 import collection from './documents/collection'
 import productVariant from './documents/productVariant'
 import author from './documents/author'
-import home from './documents/home.jsx'
 import page from './documents/page'
 import topic from './documents/topic'
 import section from './documents/section'
 import colour from './documents/colour'
 import category from './documents/category'
+import audiobook from './documents/audiobook'
+import illustrator from './documents/illustrator'
 
 // Objects
 import imageObject from './objects/imageObject'
@@ -27,6 +30,9 @@ import shopifyCollectionRule from './objects/shopifyCollectionRule'
 import externalLinkObject from './objects/externalLinkObject'
 import internalLinkObject from './objects/internalLinkObject'
 import bitmapImageObject from './objects/bitmapImageObject'
+import footnoteObject from './objects/footnoteObject'
+import heroObject from './objects/heroObject'
+import checkoutObject from './objects/checkoutObject'
 
 // Blocks
 import defaultBlock from './blocks/defaultBlock'
@@ -35,6 +41,8 @@ import basicBlock from './blocks/basicBlock'
 
 // Arrays
 import contentArray from './arrays/contentArray'
+import homeArray from './arrays/homeArray'
+
 // Modules
 import textBlockModule from './modules/textBlockModule'
 import textColumnsModule from './modules/textColumnsModule'
@@ -45,11 +53,11 @@ import shopModule from './modules/shopModule'
 import imageGridModule from './modules/imageGridModule'
 import headingModule from './modules/headingModule'
 import collapsibleModule from './modules/collapsibleModule'
-import heroObject from './objects/heroObject'
-import checkoutObject from './objects/checkoutObject'
-import audiobook from './documents/audiobook'
-import illustrator from './documents/illustrator'
-import footnoteObject from './objects/footnoteObject'
+import audiobooksModule from './modules/audiobooksModule'
+import heroModule from './modules/heroModule'
+import articleBannerModule from './modules/articleBannerModule'
+import featuredBlocksModule from './modules/featuredBlocksModule'
+import widgetModule from './modules/widgetModule'
 
 const singletons = new Set([settings])
 const documents = new Set([
@@ -86,7 +94,7 @@ const objects = new Set([
   footnoteObject
 ])
 
-const arrays = new Set([contentArray])
+const arrays = new Set([contentArray, homeArray])
 
 const blocks = new Set([defaultBlock, columnsBlock, basicBlock])
 
@@ -100,6 +108,11 @@ const modules = new Set([
   imageGridModule,
   headingModule,
   collapsibleModule,
+  audiobooksModule,
+  heroModule,
+  articleBannerModule,
+  featuredBlocksModule,
+  widgetModule,
 ])
 
 export const schema = [...singletons, ...documents, ...objects, ...arrays, ...blocks, ...modules]

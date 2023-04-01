@@ -10,14 +10,19 @@ export default defineType({
     {
       name: 'global',
       title: 'Global',
-    },
-    {
-      name: 'seo',
-      title: 'SEO',
+      default: true
     },
     {
       name: 'footer',
       title: 'Footer',
+    },
+    {
+      name: 'key',
+      title: 'Key Pages',
+    },
+    {
+      name: 'seo',
+      title: 'SEO',
     },
   ],
   fields: [
@@ -40,11 +45,36 @@ export default defineType({
       group: 'global',
     }),
     defineField({
-      name: 'shop',
+      name: 'footerLinks',
+      type: 'array',
+      of: [{type: 'reference', to: [{type: 'page'}], title: 'Reference to Page'}],
+      group: 'footer',
+    }),
+    defineField({
+      name: 'footerText',
+      type: 'basicBlock',
+      group: 'footer',
+    }),
+    defineField({
+      name: 'shopPage',
       type: 'reference',
       to: [{type: 'page'}],
       description: '💡 When cart is empty, show link to this page.',
-      group: 'global',
+      group: 'key',
+    }),
+    defineField({
+      name: 'articlesPage',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: '💡 Read More buttons link to this page.',
+      group: 'key',
+    }),
+    defineField({
+      name: 'audiobooksPage',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: '💡 Listen More buttons link to this page.',
+      group: 'key',
     }),
     defineField({
       name: 'seoTitle',
@@ -95,17 +125,6 @@ export default defineType({
       type: 'string',
       title: 'Twitter Handle',
       group: 'seo',
-    }),
-    defineField({
-      name: 'footerLinks',
-      type: 'array',
-      of: [{type: 'reference', to: [{type: 'page'}], title: 'Reference to Page'}],
-      group: 'footer',
-    }),
-    defineField({
-      name: 'footerText',
-      type: 'basicBlock',
-      group: 'footer',
     }),
   ],
 })

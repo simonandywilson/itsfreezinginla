@@ -20,6 +20,10 @@ export default defineType({
       of: [{type: 'reference', to: [{type: 'article'}], title: 'Reference to Article'}],
       validation: (Rule) => Rule.required().min(4).max(4),
     }),
+    defineField({
+      name: 'content',
+      type: 'homeArray',
+    }),
   ],
   preview: {
     prepare() {

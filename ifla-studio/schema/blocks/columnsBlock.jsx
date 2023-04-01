@@ -24,5 +24,6 @@ export default defineField({
       },
     },
     {type: 'imageModule'},
+    {type: 'widgetModule'},
   ],
 })

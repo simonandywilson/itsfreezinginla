@@ -13,6 +13,7 @@ export default defineType({
     {
       name: 'info',
       title: 'Info',
+      default: true
     },
     {
       name: 'content',

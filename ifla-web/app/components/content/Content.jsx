@@ -6,8 +6,9 @@ import {HeadingModule} from '../modules/HeadingModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
 import {ImageModule} from '../modules/ImageModule';
 import {TextBlockModule} from '../modules/TextBlockModule';
-import {ShopModule} from '../modules/ShopModule';
-export const Content = ({content, articles, topics, colour}) => {
+import { ShopModule } from '../modules/ShopModule';
+import {AudiobooksModule} from '../modules/AudiobooksModule';
+export const Content = ({content, articles, topics, colour, audiobooks}) => {
   switch (content._type) {
     case 'textBlockModule':
       return <TextBlockModule content={content} colour={colour} />;
@@ -25,6 +26,8 @@ export const Content = ({content, articles, topics, colour}) => {
       return <ArticlesModule articles={articles} topics={topics} />;
     case 'carouselModule':
       return <CarouselModule content={content} />;
+    case 'audiobooksModule':
+      return <AudiobooksModule audiobooks={audiobooks} />;
     case 'shopModule':
       return <ShopModule />;
     default:

@@ -140,9 +140,12 @@ export const structure = (S, context) => {
                   const client = context.getClient({apiVersion})
                   const type = 'article'
                   return client
-                    .fetch('*[_type == $type && defined(date)]{_id, _type, date}', {
-                      type,
-                    })
+                    .fetch(
+                      '*[_type == $type && defined(date)]|order(date desc){_id, _type, date}',
+                      {
+                        type,
+                      }
+                    )
                     .then((docs) => {
                       // Create a map of years
                       const years = {}
@@ -158,19 +161,23 @@ export const structure = (S, context) => {
                         .title('Articles by Year')
                         .id('year')
                         .items(
-                          Object.keys(years).map((year) => {
-                            return S.listItem()
-                              .id(year)
-                              .title(year)
-                              .icon(() => Icons.year)
-                              .child(
-                                S.documentList()
-                                  .id(type)
-                                  .title(`Articles from ${year}`)
-                                  .filter(`_id in $ids`)
-                                  .params({ids: years[year]})
-                              )
-                          })
+                          Object.keys(years)
+                            .slice(0)
+                            .reverse()
+                            .map((year) => {
+                              return S.listItem()
+                                .id(year)
+                                .title(year)
+                                .icon(() => Icons.year)
+                                .child(
+                                  S.documentList()
+                                    .id(type)
+                                    .title(`Articles from ${year}`)
+                                    .filter(`_id in $ids`)
+                                    .params({ids: years[year]})
+                                    .defaultOrdering([{field: 'date', direction: 'asc'}])
+                                )
+                            })
                         )
                     })
                 }),

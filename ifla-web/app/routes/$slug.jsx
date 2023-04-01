@@ -7,6 +7,7 @@ import {
   allArticlesDataQuery,
   allTopicsDataQuery,
   allArticlesDataQueryFiltered,
+  allAudiobooksDataQuery,
 } from '../lib/sanity.queries';
 import {Page} from '../components/page/Page';
 import { sanityClient } from '../lib/sanity';
@@ -30,10 +31,11 @@ export const links = () => {
 
 export async function loader({ params, request}) {
 
-  const [page, articles, topics] = await Promise.all([
+  const [page, articles, topics, audiobooks] = await Promise.all([
     getAllPageData(params),
     getAllArticlesData(request),
     getAllTopicsData(),
+    getAllAudiobooksData(request),
   ]);
 
   if (!page) {
@@ -46,12 +48,20 @@ export async function loader({ params, request}) {
     page,
     articles,
     topics,
+    audiobooks
   });
 }
 
 export default function PageRoute() {
-  const {page, articles, topics} = useLoaderData();
-  return <Page page={page} articles={articles} topics={topics} />;
+  const {page, articles, topics, audiobooks} = useLoaderData();
+  return (
+    <Page
+      page={page}
+      articles={articles}
+      topics={topics}
+      audiobooks={audiobooks}
+    />
+  );
 }
 
 async function getAllPageData(params) {
@@ -90,4 +100,9 @@ async function getAllArticlesData(request) {
 async function getAllTopicsData() {
   const topics = await sanityClient.fetch(allTopicsDataQuery);
   return topics;
+}
+
+async function getAllAudiobooksData() {
+  const audiobooks = await sanityClient.fetch(allAudiobooksDataQuery);
+  return audiobooks;
 }

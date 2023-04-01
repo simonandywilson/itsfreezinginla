@@ -36,6 +36,7 @@ export const articlePreviewFragment = groq`{
 }`;
 
 const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"] [0..100]|order(date desc)${articlePreviewFragment}}`;
+const audiobooksModuleFragment = groq`_type == 'audiobooksModule' => {...}`;
 
 const carouselModuleFragment = groq`
     _type == 'carouselModule' => {
@@ -122,6 +123,7 @@ export const contentFragment = groq`
         ${imageGridModuleFragment},
         ${articlesModuleFragment},
         ${shopModuleFragment},
+        ${audiobooksModuleFragment},
     }`;
 
 export const relatedArticlesFragment = groq`"related": select(autoRecommend => *[_type == "article" && _id != ^._id] {

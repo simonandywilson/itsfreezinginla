@@ -12,11 +12,12 @@ export default defineField({
     {type: 'carouselModule'},
     {type: 'imageGridModule'},
     {type: 'articlesModule'},
+    {type: 'audiobooksModule'},
     {type: 'shopModule'},
   ],
   validation: (Rule) =>
     Rule.error().custom((array) => {
-      if (array.length <=1) {
+      if (!array || array?.length <= 1) {
         return true
       }
       if (array.filter((e) => e._type === 'articlesModule').length > 0) {

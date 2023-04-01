@@ -13,6 +13,7 @@ export default defineType({
     {
       name: 'info',
       title: 'Info',
+      default: true
     },
     {
       name: 'content',
@@ -28,12 +29,6 @@ export default defineType({
     },
   ],
   fields: [
-    // defineField({
-    //   title: 'TEST',
-    //   name: 'bitmapImage',
-    //   type: 'bitmapImageObject',
-    //   group: 'info',
-    // }),
     defineField({
       name: 'headline',
       type: 'string',

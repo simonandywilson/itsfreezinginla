@@ -37,20 +37,20 @@ export default defineType({
     defineField({
       name: 'slug',
       type: 'slug',
-      components: {
-        input: SlugInput,
-      },
+      // components: {
+      //   input: SlugInput,
+      // },
       options: {
         source: 'title',
-        urlPrefix: async (document) => {
-          const parent = await getParentSlug(document)
-          if (typeof parent !== 'undefined' && parent !== null) {
-            return `/${parent}/`
-          } else return ''
-        },
+        // urlPrefix: async (document) => {
+        //   const parent = await getParentSlug(document)
+        //   if (typeof parent !== 'undefined' && parent !== null) {
+        //     return `/${parent}/`
+        //   } else return ''
+        // },
         isUnique: isSlugUnique,
         maxLength: 30,
-        storeFullUrl: true,
+        // storeFullUrl: false,
       },
       group: 'info',
     }),
