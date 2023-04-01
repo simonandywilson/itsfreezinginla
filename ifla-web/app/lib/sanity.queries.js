@@ -3,7 +3,7 @@ import {
   contentFragment,
   articlePreviewFragment,
   relatedArticlesFragment,
-} from './fragments';
+} from './sanity.fragments';
 
 export const homepageDataQuery = groq`*[_type == "home"][0] {
     "hero": hero[] {

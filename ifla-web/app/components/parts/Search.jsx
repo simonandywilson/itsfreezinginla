@@ -18,7 +18,7 @@ export const Search = () => {
           name={'search-query'}
           id={'search-query'}
           className={clsx(
-            'w-full h-full appearance-none  text-inherit placeholder-inherit  bg-zinc-200 px-2',
+            'w-full h-full appearance-none  text-inherit placeholder-inherit  border-b-1 border-l-1 px-2 border-black',
             ' focus:outline-none',
           )}
           defaultValue={defaultQuery}

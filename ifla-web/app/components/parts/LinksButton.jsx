@@ -1,7 +1,6 @@
 import {cva} from 'class-variance-authority';
-import {Link} from '@remix-run/react';
+import {Link, useRouteLoaderData} from '@remix-run/react';
 import {useRandomColour} from '../../hooks/useRandomColour';
-import {useRouteData} from 'remix-utils';
 import {motion} from 'framer-motion';
 import {useRef} from 'react';
 
@@ -38,7 +37,7 @@ export const BlockLink = ({children, to}) => {
 };
 
 export const ButtonLink = ({children, to, className, colour, ...props}) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
 
   return (
@@ -67,7 +66,7 @@ export const ButtonLinkExternal = ({
   colour,
   ...props
 }) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
     <motion.a

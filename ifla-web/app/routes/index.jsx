@@ -1,13 +1,13 @@
-import {defer} from '@shopify/remix-oxygen';
-import {cx} from 'class-variance-authority';
-import {useLoaderData} from 'react-router';
-import {ArticleBlock} from '../components/article/ArticleBlock';
-import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
-import {Hero} from '../components/hero/Hero';
+import {sanityClient} from '~/lib/sanity';
+import {homepageDataQuery} from '../lib/sanity.queries';
+import {defer} from '@remix-run/server-runtime';
+import {useLoaderData} from '@remix-run/react';
 import {Layout} from '../components/parts/Layout';
-import {BlockLink, ButtonLink} from '../components/parts/LinksButton';
-import { homepageDataQuery } from '../lib/queries';
-
+import {Hero} from '../components/hero/Hero';
+import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
+import {ArticleBlock} from '../components/article/ArticleBlock';
+import {BlockLink, ButtonLink} from '~/components/parts/LinksButton';
+import clsx from 'clsx';
 
 export const handle = {
   seo: {
@@ -20,14 +20,14 @@ export const meta = () => ({
   viewport: 'width=device-width,initial-scale=1',
 });
 
-export async function loader({context}) {
-  const [homepage] = await Promise.all([getHomepageData(context)]);
+export async function loader() {
+  const [homepage] = await Promise.all([getHomepageData()]);
   return defer({
     homepage,
   });
 }
 
-export default function Index() {
+export default function Homepage() {
   const {homepage} = useLoaderData();
   return (
     <Layout intent={'home'}>
@@ -56,7 +56,7 @@ export default function Index() {
               );
             })}
             <li
-              className={cx(
+              className={clsx(
                 'w-full hidden items-center justify-center aspect-square',
                 'md:flex xl:hidden 3xl:flex',
               )}
@@ -76,7 +76,7 @@ export default function Index() {
   );
 }
 
-async function getHomepageData({sanityClient}) {
+async function getHomepageData() {
   const homepage = await sanityClient.fetch(homepageDataQuery);
   return homepage;
 }

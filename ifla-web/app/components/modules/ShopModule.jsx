@@ -1,60 +1,65 @@
-import {Await} from '@remix-run/react';
+import {Await, useRouteLoaderData} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
 import {cx} from 'class-variance-authority';
 import React from 'react';
-import {useRouteData} from 'remix-utils';
 import {AddToCart} from '../parts/AddToCart';
 import {CartPreview} from '../parts/CartPreview';
 import {Layout} from '../parts/Layout';
+import {Submenu} from '../parts/Submenu';
+import clsx from 'clsx';
 
 export const ShopModule = () => {
-  const {allProducts, allCollections, cart} = useRouteData(`root`);
+  const {shopifyAllCollections, cart} = useRouteLoaderData(`root`);
   return (
-    <Layout intent={'cart'}>
-      <div
-        className={cx(
-          'grid grid-cols-1 gap-8',
-          'sm:grid-cols-2',
-          'md:grid-cols-3 md:gap-16',
-        )}
-      >
-        <div className={cx('col-span-1', 'sm:col-span-2')}>
-          <div
-            className={cx(
-              'grid grid-cols-1 gap-8',
-              'sm:grid-cols-2 sm:gap-8',
-              'md:grid-cols-2 md:gap-16',
-              'lg:grid-cols-3 lg:gap-8',
-            )}
-          >
-            {allCollections.nodes.map((collection) =>
-              collection.products.nodes.map((product) => (
-                <Product key={product.id} product={product} cart={cart} />
-              )),
-            )}
-
-            {/* {allProducts.nodes.map((product) => (
-             
-            ))} */}
+    <>
+      <Submenu className={' sticky top-header-submenu z-40  '}>
+        <p className={'mr-8'}>Filter:</p>
+        <p>All products</p>
+      </Submenu>
+      <Layout intent={'shop'}>
+        <div
+          className={cx(
+            'grid grid-cols-1 gap-16 mb-16',
+            'sm:grid-cols-2',
+            'md:grid-cols-3 md:gap-8',
+          )}
+        >
+          <div className={cx('col-span-1', 'sm:col-span-2')}>
+            <div
+              className={cx(
+                'grid grid-cols-1 gap-x-16 gap-y-24',
+                'sm:grid-cols-2 ',
+                'md:grid-cols-2 ',
+                'xl:grid-cols-3 ',
+              )}
+            >
+              {shopifyAllCollections.nodes.map((collection) =>
+                collection.products.nodes.map((product) => (
+                  <Product key={product.id} product={product} cart={cart} />
+                )),
+              )}
+            </div>
+          </div>
+          <div className={'sticky top-36 h-max hidden md:block'}>
+            <CartPreview />
           </div>
         </div>
-        <div className={'sticky top-36 h-max hidden md:block'}>
-          <CartPreview />
-        </div>
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 
 const Product = ({product, cart}) => {
   return (
-    <div className={cx('h-max max-w-[15rem] mx-auto', 'sm:mx-0')}>
-      <img
-        src={product.featuredImage.url}
-        alt={product.featuredImage.altText}
-        className="w-full h-full object-cover"
-      />
-      <h4 as={'h4'} className={cx('text-32 my-4', 'sm:my-8')}>
+    <div className={cx('w-full h-max mx-auto', 'sm:mx-0', 'sm:max-w-[18rem]')}>
+      <div className={'aspect-square max-w-sm mx-auto'}>
+        <img
+          src={product.featuredImage.url}
+          alt={product.featuredImage.altText}
+          className={'w-full h-full object-contain sm:object-left'}
+        />
+      </div>
+      <h4 as={'h4'} className={cx('text-32 my-8 min-h-[4.5rem]')}>
         {product.title}
       </h4>
       <div className={'flex flex-col gap-4'}>
@@ -81,29 +86,21 @@ const ProductVariant = ({variant, product, cart}) => {
     selectedOptions,
   } = variant;
 
-  const productAnalytics = {
-    productGid: product.id,
-    variantGid: id,
-    name: product.title,
-    variantName: title,
-    brand: product.vendor,
-    price: price.amount,
-    quantity: 1,
-  };
-
   return (
-    <div className={cx('flex justify-between gap-2 flex-row')}>
-      <div>
+    <div className={clsx('flex justify-end gap-8 flex-row leading-none items-center', 'sm:justify-between')}>
+      <div className={"flex gap-2 justify-between flex-1"}>
         <p as={'p'} className={'text-18'}>
           {selectedOptions[0].value}
         </p>
-        <Money withoutTrailingZeros data={price} className={'text-sm'} />
+        <Money withoutTrailingZeros data={price} className={'text-18'} />
       </div>
-      <Await resolve={cart}>
-        {(cart) => (
-          <AddEditRemove variant={variant} product={product} cart={cart} />
-        )}
-      </Await>
+      <div className={"min-w-[7rem]"} >
+        <Await resolve={cart}>
+          {(cart) => (
+            <AddEditRemove variant={variant} product={product} cart={cart} />
+          )}
+        </Await>
+      </div>
     </div>
   );
 };

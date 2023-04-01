@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useState} from 'react';
-import {useRouteData} from 'remix-utils';
 import {TextLink} from '../parts/LinksNew';
+import { useRouteLoaderData } from '@remix-run/react';
 
 export const GlobalTitle = () => {
-  const {settings} = useRouteData(`root`);
+  const {settings} = useRouteLoaderData(`root`);
   const [long, setLong] = useState(false);
 
   const sentence = {
@@ -38,7 +38,7 @@ export const GlobalTitle = () => {
               animate={'visible'}
               aria-hidden="true"
               className={
-                'absolute text-32 font-sans-alt whitespace-nowrap  hidden xl:inline-block'
+                'absolute text-32 font-sans-alt whitespace-nowrap hidden xl:inline-block'
               }
             >
               {settings?.longTitle &&
@@ -55,7 +55,8 @@ export const GlobalTitle = () => {
 
         <div
           className={clsx(
-            'text-32 font-sans-alt inline-block xl:group-hover:hidden xl:group-focus-visible:hidden', {"xl:invisible": long}
+            'text-32 font-sans-alt inline-block ',
+            {'xl:opacity-0': long},
           )}
         >
           <span className={'sr-only md:not-sr-only'}>{settings.title}</span>

@@ -5,7 +5,9 @@ import {ArticleBlock} from '../article/ArticleBlock';
 import {Button} from '../parts/ButtonNew';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import {BlockLink, TextLink} from '../parts/Links';
+import {TextLink} from '../parts/LinksNew';
+import {BlockLink} from '../parts/LinksButton';
+
 import {Search} from '../parts/Search';
 import {Submenu} from '../parts/Submenu';
 
@@ -14,11 +16,7 @@ export const ArticlesModule = ({articles, topics}) => {
 
   return (
     <>
-      <Submenu
-        className={
-          'justify-between sticky top-header-submenu z-40 border-b-1 border-black'
-        }
-      >
+      <Submenu className={'justify-between sticky top-header-submenu z-40 '}>
         <FilterDialog topics={topics} />
         <Button
           colour={'transparent'}
@@ -48,18 +46,25 @@ export const ArticlesModule = ({articles, topics}) => {
       </Layout>
       {text && (
         <Layout intent={'columns'}>
-          <div className={'grid grid-cols-2'}>
+          <div
+            className={
+              'grid grid-cols-[175px,1fr] [&>h3:not(:first-of-type)]:mt-[24px] [&>h3]:mb-[24px]'
+            }
+          >
             {Object.keys(articles).map((keyName, i) => (
               <Fragment key={keyName + i}>
-                <h3 className={'col-start-2 mb-[1em] text-40'}>{keyName}</h3>
+                <h3 className={'col-start-2 text-40'}>{keyName}</h3>
                 {articles[keyName].map((article) => {
                   return (
                     <div
                       key={article._id}
-                      className={'col-span-2 grid grid-cols-2'}
+                      className={'col-span-2 grid grid-cols-[175px,1fr]'}
                     >
                       <p className={'text-16'}>{`[${article.topic.topic}]`}</p>
-                      <TextLink to={article.slug} className={'w-auto text-24'}>
+                      <TextLink
+                        to={article.slug}
+                        className={' text-24 !w-auto'}
+                      >
                         {article.headline}
                       </TextLink>
                     </div>
@@ -91,10 +96,10 @@ const FilterDialog = ({topics}) => {
 
   return (
     <>
-      <div className={'w-60 flex gap-2 justify-between'}>
+      <div className={'w-60 flex flex-shrink-0 gap-2 justify-between'}>
         <Button
           colour={'transparent'}
-          intent={'text-sm'}
+          className={'text-18'}
           onClick={() => setIsOpen(true)}
         >
           Topic Filter
@@ -102,7 +107,7 @@ const FilterDialog = ({topics}) => {
         {isOpen && (
           <Button
             colour={'transparent'}
-            intent={'text-sm'}
+            className={'text-18'}
             onClick={() => setIsOpen(false)}
           >
             X
@@ -116,17 +121,16 @@ const FilterDialog = ({topics}) => {
         className={'relative z-10'}
         onClose={closeModal}
       >
-        <div className="fixed inset-0 bg-black/30" aria-hidden="true" />
+        <div className={"fixed inset-0 bg-white sm:bg-white/30"} aria-hidden="true" />
 
         <div className="fixed inset-0 overflow-y-auto pt-header-submenu">
-          <div className="flex max-h-full pb-4 pl-4">
+          <div className="flex max-h-full pb-4 pl-4 pt-submenu">
             <Dialog.Panel
               className="w-60 transform overflow-hidden bg-white border-8 border-white flex flex-col"
               aria-label="Topic filter"
             >
               <Button
-                intent={'text-sm'}
-                className={'ml-auto'}
+                className={'ml-auto button-18'}
                 onClick={() => {
                   setSearchParams({});
                   formRef.current?.reset();

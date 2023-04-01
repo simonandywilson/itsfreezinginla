@@ -20,7 +20,8 @@ const layout = cva('', {
         'lg:p-8 lg:min-h-[700px]',
       ],
       block: ['px-6 pb-6 pt-4'],
-      cart: ['p-8'],
+      shop: ['p-8'],
+      cart: ['p-8 pt-header'],
       module: ['px-4 my-8'],
       'module-full': ['my-8'],
       'module-inline': ['prose my-8 break-inside-avoid-column'],
@@ -35,7 +36,7 @@ const layout = cva('', {
         'pb-24',
       ],
       columns: [
-        'flex-1 w-full md:columns-2 xl:w-2/3 px-4 py-8 col-fill-balance',
+        'flex-1 w-full gap-8 md:columns-2 xl:w-2/3 px-4 py-8 col-fill-balance',
       ],
     },
   },

@@ -13,9 +13,9 @@ export const AddToCart = ({lines, analytics, soldOut}) => {
       <Button
         type={'submit'}
         colour={'default'}
-        intent={'text-sm'}
         status={soldOut ? 'disabled' : ''}
         disabled={soldOut}
+        className={"button-18"}
       >
         {soldOut ? 'Sold Out' : 'Add to Cart'}
       </Button>

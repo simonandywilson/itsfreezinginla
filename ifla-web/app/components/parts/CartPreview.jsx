@@ -1,14 +1,13 @@
-import {Await} from '@remix-run/react';
+import {Await, useRouteLoaderData} from '@remix-run/react';
 import { cx } from 'class-variance-authority';
 import React, {Suspense} from 'react';
-import {useRouteData} from 'remix-utils';
 import {BasketIconThin} from '../icons/Icons';
 import {Badge} from './Badge';
 import {CartPreviewItem} from './CartPreviewItem';
-import {ButtonLink} from './Links';
+import {ButtonLink} from './LinksButton';
 
 export const CartPreview = ({text, link, className}) => {
-  const {cart} = useRouteData(`root`);
+  const {cart} = useRouteLoaderData(`root`);
   return (
     <div className={cx('w-full h-max max-w-sm mx-auto', className)}>
       <div className={'w-full relative'}>
@@ -46,7 +45,7 @@ export const CartPreview = ({text, link, className}) => {
         </div>
       </div>
       <div className={'flex justify-center mt-8'}>
-        <ButtonLink to={link || '/cart'} intent={'text-lg'}>
+        <ButtonLink to={link || '/cart'} className={'button-32'}>
           {text || 'View Basket'}
         </ButtonLink>
       </div>

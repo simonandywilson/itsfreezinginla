@@ -1,9 +1,10 @@
 import groq from 'groq';
 import invariant from 'tiny-invariant';
+import { sanityClient } from '../lib/sanity';
 
-export async function loader({request, context}) {
+export async function loader({request}) {
   const [data] = await Promise.all([
-    getSitemapData(context, {baseUrl: new URL(request.url).origin}),
+    getSitemapData( {baseUrl: new URL(request.url).origin}),
   ]);
 
   invariant(data, 'Sitemap data is missing');
@@ -81,7 +82,7 @@ function renderUrlTag({url, lastMod, changeFreq, priority, image}) {
   `;
 }
 
-async function getSitemapData(context, params) {
+async function getSitemapData(params) {
   const query = groq`{
   "home": *[
     _type == 'home'
@@ -102,6 +103,6 @@ async function getSitemapData(context, params) {
     "url": $baseUrl + "/articles/" + slug.current,
   },
 }`;
-  const sitemap = await context.sanityClient.fetch(query, params);
+  const sitemap = await sanityClient.fetch(query, params);
   return sitemap;
 }

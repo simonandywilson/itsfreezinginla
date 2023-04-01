@@ -1,16 +1,14 @@
-import {Await, useFetcher} from '@remix-run/react';
+import {Await, useFetcher, useRouteLoaderData} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
-import {defer} from '@shopify/remix-oxygen';
+import {defer, json} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
-import {useRouteData} from 'remix-utils';
 import invariant from 'tiny-invariant';
 import {Button} from '~/components/parts/ButtonNew';
-import CartLoader from '../components/loaders/CartLoader';
 import {CartPreview} from '../components/parts/CartPreview';
 import {Dash} from '../components/parts/Dash';
 import {Layout} from '../components/parts/Layout';
 import {ButtonLinkExternal} from '../components/parts/LinksButton';
-import {Text} from '../components/parts/Text';
+import {ShopModule} from '../components/modules/ShopModule';
 
 export const handle = {
   seo: {
@@ -161,7 +159,7 @@ export async function action({request, context}) {
 
   const {cart, errors} = result;
 
-  return defer(
+  return json(
     {
       cart,
       errors,
@@ -174,7 +172,10 @@ export async function action({request, context}) {
 }
 
 export default function CartPage() {
-  const {cart, shop} = useRouteData(`root`);
+  const {
+    cart,
+    keyPages: {shop},
+  } = useRouteLoaderData(`root`);
   return (
     <Layout intent={'home'}>
       {/* <Suspense fallback={<CartLoader />}>
@@ -184,39 +185,43 @@ export default function CartPage() {
           }
         </Await>
       </Suspense> */}
-      <Await resolve={cart}>{(cart) => <Cart cart={cart} shop={shop} />}</Await>
+      <Await resolve={cart}>
+        {(cart) =>  <Cart cart={cart} shop={shop} />}
+      </Await>
     </Layout>
   );
 }
 
 const Cart = ({cart, shop}) => {
-  const {lines, cost, checkoutUrl} = cart;
   const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
 
   return (
     <Layout intent={'cart'}>
-      <div className={cx('grid grid-cols-1', 'md:grid-cols-3 md:gap-16')}>
+      <div className={cx('grid grid-cols-1', 'md:grid-cols-3 md:gap-8')}>
         <div
           className={cx(
             'order-last col-span-2 flex flex-col mt-8',
             'md:order-first md:mt-0',
           )}
         >
-          <Text as={'h2'} intent={'text-base'} className={'mb-4'}>
+          <h2 as={'h2'} className={'mb-4 text-32'}>
             Basket contents
-          </Text>
-          {lines.edges.map(({node}) => (
-            <CartLine key={node.id} line={node} />
-          ))}
-          <CartTotal cost={cost} />
-          <ButtonLinkExternal
-            to={checkoutUrl}
-            target={'_self'}
-            intent={'text-lg'}
-            className={cx('mx-auto mt-8 px-4 py-2', 'md:ml-auto md:mr-20')}
-          >
-            Checkout
-          </ButtonLinkExternal>
+          </h2>
+          {cartHasItems &&
+            cart.lines.edges.map(({node}) => <CartLine key={node.id} line={node} />)}
+          <CartTotal cost={cart?.cost} />
+          {cartHasItems && (
+            <ButtonLinkExternal
+              to={cart.checkoutUrl}
+              target={'_self'}
+              className={cx(
+                'ml-auto mr-16 mt-8 button-24',
+                'md:ml-auto md:mr-16',
+              )}
+            >
+              Checkout
+            </ButtonLinkExternal>
+          )}
         </div>
         <CartPreview
           text={'Back to shop'}
@@ -242,27 +247,23 @@ const CartLine = ({line}) => {
   const nextQuantity = Number((quantity + 1).toFixed(0));
   return (
     <CartLineWrapper>
-      <div className={'flex gap-2 items-baseline justify-self-stretch'}>
-        <Text as={'h4'} intent={'text-sm'}>
-          {merchandise.product.title}
-        </Text>
-        <Text as={'h5'} intent={'text-sm'} className={'text-center'}>
-          {merchandise.title}
-        </Text>
+      <div className={'flex gap-2 items-baseline justify-self-stretch text-24'}>
+        <h4>{merchandise.product.title}</h4>
+        <h5 className={'text-center'}>{merchandise.title}</h5>
         <Dash className={'flex-1'} />
-        <Text intent={'text-sm'}>x{quantity}</Text>
+        <p>x{quantity}</p>
         <Money
           withoutTrailingZeros
           data={cost.totalAmount}
           className={'text-right text-sm'}
         />
       </div>
-      <div className={'flex gap-1 ml-4'}>
+      <div className={'flex gap-2 ml-4'}>
         <CartUpdateQuantity lines={[{id: id, quantity: prevQuantity}]}>
           <Button
             type={'submit'}
             colour={'transparent'}
-            intent={'text-sm'}
+            className={'text-24'}
             value={prevQuantity}
             aria="Decrease quantity"
           >
@@ -273,7 +274,7 @@ const CartLine = ({line}) => {
           <Button
             type={'submit'}
             colour={'transparent'}
-            intent={'text-sm'}
+            className={'text-24'}
             value={nextQuantity}
             aria="Increase quantity"
           >
@@ -309,22 +310,24 @@ const CartUpdateQuantity = ({lines, children}) => {
 //   );
 // };
 
-const CartTotal = ({ cost }) => {
+const CartTotal = ({cost}) => {
   return (
     <CartLineWrapper>
-      <div className={'flex gap-2 items-baseline justify-self-stretch mt-8'}>
-        <Text as={'h4'} intent={'text-sm'}>
-          Total
-        </Text>
+      <div
+        className={
+          'flex gap-2 items-baseline justify-self-stretch mt-8 text-24'
+        }
+      >
+        <h4>Total</h4>
         <Dash className={'flex-1'} />
-        {cost.totalAmount.amount > 0 ? (
+        {cost?.totalAmount?.amount > 0 ? (
           <Money
             withoutTrailingZeros
             data={cost.totalAmount}
             className={'text-right text-sm'}
           />
         ) : (
-          <span className={'text-sm text-right'}>{':('}</span>
+          <span className={'text-24 text-right'}>{':('}</span>
         )}
       </div>
     </CartLineWrapper>

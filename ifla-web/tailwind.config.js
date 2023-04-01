@@ -21,7 +21,7 @@ module.exports = {
     },
     fontFamily: {
       sans: ['Peace2020', ...fontFamily.sans],
-      "sans-alt": ['Peace', ...fontFamily.sans],
+      'sans-alt': ['Peace', ...fontFamily.sans],
       serif: ['Times New Roman', ...fontFamily.serif],
     },
     fontSize: {

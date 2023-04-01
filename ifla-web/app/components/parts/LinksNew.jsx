@@ -1,6 +1,5 @@
-import {Link} from '@remix-run/react';
+import {Link, useRouteLoaderData} from '@remix-run/react';
 import {useRandomColour} from '../../hooks/useRandomColour';
-import {useRouteData} from 'remix-utils';
 import {motion} from 'framer-motion';
 import {useRef} from 'react';
 import clsx from 'clsx';
@@ -8,13 +7,13 @@ import clsx from 'clsx';
 const MotionLink = motion(Link);
 
 export const TextLink = ({children, to, className, focused, ...props}) => {
-  const {colours} = useRouteData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+  const {colours} = useRouteLoaderData(`root`);
+  const randomColour = useRef(useRandomColour(colours.dark));
   return (
     <MotionLink
       to={to}
       className={clsx(
-        'w-max leading-none focus:outline-none focus:underline-none focus:border-none ',
+        'w-max leading-none focus:outline-none focus-visible:underline focus:border-none hover:underline',
         className,
       )}
       initial={{color: 'inherit'}}
@@ -35,7 +34,7 @@ export const TextLink = ({children, to, className, focused, ...props}) => {
 };
 
 export const IconLink = ({children, to}) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
     <MotionLink
@@ -56,7 +55,7 @@ export const IconLink = ({children, to}) => {
 };
 
 export const LinkExternal = ({href, className, children, mono, ...props}) => {
-  const { colours } = useRouteData(`root`);
+  const { colours } = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours.dark));
   return (
     <a

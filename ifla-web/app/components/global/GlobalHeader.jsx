@@ -1,12 +1,11 @@
-import {useRouteData} from 'remix-utils';
 import {Popover} from '@headlessui/react';
 import {GlobalMenuMobile} from './GlobalMenuMobile';
-import {useLocation} from '@remix-run/react';
+import {useLocation, useRouteLoaderData} from '@remix-run/react';
 import {GlobalSubmenu} from './GlobalSubmenu';
 import {GlobalMenuDesktop} from './GlobalMenuDesktop';
 
 export const GlobalHeader = () => {
-  const {menu} = useRouteData(`root`);
+  const {menu = []} = useRouteLoaderData(`root`);
   const {pathname} = useLocation();
   const submenuActiveOn = menu
     .map((section) => section.children)

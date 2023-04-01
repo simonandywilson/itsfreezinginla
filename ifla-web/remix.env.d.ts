@@ -20,9 +20,6 @@ declare global {
     PRIVATE_STOREFRONT_API_TOKEN: string;
     PUBLIC_STOREFRONT_API_VERSION: string;
     PUBLIC_STORE_DOMAIN: string;
-    SANITY_PUBLIC_PROJECT_ID: string;
-    SANITY_PUBLIC_DATASET: string;
-    SANITY_PUBLIC_API_VERSION: string;
     MAILERLITE_API_KEY: string;
     GA_TRACKING_ID: string;
   }

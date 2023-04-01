@@ -1,17 +1,16 @@
 import {GlobalTitle} from './GlobalTitle';
 import {Basket} from '../parts/Basket';
-import {Fragment, useRef} from 'react';
-import {Popover, Transition} from '@headlessui/react';
-import {useNavigate} from '@remix-run/react';
+import { useRef} from 'react';
+import {Popover} from '@headlessui/react';
+import {useNavigate, useRouteLoaderData} from '@remix-run/react';
 import {TextLink} from '../parts/LinksNew';
 import {motion} from 'framer-motion';
 import {useRandomColour} from '~/hooks/useRandomColour';
-import {useRouteData} from 'remix-utils';
 import clsx from 'clsx';
 const MotionButton = motion(Popover.Button);
 
 export const GlobalMenuDesktop = ({menu}) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
     <div
@@ -80,7 +79,7 @@ export const GlobalMenuDesktop = ({menu}) => {
 
 const MenuItem = ({title, children, close}) => {
   const navigate = useNavigate();
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
 
   return (

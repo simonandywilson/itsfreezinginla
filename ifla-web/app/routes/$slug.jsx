@@ -7,8 +7,9 @@ import {
   allArticlesDataQuery,
   allTopicsDataQuery,
   allArticlesDataQueryFiltered,
-} from '../lib/queries';
+} from '../lib/sanity.queries';
 import {Page} from '../components/page/Page';
+import { sanityClient } from '../lib/sanity';
 
 const seo = ({data}) => ({
   title: data.page?.seoTitle || 'Page',
@@ -27,19 +28,12 @@ export const links = () => {
   return [{rel: 'stylesheet', href: swiperStyles}];
 };
 
-export async function loader({context, params, request}) {
-  const {sanityClient, usePreview} = context;
-  // const session = await getSession(request.headers.get('Cookie'));
-  // const preview = session.get('preview');
-
-  // if (preview) {
-  //   return {preview: true, query: pageDataQuery, params};
-  // }
+export async function loader({ params, request}) {
 
   const [page, articles, topics] = await Promise.all([
-    getAllPageData(context, params),
-    getAllArticlesData(context, request),
-    getAllTopicsData(context),
+    getAllPageData(params),
+    getAllArticlesData(request),
+    getAllTopicsData(),
   ]);
 
   if (!page) {
@@ -52,21 +46,20 @@ export async function loader({context, params, request}) {
     page,
     articles,
     topics,
-    usePreview,
   });
 }
 
 export default function PageRoute() {
-  const { page, articles, topics } = useLoaderData();
+  const {page, articles, topics} = useLoaderData();
   return <Page page={page} articles={articles} topics={topics} />;
 }
 
-async function getAllPageData({sanityClient}, params) {
+async function getAllPageData(params) {
   const page = await sanityClient.fetch(pageDataQuery, params);
   return page;
 }
 
-async function getAllArticlesData({sanityClient}, request) {
+async function getAllArticlesData(request) {
   const url = new URL(request.url);
   const search = new URLSearchParams(url.search).get('search-query');
   const topic = new URLSearchParams(url.search).getAll('topic-query');
@@ -94,7 +87,7 @@ async function getAllArticlesData({sanityClient}, request) {
   return articles;
 }
 
-async function getAllTopicsData({sanityClient}) {
+async function getAllTopicsData() {
   const topics = await sanityClient.fetch(allTopicsDataQuery);
   return topics;
 }

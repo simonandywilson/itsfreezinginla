@@ -1,11 +1,10 @@
-import {Await} from '@remix-run/react';
-import {useRouteData} from 'remix-utils';
-import { IconLink} from './Links';
+import {Await, useRouteLoaderData} from '@remix-run/react';
+import { IconLink} from './LinksNew';
 import {Badge} from './Badge';
 import {BasketIcon} from '../icons/Icons';
 
 export const Basket = () => {
-  const {cart} = useRouteData(`root`);
+  const {cart} = useRouteLoaderData(`root`);
   return (
     <IconLink to={'/cart'} aria-label="Go to cart">
       <div className={'relative w-full h-full'}>

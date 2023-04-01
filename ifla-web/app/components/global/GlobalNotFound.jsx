@@ -1,15 +1,14 @@
 import {Layout} from '../parts/Layout';
-import { ButtonLink } from '../parts/Links';
-import {Text} from '../parts/Text';
+import { ButtonLink } from '../parts/LinksButton';
 
 export function GlobalNotFound({error}) {
   return (
     <Layout intent={'centre'}>
       <div className={'flex flex-col gap-4 justify-center items-center pt-16'}>
-        <Text as={'h2'} intent={'text-lg'}>
+        <h2 className={'text-32'}>
           Not Found {':('}
-        </Text>
-        <ButtonLink intent={'text-lg'} to={'/'}>
+        </h2>
+        <ButtonLink className={'button-32'} to={'/'}>
           Back to homepage
         </ButtonLink>
         {/* <Text>

@@ -7,24 +7,23 @@ import {ImageModule} from '../modules/ImageModule';
 import {Footnote} from './Footnote';
 import {LinkExternal} from './LinksNew';
 
-const portableText = cva(
-  '[&>*:not(:last-child):not(p):not(blockquote):not(section)]:mb-[1em]',
-  {
-    variants: {
-      intent: {
-        // body: ['[&>p:not(:first-of-type)]:indent-7 [&>*:not(section)]:prose '],
-        body: ['[&>p+p]:indent-7 [&>*:not(section)]:prose '],
-        column: ['[&>p:not(:first-of-type)]:mb-[1em]'],
-        footer: ['[&>p:not(:last-child)]:mb-[1em]'],
-        preview: ['[&>p:not(:last-child)]:mb-[1em]'],
-        intro: ['[&>*:not(:last-child)]:mb-[1em]'],
-      },
-    },
-    defaultVariants: {
-      intent: 'body',
+const portableText = cva('', {
+  variants: {
+    intent: {
+      // body: ['[&>p:not(:first-of-type)]:indent-7 [&>*:not(section)]:prose '],
+      body: ['[&>p+p]:indent-7 [&>*:not(section)]:prose '],
+      column: [
+        '[&>p:not(:first-of-type)]:mb-[1em] [&>figure:not(:first-of-type)]:mt-[1em]',
+      ],
+      footer: ['[&>p:not(:last-child)]:mb-[1em]'],
+      preview: ['[&>p:not(:last-child)]:mb-[1em]'],
+      intro: ['[&>*:not(:last-child)]:mb-[1em]'],
     },
   },
-);
+  defaultVariants: {
+    intent: 'body',
+  },
+});
 
 const components = (intent, colour, footnoteIndexes) => {
   return {
@@ -32,7 +31,7 @@ const components = (intent, colour, footnoteIndexes) => {
       normal: ({children}) => {
         switch (intent) {
           case 'column':
-            return <p>{children}</p>;
+            return <p className={"text-24"}>{children}</p>;
           case 'footer':
             return <p className={'text-18 xl:text-24'}>{children}</p>;
           case 'intro':
@@ -53,12 +52,14 @@ const components = (intent, colour, footnoteIndexes) => {
             );
         }
       },
-      large: ({children}) => <p>{children}</p>,
-      h3: ({children}) => <h3 className={'break-after-avoid'}>{children}</h3>,
+      h3: ({children}) => (
+        <h3 className={'break-after-avoid text-68 mb-[24px]'}>{children}</h3>
+      ),
       h5: ({children}) => <h4>{children}</h4>,
       h6: ({children}) => (
-        <h5 className={'!mb-0 break-after-avoid'}>{children}</h5>
+        <h5 className={'!mb-0 break-after-avoid text-18'}>{children}</h5>
       ),
+      large: ({children}) => <p className={'text-32'}>{children}</p>,
       blockquote: ({children, value}) => (
         <blockquote
           className={cx('text-32 my-20 px-4', 'md:px-8')}

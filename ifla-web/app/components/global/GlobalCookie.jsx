@@ -3,11 +3,10 @@ import {useEffect, useState} from 'react';
 import {AnimatePresence, motion} from 'framer-motion';
 import {cx} from 'class-variance-authority';
 import {TextLink} from '../parts/Links';
-import {useRouteData} from 'remix-utils';
-import {useFetcher} from '@remix-run/react';
+import {useFetcher, useRouteLoaderData} from '@remix-run/react';
 
 export const GlobalCookie = () => {
-  const {track} = useRouteData(`root`);
+  const {track} = useRouteLoaderData(`root`);
   const analyticsFetcher = useFetcher();
   const [visible, setVisible] = useState(false);
 

@@ -1,8 +1,7 @@
 import {cx, cva} from 'class-variance-authority';
-import {Link} from '@remix-run/react';
+import {Link, useRouteLoaderData} from '@remix-run/react';
 import {Text} from './Text';
 import {useRandomColour} from '../../hooks/useRandomColour';
-import {useRouteData} from 'remix-utils';
 import {motion} from 'framer-motion';
 import {useRef} from 'react';
 
@@ -18,7 +17,7 @@ export const TextLink = ({
   onClick,
   onMouseEnter,onMouseLeave, onFocus, onBlur
 }, props) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
     <MotionLink
@@ -78,7 +77,7 @@ const buttonStyle = cva(
 );
 
 export const IconLink = ({children, to}) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return (
     <MotionLink
@@ -107,7 +106,7 @@ export const BlockLink = ({children, to}) => {
 };
 
 export const ButtonLink = ({intent, children, to, className, colour}) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
 
   return colour === 'mono' ? (
@@ -145,7 +144,7 @@ export const ButtonLinkExternal = ({
   target,
   rel,
 }) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return colour === 'mono' ? (
     <a
@@ -188,7 +187,7 @@ export const LinkExternal = ({
   children,
   mono,
 }) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return mono ? (
     <a

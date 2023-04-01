@@ -1,9 +1,9 @@
 import {cva} from 'class-variance-authority';
 import {Text} from './Text';
 import {motion} from 'framer-motion';
-import {useRouteData} from 'remix-utils';
 import {useRandomColour} from '~/hooks/useRandomColour';
 import {useRef} from 'react';
+import { useRouteLoaderData } from '@remix-run/react';
 
 const buttonStyle = cva(
   'w-max focus:outline-none focus:border-none antialiased whitespace-nowrap flex-grow-0 leading-none inline-block',
@@ -59,7 +59,7 @@ export const Button = ({
   name,
   ...props
 }) => {
-  const {colours} = useRouteData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours));
   return colour === 'mono' || disabled ? (
     <button

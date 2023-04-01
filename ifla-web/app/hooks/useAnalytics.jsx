@@ -10,9 +10,7 @@ import {useEffect} from 'react';
 export function useAnalytics(hasUserConsent, locale) {
   useShopifyCookies({hasUserConsent});
   const location = useLocation();
-  const analyticsFromMatches = useDataFromMatches(
-    'analytics',
-  ) 
+  const analyticsFromMatches = useDataFromMatches('analytics');
 
   const pageAnalytics = {
     ...analyticsFromMatches,
@@ -42,7 +40,7 @@ export function useAnalytics(hasUserConsent, locale) {
     formDataKey: 'cartAction',
     formDataValue: 'ADD_TO_CART',
     dataKey: 'analytics',
-  }); 
+  });
   if (cartData) {
     const addToCartPayload = {
       ...getClientBrowserParameters(),
@@ -57,10 +55,9 @@ export function useAnalytics(hasUserConsent, locale) {
   }
 }
 
-
 function useDataFromMatches(dataKey) {
   const matches = useMatches();
-  const data= {};
+  const data = {};
 
   matches.forEach((event) => {
     const eventData = event?.data;
@@ -72,12 +69,7 @@ function useDataFromMatches(dataKey) {
   return data;
 }
 
-
-function useDataFromFetchers({
-  formDataKey,
-  formDataValue,
-  dataKey,
-}) {
+function useDataFromFetchers({formDataKey, formDataValue, dataKey}) {
   const fetchers = useFetchers();
   const data = {};
 

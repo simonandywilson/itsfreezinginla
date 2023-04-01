@@ -2,9 +2,8 @@
 import * as remixBuild from '@remix-run/dev/server-build';
 import {createRequestHandler, getBuyerIp} from '@shopify/remix-oxygen';
 import {createStorefrontClient, storefrontRedirect} from '@shopify/hydrogen';
-import PicoSanity from 'picosanity';
-import {definePreview} from '@sanity/preview-kit';
-import {HydrogenSession} from './app/lib/session.server';
+import {HydrogenSession} from '~/lib/session.server';
+
 /**
  * Export a fetch handler in module format.
  */
@@ -36,10 +35,11 @@ export default {
         waitUntil,
         buyerIp: getBuyerIp(request),
         i18n: {
-          label: 'United Kingdom (GBP £)',
+          label: 'United Kingdom (GBP $)',
           language: 'EN',
           country: 'GB',
           currency: 'GBP',
+          pathPrefix: '',
         },
         publicStorefrontToken: env.PUBLIC_STOREFRONT_API_TOKEN,
         privateStorefrontToken: env.PRIVATE_STOREFRONT_API_TOKEN,
@@ -47,26 +47,9 @@ export default {
         storefrontApiVersion: env.PUBLIC_STOREFRONT_API_VERSION || '2023-01',
         // storefrontId: env.PUBLIC_STOREFRONT_ID,
         requestGroupId: request.headers.get('request-id'),
+        
       });
 
-      const projectId = env.SANITY_PUBLIC_PROJECT_ID;
-      const dataset =
-        !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
-          ? 'staging'
-          : env.SANITY_PUBLIC_DATASET;
-      const apiVersion = env.SANITY_PUBLIC_API_VERSION;
-      const sanityClient = new PicoSanity({
-        projectId,
-        dataset,
-        apiVersion,
-        useCdn: true,
-      });
-      const usePreview = definePreview({projectId, dataset});
-      const sanityProjectDetails = {
-        projectId,
-        dataset,
-        apiVersion,
-      };
       /**
        * Create a Remix request handler and pass
        * Hydrogen's Storefront client to the loader context.
@@ -80,9 +63,6 @@ export default {
           waitUntil,
           storefront,
           env,
-          sanityClient,
-          usePreview,
-          sanityProjectDetails,
           mailerLiteApi: env.MAILERLITE_API_KEY,
           analyticsTrackingId: env.GA_TRACKING_ID,
         }),
