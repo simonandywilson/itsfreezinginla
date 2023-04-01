@@ -40,7 +40,7 @@ export const ArticleBlock = ({article}) => {
             crop={image.crop}
             alt={image.alt || ''}
             preview={image.preview}
-            className={'h-full rendering-pixelated object-cover'}
+            className={'h-full w-full rendering-pixelated object-cover'}
             sizes="33vw"
           />
         )}

@@ -32,7 +32,22 @@ export const articlePreviewFragment = groq`{
       	},
     },
     category[] -> {_id, category},
+}`;
 
+export const audiobookPreviewFragment = groq`{
+    _id,
+    headline,
+    intro,
+    date,
+    "slug": slug.fullUrl,
+    author-> {name},
+    illustrator-> {name},
+    image {
+			"_id": asset->_id,
+			alt,
+			crop,
+			hotspot
+      	},
 }`;
 
 const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"] [0..100]|order(date desc)${articlePreviewFragment}}`;
@@ -132,3 +147,9 @@ export const relatedArticlesFragment = groq`"related": select(autoRecommend => *
       "matchingCategory": category[0] -> category == ^.category[0] -> category,
        ...${articlePreviewFragment}
     } | order(matchingTopic desc, matchingAuthor desc, matchingCategory desc, date desc)[0...3], similarArticles[]->${articlePreviewFragment})`;
+
+export const relatedAudiobooksFragment = groq`"related": select(autoRecommend => *[_type == "audiobook" && _id != ^._id] {
+      "matchingAuthor": author -> name == ^.author -> name,
+    "matchingIllustrator": illustrator -> name == ^.illustrator -> name,
+       ...${audiobookPreviewFragment}
+    } | order(matchingAuthor desc, matchingIllustrator desc, date desc)[0...3], similarAudiobooks[]->${audiobookPreviewFragment})`;

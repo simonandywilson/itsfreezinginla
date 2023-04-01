@@ -5,7 +5,7 @@ import {Topic} from '../parts/Topic';
 import {ButtonLink} from '../parts/LinksButton';
 import clsx from 'clsx';
 
-export const ArticleBlockBanner = ({article, link, truncate}) => {
+export const ArticleBanner = ({article, link, truncate}) => {
   const {headline, intro, colour, author, topic} = article;
   return (
     <Layout

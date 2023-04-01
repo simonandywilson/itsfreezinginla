@@ -4,7 +4,7 @@ import {defer} from '@remix-run/server-runtime';
 import {useLoaderData} from '@remix-run/react';
 import {Layout} from '../components/parts/Layout';
 import {Hero} from '../components/hero/Hero';
-import {ArticleBlockBanner} from '../components/article/ArticleBlockBanner';
+import {ArticleBanner} from '../components/article/ArticleBanner';
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {BlockLink, ButtonLink} from '~/components/parts/LinksButton';
 import clsx from 'clsx';
@@ -37,7 +37,7 @@ export default function Homepage() {
         <>
           <Layout intent={'grid'} as={'ul'}>
             <li className={'col-span-full w-full'}>
-              <ArticleBlockBanner
+              <ArticleBanner
                 article={homepage.featured[0]}
                 link={homepage.featured[0].slug}
                 truncate

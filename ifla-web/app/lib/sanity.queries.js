@@ -3,6 +3,8 @@ import {
   contentFragment,
   articlePreviewFragment,
   relatedArticlesFragment,
+  relatedAudiobooksFragment,
+  audiobookPreviewFragment,
 } from './sanity.fragments';
 
 export const homepageDataQuery = groq`*[_type == "home"][0] {
@@ -70,6 +72,35 @@ export const articleDataQuery = groq`*[_type == "article" && slug.current == $sl
     ${contentFragment}
 }`;
 
+export const audiobookDataQuery = groq`*[_type == "audiobook" && slug.current == $slug][0]{
+    _id,
+  	headline,
+		date,
+  	"slug": slug.fullUrl,
+  	intro,
+  	author-> {name},
+    illustrator-> {name},
+  	image {
+      "_id": asset->_id,
+      alt,
+      crop,
+      hotspot
+    },
+    topic -> {
+      topic,
+      image {
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+      },
+    },
+		"seoTitle": coalesce(seoTitle, headline),
+		"seoDescription": coalesce(seoDescription, pt::text(intro)),
+    ${relatedAudiobooksFragment},
+    ${contentFragment}
+}`;
+
 export const shopLinkQuery = groq`*[_type == "settings"][0] {
   shop->{slug{fullUrl}}
 }`;
@@ -81,20 +112,9 @@ export const pageDataQuery = groq`*[_type == "page" && slug.current == $slug][0]
         ${contentFragment}
     }`;
 
-export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]{
-    _id,
-  	headline,
-		date,
-  	"slug": slug.fullUrl,
-  	intro,
-  	media[],
-  	image {
-      "_id": asset->_id,
-      alt,
-      crop,
-      hotspot
-    },
-}`;
+export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]
+   ${audiobookPreviewFragment}
+`;
 
 export const allArticlesDataQueryFiltered = groq`*[_type == "article" && headline match $search && $topic match topic->topic]| order(date desc)${articlePreviewFragment}`;
 export const allArticlesDataQuery = groq`*[_type == "article" && headline match $search ]| order(date desc)${articlePreviewFragment}`;

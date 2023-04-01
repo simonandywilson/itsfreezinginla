@@ -13,7 +13,7 @@ export default defineType({
     {
       name: 'info',
       title: 'Info',
-      default: true
+      default: true,
     },
     {
       name: 'content',
@@ -61,6 +61,12 @@ export default defineType({
       group: 'info',
     }),
     defineField({
+      name: 'topic',
+      type: 'reference',
+      to: [{type: 'topic'}],
+      group: 'info',
+    }),
+    defineField({
       name: 'author',
       type: 'reference',
       to: [{type: 'author'}],
@@ -100,7 +106,7 @@ export default defineType({
       group: 'options',
     }),
     defineField({
-      name: 'similarArticles',
+      name: 'similarAudiobooks',
       type: 'array',
       of: [{type: 'reference', to: [{type: 'audiobook'}], title: 'Reference to Audiobook'}],
       hidden: ({document}) => document?.autoRecommend,
