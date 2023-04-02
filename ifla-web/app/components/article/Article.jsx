@@ -40,7 +40,7 @@ export const Article = ({article}) => {
           <Banner>More Reads</Banner>
           <FeaturedBlocksModule
             content={related}
-            link={{link: `/${keyPages.article}`, title: 'Read more'}}
+            link={{link: `/${keyPages.articles}`, title: 'Read more'}}
           />
         </>
       )}
