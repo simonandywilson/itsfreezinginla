@@ -1,4 +1,4 @@
-import {defer} from '@shopify/remix-oxygen';
+import {defer, json} from '@shopify/remix-oxygen';
 import {
   Links,
   Meta,
@@ -90,6 +90,7 @@ export async function loader({context, request}) {
       shopifySalesChannel: ShopifySalesChannel.hydrogen,
       shopId: storeData.shop.id,
     },
+    mailerLiteApi: context.mailerLiteApi,
     gaTrackingId: context.analyticsTrackingId,
     track: cookie.gdprConsent,
     shopifyAllCollections,
@@ -259,9 +260,12 @@ async function getColoursData() {
 }
 
 async function getKeyPages() {
-  const shopLinkQuery = groq`{"shop":*[_type == "settings"][0] {
-  shop->{slug{fullUrl}}}
+  const keyPagesQuery = groq`{
+    "shop":*[_type == "settings"][0].shopPage->slug.current,
+    "articles":*[_type == "settings"][0].articlesPage->slug.current,
+    "audiobooks":*[_type == "settings"][0].audiobooksPage->slug.current,
+    "privacy":*[_type == "settings"][0].privacyPage->slug.current
 }`;
-  const shop = await sanityClient.fetch(shopLinkQuery);
-  return shop;
+  const keyPages = await sanityClient.fetch(keyPagesQuery);
+  return keyPages;
 }

@@ -10,7 +10,7 @@ export default defineType({
     {
       name: 'global',
       title: 'Global',
-      default: true
+      default: true,
     },
     {
       name: 'footer',
@@ -74,6 +74,13 @@ export default defineType({
       type: 'reference',
       to: [{type: 'page'}],
       description: '💡 Listen More buttons link to this page.',
+      group: 'key',
+    }),
+    defineField({
+      name: 'privacyPage',
+      type: 'reference',
+      to: [{type: 'page'}],
+      description: '💡 Cookie notice links to this page.',
       group: 'key',
     }),
     defineField({

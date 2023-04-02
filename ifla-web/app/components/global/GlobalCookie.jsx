@@ -6,7 +6,7 @@ import {Button} from '../parts/Button';
 import {TextLink} from '../parts/Links';
 
 export const GlobalCookie = () => {
-  const {track} = useRouteLoaderData(`root`);
+  const { track, keyPages } = useRouteLoaderData(`root`);
   const analyticsFetcher = useFetcher();
   const [visible, setVisible] = useState(false);
 
@@ -36,7 +36,7 @@ export const GlobalCookie = () => {
           <analyticsFetcher.Form method="post" action="/enable-analytics">
             <h2 className={'text-24 mb-4'}>Accept cookies?</h2>
             <div className={'flex gap-2 items-center'}>
-              <TextLink to={''} className={'h-max mr-2'}>
+              <TextLink to={keyPages.privacy} className={'h-max mr-2'}>
                 Read our cookie policy
               </TextLink>
               <Button

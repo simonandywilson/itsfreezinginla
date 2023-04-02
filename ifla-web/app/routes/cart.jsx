@@ -1,6 +1,6 @@
 import {Await, useFetcher, useRouteLoaderData} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
-import {defer, json} from '@shopify/remix-oxygen';
+import {json} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
 import invariant from 'tiny-invariant';
 import {Button} from '~/components/parts/Button';
@@ -171,10 +171,7 @@ export async function action({request, context}) {
 }
 
 export default function CartPage() {
-  const {
-    cart,
-    keyPages: {shop},
-  } = useRouteLoaderData(`root`);
+  const {cart} = useRouteLoaderData(`root`);
   return (
     <Layout intent={'home'}>
       {/* <Suspense fallback={<CartLoader />}>
@@ -184,19 +181,18 @@ export default function CartPage() {
           }
         </Await>
       </Suspense> */}
-      <Await resolve={cart}>
-        {(cart) =>  <Cart cart={cart} shop={shop} />}
-      </Await>
+      <Await resolve={cart}>{(cart) => <Cart cart={cart} />}</Await>
     </Layout>
   );
 }
 
-const Cart = ({cart, shop}) => {
+const Cart = ({cart}) => {
+  const {keyPages} = useRouteLoaderData(`root`);
   const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
 
   return (
     <Layout intent={'cart'}>
-      <div className={cx('grid grid-cols-1', 'md:grid-cols-3 md:gap-8')}>
+      <div className={cx('min-h-screen grid grid-cols-1', 'md:grid-cols-3 md:gap-8')}>
         <div
           className={cx(
             'order-last col-span-2 flex flex-col mt-8',
@@ -207,7 +203,9 @@ const Cart = ({cart, shop}) => {
             Basket contents
           </h2>
           {cartHasItems &&
-            cart.lines.edges.map(({node}) => <CartLine key={node.id} line={node} />)}
+            cart.lines.edges.map(({node}) => (
+              <CartLine key={node.id} line={node} />
+            ))}
           <CartTotal cost={cart?.cost} />
           {cartHasItems && (
             <ButtonLinkExternal
@@ -224,7 +222,7 @@ const Cart = ({cart, shop}) => {
         </div>
         <CartPreview
           text={'Back to shop'}
-          link={shop.shop.slug.fullUrl}
+          link={`/${keyPages.shop}`}
           className={'mt-4'}
         />
       </div>

@@ -2,13 +2,14 @@ import React from 'react';
 import {Layout} from '../parts/Layout';
 import {Banner} from '../parts/Banner';
 import {ArticleBannerModule} from '../modules/ArticleBannerModule';
+import {FeaturedBlocksModule} from '../modules/FeaturedBlocksModule';
 import {Content} from '../content/Content';
-import {BlockLink, ButtonLink} from '../parts/LinksButton';
-import {ArticleBlock} from './ArticleBlock';
-import { cx } from 'class-variance-authority';
+import {useRouteLoaderData} from '@remix-run/react';
 
 export const Article = ({article}) => {
   const {date, content, related, colourDark} = article;
+  const {keyPages} = useRouteLoaderData(`root`);
+
   return (
     <>
       <Layout intent={'article'}>
@@ -37,27 +38,10 @@ export const Article = ({article}) => {
       {related && (
         <>
           <Banner>More Reads</Banner>
-          <Layout intent={'grid'} as={'ul'}>
-            {related.map((article) => {
-              return (
-                <li key={article._id} className={'w-full'}>
-                  <BlockLink to={article.slug}>
-                    <ArticleBlock article={article} />
-                  </BlockLink>
-                </li>
-              );
-            })}
-            <li
-              className={cx(
-                'w-full flex items-center justify-center aspect-square',
-                'lg:hidden 3xl:flex',
-              )}
-            >
-              <ButtonLink to={'/articles'} intent={'text-lg'}>
-                Read more
-              </ButtonLink>
-            </li>
-          </Layout>
+          <FeaturedBlocksModule
+            content={related}
+            link={{link: `/${keyPages.article}`, title: 'Read more'}}
+          />
         </>
       )}
     </>

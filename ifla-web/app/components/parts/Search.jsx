@@ -8,7 +8,6 @@ export const Search = () => {
   const [visible, setVisible] = useState(false);
   const defaultQuery = searchParams.get('search-query');
   const formRef = useRef(null);
-  console.log(visible);
   return (
     <>
       <button

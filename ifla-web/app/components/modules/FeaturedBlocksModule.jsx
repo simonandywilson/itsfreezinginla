@@ -4,7 +4,8 @@ import clsx from 'clsx';
 import {ArticleBlock} from '../article/ArticleBlock';
 import {AudiobookBlock} from '../audiobook/AudiobookBlock';
 
-export const FeaturedBlocksModule = ({content, link}) => {
+export const FeaturedBlocksModule = ({ content, link }) => {
+  
   return (
     <Layout intent={'grid'} as={'ul'}>
       {content.map((block) => {
@@ -25,6 +26,7 @@ export const FeaturedBlocksModule = ({content, link}) => {
                 </BlockLink>
               </li>
             );
+          default: return null
         }
       })}
       <li
