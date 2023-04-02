@@ -21,7 +21,7 @@ const layout = cva('', {
       ],
       block: ['px-6 pb-6 pt-4'],
       shop: ['p-8'],
-      cart: ['p-8 pt-header'],
+      cart: ['p-4 md:p-8 pt-header'],
       module: ['px-4 my-8'],
       'module-full': ['my-8'],
       'module-inline': ['prose my-8 break-inside-avoid-column'],

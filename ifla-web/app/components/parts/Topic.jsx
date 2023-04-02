@@ -23,7 +23,7 @@ export const Topic = ({topic}) => {
         width={200}
         alt={`Topic: ${topic.topic}`}
         sizes={'200px'}
-        className={'h-full w-full group-hover/topic:invisible'}
+        className={'h-full w-max group-hover/topic:invisible'}
       />
     </span>
   );
