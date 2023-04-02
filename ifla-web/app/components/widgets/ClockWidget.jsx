@@ -5,13 +5,17 @@ import {useMeasure} from 'react-use';
 export const ClockWidget = () => {
   const [ref, {width}] = useMeasure();
   const clock = useClock();
-  const clockHHMM = `${clock.hours.toString().padStart(2, '0')}:${clock.minutes
-    .toString()
-    .padStart(2, '0')}${clock.hours > 12 ? 'am' : 'pm'}`;
+  const clockHHMM = `${
+    clock.hours > 12 ? clock.hours.toString()-12 : clock.hours.toString()
+  }:${clock.minutes.toString().padStart(2, '0')}${
+    clock.hours > 12 ? 'pm' : 'am'
+  }`;
 
   return (
     <figure
-      className={'w-full break-inside-avoid-column mb-[1em]'}
+      className={
+        'w-full break-inside-avoid-column break-before-avoid mb-[1em]'
+      }
       ref={ref}
       aria-label={'Current time'}
     >

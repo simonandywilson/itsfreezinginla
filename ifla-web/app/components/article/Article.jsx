@@ -1,7 +1,7 @@
 import React from 'react';
 import {Layout} from '../parts/Layout';
 import {Banner} from '../parts/Banner';
-import {ArticleBanner} from './ArticleBanner';
+import {ArticleBannerModule} from '../modules/ArticleBannerModule';
 import {Content} from '../content/Content';
 import {BlockLink, ButtonLink} from '../parts/Links';
 import {ArticleBlock} from './ArticleBlock';
@@ -12,7 +12,7 @@ export const Article = ({article}) => {
   return (
     <>
       <Layout intent={'article'}>
-        <ArticleBanner article={article} />
+        <ArticleBannerModule content={article} />
         {date && (
           <Banner>
             <time>

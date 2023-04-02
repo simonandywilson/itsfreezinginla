@@ -3,8 +3,9 @@ import {homepageDataQuery} from '../lib/sanity.queries';
 import {defer} from '@remix-run/server-runtime';
 import {useLoaderData} from '@remix-run/react';
 import {Layout} from '../components/parts/Layout';
-import {Hero} from '../components/hero/Hero';
-import {ArticleBanner} from '../components/article/ArticleBanner';
+import {HeroModule} from '../components/modules/HeroModule';
+import { ArticleBannerModule } from '../components/modules/ArticleBannerModule';
+import {FeaturedBlocksModule} from '../components/modules/FeaturedBlocksModule';
 import {ArticleBlock} from '../components/article/ArticleBlock';
 import {BlockLink, ButtonLink} from '~/components/parts/LinksButton';
 import clsx from 'clsx';
@@ -28,11 +29,28 @@ export async function loader() {
 }
 
 export default function Homepage() {
-  const {homepage} = useLoaderData();
+  const { homepage } = useLoaderData();
   return (
     <Layout intent={'home'}>
-      {homepage.hero &&
-        homepage.hero.map((hero) => <Hero key={hero._key} hero={hero} />)}
+      {homepage.content.map((content) => {
+        switch (content._type) {
+          case 'heroModule':
+            return <HeroModule key={content._key} content={content} />;
+          case 'articleBannerModule':
+            return (
+              <ArticleBannerModule
+                key={content._key}
+                content={content.article}
+                homepage
+              />
+            );
+          case 'featuredBlocksModule':
+            return (
+              <FeaturedBlocksModule key={content._key} content={content.blocks} link={content.link} />
+            );
+        }
+      })}
+{/* 
       {homepage.featured && (
         <>
           <Layout intent={'grid'} as={'ul'}>
@@ -71,7 +89,7 @@ export default function Homepage() {
             </li>
           </Layout>
         </>
-      )}
+      )} */}
     </Layout>
   );
 }

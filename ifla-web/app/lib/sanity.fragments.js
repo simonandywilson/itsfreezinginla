@@ -8,6 +8,7 @@ const collapsibleModuleFragment = groq`_type == 'collapsibleModule' => @`;
 const shopModuleFragment = groq`_type == 'shopModule' => @`;
 export const articlePreviewFragment = groq`{
     _id,
+    _type,
     headline,
     intro,
     date,
@@ -36,6 +37,7 @@ export const articlePreviewFragment = groq`{
 
 export const audiobookPreviewFragment = groq`{
     _id,
+    _type,
     headline,
     intro,
     date,
@@ -96,12 +98,51 @@ const imageGridModuleFragment = groq`
         },
     }`;
 
+const widgetModuleFragment = groq`
+    _type == 'widgetModule' => {
+        _key,
+        _type,
+        widget
+    }`;
+
 const footnoteFragment = groq`
     _type == 'footnote' => {
         ...,
         "colour": coalesce(*[_id == ^.^._id][0].colour->colourDark, *[_id == ^.^.^.^._id][0].colour->colourDark, "#000000")
     }`;
 
+export const heroFragment = groq`
+ {
+      _key,
+      _type,
+      background,
+      heading,
+      imageFormat,
+      image {
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+      },
+      links[] {
+        _type == 'checkoutObject' => {
+          _key,
+          _type,
+          title,
+          "variantId": reference -> store.id
+        },
+        _type == 'internalLinkObject' => {
+          _key,
+          _type,
+          title,
+          "type": reference -> _type,
+          "slug": reference -> slug.current,
+          "slugFull": reference -> slug.fullUrl,
+        },
+        _type == 'externalLinkObject' => @
+      }
+    }
+`;
 const textColumnsModuleFragment = groq`_type == 'textColumnsModule' => {
     ...,
     text[] {
@@ -109,6 +150,7 @@ const textColumnsModuleFragment = groq`_type == 'textColumnsModule' => {
         ${collapsibleModuleFragment},
         ${carouselModuleFragment},
         ${imageModuleFragment},
+        ${widgetModuleFragment},
     }
 }`;
 

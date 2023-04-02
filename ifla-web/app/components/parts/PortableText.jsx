@@ -3,7 +3,8 @@ import {cva, cx} from 'class-variance-authority';
 import {CarouselModule} from '../modules/CarouselModule';
 import {CollapsibleModule} from '../modules/CollapsibleModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
-import {ImageModule} from '../modules/ImageModule';
+import { ImageModule } from '../modules/ImageModule';
+import {WidgetModule} from '../modules/WidgetModule';
 import {Footnote} from './Footnote';
 import {LinkExternal} from './LinksNew';
 
@@ -31,7 +32,7 @@ const components = (intent, colour, footnoteIndexes) => {
       normal: ({children}) => {
         switch (intent) {
           case 'column':
-            return <p className={"text-24"}>{children}</p>;
+            return <p className={'text-24'}>{children}</p>;
           case 'footer':
             return <p className={'text-18 xl:text-24'}>{children}</p>;
           case 'intro':
@@ -83,6 +84,7 @@ const components = (intent, colour, footnoteIndexes) => {
           footnoteIndexes={footnoteIndexes}
         />
       ),
+      widgetModule: ({value}) => <WidgetModule content={value} />,
     },
     marks: {
       externalLinkObject: ({value, children}) => {

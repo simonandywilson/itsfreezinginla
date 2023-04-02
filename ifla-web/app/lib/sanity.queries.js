@@ -5,39 +5,27 @@ import {
   relatedArticlesFragment,
   relatedAudiobooksFragment,
   audiobookPreviewFragment,
+  heroFragment,
 } from './sanity.fragments';
 
 export const homepageDataQuery = groq`*[_type == "home"][0] {
-    "hero": hero[] {
-      _key,
-      background,
-      heading,
-      imageFormat,
-      image {
-        "_id": asset->_id,
-        alt,
-        crop,
-        hotspot
-      },
-      links[] {
-        _type == 'checkoutObject' => {
-          _key,
-          _type,
-          title,
-          "variantId": reference -> store.id
+    "featured": featured[0...4] -> ${articlePreviewFragment},
+    content[] {
+      _type == 'heroModule' => ${heroFragment},
+      _type == 'articleBannerModule' => {_key, _type, "article":article ->${articlePreviewFragment}},
+      _type == 'featuredBlocksModule' => {
+        _key,
+        _type,
+        blocks[]-> {
+          _type == 'article' => ${articlePreviewFragment},
+          _type == 'audiobook' => ${audiobookPreviewFragment}
         },
-        _type == 'internalLinkObject' => {
-          _key,
-          _type,
+        link {
           title,
-          "type": reference -> _type,
-          "slug": reference -> slug.current,
-          "slugFull": reference -> slug.fullUrl,
-        },
-        _type == 'externalLinkObject' => @
+          "link": reference -> slug.current
+        }
       }
     },
-    "featured": featured[0...4] -> ${articlePreviewFragment}
 }`;
 
 export const articleDataQuery = groq`*[_type == "article" && slug.current == $slug][0]{

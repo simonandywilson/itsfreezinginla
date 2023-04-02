@@ -1,14 +1,13 @@
 import {cx} from 'class-variance-authority';
 import clsx from 'clsx';
-import React from 'react';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
 import { ButtonLink, ButtonLinkExternal } from '../parts/LinksButton';
 
 const buttonClassNames = 'button-24 md:button-32';
 
-export const Hero = ({hero}) => {
-  const {heading, background, image, imageFormat, links} = hero;
+export const HeroModule = ({content}) => {
+  const { heading, background, image, imageFormat, links } = content;
 
   return (
     <>

@@ -1,12 +1,11 @@
-import React from 'react';
 import {Layout} from '../parts/Layout';
 import {PortableText} from '../parts/PortableText';
 import {Topic} from '../parts/Topic';
 import {ButtonLink} from '../parts/LinksButton';
 import clsx from 'clsx';
 
-export const ArticleBanner = ({article, link, truncate}) => {
-  const {headline, intro, colour, author, topic} = article;
+export const ArticleBannerModule = ({content, homepage}) => {
+  const { headline, intro, colour, author, topic, slug } = content;
   return (
     <Layout
       as={'article'}
@@ -33,15 +32,15 @@ export const ArticleBanner = ({article, link, truncate}) => {
           <div
             className={clsx({
               ' line-clamp xl:no-line-clamp':
-                truncate,
+                homepage,
             })}
           >
             {intro && <PortableText text={intro} intent={'intro'} />}
           </div>
-          {link && (
+          {(homepage && slug) && (
             <ButtonLink
               colour={'mono'}
-              to={link}
+              to={slug}
               className={'button-24 md:button-32 mt-[1em] break-before-avoid'}
             >
               Keep reading

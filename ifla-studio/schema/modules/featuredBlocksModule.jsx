@@ -8,7 +8,7 @@ export default defineArrayMember({
   icon: <BoxSelect strokeWidth={1.5} size={20} />,
   fields: [
     defineField({
-      name: 'article',
+      name: 'blocks',
       type: 'array',
       of: [
         {
@@ -19,12 +19,16 @@ export default defineArrayMember({
       ],
       validation: (Rule) => Rule.required().min(3).max(3),
     }),
+    defineField({
+      name: 'link',
+      type: 'internalLinkObject',
+    }),
   ],
   preview: {
     select: {
-      headlineOne: 'article.0.headline',
-      headlineTwo: 'article.1.headline',
-      headlineThree: 'article.2.headline',
+      headlineOne: 'blocks.0.headline',
+      headlineTwo: 'blocks.1.headline',
+      headlineThree: 'blocks.2.headline',
     },
     prepare({headlineOne, headlineTwo, headlineThree}) {
       return {
