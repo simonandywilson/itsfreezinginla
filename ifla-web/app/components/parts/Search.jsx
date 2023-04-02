@@ -12,7 +12,10 @@ export const Search = () => {
     <>
       <button
         aria-label={'Search articles'}
-        className={clsx('h-full py-1 aspect-square mr-2', 'sm:hidden')}
+        className={clsx(
+          'h-full py-1 aspect-square mr-2 antialiased',
+          'sm:hidden',
+        )}
         onClick={() => setVisible((prevState) => !prevState)}
       >
         <svg
@@ -44,7 +47,10 @@ export const Search = () => {
         ref={formRef}
       >
         <div className={'h-full flex items-center'}>
-          <label htmlFor={'search-query'} className={'leading-none mr-4'}>
+          <label
+            htmlFor={'search-query'}
+            className={'leading-none mr-4 antialiased'}
+          >
             Search
           </label>
           <input

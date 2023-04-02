@@ -11,7 +11,7 @@ export const AudiobookBlock = ({audiobook}) => {
       as={'div'}
       intent={'block'}
       className={clsx(
-        'relative w-full h-full aspect-square flex flex-col justify-between gap-6 bg-audiobook',
+        'relative w-full aspect-square flex flex-col justify-between gap-6 bg-audiobook',
       )}
     >
       <div
@@ -36,7 +36,7 @@ export const AudiobookBlock = ({audiobook}) => {
             crop={image.crop}
             alt={image.alt || ''}
             preview={image.preview}
-            className={'h-full object-cover'}
+            className={'w-full h-full object-cover'}
             sizes="33vw"
           />
         )}
