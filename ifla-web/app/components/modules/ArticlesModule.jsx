@@ -10,6 +10,7 @@ import {BlockLink} from '../parts/LinksButton';
 
 import {Search} from '../parts/Search';
 import {Submenu} from '../parts/Submenu';
+import clsx from 'clsx';
 
 export const ArticlesModule = ({articles, topics}) => {
   const [text, setText] = useState(false);
@@ -96,7 +97,12 @@ const FilterDialog = ({topics}) => {
 
   return (
     <>
-      <div className={'w-60 flex flex-shrink-0 gap-2 justify-between'}>
+      <div
+        className={clsx(
+          'w-52 flex gap-2 justify-between ',
+          'sm:w-60 sm:flex-shrink-0',
+        )}
+      >
         <Button
           colour={'transparent'}
           className={'text-18'}
@@ -121,12 +127,17 @@ const FilterDialog = ({topics}) => {
         className={'relative z-10'}
         onClose={closeModal}
       >
-        <div className={"fixed inset-0 bg-white sm:bg-white/30"} aria-hidden="true" />
+        <div
+          className={'fixed inset-0 bg-white sm:bg-white/30'}
+          aria-hidden="true"
+        />
 
         <div className="fixed inset-0 overflow-y-auto pt-header-submenu">
           <div className="flex max-h-full pb-4 pl-4 pt-submenu">
             <Dialog.Panel
-              className="w-60 transform overflow-hidden bg-white border-8 border-white flex flex-col"
+              className={clsx(
+                'w-full transform overflow-hidden bg-white border-8 border-white flex flex-col', 'sm:w-60'
+              )}
               aria-label="Topic filter"
             >
               <Button
