@@ -2,12 +2,12 @@ import {cx} from 'class-variance-authority';
 import clsx from 'clsx';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import { ButtonLink, ButtonLinkExternal } from '../parts/LinksButton';
+import {ButtonLink, ButtonLinkExternal} from '../parts/LinksButton';
 
 const buttonClassNames = 'button-24 md:button-32';
 
 export const HeroModule = ({content}) => {
-  const { heading, background, image, imageFormat, links } = content;
+  const {heading, background, image, imageFormat, links} = content;
 
   return (
     <>
@@ -37,10 +37,15 @@ export const HeroModule = ({content}) => {
           <div className={'flex flex-col gap-4'}>
             {links &&
               links.map((link) => {
+                
                 switch (link?._type) {
                   case 'externalLinkObject':
                     return (
-                      <ExternalLink link={link} key={link._key}>
+                      <ExternalLink
+                        link={link}
+                        key={link._key}
+                        colour={!link.colourful && 'mono'}
+                      >
                         {link.title}
                       </ExternalLink>
                     );
@@ -51,7 +56,7 @@ export const HeroModule = ({content}) => {
                           link.type === 'page' ? `/${link.slug}` : link.slugFull
                         }
                         key={link._key}
-                        colour={'mono'}
+                        colour={!link.colourful && 'mono'}
                         className={buttonClassNames}
                       >
                         {link.title}
@@ -63,7 +68,7 @@ export const HeroModule = ({content}) => {
                         key={link._key}
                         to={`https://shop.itsfreezinginla.com/cart/${link.variantId}:1`}
                         target={'_self'}
-                        colour={'mono'}
+                        colour={!link.colourful && 'mono'}
                         className={buttonClassNames}
                       >
                         {link.title}
@@ -83,7 +88,7 @@ export const HeroModule = ({content}) => {
           >
             <Image
               id={image._id}
-              width={500}
+              width={2000}
               mode="cover"
               hotspot={image.hotspot}
               crop={image.crop}

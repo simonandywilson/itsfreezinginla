@@ -10,13 +10,13 @@ export default defineField({
     defineField({
       name: 'title',
       type: 'string',
-      hidden: ({document}) => (document._id === 'home' ? false : true),
+      hidden: ({document}) => (document._type === 'home' ? false : true),
     }),
     defineField({
       name: 'colourful',
       type: 'boolean',
       initialValue: true,
-      hidden: ({document}) => (document._id === 'home' ? false : true),
+      hidden: ({document}) => (document._type === 'home' ? false : true),
     }),
     defineField({
       name: 'type',

@@ -3,10 +3,10 @@ import {cva, cx} from 'class-variance-authority';
 import {CarouselModule} from '../modules/CarouselModule';
 import {CollapsibleModule} from '../modules/CollapsibleModule';
 import {ImageGridModule} from '../modules/ImageGridModule';
-import { ImageModule } from '../modules/ImageModule';
+import {ImageModule} from '../modules/ImageModule';
 import {WidgetModule} from '../modules/WidgetModule';
 import {Footnote} from './Footnote';
-import {LinkExternal} from './LinksNew';
+import {LinkExternal} from './Links';
 
 const portableText = cva('', {
   variants: {

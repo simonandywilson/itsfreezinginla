@@ -1,7 +1,6 @@
-import {useTransition} from '@remix-run/react';
-import {useEffect, useState, useRef} from 'react';
-import {useLocation} from '@remix-run/react';
-import {TextLink} from '../parts/LinksNew';
+import {useLocation, useTransition} from '@remix-run/react';
+import {useEffect, useRef, useState} from 'react';
+import {TextLink} from '../parts/Links';
 
 export const GlobalMenuMobile = ({menu, close}) => {
   const transition = useTransition();
@@ -40,7 +39,7 @@ function usePrevious(value) {
   return ref.current;
 }
 
-const MenuItem = ({ children}) => {
+const MenuItem = ({children}) => {
   const {pathname} = useLocation();
   return (
     <ul>
@@ -48,7 +47,11 @@ const MenuItem = ({ children}) => {
         <TextLink
           to={children[0].slug}
           className={'text-40'}
-          focused={children.length === 0 && pathname.slice(1) === children[0].slug ? true : false}
+          focused={
+            children.length === 0 && pathname.slice(1) === children[0].slug
+              ? true
+              : false
+          }
         >
           {children[0].title}
         </TextLink>

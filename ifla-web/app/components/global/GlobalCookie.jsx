@@ -1,9 +1,9 @@
-import {Button} from '../parts/ButtonNew';
-import {useEffect, useState} from 'react';
-import {AnimatePresence, motion} from 'framer-motion';
-import {cx} from 'class-variance-authority';
-import {TextLink} from '../parts/Links';
 import {useFetcher, useRouteLoaderData} from '@remix-run/react';
+import {cx} from 'class-variance-authority';
+import {AnimatePresence, motion} from 'framer-motion';
+import {useEffect, useState} from 'react';
+import {Button} from '../parts/Button';
+import {TextLink} from '../parts/Links';
 
 export const GlobalCookie = () => {
   const {track} = useRouteLoaderData(`root`);
@@ -59,7 +59,7 @@ export const GlobalCookie = () => {
                 type={'submit'}
                 aria-label={'Decline cookies'}
                 className={'button-18'}
-                colour={"outline"}
+                colour={'outline'}
               >
                 No
               </Button>

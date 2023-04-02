@@ -22,6 +22,7 @@ export default defineArrayMember({
     defineField({
       name: 'link',
       type: 'internalLinkObject',
+
     }),
   ],
   preview: {

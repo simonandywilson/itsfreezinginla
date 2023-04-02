@@ -1,8 +1,8 @@
+import {useRouteLoaderData} from '@remix-run/react';
 import clsx from 'clsx';
 import {AnimatePresence, motion} from 'framer-motion';
 import {useState} from 'react';
-import {TextLink} from '../parts/LinksNew';
-import { useRouteLoaderData } from '@remix-run/react';
+import {TextLink} from '../parts/Links';
 
 export const GlobalTitle = () => {
   const {settings} = useRouteLoaderData(`root`);
@@ -54,10 +54,9 @@ export const GlobalTitle = () => {
         </AnimatePresence>
 
         <div
-          className={clsx(
-            'text-32 font-sans-alt inline-block ',
-            {'xl:opacity-0': long},
-          )}
+          className={clsx('text-32 font-sans-alt inline-block ', {
+            'xl:opacity-0': long,
+          })}
         >
           <span className={'sr-only md:not-sr-only'}>{settings.title}</span>
           <span aria-hidden className={'md:hidden'}>

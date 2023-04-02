@@ -1,4 +1,4 @@
-import {TextLink} from '~/components/parts/LinksNew';
+import {TextLink} from '~/components/parts/Links';
 import {Layout} from '../parts/Layout';
 import {PortableText} from '../parts/PortableText';
 import {Newsletter} from '../parts/Newsletter';

@@ -2,15 +2,15 @@ import {Dialog} from '@headlessui/react';
 import {Form, useSearchParams, useSubmit} from '@remix-run/react';
 import {Fragment, useRef, useState} from 'react';
 import {ArticleBlock} from '../article/ArticleBlock';
-import {Button} from '../parts/ButtonNew';
+import {Button} from '../parts/Button';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import {TextLink} from '../parts/LinksNew';
+import {TextLink} from '../parts/Links';
 import {BlockLink} from '../parts/LinksButton';
 
+import clsx from 'clsx';
 import {Search} from '../parts/Search';
 import {Submenu} from '../parts/Submenu';
-import clsx from 'clsx';
 
 export const ArticlesModule = ({articles, topics}) => {
   const [text, setText] = useState(false);
@@ -136,7 +136,8 @@ const FilterDialog = ({topics}) => {
           <div className="flex max-h-full pb-4 pl-4 pt-submenu">
             <Dialog.Panel
               className={clsx(
-                'w-full transform overflow-hidden bg-white border-8 border-white flex flex-col', 'sm:w-60'
+                'w-full transform overflow-hidden bg-white border-8 border-white flex flex-col',
+                'sm:w-60',
               )}
               aria-label="Topic filter"
             >

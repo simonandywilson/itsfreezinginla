@@ -1,6 +1,6 @@
-import {PortableText} from './PortableText';
-import {Button} from './ButtonNew';
 import {Popover} from '@headlessui/react';
+import {Button} from './Button';
+import {PortableText} from './PortableText';
 
 export const Footnote = ({content, colour, footnoteIndexes, props}) => {
   return (

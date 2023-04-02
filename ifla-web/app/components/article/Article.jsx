@@ -3,7 +3,7 @@ import {Layout} from '../parts/Layout';
 import {Banner} from '../parts/Banner';
 import {ArticleBannerModule} from '../modules/ArticleBannerModule';
 import {Content} from '../content/Content';
-import {BlockLink, ButtonLink} from '../parts/Links';
+import {BlockLink, ButtonLink} from '../parts/LinksButton';
 import {ArticleBlock} from './ArticleBlock';
 import { cx } from 'class-variance-authority';
 

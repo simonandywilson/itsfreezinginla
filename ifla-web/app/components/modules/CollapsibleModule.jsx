@@ -1,5 +1,5 @@
 import {Layout} from '../parts/Layout';
-import {PortableTextPlain} from '../parts/PortableTextPlain';
+import {PortableText} from '../parts/PortableText';
 import {Text} from '../parts/Text';
 
 export const CollapsibleModule = ({content}) => {
@@ -18,7 +18,7 @@ export const CollapsibleModule = ({content}) => {
           </Text>
         </summary>
         <Text as={'p'} intent={'bl-body-alt'} className={'mt-4'}>
-          <PortableTextPlain text={text} />
+          <PortableText text={text} />
         </Text>
       </details>
     </Layout>

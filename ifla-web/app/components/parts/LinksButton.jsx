@@ -36,9 +36,11 @@ export const BlockLink = ({children, to}) => {
   );
 };
 
-export const ButtonLink = ({children, to, className, colour, ...props}) => {
-  const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+export const ButtonLink = ({children, to, className, colour, invert, ...props}) => {
+  const { colours } = useRouteLoaderData(`root`);
+  const randomColour = useRef(useRandomColour(invert ? colours.light: colours.dark));
+  const background =
+    colour === 'mono' ? "white" : randomColour.current;
 
   return (
     <MotionLink
@@ -47,10 +49,10 @@ export const ButtonLink = ({children, to, className, colour, ...props}) => {
       transition={{duration: 0}}
       initial={{background: '#000000'}}
       whileHover={{
-        background: randomColour.current,
+        background: background,
       }}
       whileFocus={{
-        background: randomColour.current,
+        background: background,
       }}
       {...props}
     >
@@ -64,10 +66,14 @@ export const ButtonLinkExternal = ({
   to,
   className,
   colour,
+  invert,
   ...props
 }) => {
-  const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+   const {colours} = useRouteLoaderData(`root`);
+   const randomColour = useRef(
+     useRandomColour(invert ? colours.light : colours.dark),
+   );
+   const background = colour === 'mono' ? 'white' : randomColour.current;
   return (
     <motion.a
       href={to}
@@ -75,10 +81,10 @@ export const ButtonLinkExternal = ({
       transition={{duration: 0}}
       initial={{background: '#000000'}}
       whileHover={{
-        background: randomColour.current,
+        background: background,
       }}
       whileFocus={{
-        background: randomColour.current,
+        background: background,
       }}
       {...props}
     >

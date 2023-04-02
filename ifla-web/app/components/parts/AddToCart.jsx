@@ -1,6 +1,6 @@
 import {useFetcher} from '@remix-run/react';
 import React from 'react';
-import {Button} from './ButtonNew';
+import {Button} from './Button';
 
 export const AddToCart = ({lines, analytics, soldOut}) => {
   const fetcher = useFetcher();
@@ -15,7 +15,7 @@ export const AddToCart = ({lines, analytics, soldOut}) => {
         colour={'default'}
         status={soldOut ? 'disabled' : ''}
         disabled={soldOut}
-        className={"button-18"}
+        className={'button-18'}
       >
         {soldOut ? 'Sold Out' : 'Add to Cart'}
       </Button>

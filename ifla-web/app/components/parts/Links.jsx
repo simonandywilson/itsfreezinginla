@@ -1,28 +1,23 @@
-import {cx, cva} from 'class-variance-authority';
 import {Link, useRouteLoaderData} from '@remix-run/react';
-import {Text} from './Text';
 import {useRandomColour} from '../../hooks/useRandomColour';
 import {motion} from 'framer-motion';
 import {useRef} from 'react';
+import clsx from 'clsx';
 
 const MotionLink = motion(Link);
 
-export const TextLink = ({
-  intent,
-  children,
-  to,
-  className,
-  as,
-  focused,
-  onClick,
-  onMouseEnter,onMouseLeave, onFocus, onBlur
-}, props) => {
+export const TextLink = ({children, to, className, focused, invert, colour, ...props}) => {
   const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+  const randomColour = useRef(
+    useRandomColour(invert ? colours.light : colours.dark),
+  );
   return (
     <MotionLink
       to={to}
-      className={cx('link', className)}
+      className={clsx(
+        'w-max leading-none focus:outline-none focus-visible:underline focus:border-none hover:underline',
+        className,
+      )}
       initial={{color: 'inherit'}}
       animate={{
         color: focused ? randomColour.current : 'inherit',
@@ -33,48 +28,12 @@ export const TextLink = ({
       whileFocus={{
         color: randomColour.current,
       }}
-      onClick={onClick}
-      onMouseEnter={onMouseEnter}
-      onMouseLeave={onMouseLeave}
-      onFocus={onFocus}
-      onBlur={onBlur}
+      {...props}
     >
-      <Text intent={intent} as={as}>
-        {children}
-      </Text>
+      {children}
     </MotionLink>
   );
 };
-
-const buttonStyle = cva(
-  'cursor-pointer w-max focus:outline-none focus:border-none antialiased whitespace-nowrap flex-grow-0 leading-none inline-block',
-  {
-    variants: {
-      intent: {
-        'text-sm': ['button-sm'],
-        'text-base': ['button-base'],
-        'text-lg': ['button-lg'],
-        'text-xl': ['button-xl'],
-        'text-2xl': ['button-2xl'],
-      },
-      colour: {
-        default: ['bg-black', 'text-white'],
-        mono: [
-          'bg-black',
-          'text-white',
-          'hover:bg-white',
-          'hover:text-black',
-          'focus-visible:bg-white',
-          'focus-visible:text-black',
-        ],
-      },
-    },
-    defaultVariants: {
-      intent: 'text-base',
-      colour: 'default',
-    },
-  },
-);
 
 export const IconLink = ({children, to}) => {
   const {colours} = useRouteLoaderData(`root`);
@@ -97,123 +56,17 @@ export const IconLink = ({children, to}) => {
   );
 };
 
-export const BlockLink = ({children, to}) => {
+export const LinkExternal = ({href, className, children, mono, ...props}) => {
+  const { colours } = useRouteLoaderData(`root`);
+  const randomColour = useRef(useRandomColour(colours.dark));
   return (
-    <Link to={to} className={'group focus:outline-none focus:border-none'}>
-      {children}
-    </Link>
-  );
-};
-
-export const ButtonLink = ({intent, children, to, className, colour}) => {
-  const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
-
-  return colour === 'mono' ? (
-    <Link to={to} className={buttonStyle({intent, colour, className})}>
-      <Text intent={intent} className={'inline-block'}>
-        {children}
-      </Text>
-    </Link>
-  ) : (
-    <MotionLink
-      to={to}
-      className={buttonStyle({intent, colour, className})}
-      transition={{duration: 0}}
-      initial={{background: '#000000'}}
-      whileHover={{
-        background: randomColour.current,
-      }}
-      whileFocus={{
-        background: randomColour.current,
-      }}
-    >
-      <Text intent={intent} className={'inline-block'}>
-        {children}
-      </Text>
-    </MotionLink>
-  );
-};
-
-export const ButtonLinkExternal = ({
-  intent,
-  children,
-  to,
-  className,
-  colour,
-  target,
-  rel,
-}) => {
-  const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
-  return colour === 'mono' ? (
-    <a
-      href={to}
-      className={buttonStyle({intent, colour, className})}
-      target={target}
-      rel={rel}
-    >
-      <Text intent={intent} className={'inline-block'}>
-        {children}
-      </Text>
-    </a>
-  ) : (
-    <motion.a
-      href={to}
-      className={buttonStyle({intent, colour, className})}
-      target={target}
-      rel={rel}
-      transition={{duration: 0}}
-      initial={{background: '#000000'}}
-      whileHover={{
-        background: randomColour.current,
-      }}
-      whileFocus={{
-        background: randomColour.current,
-      }}
-    >
-      <Text intent={intent} className={'inline-block'}>
-        {children}
-      </Text>
-    </motion.a>
-  );
-};
-
-export const LinkExternal = ({
-  href,
-  target,
-  rel,
-  className,
-  children,
-  mono,
-}) => {
-  const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
-  return mono ? (
     <a
       href={href}
-      target={target}
-      rel={rel}
-      className={className}
+      className={clsx("hover:underline focus-visible:underline",className)}
+      style={{color: randomColour.current}}
+      {...props}
     >
       {children}
     </a>
-  ) : (
-    <motion.a
-      href={href}
-      target={target}
-      rel={rel}
-      className={className}
-      transition={{duration: 0}}
-      initial={{color: randomColour.current}}
-      whileHover={{
-        color: 'inherit',
-      }}
-      whileFocus={{
-        color: 'inherit',
-      }}
-    >
-      {children}
-    </motion.a>
   );
 };

@@ -1,6 +1,6 @@
 import {Form, useActionData, useTransition} from '@remix-run/react';
 import {useEffect, useRef} from 'react';
-import {Button} from '~/components/parts/ButtonNew';
+import {Button} from '~/components/parts/Button';
 
 export const Newsletter = ({title, titleIntent, buttonColour, onSuccess}) => {
   const actionData = useActionData();

@@ -1,12 +1,12 @@
-import {GlobalTitle} from './GlobalTitle';
-import {Basket} from '../parts/Basket';
-import { useRef} from 'react';
 import {Popover} from '@headlessui/react';
 import {useNavigate, useRouteLoaderData} from '@remix-run/react';
-import {TextLink} from '../parts/LinksNew';
-import {motion} from 'framer-motion';
-import {useRandomColour} from '~/hooks/useRandomColour';
 import clsx from 'clsx';
+import {motion} from 'framer-motion';
+import {useRef} from 'react';
+import {useRandomColour} from '~/hooks/useRandomColour';
+import {Basket} from '../parts/Basket';
+import {TextLink} from '../parts/Links';
+import {GlobalTitle} from './GlobalTitle';
 const MotionButton = motion(Popover.Button);
 
 export const GlobalMenuDesktop = ({menu}) => {

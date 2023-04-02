@@ -34,9 +34,8 @@ export const FeaturedBlocksModule = ({content, link}) => {
         )}
       >
         <ButtonLink
-          colour={'mono'}
           to={link.link}
-          className={'button-24 md:button-32 mt-[1em] break-before-avoid'}
+          className={'button-24 md:button-32 break-before-avoid'}
         >
           {link.title}
         </ButtonLink>

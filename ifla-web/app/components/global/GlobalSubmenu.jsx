@@ -1,5 +1,5 @@
 import {useLocation} from '@remix-run/react';
-import {TextLink} from '../parts/LinksNew';
+import {TextLink} from '../parts/Links';
 import {Submenu} from '../parts/Submenu';
 
 export const GlobalSubmenu = ({menu}) => {
@@ -7,7 +7,7 @@ export const GlobalSubmenu = ({menu}) => {
   return (
     <Submenu className={'border-b-1 border-black'}>
       <h2 className={'text-18 mr-8 leading-none'}>Section:</h2>
-      <div className={"overflow-x-scroll mr-4 scrollbar-hide"}>
+      <div className={'overflow-x-scroll mr-4 scrollbar-hide'}>
         {menu.map((section) => {
           const children = section.children.map((child) => child.slug);
           return children.includes(pathname.slice(1)) ? (

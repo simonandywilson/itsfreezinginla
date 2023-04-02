@@ -3,12 +3,11 @@ import {Money} from '@shopify/hydrogen';
 import {defer, json} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
 import invariant from 'tiny-invariant';
-import {Button} from '~/components/parts/ButtonNew';
+import {Button} from '~/components/parts/Button';
 import {CartPreview} from '../components/parts/CartPreview';
 import {Dash} from '../components/parts/Dash';
 import {Layout} from '../components/parts/Layout';
 import {ButtonLinkExternal} from '../components/parts/LinksButton';
-import {ShopModule} from '../components/modules/ShopModule';
 
 export const handle = {
   seo: {
