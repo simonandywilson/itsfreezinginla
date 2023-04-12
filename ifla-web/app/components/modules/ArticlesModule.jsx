@@ -17,14 +17,18 @@ export const ArticlesModule = ({articles, topics}) => {
 
   return (
     <>
-      <Submenu className={'justify-between sticky top-header-submenu z-40 '}>
+      <Submenu
+        className={
+          'justify-between sticky top-header-submenu z-40 gap-8 xl:gap-0 xl:grid xl:grid-cols-3 3xl:grid-cols-4'
+        }
+      >
         <FilterDialog topics={topics} />
         <Button
           colour={'transparent'}
           intent={'text-sm'}
           onClick={() => setText((prevState) => !prevState)}
         >
-          {text ? 'Block' : 'Text'} View
+          Text View: {text ? 'On' : 'Off'}
         </Button>
         <Search />
       </Submenu>
@@ -46,33 +50,37 @@ export const ArticlesModule = ({articles, topics}) => {
             )}
       </Layout>
       {text && (
-        <Layout intent={'columns'}>
+        <Layout intent={'columns'} className={'!gap-16'}>
           <div
             className={
-              'grid grid-cols-[175px,1fr] [&>h3:not(:first-of-type)]:mt-[24px] [&>h3]:mb-[24px]'
+              'grid grid-cols-[130px,1fr] [&>h3:not(:first-of-type)]:mt-[24px] [&>h3]:mb-[24px]'
             }
           >
-            {Object.keys(articles).map((keyName, i) => (
-              <Fragment key={keyName + i}>
-                <h3 className={'col-start-2 text-40'}>{keyName}</h3>
-                {articles[keyName].map((article) => {
-                  return (
-                    <div
-                      key={article._id}
-                      className={'col-span-2 grid grid-cols-[175px,1fr]'}
-                    >
-                      <p className={'text-16'}>{`[${article.topic.topic}]`}</p>
-                      <TextLink
-                        to={article.slug}
-                        className={' text-24 !w-auto'}
+            {Object.keys(articles)
+              .reverse()
+              .map((keyName, i) => (
+                <Fragment key={keyName + i}>
+                  <h3 className={'text-40'}>{keyName}</h3>
+                  {articles[keyName].map((article) => {
+                    return (
+                      <div
+                        key={article._id}
+                        className={'col-span-2 grid grid-cols-[130px,1fr]'}
                       >
-                        {article.headline}
-                      </TextLink>
-                    </div>
-                  );
-                })}
-              </Fragment>
-            ))}
+                        <p
+                          className={'text-16'}
+                        >{`[${article.topic.topic}]`}</p>
+                        <TextLink
+                          to={article.slug}
+                          className={'text-18 !w-auto leading-normal'}
+                        >
+                          {article.headline}
+                        </TextLink>
+                      </div>
+                    );
+                  })}
+                </Fragment>
+              ))}
           </div>
         </Layout>
       )}
@@ -99,8 +107,8 @@ const FilterDialog = ({topics}) => {
     <>
       <div
         className={clsx(
-          'w-52 flex gap-2 justify-between ',
-          'sm:w-60 sm:flex-shrink-0',
+          'w-52 flex gap-2 justify-between z-[999]',
+          'md:w-72 sm:flex-shrink-0',
         )}
       >
         <Button
@@ -108,16 +116,31 @@ const FilterDialog = ({topics}) => {
           className={'text-18'}
           onClick={() => setIsOpen(true)}
         >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 26 20"
+            fill="none"
+            className={'h-5 inline-block'}
+          >
+            <polygon
+              points="2.3 .86 23.5 .86 14.92 12.22 14.92 19.16 11.03 19.16 11.03 12.22 2.3 .86"
+              vectorEffect="non-scaling-stroke"
+              strokeWidth="2px"
+              stroke="black"
+            />
+          </svg>{' '}
           Topic Filter
         </Button>
         {isOpen && (
-          <Button
-            colour={'transparent'}
-            className={'text-18'}
-            onClick={() => setIsOpen(false)}
-          >
-            X
-          </Button>
+          <div className={'flex gap-2'}>
+            <Button
+              colour={'transparent'}
+              className={'text-18'}
+              onClick={() => setIsOpen(false)}
+            >
+              X
+            </Button>
+          </div>
         )}
       </div>
 
@@ -137,12 +160,12 @@ const FilterDialog = ({topics}) => {
             <Dialog.Panel
               className={clsx(
                 'w-full transform overflow-hidden bg-white border-8 border-white flex flex-col',
-                'sm:w-60',
+                'sm:w-72',
               )}
               aria-label="Topic filter"
             >
               <Button
-                className={'ml-auto button-18'}
+                className={'button-18 ml-auto'}
                 onClick={() => {
                   setSearchParams({});
                   formRef.current?.reset();
@@ -173,7 +196,12 @@ const FilterDialog = ({topics}) => {
 
 const Topic = ({topic, defaultQuery}) => {
   return (
-    <li>
+    <li
+      className={clsx({
+        'opacity-50':
+          !defaultQuery.includes(topic.topic) && defaultQuery.length > 0,
+      })}
+    >
       <input
         type="checkbox"
         id={topic._id}
@@ -184,9 +212,7 @@ const Topic = ({topic, defaultQuery}) => {
       />
       <label
         htmlFor={topic._id}
-        className={
-          'h-12 cursor-pointer py-1 flex gap-4 items-center peer-checked:underline hover:text-red-500'
-        }
+        className={'group h-16 cursor-pointer py-1 flex gap-4 items-center'}
       >
         <span className={'flex-shrink-0 inline-block h-full'}>
           <Image
@@ -199,6 +225,16 @@ const Topic = ({topic, defaultQuery}) => {
           />
         </span>
         <span> {topic.topic}</span>
+        <div className={'ml-auto flex gap-2 mr-2'}>
+          <span>{`(${topic.count})`}</span>
+          <span
+            className={clsx('opacity-0',{
+              'group-hover:opacity-100': defaultQuery.includes(topic.topic),
+            })}
+          >
+            X
+          </span>
+        </div>
       </label>
     </li>
   );

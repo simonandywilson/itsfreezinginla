@@ -5,8 +5,9 @@ import {BasketIconThin} from '../icons/Icons';
 import {Badge} from './Badge';
 import {CartPreviewItem} from './CartPreviewItem';
 import {ButtonLink} from './LinksButton';
+import { TextLink } from './Links';
 
-export const CartPreview = ({text, link, className}) => {
+export const CartPreview = ({text, link, className, type}) => {
   const {cart} = useRouteLoaderData(`root`);
   return (
     <div className={cx('w-full h-max max-w-sm mx-auto', className)}>
@@ -45,9 +46,15 @@ export const CartPreview = ({text, link, className}) => {
         </div>
       </div>
       <div className={'flex justify-center mt-8'}>
-        <ButtonLink to={link || '/cart'} className={'button-32'}>
-          {text || 'View Basket'}
-        </ButtonLink>
+        {type === 'link' ? (
+          <TextLink to={link || '/cart'} className={'text-32'}>
+            {text || 'View Basket'}
+          </TextLink>
+        ) : (
+          <ButtonLink to={link || '/cart'} className={'button-32'}>
+            {text || 'View Basket'}
+          </ButtonLink>
+        )}
       </div>
     </div>
   );

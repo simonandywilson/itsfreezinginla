@@ -49,7 +49,22 @@ function generateSitemap({ data, baseUrl }) {
     return finalObject;
   });
 
-  const urlsDatas = [homeObject, ...pagesData, ...articlesData];
+  const audiobooksData = data.audiobooks.map((audiobook) => {
+    const finalObject = {
+      url: audiobook.url,
+      lastMod: audiobook._updatedAt,
+      changeFreq: 'weekly',
+      priority: 0.8,
+    };
+    return finalObject;
+  });
+
+  const urlsDatas = [
+    homeObject,
+    ...pagesData,
+    ...articlesData,
+    ...audiobooksData,
+  ];
 
   return `
     <urlset
@@ -101,6 +116,12 @@ async function getSitemapData(params) {
   ] {
     _updatedAt,
     "url": $baseUrl + "/articles/" + slug.current,
+  },
+  "audiobooks": *[
+    _type == 'audiobook' && slug != null
+  ] {
+    _updatedAt,
+    "url": $baseUrl + "/audiobooks/" + slug.current,
   },
 }`;
   const sitemap = await sanityClient.fetch(query, params);

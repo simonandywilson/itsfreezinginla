@@ -10,7 +10,7 @@ export const Basket = () => {
       <div className={'relative w-full h-full'}>
         <BasketIcon />
         <Await resolve={cart}>
-          {(cart) => <Badge intent={'small'}>{cart?.totalQuantity || 0}</Badge>}
+          {(cart) => cart?.totalQuantity && <Badge intent={'small'}>{cart?.totalQuantity}</Badge>}
         </Await>
       </div>
     </IconLink>

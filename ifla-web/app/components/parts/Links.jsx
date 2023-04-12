@@ -37,7 +37,7 @@ export const TextLink = ({children, to, className, focused, invert, colour, ...p
 
 export const IconLink = ({children, to}) => {
   const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+  const randomColour = useRef(useRandomColour(colours.dark));
   return (
     <MotionLink
       to={to}

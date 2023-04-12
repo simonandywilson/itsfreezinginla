@@ -110,6 +110,7 @@ export const allArticlesDataQuery = groq`*[_type == "article" && headline match 
 export const allTopicsDataQuery = groq`*[_type == "topic" && count( *[_type == 'article' && references(^._id)]) > 0] | order(topic asc){
   _id,
   topic,
+  "count": count(*[_type == 'article' && references(^._id)]),
   image {
     "_id": asset->_id,
   },

@@ -40,18 +40,32 @@ export const Search = () => {
       </button>
       <Form
         className={clsx(
-          'absolute pr-4 w-full h-full bg-white z-10',
+          'absolute pr-4 w-full h-full  z-10',
           {'hidden sm:block ': !visible},
-          'sm:relative sm:block sm:w-auto sm:pr-0',
+          'sm:relative sm:block sm:pr-0',
+          'md:w-[50vw]',
+          'xl:w-auto',
         )}
         ref={formRef}
       >
         <div className={'h-full flex items-center'}>
           <label
             htmlFor={'search-query'}
-            className={'leading-none mr-4 antialiased'}
+            className={'leading-none mr-4 antialiased flex gap-1'}
           >
-            Search
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 26 20"
+              fill="none"
+              className={'h-5 inline-block'}
+              vectorEffect="non-scaling-stroke"
+              strokeWidth="2px"
+              stroke="black"
+            >
+              <circle cx="8.58" cy="8.37" r="7.46" />
+              <line x1="14.15" y1="13.97" x2="19.26" y2="19.09" />
+            </svg>
+            <span>Search</span>
           </label>
           <input
             type={'search-query'}
@@ -68,14 +82,14 @@ export const Search = () => {
           </Button>
           <Button
             colour={'transparent'}
-            className={'h-full px-3'}
+            className={clsx('h-full px-3', {'opacity-0': !defaultQuery})}
             onClick={() => {
               setSearchParams({});
               formRef.current?.reset();
               setVisible(false);
             }}
           >
-            X
+            Reset
           </Button>
         </div>
       </Form>

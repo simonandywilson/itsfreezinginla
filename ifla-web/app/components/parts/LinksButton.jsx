@@ -12,6 +12,7 @@ const buttonLinkStyle = cva(
     variants: {
       colour: {
         default: ['bg-black', 'text-white'],
+        transparent: ['bg-white', 'text-black'],
         mono: [
           'bg-black',
           'text-white',
@@ -36,18 +37,30 @@ export const BlockLink = ({children, to}) => {
   );
 };
 
-export const ButtonLink = ({children, to, className, colour, invert, ...props}) => {
-  const { colours } = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(invert ? colours.light: colours.dark));
+export const ButtonLink = ({
+  children,
+  to,
+  className,
+  colour,
+  invert,
+  ...props
+}) => {
+  const {colours} = useRouteLoaderData(`root`);
+  const randomColour = useRef(
+    useRandomColour(invert ? colours.light : colours.dark),
+  );
+  const backgroundInitial = colour === 'transparent' ? '#ffffff' : '#000000';
   const background =
-    colour === 'mono' ? "white" : randomColour.current;
+    colour === 'mono' || colour === 'transparent'
+      ? 'white'
+      : randomColour.current;
 
   return (
     <MotionLink
       to={to}
       className={buttonLinkStyle({colour, className})}
       transition={{duration: 0}}
-      initial={{background: '#000000'}}
+      initial={{background: backgroundInitial}}
       whileHover={{
         background: background,
       }}
@@ -69,11 +82,11 @@ export const ButtonLinkExternal = ({
   invert,
   ...props
 }) => {
-   const {colours} = useRouteLoaderData(`root`);
-   const randomColour = useRef(
-     useRandomColour(invert ? colours.light : colours.dark),
-   );
-   const background = colour === 'mono' ? 'white' : randomColour.current;
+  const {colours} = useRouteLoaderData(`root`);
+  const randomColour = useRef(
+    useRandomColour(invert ? colours.light : colours.dark),
+  );
+  const background = colour === 'mono' ? 'white' : randomColour.current;
   return (
     <motion.a
       href={to}

@@ -8,10 +8,10 @@ module.exports = {
         audiobook: '#ded3c5',
       },
       screens: {
-        '3xl': '1700px',
+        '3xl': '1800px',
       },
       borderWidth: {
-        1: '1px',
+        1: '2px',
       },
       spacing: {
         header: '4.5rem',

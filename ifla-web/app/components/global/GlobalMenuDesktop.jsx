@@ -8,10 +8,12 @@ import {Basket} from '../parts/Basket';
 import {TextLink} from '../parts/Links';
 import {GlobalTitle} from './GlobalTitle';
 const MotionButton = motion(Popover.Button);
+const timeoutDuration = 20;
 
 export const GlobalMenuDesktop = ({menu}) => {
   const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+  const randomColour = useRef(useRandomColour(colours.dark));
+
   return (
     <div
       className={
@@ -19,7 +21,9 @@ export const GlobalMenuDesktop = ({menu}) => {
       }
     >
       <GlobalTitle />
-      <div className={clsx('flex-shrink-0 flex items-center gap-16')}>
+      <div
+        className={clsx('gap-8 flex-shrink-0 flex items-center', 'md:gap-16')}
+      >
         {/* Desktop Menu Items */}
         {menu.map((section) => {
           return (
@@ -28,15 +32,7 @@ export const GlobalMenuDesktop = ({menu}) => {
               className="hidden md:flex"
               key={section._id || section._key}
             >
-              <Popover className="relative">
-                {({close}) => (
-                  <MenuItem
-                    title={section.name}
-                    children={section.children}
-                    close={close}
-                  />
-                )}
-              </Popover>
+              <MenuItem title={section.name} children={section.children} />
             </Popover.Group>
           );
         })}
@@ -47,7 +43,7 @@ export const GlobalMenuDesktop = ({menu}) => {
         <div className={'flex-shrink-0 md:hidden w-[4rem]'}>
           <MotionButton
             className={
-              'w-full focus:outline-none focus:border-none antialiased focus-visible:underline '
+              'w-full focus:outline-none focus:border-none antialiased '
             }
             transition={{duration: 0}}
             initial={{color: '#000000'}}
@@ -77,46 +73,85 @@ export const GlobalMenuDesktop = ({menu}) => {
   );
 };
 
-const MenuItem = ({title, children, close}) => {
+const MenuItem = ({title, children}) => {
+  const triggerRef = useRef();
+  const timeOutRef = useRef();
+
+  const handleEnter = (isOpen) => {
+    clearTimeout(timeOutRef.current);
+    !isOpen && triggerRef.current?.click();
+  };
+
+  const handleLeave = (isOpen) => {
+    timeOutRef.current = setTimeout(() => {
+      isOpen && triggerRef.current?.click();
+    }, timeoutDuration);
+  };
   const navigate = useNavigate();
+  const singleton = children.length < 2;
   const {colours} = useRouteLoaderData(`root`);
-  const randomColour = useRef(useRandomColour(colours));
+  const randomColour = useRef(useRandomColour(colours.dark));
 
   return (
-    <>
-      <MotionButton
-        className={
-          'focus:outline-none focus:border-none antialiased focus-visible:underline'
-        }
-        onClick={() => navigate(children[0].slug)}
-        transition={{duration: 0}}
-        initial={{color: '#000000'}}
-        whileHover={{
-          color: randomColour.current,
-        }}
-        whileFocus={{
-          color: randomColour.current,
-        }}
-      >
-        <p className={'font-normal text-24'}>{title}</p>
-      </MotionButton>
-      {children.length > 1 && (
-        <Popover.Panel className={'absolute z-50'} onMouseLeave={() => close()}>
-          <ul className="relative bg-white w-max -left-2 border-8 border-white flex flex-col gap-2">
-            {children.map((child) => (
-              <li key={child._id}>
-                <TextLink
-                  to={child.slug}
-                  className={'leading-none text-24'}
-                  onClick={() => close()}
-                >
-                  {child.title}
-                </TextLink>
-              </li>
-            ))}
-          </ul>
-        </Popover.Panel>
+    <Popover className={'relative'}>
+      {({open, close}) => (
+        <div
+          onMouseEnter={() => handleEnter(open)}
+          onMouseLeave={() => handleLeave(open)}
+        >
+          <MotionButton
+            className={
+              'relative focus:outline-none focus:border-none antialiased px-2 py-1 z-50'
+            }
+            onClick={() => singleton && navigate(children[0].slug)}
+            transition={{duration: 0}}
+            initial={{color: '#000000'}}
+            whileHover={{
+              color: randomColour.current,
+            }}
+            whileFocus={{
+              color: randomColour.current,
+            }}
+            ref={triggerRef}
+          >
+            <p className={'font-normal text-24'}>{title}</p>
+            {open && (
+              <div
+                className={clsx(
+                  'absolute inset-0 border-1 border-black',
+                  {
+                    'border-b-white': !singleton,
+                  },
+                )}
+              ></div>
+            )}
+          </MotionButton>
+          {!singleton && (
+            <Popover.Panel className={'absolute z-40 left-2 '}>
+              <div
+                className={
+                  'absolute w-full h-full top-0 -left-2 border-1 border-black bg-white -translate-y-0.5'
+                }
+              ></div>
+              <ul className="relative  w-max -left-2 border-8 border-transparent flex flex-col gap-2">
+                {children.map((child) => (
+                  <li key={child._id}>
+                    <TextLink
+                      to={child.slug}
+                      className={
+                        'leading-none text-24 hover:no-underline focus:no-underline'
+                      }
+                      onClick={() => close()}
+                    >
+                      {child.title}
+                    </TextLink>
+                  </li>
+                ))}
+              </ul>
+            </Popover.Panel>
+          )}
+        </div>
       )}
-    </>
+    </Popover>
   );
 };

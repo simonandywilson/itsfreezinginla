@@ -39,7 +39,7 @@ function usePrevious(value) {
   return ref.current;
 }
 
-const MenuItem = ({children}) => {
+const MenuItem = ({ children, title }) => {
   const {pathname} = useLocation();
   return (
     <ul>
@@ -53,9 +53,9 @@ const MenuItem = ({children}) => {
               : false
           }
         >
-          {children[0].title}
+          {title}
         </TextLink>
-        <ul className={'ml-4'}>
+        <ul className={'ml-8'}>
           {children.length > 1 &&
             children.map((page) => (
               <li key={page._id}>

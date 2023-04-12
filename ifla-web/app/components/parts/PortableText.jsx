@@ -32,9 +32,9 @@ const components = (intent, colour, footnoteIndexes) => {
       normal: ({children}) => {
         switch (intent) {
           case 'column':
-            return <p className={'text-24'}>{children}</p>;
+            return <p className={'text-18'}>{children}</p>;
           case 'footer':
-            return <p className={'text-18 xl:text-24'}>{children}</p>;
+            return <p className={'text-18 '}>{children}</p>;
           case 'intro':
             return <h3 className={'text-24 md:text-40'}>{children}</h3>;
           case 'preview':

@@ -192,7 +192,12 @@ const Cart = ({cart}) => {
 
   return (
     <Layout intent={'cart'}>
-      <div className={cx('min-h-screen grid grid-cols-1', 'md:grid-cols-3 md:gap-8')}>
+      <div
+        className={cx(
+          'min-h-screen grid grid-cols-1',
+          'md:grid-cols-3 md:gap-8',
+        )}
+      >
         <div
           className={cx(
             'order-last col-span-2 flex flex-col mt-8',
@@ -224,6 +229,7 @@ const Cart = ({cart}) => {
           text={'Back to shop'}
           link={`/${keyPages.shop}`}
           className={'mt-4'}
+          type={'link'}
         />
       </div>
     </Layout>

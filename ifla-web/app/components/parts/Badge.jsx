@@ -11,11 +11,12 @@ const layout = cva(
       location: {
         top: ['top-0 right-0 -translate-x-1/2 translate-y-full'],
         bottom: ['bottom-0 right-0 translate-y-1/2'],
+        middle: ['mt-1 left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'],
       },
     },
     defaultVariants: {
       intent: 'small',
-      location: 'bottom',
+      location: 'middle',
     },
   },
 );

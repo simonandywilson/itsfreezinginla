@@ -55,7 +55,7 @@ const Hand = ({type, width}) => {
       >
         <div
           className={
-            'absolute top-0 left-1/2 flex items justify-center bg-black h-1/2 w-[1px]'
+            'absolute top-0 left-1/2 flex items justify-center bg-black h-1/2 w-[2px]'
           }
         ></div>
       </div>

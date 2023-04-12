@@ -1,5 +1,4 @@
 import { cx } from 'class-variance-authority';
-import React from 'react';
 import {Image} from './Image';
 
 export const Topic = ({topic}) => {
@@ -13,7 +12,7 @@ export const Topic = ({topic}) => {
     >
       <div
         className={
-          'absolute w-full h-full inset-0 border-2 border-black whitespace-wrap hidden p-2 group-hover/topic:block'
+          'absolute w-full h-full inset-0  whitespace-wrap hidden p-2 group-hover/topic:block'
         }
       >
         <p className={'text-16 break-words leading-none'}>{topic.topic}</p>

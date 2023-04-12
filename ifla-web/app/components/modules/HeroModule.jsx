@@ -19,8 +19,8 @@ export const HeroModule = ({content}) => {
       >
         <div
           className={cx(
-            'h-full z-10 flex flex-col justify-between',
-            'md:justify-start',
+            'h-full w-full z-10 flex flex-col justify-between',
+            'md:w-1/2 md:justify-start lg:w-full',
           )}
         >
           {heading && (
@@ -34,10 +34,9 @@ export const HeroModule = ({content}) => {
               {heading}
             </h2>
           )}
-          <div className={'flex flex-col gap-4'}>
+          <div className={'flex flex-col gap-4 items-end md:items-start'}>
             {links &&
               links.map((link) => {
-                
                 switch (link?._type) {
                   case 'externalLinkObject':
                     return (
@@ -82,9 +81,12 @@ export const HeroModule = ({content}) => {
         </div>
         {image && (
           <div
-            className={
-              'absolute w-full h-full inset-0 flex justify-center items-center'
-            }
+            className={clsx(
+              'absolute w-full h-full inset-0 ml-auto flex justify-center items-center',
+              {
+                'md:w-1/2 lg:w-full': imageFormat === 'contain',
+              },
+            )}
           >
             <Image
               id={image._id}
@@ -98,11 +100,11 @@ export const HeroModule = ({content}) => {
               className={clsx(
                 'h-full w-full',
                 {
-                  'p-8 object-contain max-w-[50vw] md:max-w-[30vw] ':
+                  'p-8 object-contain max-w-[75vw] sm:max-w-[50vw] md:max-w-[45vw] lg:max-w-[30vw]':
                     imageFormat === 'contain',
                 },
                 {
-                  'object-cover': imageFormat === 'cover',
+                  'p-4 object-contain md:object-cover md:p-0': imageFormat === 'cover',
                 },
               )}
             />

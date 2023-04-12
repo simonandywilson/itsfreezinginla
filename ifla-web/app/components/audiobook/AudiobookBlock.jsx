@@ -1,4 +1,3 @@
-import React from 'react';
 import {Layout} from '../parts/Layout';
 import clsx from 'clsx';
 import {Image} from '../parts/Image';
@@ -11,7 +10,7 @@ export const AudiobookBlock = ({audiobook}) => {
       as={'div'}
       intent={'block'}
       className={clsx(
-        'relative w-full aspect-square flex flex-col justify-between gap-6 bg-audiobook',
+        'relative w-full aspect-square flex flex-col justify-between gap-6 bg-audiobook border-r-1 border-b-1 border-black',
       )}
     >
       <div
