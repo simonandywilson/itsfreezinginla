@@ -13,34 +13,25 @@ export const Search = () => {
       <button
         aria-label={'Search articles'}
         className={clsx(
-          'h-full py-1 aspect-square mr-2 antialiased',
+          'h-full mr-2 antialiased flex-1 flex gap-1 items-center',
           'sm:hidden',
         )}
         onClick={() => setVisible((prevState) => !prevState)}
       >
         <svg
-          width="23"
-          height="25"
-          viewBox="0 0 23 25"
-          fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className={'w-full h-full'}
+          viewBox="0 0 26 20"
+          className={'h-5 inline-block stroke-2 stroke-black fill-none'}
+          vectorEffect="non-scaling-stroke"
         >
-          <path
-            d="M18.7239 10.1747C18.7239 15.049 14.7592 19.0057 9.86195 19.0057C4.96466 19.0057 1 15.049 1 10.1747C1 5.30048 4.96466 1.34375 9.86195 1.34375C14.7592 1.34375 18.7239 5.30048 18.7239 10.1747Z"
-            stroke="black"
-            strokeWidth="2"
-          />
-          <path
-            d="M21.9995 23.3439L15.3943 16.7587"
-            stroke="black"
-            strokeWidth="2"
-          />
+          <circle cx="8.58" cy="8.37" r="7.46" />
+          <line x1="14.15" y1="13.97" x2="19.26" y2="19.09" />
         </svg>
+        <span>Search</span>
       </button>
       <Form
         className={clsx(
-          'absolute pr-4 w-full h-full  z-10',
+          'absolute pr-4 w-full h-full z-50 bg-white',
           {'hidden sm:block ': !visible},
           'sm:relative sm:block sm:pr-0',
           'md:w-[50vw]',
@@ -51,16 +42,13 @@ export const Search = () => {
         <div className={'h-full flex items-center'}>
           <label
             htmlFor={'search-query'}
-            className={'leading-none mr-4 antialiased flex gap-1'}
+            className={'leading-none mr-4 antialiased flex gap-1 items-center'}
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 26 20"
-              fill="none"
-              className={'h-5 inline-block'}
+              className={'h-5 inline-block stroke-2 stroke-black fill-none'}
               vectorEffect="non-scaling-stroke"
-              strokeWidth="2px"
-              stroke="black"
             >
               <circle cx="8.58" cy="8.37" r="7.46" />
               <line x1="14.15" y1="13.97" x2="19.26" y2="19.09" />
@@ -82,14 +70,15 @@ export const Search = () => {
           </Button>
           <Button
             colour={'transparent'}
-            className={clsx('h-full px-3', {'opacity-0': !defaultQuery})}
+            className={clsx('h-full px-3', {'sm:opacity-0': !defaultQuery})}
             onClick={() => {
               setSearchParams({});
               formRef.current?.reset();
               setVisible(false);
             }}
           >
-            Reset
+            <span className={'sm:hidden'}>Close</span>
+            <span className={'hidden sm:inline-block'}>Reset</span>
           </Button>
         </div>
       </Form>

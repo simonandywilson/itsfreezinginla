@@ -11,7 +11,9 @@ export const GlobalHeader = () => {
     .map((section) => section.children)
     .flat()
     .map((page) => page.slug);
-
+  
+  // submenuActiveOn.push('cart');
+  
   return (
     <Popover className={'fixed h-header w-screen bg-white z-50'} as={'header'}>
       {({close}) => (

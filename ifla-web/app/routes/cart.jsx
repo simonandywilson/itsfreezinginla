@@ -1,4 +1,4 @@
-import {Await, useFetcher, useRouteLoaderData} from '@remix-run/react';
+import {Await, useFetcher, useLocation, useRouteLoaderData} from '@remix-run/react';
 import {Money} from '@shopify/hydrogen';
 import {json} from '@shopify/remix-oxygen';
 import {cx} from 'class-variance-authority';
@@ -8,6 +8,9 @@ import {CartPreview} from '../components/parts/CartPreview';
 import {Dash} from '../components/parts/Dash';
 import {Layout} from '../components/parts/Layout';
 import {ButtonLinkExternal} from '../components/parts/LinksButton';
+import {Submenu} from '../components/parts/Submenu';
+import { TextLink } from '../components/parts/Links';
+import { CartUpdateQuantity } from '../components/parts/CartUpdateQuantity';
 
 export const handle = {
   seo: {
@@ -189,50 +192,73 @@ export default function CartPage() {
 const Cart = ({cart}) => {
   const {keyPages} = useRouteLoaderData(`root`);
   const cartHasItems = Boolean(cart?.lines?.edges?.length || 0);
+  const {pathname} = useLocation();
 
   return (
-    <Layout intent={'cart'}>
-      <div
-        className={cx(
-          'min-h-screen grid grid-cols-1',
-          'md:grid-cols-3 md:gap-8',
-        )}
+    <>
+      <Submenu className={'sticky top-header border-b-1 border-black'}>
+        <h2 className={'text-18 mr-8 leading-none'}>Section:</h2>
+        <div className={'overflow-x-scroll mr-4 scrollbar-hide'}>
+          <div className={'gap-8 flex'}>
+            <TextLink
+              className={'text-18 flex-shrink-0'}
+              focused={pathname.slice(1) === 'cart' ? true : false}
+              to={'/'}
+            >
+              Shop
+            </TextLink>
+          </div>
+        </div>
+      </Submenu>
+      <Submenu
+        className={'sticky top-header-submenu justify-between z-40 gap-8 items-center'}
       >
+        <TextLink to={`/${keyPages.shop}`} className={'h-max text-18'}>
+          {'<'} Back
+        </TextLink>
+      </Submenu>
+      <Layout intent={'cart'}>
         <div
           className={cx(
-            'order-last col-span-2 flex flex-col mt-8',
-            'md:order-first md:mt-0',
+            'min-h-screen grid grid-cols-1',
+            'md:grid-cols-3 md:gap-16',
           )}
         >
-          <h2 as={'h2'} className={'mb-4 text-32'}>
-            Basket contents
-          </h2>
-          {cartHasItems &&
-            cart.lines.edges.map(({node}) => (
-              <CartLine key={node.id} line={node} />
-            ))}
-          <CartTotal cost={cart?.cost} />
-          {cartHasItems && (
-            <ButtonLinkExternal
-              to={cart.checkoutUrl}
-              target={'_self'}
-              className={cx(
-                'ml-auto mr-16 mt-8 button-24',
-                'md:ml-auto md:mr-16',
-              )}
-            >
-              Checkout
-            </ButtonLinkExternal>
-          )}
+          <div
+            className={cx(
+              'order-last col-span-2 flex flex-col mt-8',
+              'md:order-first md:mt-0',
+            )}
+          >
+            <h2 as={'h2'} className={'mb-4 text-32'}>
+              Basket contents
+            </h2>
+            {cartHasItems &&
+              cart.lines.edges.map(({node}) => (
+                <CartLine key={node.id} line={node} />
+              ))}
+            <CartTotal cost={cart?.cost} />
+            {cartHasItems && (
+              <ButtonLinkExternal
+                to={cart.checkoutUrl}
+                target={'_self'}
+                className={cx(
+                  'ml-auto mr-16 mt-8 button-24',
+                  'md:ml-auto md:mr-16',
+                )}
+              >
+                Checkout
+              </ButtonLinkExternal>
+            )}
+          </div>
+          <CartPreview
+            text={'Back to shop'}
+            link={`/${keyPages.shop}`}
+            type={'link'}
+          />
         </div>
-        <CartPreview
-          text={'Back to shop'}
-          link={`/${keyPages.shop}`}
-          className={'mt-4'}
-          type={'link'}
-        />
-      </div>
-    </Layout>
+      </Layout>
+    </>
   );
 };
 
@@ -268,7 +294,7 @@ const CartLine = ({line}) => {
             colour={'transparent'}
             className={'text-24'}
             value={prevQuantity}
-            aria="Decrease quantity"
+            aria-label="Decrease quantity"
           >
             –
           </Button>
@@ -279,24 +305,13 @@ const CartLine = ({line}) => {
             colour={'transparent'}
             className={'text-24'}
             value={nextQuantity}
-            aria="Increase quantity"
+            aria-label="Increase quantity"
           >
             +
           </Button>
         </CartUpdateQuantity>
       </div>
     </CartLineWrapper>
-  );
-};
-
-const CartUpdateQuantity = ({lines, children}) => {
-  const fetcher = useFetcher();
-  return (
-    <fetcher.Form action="/cart" method="post">
-      <input type="hidden" name="cartAction" value={'UPDATE_CART'} />
-      <input type="hidden" name="lines" value={JSON.stringify(lines)} />
-      {children}
-    </fetcher.Form>
   );
 };
 

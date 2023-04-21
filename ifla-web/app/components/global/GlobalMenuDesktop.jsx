@@ -36,8 +36,9 @@ export const GlobalMenuDesktop = ({menu}) => {
             </Popover.Group>
           );
         })}
-        <nav className={'h-10'}>
-          <Basket />
+        <nav className={'h-8 md:h-10'}>
+            <Basket />
+          
         </nav>
         {/* Mobile Menu Button */}
         <div className={'flex-shrink-0 md:hidden w-[4rem]'}>

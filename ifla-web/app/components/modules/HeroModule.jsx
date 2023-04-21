@@ -26,9 +26,9 @@ export const HeroModule = ({content}) => {
           {heading && (
             <h2
               className={cx(
-                'text-40 md:text-56 lg:text-68',
+                'text-40 md:text-56 lg:text-68 hyphens-none',
                 'w-full z-10 mb-[0.5em] ',
-                'md:w-1/2 lg:w-1/3',
+                'lg:w-1/3',
               )}
             >
               {heading}

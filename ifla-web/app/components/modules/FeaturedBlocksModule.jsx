@@ -3,6 +3,7 @@ import {BlockLink, ButtonLink} from '../parts/LinksButton';
 import clsx from 'clsx';
 import {ArticleBlock} from '../article/ArticleBlock';
 import {AudiobookBlock} from '../audiobook/AudiobookBlock';
+import { ArticleBannerModule } from './ArticleBannerModule';
 
 export const FeaturedBlocksModule = ({ content, link }) => {
   
@@ -14,7 +15,12 @@ export const FeaturedBlocksModule = ({ content, link }) => {
             return (
               <li key={block._id} className={'w-full'}>
                 <BlockLink to={block.slug}>
-                  <ArticleBlock article={block} />
+                  <div className={"hidden md:block"}>
+                    <ArticleBlock article={block} />
+                  </div>
+                  <div className={"md:hidden"}>
+                    <ArticleBannerModule content={block} homepage />
+                  </div>
                 </BlockLink>
               </li>
             );

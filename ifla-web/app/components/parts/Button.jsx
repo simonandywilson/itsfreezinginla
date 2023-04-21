@@ -50,7 +50,7 @@ export const Button = ({
   const randomColour = useRef(
     useRandomColour(invert ? colours.light : colours.dark),
   );
-  const alt = colour === 'transparent' || colour === 'outline';
+  const alt = colour === 'transparent' || colour === 'outline' || status === 'disabled';
   return (
     <motion.button
       type={type || 'button'}
@@ -59,7 +59,7 @@ export const Button = ({
       initial={
         alt
           ? {
-              color: '#000000',
+              color: 'inherit',
               borderColor: '#000000',
             }
           : {

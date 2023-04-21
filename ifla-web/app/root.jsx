@@ -130,7 +130,7 @@ export default function App() {
         <Meta />
         <Links />
       </head>
-      <body className={'selection:bg-yellow-200/50'}>
+      <body className={'selection:bg-yellow-200/50 hyphens-auto'}>
         <GlobalHeader />
         <div>
           <Outlet />

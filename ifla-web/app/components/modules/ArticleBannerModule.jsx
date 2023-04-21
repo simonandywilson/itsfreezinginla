@@ -18,7 +18,9 @@ export const ArticleBannerModule = ({content, homepage}) => {
         className={clsx('gap-4 h-min', 'lg:gap-8 lg:flex-1')}
       >
         <div>
-          <h2 className={clsx('break-words', 'text-32 md:text-56 lg:text-68')}>
+          <h2
+            className={clsx('', 'text-32 md:text-56 lg:text-68')}
+          >
             {topic && <Topic topic={topic} />}
             {headline ? headline : 'Untitled article'}
           </h2>
@@ -31,13 +33,12 @@ export const ArticleBannerModule = ({content, homepage}) => {
         >
           <div
             className={clsx({
-              ' line-clamp xl:no-line-clamp':
-                homepage,
+              'line-clamp xl:no-line-clamp': homepage,
             })}
           >
             {intro && <PortableText text={intro} intent={'intro'} />}
           </div>
-          {(homepage && slug) && (
+          {homepage && slug && (
             <ButtonLink
               colour={'mono'}
               to={slug}

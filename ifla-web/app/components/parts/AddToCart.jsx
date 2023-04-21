@@ -15,7 +15,7 @@ export const AddToCart = ({lines, analytics, soldOut}) => {
         colour={'default'}
         status={soldOut ? 'disabled' : ''}
         disabled={soldOut}
-        className={'button-18'}
+        className={'button-18 !w-full'}
       >
         {soldOut ? 'Sold Out' : 'Add to Cart'}
       </Button>
