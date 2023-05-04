@@ -1,11 +1,10 @@
 import {Dialog} from '@headlessui/react';
-import {Form, useSearchParams, useSubmit} from '@remix-run/react';
+import {Form, Link, useSearchParams, useSubmit} from '@remix-run/react';
 import {Fragment, useRef, useState} from 'react';
 import {ArticleBlock} from '../article/ArticleBlock';
 import {Button} from '../parts/Button';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import {TextLink} from '../parts/Links';
 import {BlockLink} from '../parts/LinksButton';
 
 import clsx from 'clsx';
@@ -29,26 +28,17 @@ export const ArticlesModule = ({articles, topics}) => {
           onClick={() => setText((prevState) => !prevState)}
           className={'flex-1 flex items-center gap-2'}
         >
+
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
-            className={'h-5 inline-block fill-none'}
+            width="19.28"
+            height="19.34"
+            viewBox="0 0 19.28 19.34"
+            className={'h-6 inline-block fill-inherit stroke-none'}
           >
-            <rect
-              x=".9"
-              y=".82"
-              width="18.28"
-              height="18.34"
-              className={'stroke-black stroke-2'}
-            />
-            <path
-              d="m11.4,5.21v1.29h-3.14v8.52h-1.61V6.5h-3.14v-1.29h7.89Z"
-              className={'fill-black'}
-            />
-            <path
-              d="m16.35,13.83v1.19h-1.37c-1.13,0-1.75-.59-1.75-1.6v-4.43h-1.3v-1.11h1.3v-1.96h1.46v1.96h1.53v1.11h-1.53v4.22c0,.42.18.62.59.62h1.08Z"
-              className={'fill-black'}
-            />
+            <path d="m19.28,19.34H0V0h19.28v19.34Zm-18.28-1h17.28V1H1v17.34Z" />
+            <path d="m11,4.89v1.29h-3.14v8.52h-1.61V6.18h-3.14v-1.29h7.89Z" />
+            <path d="m15.95,13.51v1.19h-1.37c-1.13,0-1.75-.59-1.75-1.6v-4.43h-1.3v-1.11h1.3v-1.96h1.46v1.96h1.53v1.11h-1.53v4.22c0,.42.18.62.59.62h1.08-.01Z" />
           </svg>{' '}
           <span>
             Text View
@@ -74,6 +64,7 @@ export const ArticlesModule = ({articles, topics}) => {
               }),
             )}
       </Layout>
+
       {text && (
         <Layout intent={'columns'} className={'!gap-16'}>
           <div
@@ -88,26 +79,30 @@ export const ArticlesModule = ({articles, topics}) => {
                   <h3 className={'text-40'}>{keyName}</h3>
                   {articles[keyName].map((article) => {
                     return (
-                      <div
+                      <Link
+                        to={article.slug}
                         key={article._id}
-                        className={'col-span-2 grid grid-cols-[130px,1fr]'}
+                        className={
+                          'col-span-2 text-18 leading-normal !w-auto link hover:underline'
+                        }
+                        style={{color: article.colourDark}}
                       >
-                        <p
-                          className={'text-16'}
-                        >{`[${article.topic.topic}]`}</p>
-                        <TextLink
-                          to={article.slug}
-                          className={'text-18 !w-auto leading-normal'}
-                        >
+                        <div className={'grid grid-cols-[130px,1fr]'}>
+                          <p
+                            className={'text-16'}
+                          >{`[${article.topic.topic}]`}</p>
                           {article.headline}
-                        </TextLink>
-                      </div>
+                        </div>
+                      </Link>
                     );
                   })}
                 </Fragment>
               ))}
           </div>
         </Layout>
+      )}
+      {Object.keys(articles).length === 0 && (
+        <h2 className={'text-40 px-4 pt-8'}>No results</h2>
       )}
     </>
   );
@@ -130,42 +125,38 @@ const FilterDialog = ({topics}) => {
 
   return (
     <>
-      <div
-        className={clsx(
-          'w-auto flex-1 flex gap-2 justify-between z-40',
-          'sm:w-52 md:w-72 sm:flex-shrink-0',
-        )}
-      >
-        <Button
-          colour={'transparent'}
-          className={'text-18 flex gap-2 items-center'}
-          onClick={() => setIsOpen(true)}
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 26 20"
-            fill="none"
-            className={'h-5 inline-block stroke-2 stroke-black'}
+      <div className={clsx('w-auto flex-1 z-30 flex items-center')}>
+        <div className={'lg:w-64 flex gap-2 justify-between items-center'}>
+          <Button
+            colour={'transparent'}
+            className={'text-16 flex gap-2 items-center sm:text-18'}
+            onClick={() => setIsOpen(true)}
           >
-            <polygon
-              points="2.3 .86 23.5 .86 14.92 12.22 14.92 19.16 11.03 19.16 11.03 12.22 2.3 .86"
-              vectorEffect="non-scaling-stroke"
-  
-            />
-          </svg>{' '}
-          <span>Topic Filter</span>
-        </Button>
-        {isOpen && (
-          <div className={'flex gap-2'}>
-            <Button
-              colour={'transparent'}
-              className={'text-18'}
-              onClick={() => setIsOpen(false)}
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 26 20"
+              fill="none"
+              className={'h-5 inline-block stroke-2 stroke-inherit'}
             >
-              X
-            </Button>
-          </div>
-        )}
+              <polygon
+                points="2.3 .86 23.5 .86 14.92 12.22 14.92 19.16 11.03 19.16 11.03 12.22 2.3 .86"
+                vectorEffect="non-scaling-stroke"
+              />
+            </svg>{' '}
+            <span>Topic Filter</span>
+          </Button>
+          {isOpen && (
+            <div className={'flex gap-2'}>
+              <Button
+                colour={'transparent'}
+                className={'text-18'}
+                onClick={() => setIsOpen(false)}
+              >
+                X
+              </Button>
+            </div>
+          )}
+        </div>
       </div>
 
       <Dialog
@@ -180,10 +171,10 @@ const FilterDialog = ({topics}) => {
         />
 
         <div className="fixed inset-0 overflow-y-auto pt-header-submenu">
-          <div className="flex max-h-full pb-4 pl-4 pt-submenu">
+          <div className="flex max-h-full pb-4 mt-submenu">
             <Dialog.Panel
               className={clsx(
-                'w-full transform overflow-hidden bg-white border-8 border-white flex flex-col',
+                'w-full transform overflow-hidden bg-white border-[16px] border-white flex flex-col',
                 'sm:w-72',
               )}
               aria-label="Topic filter"
@@ -222,7 +213,7 @@ const Topic = ({topic, defaultQuery}) => {
   return (
     <li
       className={clsx({
-        'opacity-50':
+        'opacity-20':
           !defaultQuery.includes(topic.topic) && defaultQuery.length > 0,
       })}
     >

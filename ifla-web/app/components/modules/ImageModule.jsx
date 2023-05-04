@@ -7,7 +7,7 @@ export const ImageModule = ({content}) => {
   const {caption, image, colour} = content;
 
   return (
-    <Layout as={"section" } intent={inline ? 'module-inline' : 'module'}>
+    <Layout as={"section"} intent={inline ? 'module-inline' : 'module'}>
       {image && (
         <div className={'w-full'}>
           <Image

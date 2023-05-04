@@ -2,6 +2,7 @@ import { defineArrayMember, defineField } from "sanity";
 import { AltTextDemo } from "../../components/AltTextDemo";
 import { BlockContentIcon } from "@sanity/icons";
 import { ArrowLeftRight } from "lucide-react";
+import { AccessibleColourInput } from "../../components/AccessibleColourInput";
 
 export default defineArrayMember({
   name: 'carouselModule',
@@ -17,6 +18,14 @@ export default defineArrayMember({
     defineField({
       name: 'text',
       type: 'basicBlock',
+    }),
+    defineField({
+      name: 'background',
+      type: 'string',
+      components: {
+        input: AccessibleColourInput,
+      },
+      options: {type: '#000000'},
     }),
   ],
   preview: {

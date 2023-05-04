@@ -97,8 +97,8 @@ const MenuItem = ({title, children}) => {
     <Popover className={'relative'}>
       {({open, close}) => (
         <div
-          onMouseEnter={() => handleEnter(open)}
-          onMouseLeave={() => handleLeave(open)}
+          onMouseEnter={() => !singleton && handleEnter(open)}
+          onMouseLeave={() => !singleton && handleLeave(open)}
         >
           <MotionButton
             className={

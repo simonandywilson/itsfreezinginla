@@ -19,7 +19,7 @@ export const HeroModule = ({content}) => {
       >
         <div
           className={cx(
-            'h-full w-full z-10 flex flex-col justify-between',
+            'h-full w-full z-10 flex flex-col justify-between gap-8',
             'md:w-1/2 md:justify-start lg:w-full',
           )}
         >
@@ -27,14 +27,47 @@ export const HeroModule = ({content}) => {
             <h2
               className={cx(
                 'text-40 md:text-56 lg:text-68 hyphens-none',
-                'w-full z-10 mb-[0.5em] ',
+                'w-full z-10 ',
                 'lg:w-1/3',
               )}
             >
               {heading}
             </h2>
           )}
-          <div className={'flex flex-col gap-4 items-end md:items-start'}>
+          {image && (
+            <div
+              className={clsx(
+                'relative w-full min-h-0 h-auto inset-0 ml-auto flex justify-center items-center flex-initial',
+                'md:absolute md:h-full',
+                {
+                  'lg:w-1/2 xl:w-full': imageFormat === 'contain',
+                },
+              )}
+            >
+              <Image
+                id={image._id}
+                width={2000}
+                mode={imageFormat}
+                hotspot={image.hotspot}
+                crop={image.crop}
+                alt={image.alt || ''}
+                preview={image.preview}
+                sizes={'100vw'}
+                className={clsx(
+                  'h-full w-full',
+                  {
+                    'p-4 object-contain max-w-[75vw] sm:max-w-[50vw] md:p-8 md:max-w-[45vw] lg:max-w-[30vw]':
+                      imageFormat === 'contain',
+                  },
+                  {
+                    'p-0 aspect-[4/3] object-cover md:aspect-auto md:p-0':
+                      imageFormat === 'cover',
+                  },
+                )}
+              />
+            </div>
+          )}
+          <div className={'flex flex-row gap-4 items-end justify-end z-10 flex-wrap md:items-start md:flex-col md:justify-start'}>
             {links &&
               links.map((link) => {
                 switch (link?._type) {
@@ -79,37 +112,6 @@ export const HeroModule = ({content}) => {
               })}
           </div>
         </div>
-        {image && (
-          <div
-            className={clsx(
-              'absolute w-full h-full inset-0 ml-auto flex justify-center items-center',
-              {
-                'md:w-1/2 lg:w-full': imageFormat === 'contain',
-              },
-            )}
-          >
-            <Image
-              id={image._id}
-              width={2000}
-              mode="cover"
-              hotspot={image.hotspot}
-              crop={image.crop}
-              alt={image.alt || ''}
-              preview={image.preview}
-              sizes={'100vw'}
-              className={clsx(
-                'h-full w-full',
-                {
-                  'p-8 object-contain max-w-[75vw] sm:max-w-[50vw] md:max-w-[45vw] lg:max-w-[30vw]':
-                    imageFormat === 'contain',
-                },
-                {
-                  'p-4 object-contain md:object-cover md:p-0': imageFormat === 'cover',
-                },
-              )}
-            />
-          </div>
-        )}
       </Layout>
     </>
   );

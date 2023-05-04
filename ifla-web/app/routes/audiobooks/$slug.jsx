@@ -11,7 +11,10 @@ import {Content} from '../../components/content/Content';
 import {AudiobookBanner} from '../../components/audiobook/AudiobookBanner';
 import {AudiobookBlock} from '../../components/audiobook/AudiobookBlock';
 import clsx from 'clsx';
-import { BlockLink, ButtonLink } from '../../components/parts/LinksButton';
+import {BlockLink, ButtonLink} from '../../components/parts/LinksButton';
+import {Submenu} from '../../components/parts/Submenu';
+import {TextLink} from '../../components/parts/Links';
+import { useRouteLoaderData } from '@remix-run/react';
 
 const seo = ({data}) => ({
   title: data.audiobook.seoTitle,
@@ -39,10 +42,15 @@ export async function loader({params}) {
 
 export default function Audiobook() {
   const {audiobook} = useLoaderData();
-  const { date, content, related } = audiobook;
+  const {date, content, related} = audiobook;
+  const { keyPages } = useRouteLoaderData(`root`);
+
   return (
     <>
       <Layout intent={'article'}>
+        <Submenu className={'fixed '}>
+          <TextLink to={`/${keyPages.audiobooks}`}>{'<'} Back</TextLink>
+        </Submenu>
         <AudiobookBanner audiobook={audiobook} />
         {date && (
           <Banner>

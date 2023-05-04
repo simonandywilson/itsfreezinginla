@@ -10,7 +10,7 @@ export default defineField({
       styles: [],
       lists: [],
       marks: {
-        decorators: [],
+        decorators: [{title: 'Emphasis', value: 'em'}],
         annotations: [{type: 'internalLinkObject'}, {type: 'externalLinkObject'}],
       },
     },

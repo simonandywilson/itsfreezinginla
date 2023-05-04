@@ -60,12 +60,12 @@ export const Search = () => {
             name={'search-query'}
             id={'search-query'}
             className={clsx(
-              'w-full h-full appearance-none  text-inherit placeholder-inherit border-b-1 px-2 border-black',
+              'w-full h-8 appearance-none  text-inherit placeholder-inherit border-b-1 px-2 border-black',
               ' focus:outline-none',
             )}
             defaultValue={defaultQuery}
           />
-          <Button className={'h-full px-3'} type={'submit'}>
+          <Button className={'ml-2 px-2 h-8'} type={'submit'}>
             Go
           </Button>
           <Button

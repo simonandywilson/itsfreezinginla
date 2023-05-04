@@ -41,12 +41,12 @@ export const Newsletter = ({title, titleIntent, buttonColour, onSuccess}) => {
   }, [onSuccess, state]);
 
   return (
-    <Form method="post" aria-hidden={state === 'success'} ref={formRef} className={"text-18 xl:text-24"}>
+    <Form method="post" aria-hidden={state === 'success'} ref={formRef} className={"text-18"}>
       <h2 className={'mb-[1em]'} intent={titleIntent}>
         {title}
       </h2>
       <fieldset>
-        <label className={"text-16 lg:text-18"}>
+        <label className={"text-18"}>
           email
         </label>
         <div className={'flex max-w-sm'}>
@@ -62,7 +62,7 @@ export const Newsletter = ({title, titleIntent, buttonColour, onSuccess}) => {
           />
           <Button
             type={'submit'}
-            className={'button-18 md:button-24'}
+            className={'button-18'}
             colour={"light"}
             aria-label={'Submit email'}
           >

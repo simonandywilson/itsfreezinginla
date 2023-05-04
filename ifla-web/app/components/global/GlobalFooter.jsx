@@ -12,7 +12,7 @@ export const GlobalFooter = () => {
       <div
         className={clsx(
           'w-1/2 order-first flex flex-col text-white text-18',
-          'xl:w-1/3 xl:px-8 xl:text-24',
+          'xl:w-1/3 xl:px-8 ',
         )}
       >
         <p className={'mb-[1em]'}>Pages</p>

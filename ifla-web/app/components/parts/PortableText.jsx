@@ -12,7 +12,9 @@ const portableText = cva('', {
   variants: {
     intent: {
       // body: ['[&>p:not(:first-of-type)]:indent-7 [&>*:not(section)]:prose '],
-      body: ['[&>p+p]:indent-7 [&>*:not(section)]:prose '],
+      body: [
+        '[&>p+p]:indent-7 [&>*:not(section)]:prose [&>*:not(section)]:max-w-[45rem]',
+      ],
       column: [
         '[&>p:not(:first-of-type)]:mb-[1em] [&>figure:not(:first-of-type)]:mt-[1em]',
       ],
@@ -33,6 +35,8 @@ const components = (intent, colour, footnoteIndexes) => {
         switch (intent) {
           case 'column':
             return <p className={'text-18'}>{children}</p>;
+          case 'carousel':
+            return <p className={'text-24 lg:text-40'}>{children}</p>;
           case 'footer':
             return <p className={'text-18 '}>{children}</p>;
           case 'intro':
@@ -49,12 +53,12 @@ const components = (intent, colour, footnoteIndexes) => {
             return <p className={'text-16'}>{children}</p>;
           default:
             return (
-              <p className={'font-serif text-18 xl:text-24'}>{children}</p>
+              <p className={'font-serif text-18 md:text-24'}>{children}</p>
             );
         }
       },
       h3: ({children}) => (
-        <h3 className={'break-after-avoid text-68 mb-[24px]'}>{children}</h3>
+        <h3 className={'break-after-avoid text-32 md:text-68 mb-[24px] lg:max-w-sm'}>{children}</h3>
       ),
       h5: ({children}) => <h4>{children}</h4>,
       h6: ({children}) => (
@@ -63,7 +67,7 @@ const components = (intent, colour, footnoteIndexes) => {
       large: ({children}) => <p className={'text-32'}>{children}</p>,
       blockquote: ({children, value}) => (
         <blockquote
-          className={cx('text-32 my-20 px-4', 'md:px-8')}
+          className={cx('!max-w-[23rem] text-32 leading-[40px] my-20 px-4', 'md:px-8')}
           style={{color: value.colour}}
         >
           {children}

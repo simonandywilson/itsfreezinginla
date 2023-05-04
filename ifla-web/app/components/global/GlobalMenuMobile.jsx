@@ -46,7 +46,7 @@ const MenuItem = ({ children, title }) => {
       <li>
         <TextLink
           to={children[0].slug}
-          className={'text-40'}
+          className={'text-32'}
           focused={
             children.length === 0 && pathname.slice(1) === children[0].slug
               ? true
@@ -61,7 +61,7 @@ const MenuItem = ({ children, title }) => {
               <li key={page._id}>
                 <TextLink
                   to={page.slug}
-                  className={'text-40'}
+                  className={'text-32'}
                   focused={pathname.slice(1) === page.slug ? true : false}
                 >
                   {page.title}

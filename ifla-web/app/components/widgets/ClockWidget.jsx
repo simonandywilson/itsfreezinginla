@@ -14,7 +14,7 @@ export const ClockWidget = () => {
   return (
     <figure
       className={
-        'w-full break-inside-avoid-column break-before-avoid mb-[1em]'
+        'w-full break-inside-avoid-column mb-[1em]'
       }
       ref={ref}
       aria-label={'Current time'}

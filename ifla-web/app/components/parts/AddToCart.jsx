@@ -10,15 +10,27 @@ export const AddToCart = ({lines, analytics, soldOut}) => {
       {/* <input type="hidden" name="countryCode" value={selectedLocale.country} /> */}
       <input type="hidden" name="lines" value={JSON.stringify(lines)} />
       <input type="hidden" name="analytics" value={JSON.stringify(analytics)} />
-      <Button
-        type={'submit'}
-        colour={'default'}
-        status={soldOut ? 'disabled' : ''}
-        disabled={soldOut}
-        className={'button-18 !w-full'}
-      >
-        {soldOut ? 'Sold Out' : 'Add to Cart'}
-      </Button>
+      {soldOut ? (
+        <button
+          type={'submit'}
+          colour={'default'}
+          status={soldOut ? 'disabled' : ''}
+          disabled={true}
+          className={
+            'button-18 w-full focus:outline-none focus:border-none antialiased whitespace-nowrap flex-grow-0 leading-none inline-block bg-zinc-300 text-white'
+          }
+        >
+          {soldOut ? 'Sold Out' : 'Add to Cart'}
+        </button>
+      ) : (
+        <Button
+          type={'submit'}
+          colour={'default'}
+          className={'button-18 !w-full '}
+        >
+          {soldOut ? 'Sold Out' : 'Add to Cart'}
+        </Button>
+      )}
     </fetcher.Form>
   );
 };

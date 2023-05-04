@@ -132,7 +132,7 @@ export default function App() {
       </head>
       <body className={'selection:bg-yellow-200/50 hyphens-auto'}>
         <GlobalHeader />
-        <div>
+        <div className={'min-h-screen'}>
           <Outlet />
         </div>
         <GlobalCookie />
@@ -225,14 +225,22 @@ async function getSettingsData() {
 }
 
 async function getMenuData() {
-  const query = groq`*[_type == 'section'] | order(orderRank asc) {
-		_id,
-		name,
-		"children": *[_type == "page" && !(_id in path('drafts.**')) && references(^._id)] | order(orderRank asc) {
-			_id,
-    		title,
-    		"slug":slug.current
-		}
+  const query = groq`
+  {
+    "menuItems":*[_type == 'section'] | order(orderRank asc) {
+      _id,
+      name,
+      "children": *[_type == "page" && !(_id in path('drafts.**')) && references(^._id)] | order(orderRank asc) {
+        _id,
+        title,
+        "slug":slug.current
+      },
+      "submenuActiveOn": *[_type == "page" && !(_id in path('drafts.**')) && references(^._id)].slug.current,
+      name == 'Explore' => {
+        'submenuActiveOn': *[_type == "page" && !(_id in path('drafts.**')) && references(^._id)].slug.current + *[_type == "article"].slug.fullUrl + *[_type == "audiobook"].slug.fullUrl
+      },
+    },    
+    "submenuActiveOnAll": *[_type == "page" && !(_id in path('drafts.**'))].slug.current + *[_type == "article"].slug.fullUrl + *[_type == "audiobook"].slug.fullUrl
 	}	
 `;
   const menu = await sanityClient.fetch(query);

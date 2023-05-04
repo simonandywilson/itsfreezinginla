@@ -14,14 +14,14 @@ export const FeaturedBlocksModule = ({ content, link }) => {
           case 'article':
             return (
               <li key={block._id} className={'w-full'}>
-                <BlockLink to={block.slug}>
-                  <div className={"hidden md:block"}>
+                <div className={'hidden md:block'}>
+                  <BlockLink to={block.slug}>
                     <ArticleBlock article={block} />
-                  </div>
-                  <div className={"md:hidden"}>
-                    <ArticleBannerModule content={block} homepage />
-                  </div>
-                </BlockLink>
+                  </BlockLink>
+                </div>
+                <div className={'md:hidden'}>
+                  <ArticleBannerModule content={block} homepage />
+                </div>
               </li>
             );
           case 'audiobook':

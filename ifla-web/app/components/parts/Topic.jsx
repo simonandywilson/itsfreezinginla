@@ -1,18 +1,19 @@
-import { cx } from 'class-variance-authority';
+import {cx} from 'class-variance-authority';
 import {Image} from './Image';
 
-export const Topic = ({topic}) => {
+export const Topic = ({topic, className}) => {
   const {image} = topic;
   return (
     <span
       className={cx(
-        'group/topic relative float-left inline-block h-[1.8em] top-2 mr-3 group-hover:hidden',
-        'md:h-[0.8em] md:mr-4',
+        'group/topic relative float-left inline-block  top-2 mr-3 md:group-hover:hidden',
+        ' md:mr-4',
+        className,
       )}
     >
       <div
         className={
-          'absolute w-full h-full inset-0  whitespace-wrap hidden p-2 group-hover/topic:block'
+          'absolute w-full h-full inset-0 whitespace-wrap justify-center items-center hidden p-2 group-hover/topic:flex'
         }
       >
         <p className={'text-16 break-words leading-none'}>{topic.topic}</p>

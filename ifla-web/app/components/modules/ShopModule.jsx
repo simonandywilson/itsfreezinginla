@@ -127,56 +127,74 @@ const AddEditRemove = ({variant, product, cart}) => {
     quantity: 1,
   };
 
-  const cartLineWithVariant = cart.lines.edges.filter(
-    (line) => line.node.merchandise.id === id,
+  const cartLineWithVariant = cart?.lines?.edges?.filter(
+    (line) => line?.node?.merchandise?.id === id,
   );
 
-  const quantity = cartLineWithVariant[0]?.node?.quantity || 0;
+  if (!cartLineWithVariant || cartLineWithVariant.length === 0) {
+    return (
+      <AddToCart
+        lines={[
+          {
+            quantity: 1,
+            merchandiseId: id,
+          },
+        ]}
+        analytics={{
+          products: [productAnalytics],
+          totalValue: parseFloat(productAnalytics.price),
+        }}
+        soldOut={!availableForSale || currentlyNotInStock}
+      />
+    );
+  }
+
+  const quantity = cartLineWithVariant
+    ? cartLineWithVariant[0]?.node?.quantity
+    : 0;
   const cartLineId = cartLineWithVariant[0]?.node?.id || null;
   const prevQuantity = Number(Math.max(0, quantity - 1).toFixed(0));
   const nextQuantity = Number((quantity + 1).toFixed(0));
 
-  return cartLineWithVariant.length > 0 ? (
-    <div className={'text-black flex h-[42px]'}>
-      <div className={"text-18 border-2 border-black leading-non py-2 px-3 leading-tight whitespace-nowrap"}>Added: {cartLineWithVariant[0].node.quantity}</div>
-      <div className={'flex flex-col ml-2 '}>
-        <CartUpdateQuantity lines={[{id: cartLineId, quantity: nextQuantity}]}>
-          <Button
-            type={'submit'}
-            colour={'transparent'}
-            className={'text-24'}
-            value={nextQuantity}
-            aria-label="Increase quantity"
+  return (
+    cartLineWithVariant.length > 0 && (
+      <div className={'text-black flex h-[42px]'}>
+        <div
+          className={
+            'text-18 border-2 border-black leading-non py-2 px-3 leading-tight whitespace-nowrap'
+          }
+        >
+          Added: {cartLineWithVariant[0].node.quantity}
+        </div>
+        <div className={'flex flex-col ml-2 '}>
+          <CartUpdateQuantity
+            lines={[{id: cartLineId, quantity: nextQuantity}]}
           >
-            +
-          </Button>
-        </CartUpdateQuantity>
-        <CartUpdateQuantity lines={[{id: cartLineId, quantity: prevQuantity}]}>
-          <Button
-            type={'submit'}
-            colour={'transparent'}
-            className={'text-24'}
-            value={prevQuantity}
-            aria-label="Decrease quantity"
+            <Button
+              type={'submit'}
+              colour={'transparent'}
+              className={'text-24'}
+              value={nextQuantity}
+              aria-label="Increase quantity"
+            >
+              +
+            </Button>
+          </CartUpdateQuantity>
+          <CartUpdateQuantity
+            lines={[{id: cartLineId, quantity: prevQuantity}]}
           >
-            –
-          </Button>
-        </CartUpdateQuantity>
+            <Button
+              type={'submit'}
+              colour={'transparent'}
+              className={'text-24'}
+              value={prevQuantity}
+              aria-label="Decrease quantity"
+            >
+              –
+            </Button>
+          </CartUpdateQuantity>
+        </div>
       </div>
-    </div>
-  ) : (
-    <AddToCart
-      lines={[
-        {
-          quantity: 1,
-          merchandiseId: id,
-        },
-      ]}
-      analytics={{
-        products: [productAnalytics],
-        totalValue: parseFloat(productAnalytics.price),
-      }}
-      soldOut={!availableForSale || currentlyNotInStock}
-    />
+    )
   );
 };

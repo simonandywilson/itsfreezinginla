@@ -14,9 +14,9 @@ module.exports = {
         1: '2px',
       },
       spacing: {
-        header: '4.5rem',
-        submenu: '1.8rem',
-        'header-submenu': '6.3rem',
+        header: '4rem',
+        submenu: '2.25rem',
+        'header-submenu': '6.2rem',
       },
     },
     fontFamily: {
@@ -26,7 +26,7 @@ module.exports = {
     },
     fontSize: {
       16: ['16px', '24px'],
-      18: ['18px', '28px'],
+      18: ['18px', '28px'], 
       24: ['24px', '32px'],
       32: ['32px', '36px'],
       40: ['40px', '1'],

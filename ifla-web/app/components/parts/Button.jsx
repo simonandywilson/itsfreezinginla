@@ -61,6 +61,8 @@ export const Button = ({
           ? {
               color: 'inherit',
               borderColor: '#000000',
+              fill: '#000000',
+              stroke: '#000000',
             }
           : {
               background: colour === 'light' ? '#ffffff' : '#000000',
@@ -71,9 +73,13 @@ export const Button = ({
           ? {
               color: randomColour.current,
               borderColor: randomColour.current,
+              fill: randomColour.current,
+              stroke: randomColour.current,
             }
           : {
               background: randomColour.current,
+              fill: randomColour.current,
+              stroke: randomColour.current,
             }
       }
       whileFocus={
@@ -81,9 +87,13 @@ export const Button = ({
           ? {
               color: randomColour.current,
               borderColor: randomColour.current,
+              fill: randomColour.current,
+              stroke: randomColour.current,
             }
           : {
               background: randomColour.current,
+              fill: randomColour.current,
+              stroke: randomColour.current,
             }
       }
       {...props}

@@ -6,29 +6,27 @@ import {GlobalMenuDesktop} from './GlobalMenuDesktop';
 
 export const GlobalHeader = () => {
   const {menu = []} = useRouteLoaderData(`root`);
-  const {pathname} = useLocation();
-  const submenuActiveOn = menu
-    .map((section) => section.children)
-    .flat()
-    .map((page) => page.slug);
+  const { pathname } = useLocation();
   
-  // submenuActiveOn.push('cart');
-  
+  const submenuVisible =
+    menu.submenuActiveOnAll.includes(pathname) ||
+    menu.submenuActiveOnAll.includes(pathname.slice(1));
+
   return (
     <Popover className={'fixed h-header w-screen bg-white z-50'} as={'header'}>
       {({close}) => (
         <>
-          <GlobalMenuDesktop close={close} menu={menu} />
+          <GlobalMenuDesktop close={close} menu={menu.menuItems} />
           <Popover.Panel
             focus
             className={
               'absolute inset-0 top-header h-screen bg-white p-4 md:hidden'
             }
           >
-            {({close}) => <GlobalMenuMobile menu={menu} close={close} />}
+            {({close}) => <GlobalMenuMobile menu={menu.menuItems} close={close} />}
           </Popover.Panel>
-          {submenuActiveOn.includes(pathname.slice(1)) && (
-            <GlobalSubmenu menu={menu} />
+          {submenuVisible && (
+            <GlobalSubmenu menu={menu.menuItems} />
           )}
         </>
       )}

@@ -5,7 +5,7 @@ import {ButtonLink} from '../parts/LinksButton';
 import clsx from 'clsx';
 
 export const ArticleBannerModule = ({content, homepage}) => {
-  const { headline, intro, colour, author, topic, slug } = content;
+  const {headline, intro, colour, author, topic, slug} = content;
   return (
     <Layout
       as={'article'}
@@ -18,10 +18,10 @@ export const ArticleBannerModule = ({content, homepage}) => {
         className={clsx('gap-4 h-min', 'lg:gap-8 lg:flex-1')}
       >
         <div>
-          <h2
-            className={clsx('', 'text-32 md:text-56 lg:text-68')}
-          >
-            {topic && <Topic topic={topic} />}
+          <h2 className={clsx('text-32 md:text-56 lg:text-68')}>
+            {topic && (
+              <Topic topic={topic} className={'h-[1.7em] md:h-[0.8em]'} />
+            )}
             {headline ? headline : 'Untitled article'}
           </h2>
         </div>
@@ -42,18 +42,31 @@ export const ArticleBannerModule = ({content, homepage}) => {
             <ButtonLink
               colour={'mono'}
               to={slug}
-              className={'button-24 md:button-32 mt-[1em] break-before-avoid'}
+              className={
+                'hidden button-24 md:block  md:button-32 mt-[1em] break-before-avoid'
+              }
             >
               Keep reading
             </ButtonLink>
           )}
         </div>
       </Layout>
-      <div className={'flex justify-between'}>
+      <div className={'flex justify-between items-end'}>
         {author.name && (
-          <address className={'text-18 md:text-24 not-italic'}>
+          <address className={'h-max text-18 md:text-24 not-italic'}>
             By {author.name}
           </address>
+        )}
+        {homepage && slug && (
+          <ButtonLink
+            colour={'mono'}
+            to={slug}
+            className={
+              'button-24 md:button-32 mt-[1em] break-before-avoid md:hidden'
+            }
+          >
+            Keep reading
+          </ButtonLink>
         )}
       </div>
     </Layout>

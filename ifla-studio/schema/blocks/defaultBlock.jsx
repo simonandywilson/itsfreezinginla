@@ -21,7 +21,7 @@ export default defineField({
       ],
       lists: [],
       marks: {
-        decorators: [],
+        decorators: [{title: 'Emphasis', value: 'em'}],
         annotations: [{type: 'internalLinkObject'}, {type: 'externalLinkObject'}],
       },
       of: [

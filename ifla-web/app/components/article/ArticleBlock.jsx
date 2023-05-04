@@ -49,7 +49,9 @@ export const ArticleBlock = ({article}) => {
       <div className={'filter group-focus-visible:invert'}>
         <span>
           <h2 className={'text-32 md:text-40'}>
-            {topic && <Topic topic={topic} />}
+            {topic && (
+              <Topic topic={topic} className={'h-[1.7em]'} />
+            )}
             {headline ? headline : 'Untitled article'}
           </h2>
         </span>
@@ -60,16 +62,14 @@ export const ArticleBlock = ({article}) => {
         }
       >
         {author.name && (
-          <address className={'text-18 not-italic'}>
-            By {author.name}
-          </address>
+          <address className={'text-18 not-italic'}>By {author.name}</address>
         )}
         {category && category.length > 0 && (
           <div>
             <span>(</span>
             {category.map((cat, index) => {
               return (
-                <span className={"text-18"} key={cat._id}>
+                <span className={'text-18'} key={cat._id}>
                   {cat.category}
                   {category.length > 0 && index + 1 !== category.length && (
                     <span>,&nbsp;</span>

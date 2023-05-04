@@ -14,6 +14,7 @@ export const articlePreviewFragment = groq`{
     date,
     "slug": slug.fullUrl,
     "colour":colour->colourLight,
+    "colourDark":colour->colourDark,
     author-> {name},
     media,
     quiltImage,
@@ -60,16 +61,14 @@ const carouselModuleFragment = groq`
         _key,
         _type,
         slide[] {
-            _type == "imageObject" => {
-                "_id": asset->_id,
-                alt,
-                crop,
-                hotspot
-            },
-            _type == "textObject" => {
-                ...
-            }
-        }
+            _key,
+            "_id": asset->_id,
+            alt,
+            crop,
+            hotspot
+        },
+        text,
+        background
     }`;
 
 const imageModuleFragment = groq`
