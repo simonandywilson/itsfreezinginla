@@ -13,8 +13,6 @@ import { PortableText } from '../parts/PortableText';
 export const Article = ({article}) => {
   const {date, content, related, colourDark} = article;
   const { keyPages } = useRouteLoaderData(`root`);
-  
-  console.log(article);
 
   return (
     <>
@@ -43,7 +41,7 @@ export const Article = ({article}) => {
               </div>
             </div>
           )}
-          <div className={'mt-8'}>
+          <div className={'mt-8 xl:hidden px-4'}>
             <PortableText text={article.intro} intent={'articleIntro'} />
           </div>
           {content.map((content) => {

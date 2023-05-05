@@ -22,7 +22,7 @@ export const GlobalMenuDesktop = ({menu}) => {
     >
       <GlobalTitle />
       <div
-        className={clsx('gap-8 flex-shrink-0 flex items-center', 'md:gap-16')}
+        className={clsx('gap-8 flex-shrink-0 flex items-center', 'lg:gap-16')}
       >
         {/* Desktop Menu Items */}
         {menu.map((section) => {

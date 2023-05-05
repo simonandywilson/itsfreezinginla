@@ -11,11 +11,11 @@ export const CarouselModule = ({content}) => {
   const ref = useRef(null);
 
   return (
-    <Layout intent={'module-full'}>
+    <Layout intent={'hero'} className={'relative !p-0'}>
       {text && (
         <button
           className={
-            'absolute aspect-video z-20 w-full h-full inset-0 text-white appearance-none text-left inline-flex items-start'
+            'absolute z-20 w-full h-full inset-0 text-black appearance-none text-left inline-flex items-start'
           }
           style={{background: content.background}}
           onClick={() => setText(false)}
@@ -26,7 +26,7 @@ export const CarouselModule = ({content}) => {
         </button>
       )}
       <div
-        className={'group relative w-full aspect-video bg-slate-200'}
+        className={'group relative w-full h-full bg-slate-200 '}
         ref={ref}
         onClick={(e) => {
           const x = e.clientX - ref.current.getBoundingClientRect().left;
@@ -57,6 +57,7 @@ export const CarouselModule = ({content}) => {
           onSwiper={(swiper) => setSwiperInstance(swiper)}
           className={'w-full h-full'}
           loop={true}
+          speed={0}
         >
           {content.slide.map((slide) => {
             return (
@@ -70,7 +71,7 @@ export const CarouselModule = ({content}) => {
                   alt={slide.alt || ''}
                   preview={slide.preview}
                   sizes={'100vw'}
-                  className={'h-full object-cover'}
+                  className={'w-full h-full object-cover'}
                 />
               </SwiperSlide>
             );

@@ -32,16 +32,12 @@ export const ArticleBlock = ({article}) => {
           </div>
         )}
         {image && quiltImage && (
-          <Image
-            id={image._id}
-            width={500}
-            mode="cover"
-            hotspot={image.hotspot}
-            crop={image.crop}
+          <img
+            src={
+              'https://cdn.sanity.io/images/yt08sdph/staging/bde929998424c7c506aa1cf9a50fdc53e7b88513-353x353.png'
+            }
             alt={image.alt || ''}
-            preview={image.preview}
             className={'h-full w-full rendering-pixelated object-cover'}
-            sizes="33vw"
           />
         )}
       </div>
@@ -49,9 +45,7 @@ export const ArticleBlock = ({article}) => {
       <div className={'filter group-focus-visible:invert group-hover:hidden'}>
         <span>
           <h2 className={'text-32 md:text-40'}>
-            {topic && (
-              <Topic topic={topic} className={'h-[1.7em]'} />
-            )}
+            {topic && <Topic topic={topic} className={'h-[1.7em]'} />}
             {headline ? headline : 'Untitled article'}
           </h2>
         </span>

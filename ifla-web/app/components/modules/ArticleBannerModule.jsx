@@ -59,7 +59,7 @@ export const ArticleBannerModule = ({content, homepage}) => {
             colour={'mono'}
             to={slug}
             className={
-              'button-24 md:button-32 mt-[1em] break-before-avoid md:hidden'
+              'button-24 md:button-32 mt-[1em] break-after-avoid break-before-avoid md:hidden'
             }
           >
             Keep reading
