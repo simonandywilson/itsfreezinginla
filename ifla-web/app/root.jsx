@@ -105,8 +105,7 @@ export async function loader({context, request}) {
 export default function App() {
   const location = useLocation();
   const {locale, track, gaTrackingId} = useLoaderData();
-  const hasUserConsent = true;
-  useAnalytics(hasUserConsent, locale);
+  useAnalytics(track, locale);
 
   useEffect(() => {
     if (track && gaTrackingId?.length) {

@@ -8,10 +8,13 @@ import {useRouteLoaderData} from '@remix-run/react';
 import clsx from 'clsx';
 import { Submenu } from '../parts/Submenu';
 import { TextLink } from '../parts/Links';
+import { PortableText } from '../parts/PortableText';
 
 export const Article = ({article}) => {
   const {date, content, related, colourDark} = article;
-  const {keyPages} = useRouteLoaderData(`root`);
+  const { keyPages } = useRouteLoaderData(`root`);
+  
+  console.log(article);
 
   return (
     <>
@@ -19,7 +22,7 @@ export const Article = ({article}) => {
         <Submenu className={'fixed '}>
           <TextLink to={`/${keyPages.articles}`}>{'<'} Back</TextLink>
         </Submenu>
-        <div className={"pt-8"}>
+        <div className={'pt-8'}>
           <ArticleBannerModule content={article} />
           {date && (
             <div className={'relative w-full flex'}>
@@ -40,6 +43,9 @@ export const Article = ({article}) => {
               </div>
             </div>
           )}
+          <div className={'mt-8'}>
+            <PortableText text={article.intro} intent={'articleIntro'} />
+          </div>
           {content.map((content) => {
             return (
               <Content

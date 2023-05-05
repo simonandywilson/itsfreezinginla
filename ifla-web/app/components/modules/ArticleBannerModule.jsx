@@ -11,14 +11,15 @@ export const ArticleBannerModule = ({content, homepage}) => {
       as={'article'}
       intent={'banner'}
       colour={colour || 'var(--accent-colour)'}
+      className={'!h-[700px]'}
     >
       <Layout
         intent={'grid'}
         as={'div'}
-        className={clsx('gap-4 h-min', 'lg:gap-8 lg:flex-1')}
+        className={clsx('h-min', 'lg:flex-1 lg:h-full')}
       >
-        <div>
-          <h2 className={clsx('text-32 md:text-56 lg:text-68')}>
+        <div className={'mb-[1em] pr-4'}>
+          <h2 className={clsx('break-words text-32 md:text-56 lg:text-68')}>
             {topic && (
               <Topic topic={topic} className={'h-[1.7em] md:h-[0.8em]'} />
             )}
@@ -27,15 +28,11 @@ export const ArticleBannerModule = ({content, homepage}) => {
         </div>
         <div
           className={clsx(
-            'h-min col-span-1 columns-1 gap-8',
-            'xl:col-span-2 xl:columns-2 ',
+            'h-min col-span-1 columns-1 gap-8 col-fill-auto',
+            'xl:col-span-2 xl:columns-2 xl:h-full xl:min-h-0 ',
           )}
         >
-          <div
-            className={clsx({
-              'line-clamp xl:no-line-clamp': homepage,
-            })}
-          >
+          <div className={'line-clamp xl:no-line-clamp'}>
             {intro && <PortableText text={intro} intent={'intro'} />}
           </div>
           {homepage && slug && (
@@ -51,7 +48,7 @@ export const ArticleBannerModule = ({content, homepage}) => {
           )}
         </div>
       </Layout>
-      <div className={'flex justify-between items-end'}>
+      <div className={'flex justify-between items-end lg:absolute bottom-4'}>
         {author.name && (
           <address className={'h-max text-18 md:text-24 not-italic'}>
             By {author.name}

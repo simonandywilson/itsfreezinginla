@@ -15,6 +15,9 @@ const portableText = cva('', {
       body: [
         '[&>p+p]:indent-7 [&>*:not(section)]:prose [&>*:not(section)]:max-w-[45rem]',
       ],
+      articleIntro: [
+        '[&>p+p]:indent-7 [&>*:not(section)]:prose [&>*:not(section)]:max-w-[45rem]',
+      ],
       column: [
         '[&>p:not(:first-of-type)]:mb-[1em] [&>figure:not(:first-of-type)]:mt-[1em]',
       ],
@@ -35,6 +38,8 @@ const components = (intent, colour, footnoteIndexes) => {
         switch (intent) {
           case 'column':
             return <p className={'text-18'}>{children}</p>;
+          case 'articleIntro':
+            return <p className={'text-24'}>{children}</p>;
           case 'carousel':
             return <p className={'text-24 lg:text-40'}>{children}</p>;
           case 'footer':
