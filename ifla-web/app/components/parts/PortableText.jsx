@@ -65,7 +65,7 @@ const components = (intent, colour, footnoteIndexes, mono) => {
       h3: ({children}) => (
         <h3 className={'break-after-avoid text-32 md:text-68 mb-[24px] lg:max-w-sm'}>{children}</h3>
       ),
-      h5: ({children}) => <h4>{children}</h4>,
+      h5: ({children}) => <h4 className={"text-24 my-8"}>{children}</h4>,
       h6: ({children}) => (
         <h5 className={'!mb-0 break-after-avoid text-18'}>{children}</h5>
       ),
