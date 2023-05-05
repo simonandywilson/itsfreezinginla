@@ -46,7 +46,7 @@ export const ArticleBlock = ({article}) => {
         )}
       </div>
 
-      <div className={'filter group-focus-visible:invert'}>
+      <div className={'filter group-focus-visible:invert group-hover:hidden'}>
         <span>
           <h2 className={'text-32 md:text-40'}>
             {topic && (
