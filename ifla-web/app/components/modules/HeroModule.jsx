@@ -19,7 +19,7 @@ export const HeroModule = ({content}) => {
       >
         <div
           className={cx(
-            'h-full w-full z-10 flex flex-col justify-between gap-8',
+            'h-full w-full z-10 flex flex-col justify-between gap-8 min-h-0',
             'md:w-1/2 md:justify-start lg:w-full',
           )}
         >

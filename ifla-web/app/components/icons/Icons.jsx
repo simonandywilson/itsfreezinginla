@@ -2,135 +2,135 @@ export const BasketIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="80.11"
-      height="59.56"
-      viewBox="0 0 80.11 59.56"
-      className={'h-full stroke-[1px]'}
+      width="218.51"
+      height="162.17"
+      viewBox="0 0 218.51 162.17"
+      className={'h-full w-auto stroke-[1px]'}
       stroke="inherit"
     >
       <line
-        x1="40.14"
-        y1="12.95"
-        x2="40.14"
-        y2="58.91"
+        x1="109.49"
+        y1="34.45"
+        x2="109.49"
+        y2="161.76"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <polygon
-        points=".86 12.88 9.75 58.85 70.75 58.85 79.26 12.88 .86 12.88"
+        points=".68 34.27 25.3 161.61 194.26 161.61 217.84 34.27 .68 34.27"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="25.47"
-        y1="12.95"
-        x2="25.47"
-        y2="58.91"
+        x1="68.86"
+        y1="34.45"
+        x2="68.86"
+        y2="161.76"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="8.08"
-        y1="50.31"
-        x2="72.43"
-        y2="50.31"
+        x1="20.68"
+        y1="137.94"
+        x2="198.92"
+        y2="137.94"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="54.81"
-        y1="12.95"
-        x2="54.81"
-        y2="58.91"
+        x1="150.12"
+        y1="34.45"
+        x2="150.12"
+        y2="161.76"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="5.75"
-        y1="37.46"
-        x2="74.8"
-        y2="37.46"
+        x1="14.22"
+        y1="102.35"
+        x2="205.48"
+        y2="102.35"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="3.51"
-        y1="24.61"
-        x2="77.34"
-        y2="24.61"
+        x1="7.01"
+        y1="66.75"
+        x2="212.53"
+        y2="66.75"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <polyline
-        points="54.85 12.79 54.85 .71 25.46 .71 25.46 12.79"
+        points="150.23 34.02 150.23 .56 68.82 .56 68.82 34.02"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="18.14"
-        y1="12.95"
-        x2="18.14"
-        y2="58.91"
+        x1="48.54"
+        y1="34.45"
+        x2="48.54"
+        y2="161.76"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="10.81"
-        y1="12.7"
-        x2="10.81"
-        y2="58.66"
+        x1="28.23"
+        y1="33.77"
+        x2="28.23"
+        y2="161.08"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="32.81"
-        y1="12.7"
-        x2="32.81"
-        y2="58.66"
+        x1="89.17"
+        y1="33.77"
+        x2="89.17"
+        y2="161.08"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="47.48"
-        y1="12.7"
-        x2="47.48"
-        y2="58.66"
+        x1="129.8"
+        y1="33.77"
+        x2="129.8"
+        y2="161.08"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="62.14"
-        y1="12.7"
-        x2="62.14"
-        y2="58.66"
+        x1="170.43"
+        y1="33.77"
+        x2="170.43"
+        y2="161.08"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
       <line
-        x1="69.48"
-        y1="12.7"
-        x2="69.48"
-        y2="58.66"
+        x1="190.75"
+        y1="33.77"
+        x2="190.75"
+        y2="161.08"
         fill="none"
         strokeMiterlimit="10"
         vectorEffect="non-scaling-stroke"
       />
     </svg>
   );
-};
+}
 export const BasketIconMobile = () => {
   return (
     <svg

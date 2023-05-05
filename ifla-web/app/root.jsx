@@ -131,7 +131,7 @@ export default function App() {
       </head>
       <body className={'selection:bg-yellow-200/50 hyphens-auto'}>
         <GlobalHeader />
-        <div className={'min-h-screen'}>
+        <div className={'min-h-screen overflow-x-hidden'}>
           <Outlet />
         </div>
         <GlobalCookie />
