@@ -81,7 +81,10 @@
     -webkit-line-clamp: 12;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    padding-bottom: 0.25em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    text-align: left;
+    padding-bottom: 0.1em;
   }
 
   .no-line-clamp {

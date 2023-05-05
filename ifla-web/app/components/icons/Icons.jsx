@@ -138,7 +138,7 @@ export const BasketIconMobile = () => {
       width="25.81"
       height="20.55"
       viewBox="0 0 25.81 20.55"
-      className={'h-full w-full stroke-inherit fill-none stroke-2'}
+      className={'h-full w-auto stroke-inherit fill-none stroke-2'}
       vectorEffect="non-scaling-stroke"
     >
       <polygon

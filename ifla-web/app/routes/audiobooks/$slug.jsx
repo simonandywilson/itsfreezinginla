@@ -48,26 +48,28 @@ export default function Audiobook() {
   return (
     <>
       <Layout intent={'article'}>
-        <Submenu className={'fixed '}>
+        <Submenu className={'fixed'}>
           <TextLink to={`/${keyPages.audiobooks}`}>{'<'} Back</TextLink>
         </Submenu>
-        <AudiobookBanner audiobook={audiobook} />
-        {date && (
-          <Banner>
-            <time>
-              {new Date(date).toLocaleDateString('en-UK', {
-                year: 'numeric',
-                month: 'long',
-                day: '2-digit',
-              })}
-            </time>
-          </Banner>
-        )}
-        {content.map((content) => {
-          return (
-            <Content key={content._id || content._key} content={content} />
-          );
-        })}
+        <div className={'pt-8'}>
+          <AudiobookBanner audiobook={audiobook} />
+          {date && (
+            <Banner>
+              <time>
+                {new Date(date).toLocaleDateString('en-UK', {
+                  year: 'numeric',
+                  month: 'long',
+                  day: '2-digit',
+                })}
+              </time>
+            </Banner>
+          )}
+          {content.map((content) => {
+            return (
+              <Content key={content._id || content._key} content={content} />
+            );
+          })}
+        </div>
       </Layout>
       {related?.length > 0 && (
         <>

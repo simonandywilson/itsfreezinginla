@@ -45,7 +45,7 @@ const components = (intent, colour, footnoteIndexes) => {
           case 'footer':
             return <p className={'text-18 '}>{children}</p>;
           case 'intro':
-            return <h3 className={'text-24 md:text-40'}>{children}</h3>;
+            return <h3 className={'text-24 md:text-40 inline'}>{children}</h3>;
           case 'preview':
             return (
               <p className={'text-16 line-clamp-short md:no-line-clamp'}>
