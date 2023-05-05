@@ -56,7 +56,7 @@ export const ShopModule = () => {
 const Product = ({product, cart}) => {
   return (
     <div className={cx('w-full h-max mx-auto', 'sm:mx-0', 'sm:max-w-[18rem]')}>
-      <div className={'max-w-sm mx-auto'}>
+      <div className={'max-w-xs sm:max-w-sm mx-auto'}>
         <img
           src={product.featuredImage.url}
           alt={product.featuredImage.altText}
