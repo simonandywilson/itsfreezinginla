@@ -16,7 +16,7 @@ export const Basket = () => {
         </span>
         <Await resolve={cart}>
           {(cart) =>
-            cart?.totalQuantity && (
+            cart?.totalQuantity > 0 && (
               <Badge intent={'small'}>{cart?.totalQuantity}</Badge>
             )
           }

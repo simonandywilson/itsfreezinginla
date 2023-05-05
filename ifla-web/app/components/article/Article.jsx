@@ -17,7 +17,7 @@ export const Article = ({article}) => {
   return (
     <>
       <Layout intent={'article'}>
-        <Submenu className={'fixed '}>
+        <Submenu className={'fixed'}>
           <TextLink to={`/${keyPages.articles}`}>{'<'} Back</TextLink>
         </Submenu>
         <div className={'pt-8'}>
@@ -29,8 +29,9 @@ export const Article = ({article}) => {
                   dateTime={date}
                   className={clsx(
                     'block w-[45rem] relative mt-9 mx-auto',
-                    'lg:absolute lg:w-max lg:ml-4',
+                    'lg:absolute lg:w-max',
                   )}
+                  style={{color: colourDark}}
                 >
                   {new Date(date).toLocaleDateString('en-UK', {
                     year: 'numeric',

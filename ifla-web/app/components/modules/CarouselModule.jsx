@@ -2,13 +2,15 @@ import {useRef, useState} from 'react';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
-import {TextColumnsModule} from './TextColumnsModule';
 import {PortableText} from '../parts/PortableText';
+import clsx from 'clsx';
 
 export const CarouselModule = ({content}) => {
   const [text, setText] = useState(false);
   const [swiperInstance, setSwiperInstance] = useState(null);
   const ref = useRef(null);
+
+  console.log(content);
 
   return (
     <Layout intent={'hero'} className={'relative !p-0'}>
@@ -26,7 +28,7 @@ export const CarouselModule = ({content}) => {
         </button>
       )}
       <div
-        className={'group relative w-full h-full bg-slate-200 '}
+        className={'group relative w-full h-full  '}
         ref={ref}
         onClick={(e) => {
           const x = e.clientX - ref.current.getBoundingClientRect().left;
@@ -36,6 +38,7 @@ export const CarouselModule = ({content}) => {
             swiperInstance.slidePrev();
           }
         }}
+        style={{background: content.background}}
       >
         <button
           className={'absolute text-40 text-white right-0 m-4 z-10'}
@@ -62,17 +65,25 @@ export const CarouselModule = ({content}) => {
           {content.slide.map((slide) => {
             return (
               <SwiperSlide key={slide._key}>
-                <Image
-                  id={slide._id}
-                  width={2000}
-                  mode="cover"
-                  hotspot={slide.hotspot}
-                  crop={slide.crop}
-                  alt={slide.alt || ''}
-                  preview={slide.preview}
-                  sizes={'100vw'}
-                  className={'w-full h-full object-cover'}
-                />
+                <div
+                  className={clsx(
+                    'relative w-full min-h-0 h-full inset-0 ml-auto flex justify-center items-center flex-initial',
+                  )}
+                >
+                  <Image
+                    id={slide._id}
+                    width={2000}
+                    mode={'contain'}
+                    hotspot={slide.hotspot}
+                    crop={slide.crop}
+                    alt={slide.alt || ''}
+                    preview={slide.preview}
+                    sizes={'100vw'}
+                    className={clsx(
+                      'h-full w-full p-4 object-contain max-w-[75vw] sm:max-w-[50vw] md:p-8 md:max-w-[45vw] lg:max-w-[35vw]',
+                    )}
+                  />
+                </div>
               </SwiperSlide>
             );
           })}

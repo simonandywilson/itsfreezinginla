@@ -10,6 +10,7 @@ import {BlockLink} from '../parts/LinksButton';
 import clsx from 'clsx';
 import {Search} from '../parts/Search';
 import {Submenu} from '../parts/Submenu';
+import { TextLink } from '../parts/Links';
 
 export const ArticlesModule = ({articles, topics}) => {
   const [text, setText] = useState(false);
@@ -79,13 +80,12 @@ export const ArticlesModule = ({articles, topics}) => {
                   <h3 className={'text-40'}>{keyName}</h3>
                   {articles[keyName].map((article) => {
                     return (
-                      <Link
+                      <TextLink
                         to={article.slug}
                         key={article._id}
                         className={
                           'col-span-2 text-18 leading-normal !w-auto link hover:underline'
                         }
-                        style={{color: article.colourDark}}
                       >
                         <div className={'grid grid-cols-[130px,1fr]'}>
                           <p
@@ -93,7 +93,7 @@ export const ArticlesModule = ({articles, topics}) => {
                           >{`[${article.topic.topic}]`}</p>
                           {article.headline}
                         </div>
-                      </Link>
+                      </TextLink>
                     );
                   })}
                 </Fragment>

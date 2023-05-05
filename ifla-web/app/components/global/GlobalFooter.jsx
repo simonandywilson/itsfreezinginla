@@ -33,7 +33,7 @@ export const GlobalFooter = () => {
             'xl:order-first xl:pr-8 xl:w-1/2',
           )}
         >
-          <PortableText text={footer.footerText} intent={'footer'} />
+          <PortableText text={footer.footerText} intent={'footer'} mono/>
         </div>
         <div className={clsx('flex-1 order-first', 'xl:order-last xl:pr-8')}>
           <Newsletter title={'Sign up to our newsletter'} />

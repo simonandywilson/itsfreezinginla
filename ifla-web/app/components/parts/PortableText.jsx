@@ -31,7 +31,7 @@ const portableText = cva('', {
   },
 });
 
-const components = (intent, colour, footnoteIndexes) => {
+const components = (intent, colour, footnoteIndexes, mono) => {
   return {
     block: {
       normal: ({children}) => {
@@ -105,7 +105,7 @@ const components = (intent, colour, footnoteIndexes) => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className={'link '}
-                mono={value.colourful === false}
+                mono={value.colourful === false || mono ? true : false }
               >
                 {children}
               </LinkExternal>
@@ -115,7 +115,7 @@ const components = (intent, colour, footnoteIndexes) => {
               <LinkExternal
                 href={`tel:${value?.link}`}
                 className={'link '}
-                mono={value.colourful === false}
+                mono={value.colourful === false || mono ? true : false}
               >
                 {children}
               </LinkExternal>
@@ -125,7 +125,7 @@ const components = (intent, colour, footnoteIndexes) => {
               <LinkExternal
                 href={`mailto:${value?.link}`}
                 className={'link '}
-                mono={value.colourful === false}
+                mono={value.colourful === false || mono ? true : false}
               >
                 {children}
               </LinkExternal>
@@ -144,12 +144,13 @@ export const PortableText = ({
   className,
   colour,
   footnoteIndexes,
+  mono
 }) => {
   return (
     <div className={portableText({intent, className})}>
       <SanityPortableText
         value={text}
-        components={components(intent, colour, footnoteIndexes)}
+        components={components(intent, colour, footnoteIndexes, mono)}
       />
     </div>
   );

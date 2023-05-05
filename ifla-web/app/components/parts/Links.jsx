@@ -6,7 +6,15 @@ import clsx from 'clsx';
 
 const MotionLink = motion(Link);
 
-export const TextLink = ({children, to, className, focused, invert, colour, ...props}) => {
+export const TextLink = ({
+  children,
+  to,
+  className,
+  focused,
+  invert,
+  colour,
+  ...props
+}) => {
   const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(
     useRandomColour(invert ? colours.light : colours.dark),
@@ -57,16 +65,23 @@ export const IconLink = ({children, to}) => {
 };
 
 export const LinkExternal = ({href, className, children, mono, ...props}) => {
-  const { colours } = useRouteLoaderData(`root`);
+  const {colours} = useRouteLoaderData(`root`);
   const randomColour = useRef(useRandomColour(colours.dark));
   return (
-    <a
+    <motion.a
       href={href}
-      className={clsx("hover:underline focus-visible:underline",className)}
-      style={{color: randomColour.current}}
+      className={clsx('hover:underline focus-visible:underline', className)}
+      transition={{duration: 0}}
+      initial={{color: mono ? '#ffffff' : randomColour.current}}
+      whileHover={{
+        color: randomColour.current,
+      }}
+      whileFocus={{
+        color: randomColour.current,
+      }}
       {...props}
     >
       {children}
-    </a>
+    </motion.a>
   );
 };
