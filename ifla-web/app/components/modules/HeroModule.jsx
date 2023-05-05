@@ -40,7 +40,7 @@ export const HeroModule = ({content}) => {
                 'relative w-full min-h-0 h-auto inset-0 ml-auto flex justify-center items-center flex-initial',
                 'md:absolute md:h-full',
                 {
-                  'lg:w-1/2 xl:w-full': imageFormat === 'contain',
+                  'md:w-1/2 xl:w-full': imageFormat === 'contain',
                 },
               )}
             >
