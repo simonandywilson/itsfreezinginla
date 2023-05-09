@@ -10,15 +10,14 @@ export const GlobalCookie = () => {
   const analyticsFetcher = useFetcher();
   const [visible, setVisible] = useState(false);
 
-  useEffect(() => {
-    if (track) {
-      return;
-    }
-    const timer = setTimeout(() => {
-      setVisible(true);
-    }, 3000);
-    return () => clearTimeout(timer);
-  }, []);
+ useEffect(() => {
+   if (!track) {
+     const timer = setTimeout(() => {
+       setVisible(true);
+     }, 3000);
+     return () => clearTimeout(timer);
+   }
+ }, []);
 
   return (
     <AnimatePresence>
@@ -60,6 +59,11 @@ export const GlobalCookie = () => {
                 aria-label={'Decline cookies'}
                 className={'button-18'}
                 colour={'outline'}
+                onClick={() =>
+                  setTimeout(() => {
+                    setVisible(false);
+                  }, 150)
+                }
               >
                 No
               </Button>

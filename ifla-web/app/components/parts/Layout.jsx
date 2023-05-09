@@ -38,6 +38,9 @@ const layout = cva('', {
       columns: [
         'flex-1 w-full gap-4 px-4 py-8 col-fill-balance columns-1 md:columns-2 xl:col-fill-auto xl:w-2/3 3xl:w-1/2 xl:max-h-[1700px] 2xl:max-h-[1600px] 3xl:max-h-[1550px]',
       ],
+      'columns-unlimited': [
+        'flex-1 w-full gap-4 px-4 py-8 col-fill-balance columns-1 md:columns-2 xl:w-2/3 3xl:w-1/2',
+      ],
       carousel: [
         'flex-1 w-full h-full gap-8 px-4 py-8 col-fill-auto columns-1 md:columns-2 xl:columns-3 3xl:columns-4',
       ],

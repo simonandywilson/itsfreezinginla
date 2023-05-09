@@ -148,7 +148,8 @@ const textColumnsModuleFragment = groq`_type == 'textColumnsModule' => {
         ${carouselModuleFragment},
         ${imageModuleFragment},
         ${widgetModuleFragment},
-    }
+    },
+    limitHeight
 }`;
 
 const textBlockModuleFragment = groq`_type == 'textBlockModule' => {
