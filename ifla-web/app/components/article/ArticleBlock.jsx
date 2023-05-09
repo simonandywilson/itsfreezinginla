@@ -1,6 +1,4 @@
 import clsx from 'clsx';
-import React from 'react';
-import {Image} from '../parts/Image';
 import {Layout} from '../parts/Layout';
 import {PortableText} from '../parts/PortableText';
 import {Topic} from '../parts/Topic';
@@ -8,7 +6,7 @@ import {Topic} from '../parts/Topic';
 export const ArticleBlock = ({article}) => {
   const {headline, intro, colour, author, category, quiltImage, image, topic} =
     article;
-
+  
   return (
     <Layout
       as={'article'}
@@ -33,9 +31,7 @@ export const ArticleBlock = ({article}) => {
         )}
         {image && quiltImage && (
           <img
-            src={
-              'https://cdn.sanity.io/images/yt08sdph/staging/bde929998424c7c506aa1cf9a50fdc53e7b88513-353x353.png'
-            }
+            src={image.url}
             alt={image.alt || ''}
             className={'h-full w-full rendering-pixelated object-cover'}
           />

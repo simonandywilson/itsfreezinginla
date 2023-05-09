@@ -251,7 +251,7 @@ async function getFooterData() {
   footerLinks[] -> {
     _id,
     title,
-    "slug": slug.fullUrl
+    "slug": slug.current
   },
   footerText
 }

@@ -1,7 +1,7 @@
 import { defineField } from 'sanity'
 
 const LargeStyle = (props) => (
-  <span style={{display: 'flex', fontSize: '1.2rem', lineHeight: "1.45rem"}}>{props.children}</span>
+  <span style={{ fontSize: '1.2rem', lineHeight: "1.45rem"}}>{props.children}</span>
 )
 
 export default defineField({

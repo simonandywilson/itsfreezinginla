@@ -5,6 +5,12 @@ export default defineField({
   name: 'footnoteObject',
   title: 'Footnote',
   type: 'object',
+  options: {
+    modal: {
+      type: 'popover',
+      width: 'auto',
+    },
+  },
   icon: <Asterisk strokeWidth={1.5} size={20} />,
   fields: [
     defineField({
@@ -13,16 +19,10 @@ export default defineField({
     }),
   ],
   preview: {
-    select: {
-      subtitle: 'footnote',
-    },
-    prepare(selection) {
-        const { subtitle } = selection;
-        console.log(subtitle);
+    prepare() {
       return {
         title: 'Footnote',
         media: <Asterisk strokeWidth={2} size={15} />,
-        subtitle: subtitle[0]?.children[0]?.text || "",
       }
     },
   },

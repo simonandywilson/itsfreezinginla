@@ -19,11 +19,9 @@ export const articlePreviewFragment = groq`{
     media,
     quiltImage,
     image {
-			"_id": asset->_id,
-			alt,
-			crop,
-			hotspot
-      	},
+		"url": asset->url,
+		alt,	
+    },
     topic -> {
         topic,
         image {

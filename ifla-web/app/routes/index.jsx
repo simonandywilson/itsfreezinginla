@@ -49,6 +49,8 @@ export default function Homepage() {
                 link={content.link}
               />
             );
+          default:
+            return null;
         }
       })}
     </Layout>

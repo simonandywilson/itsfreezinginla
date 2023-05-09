@@ -99,13 +99,13 @@ export default defineType({
       name: 'quiltImage',
       type: 'boolean',
       initialValue: false,
-      group: 'options',
+      group: 'content',
     }),
     defineField({
       title: 'Quilt Image',
       name: 'image',
       type: 'imageObject',
-      group: 'options',
+      group: 'content',
       hidden: ({document}) => !document?.quiltImage,
     }),
     defineField({

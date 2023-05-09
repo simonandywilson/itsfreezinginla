@@ -7,10 +7,10 @@ import ToolMenuWithShopify from './components/ToolMenuWithShopify'
 import {SetRandomColourAction} from './components/SetRandomColourAction'
 import './styles/studio.css'
 import {projectDetails} from './projectDetails'
+import {Rocket, Wrench} from 'lucide-react'
 
 const config = {
   ...projectDetails,
- 
 
   plugins: [deskTool({structure, defaultDocumentNode}), ...(isDev ? [visionTool()] : [])],
   schema: {
@@ -45,3 +45,22 @@ export default defineConfig({
   dataset: isDev ? 'staging' : 'production',
   basePath: `/studio`,
 })
+
+// export default defineConfig([
+//   {
+//     name: 'production',
+//     title: 'It’s Freezing in LA!',
+//     basePath: '/production',
+//     // icon: () => <Rocket strokeWidth={1.5} size={25} />,
+//     dataset: 'production',
+//     ...config,
+//   },
+//   {
+//     name: 'staging',
+//     title: 'It’s Freezing in LA! Staging',
+//     basePath: '/staging',
+//     // icon: () => <Wrench strokeWidth={1.5} size={25} />,
+//     dataset: 'staging',
+//     ...config,
+//   },
+// ])
