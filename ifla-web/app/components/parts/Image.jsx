@@ -5,7 +5,7 @@ const projectId = 'yt08sdph';
 //   !process.env.NODE_ENV || process.env.NODE_ENV === 'development'
 //     ? 'staging'
 //     : 'production';
-const dataset = 'staging'
+const dataset = 'production'
 const baseUrl = `https://cdn.sanity.io/images/${projectId}/${dataset}/`;
 
 export const Image = (props) => {
