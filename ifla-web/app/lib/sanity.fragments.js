@@ -44,11 +44,11 @@ export const audiobookPreviewFragment = groq`{
     author-> {name},
     illustrator-> {name},
     image {
-			"_id": asset->_id,
-			alt,
-			crop,
-			hotspot
-      	},
+        "_id": asset->_id,
+        alt,
+        crop,
+        hotspot
+    },
 }`;
 
 const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"] [0..100]|order(date desc)${articlePreviewFragment}}`;
