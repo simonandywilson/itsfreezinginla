@@ -56,7 +56,7 @@ export const HeroModule = ({content}) => {
                 className={clsx(
                   'h-full w-full',
                   {
-                    'p-4 object-contain max-w-[75vw] sm:max-w-[50vw] md:p-8 md:max-w-[45vw] lg:max-w-[30vw]':
+                    'p-4 object-contain max-w-[75vw] sm:max-w-[50vw] md:p-8 md:max-w-[45vw] lg:max-w-[35vw] xl:max-w-[30vw]':
                       imageFormat === 'contain',
                   },
                   {
@@ -67,7 +67,11 @@ export const HeroModule = ({content}) => {
               />
             </div>
           )}
-          <div className={'flex flex-row gap-4 items-end justify-end z-10 flex-wrap md:items-start md:flex-col md:justify-start'}>
+          <div
+            className={
+              'flex flex-row gap-4 items-end justify-end z-10 flex-wrap md:items-start md:flex-col md:justify-start'
+            }
+          >
             {links &&
               links.map((link) => {
                 switch (link?._type) {

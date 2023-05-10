@@ -6,7 +6,7 @@ export const AudiobookBanner = ({audiobook}) => {
   const {soundcloudLink} = audiobook;
 
   const getTrackIdRegex = /\/tracks\/(\d+)/;
-  const getTrackId = soundcloudLink.match(getTrackIdRegex);
+  const getTrackId = soundcloudLink?.match(getTrackIdRegex) || "";
 
   return (
     <Layout as={'article'} intent={'banner'}>

@@ -64,20 +64,25 @@ export default function Audiobook() {
               </time>
             </Banner>
           )}
-          {content.map((content) => {
-            return (
-              <Content key={content._id || content._key} content={content} />
-            );
-          })}
+          {content &&
+            content.map((content) => {
+              return (
+                <Content key={content._id || content._key} content={content} />
+              );
+            })}
         </div>
       </Layout>
       {related?.length > 0 && (
         <>
           <Banner>More listens</Banner>
-          <Layout intent={'grid'} as={'ul'}>
+          <Layout
+            intent={'grid'}
+            as={'ul'}
+            className={'border-t-2 border-black'}
+          >
             {related.map((audiobook) => {
               return (
-                <li key={audiobook._id} className={'w-full'}>
+                <li key={audiobook._id} className={'w-full '}>
                   <BlockLink to={audiobook.slug}>
                     <AudiobookBlock audiobook={audiobook} />
                   </BlockLink>
@@ -90,7 +95,10 @@ export default function Audiobook() {
                 'lg:hidden 3xl:flex',
               )}
             >
-              <ButtonLink to={'/articles'} intent={'text-lg'}>
+              <ButtonLink
+                to={'/articles'}
+                className={'button-24 md:button-32 break-before-avoid'}
+              >
                 Read more
               </ButtonLink>
             </li>
