@@ -3,6 +3,7 @@ import {SlugInput} from 'sanity-plugin-prefixed-slug'
 import PlaceholderStringInput from '../../components/PlaceholderStringInput'
 import {isSlugUnique} from '../../functions/isSlugUnique'
 import {Icons} from '../../styles/SanityIcons'
+import {AccessibleColourInput} from '../../components/AccessibleColourInput'
 
 export default defineType({
   name: 'audiobook',
@@ -79,10 +80,20 @@ export default defineType({
       group: 'info',
     }),
     defineField({
+      name: 'background',
+      type: 'string',
+      components: {
+        input: AccessibleColourInput,
+      },
+      options: {type: '#000000'},
+      group: 'info',
+    }),
+    defineField({
       name: 'soundcloudLink',
       title: 'Soundcloud Track ID',
       type: 'string',
-      description: '💡 On the Soundcloud track, click share, then under the "Embed" tab copy and paste the Code here.',
+      description:
+        '💡 On the Soundcloud track, click share, then under the "Embed" tab copy and paste the Code here.',
       group: 'content',
     }),
     defineField({

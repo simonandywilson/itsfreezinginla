@@ -39,28 +39,28 @@ const config = {
   },
 }
 
-export default defineConfig({
-  ...config,
-  title: isDev ? 'IFLA STAGING': 'It’s Freezing in LA!',
-  dataset: isDev ? 'staging' : 'production',
-  basePath: `/studio`,
-})
+// export default defineConfig({
+//   ...config,
+//   title: isDev ? 'IFLA STAGING': 'It’s Freezing in LA!',
+//   dataset: isDev ? 'staging' : 'production',
+//   basePath: `/studio`,
+// })
 
-// export default defineConfig([
-//   {
-//     name: 'production',
-//     title: 'It’s Freezing in LA!',
-//     basePath: '/production',
-//     // icon: () => <Rocket strokeWidth={1.5} size={25} />,
-//     dataset: 'production',
-//     ...config,
-//   },
-//   {
-//     name: 'staging',
-//     title: 'It’s Freezing in LA! Staging',
-//     basePath: '/staging',
-//     // icon: () => <Wrench strokeWidth={1.5} size={25} />,
-//     dataset: 'staging',
-//     ...config,
-//   },
-// ])
+export default defineConfig([
+  {
+    name: 'production',
+    title: 'It’s Freezing in LA!',
+    basePath: '/production',
+    // icon: () => <Rocket strokeWidth={1.5} size={25} />,
+    dataset: 'production',
+    ...config,
+  },
+  {
+    name: 'staging',
+    title: 'It’s Freezing in LA! Staging',
+    basePath: '/staging',
+    // icon: () => <Wrench strokeWidth={1.5} size={25} />,
+    dataset: 'staging',
+    ...config,
+  },
+])

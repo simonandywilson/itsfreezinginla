@@ -49,6 +49,7 @@ export const audiobookPreviewFragment = groq`{
         crop,
         hotspot
     },
+    background
 }`;
 
 const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"]|order(date desc)${articlePreviewFragment}}`;

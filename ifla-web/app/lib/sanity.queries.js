@@ -83,6 +83,7 @@ export const audiobookDataQuery = groq`*[_type == "audiobook" && slug.current ==
         hotspot
       },
     },
+    background,
     soundcloudLink,
 		"seoTitle": coalesce(seoTitle, headline),
 		"seoDescription": coalesce(seoDescription, pt::text(intro)),

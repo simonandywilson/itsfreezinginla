@@ -4,19 +4,21 @@ import {Image} from '../parts/Image';
 import { PortableText } from '../parts/PortableText';
 
 export const AudiobookBlock = ({audiobook}) => {
-  const {image, intro} = audiobook;
+  const {image, intro, background} = audiobook;
   return (
     <Layout
       as={'div'}
       intent={'block'}
       className={clsx(
-        'relative w-full aspect-square flex flex-col justify-between gap-6 bg-audiobook border-r-1 border-b-1 border-black',
+        'relative w-full aspect-square flex flex-col justify-between gap-6 border-r-1 border-b-1 border-black',
       )}
+      colour={background}
     >
       <div
         className={
-          'h-full w-full flex justify-between flex-col bg-audiobook z-10 invisible group-hover:visible group-focus:visible'
+          'h-full w-full flex justify-between flex-col z-10 invisible group-hover:visible group-focus:visible'
         }
+        style={{background: background}}
       >
         <PortableText text={intro} intent={'preview'} />
         <p className={'text-16 ml-auto'}>Listen {'>'}</p>
