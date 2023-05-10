@@ -3,8 +3,8 @@ import {Layout} from '../parts/Layout';
 import clsx from 'clsx';
 
 export const AudiobookBanner = ({audiobook}) => {
-  const {soundcloudLink} = audiobook;
-
+  const { soundcloudLink } = audiobook;
+  
   const getTrackIdRegex = /\/tracks\/(\d+)/;
   const getTrackId = soundcloudLink?.match(getTrackIdRegex) || "";
 

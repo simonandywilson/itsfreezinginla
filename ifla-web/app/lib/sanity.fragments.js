@@ -51,8 +51,8 @@ export const audiobookPreviewFragment = groq`{
     },
 }`;
 
-const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"] [0..100]|order(date desc)${articlePreviewFragment}}`;
-const audiobooksModuleFragment = groq`_type == 'audiobooksModule' => {...}`;
+const articlesModuleFragment = groq`_type == 'articlesModule' => {..., "articles": *[_type == "article"]|order(date desc)${articlePreviewFragment}}`;
+const audiobooksModuleFragment = groq`_type == 'audiobooksModule' => {...,  "audiobooks": *[_type == "audiobook"]|order(date desc)${audiobookPreviewFragment}}`;
 
 const carouselModuleFragment = groq`
     _type == 'carouselModule' => {

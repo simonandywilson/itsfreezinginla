@@ -83,6 +83,7 @@ export const audiobookDataQuery = groq`*[_type == "audiobook" && slug.current ==
         hotspot
       },
     },
+    soundcloudLink,
 		"seoTitle": coalesce(seoTitle, headline),
 		"seoDescription": coalesce(seoDescription, pt::text(intro)),
     ${relatedAudiobooksFragment},
@@ -100,7 +101,7 @@ export const pageDataQuery = groq`*[_type == "page" && slug.current == $slug][0]
         ${contentFragment}
     }`;
 
-export const allAudiobooksDataQuery = groq`*[_type == "audiobook"]
+export const allAudiobooksDataQuery = groq`*[_type == "audiobook"] | order(date desc)
    ${audiobookPreviewFragment}
 `;
 

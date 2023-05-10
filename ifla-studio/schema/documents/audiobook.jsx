@@ -80,6 +80,7 @@ export default defineType({
     }),
     defineField({
       name: 'soundcloudLink',
+      title: 'Soundcloud Track ID',
       type: 'url',
       description: '💡 On the Soundcloud track, click share, then under the "Embed" tab copy and paste the Code here.',
       group: 'content',
