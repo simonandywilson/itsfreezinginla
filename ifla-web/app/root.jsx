@@ -60,6 +60,8 @@ export const meta = () => ({
 });
 
 export async function loader({context, request}) {
+  const cookieHeader = request.headers.get('Cookie');
+
   const [
     cartId,
     storeData,
@@ -69,6 +71,7 @@ export async function loader({context, request}) {
     footer,
     keyPages,
     colours,
+    cookie,
   ] = await Promise.all([
     context.session.get('cartId'),
     getShopifyStoreData(context),
@@ -78,10 +81,8 @@ export async function loader({context, request}) {
     getFooterData(),
     getKeyPages(),
     getColoursData(),
+    gdprConsent.parse(cookieHeader) || {},
   ]);
-
-  const cookieHeader = request.headers.get('Cookie');
-  const cookie = (await gdprConsent.parse(cookieHeader)) || {};
 
   return defer({
     locale: context.storefront.i18n,
@@ -92,7 +93,7 @@ export async function loader({context, request}) {
     },
     mailerLiteApi: context.mailerLiteApi,
     gaTrackingId: context.analyticsTrackingId,
-    track: cookie.gdprConsent,
+    track: cookie?.gdprPreference,
     shopifyAllCollections,
     settings,
     menu,
