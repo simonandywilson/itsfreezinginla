@@ -12,7 +12,7 @@ export const ArticleBlock = ({article}) => {
       as={'article'}
       intent={'block'}
       className={clsx(
-        'relative w-full h-full aspect-[2.5/2] flex flex-col justify-between gap-6',
+        'relative w-full h-full flex flex-col justify-between gap-6',
         'md:aspect-square',
       )}
       colour={colour || 'var(--accent-colour)'}
@@ -37,7 +37,6 @@ export const ArticleBlock = ({article}) => {
           />
         )}
       </div>
-
       <div className={'filter group-focus-visible:invert group-hover:hidden'}>
         <span>
           <h2 className={'text-32 md:text-40'}>

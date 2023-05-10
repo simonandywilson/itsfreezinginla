@@ -11,7 +11,7 @@ export const ArticleBannerModule = ({content, homepage}) => {
       as={'article'}
       intent={'banner'}
       colour={colour || 'var(--accent-colour)'}
-      className={'!h-[700px]'}
+      className={'md:!h-[700px]'}
     >
       <Layout
         intent={'grid'}
@@ -32,7 +32,7 @@ export const ArticleBannerModule = ({content, homepage}) => {
             'xl:col-span-2 xl:columns-2 xl:h-full xl:min-h-0 ',
           )}
         >
-          <div className={'line-clamp xl:no-line-clamp'}>
+          <div >
             {intro && <PortableText text={intro} intent={'intro'} />}
           </div>
           {homepage && slug && (

@@ -42,9 +42,6 @@ export const Article = ({article}) => {
               </div>
             </div>
           )}
-          <div className={'mt-8 xl:hidden px-4'}>
-            <PortableText text={article.intro} intent={'articleIntro'} />
-          </div>
           {content.map((content) => {
             return (
               <Content
