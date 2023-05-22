@@ -100,6 +100,11 @@ export async function loader({context, request}) {
     footer,
     keyPages,
     colours,
+    ENV: {
+      SANITY_PUBLIC_PROJECT_ID: context.env.SANITY_PUBLIC_PROJECT_ID,
+      SANITY_PUBLIC_DATASET: context.env.SANITY_PUBLIC_DATASET,
+      SANITY_PUBLIC_API_VERSION: context.env.SANITY_PUBLIC_API_VERSION,
+    },
   });
 }
 
