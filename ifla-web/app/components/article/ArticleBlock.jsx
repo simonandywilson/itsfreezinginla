@@ -12,7 +12,7 @@ export const ArticleBlock = ({article}) => {
       as={'article'}
       intent={'block'}
       className={clsx(
-        'relative w-full h-full flex flex-col justify-between gap-6',
+        'relative w-full h-full flex flex-col justify-between gap-6 min-h-[400px]',
         'md:aspect-square',
       )}
       colour={colour || 'var(--accent-colour)'}
