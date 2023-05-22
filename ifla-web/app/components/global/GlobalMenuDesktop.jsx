@@ -28,8 +28,8 @@ export const GlobalMenuDesktop = ({menu}) => {
         {menu.map((section) => {
           return (
             <Popover.Group
-              as="nav"
-              className="hidden md:flex"
+              as={"nav"}
+              className={"hidden md:flex"}
               key={section._id || section._key}
             >
               <MenuItem title={section.name} children={section.children} />
@@ -44,7 +44,7 @@ export const GlobalMenuDesktop = ({menu}) => {
         <div className={'flex-shrink-0 md:hidden w-[4rem]'}>
           <MotionButton
             className={
-              'w-full focus:outline-none focus:border-none antialiased '
+              'w-full focus:outline-none focus:border-none antialiased'
             }
             transition={{duration: 0}}
             initial={{color: '#000000'}}
@@ -102,7 +102,7 @@ const MenuItem = ({title, children}) => {
         >
           <MotionButton
             className={
-              'relative focus:outline-none focus:border-none antialiased px-2 py-1 z-50'
+              'relative focus:outline-none focus:border-none antialiased px-2 py-1 z-50 overflow-hidden'
             }
             onClick={() => singleton && navigate(children[0].slug)}
             transition={{duration: 0}}

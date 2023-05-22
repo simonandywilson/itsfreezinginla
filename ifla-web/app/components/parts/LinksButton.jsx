@@ -31,7 +31,7 @@ const buttonLinkStyle = cva(
 
 export const BlockLink = ({children, to}) => {
   return (
-    <Link to={to} className={'group focus:outline-none focus:border-none'}>
+    <Link to={to} className={'group/block focus:outline-none focus:border-none'}>
       {children}
     </Link>
   );

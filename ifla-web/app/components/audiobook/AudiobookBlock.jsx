@@ -16,7 +16,7 @@ export const AudiobookBlock = ({audiobook}) => {
     >
       <div
         className={
-          'h-full w-full flex justify-between flex-col z-10 invisible group-hover:visible group-focus:visible'
+          'absolute inset-0 h-full w-full p-4 aspect-square flex justify-between flex-col z-10 invisible group-hover:visible group-focus:visible'
         }
         style={{background: background}}
       >
@@ -32,13 +32,13 @@ export const AudiobookBlock = ({audiobook}) => {
           <Image
             id={image._id}
             width={1000}
-            mode="cover"
+            mode={"contain"}
             hotspot={image.hotspot}
             crop={image.crop}
             alt={image.alt || ''}
             preview={image.preview}
-            className={'w-full h-full object-cover'}
-            sizes="33vw"
+            className={'w-full h-full object-contain'}
+            sizes={"50vw"}
           />
         )}
       </div>

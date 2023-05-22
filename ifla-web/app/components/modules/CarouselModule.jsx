@@ -10,8 +10,6 @@ export const CarouselModule = ({content}) => {
   const [swiperInstance, setSwiperInstance] = useState(null);
   const ref = useRef(null);
 
-  console.log(content);
-
   return (
     <Layout intent={'hero'} className={'relative !p-0'}>
       {text && (
@@ -28,7 +26,7 @@ export const CarouselModule = ({content}) => {
         </button>
       )}
       <div
-        className={'group relative w-full h-full  '}
+        className={'group relative w-full h-full min-h-0'}
         ref={ref}
         onClick={(e) => {
           const x = e.clientX - ref.current.getBoundingClientRect().left;
@@ -46,7 +44,7 @@ export const CarouselModule = ({content}) => {
         >
           text
         </button>
-        {!text && (
+        {(!text && content.slide.length > 1) && (
           <div
             className={
               'absolute w-full h-full hidden z-50 pointer-events-none group-hover:flex justify-between items-center p-8 text-white text-6xl'
@@ -64,7 +62,7 @@ export const CarouselModule = ({content}) => {
         >
           {content.slide.map((slide) => {
             return (
-              <SwiperSlide key={slide._key}>
+              <SwiperSlide key={slide._key} className={'h-full w-full'}>
                 <div
                   className={clsx(
                     'relative w-full min-h-0 h-full inset-0 ml-auto flex justify-center items-center flex-initial',
@@ -80,7 +78,7 @@ export const CarouselModule = ({content}) => {
                     preview={slide.preview}
                     sizes={'100vw'}
                     className={clsx(
-                      'h-full w-full p-4 object-contain max-w-[75vw] sm:max-w-[50vw] md:p-8 md:max-w-[45vw] lg:max-w-[35vw]',
+                      'h-full w-full p-4 object-contain max-w-[75vw] sm:max-w-[50vw] md:p-8 md:max-w-[45vw] lg:max-w-[50vw]',
                     )}
                   />
                 </div>
