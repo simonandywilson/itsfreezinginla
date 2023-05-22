@@ -22,6 +22,9 @@ export default async function (request: Request): Promise<Response> {
       PUBLIC_STORE_DOMAIN: '',
       MAILERLITE_API_KEY: '',
       GA_TRACKING_ID: '',
+      SANITY_PUBLIC_PROJECT_ID: '',
+      SANITY_PUBLIC_DATASET: '',
+      SANITY_PUBLIC_API_VERSION: '',
     };
     env.SESSION_SECRET = process.env.SESSION_SECRET;
     env.PUBLIC_STOREFRONT_API_TOKEN = process.env.PUBLIC_STOREFRONT_API_TOKEN;
@@ -31,6 +34,9 @@ export default async function (request: Request): Promise<Response> {
     env.PUBLIC_STORE_DOMAIN = process.env.PUBLIC_STORE_DOMAIN;
     env.MAILERLITE_API_KEY = process.env.MAILERLITE_API_KEY;
     env.GA_TRACKING_ID = process.env.GA_TRACKING_ID;
+    env.SANITY_PUBLIC_PROJECT_ID = process.env.SANITY_PUBLIC_PROJECT_ID;
+    env.SANITY_PUBLIC_DATASET = process.env.SANITY_PUBLIC_DATASET;
+    env.SANITY_PUBLIC_API_VERSION = process.env.SANITY_PUBLIC_API_VERSION;
     /**
      * Open a cache instance in the worker and a custom session instance.
      */
