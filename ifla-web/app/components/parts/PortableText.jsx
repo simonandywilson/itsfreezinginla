@@ -43,7 +43,7 @@ const components = (intent, colour, footnoteIndexes, mono) => {
           case 'footer':
             return <p className={'text-18 '}>{children}</p>;
           case 'intro':
-            return <h3 className={'text-18 md:text-24 inline'}>{children}</h3>;
+            return <h3 className={'text-18 md:text-24 xl:text-40 inline'}>{children}</h3>;
           case 'preview':
             return (
               <p className={'text-16 line-clamp-short md:no-line-clamp'}>
@@ -61,7 +61,7 @@ const components = (intent, colour, footnoteIndexes, mono) => {
         }
       },
       h3: ({children}) => (
-        <h3 className={'break-after-avoid text-32 md:text-68 mb-[24px] lg:max-w-sm'}>{children}</h3>
+        <h3 className={'break-after-avoid break-inside-avoid text-32 md:text-68 mb-[24px] lg:max-w-sm'}>{children}</h3>
       ),
       h5: ({children}) => <h4 className={"text-24 my-8"}>{children}</h4>,
       h6: ({children}) => (

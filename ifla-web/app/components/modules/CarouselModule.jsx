@@ -11,7 +11,7 @@ export const CarouselModule = ({content}) => {
   const ref = useRef(null);
 
   return (
-    <Layout intent={'hero'} className={'relative !p-0'}>
+    <Layout intent={'hero'} className={'relative !p-0 !min-h-0'}>
       {text && (
         <button
           className={
