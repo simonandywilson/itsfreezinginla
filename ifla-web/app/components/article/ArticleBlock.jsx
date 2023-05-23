@@ -19,7 +19,7 @@ export const ArticleBlock = ({article}) => {
     >
       <div
         className={
-          'absolute w-full h-full inset-0 overflow-hidden hidden group-hover:block group-focus:hidden'
+          'absolute w-full h-full inset-0 overflow-hidden hidden group-hover/block:block group-focus/block:hidden z-10'
         }
         style={{background: colour ? colour : '#dfdfdf'}}
       >
@@ -37,7 +37,7 @@ export const ArticleBlock = ({article}) => {
           />
         )}
       </div>
-      <div className={'filter group-focus-visible:invert group-hover:hidden'}>
+      <div className={'filter group-focus-visible/block:invert'}>
         <span>
           <h2 className={'text-32 md:text-40'}>
             {topic && <Topic topic={topic} className={'h-[1.7em]'} />}
@@ -47,7 +47,7 @@ export const ArticleBlock = ({article}) => {
       </div>
       <div
         className={
-          'flex justify-between items-end gap-4 filter group-focus-visible:invert'
+          'flex justify-between items-end gap-4 filter group-focus-visible/block:invert'
         }
       >
         {author.name && (
